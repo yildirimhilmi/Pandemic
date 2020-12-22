@@ -4,11 +4,11 @@ from .models import *
 
 def _boot_db_connection():
     orm = BaseORMUtility(
-        host = "159.89.103.55"
-        port = 3306
-        user = "zey"
-        password = "Zey.1998"
-        db_name = "PandemicTracking"
+        host = "159.89.103.55",
+        port = 3306,
+        user = "zey",
+        password = "Zey.1998",
+        db_name = "PandemicTracking",
     )
     return orm
 
