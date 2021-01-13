@@ -1,0 +1,786 @@
+define(['dart_sdk'], (function load__packages__js_wrapping__adapter__js_map_dart(dart_sdk) {
+  'use strict';
+  const core = dart_sdk.core;
+  const js = dart_sdk.js;
+  const collection = dart_sdk.collection;
+  const convert = dart_sdk.convert;
+  const _interceptors = dart_sdk._interceptors;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  var js_map = Object.create(dart.library);
+  var codec = Object.create(dart.library);
+  var js_list = Object.create(dart.library);
+  var js_wrapping = Object.create(dart.library);
+  var $putIfAbsent = dartx.putIfAbsent;
+  var $forEach = dartx.forEach;
+  var $hashCode = dartx.hashCode;
+  var $_equals = dartx._equals;
+  var $_get = dartx._get;
+  var $_set = dartx._set;
+  var $remove = dartx.remove;
+  var $keys = dartx.keys;
+  var $containsKey = dartx.containsKey;
+  var $addAll = dartx.addAll;
+  var $clear = dartx.clear;
+  var $values = dartx.values;
+  var $add = dartx.add;
+  var $map = dartx.map;
+  var $sort = dartx.sort;
+  var $length = dartx.length;
+  var $insert = dartx.insert;
+  var $removeAt = dartx.removeAt;
+  var $setRange = dartx.setRange;
+  var $removeRange = dartx.removeRange;
+  dart._checkModuleNullSafetyMode(false);
+  var T$ = Object.create({
+    StringL: () => (T$.StringL = dart.constFn(dart.legacy(core.String)))(),
+    dynamicTodynamic: () => (T$.dynamicTodynamic = dart.constFn(dart.fnType(dart.dynamic, [dart.dynamic])))(),
+    IterableOfStringL: () => (T$.IterableOfStringL = dart.constFn(core.Iterable$(T$.StringL())))(),
+    IterableLOfStringL: () => (T$.IterableLOfStringL = dart.constFn(dart.legacy(T$.IterableOfStringL())))(),
+    JsRefL: () => (T$.JsRefL = dart.constFn(dart.legacy(js_wrapping.JsRef)))(),
+    JsFunctionL: () => (T$.JsFunctionL = dart.constFn(dart.legacy(js.JsFunction)))(),
+    boolL: () => (T$.boolL = dart.constFn(dart.legacy(core.bool)))(),
+    ObjectL: () => (T$.ObjectL = dart.constFn(dart.legacy(core.Object)))(),
+    ObjectLToboolL: () => (T$.ObjectLToboolL = dart.constFn(dart.fnType(T$.boolL(), [T$.ObjectL()])))(),
+    dynamicToboolL: () => (T$.dynamicToboolL = dart.constFn(dart.fnType(T$.boolL(), [dart.dynamic])))(),
+    JsObjectL: () => (T$.JsObjectL = dart.constFn(dart.legacy(js.JsObject)))(),
+    JsRefOfJsObjectL: () => (T$.JsRefOfJsObjectL = dart.constFn(js_wrapping.JsRef$(T$.JsObjectL())))(),
+    JsRefLOfJsObjectL: () => (T$.JsRefLOfJsObjectL = dart.constFn(dart.legacy(T$.JsRefOfJsObjectL())))(),
+    JsRefLOfJsObjectLToTL: () => (T$.JsRefLOfJsObjectLToTL = dart.constFn(dart.gFnType(T => {
+      var TL = () => (TL = dart.constFn(dart.legacy(T)))();
+      return [TL(), [T$.JsRefLOfJsObjectL()]];
+    }, T => {
+      var TL = () => (TL = dart.constFn(dart.legacy(T)))();
+      return [T$.JsObjectL()];
+    })))(),
+    JsArrayL: () => (T$.JsArrayL = dart.constFn(dart.legacy(js.JsArray)))(),
+    JsInterfaceL: () => (T$.JsInterfaceL = dart.constFn(dart.legacy(js_wrapping.JsInterface)))(),
+    FunctionL: () => (T$.FunctionL = dart.constFn(dart.legacy(core.Function)))(),
+    ConditionalCodecL: () => (T$.ConditionalCodecL = dart.constFn(dart.legacy(codec.ConditionalCodec)))(),
+    JSArrayOfConditionalCodecL: () => (T$.JSArrayOfConditionalCodecL = dart.constFn(_interceptors.JSArray$(T$.ConditionalCodecL())))()
+  });
+  const CT = Object.create(null);
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.fn(js_wrapping.asJs, T$.dynamicTodynamic());
+    },
+    get C1() {
+      return C[1] = dart.fn(js_wrapping.asJsObject, T$.JsRefLOfJsObjectLToTL());
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: js_wrapping._JsEnum.prototype
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: js_wrapping._Anonymous.prototype
+      });
+    }
+  }, false);
+  var C = Array(4).fill(void 0);
+  var I = [
+    "package:js_wrapping/js_wrapping.dart",
+    "package:js_wrapping/adapter/js_map.dart",
+    "package:js_wrapping/util/codec.dart",
+    "package:js_wrapping/adapter/js_list.dart"
+  ];
+  var _o = dart.privateName(js_map, "_o");
+  var _codec = dart.privateName(js_map, "_codec");
+  var _checkKey = dart.privateName(js_map, "_checkKey");
+  var _value$ = dart.privateName(js_wrapping, "_value");
+  const _is_JsRef_default = Symbol('_is_JsRef_default');
+  js_wrapping.JsRef$ = dart.generic(T => {
+    class JsRef extends core.Object {
+      get hashCode() {
+        return dart.hashCode(this[_value$]);
+      }
+      _equals(other) {
+        if (other == null) return false;
+        return this === other || T$.JsRefL().is(other) && dart.equals(this[_value$], other[_value$]);
+      }
+    }
+    (JsRef.created = function(_value) {
+      this[_value$] = _value;
+      ;
+    }).prototype = JsRef.prototype;
+    dart.addTypeTests(JsRef);
+    JsRef.prototype[_is_JsRef_default] = true;
+    dart.addTypeCaches(JsRef);
+    dart.setMethodSignature(JsRef, () => ({
+      __proto__: dart.getMethods(JsRef.__proto__),
+      _equals: dart.fnType(dart.legacy(core.bool), [dart.dynamic]),
+      [$_equals]: dart.fnType(dart.legacy(core.bool), [dart.dynamic])
+    }));
+    dart.setGetterSignature(JsRef, () => ({
+      __proto__: dart.getGetters(JsRef.__proto__),
+      hashCode: dart.legacy(core.int),
+      [$hashCode]: dart.legacy(core.int)
+    }));
+    dart.setLibraryUri(JsRef, I[0]);
+    dart.setFieldSignature(JsRef, () => ({
+      __proto__: dart.getFields(JsRef.__proto__),
+      [_value$]: dart.finalFieldType(dart.legacy(T))
+    }));
+    dart.defineExtensionMethods(JsRef, ['_equals']);
+    dart.defineExtensionAccessors(JsRef, ['hashCode']);
+    return JsRef;
+  });
+  js_wrapping.JsRef = js_wrapping.JsRef$();
+  dart.addTypeTests(js_wrapping.JsRef, _is_JsRef_default);
+  js_wrapping.JsInterface = class JsInterface extends js_wrapping.JsRef$(dart.legacy(js.JsObject)) {};
+  (js_wrapping.JsInterface.created = function(o) {
+    js_wrapping.JsInterface.__proto__.created.call(this, o);
+    ;
+  }).prototype = js_wrapping.JsInterface.prototype;
+  dart.addTypeTests(js_wrapping.JsInterface);
+  dart.addTypeCaches(js_wrapping.JsInterface);
+  dart.setLibraryUri(js_wrapping.JsInterface, I[0]);
+  const _is_JsObjectAsMap_default = Symbol('_is_JsObjectAsMap_default');
+  js_map.JsObjectAsMap$ = dart.generic(V => {
+    var VL = () => (VL = dart.constFn(dart.legacy(V)))();
+    var IdentityCodecOfVL = () => (IdentityCodecOfVL = dart.constFn(codec.IdentityCodec$(VL())))();
+    var VoidToVL = () => (VoidToVL = dart.constFn(dart.fnType(VL(), [])))();
+    var VoidToLVL = () => (VoidToLVL = dart.constFn(dart.legacy(VoidToVL())))();
+    var MapOfStringL$VL = () => (MapOfStringL$VL = dart.constFn(core.Map$(T$.StringL(), VL())))();
+    var MapLOfStringL$VL = () => (MapLOfStringL$VL = dart.constFn(dart.legacy(MapOfStringL$VL())))();
+    var StringLAndVLToVL = () => (StringLAndVLToVL = dart.constFn(dart.fnType(VL(), [T$.StringL(), VL()])))();
+    const JsInterface_MapMixin$36 = class JsInterface_MapMixin extends js_wrapping.JsInterface {};
+    (JsInterface_MapMixin$36.created = function(o) {
+      JsInterface_MapMixin$36.__proto__.created.call(this, o);
+    }).prototype = JsInterface_MapMixin$36.prototype;
+    dart.applyMixin(JsInterface_MapMixin$36, collection.MapMixin$(dart.legacy(core.String), dart.legacy(V)));
+    class JsObjectAsMap extends JsInterface_MapMixin$36 {
+      [_checkKey](key) {
+        if (key === "__proto__") {
+          dart.throw(new core.ArgumentError.new("'__proto__' is disallowed as a key"));
+        }
+      }
+      _get(key) {
+        return this[_codec].decode(this[_o]._get(key));
+      }
+      _set(key, value$) {
+        let value = value$;
+        T$.StringL().as(key);
+        VL().as(value);
+        this[_checkKey](key);
+        this[_o]._set(key, this[_codec].encode(value));
+        return value$;
+      }
+      remove(key) {
+        let value = this._get(key);
+        this[_o].deleteProperty(T$.StringL().as(key));
+        return value;
+      }
+      get keys() {
+        return T$.IterableLOfStringL().as(dart.dgsend(js_map._obj.callMethod("keys", [this[_o]]), [T$.StringL()], 'map', [dart.fn(key => key, T$.dynamicTodynamic())]));
+      }
+      containsKey(key) {
+        return this[_o].hasProperty(T$.StringL().as(key));
+      }
+      putIfAbsent(key, ifAbsent) {
+        T$.StringL().as(key);
+        VoidToLVL().as(ifAbsent);
+        this[_checkKey](key);
+        return super[$putIfAbsent](key, ifAbsent);
+      }
+      addAll(other) {
+        MapLOfStringL$VL().as(other);
+        if (other != null) {
+          other[$forEach](dart.fn((k, v) => {
+            let t1, t0;
+            t0 = k;
+            t1 = v;
+            this._set(t0, t1);
+            return t1;
+          }, StringLAndVLToVL()));
+        }
+      }
+      clear() {
+        return this.keys[$forEach](dart.bind(this[_o], 'deleteProperty'));
+      }
+    }
+    (JsObjectAsMap.new = function(codec) {
+      JsObjectAsMap.created.call(this, js.JsObject.new(js_map._obj), codec);
+    }).prototype = JsObjectAsMap.prototype;
+    (JsObjectAsMap.created = function(o, codec) {
+      let t0;
+      this[_o] = o;
+      this[_codec] = (t0 = codec, t0 == null ? new (IdentityCodecOfVL()).new() : t0);
+      JsObjectAsMap.__proto__.created.call(this, o);
+      ;
+    }).prototype = JsObjectAsMap.prototype;
+    dart.addTypeTests(JsObjectAsMap);
+    JsObjectAsMap.prototype[_is_JsObjectAsMap_default] = true;
+    dart.addTypeCaches(JsObjectAsMap);
+    dart.setMethodSignature(JsObjectAsMap, () => ({
+      __proto__: dart.getMethods(JsObjectAsMap.__proto__),
+      [_checkKey]: dart.fnType(dart.void, [dart.legacy(core.String)]),
+      _get: dart.fnType(dart.legacy(V), [dart.legacy(core.Object)]),
+      [$_get]: dart.fnType(dart.legacy(V), [dart.legacy(core.Object)]),
+      _set: dart.fnType(dart.void, [dart.legacy(core.Object), dart.legacy(core.Object)]),
+      [$_set]: dart.fnType(dart.void, [dart.legacy(core.Object), dart.legacy(core.Object)]),
+      remove: dart.fnType(dart.legacy(V), [dart.legacy(core.Object)]),
+      [$remove]: dart.fnType(dart.legacy(V), [dart.legacy(core.Object)]),
+      containsKey: dart.fnType(dart.legacy(core.bool), [dart.legacy(core.Object)]),
+      [$containsKey]: dart.fnType(dart.legacy(core.bool), [dart.legacy(core.Object)]),
+      putIfAbsent: dart.fnType(dart.legacy(V), [dart.legacy(core.Object), dart.legacy(core.Object)]),
+      [$putIfAbsent]: dart.fnType(dart.legacy(V), [dart.legacy(core.Object), dart.legacy(core.Object)]),
+      addAll: dart.fnType(dart.void, [dart.legacy(core.Object)]),
+      [$addAll]: dart.fnType(dart.void, [dart.legacy(core.Object)]),
+      clear: dart.fnType(dart.void, []),
+      [$clear]: dart.fnType(dart.void, [])
+    }));
+    dart.setGetterSignature(JsObjectAsMap, () => ({
+      __proto__: dart.getGetters(JsObjectAsMap.__proto__),
+      keys: dart.legacy(core.Iterable$(dart.legacy(core.String))),
+      [$keys]: dart.legacy(core.Iterable$(dart.legacy(core.String)))
+    }));
+    dart.setLibraryUri(JsObjectAsMap, I[1]);
+    dart.setFieldSignature(JsObjectAsMap, () => ({
+      __proto__: dart.getFields(JsObjectAsMap.__proto__),
+      [_o]: dart.finalFieldType(dart.legacy(js.JsObject)),
+      [_codec]: dart.finalFieldType(dart.legacy(convert.Codec$(dart.legacy(V), dart.dynamic)))
+    }));
+    dart.defineExtensionMethods(JsObjectAsMap, [
+      '_get',
+      '_set',
+      'remove',
+      'containsKey',
+      'putIfAbsent',
+      'addAll',
+      'clear'
+    ]);
+    dart.defineExtensionAccessors(JsObjectAsMap, ['keys']);
+    return JsObjectAsMap;
+  });
+  js_map.JsObjectAsMap = js_map.JsObjectAsMap$();
+  dart.addTypeTests(js_map.JsObjectAsMap, _is_JsObjectAsMap_default);
+  dart.defineLazy(js_map, {
+    /*js_map._obj*/get _obj() {
+      return T$.JsFunctionL().as(js.context._get("Object"));
+    }
+  }, true);
+  var encoder$ = dart.privateName(codec, "ConditionalCodec.encoder");
+  var decoder$ = dart.privateName(codec, "ConditionalCodec.decoder");
+  var acceptEncodedValue$ = dart.privateName(codec, "ConditionalCodec.acceptEncodedValue");
+  var acceptDecodedValue$ = dart.privateName(codec, "ConditionalCodec.acceptDecodedValue");
+  const _is_ConditionalCodec_default = Symbol('_is_ConditionalCodec_default');
+  codec.ConditionalCodec$ = dart.generic((S, T) => {
+    var SL = () => (SL = dart.constFn(dart.legacy(S)))();
+    var _ConverterOfSL$TL = () => (_ConverterOfSL$TL = dart.constFn(codec._Converter$(SL(), TL())))();
+    var _ConverterOfTL$SL = () => (_ConverterOfTL$SL = dart.constFn(codec._Converter$(TL(), SL())))();
+    var TL = () => (TL = dart.constFn(dart.legacy(T)))();
+    class ConditionalCodec extends convert.Codec$(dart.legacy(S), dart.legacy(T)) {
+      get encoder() {
+        return this[encoder$];
+      }
+      set encoder(value) {
+        super.encoder = value;
+      }
+      get decoder() {
+        return this[decoder$];
+      }
+      set decoder(value) {
+        super.decoder = value;
+      }
+      get acceptEncodedValue() {
+        return this[acceptEncodedValue$];
+      }
+      set acceptEncodedValue(value) {
+        super.acceptEncodedValue = value;
+      }
+      get acceptDecodedValue() {
+        return this[acceptDecodedValue$];
+      }
+      set acceptDecodedValue(value) {
+        super.acceptDecodedValue = value;
+      }
+    }
+    (ConditionalCodec.new = function(encoder, decoder, opts) {
+      let acceptEncodedValue = opts && 'acceptEncodedValue' in opts ? opts.acceptEncodedValue : null;
+      let acceptDecodedValue = opts && 'acceptDecodedValue' in opts ? opts.acceptDecodedValue : null;
+      ConditionalCodec.__.call(this, encoder, decoder, acceptEncodedValue != null ? acceptEncodedValue : dart.fn(o => TL().is(o), T$.ObjectLToboolL()), acceptDecodedValue != null ? acceptDecodedValue : dart.fn(o => SL().is(o), T$.ObjectLToboolL()));
+    }).prototype = ConditionalCodec.prototype;
+    (ConditionalCodec.__ = function(encoder, decoder, acceptEncodedValue, acceptDecodedValue) {
+      this[encoder$] = encoder;
+      this[decoder$] = decoder;
+      this[acceptEncodedValue$] = acceptEncodedValue;
+      this[acceptDecodedValue$] = acceptDecodedValue;
+      ConditionalCodec.__proto__.new.call(this);
+      ;
+    }).prototype = ConditionalCodec.prototype;
+    (ConditionalCodec.fromFactories = function(encode, decode, opts) {
+      let acceptEncodedValue = opts && 'acceptEncodedValue' in opts ? opts.acceptEncodedValue : null;
+      let acceptDecodedValue = opts && 'acceptDecodedValue' in opts ? opts.acceptDecodedValue : null;
+      ConditionalCodec.new.call(this, new (_ConverterOfSL$TL()).new(encode), new (_ConverterOfTL$SL()).new(decode), {acceptEncodedValue: acceptEncodedValue, acceptDecodedValue: acceptDecodedValue});
+    }).prototype = ConditionalCodec.prototype;
+    dart.addTypeTests(ConditionalCodec);
+    ConditionalCodec.prototype[_is_ConditionalCodec_default] = true;
+    dart.addTypeCaches(ConditionalCodec);
+    dart.setLibraryUri(ConditionalCodec, I[2]);
+    dart.setFieldSignature(ConditionalCodec, () => ({
+      __proto__: dart.getFields(ConditionalCodec.__proto__),
+      encoder: dart.finalFieldType(dart.legacy(convert.Converter$(dart.legacy(S), dart.legacy(T)))),
+      decoder: dart.finalFieldType(dart.legacy(convert.Converter$(dart.legacy(T), dart.legacy(S)))),
+      acceptEncodedValue: dart.finalFieldType(dart.legacy(dart.fnType(dart.legacy(core.bool), [dart.legacy(core.Object)]))),
+      acceptDecodedValue: dart.finalFieldType(dart.legacy(dart.fnType(dart.legacy(core.bool), [dart.legacy(core.Object)])))
+    }));
+    return ConditionalCodec;
+  });
+  codec.ConditionalCodec = codec.ConditionalCodec$();
+  dart.addTypeTests(codec.ConditionalCodec, _is_ConditionalCodec_default);
+  var _factory$ = dart.privateName(codec, "_factory");
+  const _is__Converter_default = Symbol('_is__Converter_default');
+  codec._Converter$ = dart.generic((S, T) => {
+    var SL = () => (SL = dart.constFn(dart.legacy(S)))();
+    class _Converter extends convert.Converter$(dart.legacy(S), dart.legacy(T)) {
+      convert(input) {
+        let t0;
+        SL().as(input);
+        return input == null ? null : (t0 = input, this[_factory$](t0));
+      }
+    }
+    (_Converter.new = function(_factory) {
+      this[_factory$] = _factory;
+      _Converter.__proto__.new.call(this);
+      ;
+    }).prototype = _Converter.prototype;
+    dart.addTypeTests(_Converter);
+    _Converter.prototype[_is__Converter_default] = true;
+    dart.addTypeCaches(_Converter);
+    dart.setMethodSignature(_Converter, () => ({
+      __proto__: dart.getMethods(_Converter.__proto__),
+      convert: dart.fnType(dart.legacy(T), [dart.legacy(core.Object)])
+    }));
+    dart.setLibraryUri(_Converter, I[2]);
+    dart.setFieldSignature(_Converter, () => ({
+      __proto__: dart.getFields(_Converter.__proto__),
+      [_factory$]: dart.finalFieldType(dart.legacy(dart.fnType(dart.legacy(T), [dart.legacy(S)])))
+    }));
+    return _Converter;
+  });
+  codec._Converter = codec._Converter$();
+  dart.addTypeTests(codec._Converter, _is__Converter_default);
+  const _is_IdentityCodec_default = Symbol('_is_IdentityCodec_default');
+  codec.IdentityCodec$ = dart.generic(T => {
+    var TL = () => (TL = dart.constFn(dart.legacy(T)))();
+    var TLToTL = () => (TLToTL = dart.constFn(dart.fnType(TL(), [TL()])))();
+    class IdentityCodec extends codec.ConditionalCodec$(dart.legacy(T), dart.legacy(T)) {}
+    (IdentityCodec.new = function() {
+      IdentityCodec.__proto__.fromFactories.call(this, dart.fn(o => o, TLToTL()), dart.fn(o => o, TLToTL()));
+      ;
+    }).prototype = IdentityCodec.prototype;
+    dart.addTypeTests(IdentityCodec);
+    IdentityCodec.prototype[_is_IdentityCodec_default] = true;
+    dart.addTypeCaches(IdentityCodec);
+    dart.setLibraryUri(IdentityCodec, I[2]);
+    return IdentityCodec;
+  });
+  codec.IdentityCodec = codec.IdentityCodec$();
+  dart.addTypeTests(codec.IdentityCodec, _is_IdentityCodec_default);
+  codec.DynamicCodec = class DynamicCodec extends codec.ConditionalCodec {};
+  (codec.DynamicCodec.new = function() {
+    codec.DynamicCodec.__proto__.fromFactories.call(this, C[0] || CT.C0, dart.fn(o => o, T$.dynamicTodynamic()), {acceptEncodedValue: dart.fn(o => true, T$.dynamicToboolL()), acceptDecodedValue: dart.fn(o => true, T$.dynamicToboolL())});
+    ;
+  }).prototype = codec.DynamicCodec.prototype;
+  dart.addTypeTests(codec.DynamicCodec);
+  dart.addTypeCaches(codec.DynamicCodec);
+  dart.setLibraryUri(codec.DynamicCodec, I[2]);
+  const _is_JsInterfaceCodec_default = Symbol('_is_JsInterfaceCodec_default');
+  codec.JsInterfaceCodec$ = dart.generic(T => {
+    class JsInterfaceCodec extends codec.ConditionalCodec$(dart.legacy(T), dart.legacy(js.JsObject)) {}
+    (JsInterfaceCodec.new = function(decode, acceptEncodedValue = null) {
+      JsInterfaceCodec.__proto__.fromFactories.call(this, dart.gbind(C[1] || CT.C1, T$.JsObjectL()), decode, {acceptEncodedValue: acceptEncodedValue});
+      ;
+    }).prototype = JsInterfaceCodec.prototype;
+    dart.addTypeTests(JsInterfaceCodec);
+    JsInterfaceCodec.prototype[_is_JsInterfaceCodec_default] = true;
+    dart.addTypeCaches(JsInterfaceCodec);
+    dart.setLibraryUri(JsInterfaceCodec, I[2]);
+    return JsInterfaceCodec;
+  });
+  codec.JsInterfaceCodec = codec.JsInterfaceCodec$();
+  dart.addTypeTests(codec.JsInterfaceCodec, _is_JsInterfaceCodec_default);
+  const _is_JsListCodec_default = Symbol('_is_JsListCodec_default');
+  codec.JsListCodec$ = dart.generic(T => {
+    var TL = () => (TL = dart.constFn(dart.legacy(T)))();
+    var JsListOfTL = () => (JsListOfTL = dart.constFn(js_list.JsList$(TL())))();
+    var ListOfTL = () => (ListOfTL = dart.constFn(core.List$(TL())))();
+    var ListLOfTL = () => (ListLOfTL = dart.constFn(dart.legacy(ListOfTL())))();
+    var ListLOfTLToJsArrayL = () => (ListLOfTLToJsArrayL = dart.constFn(dart.fnType(T$.JsArrayL(), [ListLOfTL()])))();
+    var JsListLOfTL = () => (JsListLOfTL = dart.constFn(dart.legacy(JsListOfTL())))();
+    var JsArrayLToJsListLOfTL = () => (JsArrayLToJsListLOfTL = dart.constFn(dart.fnType(JsListLOfTL(), [T$.JsArrayL()])))();
+    class JsListCodec extends codec.ConditionalCodec$(dart.legacy(core.List$(dart.legacy(T))), dart.legacy(js.JsArray)) {}
+    (JsListCodec.new = function(codec) {
+      JsListCodec.__proto__.fromFactories.call(this, dart.fn(o => {
+        let t0;
+        return T$.JsArrayL().as(T$.JsArrayL().is(o) ? o : T$.JsInterfaceL().is(o) ? js_wrapping.asJsObject(T$.JsArrayL(), T$.JsInterfaceL().as(o)) : js_wrapping.asJsObject(T$.JsArrayL(), (t0 = new (JsListOfTL()).new(codec), (() => {
+          t0.addAll(o);
+          return t0;
+        })())));
+      }, ListLOfTLToJsArrayL()), dart.fn(o => new (JsListOfTL()).created(o, codec), JsArrayLToJsListLOfTL()));
+      ;
+    }).prototype = JsListCodec.prototype;
+    dart.addTypeTests(JsListCodec);
+    JsListCodec.prototype[_is_JsListCodec_default] = true;
+    dart.addTypeCaches(JsListCodec);
+    dart.setLibraryUri(JsListCodec, I[2]);
+    return JsListCodec;
+  });
+  codec.JsListCodec = codec.JsListCodec$();
+  dart.addTypeTests(codec.JsListCodec, _is_JsListCodec_default);
+  const _is_JsObjectAsMapCodec_default = Symbol('_is_JsObjectAsMapCodec_default');
+  codec.JsObjectAsMapCodec$ = dart.generic(T => {
+    var TL = () => (TL = dart.constFn(dart.legacy(T)))();
+    var JsObjectAsMapOfTL = () => (JsObjectAsMapOfTL = dart.constFn(js_map.JsObjectAsMap$(TL())))();
+    var MapOfStringL$TL = () => (MapOfStringL$TL = dart.constFn(core.Map$(T$.StringL(), TL())))();
+    var MapLOfStringL$TL = () => (MapLOfStringL$TL = dart.constFn(dart.legacy(MapOfStringL$TL())))();
+    var MapLOfStringL$TLToJsObjectL = () => (MapLOfStringL$TLToJsObjectL = dart.constFn(dart.fnType(T$.JsObjectL(), [MapLOfStringL$TL()])))();
+    var JsObjectAsMapLOfTL = () => (JsObjectAsMapLOfTL = dart.constFn(dart.legacy(JsObjectAsMapOfTL())))();
+    var JsObjectLToJsObjectAsMapLOfTL = () => (JsObjectLToJsObjectAsMapLOfTL = dart.constFn(dart.fnType(JsObjectAsMapLOfTL(), [T$.JsObjectL()])))();
+    class JsObjectAsMapCodec extends codec.ConditionalCodec$(dart.legacy(core.Map$(dart.legacy(core.String), dart.legacy(T))), dart.legacy(js.JsObject)) {}
+    (JsObjectAsMapCodec.new = function(codec) {
+      JsObjectAsMapCodec.__proto__.fromFactories.call(this, dart.fn(o => {
+        let t0;
+        return T$.JsObjectL().as(T$.JsObjectL().is(o) ? o : T$.JsInterfaceL().is(o) ? js_wrapping.asJsObject(T$.JsObjectL(), T$.JsInterfaceL().as(o)) : js_wrapping.asJsObject(T$.JsObjectL(), (t0 = new (JsObjectAsMapOfTL()).new(codec), (() => {
+          t0.addAll(o);
+          return t0;
+        })())));
+      }, MapLOfStringL$TLToJsObjectL()), dart.fn(o => new (JsObjectAsMapOfTL()).created(o, codec), JsObjectLToJsObjectAsMapLOfTL()));
+      ;
+    }).prototype = JsObjectAsMapCodec.prototype;
+    dart.addTypeTests(JsObjectAsMapCodec);
+    JsObjectAsMapCodec.prototype[_is_JsObjectAsMapCodec_default] = true;
+    dart.addTypeCaches(JsObjectAsMapCodec);
+    dart.setLibraryUri(JsObjectAsMapCodec, I[2]);
+    return JsObjectAsMapCodec;
+  });
+  codec.JsObjectAsMapCodec = codec.JsObjectAsMapCodec$();
+  dart.addTypeTests(codec.JsObjectAsMapCodec, _is_JsObjectAsMapCodec_default);
+  const _is_BiMapCodec_default = Symbol('_is_BiMapCodec_default');
+  codec.BiMapCodec$ = dart.generic((S, T) => {
+    var SL = () => (SL = dart.constFn(dart.legacy(S)))();
+    var LinkedHashMapOfTL$SL = () => (LinkedHashMapOfTL$SL = dart.constFn(collection.LinkedHashMap$(TL(), SL())))();
+    var SLToTL = () => (SLToTL = dart.constFn(dart.fnType(TL(), [SL()])))();
+    var TLToSL = () => (TLToSL = dart.constFn(dart.fnType(SL(), [TL()])))();
+    var TL = () => (TL = dart.constFn(dart.legacy(T)))();
+    class BiMapCodec extends codec.ConditionalCodec$(dart.legacy(S), dart.legacy(T)) {}
+    (BiMapCodec.new = function(map) {
+      BiMapCodec.__.call(this, map, LinkedHashMapOfTL$SL().fromIterables(map[$values], map[$keys]));
+    }).prototype = BiMapCodec.prototype;
+    (BiMapCodec.__ = function(encode, decode) {
+      BiMapCodec.__proto__.fromFactories.call(this, dart.fn(o => encode[$_get](o), SLToTL()), dart.fn(o => decode[$_get](o), TLToSL()));
+      ;
+    }).prototype = BiMapCodec.prototype;
+    dart.addTypeTests(BiMapCodec);
+    BiMapCodec.prototype[_is_BiMapCodec_default] = true;
+    dart.addTypeCaches(BiMapCodec);
+    dart.setLibraryUri(BiMapCodec, I[2]);
+    return BiMapCodec;
+  });
+  codec.BiMapCodec = codec.BiMapCodec$();
+  dart.addTypeTests(codec.BiMapCodec, _is_BiMapCodec_default);
+  const _is_FunctionCodec_default = Symbol('_is_FunctionCodec_default');
+  codec.FunctionCodec$ = dart.generic(T => {
+    class FunctionCodec extends codec.ConditionalCodec$(dart.legacy(T), dart.dynamic) {}
+    (FunctionCodec.new = function(encode, decode) {
+      FunctionCodec.__proto__.fromFactories.call(this, encode, decode, {acceptEncodedValue: dart.fn(o => T$.JsFunctionL().is(o) || T$.FunctionL().is(o), T$.dynamicToboolL())});
+      ;
+    }).prototype = FunctionCodec.prototype;
+    dart.addTypeTests(FunctionCodec);
+    FunctionCodec.prototype[_is_FunctionCodec_default] = true;
+    dart.addTypeCaches(FunctionCodec);
+    dart.setLibraryUri(FunctionCodec, I[2]);
+    return FunctionCodec;
+  });
+  codec.FunctionCodec = codec.FunctionCodec$();
+  dart.addTypeTests(codec.FunctionCodec, _is_FunctionCodec_default);
+  var _codecs$ = dart.privateName(codec, "_codecs");
+  codec.ChainedCodec = class ChainedCodec extends codec.ConditionalCodec {
+    add(codec) {
+      this[_codecs$][$add](codec);
+    }
+  };
+  (codec.ChainedCodec.new = function() {
+    codec.ChainedCodec.__.call(this, T$.JSArrayOfConditionalCodecL().of([]));
+  }).prototype = codec.ChainedCodec.prototype;
+  (codec.ChainedCodec.__ = function(_codecs) {
+    this[_codecs$] = _codecs;
+    codec.ChainedCodec.__proto__.new.call(this, new codec._ChainedConverter.new(_codecs, {encoder: true}), new codec._ChainedConverter.new(_codecs, {encoder: false}));
+    ;
+  }).prototype = codec.ChainedCodec.prototype;
+  dart.addTypeTests(codec.ChainedCodec);
+  dart.addTypeCaches(codec.ChainedCodec);
+  dart.setMethodSignature(codec.ChainedCodec, () => ({
+    __proto__: dart.getMethods(codec.ChainedCodec.__proto__),
+    add: dart.fnType(dart.void, [dart.legacy(codec.ConditionalCodec)])
+  }));
+  dart.setLibraryUri(codec.ChainedCodec, I[2]);
+  dart.setFieldSignature(codec.ChainedCodec, () => ({
+    __proto__: dart.getFields(codec.ChainedCodec.__proto__),
+    [_codecs$]: dart.finalFieldType(dart.legacy(core.List$(dart.legacy(codec.ConditionalCodec))))
+  }));
+  codec._ChainedConverter = class _ChainedConverter extends convert.Converter {
+    convert(input) {
+      let t1, t0, t1$, t0$;
+      for (let codec of this[_codecs$]) {
+        let value = null;
+        if (dart.test(this.encoder) && dart.test((t0 = codec, t1 = input, t0.acceptDecodedValue(t1)))) {
+          value = codec.encode(input);
+        }
+        if (!dart.test(this.encoder) && dart.test((t0$ = codec, t1$ = input, t0$.acceptEncodedValue(t1$)))) {
+          value = codec.decode(input);
+        }
+        if (value != null) {
+          return value;
+        }
+      }
+      return input;
+    }
+  };
+  (codec._ChainedConverter.new = function(_codecs, opts) {
+    let encoder = opts && 'encoder' in opts ? opts.encoder : null;
+    this[_codecs$] = _codecs;
+    this.encoder = encoder;
+    codec._ChainedConverter.__proto__.new.call(this);
+    ;
+  }).prototype = codec._ChainedConverter.prototype;
+  dart.addTypeTests(codec._ChainedConverter);
+  dart.addTypeCaches(codec._ChainedConverter);
+  dart.setMethodSignature(codec._ChainedConverter, () => ({
+    __proto__: dart.getMethods(codec._ChainedConverter.__proto__),
+    convert: dart.fnType(dart.dynamic, [dart.legacy(core.Object)])
+  }));
+  dart.setLibraryUri(codec._ChainedConverter, I[2]);
+  dart.setFieldSignature(codec._ChainedConverter, () => ({
+    __proto__: dart.getFields(codec._ChainedConverter.__proto__),
+    [_codecs$]: dart.finalFieldType(dart.legacy(core.List$(dart.legacy(codec.ConditionalCodec)))),
+    encoder: dart.finalFieldType(dart.legacy(core.bool))
+  }));
+  var _o$ = dart.privateName(js_list, "_o");
+  var _codec$ = dart.privateName(js_list, "_codec");
+  const _is_JsList_default = Symbol('_is_JsList_default');
+  js_list.JsList$ = dart.generic(E => {
+    var EL = () => (EL = dart.constFn(dart.legacy(E)))();
+    var IdentityCodecOfEL = () => (IdentityCodecOfEL = dart.constFn(codec.IdentityCodec$(EL())))();
+    var IterableOfEL = () => (IterableOfEL = dart.constFn(core.Iterable$(EL())))();
+    var IterableLOfEL = () => (IterableLOfEL = dart.constFn(dart.legacy(IterableOfEL())))();
+    const JsInterface_ListMixin$36 = class JsInterface_ListMixin extends js_wrapping.JsInterface {};
+    (JsInterface_ListMixin$36.created = function(o) {
+      JsInterface_ListMixin$36.__proto__.created.call(this, o);
+    }).prototype = JsInterface_ListMixin$36.prototype;
+    dart.applyMixin(JsInterface_ListMixin$36, collection.ListMixin$(dart.legacy(E)));
+    class JsList extends JsInterface_ListMixin$36 {
+      get length() {
+        return this[_o$].length;
+      }
+      set length(length) {
+        this[_o$].length = length;
+      }
+      _get(index) {
+        return this[_codec$].decode(this[_o$]._get(index));
+      }
+      _set(index, value$) {
+        let value = value$;
+        EL().as(value);
+        this[_o$]._set(index, this[_codec$].encode(value));
+        return value$;
+      }
+      add(element) {
+        EL().as(element);
+        this[_o$].add(this[_codec$].encode(element));
+      }
+      addAll(iterable) {
+        IterableLOfEL().as(iterable);
+        this[_o$].addAll(iterable[$map](dart.dynamic, dart.bind(this[_codec$], 'encode')));
+      }
+      sort(compare = null) {
+        let t0;
+        let sortedList = (t0 = this.toList(), (() => {
+          t0[$sort](compare);
+          return t0;
+        })());
+        this.setRange(0, sortedList[$length], sortedList);
+      }
+      insert(index, element) {
+        EL().as(element);
+        this[_o$].insert(index, this[_codec$].encode(element));
+      }
+      removeAt(index) {
+        return this[_codec$].decode(this[_o$].removeAt(index));
+      }
+      removeLast() {
+        return this[_codec$].decode(this[_o$].removeLast());
+      }
+      setRange(start, end, iterable, skipCount = 0) {
+        IterableLOfEL().as(iterable);
+        this[_o$].setRange(start, end, iterable[$map](dart.dynamic, dart.bind(this[_codec$], 'encode')), skipCount);
+      }
+      removeRange(start, end) {
+        this[_o$].removeRange(start, end);
+      }
+    }
+    (JsList.new = function(codec) {
+      JsList.created.call(this, js.JsArray.new(), codec);
+    }).prototype = JsList.prototype;
+    (JsList.created = function(o, codec) {
+      let t0;
+      this[_o$] = o;
+      this[_codec$] = (t0 = codec, t0 == null ? new (IdentityCodecOfEL()).new() : t0);
+      JsList.__proto__.created.call(this, o);
+      ;
+    }).prototype = JsList.prototype;
+    dart.addTypeTests(JsList);
+    JsList.prototype[_is_JsList_default] = true;
+    dart.addTypeCaches(JsList);
+    dart.setMethodSignature(JsList, () => ({
+      __proto__: dart.getMethods(JsList.__proto__),
+      _get: dart.fnType(dart.legacy(E), [dart.legacy(core.int)]),
+      [$_get]: dart.fnType(dart.legacy(E), [dart.legacy(core.int)]),
+      _set: dart.fnType(dart.void, [dart.legacy(core.int), dart.legacy(core.Object)]),
+      [$_set]: dart.fnType(dart.void, [dart.legacy(core.int), dart.legacy(core.Object)]),
+      add: dart.fnType(dart.void, [dart.legacy(core.Object)]),
+      [$add]: dart.fnType(dart.void, [dart.legacy(core.Object)]),
+      addAll: dart.fnType(dart.void, [dart.legacy(core.Object)]),
+      [$addAll]: dart.fnType(dart.void, [dart.legacy(core.Object)]),
+      sort: dart.fnType(dart.void, [], [dart.legacy(dart.fnType(dart.legacy(core.int), [dart.legacy(E), dart.legacy(E)]))]),
+      [$sort]: dart.fnType(dart.void, [], [dart.legacy(dart.fnType(dart.legacy(core.int), [dart.legacy(E), dart.legacy(E)]))]),
+      insert: dart.fnType(dart.void, [dart.legacy(core.int), dart.legacy(core.Object)]),
+      [$insert]: dart.fnType(dart.void, [dart.legacy(core.int), dart.legacy(core.Object)]),
+      removeAt: dart.fnType(dart.legacy(E), [dart.legacy(core.int)]),
+      [$removeAt]: dart.fnType(dart.legacy(E), [dart.legacy(core.int)]),
+      setRange: dart.fnType(dart.void, [dart.legacy(core.int), dart.legacy(core.int), dart.legacy(core.Object)], [dart.legacy(core.int)]),
+      [$setRange]: dart.fnType(dart.void, [dart.legacy(core.int), dart.legacy(core.int), dart.legacy(core.Object)], [dart.legacy(core.int)]),
+      removeRange: dart.fnType(dart.void, [dart.legacy(core.int), dart.legacy(core.int)]),
+      [$removeRange]: dart.fnType(dart.void, [dart.legacy(core.int), dart.legacy(core.int)])
+    }));
+    dart.setGetterSignature(JsList, () => ({
+      __proto__: dart.getGetters(JsList.__proto__),
+      length: dart.legacy(core.int),
+      [$length]: dart.legacy(core.int)
+    }));
+    dart.setSetterSignature(JsList, () => ({
+      __proto__: dart.getSetters(JsList.__proto__),
+      length: dart.legacy(core.int),
+      [$length]: dart.legacy(core.int)
+    }));
+    dart.setLibraryUri(JsList, I[3]);
+    dart.setFieldSignature(JsList, () => ({
+      __proto__: dart.getFields(JsList.__proto__),
+      [_o$]: dart.finalFieldType(dart.legacy(js.JsArray)),
+      [_codec$]: dart.finalFieldType(dart.legacy(convert.Codec$(dart.legacy(E), dart.dynamic)))
+    }));
+    dart.defineExtensionMethods(JsList, [
+      '_get',
+      '_set',
+      'add',
+      'addAll',
+      'sort',
+      'insert',
+      'removeAt',
+      'removeLast',
+      'setRange',
+      'removeRange'
+    ]);
+    dart.defineExtensionAccessors(JsList, ['length']);
+    return JsList;
+  });
+  js_list.JsList = js_list.JsList$();
+  dart.addTypeTests(js_list.JsList, _is_JsList_default);
+  js_wrapping.JsEnum = class JsEnum extends js_wrapping.JsRef {};
+  (js_wrapping.JsEnum.created = function(o) {
+    js_wrapping.JsEnum.__proto__.created.call(this, o);
+    ;
+  }).prototype = js_wrapping.JsEnum.prototype;
+  dart.addTypeTests(js_wrapping.JsEnum);
+  dart.addTypeCaches(js_wrapping.JsEnum);
+  dart.setLibraryUri(js_wrapping.JsEnum, I[0]);
+  js_wrapping._JsEnum = class _JsEnum extends core.Object {};
+  (js_wrapping._JsEnum.new = function() {
+    ;
+  }).prototype = js_wrapping._JsEnum.prototype;
+  dart.addTypeTests(js_wrapping._JsEnum);
+  dart.addTypeCaches(js_wrapping._JsEnum);
+  dart.setLibraryUri(js_wrapping._JsEnum, I[0]);
+  var name$ = dart.privateName(js_wrapping, "JsName.name");
+  js_wrapping.JsName = class JsName extends core.Object {
+    get name() {
+      return this[name$];
+    }
+    set name(value) {
+      super.name = value;
+    }
+  };
+  (js_wrapping.JsName.new = function(name) {
+    this[name$] = name;
+    ;
+  }).prototype = js_wrapping.JsName.prototype;
+  dart.addTypeTests(js_wrapping.JsName);
+  dart.addTypeCaches(js_wrapping.JsName);
+  dart.setLibraryUri(js_wrapping.JsName, I[0]);
+  dart.setFieldSignature(js_wrapping.JsName, () => ({
+    __proto__: dart.getFields(js_wrapping.JsName.__proto__),
+    name: dart.finalFieldType(dart.legacy(core.String))
+  }));
+  js_wrapping._Anonymous = class _Anonymous extends core.Object {};
+  (js_wrapping._Anonymous.new = function() {
+    ;
+  }).prototype = js_wrapping._Anonymous.prototype;
+  dart.addTypeTests(js_wrapping._Anonymous);
+  dart.addTypeCaches(js_wrapping._Anonymous);
+  dart.setLibraryUri(js_wrapping._Anonymous, I[0]);
+  var type$ = dart.privateName(js_wrapping, "GeneratedFrom.type");
+  js_wrapping.GeneratedFrom = class GeneratedFrom extends core.Object {
+    get type() {
+      return this[type$];
+    }
+    set type(value) {
+      super.type = value;
+    }
+  };
+  (js_wrapping.GeneratedFrom.new = function(type) {
+    this[type$] = type;
+    ;
+  }).prototype = js_wrapping.GeneratedFrom.prototype;
+  dart.addTypeTests(js_wrapping.GeneratedFrom);
+  dart.addTypeCaches(js_wrapping.GeneratedFrom);
+  dart.setLibraryUri(js_wrapping.GeneratedFrom, I[0]);
+  dart.setFieldSignature(js_wrapping.GeneratedFrom, () => ({
+    __proto__: dart.getFields(js_wrapping.GeneratedFrom.__proto__),
+    type: dart.finalFieldType(dart.legacy(core.Type))
+  }));
+  js_wrapping.asJsObject = function asJsObject(T, o) {
+    return dart.legacy(T).as(o[_value$]);
+  };
+  js_wrapping.asJs = function asJs(o) {
+    return T$.JsRefL().is(o) ? o[_value$] : o;
+  };
+  dart.defineLazy(js_wrapping, {
+    /*js_wrapping.jsEnum*/get jsEnum() {
+      return C[2] || CT.C2;
+    },
+    /*js_wrapping.anonymous*/get anonymous() {
+      return C[3] || CT.C3;
+    },
+    /*js_wrapping.$js*/get $js() {
+      return null;
+    }
+  }, true);
+  dart.trackLibraries("packages/js_wrapping/adapter/js_map.dart", {
+    "package:js_wrapping/adapter/js_map.dart": js_map,
+    "package:js_wrapping/util/codec.dart": codec,
+    "package:js_wrapping/adapter/js_list.dart": js_list,
+    "package:js_wrapping/js_wrapping.dart": js_wrapping
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["../js_wrapping.dart","js_map.dart","../util/codec.dart","js_list.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AA4BsB,cAAO,eAAP;MAAe;;YAElB;AACb,cAAA,AAAU,AAAa,UAAP,KAAK,IAAW,eAAN,KAAK,KAAoB,YAAP,eAAU,AAAM,KAAD;MAAO;;;MANnD;;IAAO;;;;;;;;;;;;;;;;;;;;;;;;;;8CAPG;AAAW,yDAAQ,CAAC;;EAAC;;;;;;;;;;;;;;;2DAArB;;;;kBCmBP;AACpB,YAAI,AAAI,GAAD,KAAI;AACgD,UAAzD,WAAM,2BAAc;;MAExB;WAGqB;AAAQ,cAAA,AAAO,qBAAO,AAAE,cAAC,GAAG;MAAE;WAG1B;YAAO;wBAAP;gBAAO;AAChB,QAAd,gBAAU,GAAG;AACiB,QAA9B,AAAE,cAAC,GAAG,EAAI,AAAO,oBAAO,KAAK;;MAC/B;aAGgB;AACR,oBAAY,UAAC,GAAG;AACU,QAAhC,AAAG,wBAAmB,gBAAJ,GAAG;AACrB,cAAO,MAAK;MACd;;AAII,0CAA8B,YAA9B,AAAK,uBAAW,QAAQ,CAAC,oCAAiB,QAAC,OAAQ,GAAG;MAAC;kBAGnC;AAAQ,cAAA,AAAG,sBAAgB,gBAAJ,GAAG;MAAW;kBAGxC,KAAO;wBAAP;uBAAO;AACZ,QAAd,gBAAU,GAAG;AACb,cAAa,qBAAY,GAAG,EAAE,QAAQ;MACxC;;8BAG2B;AACzB,YAAI,KAAK,IAAI;AACyB,UAApC,AAAM,KAAD,WAAS,SAAC,GAAG;;AAAM,iBAAK,CAAC;iBAAI,CAAC;YAAP;;;;MAEhC;;AAGgB,cAAA,AAAK,qBAAW,UAAH;MAAkB;;kCAnDf;uCAAsB,gBAAS,cAAO,KAAK;IAAC;sCAG7C,GAAqB;;MAC3C,WAAE,CAAC;MACC,gBAAQ,KAAN,KAAK,QAAL,OAAS;AACZ,iDAAQ,CAAC;;IAAC;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;MArBlB,WAAI;YAAqB,qBAAlB,AAAO,gBAAC;;;;;;;;;;;;;;MC8CG;;;;;;MAEA;;;;;;MAGE;;;;;;MAGA;;;;;;;qCA9CN,SACA;UACN;UACA;qCAEJ,OAAO,EACP,OAAO,EACP,AAAmB,kBAAD,IAAI,OAAO,kBAAkB,GAAG,QAAC,KAAQ,QAAF,CAAC,yBAC1D,AAAmB,kBAAD,IAAI,OAAO,kBAAkB,GAAG,QAAC,KAAQ,QAAF,CAAC;IAC3D;oCAGA,SACA,SACA,oBACA;MAHA;MACA;MACA;MACA;AAJP;;IASA;+CAGgB,QACA;UACJ;UACA;sCAKJ,8BAAiB,MAAM,GACvB,8BAAiB,MAAM,wBACH,kBAAkB,sBAClB,kBAAkB;IACvC;;;;;;;;;;;;;;;;;;;;;cAoBK;;;AAAU,cAAA,AAAM,MAAD,IAAI,OAAO,aAAgB,KAAK,EAAd,AAAQ;MAAO;;;MAH5C;AAAhB;;IAAyB;;;;;;;;;;;;;;;;;;;;;;;AASD,uDAAc,QAAC,KAAM,CAAC,aAAE,QAAC,KAAM,CAAC;;IAAC;;;;;;;;;;;AAM7C,yEAEJ,QAAC,KAAM,CAAC,+CACY,QAAC,KAAM,gDACP,QAAC,KAAM;;EAC5B;;;;;;;qCAOgB,QACX;AACD,0DACH,2CACA,MAAM,uBACc,kBAAkB;;IACvC;;;;;;;;;;;;;;;;;;;gCAKkC;AAC7B,qDACJ,QAAC;;AAAM,gCAAE,iBAAF,CAAC,IACF,CAAC,GACC,qBAAF,CAAC,IACG,sCAAa,qBAAF,CAAC,KACZ,4CAAW,uBAAO,KAAK,GAAZ;AAAe,oBAAO,CAAC;;;iCAC5C,QAAC,KAAa,2BAAQ,CAAC,EAAE,KAAK;;IAC/B;;;;;;;;;;;;;;;;;;;uCAKyC;AACpC,4DACJ,QAAC;;AAAM,iCAAE,kBAAF,CAAC,IACF,CAAC,GACC,qBAAF,CAAC,IACG,uCAAa,qBAAF,CAAC,KACZ,6CAAW,8BAAc,KAAK,GAAnB;AAAsB,oBAAO,CAAC;;;yCACnD,QAAC,KAAoB,kCAAQ,CAAC,EAAE,KAAK;;IACtC;;;;;;;;;;;;;;;;;+BAKc;+BAEb,GAAG,EACH,qCAAwB,AAAI,GAAD,WAAS,AAAI,GAAD;IACxC;8BAEK,QACA;AACF,oDACF,QAAC,KAAM,AAAM,MAAA,QAAC,CAAC,cACf,QAAC,KAAM,AAAM,MAAA,QAAC,CAAC;;IAChB;;;;;;;;;;;;kCAOwC,QACD;AACpC,uDACF,MAAM,EACN,MAAM,uBACc,QAAC,KAAQ,AAAc,oBAAhB,CAAC,KAAoB,kBAAF,CAAC;;IAChD;;;;;;;;;;;QAemB;AACN,MAAlB,AAAQ,qBAAI,KAAK;IACnB;;;qCAX0C;EAAG;oCAEP;IACxB,iBAAE,OAAO;AACjB,gDACE,gCAAkB,OAAO,YAAW,QACpC,gCAAkB,OAAO,YAAW;;EACrC;;;;;;;;;;;;;YAcS;;AACd,eAAW,QAAS;AACV;AACR,sBAAI,iCAAW,KAAK,OAAoB,KAAK,EAAN;AACV,UAA3B,QAAQ,AAAM,KAAD,QAAQ,KAAK;;AAE5B,uBAAK,kCAAW,KAAK,QAAoB,KAAK,EAAN;AACX,UAA3B,QAAQ,AAAM,KAAD,QAAQ,KAAK;;AAE5B,YAAI,KAAK,IAAI;AACX,gBAAO,MAAK;;;AAGhB,YAAO,MAAK;IACd;;0CAjBuB;QAAe;IAAf;IAAe;AAAtC;;EAA+C;;;;;;;;;;;;;;;;;;;;;;;4DFxKlB;;;;;AGcX,cAAA,AAAG;MAAM;iBAGZ;AACK,QAAlB,AAAG,mBAAS,MAAM;MACpB;WAGc;AAAU,cAAA,AAAO,sBAAO,AAAE,eAAC,KAAK;MAAE;WAG1B;YAAS;;AACG,QAAhC,AAAE,eAAC,KAAK,EAAI,AAAO,qBAAO,KAAK;;MACjC;;gBAGW;AACqB,QAA9B,AAAG,cAAI,AAAO,qBAAO,OAAO;MAC9B;;2BAGwB;AACgB,QAAtC,AAAG,iBAAO,AAAS,QAAD,qBAAY,UAAP;MACzB;WAGe;;AACP,8CAAa;AAAU,oBAAK,OAAO;;;AACC,QAA1C,cAAS,GAAG,AAAW,UAAD,WAAS,UAAU;MAC3C;aAGgB;gBAAS;AACiB,QAAxC,AAAG,iBAAO,KAAK,EAAE,AAAO,qBAAO,OAAO;MACxC;eAGe;AAAU,cAAA,AAAO,sBAAO,AAAG,mBAAS,KAAK;MAAE;;AAGxC,cAAA,AAAO,sBAAO,AAAG;MAAa;eAG9B,OAAW,KAAiB,UAAe;2BAAf;AACmB,QAA/D,AAAG,mBAAS,KAAK,EAAE,GAAG,EAAE,AAAS,QAAD,qBAAY,UAAP,2BAAgB,SAAS;MAChE;kBAGqB,OAAW;AACJ,QAA1B,AAAG,sBAAY,KAAK,EAAE,GAAG;MAC3B;;2BA3DyB;gCAAsB,kBAAW,KAAK;IAAC;+BAGzC,GAAqB;;MACnC,YAAE,CAAC;MACC,iBAAQ,KAAN,KAAK,QAAL,OAAS;AACZ,0CAAQ,CAAC;;IAAC;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;yCHOP;AAAW,oDAAQ,CAAC;;EAAC;;;;;;;EAcrB;;;;;;IAQF;;;;;;;;IACK;;EAAK;;;;;;;;;;;EAQL;;;;;;IAQP;;;;;;;;IACc;;EAAK;;;;;;;;kDApCiB;AAAM,UAAS,mBAAT,AAAE,CAAD;EAAY;mCAIvD;AAAM,UAAE,gBAAF,CAAC,IAAY,AAAE,CAAD,YAAU,CAAC;;;MAGtC,kBAAM;;;MAiBN,qBAAS;;;MAOT,eAAG","file":"../../../../../../../../../packages/js_wrapping/adapter/js_map.dart.lib.js"}');
+  // Exports:
+  return {
+    adapter__js_map: js_map,
+    util__codec: codec,
+    adapter__js_list: js_list,
+    js_wrapping: js_wrapping
+  };
+}));
+
+//# sourceMappingURL=js_map.dart.lib.js.map

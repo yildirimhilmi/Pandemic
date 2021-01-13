@@ -1,0 +1,1330 @@
+define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/video_player/video_player.dart', 'packages/flutter/src/material/app.dart', 'packages/flutter/src/material/icon_button.dart', 'packages/flutter/src/material/colors.dart', 'packages/my_website_project/utils/cardView.dart', 'packages/flutter/src/widgets/icon.dart', 'packages/flutter/src/material/icons.dart', 'packages/flutter/src/painting/image_resolution.dart', 'packages/flutter/src/widgets/async.dart', 'packages/flutter/src/material/progress_indicator.dart', 'packages/google_maps/util/async.dart', 'packages/flutter/src/painting/strut_style.dart', 'packages/flutter/src/widgets/platform_view.dart'], (function load__packages__my_website_project__main_dart(dart_sdk, packages__flutter__src__widgets__widget_span$46dart, packages__video_player__video_player$46dart, packages__flutter__src__material__app$46dart, packages__flutter__src__material__icon_button$46dart, packages__flutter__src__material__colors$46dart, packages__my_website_project__utils__cardView$46dart, packages__flutter__src__widgets__icon$46dart, packages__flutter__src__material__icons$46dart, packages__flutter__src__painting__image_resolution$46dart, packages__flutter__src__widgets__async$46dart, packages__flutter__src__material__progress_indicator$46dart, packages__google_maps__util__async$46dart, packages__flutter__src__painting__strut_style$46dart, packages__flutter__src__widgets__platform_view$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _interceptors = dart_sdk._interceptors;
+  const async = dart_sdk.async;
+  const ui = dart_sdk.ui;
+  const html = dart_sdk.html;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
+  const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
+  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
+  const container = packages__flutter__src__widgets__widget_span$46dart.src__widgets__container;
+  const image = packages__flutter__src__widgets__widget_span$46dart.src__widgets__image;
+  const binding = packages__flutter__src__widgets__widget_span$46dart.src__widgets__binding;
+  const text = packages__flutter__src__widgets__widget_span$46dart.src__widgets__text;
+  const video_player = packages__video_player__video_player$46dart.video_player;
+  const app = packages__flutter__src__material__app$46dart.src__material__app;
+  const theme_data = packages__flutter__src__material__icon_button$46dart.src__material__theme_data;
+  const scaffold = packages__flutter__src__material__icon_button$46dart.src__material__scaffold;
+  const floating_action_button = packages__flutter__src__material__icon_button$46dart.src__material__floating_action_button;
+  const colors = packages__flutter__src__material__colors$46dart.src__material__colors;
+  const cardView = packages__my_website_project__utils__cardView$46dart.utils__cardView;
+  const icon = packages__flutter__src__widgets__icon$46dart.src__widgets__icon;
+  const icons = packages__flutter__src__material__icons$46dart.src__material__icons;
+  const image_resolution = packages__flutter__src__painting__image_resolution$46dart.src__painting__image_resolution;
+  const async$ = packages__flutter__src__widgets__async$46dart.src__widgets__async;
+  const progress_indicator = packages__flutter__src__material__progress_indicator$46dart.src__material__progress_indicator;
+  const google_maps_src = packages__google_maps__util__async$46dart.src__google_maps_src;
+  const text_style = packages__flutter__src__painting__strut_style$46dart.src__painting__text_style;
+  const platform_view = packages__flutter__src__widgets__platform_view$46dart.src__widgets__platform_view;
+  var main = Object.create(dart.library);
+  var $width = dartx.width;
+  var $height = dartx.height;
+  var $border = dartx.border;
+  dart._checkModuleNullSafetyMode(false);
+  var T = Object.create({
+    _LocationL: () => (T._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))(),
+    VoidToNull: () => (T.VoidToNull = dart.constFn(dart.fnType(core.Null, [])))(),
+    WidgetL: () => (T.WidgetL = dart.constFn(dart.legacy(framework.Widget)))(),
+    JSArrayOfWidgetL: () => (T.JSArrayOfWidgetL = dart.constFn(_interceptors.JSArray$(T.WidgetL())))(),
+    FutureBuilderOfvoid: () => (T.FutureBuilderOfvoid = dart.constFn(async$.FutureBuilder$(dart.void)))(),
+    CenterL: () => (T.CenterL = dart.constFn(dart.legacy(basic.Center)))(),
+    BuildContextL: () => (T.BuildContextL = dart.constFn(dart.legacy(framework.BuildContext)))(),
+    AsyncSnapshotL: () => (T.AsyncSnapshotL = dart.constFn(dart.legacy(async$.AsyncSnapshot)))(),
+    BuildContextLAndAsyncSnapshotLToCenterL: () => (T.BuildContextLAndAsyncSnapshotLToCenterL = dart.constFn(dart.fnType(T.CenterL(), [T.BuildContextL(), T.AsyncSnapshotL()])))(),
+    DivElementL: () => (T.DivElementL = dart.constFn(dart.legacy(html.DivElement)))(),
+    intL: () => (T.intL = dart.constFn(dart.legacy(core.int)))(),
+    intLToDivElementL: () => (T.intLToDivElementL = dart.constFn(dart.fnType(T.DivElementL(), [T.intL()])))()
+  });
+  const CT = Object.create(null);
+  dart.defineLazy(CT, {
+    get C1() {
+      return C[1] = dart.constList([], T._LocationL());
+    },
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[1] || CT.C1,
+        [_Location_name]: null,
+        [_Location_column]: 23,
+        [_Location_line]: 64,
+        [_Location_file]: "file:///C:/flutter_projects/Pandemic%20Tracking%20WebApp/lib/main.dart"
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "icon",
+        [_Location_column]: 33,
+        [_Location_line]: 85,
+        [_Location_file]: null
+      });
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "size",
+        [_Location_column]: 29,
+        [_Location_line]: 87,
+        [_Location_file]: null
+      });
+    },
+    get C3() {
+      return C[3] = dart.constList([C[4] || CT.C4, C[5] || CT.C5], T._LocationL());
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[3] || CT.C3,
+        [_Location_name]: null,
+        [_Location_column]: 34,
+        [_Location_line]: 83,
+        [_Location_file]: "file:///C:/flutter_projects/Pandemic%20Tracking%20WebApp/lib/main.dart"
+      });
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onPressed",
+        [_Location_column]: 27,
+        [_Location_line]: 68,
+        [_Location_file]: null
+      });
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 27,
+        [_Location_line]: 83,
+        [_Location_file]: null
+      });
+    },
+    get C7() {
+      return C[7] = dart.constList([C[8] || CT.C8, C[9] || CT.C9], T._LocationL());
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[7] || CT.C7,
+        [_Location_name]: null,
+        [_Location_column]: 32,
+        [_Location_line]: 67,
+        [_Location_file]: "file:///C:/flutter_projects/Pandemic%20Tracking%20WebApp/lib/main.dart"
+      });
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 25,
+        [_Location_line]: 66,
+        [_Location_file]: null
+      });
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 25,
+        [_Location_line]: 67,
+        [_Location_file]: null
+      });
+    },
+    get C11() {
+      return C[11] = dart.constList([C[12] || CT.C12, C[13] || CT.C13], T._LocationL());
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[11] || CT.C11,
+        [_Location_name]: null,
+        [_Location_column]: 23,
+        [_Location_line]: 65,
+        [_Location_file]: "file:///C:/flutter_projects/Pandemic%20Tracking%20WebApp/lib/main.dart"
+      });
+    },
+    get C16() {
+      return C[16] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 21,
+        [_Location_line]: 63,
+        [_Location_file]: null
+      });
+    },
+    get C15() {
+      return C[15] = dart.constList([C[16] || CT.C16], T._LocationL());
+    },
+    get C14() {
+      return C[14] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[15] || CT.C15,
+        [_Location_name]: null,
+        [_Location_column]: 19,
+        [_Location_line]: 62,
+        [_Location_file]: "file:///C:/flutter_projects/Pandemic%20Tracking%20WebApp/lib/main.dart"
+      });
+    },
+    get C17() {
+      return C[17] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[1] || CT.C1,
+        [_Location_name]: null,
+        [_Location_column]: 23,
+        [_Location_line]: 95,
+        [_Location_file]: "file:///C:/flutter_projects/Pandemic%20Tracking%20WebApp/lib/main.dart"
+      });
+    },
+    get C20() {
+      return C[20] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "icon",
+        [_Location_column]: 33,
+        [_Location_line]: 110,
+        [_Location_file]: null
+      });
+    },
+    get C21() {
+      return C[21] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "size",
+        [_Location_column]: 29,
+        [_Location_line]: 112,
+        [_Location_file]: null
+      });
+    },
+    get C19() {
+      return C[19] = dart.constList([C[20] || CT.C20, C[21] || CT.C21], T._LocationL());
+    },
+    get C18() {
+      return C[18] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[19] || CT.C19,
+        [_Location_name]: null,
+        [_Location_column]: 34,
+        [_Location_line]: 108,
+        [_Location_file]: "file:///C:/flutter_projects/Pandemic%20Tracking%20WebApp/lib/main.dart"
+      });
+    },
+    get C24() {
+      return C[24] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onPressed",
+        [_Location_column]: 27,
+        [_Location_line]: 99,
+        [_Location_file]: null
+      });
+    },
+    get C25() {
+      return C[25] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 27,
+        [_Location_line]: 108,
+        [_Location_file]: null
+      });
+    },
+    get C23() {
+      return C[23] = dart.constList([C[24] || CT.C24, C[25] || CT.C25], T._LocationL());
+    },
+    get C22() {
+      return C[22] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[23] || CT.C23,
+        [_Location_name]: null,
+        [_Location_column]: 32,
+        [_Location_line]: 98,
+        [_Location_file]: "file:///C:/flutter_projects/Pandemic%20Tracking%20WebApp/lib/main.dart"
+      });
+    },
+    get C28() {
+      return C[28] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 25,
+        [_Location_line]: 97,
+        [_Location_file]: null
+      });
+    },
+    get C29() {
+      return C[29] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 25,
+        [_Location_line]: 98,
+        [_Location_file]: null
+      });
+    },
+    get C27() {
+      return C[27] = dart.constList([C[28] || CT.C28, C[29] || CT.C29], T._LocationL());
+    },
+    get C26() {
+      return C[26] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[27] || CT.C27,
+        [_Location_name]: null,
+        [_Location_column]: 23,
+        [_Location_line]: 96,
+        [_Location_file]: "file:///C:/flutter_projects/Pandemic%20Tracking%20WebApp/lib/main.dart"
+      });
+    },
+    get C32() {
+      return C[32] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 21,
+        [_Location_line]: 94,
+        [_Location_file]: null
+      });
+    },
+    get C31() {
+      return C[31] = dart.constList([C[32] || CT.C32], T._LocationL());
+    },
+    get C30() {
+      return C[30] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[31] || CT.C31,
+        [_Location_name]: null,
+        [_Location_column]: 19,
+        [_Location_line]: 93,
+        [_Location_file]: "file:///C:/flutter_projects/Pandemic%20Tracking%20WebApp/lib/main.dart"
+      });
+    },
+    get C33() {
+      return C[33] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[1] || CT.C1,
+        [_Location_name]: null,
+        [_Location_column]: 23,
+        [_Location_line]: 120,
+        [_Location_file]: "file:///C:/flutter_projects/Pandemic%20Tracking%20WebApp/lib/main.dart"
+      });
+    },
+    get C36() {
+      return C[36] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "icon",
+        [_Location_column]: 33,
+        [_Location_line]: 135,
+        [_Location_file]: null
+      });
+    },
+    get C37() {
+      return C[37] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "size",
+        [_Location_column]: 29,
+        [_Location_line]: 137,
+        [_Location_file]: null
+      });
+    },
+    get C35() {
+      return C[35] = dart.constList([C[36] || CT.C36, C[37] || CT.C37], T._LocationL());
+    },
+    get C34() {
+      return C[34] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[35] || CT.C35,
+        [_Location_name]: null,
+        [_Location_column]: 34,
+        [_Location_line]: 133,
+        [_Location_file]: "file:///C:/flutter_projects/Pandemic%20Tracking%20WebApp/lib/main.dart"
+      });
+    },
+    get C40() {
+      return C[40] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onPressed",
+        [_Location_column]: 27,
+        [_Location_line]: 124,
+        [_Location_file]: null
+      });
+    },
+    get C41() {
+      return C[41] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 27,
+        [_Location_line]: 133,
+        [_Location_file]: null
+      });
+    },
+    get C39() {
+      return C[39] = dart.constList([C[40] || CT.C40, C[41] || CT.C41], T._LocationL());
+    },
+    get C38() {
+      return C[38] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[39] || CT.C39,
+        [_Location_name]: null,
+        [_Location_column]: 32,
+        [_Location_line]: 123,
+        [_Location_file]: "file:///C:/flutter_projects/Pandemic%20Tracking%20WebApp/lib/main.dart"
+      });
+    },
+    get C44() {
+      return C[44] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 25,
+        [_Location_line]: 122,
+        [_Location_file]: null
+      });
+    },
+    get C45() {
+      return C[45] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 25,
+        [_Location_line]: 123,
+        [_Location_file]: null
+      });
+    },
+    get C43() {
+      return C[43] = dart.constList([C[44] || CT.C44, C[45] || CT.C45], T._LocationL());
+    },
+    get C42() {
+      return C[42] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[43] || CT.C43,
+        [_Location_name]: null,
+        [_Location_column]: 23,
+        [_Location_line]: 121,
+        [_Location_file]: "file:///C:/flutter_projects/Pandemic%20Tracking%20WebApp/lib/main.dart"
+      });
+    },
+    get C48() {
+      return C[48] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 21,
+        [_Location_line]: 119,
+        [_Location_file]: null
+      });
+    },
+    get C47() {
+      return C[47] = dart.constList([C[48] || CT.C48], T._LocationL());
+    },
+    get C46() {
+      return C[46] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[47] || CT.C47,
+        [_Location_name]: null,
+        [_Location_column]: 19,
+        [_Location_line]: 118,
+        [_Location_file]: "file:///C:/flutter_projects/Pandemic%20Tracking%20WebApp/lib/main.dart"
+      });
+    },
+    get C49() {
+      return C[49] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[1] || CT.C1,
+        [_Location_name]: null,
+        [_Location_column]: 23,
+        [_Location_line]: 145,
+        [_Location_file]: "file:///C:/flutter_projects/Pandemic%20Tracking%20WebApp/lib/main.dart"
+      });
+    },
+    get C52() {
+      return C[52] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "icon",
+        [_Location_column]: 33,
+        [_Location_line]: 160,
+        [_Location_file]: null
+      });
+    },
+    get C53() {
+      return C[53] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "size",
+        [_Location_column]: 29,
+        [_Location_line]: 162,
+        [_Location_file]: null
+      });
+    },
+    get C51() {
+      return C[51] = dart.constList([C[52] || CT.C52, C[53] || CT.C53], T._LocationL());
+    },
+    get C50() {
+      return C[50] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[51] || CT.C51,
+        [_Location_name]: null,
+        [_Location_column]: 34,
+        [_Location_line]: 158,
+        [_Location_file]: "file:///C:/flutter_projects/Pandemic%20Tracking%20WebApp/lib/main.dart"
+      });
+    },
+    get C56() {
+      return C[56] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onPressed",
+        [_Location_column]: 27,
+        [_Location_line]: 149,
+        [_Location_file]: null
+      });
+    },
+    get C57() {
+      return C[57] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 27,
+        [_Location_line]: 158,
+        [_Location_file]: null
+      });
+    },
+    get C55() {
+      return C[55] = dart.constList([C[56] || CT.C56, C[57] || CT.C57], T._LocationL());
+    },
+    get C54() {
+      return C[54] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[55] || CT.C55,
+        [_Location_name]: null,
+        [_Location_column]: 32,
+        [_Location_line]: 148,
+        [_Location_file]: "file:///C:/flutter_projects/Pandemic%20Tracking%20WebApp/lib/main.dart"
+      });
+    },
+    get C60() {
+      return C[60] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 25,
+        [_Location_line]: 147,
+        [_Location_file]: null
+      });
+    },
+    get C61() {
+      return C[61] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 25,
+        [_Location_line]: 148,
+        [_Location_file]: null
+      });
+    },
+    get C59() {
+      return C[59] = dart.constList([C[60] || CT.C60, C[61] || CT.C61], T._LocationL());
+    },
+    get C58() {
+      return C[58] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[59] || CT.C59,
+        [_Location_name]: null,
+        [_Location_column]: 23,
+        [_Location_line]: 146,
+        [_Location_file]: "file:///C:/flutter_projects/Pandemic%20Tracking%20WebApp/lib/main.dart"
+      });
+    },
+    get C64() {
+      return C[64] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 21,
+        [_Location_line]: 144,
+        [_Location_file]: null
+      });
+    },
+    get C63() {
+      return C[63] = dart.constList([C[64] || CT.C64], T._LocationL());
+    },
+    get C62() {
+      return C[62] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[63] || CT.C63,
+        [_Location_name]: null,
+        [_Location_column]: 19,
+        [_Location_line]: 143,
+        [_Location_file]: "file:///C:/flutter_projects/Pandemic%20Tracking%20WebApp/lib/main.dart"
+      });
+    },
+    get C67() {
+      return C[67] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "image",
+        [_Location_column]: 36,
+        [_Location_line]: 170,
+        [_Location_file]: null
+      });
+    },
+    get C66() {
+      return C[66] = dart.constList([C[67] || CT.C67], T._LocationL());
+    },
+    get C65() {
+      return C[65] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[66] || CT.C66,
+        [_Location_name]: null,
+        [_Location_column]: 30,
+        [_Location_line]: 170,
+        [_Location_file]: "file:///C:/flutter_projects/Pandemic%20Tracking%20WebApp/lib/main.dart"
+      });
+    },
+    get C70() {
+      return C[70] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 23,
+        [_Location_line]: 169,
+        [_Location_file]: null
+      });
+    },
+    get C71() {
+      return C[71] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 23,
+        [_Location_line]: 170,
+        [_Location_file]: null
+      });
+    },
+    get C69() {
+      return C[69] = dart.constList([C[70] || CT.C70, C[71] || CT.C71], T._LocationL());
+    },
+    get C68() {
+      return C[68] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[69] || CT.C69,
+        [_Location_name]: null,
+        [_Location_column]: 19,
+        [_Location_line]: 168,
+        [_Location_file]: "file:///C:/flutter_projects/Pandemic%20Tracking%20WebApp/lib/main.dart"
+      });
+    },
+    get C74() {
+      return C[74] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 17,
+        [_Location_line]: 61,
+        [_Location_file]: null
+      });
+    },
+    get C73() {
+      return C[73] = dart.constList([C[74] || CT.C74], T._LocationL());
+    },
+    get C72() {
+      return C[72] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[73] || CT.C73,
+        [_Location_name]: null,
+        [_Location_column]: 22,
+        [_Location_line]: 60,
+        [_Location_file]: "file:///C:/flutter_projects/Pandemic%20Tracking%20WebApp/lib/main.dart"
+      });
+    },
+    get C77() {
+      return C[77] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "left",
+        [_Location_column]: 15,
+        [_Location_line]: 58,
+        [_Location_file]: null
+      });
+    },
+    get C78() {
+      return C[78] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "top",
+        [_Location_column]: 15,
+        [_Location_line]: 59,
+        [_Location_file]: null
+      });
+    },
+    get C79() {
+      return C[79] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 15,
+        [_Location_line]: 60,
+        [_Location_file]: null
+      });
+    },
+    get C76() {
+      return C[76] = dart.constList([C[77] || CT.C77, C[78] || CT.C78, C[79] || CT.C79], T._LocationL());
+    },
+    get C75() {
+      return C[75] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[76] || CT.C76,
+        [_Location_name]: null,
+        [_Location_column]: 13,
+        [_Location_line]: 57,
+        [_Location_file]: "file:///C:/flutter_projects/Pandemic%20Tracking%20WebApp/lib/main.dart"
+      });
+    },
+    get C82() {
+      return C[82] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "controller",
+        [_Location_column]: 46,
+        [_Location_line]: 187,
+        [_Location_file]: null
+      });
+    },
+    get C81() {
+      return C[81] = dart.constList([C[82] || CT.C82], T._LocationL());
+    },
+    get C80() {
+      return C[80] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[81] || CT.C81,
+        [_Location_name]: null,
+        [_Location_column]: 34,
+        [_Location_line]: 187,
+        [_Location_file]: "file:///C:/flutter_projects/Pandemic%20Tracking%20WebApp/lib/main.dart"
+      });
+    },
+    get C85() {
+      return C[85] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "aspectRatio",
+        [_Location_column]: 27,
+        [_Location_line]: 186,
+        [_Location_file]: null
+      });
+    },
+    get C86() {
+      return C[86] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 27,
+        [_Location_line]: 187,
+        [_Location_file]: null
+      });
+    },
+    get C84() {
+      return C[84] = dart.constList([C[85] || CT.C85, C[86] || CT.C86], T._LocationL());
+    },
+    get C83() {
+      return C[83] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[84] || CT.C84,
+        [_Location_name]: null,
+        [_Location_column]: 32,
+        [_Location_line]: 185,
+        [_Location_file]: "file:///C:/flutter_projects/Pandemic%20Tracking%20WebApp/lib/main.dart"
+      });
+    },
+    get C89() {
+      return C[89] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 25,
+        [_Location_line]: 185,
+        [_Location_file]: null
+      });
+    },
+    get C88() {
+      return C[88] = dart.constList([C[89] || CT.C89], T._LocationL());
+    },
+    get C87() {
+      return C[87] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[88] || CT.C88,
+        [_Location_name]: null,
+        [_Location_column]: 30,
+        [_Location_line]: 184,
+        [_Location_file]: "file:///C:/flutter_projects/Pandemic%20Tracking%20WebApp/lib/main.dart"
+      });
+    },
+    get C90() {
+      return C[90] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[1] || CT.C1,
+        [_Location_name]: null,
+        [_Location_column]: 32,
+        [_Location_line]: 192,
+        [_Location_file]: "file:///C:/flutter_projects/Pandemic%20Tracking%20WebApp/lib/main.dart"
+      });
+    },
+    get C93() {
+      return C[93] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 25,
+        [_Location_line]: 192,
+        [_Location_file]: null
+      });
+    },
+    get C92() {
+      return C[92] = dart.constList([C[93] || CT.C93], T._LocationL());
+    },
+    get C91() {
+      return C[91] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[92] || CT.C92,
+        [_Location_name]: null,
+        [_Location_column]: 30,
+        [_Location_line]: 191,
+        [_Location_file]: "file:///C:/flutter_projects/Pandemic%20Tracking%20WebApp/lib/main.dart"
+      });
+    },
+    get C96() {
+      return C[96] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "future",
+        [_Location_column]: 19,
+        [_Location_line]: 181,
+        [_Location_file]: null
+      });
+    },
+    get C97() {
+      return C[97] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "builder",
+        [_Location_column]: 19,
+        [_Location_line]: 182,
+        [_Location_file]: null
+      });
+    },
+    get C95() {
+      return C[95] = dart.constList([C[96] || CT.C96, C[97] || CT.C97], T._LocationL());
+    },
+    get C94() {
+      return C[94] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[95] || CT.C95,
+        [_Location_name]: null,
+        [_Location_column]: 24,
+        [_Location_line]: 180,
+        [_Location_file]: "file:///C:/flutter_projects/Pandemic%20Tracking%20WebApp/lib/main.dart"
+      });
+    },
+    get C100() {
+      return C[100] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 17,
+        [_Location_line]: 178,
+        [_Location_file]: null
+      });
+    },
+    get C101() {
+      return C[101] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "color",
+        [_Location_column]: 17,
+        [_Location_line]: 179,
+        [_Location_file]: null
+      });
+    },
+    get C102() {
+      return C[102] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 17,
+        [_Location_line]: 180,
+        [_Location_file]: null
+      });
+    },
+    get C99() {
+      return C[99] = dart.constList([C[100] || CT.C100, C[101] || CT.C101, C[102] || CT.C102], T._LocationL());
+    },
+    get C98() {
+      return C[98] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[99] || CT.C99,
+        [_Location_name]: null,
+        [_Location_column]: 22,
+        [_Location_line]: 177,
+        [_Location_file]: "file:///C:/flutter_projects/Pandemic%20Tracking%20WebApp/lib/main.dart"
+      });
+    },
+    get C105() {
+      return C[105] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "right",
+        [_Location_column]: 15,
+        [_Location_line]: 175,
+        [_Location_file]: null
+      });
+    },
+    get C106() {
+      return C[106] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "top",
+        [_Location_column]: 15,
+        [_Location_line]: 176,
+        [_Location_file]: null
+      });
+    },
+    get C107() {
+      return C[107] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 15,
+        [_Location_line]: 177,
+        [_Location_file]: null
+      });
+    },
+    get C104() {
+      return C[104] = dart.constList([C[105] || CT.C105, C[106] || CT.C106, C[107] || CT.C107], T._LocationL());
+    },
+    get C103() {
+      return C[103] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[104] || CT.C104,
+        [_Location_name]: null,
+        [_Location_column]: 13,
+        [_Location_line]: 174,
+        [_Location_file]: "file:///C:/flutter_projects/Pandemic%20Tracking%20WebApp/lib/main.dart"
+      });
+    },
+    get C110() {
+      return C[110] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 11,
+        [_Location_line]: 55,
+        [_Location_file]: null
+      });
+    },
+    get C109() {
+      return C[109] = dart.constList([C[110] || CT.C110], T._LocationL());
+    },
+    get C108() {
+      return C[108] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[109] || CT.C109,
+        [_Location_name]: null,
+        [_Location_column]: 15,
+        [_Location_line]: 54,
+        [_Location_file]: "file:///C:/flutter_projects/Pandemic%20Tracking%20WebApp/lib/main.dart"
+      });
+    },
+    get C113() {
+      return C[113] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "body",
+        [_Location_column]: 9,
+        [_Location_line]: 54,
+        [_Location_file]: null
+      });
+    },
+    get C112() {
+      return C[112] = dart.constList([C[113] || CT.C113], T._LocationL());
+    },
+    get C111() {
+      return C[111] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[112] || CT.C112,
+        [_Location_name]: null,
+        [_Location_column]: 13,
+        [_Location_line]: 53,
+        [_Location_file]: "file:///C:/flutter_projects/Pandemic%20Tracking%20WebApp/lib/main.dart"
+      });
+    },
+    get C116() {
+      return C[116] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "debugShowCheckedModeBanner",
+        [_Location_column]: 7,
+        [_Location_line]: 47,
+        [_Location_file]: null
+      });
+    },
+    get C117() {
+      return C[117] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "title",
+        [_Location_column]: 7,
+        [_Location_line]: 48,
+        [_Location_file]: null
+      });
+    },
+    get C118() {
+      return C[118] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "theme",
+        [_Location_column]: 7,
+        [_Location_line]: 49,
+        [_Location_file]: null
+      });
+    },
+    get C119() {
+      return C[119] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "home",
+        [_Location_column]: 7,
+        [_Location_line]: 53,
+        [_Location_file]: null
+      });
+    },
+    get C115() {
+      return C[115] = dart.constList([C[116] || CT.C116, C[117] || CT.C117, C[118] || CT.C118, C[119] || CT.C119], T._LocationL());
+    },
+    get C114() {
+      return C[114] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[115] || CT.C115,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 46,
+        [_Location_file]: "file:///C:/flutter_projects/Pandemic%20Tracking%20WebApp/lib/main.dart"
+      });
+    },
+    get C120() {
+      return C[120] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[1] || CT.C1,
+        [_Location_name]: null,
+        [_Location_column]: 10,
+        [_Location_line]: 17,
+        [_Location_file]: "file:///C:/flutter_projects/Pandemic%20Tracking%20WebApp/lib/main.dart"
+      });
+    },
+    get C123() {
+      return C[123] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "data",
+        [_Location_column]: 9,
+        [_Location_line]: 231,
+        [_Location_file]: null
+      });
+    },
+    get C124() {
+      return C[124] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "style",
+        [_Location_column]: 9,
+        [_Location_line]: 232,
+        [_Location_file]: null
+      });
+    },
+    get C122() {
+      return C[122] = dart.constList([C[123] || CT.C123, C[124] || CT.C124], T._LocationL());
+    },
+    get C121() {
+      return C[121] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[122] || CT.C122,
+        [_Location_name]: null,
+        [_Location_column]: 17,
+        [_Location_line]: 230,
+        [_Location_file]: "file:///C:/flutter_projects/Pandemic%20Tracking%20WebApp/lib/main.dart"
+      });
+    },
+    get C127() {
+      return C[127] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "icon",
+        [_Location_column]: 27,
+        [_Location_line]: 235,
+        [_Location_file]: null
+      });
+    },
+    get C126() {
+      return C[126] = dart.constList([C[127] || CT.C127], T._LocationL());
+    },
+    get C125() {
+      return C[125] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[126] || CT.C126,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 235,
+        [_Location_file]: "file:///C:/flutter_projects/Pandemic%20Tracking%20WebApp/lib/main.dart"
+      });
+    },
+    get C130() {
+      return C[130] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "icon",
+        [_Location_column]: 27,
+        [_Location_line]: 243,
+        [_Location_file]: null
+      });
+    },
+    get C129() {
+      return C[129] = dart.constList([C[130] || CT.C130], T._LocationL());
+    },
+    get C128() {
+      return C[128] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[129] || CT.C129,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 243,
+        [_Location_file]: "file:///C:/flutter_projects/Pandemic%20Tracking%20WebApp/lib/main.dart"
+      });
+    },
+    get C133() {
+      return C[133] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "viewType",
+        [_Location_column]: 26,
+        [_Location_line]: 251,
+        [_Location_file]: null
+      });
+    },
+    get C132() {
+      return C[132] = dart.constList([C[133] || CT.C133], T._LocationL());
+    },
+    get C131() {
+      return C[131] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[132] || CT.C132,
+        [_Location_name]: null,
+        [_Location_column]: 10,
+        [_Location_line]: 251,
+        [_Location_file]: "file:///C:/flutter_projects/Pandemic%20Tracking%20WebApp/lib/main.dart"
+      });
+    }
+  }, false);
+  var C = Array(134).fill(void 0);
+  var I = ["package:my_website_project/main.dart"];
+  main.MyApp = class MyApp extends framework.StatefulWidget {
+    createState() {
+      return new main._MyAppState.new();
+    }
+  };
+  (main.MyApp.new = function(opts) {
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    main.MyApp.__proto__.new.call(this, {$creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = main.MyApp.prototype;
+  dart.addTypeTests(main.MyApp);
+  dart.addTypeCaches(main.MyApp);
+  dart.setMethodSignature(main.MyApp, () => ({
+    __proto__: dart.getMethods(main.MyApp.__proto__),
+    createState: dart.fnType(dart.legacy(main._MyAppState), [])
+  }));
+  dart.setLibraryUri(main.MyApp, I[0]);
+  var _controller = dart.privateName(main, "_controller");
+  var _initializeVideoPlayerFuture = dart.privateName(main, "_initializeVideoPlayerFuture");
+  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  main._MyAppState = class _MyAppState extends framework.State$(dart.legacy(main.MyApp)) {
+    initState() {
+      this[_controller] = new video_player.VideoPlayerController.network(main.link);
+      this[_initializeVideoPlayerFuture] = this[_controller].initialize();
+      this[_controller].setLooping(true);
+      this[_controller].setVolume(1.0);
+      super.initState();
+    }
+    dispose() {
+      this[_controller].dispose();
+      super.dispose();
+    }
+    build(context) {
+      return new app.MaterialApp.new({debugShowCheckedModeBanner: false, title: "Pandemic Tracking", theme: theme_data.ThemeData.new({primarySwatch: colors.Colors.blue, visualDensity: theme_data.VisualDensity.adaptivePlatformDensity}), home: new scaffold.Scaffold.new({body: new basic.Stack.new({children: T.JSArrayOfWidgetL().of([main.getMap(), new basic.Positioned.new({left: 50.0, top: 80.0, child: new basic.Column.new({children: T.JSArrayOfWidgetL().of([new basic.Row.new({children: T.JSArrayOfWidgetL().of([new cardView.cardView.new({$creationLocationd_0dea112b090073317d4: C[0] || CT.C0}), new container.Container.new({height: 30.0, child: new floating_action_button.FloatingActionButton.new({onPressed: dart.fn(() => {
+                              this.setState(dart.fn(() => {
+                                if (dart.test(this[_controller].value.isPlaying)) {
+                                  this[_controller].pause();
+                                  main.lat = 41.015137;
+                                  main.long = 28.77953;
+                                  main.zoom = 7;
+                                } else {
+                                  this[_controller].play();
+                                  main.lat = 41.015137;
+                                  main.long = 28.77953;
+                                  main.zoom = 29;
+                                }
+                              }, T.VoidToNull()));
+                            }, T.VoidToNull()), child: new icon.Icon.new(dart.test(this[_controller].value.isPlaying) ? icons.Icons.pause : icons.Icons.play_arrow, {size: 30.0, $creationLocationd_0dea112b090073317d4: C[2] || CT.C2}), $creationLocationd_0dea112b090073317d4: C[6] || CT.C6}), $creationLocationd_0dea112b090073317d4: C[10] || CT.C10})]), $creationLocationd_0dea112b090073317d4: C[14] || CT.C14}), new basic.Row.new({children: T.JSArrayOfWidgetL().of([new cardView.cardView.new({$creationLocationd_0dea112b090073317d4: C[17] || CT.C17}), new container.Container.new({height: 30.0, child: new floating_action_button.FloatingActionButton.new({onPressed: dart.fn(() => {
+                              this.setState(dart.fn(() => {
+                                if (dart.test(this[_controller].value.isPlaying)) {
+                                  this[_controller].pause();
+                                } else {
+                                  this[_controller].play();
+                                }
+                              }, T.VoidToNull()));
+                            }, T.VoidToNull()), child: new icon.Icon.new(dart.test(this[_controller].value.isPlaying) ? icons.Icons.pause : icons.Icons.play_arrow, {size: 30.0, $creationLocationd_0dea112b090073317d4: C[18] || CT.C18}), $creationLocationd_0dea112b090073317d4: C[22] || CT.C22}), $creationLocationd_0dea112b090073317d4: C[26] || CT.C26})]), $creationLocationd_0dea112b090073317d4: C[30] || CT.C30}), new basic.Row.new({children: T.JSArrayOfWidgetL().of([new cardView.cardView.new({$creationLocationd_0dea112b090073317d4: C[33] || CT.C33}), new container.Container.new({height: 30.0, child: new floating_action_button.FloatingActionButton.new({onPressed: dart.fn(() => {
+                              this.setState(dart.fn(() => {
+                                if (dart.test(this[_controller].value.isPlaying)) {
+                                  this[_controller].pause();
+                                } else {
+                                  this[_controller].play();
+                                }
+                              }, T.VoidToNull()));
+                            }, T.VoidToNull()), child: new icon.Icon.new(dart.test(this[_controller].value.isPlaying) ? icons.Icons.pause : icons.Icons.play_arrow, {size: 30.0, $creationLocationd_0dea112b090073317d4: C[34] || CT.C34}), $creationLocationd_0dea112b090073317d4: C[38] || CT.C38}), $creationLocationd_0dea112b090073317d4: C[42] || CT.C42})]), $creationLocationd_0dea112b090073317d4: C[46] || CT.C46}), new basic.Row.new({children: T.JSArrayOfWidgetL().of([new cardView.cardView.new({$creationLocationd_0dea112b090073317d4: C[49] || CT.C49}), new container.Container.new({height: 30.0, child: new floating_action_button.FloatingActionButton.new({onPressed: dart.fn(() => {
+                              this.setState(dart.fn(() => {
+                                if (dart.test(this[_controller].value.isPlaying)) {
+                                  this[_controller].pause();
+                                } else {
+                                  this[_controller].play();
+                                }
+                              }, T.VoidToNull()));
+                            }, T.VoidToNull()), child: new icon.Icon.new(dart.test(this[_controller].value.isPlaying) ? icons.Icons.pause : icons.Icons.play_arrow, {size: 30.0, $creationLocationd_0dea112b090073317d4: C[50] || CT.C50}), $creationLocationd_0dea112b090073317d4: C[54] || CT.C54}), $creationLocationd_0dea112b090073317d4: C[58] || CT.C58})]), $creationLocationd_0dea112b090073317d4: C[62] || CT.C62}), new container.Container.new({height: 300.0, child: new image.Image.new({image: new image_resolution.AssetImage.new("images/edited.png"), $creationLocationd_0dea112b090073317d4: C[65] || CT.C65}), $creationLocationd_0dea112b090073317d4: C[68] || CT.C68})]), $creationLocationd_0dea112b090073317d4: C[72] || CT.C72}), $creationLocationd_0dea112b090073317d4: C[75] || CT.C75}), new basic.Positioned.new({right: 50.0, top: 50.0, child: new container.Container.new({height: 300.0, color: colors.Colors.transparent, child: new (T.FutureBuilderOfvoid()).new({future: this[_initializeVideoPlayerFuture], builder: dart.fn((context, snapshot) => {
+                      if (dart.equals(snapshot.connectionState, async$.ConnectionState.done)) {
+                        return new basic.Center.new({child: new basic.AspectRatio.new({aspectRatio: this[_controller].value.aspectRatio, child: new video_player.VideoPlayer.new(this[_controller], {$creationLocationd_0dea112b090073317d4: C[80] || CT.C80}), $creationLocationd_0dea112b090073317d4: C[83] || CT.C83}), $creationLocationd_0dea112b090073317d4: C[87] || CT.C87});
+                      } else {
+                        return new basic.Center.new({child: new progress_indicator.CircularProgressIndicator.new({$creationLocationd_0dea112b090073317d4: C[90] || CT.C90}), $creationLocationd_0dea112b090073317d4: C[91] || CT.C91});
+                      }
+                    }, T.BuildContextLAndAsyncSnapshotLToCenterL()), $creationLocationd_0dea112b090073317d4: C[94] || CT.C94}), $creationLocationd_0dea112b090073317d4: C[98] || CT.C98}), $creationLocationd_0dea112b090073317d4: C[103] || CT.C103})]), $creationLocationd_0dea112b090073317d4: C[108] || CT.C108}), $creationLocationd_0dea112b090073317d4: C[111] || CT.C111}), $creationLocationd_0dea112b090073317d4: C[114] || CT.C114});
+    }
+  };
+  (main._MyAppState.new = function() {
+    this[_controller] = null;
+    this[_initializeVideoPlayerFuture] = null;
+    main._MyAppState.__proto__.new.call(this);
+    ;
+  }).prototype = main._MyAppState.prototype;
+  dart.addTypeTests(main._MyAppState);
+  dart.addTypeCaches(main._MyAppState);
+  dart.setMethodSignature(main._MyAppState, () => ({
+    __proto__: dart.getMethods(main._MyAppState.__proto__),
+    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
+  }));
+  dart.setLibraryUri(main._MyAppState, I[0]);
+  dart.setFieldSignature(main._MyAppState, () => ({
+    __proto__: dart.getFields(main._MyAppState.__proto__),
+    [_controller]: dart.fieldType(dart.legacy(video_player.VideoPlayerController)),
+    [_initializeVideoPlayerFuture]: dart.fieldType(dart.legacy(async.Future$(dart.void)))
+  }));
+  main.main = function main$() {
+    binding.runApp(new main.MyApp.new({$creationLocationd_0dea112b090073317d4: C[120] || CT.C120}));
+  };
+  main.getMap = function getMap() {
+    let htmlId = "7";
+    let m_lat = main.lat;
+    let m_long = main.long;
+    ui.platformViewRegistry.registerViewFactory(htmlId, dart.fn(viewId => {
+      let t0, t0$, t0$0, t0$1;
+      let myLatlng = new google_maps_src.LatLng.new(41.015137, 28.97953);
+      let myLatlng2 = new google_maps_src.LatLng.new(41.015137, 28.77953);
+      let mapOptions = (t0 = new google_maps_src.MapOptions.new(), (() => {
+        t0.zoom = main.zoom;
+        t0.center = new google_maps_src.LatLng.new(m_lat, m_long);
+        return t0;
+      })());
+      let elem = (t0$ = html.DivElement.new(), (() => {
+        t0$.id = htmlId;
+        t0$.style[$width] = "100%";
+        t0$.style[$height] = "100%";
+        t0$.style[$border] = "none";
+        return t0$;
+      })());
+      let map = new google_maps_src.GMap.new(elem, mapOptions);
+      new google_maps_src.Marker.new((t0$0 = new google_maps_src.MarkerOptions.new(), (() => {
+        t0$0.draggable = true;
+        t0$0.clickable = true;
+        t0$0.label = new text.Text.new("Mısır Çarşısı", {style: new text_style.TextStyle.new({color: colors.Colors.black}), $creationLocationd_0dea112b090073317d4: C[121] || CT.C121});
+        t0$0.visible = true;
+        t0$0.icon = new icon.Icon.new(icons.Icons.access_time, {$creationLocationd_0dea112b090073317d4: C[125] || CT.C125});
+        t0$0.position = myLatlng;
+        t0$0.map = map;
+        t0$0.title = "Hello World!";
+        return t0$0;
+      })()));
+      new google_maps_src.Marker.new((t0$1 = new google_maps_src.MarkerOptions.new(), (() => {
+        t0$1.clickable = true;
+        t0$1.visible = true;
+        t0$1.label = "Mısır Çarşısı";
+        t0$1.icon = new icon.Icon.new(icons.Icons.access_alarms, {$creationLocationd_0dea112b090073317d4: C[128] || CT.C128});
+        t0$1.position = myLatlng2;
+        t0$1.map = map;
+        t0$1.title = "Hello World!";
+        return t0$1;
+      })()));
+      return elem;
+    }, T.intLToDivElementL()));
+    return new platform_view.HtmlElementView.new({viewType: htmlId, $creationLocationd_0dea112b090073317d4: C[131] || CT.C131});
+  };
+  dart.defineLazy(main, {
+    /*main.link*/get link() {
+      return "https://r1---sn-4g5edne6.googlevideo.com/videoplayback?expire=1609454874&ei=ugDuX8fOJsmIsfIP35icuAs&ip=45.72.32.116&id=o-AH5p5jcxxRyGaXJbk6bc4fcnxkIUbJoRQMDZGkZqQlwA&itag=18&source=youtube&requiressl=yes&vprv=1&mime=video%2Fmp4&ns=nq8lFRgTqzkZbWQz9Pa1G1wF&gir=yes&clen=1303537&ratebypass=yes&dur=18.366&lmt=1609433149339794&fvip=1&beids=9466586&c=WEB&txp=6210222&n=D6iPQwMR9hdB8iDc&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cvprv%2Cmime%2Cns%2Cgir%2Cclen%2Cratebypass%2Cdur%2Clmt&sig=AOq0QJ8wRQIhAIOJfL0rs0FIu2bJ-_5fJrha7XyQEleksWYRv2nE7gnoAiBLW0DVCXxb-ICus8-5qdV_GNw3qefgwUMrH861AxJdjg%3D%3D&redirect_counter=1&cm2rm=sn-a5mk67e&fexp=9466586&req_id=27274d85723aa3ee&cms_redirect=yes&mh=_B&mip=176.88.85.93&mm=34&mn=sn-4g5edne6&ms=ltu&mt=1609433074&mv=m&mvi=1&pl=21&lsparams=mh,mip,mm,mn,ms,mv,mvi,pl&lsig=AG3C_xAwRQIhALS-3blVr1awlk6jMRq48Xu4lf0jjMh5rUHL1X0JMHo5AiBF4MJ_0dHo6500yIcAcmS5cXO7bXKhTaSbDD_y4AaG5Q%3D%3D";
+    },
+    set link(_) {},
+    /*main.lat*/get lat() {
+      return 41.115137;
+    },
+    set lat(_) {},
+    /*main.long*/get long() {
+      return 28.77953;
+    },
+    set long(_) {},
+    /*main.zoom*/get zoom() {
+      return 8;
+    },
+    set zoom(_) {}
+  }, true);
+  dart.trackLibraries("packages/my_website_project/main.dart", {
+    "package:my_website_project/main.dart": main
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["main.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAqB+B;IAAa;;;;;;EAC5C;;;;;;;;;;;;;;;;;AAOqD,MAAjD,oBAAoC,+CAAQ;AAEW,MAAvD,qCAA+B,AAAY;AACf,MAA5B,AAAY,6BAAW;AACG,MAA1B,AAAY,4BAAU;AACL,MAAX;IACR;;AAIuB,MAArB,AAAY;AACG,MAAT;IACR;UAG0B;AACxB,YAAO,sDACuB,cACrB,4BACA,yCACiB,mCACO,0DAEzB,iCACE,+BACM,yBACR,eACA,gCACQ,WACD,aACE,gCACK,yBACR,6BACY,yBACR,oFACA,qCACU,aACD,gEACM;AAaP,8BAZF,cAAS;AACP,8CAAI,AAAY,AAAM;AACD,kCAAnB,AAAY;AACG,kCAAf,WAAM;AACU,kCAAhB,YAAO;AACC,kCAAR,YAAO;;AAEW,kCAAlB,AAAY;AACG,kCAAf,WAAM;AACU,kCAAhB,YAAO;AACE,kCAAT,YAAO;;;uDAIN,4BACL,AAAY,AAAM,qCACN,oBACA,+BACN,gPAMhB,6BACY,yBACR,sFACA,qCACU,aACD,gEACM;AAOP,8BANF,cAAS;AACP,8CAAI,AAAY,AAAM;AACD,kCAAnB,AAAY;;AAEM,kCAAlB,AAAY;;;uDAIX,4BACL,AAAY,AAAM,qCACN,oBACA,+BACN,oPAMhB,6BACY,yBACR,sFACA,qCACU,aACD,gEACM;AAOP,8BANF,cAAS;AACP,8CAAI,AAAY,AAAM;AACD,kCAAnB,AAAY;;AAEM,kCAAlB,AAAY;;;uDAIX,4BACL,AAAY,AAAM,qCACN,oBACA,+BACN,oPAMhB,6BACY,yBACR,sFACA,qCACU,aACD,gEACM;AAOP,8BANF,cAAS;AACP,8CAAI,AAAY,AAAM;AACD,kCAAnB,AAAY;;AAEM,kCAAlB,AAAY;;;uDAIX,4BACL,AAAY,AAAM,qCACN,oBACA,+BACN,oPAMhB,qCACY,cACD,4BAAa,oCAAW,oQAIzC,iCACS,WACF,aACE,qCACG,cACM,kCACP,2CACG,6CACC,SAAC,SAAS;AACjB,0BAA6B,YAAzB,AAAS,QAAD,kBAAoC;AAC9C,8BAAO,8BACE,wCACQ,AAAY,AAAM,4CACxB,iCAAY;;AAIvB,8BAAO,8BACE;;;IAW7B;;;IAjLsB;IACT;;;EAiLf;;;;;;;;;;;;;;AA3LiB,IAAf,eAAO;EACT;;AA6LS,iBAAS;AACT,gBAAQ;AACR,iBAAS;AAwCd,IArCC,AAAqB,4CAAoB,MAAM,EAAE,QAAK;;AACjD,qBAAe,+BAAO,WAAW;AACjC,sBAAgB,+BAAO,WAAW;AAClC,mEAAiB;AACnB,kBAAO;AACP,oBAAa,+BAAO,KAAK,EAAE,MAAM;;;AAE/B,+CAAO;AACT,iBAAK,MAAM;AACL,QAAN,oBAAc;AACR,QAAN,qBAAe;AACT,QAAN,qBAAe;;;AAEb,gBAAU,6BAAK,IAAI,EAAE,UAAU;AAaV,MAX3B,gFAAO;AACH,yBAAY;AACZ,yBAAY;AACZ,qBAAQ,kBACR,yBACO,qCAAwB;AAE/B,uBAAU;AACV,oBAAO,kBAAW;AAClB,wBAAW,QAAQ;AACnB,mBAAM,GAAG;AACT,qBAAQ;;;AAQe,MAP3B,gFAAO;AACH,yBAAY;AACZ,uBAAU;AACV,qBAAQ;AACR,oBAAO,kBAAW;AAClB,wBAAW,SAAS;AACpB,mBAAM,GAAG;AACT,qBAAQ;;;AAEZ,YAAO,KAAI;;AAGb,UAAO,kDAA0B,MAAM;EACzC;;MAjPO,SAAI;YACP;;;MACG,QAAG;YAAG;;;MACN,SAAI;YAAG;;;MACV,SAAI;YAAG","file":"../../../packages/my_website_project/main.dart.lib.js"}');
+  // Exports:
+  return {
+    main: main
+  };
+}));
+
+//# sourceMappingURL=main.dart.lib.js.map
