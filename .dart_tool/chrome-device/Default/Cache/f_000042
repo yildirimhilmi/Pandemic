@@ -1,484 +1,341 @@
-define(['dart_sdk', 'packages/flutter/src/painting/edge_insets.dart', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/foundation/debug.dart'], (function load__packages__flutter__src__widgets__safe_area_dart(dart_sdk, packages__flutter__src__painting__edge_insets$46dart, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__foundation__debug$46dart) {
+define(['dart_sdk', 'packages/flutter/src/gestures/debug.dart', 'packages/flutter/src/foundation/print.dart'], (function load__packages__flutter__src__gestures__arena_dart(dart_sdk, packages__flutter__src__gestures__debug$46dart, packages__flutter__src__foundation__print$46dart) {
   'use strict';
   const core = dart_sdk.core;
-  const math = dart_sdk.math;
+  const _interceptors = dart_sdk._interceptors;
+  const _js_helper = dart_sdk._js_helper;
+  const async = dart_sdk.async;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const edge_insets = packages__flutter__src__painting__edge_insets$46dart.src__painting__edge_insets;
-  const debug = packages__flutter__src__widgets__widget_span$46dart.src__widgets__debug;
-  const media_query = packages__flutter__src__widgets__widget_span$46dart.src__widgets__media_query;
-  const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
-  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
-  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
-  const diagnostics = packages__flutter__src__foundation__debug$46dart.src__foundation__diagnostics;
-  var safe_area = Object.create(dart.library);
-  dart._checkModuleNullSafetyMode(false);
-  var T = Object.create({
-    _LocationL: () => (T._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))()
-  });
+  const debug = packages__flutter__src__gestures__debug$46dart.src__gestures__debug;
+  const print = packages__flutter__src__foundation__print$46dart.src__foundation__print;
+  var arena = Object.create(dart.library);
+  var $add = dartx.add;
+  var $isEmpty = dartx.isEmpty;
+  var $map = dartx.map;
+  var $join = dartx.join;
+  var $putIfAbsent = dartx.putIfAbsent;
+  var $_get = dartx._get;
+  var $remove = dartx.remove;
+  var $isNotEmpty = dartx.isNotEmpty;
+  var $first = dartx.first;
+  var $length = dartx.length;
+  var $contains = dartx.contains;
+  var $containsKey = dartx.containsKey;
+  var $toString = dartx.toString;
+  var $padRight = dartx.padRight;
+  var GestureDispositionL = () => (GestureDispositionL = dart.constFn(dart.legacy(arena.GestureDisposition)))();
+  var JSArrayOfGestureArenaMember = () => (JSArrayOfGestureArenaMember = dart.constFn(_interceptors.JSArray$(arena.GestureArenaMember)))();
+  var GestureArenaMemberToString = () => (GestureArenaMemberToString = dart.constFn(dart.fnType(core.String, [arena.GestureArenaMember])))();
+  var IdentityMapOfint$_GestureArena = () => (IdentityMapOfint$_GestureArena = dart.constFn(_js_helper.IdentityMap$(core.int, arena._GestureArena)))();
+  var VoidTo_GestureArena = () => (VoidTo_GestureArena = dart.constFn(dart.fnType(arena._GestureArena, [])))();
+  var VoidTovoid = () => (VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))();
+  var VoidTobool = () => (VoidTobool = dart.constFn(dart.fnType(core.bool, [])))();
   const CT = Object.create(null);
+  var L1 = "package:flutter/src/gestures/arena.dart";
+  var L0 = "file:///C:/src/flutter/packages/flutter/lib/src/gestures/arena.dart";
   dart.defineLazy(CT, {
     get C0() {
-      return C[0] = dart.const({
-        __proto__: edge_insets.EdgeInsets.prototype,
-        [EdgeInsets_bottom]: 0,
-        [EdgeInsets_right]: 0,
-        [EdgeInsets_top]: 0,
-        [EdgeInsets_left]: 0
+      return C0 = dart.const({
+        __proto__: arena.GestureDisposition.prototype,
+        [_name$]: "GestureDisposition.accepted",
+        index: 0
       });
     },
-    get C3() {
-      return C[3] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "context",
-        [_Location_column]: 9,
-        [_Location_line]: 112,
-        [_Location_file]: null
-      });
-    },
-    get C4() {
-      return C[4] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "removeLeft",
-        [_Location_column]: 9,
-        [_Location_line]: 113,
-        [_Location_file]: null
-      });
-    },
-    get C5() {
-      return C[5] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "removeTop",
-        [_Location_column]: 9,
-        [_Location_line]: 114,
-        [_Location_file]: null
-      });
-    },
-    get C6() {
-      return C[6] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "removeRight",
-        [_Location_column]: 9,
-        [_Location_line]: 115,
-        [_Location_file]: null
-      });
-    },
-    get C7() {
-      return C[7] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "removeBottom",
-        [_Location_column]: 9,
-        [_Location_line]: 116,
-        [_Location_file]: null
-      });
-    },
-    get C8() {
-      return C[8] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 9,
-        [_Location_line]: 117,
-        [_Location_file]: null
+    get C1() {
+      return C1 = dart.const({
+        __proto__: arena.GestureDisposition.prototype,
+        [_name$]: "GestureDisposition.rejected",
+        index: 1
       });
     },
     get C2() {
-      return C[2] = dart.constList([C[3] || CT.C3, C[4] || CT.C4, C[5] || CT.C5, C[6] || CT.C6, C[7] || CT.C7, C[8] || CT.C8], T._LocationL());
-    },
-    get C1() {
-      return C[1] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[2] || CT.C2,
-        [_Location_name]: null,
-        [_Location_column]: 25,
-        [_Location_line]: 111,
-        [_Location_file]: "file:///C:/src/flutter/flutter/packages/flutter/lib/src/widgets/safe_area.dart"
-      });
-    },
-    get C11() {
-      return C[11] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "padding",
-        [_Location_column]: 7,
-        [_Location_line]: 105,
-        [_Location_file]: null
-      });
-    },
-    get C12() {
-      return C[12] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 7,
-        [_Location_line]: 111,
-        [_Location_file]: null
-      });
-    },
-    get C10() {
-      return C[10] = dart.constList([C[11] || CT.C11, C[12] || CT.C12], T._LocationL());
-    },
-    get C9() {
-      return C[9] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[10] || CT.C10,
-        [_Location_name]: null,
-        [_Location_column]: 12,
-        [_Location_line]: 104,
-        [_Location_file]: "file:///C:/src/flutter/flutter/packages/flutter/lib/src/widgets/safe_area.dart"
-      });
-    },
-    get C15() {
-      return C[15] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "context",
-        [_Location_column]: 9,
-        [_Location_line]: 206,
-        [_Location_file]: null
-      });
-    },
-    get C16() {
-      return C[16] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "removeLeft",
-        [_Location_column]: 9,
-        [_Location_line]: 207,
-        [_Location_file]: null
-      });
-    },
-    get C17() {
-      return C[17] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "removeTop",
-        [_Location_column]: 9,
-        [_Location_line]: 208,
-        [_Location_file]: null
-      });
-    },
-    get C18() {
-      return C[18] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "removeRight",
-        [_Location_column]: 9,
-        [_Location_line]: 209,
-        [_Location_file]: null
-      });
-    },
-    get C19() {
-      return C[19] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "removeBottom",
-        [_Location_column]: 9,
-        [_Location_line]: 210,
-        [_Location_file]: null
-      });
-    },
-    get C20() {
-      return C[20] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 9,
-        [_Location_line]: 211,
-        [_Location_file]: null
-      });
-    },
-    get C14() {
-      return C[14] = dart.constList([C[15] || CT.C15, C[16] || CT.C16, C[17] || CT.C17, C[18] || CT.C18, C[19] || CT.C19, C[20] || CT.C20], T._LocationL());
-    },
-    get C13() {
-      return C[13] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[14] || CT.C14,
-        [_Location_name]: null,
-        [_Location_column]: 26,
-        [_Location_line]: 205,
-        [_Location_file]: "file:///C:/src/flutter/flutter/packages/flutter/lib/src/widgets/safe_area.dart"
-      });
-    },
-    get C23() {
-      return C[23] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "padding",
-        [_Location_column]: 7,
-        [_Location_line]: 199,
-        [_Location_file]: null
-      });
-    },
-    get C24() {
-      return C[24] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "sliver",
-        [_Location_column]: 7,
-        [_Location_line]: 205,
-        [_Location_file]: null
-      });
-    },
-    get C22() {
-      return C[22] = dart.constList([C[23] || CT.C23, C[24] || CT.C24], T._LocationL());
-    },
-    get C21() {
-      return C[21] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[22] || CT.C22,
-        [_Location_name]: null,
-        [_Location_column]: 12,
-        [_Location_line]: 198,
-        [_Location_file]: "file:///C:/src/flutter/flutter/packages/flutter/lib/src/widgets/safe_area.dart"
-      });
+      return C2 = dart.constList([C0 || CT.C0, C1 || CT.C1], GestureDispositionL());
     }
   }, false);
-  var C = Array(25).fill(void 0);
-  var I = [
-    "file:///C:/src/flutter/flutter/packages/flutter/lib/src/widgets/safe_area.dart",
-    "package:flutter/src/widgets/safe_area.dart"
-  ];
-  var left$ = dart.privateName(safe_area, "SafeArea.left");
-  var top$ = dart.privateName(safe_area, "SafeArea.top");
-  var right$ = dart.privateName(safe_area, "SafeArea.right");
-  var bottom$ = dart.privateName(safe_area, "SafeArea.bottom");
-  var minimum$ = dart.privateName(safe_area, "SafeArea.minimum");
-  var maintainBottomViewPadding$ = dart.privateName(safe_area, "SafeArea.maintainBottomViewPadding");
-  var child$ = dart.privateName(safe_area, "SafeArea.child");
-  var EdgeInsets_bottom = dart.privateName(edge_insets, "EdgeInsets.bottom");
-  var EdgeInsets_right = dart.privateName(edge_insets, "EdgeInsets.right");
-  var EdgeInsets_top = dart.privateName(edge_insets, "EdgeInsets.top");
-  var EdgeInsets_left = dart.privateName(edge_insets, "EdgeInsets.left");
-  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
-  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
-  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
-  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
-  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
-  safe_area.SafeArea = class SafeArea extends framework.StatelessWidget {
-    get left() {
-      return this[left$];
-    }
-    set left(value) {
-      super.left = value;
-    }
-    get top() {
-      return this[top$];
-    }
-    set top(value) {
-      super.top = value;
-    }
-    get right() {
-      return this[right$];
-    }
-    set right(value) {
-      super.right = value;
-    }
-    get bottom() {
-      return this[bottom$];
-    }
-    set bottom(value) {
-      super.bottom = value;
-    }
-    get minimum() {
-      return this[minimum$];
-    }
-    set minimum(value) {
-      super.minimum = value;
-    }
-    get maintainBottomViewPadding() {
-      return this[maintainBottomViewPadding$];
-    }
-    set maintainBottomViewPadding(value) {
-      super.maintainBottomViewPadding = value;
-    }
-    get child() {
-      return this[child$];
-    }
-    set child(value) {
-      super.child = value;
-    }
-    build(context) {
-      if (context == null) dart.nullFailed(I[0], 96, 29, "context");
-      if (!dart.test(debug.debugCheckHasMediaQuery(context))) dart.assertFailed(null, I[0], 97, 12, "debugCheckHasMediaQuery(context)");
-      let data = media_query.MediaQuery.of(context);
-      let padding = data.padding;
-      if (data.padding.bottom === 0.0 && data.viewInsets.bottom !== 0.0 && dart.test(this.maintainBottomViewPadding)) padding = padding.copyWith({bottom: data.viewPadding.bottom});
-      return new basic.Padding.new({padding: new edge_insets.EdgeInsets.only({left: math.max(core.double, dart.test(this.left) ? padding.left : 0.0, this.minimum.left), top: math.max(core.double, dart.test(this.top) ? padding.top : 0.0, this.minimum.top), right: math.max(core.double, dart.test(this.right) ? padding.right : 0.0, this.minimum.right), bottom: math.max(core.double, dart.test(this.bottom) ? padding.bottom : 0.0, this.minimum.bottom)}), child: media_query.MediaQuery.removePadding({context: context, removeLeft: this.left, removeTop: this.top, removeRight: this.right, removeBottom: this.bottom, child: this.child, $creationLocationd_0dea112b090073317d4: C[1] || CT.C1}), $creationLocationd_0dea112b090073317d4: C[9] || CT.C9});
-    }
-    debugFillProperties(properties) {
-      if (properties == null) dart.nullFailed(I[0], 123, 56, "properties");
-      super.debugFillProperties(properties);
-      properties.add(new diagnostics.FlagProperty.new("left", {value: this.left, ifTrue: "avoid left padding"}));
-      properties.add(new diagnostics.FlagProperty.new("top", {value: this.top, ifTrue: "avoid top padding"}));
-      properties.add(new diagnostics.FlagProperty.new("right", {value: this.right, ifTrue: "avoid right padding"}));
-      properties.add(new diagnostics.FlagProperty.new("bottom", {value: this.bottom, ifTrue: "avoid bottom padding"}));
+  var _name$ = dart.privateName(arena, "_name");
+  var C0;
+  var C1;
+  var C2;
+  arena.GestureDisposition = class GestureDisposition extends core.Object {
+    toString() {
+      return this[_name$];
     }
   };
-  (safe_area.SafeArea.new = function(opts) {
-    let key = opts && 'key' in opts ? opts.key : null;
-    let left = opts && 'left' in opts ? opts.left : true;
-    if (left == null) dart.nullFailed(I[0], 43, 10, "left");
-    let top = opts && 'top' in opts ? opts.top : true;
-    if (top == null) dart.nullFailed(I[0], 44, 10, "top");
-    let right = opts && 'right' in opts ? opts.right : true;
-    if (right == null) dart.nullFailed(I[0], 45, 10, "right");
-    let bottom = opts && 'bottom' in opts ? opts.bottom : true;
-    if (bottom == null) dart.nullFailed(I[0], 46, 10, "bottom");
-    let minimum = opts && 'minimum' in opts ? opts.minimum : C[0] || CT.C0;
-    if (minimum == null) dart.nullFailed(I[0], 47, 10, "minimum");
-    let maintainBottomViewPadding = opts && 'maintainBottomViewPadding' in opts ? opts.maintainBottomViewPadding : false;
-    if (maintainBottomViewPadding == null) dart.nullFailed(I[0], 48, 10, "maintainBottomViewPadding");
-    let child = opts && 'child' in opts ? opts.child : null;
-    if (child == null) dart.nullFailed(I[0], 49, 19, "child");
-    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
-    this[left$] = left;
-    this[top$] = top;
-    this[right$] = right;
-    this[bottom$] = bottom;
-    this[minimum$] = minimum;
-    this[maintainBottomViewPadding$] = maintainBottomViewPadding;
-    this[child$] = child;
-    if (!(left != null)) dart.assertFailed(null, I[0], 50, 15, "left != null");
-    if (!(top != null)) dart.assertFailed(null, I[0], 51, 15, "top != null");
-    if (!(right != null)) dart.assertFailed(null, I[0], 52, 15, "right != null");
-    if (!(bottom != null)) dart.assertFailed(null, I[0], 53, 15, "bottom != null");
-    safe_area.SafeArea.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+  (arena.GestureDisposition.new = function(index, _name) {
+    if (index == null) dart.nullFailed(L0, 13, 6, "index");
+    if (_name == null) dart.nullFailed(L0, 13, 6, "_name");
+    this.index = index;
+    this[_name$] = _name;
     ;
-  }).prototype = safe_area.SafeArea.prototype;
-  dart.addTypeTests(safe_area.SafeArea);
-  dart.addTypeCaches(safe_area.SafeArea);
-  dart.setMethodSignature(safe_area.SafeArea, () => ({
-    __proto__: dart.getMethods(safe_area.SafeArea.__proto__),
-    build: dart.fnType(framework.Widget, [framework.BuildContext])
+  }).prototype = arena.GestureDisposition.prototype;
+  dart.addTypeTests(arena.GestureDisposition);
+  dart.addTypeCaches(arena.GestureDisposition);
+  dart.setLibraryUri(arena.GestureDisposition, L1);
+  dart.setFieldSignature(arena.GestureDisposition, () => ({
+    __proto__: dart.getFields(arena.GestureDisposition.__proto__),
+    index: dart.finalFieldType(core.int),
+    [_name$]: dart.finalFieldType(core.String)
   }));
-  dart.setLibraryUri(safe_area.SafeArea, I[1]);
-  dart.setFieldSignature(safe_area.SafeArea, () => ({
-    __proto__: dart.getFields(safe_area.SafeArea.__proto__),
-    left: dart.finalFieldType(core.bool),
-    top: dart.finalFieldType(core.bool),
-    right: dart.finalFieldType(core.bool),
-    bottom: dart.finalFieldType(core.bool),
-    minimum: dart.finalFieldType(edge_insets.EdgeInsets),
-    maintainBottomViewPadding: dart.finalFieldType(core.bool),
-    child: dart.finalFieldType(framework.Widget)
-  }));
-  var left$0 = dart.privateName(safe_area, "SliverSafeArea.left");
-  var top$0 = dart.privateName(safe_area, "SliverSafeArea.top");
-  var right$0 = dart.privateName(safe_area, "SliverSafeArea.right");
-  var bottom$0 = dart.privateName(safe_area, "SliverSafeArea.bottom");
-  var minimum$0 = dart.privateName(safe_area, "SliverSafeArea.minimum");
-  var sliver$ = dart.privateName(safe_area, "SliverSafeArea.sliver");
-  safe_area.SliverSafeArea = class SliverSafeArea extends framework.StatelessWidget {
-    get left() {
-      return this[left$0];
-    }
-    set left(value) {
-      super.left = value;
-    }
-    get top() {
-      return this[top$0];
-    }
-    set top(value) {
-      super.top = value;
-    }
-    get right() {
-      return this[right$0];
-    }
-    set right(value) {
-      super.right = value;
-    }
-    get bottom() {
-      return this[bottom$0];
-    }
-    set bottom(value) {
-      super.bottom = value;
-    }
-    get minimum() {
-      return this[minimum$0];
-    }
-    set minimum(value) {
-      super.minimum = value;
-    }
-    get sliver() {
-      return this[sliver$];
-    }
-    set sliver(value) {
-      super.sliver = value;
-    }
-    build(context) {
-      if (context == null) dart.nullFailed(I[0], 195, 29, "context");
-      if (!dart.test(debug.debugCheckHasMediaQuery(context))) dart.assertFailed(null, I[0], 196, 12, "debugCheckHasMediaQuery(context)");
-      let padding = media_query.MediaQuery.of(context).padding;
-      return new basic.SliverPadding.new({padding: new edge_insets.EdgeInsets.only({left: math.max(core.double, dart.test(this.left) ? padding.left : 0.0, this.minimum.left), top: math.max(core.double, dart.test(this.top) ? padding.top : 0.0, this.minimum.top), right: math.max(core.double, dart.test(this.right) ? padding.right : 0.0, this.minimum.right), bottom: math.max(core.double, dart.test(this.bottom) ? padding.bottom : 0.0, this.minimum.bottom)}), sliver: media_query.MediaQuery.removePadding({context: context, removeLeft: this.left, removeTop: this.top, removeRight: this.right, removeBottom: this.bottom, child: this.sliver, $creationLocationd_0dea112b090073317d4: C[13] || CT.C13}), $creationLocationd_0dea112b090073317d4: C[21] || CT.C21});
-    }
-    debugFillProperties(properties) {
-      if (properties == null) dart.nullFailed(I[0], 217, 56, "properties");
-      super.debugFillProperties(properties);
-      properties.add(new diagnostics.FlagProperty.new("left", {value: this.left, ifTrue: "avoid left padding"}));
-      properties.add(new diagnostics.FlagProperty.new("top", {value: this.top, ifTrue: "avoid top padding"}));
-      properties.add(new diagnostics.FlagProperty.new("right", {value: this.right, ifTrue: "avoid right padding"}));
-      properties.add(new diagnostics.FlagProperty.new("bottom", {value: this.bottom, ifTrue: "avoid bottom padding"}));
+  dart.defineExtensionMethods(arena.GestureDisposition, ['toString']);
+  arena.GestureDisposition.accepted = C0 || CT.C0;
+  arena.GestureDisposition.rejected = C1 || CT.C1;
+  arena.GestureDisposition.values = C2 || CT.C2;
+  arena.GestureArenaMember = class GestureArenaMember extends core.Object {};
+  (arena.GestureArenaMember.new = function() {
+    ;
+  }).prototype = arena.GestureArenaMember.prototype;
+  dart.addTypeTests(arena.GestureArenaMember);
+  dart.addTypeCaches(arena.GestureArenaMember);
+  dart.setLibraryUri(arena.GestureArenaMember, L1);
+  var _arena$ = dart.privateName(arena, "_arena");
+  var _pointer$ = dart.privateName(arena, "_pointer");
+  var _member$ = dart.privateName(arena, "_member");
+  var _resolve = dart.privateName(arena, "_resolve");
+  arena.GestureArenaEntry = class GestureArenaEntry extends core.Object {
+    resolve(disposition) {
+      if (disposition == null) dart.nullFailed(L0, 52, 35, "disposition");
+      this[_arena$][_resolve](this[_pointer$], this[_member$], disposition);
     }
   };
-  (safe_area.SliverSafeArea.new = function(opts) {
-    let key = opts && 'key' in opts ? opts.key : null;
-    let left = opts && 'left' in opts ? opts.left : true;
-    if (left == null) dart.nullFailed(I[0], 158, 10, "left");
-    let top = opts && 'top' in opts ? opts.top : true;
-    if (top == null) dart.nullFailed(I[0], 159, 10, "top");
-    let right = opts && 'right' in opts ? opts.right : true;
-    if (right == null) dart.nullFailed(I[0], 160, 10, "right");
-    let bottom = opts && 'bottom' in opts ? opts.bottom : true;
-    if (bottom == null) dart.nullFailed(I[0], 161, 10, "bottom");
-    let minimum = opts && 'minimum' in opts ? opts.minimum : C[0] || CT.C0;
-    if (minimum == null) dart.nullFailed(I[0], 162, 10, "minimum");
-    let sliver = opts && 'sliver' in opts ? opts.sliver : null;
-    if (sliver == null) dart.nullFailed(I[0], 163, 19, "sliver");
-    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
-    this[left$0] = left;
-    this[top$0] = top;
-    this[right$0] = right;
-    this[bottom$0] = bottom;
-    this[minimum$0] = minimum;
-    this[sliver$] = sliver;
-    if (!(left != null)) dart.assertFailed(null, I[0], 164, 15, "left != null");
-    if (!(top != null)) dart.assertFailed(null, I[0], 165, 15, "top != null");
-    if (!(right != null)) dart.assertFailed(null, I[0], 166, 15, "right != null");
-    if (!(bottom != null)) dart.assertFailed(null, I[0], 167, 15, "bottom != null");
-    safe_area.SliverSafeArea.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+  (arena.GestureArenaEntry.__ = function(_arena, _pointer, _member) {
+    if (_arena == null) dart.nullFailed(L0, 42, 28, "_arena");
+    if (_pointer == null) dart.nullFailed(L0, 42, 41, "_pointer");
+    if (_member == null) dart.nullFailed(L0, 42, 56, "_member");
+    this[_arena$] = _arena;
+    this[_pointer$] = _pointer;
+    this[_member$] = _member;
     ;
-  }).prototype = safe_area.SliverSafeArea.prototype;
-  dart.addTypeTests(safe_area.SliverSafeArea);
-  dart.addTypeCaches(safe_area.SliverSafeArea);
-  dart.setMethodSignature(safe_area.SliverSafeArea, () => ({
-    __proto__: dart.getMethods(safe_area.SliverSafeArea.__proto__),
-    build: dart.fnType(framework.Widget, [framework.BuildContext])
+  }).prototype = arena.GestureArenaEntry.prototype;
+  dart.addTypeTests(arena.GestureArenaEntry);
+  dart.addTypeCaches(arena.GestureArenaEntry);
+  dart.setMethodSignature(arena.GestureArenaEntry, () => ({
+    __proto__: dart.getMethods(arena.GestureArenaEntry.__proto__),
+    resolve: dart.fnType(dart.void, [arena.GestureDisposition])
   }));
-  dart.setLibraryUri(safe_area.SliverSafeArea, I[1]);
-  dart.setFieldSignature(safe_area.SliverSafeArea, () => ({
-    __proto__: dart.getFields(safe_area.SliverSafeArea.__proto__),
-    left: dart.finalFieldType(core.bool),
-    top: dart.finalFieldType(core.bool),
-    right: dart.finalFieldType(core.bool),
-    bottom: dart.finalFieldType(core.bool),
-    minimum: dart.finalFieldType(edge_insets.EdgeInsets),
-    sliver: dart.finalFieldType(framework.Widget)
+  dart.setLibraryUri(arena.GestureArenaEntry, L1);
+  dart.setFieldSignature(arena.GestureArenaEntry, () => ({
+    __proto__: dart.getFields(arena.GestureArenaEntry.__proto__),
+    [_arena$]: dart.finalFieldType(arena.GestureArenaManager),
+    [_pointer$]: dart.finalFieldType(core.int),
+    [_member$]: dart.finalFieldType(arena.GestureArenaMember)
   }));
-  dart.trackLibraries("packages/flutter/src/widgets/safe_area.dart", {
-    "package:flutter/src/widgets/safe_area.dart": safe_area
+  arena._GestureArena = class _GestureArena extends core.Object {
+    add(member) {
+      if (member == null) dart.nullFailed(L0, 69, 31, "member");
+      if (!dart.test(this.isOpen)) dart.assertFailed(null, L0, 70, 12, "isOpen");
+      this.members[$add](member);
+    }
+    toString() {
+      let buffer = new core.StringBuffer.new();
+      if (dart.test(this.members[$isEmpty])) {
+        buffer.write("<empty>");
+      } else {
+        buffer.write(this.members[$map](core.String, dart.fn(member => {
+          if (member == null) dart.nullFailed(L0, 80, 60, "member");
+          if (dart.equals(member, this.eagerWinner)) return dart.str(member) + " (eager winner)";
+          return dart.str(member);
+        }, GestureArenaMemberToString()))[$join](", "));
+      }
+      if (dart.test(this.isOpen)) buffer.write(" [open]");
+      if (dart.test(this.isHeld)) buffer.write(" [held]");
+      if (dart.test(this.hasPendingSweep)) buffer.write(" [hasPendingSweep]");
+      return buffer.toString();
+    }
+  };
+  (arena._GestureArena.new = function() {
+    this.members = JSArrayOfGestureArenaMember().of([]);
+    this.isOpen = true;
+    this.isHeld = false;
+    this.hasPendingSweep = false;
+    this.eagerWinner = null;
+    ;
+  }).prototype = arena._GestureArena.prototype;
+  dart.addTypeTests(arena._GestureArena);
+  dart.addTypeCaches(arena._GestureArena);
+  dart.setMethodSignature(arena._GestureArena, () => ({
+    __proto__: dart.getMethods(arena._GestureArena.__proto__),
+    add: dart.fnType(dart.void, [arena.GestureArenaMember])
+  }));
+  dart.setLibraryUri(arena._GestureArena, L1);
+  dart.setFieldSignature(arena._GestureArena, () => ({
+    __proto__: dart.getFields(arena._GestureArena.__proto__),
+    members: dart.finalFieldType(core.List$(arena.GestureArenaMember)),
+    isOpen: dart.fieldType(core.bool),
+    isHeld: dart.fieldType(core.bool),
+    hasPendingSweep: dart.fieldType(core.bool),
+    eagerWinner: dart.fieldType(dart.nullable(arena.GestureArenaMember))
+  }));
+  dart.defineExtensionMethods(arena._GestureArena, ['toString']);
+  var _arenas = dart.privateName(arena, "_arenas");
+  var _debugLogDiagnostic = dart.privateName(arena, "_debugLogDiagnostic");
+  var _tryToResolveArena = dart.privateName(arena, "_tryToResolveArena");
+  var _resolveInFavorOf = dart.privateName(arena, "_resolveInFavorOf");
+  var _resolveByDefault = dart.privateName(arena, "_resolveByDefault");
+  arena.GestureArenaManager = class GestureArenaManager extends core.Object {
+    add(pointer, member) {
+      if (pointer == null) dart.nullFailed(L0, 107, 29, "pointer");
+      if (member == null) dart.nullFailed(L0, 107, 57, "member");
+      let state = this[_arenas][$putIfAbsent](pointer, dart.fn(() => {
+        if (!dart.test(this[_debugLogDiagnostic](pointer, "★ Opening new gesture arena."))) dart.assertFailed(null, L0, 109, 14, "_debugLogDiagnostic(pointer, '★ Opening new gesture arena.')");
+        return new arena._GestureArena.new();
+      }, VoidTo_GestureArena()));
+      state.add(member);
+      if (!dart.test(this[_debugLogDiagnostic](pointer, "Adding: " + dart.str(member)))) dart.assertFailed(null, L0, 113, 12, "_debugLogDiagnostic(pointer, 'Adding: $member')");
+      return new arena.GestureArenaEntry.__(this, pointer, member);
+    }
+    close(pointer) {
+      if (pointer == null) dart.nullFailed(L0, 120, 18, "pointer");
+      let state = this[_arenas][$_get](pointer);
+      if (state == null) return;
+      state.isOpen = false;
+      if (!dart.test(this[_debugLogDiagnostic](pointer, "Closing", state))) dart.assertFailed(null, L0, 125, 12, "_debugLogDiagnostic(pointer, 'Closing', state)");
+      this[_tryToResolveArena](pointer, state);
+    }
+    sweep(pointer) {
+      if (pointer == null) dart.nullFailed(L0, 142, 18, "pointer");
+      let state = this[_arenas][$_get](pointer);
+      if (state == null) return;
+      if (!!dart.test(state.isOpen)) dart.assertFailed(null, L0, 146, 12, "!state.isOpen");
+      if (dart.test(state.isHeld)) {
+        state.hasPendingSweep = true;
+        if (!dart.test(this[_debugLogDiagnostic](pointer, "Delaying sweep", state))) dart.assertFailed(null, L0, 149, 14, "_debugLogDiagnostic(pointer, 'Delaying sweep', state)");
+        return;
+      }
+      if (!dart.test(this[_debugLogDiagnostic](pointer, "Sweeping", state))) dart.assertFailed(null, L0, 152, 12, "_debugLogDiagnostic(pointer, 'Sweeping', state)");
+      this[_arenas][$remove](pointer);
+      if (dart.test(state.members[$isNotEmpty])) {
+        if (!dart.test(this[_debugLogDiagnostic](pointer, "Winner: " + dart.str(state.members[$first])))) dart.assertFailed(null, L0, 156, 14, "_debugLogDiagnostic(pointer, 'Winner: ${state.members.first}')");
+        state.members[$first].acceptGesture(pointer);
+        for (let i = 1; i < dart.notNull(state.members[$length]); i = i + 1)
+          state.members[$_get](i).rejectGesture(pointer);
+      }
+    }
+    hold(pointer) {
+      if (pointer == null) dart.nullFailed(L0, 176, 17, "pointer");
+      let state = this[_arenas][$_get](pointer);
+      if (state == null) return;
+      state.isHeld = true;
+      if (!dart.test(this[_debugLogDiagnostic](pointer, "Holding", state))) dart.assertFailed(null, L0, 181, 12, "_debugLogDiagnostic(pointer, 'Holding', state)");
+    }
+    release(pointer) {
+      if (pointer == null) dart.nullFailed(L0, 193, 20, "pointer");
+      let state = this[_arenas][$_get](pointer);
+      if (state == null) return;
+      state.isHeld = false;
+      if (!dart.test(this[_debugLogDiagnostic](pointer, "Releasing", state))) dart.assertFailed(null, L0, 198, 12, "_debugLogDiagnostic(pointer, 'Releasing', state)");
+      if (dart.test(state.hasPendingSweep)) this.sweep(pointer);
+    }
+    [_resolve](pointer, member, disposition) {
+      let t0;
+      if (pointer == null) dart.nullFailed(L0, 206, 21, "pointer");
+      if (member == null) dart.nullFailed(L0, 206, 49, "member");
+      if (disposition == null) dart.nullFailed(L0, 206, 76, "disposition");
+      let state = this[_arenas][$_get](pointer);
+      if (state == null) return;
+      if (!dart.test(this[_debugLogDiagnostic](pointer, (dart.equals(disposition, arena.GestureDisposition.accepted) ? "Accepting" : "Rejecting") + ": " + dart.str(member)))) dart.assertFailed(null, L0, 210, 12, "_debugLogDiagnostic(pointer, '${ disposition == GestureDisposition.accepted ? \"Accepting\" : \"Rejecting\" }: $member')");
+      if (!dart.test(state.members[$contains](member))) dart.assertFailed(null, L0, 211, 12, "state.members.contains(member)");
+      if (dart.equals(disposition, arena.GestureDisposition.rejected)) {
+        state.members[$remove](member);
+        member.rejectGesture(pointer);
+        if (!dart.test(state.isOpen)) this[_tryToResolveArena](pointer, state);
+      } else {
+        if (!dart.equals(disposition, arena.GestureDisposition.accepted)) dart.assertFailed(null, L0, 218, 14, "disposition == GestureDisposition.accepted");
+        if (dart.test(state.isOpen)) {
+          t0 = state;
+          t0.eagerWinner == null ? t0.eagerWinner = member : null;
+        } else {
+          if (!dart.test(this[_debugLogDiagnostic](pointer, "Self-declared winner: " + dart.str(member)))) dart.assertFailed(null, L0, 222, 16, "_debugLogDiagnostic(pointer, 'Self-declared winner: $member')");
+          this[_resolveInFavorOf](pointer, state, member);
+        }
+      }
+    }
+    [_tryToResolveArena](pointer, state) {
+      if (pointer == null) dart.nullFailed(L0, 228, 31, "pointer");
+      if (state == null) dart.nullFailed(L0, 228, 54, "state");
+      if (!dart.equals(this[_arenas][$_get](pointer), state)) dart.assertFailed(null, L0, 229, 12, "_arenas[pointer] == state");
+      if (!!dart.test(state.isOpen)) dart.assertFailed(null, L0, 230, 12, "!state.isOpen");
+      if (state.members[$length] === 1) {
+        async.scheduleMicrotask(dart.fn(() => this[_resolveByDefault](pointer, state), VoidTovoid()));
+      } else if (dart.test(state.members[$isEmpty])) {
+        this[_arenas][$remove](pointer);
+        if (!dart.test(this[_debugLogDiagnostic](pointer, "Arena empty."))) dart.assertFailed(null, L0, 235, 14, "_debugLogDiagnostic(pointer, 'Arena empty.')");
+      } else if (state.eagerWinner != null) {
+        if (!dart.test(this[_debugLogDiagnostic](pointer, "Eager winner: " + dart.str(state.eagerWinner)))) dart.assertFailed(null, L0, 237, 14, "_debugLogDiagnostic(pointer, 'Eager winner: ${state.eagerWinner}')");
+        this[_resolveInFavorOf](pointer, state, dart.nullCheck(state.eagerWinner));
+      }
+    }
+    [_resolveByDefault](pointer, state) {
+      if (pointer == null) dart.nullFailed(L0, 242, 30, "pointer");
+      if (state == null) dart.nullFailed(L0, 242, 53, "state");
+      if (!dart.test(this[_arenas][$containsKey](pointer))) return;
+      if (!dart.equals(this[_arenas][$_get](pointer), state)) dart.assertFailed(null, L0, 245, 12, "_arenas[pointer] == state");
+      if (!!dart.test(state.isOpen)) dart.assertFailed(null, L0, 246, 12, "!state.isOpen");
+      let members = state.members;
+      if (!(members[$length] === 1)) dart.assertFailed(null, L0, 248, 12, "members.length == 1");
+      this[_arenas][$remove](pointer);
+      if (!dart.test(this[_debugLogDiagnostic](pointer, "Default winner: " + dart.str(state.members[$first])))) dart.assertFailed(null, L0, 250, 12, "_debugLogDiagnostic(pointer, 'Default winner: ${state.members.first}')");
+      state.members[$first].acceptGesture(pointer);
+    }
+    [_resolveInFavorOf](pointer, state, member) {
+      if (pointer == null) dart.nullFailed(L0, 254, 30, "pointer");
+      if (state == null) dart.nullFailed(L0, 254, 53, "state");
+      if (member == null) dart.nullFailed(L0, 254, 79, "member");
+      if (!dart.equals(state, this[_arenas][$_get](pointer))) dart.assertFailed(null, L0, 255, 12, "state == _arenas[pointer]");
+      if (!(state != null)) dart.assertFailed(null, L0, 256, 12, "state != null");
+      if (!(state.eagerWinner == null || dart.equals(state.eagerWinner, member))) dart.assertFailed(null, L0, 257, 12, "state.eagerWinner == null || state.eagerWinner == member");
+      if (!!dart.test(state.isOpen)) dart.assertFailed(null, L0, 258, 12, "!state.isOpen");
+      this[_arenas][$remove](pointer);
+      for (let rejectedMember of state.members) {
+        if (!dart.equals(rejectedMember, member)) rejectedMember.rejectGesture(pointer);
+      }
+      member.acceptGesture(pointer);
+    }
+    [_debugLogDiagnostic](pointer, message, state = null) {
+      if (pointer == null) dart.nullFailed(L0, 267, 32, "pointer");
+      if (message == null) dart.nullFailed(L0, 267, 48, "message");
+      if (!dart.test(dart.fn(() => {
+        if (dart.test(debug.debugPrintGestureArenaDiagnostics)) {
+          let count = state != null ? state.members[$length] : null;
+          let s = count !== 1 ? "s" : "";
+          print.debugPrint("Gesture arena " + dart.toString(pointer)[$padRight](4) + " ❙ " + dart.str(message) + (count != null ? " with " + dart.str(count) + " member" + s + "." : ""));
+        }
+        return true;
+      }, VoidTobool())())) dart.assertFailed(null, L0, 268, 12, "() {\r\n      if (debugPrintGestureArenaDiagnostics) {\r\n        final int? count = state != null ? state.members.length : null;\r\n        final String s = count != 1 ? 's' : '';\r\n        debugPrint('Gesture arena ${pointer.toString().padRight(4)} ❙ $message${ count != null ? \" with $count member$s.\" : \"\"}');\r\n      }\r\n      return true;\r\n    }()");
+      return true;
+    }
+  };
+  (arena.GestureArenaManager.new = function() {
+    this[_arenas] = new (IdentityMapOfint$_GestureArena()).new();
+    ;
+  }).prototype = arena.GestureArenaManager.prototype;
+  dart.addTypeTests(arena.GestureArenaManager);
+  dart.addTypeCaches(arena.GestureArenaManager);
+  dart.setMethodSignature(arena.GestureArenaManager, () => ({
+    __proto__: dart.getMethods(arena.GestureArenaManager.__proto__),
+    add: dart.fnType(arena.GestureArenaEntry, [core.int, arena.GestureArenaMember]),
+    close: dart.fnType(dart.void, [core.int]),
+    sweep: dart.fnType(dart.void, [core.int]),
+    hold: dart.fnType(dart.void, [core.int]),
+    release: dart.fnType(dart.void, [core.int]),
+    [_resolve]: dart.fnType(dart.void, [core.int, arena.GestureArenaMember, arena.GestureDisposition]),
+    [_tryToResolveArena]: dart.fnType(dart.void, [core.int, arena._GestureArena]),
+    [_resolveByDefault]: dart.fnType(dart.void, [core.int, arena._GestureArena]),
+    [_resolveInFavorOf]: dart.fnType(dart.void, [core.int, arena._GestureArena, arena.GestureArenaMember]),
+    [_debugLogDiagnostic]: dart.fnType(core.bool, [core.int, core.String], [dart.nullable(arena._GestureArena)])
+  }));
+  dart.setLibraryUri(arena.GestureArenaManager, L1);
+  dart.setFieldSignature(arena.GestureArenaManager, () => ({
+    __proto__: dart.getFields(arena.GestureArenaManager.__proto__),
+    [_arenas]: dart.finalFieldType(core.Map$(core.int, arena._GestureArena))
+  }));
+  dart.trackLibraries("packages/flutter/src/gestures/arena.dart", {
+    "package:flutter/src/gestures/arena.dart": arena
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["safe_area.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAwDa;;;;;;IAIA;;;;;;IAGA;;;;;;IAGA;;;;;;IAKM;;;;;;IAaN;;;;;;IAQE;;;;;;;UAGa;AACxB,qBAAO,8BAAwB,OAAO;AACjB,iBAAkB,0BAAG,OAAO;AACtC,oBAAU,AAAK,IAAD;AAEzB,UAAI,AAAK,AAAQ,AAAO,IAAhB,oBAAmB,OAAO,AAAK,AAAW,IAAZ,uBAAsB,iBAAO,iCACjE,AAA2D,UAAjD,AAAQ,OAAD,mBAAkB,AAAK,AAAY,IAAb;AAEzC,YAAO,iCACe,uCACZ,gCAAS,aAAO,AAAQ,OAAD,QAAQ,KAAK,AAAQ,yBAC7C,gCAAS,YAAM,AAAQ,OAAD,OAAO,KAAK,AAAQ,0BACxC,gCAAS,cAAQ,AAAQ,OAAD,SAAS,KAAK,AAAQ,6BAC7C,gCAAS,eAAS,AAAQ,OAAD,UAAU,KAAK,AAAQ,+BAExC,+CACP,OAAO,cACJ,sBACD,uBACE,0BACC,oBACP;IAGb;;UAGqD;AACd,MAA/B,0BAAoB,UAAU;AAC2C,MAA/E,AAAW,UAAD,KAAK,iCAAa,gBAAe,mBAAc;AACmB,MAA5E,AAAW,UAAD,KAAK,iCAAa,eAAc,kBAAa;AAC2B,MAAlF,AAAW,UAAD,KAAK,iCAAa,iBAAgB,oBAAe;AAC0B,MAArF,AAAW,UAAD,KAAK,iCAAa,kBAAiB,qBAAgB;IAC/D;;;QAvFO;QACA;;QACA;;QACA;;QACA;;QACA;;QACA;;QACS;;;IANT;IACA;IACA;IACA;IACA;IACA;IACS;UACJ,AAAK,IAAD,IAAI;UACR,AAAI,GAAD,IAAI;UACP,AAAM,KAAD,IAAI;UACT,AAAO,MAAD,IAAI;AACjB,sDAAW,GAAG;;EAAC;;;;;;;;;;;;;;;;;;;;;;;;;IAqHT;;;;;;IAIA;;;;;;IAGA;;;;;;IAGA;;;;;;IAKM;;;;;;IAMJ;;;;;;;UAGa;AACxB,qBAAO,8BAAwB,OAAO;AACrB,oBAAqB,AAAY,0BAAT,OAAO;AAChD,YAAO,uCACe,uCACZ,gCAAS,aAAO,AAAQ,OAAD,QAAQ,KAAK,AAAQ,yBAC7C,gCAAS,YAAM,AAAQ,OAAD,OAAO,KAAK,AAAQ,0BACxC,gCAAS,cAAQ,AAAQ,OAAD,SAAS,KAAK,AAAQ,6BAC7C,gCAAS,eAAS,AAAQ,OAAD,UAAU,KAAK,AAAQ,gCAEvC,+CACR,OAAO,cACJ,sBACD,uBACE,0BACC,oBACP;IAGb;;UAGqD;AACd,MAA/B,0BAAoB,UAAU;AAC2C,MAA/E,AAAW,UAAD,KAAK,iCAAa,gBAAe,mBAAc;AACmB,MAA5E,AAAW,UAAD,KAAK,iCAAa,eAAc,kBAAa;AAC2B,MAAlF,AAAW,UAAD,KAAK,iCAAa,iBAAgB,oBAAe;AAC0B,MAArF,AAAW,UAAD,KAAK,iCAAa,kBAAiB,qBAAgB;IAC/D;;;QAlEO;QACA;;QACA;;QACA;;QACA;;QACA;;QACS;;;IALT;IACA;IACA;IACA;IACA;IACS;UACJ,AAAK,IAAD,IAAI;UACR,AAAI,GAAD,IAAI;UACP,AAAM,KAAD,IAAI;UACT,AAAO,MAAD,IAAI;AACjB,4DAAW,GAAG;;EAAC","file":"../../../../../../../../packages/flutter/src/widgets/safe_area.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["arena.dart"],"names":[],"mappings":"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","file":"../../../../../../../packages/flutter/src/gestures/arena.dart.lib.js"}');
   // Exports:
   return {
-    src__widgets__safe_area: safe_area
+    src__gestures__arena: arena
   };
 }));
 
-//# sourceMappingURL=safe_area.dart.lib.js.map
+//# sourceMappingURL=arena.dart.lib.js.map

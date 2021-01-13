@@ -1,407 +1,466 @@
-define(['dart_sdk', 'packages/flutter/src/painting/borders.dart', 'packages/flutter/src/painting/border_radius.dart', 'packages/flutter/src/painting/edge_insets.dart', 'packages/flutter/src/painting/circle_border.dart', 'packages/flutter/src/foundation/object.dart'], (function load__packages__flutter__src__painting__rounded_rectangle_border_dart(dart_sdk, packages__flutter__src__painting__borders$46dart, packages__flutter__src__painting__border_radius$46dart, packages__flutter__src__painting__edge_insets$46dart, packages__flutter__src__painting__circle_border$46dart, packages__flutter__src__foundation__object$46dart) {
+define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/rendering/proxy_box.dart', 'packages/flutter/src/gestures/tap.dart'], (function load__packages__positioned_tap_detector__positioned_tap_detector_dart(dart_sdk, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__rendering__proxy_box$46dart, packages__flutter__src__gestures__tap$46dart) {
   'use strict';
   const core = dart_sdk.core;
+  const async = dart_sdk.async;
+  const math = dart_sdk.math;
   const ui = dart_sdk.ui;
-  const _internal = dart_sdk._internal;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const borders = packages__flutter__src__painting__borders$46dart.src__painting__borders;
-  const border_radius = packages__flutter__src__painting__border_radius$46dart.src__painting__border_radius;
-  const edge_insets = packages__flutter__src__painting__edge_insets$46dart.src__painting__edge_insets;
-  const circle_border = packages__flutter__src__painting__circle_border$46dart.src__painting__circle_border;
-  const object = packages__flutter__src__foundation__object$46dart.src__foundation__object;
-  var rounded_rectangle_border = Object.create(dart.library);
-  var $runtimeType = dartx.runtimeType;
-  var $toStringAsFixed = dartx.toStringAsFixed;
-  dart._checkModuleNullSafetyMode(false);
+  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
+  const gesture_detector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__gesture_detector;
+  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
+  const proxy_box = packages__flutter__src__rendering__proxy_box$46dart.src__rendering__proxy_box;
+  const tap = packages__flutter__src__gestures__tap$46dart.src__gestures__tap;
+  var positioned_tap_detector = Object.create(dart.library);
+  var $_equals = dartx._equals;
+  var $hashCode = dartx.hashCode;
+  var TapDownDetailsL = () => (TapDownDetailsL = dart.constFn(dart.legacy(tap.TapDownDetails)))();
+  var StreamControllerOfTapDownDetailsL = () => (StreamControllerOfTapDownDetailsL = dart.constFn(async.StreamController$(TapDownDetailsL())))();
+  var TimeoutExceptionL = () => (TimeoutExceptionL = dart.constFn(dart.legacy(async.TimeoutException)))();
+  var boolL = () => (boolL = dart.constFn(dart.legacy(core.bool)))();
+  var dynamicToboolL = () => (dynamicToboolL = dart.constFn(dart.fnType(boolL(), [dart.dynamic])))();
+  var PositionedTapDetectorL = () => (PositionedTapDetectorL = dart.constFn(dart.legacy(positioned_tap_detector.PositionedTapDetector)))();
+  var _LocationL = () => (_LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))();
+  var TapPositionL = () => (TapPositionL = dart.constFn(dart.legacy(positioned_tap_detector.TapPosition)))();
   const CT = Object.create(null);
+  var L0 = "package:positioned_tap_detector/positioned_tap_detector.dart";
   dart.defineLazy(CT, {
-    get C1() {
-      return C[1] = dart.const({
-        __proto__: borders.BorderStyle.prototype,
-        [_name]: "BorderStyle.none",
-        index: 0
-      });
-    },
-    get C2() {
-      return C[2] = dart.const({
-        __proto__: ui.Color.prototype,
-        [Color_value]: 4278190080.0
-      });
-    },
     get C0() {
-      return C[0] = dart.const({
-        __proto__: borders.BorderSide.prototype,
-        [BorderSide_style]: C[1] || CT.C1,
-        [BorderSide_width]: 0,
-        [BorderSide_color]: C[2] || CT.C2
-      });
-    },
-    get C4() {
-      return C[4] = dart.const({
-        __proto__: ui.Radius.prototype,
-        [Radius_y]: 0,
-        [Radius_x]: 0
+      return C0 = dart.const({
+        __proto__: core.Duration.prototype,
+        [Duration__duration]: 250000
       });
     },
     get C3() {
-      return C[3] = dart.const({
-        __proto__: border_radius.BorderRadius.prototype,
-        [BorderRadius_bottomRight]: C[4] || CT.C4,
-        [BorderRadius_bottomLeft]: C[4] || CT.C4,
-        [BorderRadius_topRight]: C[4] || CT.C4,
-        [BorderRadius_topLeft]: C[4] || CT.C4
+      return C3 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 152,
+        [_Location_file]: null
+      });
+    },
+    get C4() {
+      return C4 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "behavior",
+        [_Location_column]: 7,
+        [_Location_line]: 153,
+        [_Location_file]: null
       });
     },
     get C5() {
-      return C[5] = dart.const({
-        __proto__: borders.BorderStyle.prototype,
-        [_name]: "BorderStyle.solid",
-        index: 1
+      return C5 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onTap",
+        [_Location_column]: 7,
+        [_Location_line]: 157,
+        [_Location_file]: null
+      });
+    },
+    get C6() {
+      return C6 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onLongPress",
+        [_Location_column]: 7,
+        [_Location_line]: 158,
+        [_Location_file]: null
+      });
+    },
+    get C7() {
+      return C7 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onTapDown",
+        [_Location_column]: 7,
+        [_Location_line]: 159,
+        [_Location_file]: null
+      });
+    },
+    get C2() {
+      return C2 = dart.constList([C3 || CT.C3, C4 || CT.C4, C5 || CT.C5, C6 || CT.C6, C7 || CT.C7], _LocationL());
+    },
+    get C1() {
+      return C1 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C2 || CT.C2,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 151,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/positioned_tap_detector-1.0.3/lib/positioned_tap_detector.dart"
       });
     }
   }, false);
-  var C = Array(6).fill(void 0);
-  var I = [
-    "file:///C:/src/flutter/flutter/packages/flutter/lib/src/painting/rounded_rectangle_border.dart",
-    "package:flutter/src/painting/rounded_rectangle_border.dart"
-  ];
-  var borderRadius$ = dart.privateName(rounded_rectangle_border, "RoundedRectangleBorder.borderRadius");
-  var _name = dart.privateName(borders, "_name");
-  var BorderSide_style = dart.privateName(borders, "BorderSide.style");
-  var BorderSide_width = dart.privateName(borders, "BorderSide.width");
-  var Color_value = dart.privateName(ui, "Color.value");
-  var BorderSide_color = dart.privateName(borders, "BorderSide.color");
-  var Radius_y = dart.privateName(ui, "Radius.y");
-  var Radius_x = dart.privateName(ui, "Radius.x");
-  var BorderRadius_bottomRight = dart.privateName(border_radius, "BorderRadius.bottomRight");
-  var BorderRadius_bottomLeft = dart.privateName(border_radius, "BorderRadius.bottomLeft");
-  var BorderRadius_topRight = dart.privateName(border_radius, "BorderRadius.topRight");
-  var BorderRadius_topLeft = dart.privateName(border_radius, "BorderRadius.topLeft");
-  rounded_rectangle_border.RoundedRectangleBorder = class RoundedRectangleBorder extends borders.OutlinedBorder {
-    get borderRadius() {
-      return this[borderRadius$];
+  var Duration__duration = dart.privateName(core, "Duration._duration");
+  var C0;
+  var child$ = dart.privateName(positioned_tap_detector, "PositionedTapDetector.child");
+  var behavior$ = dart.privateName(positioned_tap_detector, "PositionedTapDetector.behavior");
+  var onTap$ = dart.privateName(positioned_tap_detector, "PositionedTapDetector.onTap");
+  var onDoubleTap$ = dart.privateName(positioned_tap_detector, "PositionedTapDetector.onDoubleTap");
+  var onLongPress$ = dart.privateName(positioned_tap_detector, "PositionedTapDetector.onLongPress");
+  var doubleTapDelay$ = dart.privateName(positioned_tap_detector, "PositionedTapDetector.doubleTapDelay");
+  var controller$ = dart.privateName(positioned_tap_detector, "PositionedTapDetector.controller");
+  positioned_tap_detector.PositionedTapDetector = class PositionedTapDetector extends framework.StatefulWidget {
+    get child() {
+      return this[child$];
     }
-    set borderRadius(value) {
-      super.borderRadius = value;
+    set child(value) {
+      super.child = value;
     }
-    get dimensions() {
-      return new edge_insets.EdgeInsets.all(this.side.width);
+    get behavior() {
+      return this[behavior$];
     }
-    scale(t) {
-      if (t == null) dart.nullFailed(I[0], 48, 28, "t");
-      return new rounded_rectangle_border.RoundedRectangleBorder.new({side: this.side.scale(t), borderRadius: this.borderRadius['*'](t)});
+    set behavior(value) {
+      super.behavior = value;
     }
-    lerpFrom(a, t) {
-      if (t == null) dart.nullFailed(I[0], 56, 48, "t");
-      if (!(t != null)) dart.assertFailed(null, I[0], 57, 12, "t != null");
-      if (rounded_rectangle_border.RoundedRectangleBorder.is(a)) {
-        return new rounded_rectangle_border.RoundedRectangleBorder.new({side: borders.BorderSide.lerp(a.side, this.side, t), borderRadius: dart.nullCheck(border_radius.BorderRadiusGeometry.lerp(a.borderRadius, this.borderRadius, t))});
-      }
-      if (circle_border.CircleBorder.is(a)) {
-        return new rounded_rectangle_border._RoundedRectangleToCircleBorder.new({side: borders.BorderSide.lerp(a.side, this.side, t), borderRadius: this.borderRadius, circleness: 1.0 - dart.notNull(t)});
-      }
-      return super.lerpFrom(a, t);
+    get onTap() {
+      return this[onTap$];
     }
-    lerpTo(b, t) {
-      if (t == null) dart.nullFailed(I[0], 75, 46, "t");
-      if (!(t != null)) dart.assertFailed(null, I[0], 76, 12, "t != null");
-      if (rounded_rectangle_border.RoundedRectangleBorder.is(b)) {
-        return new rounded_rectangle_border.RoundedRectangleBorder.new({side: borders.BorderSide.lerp(this.side, b.side, t), borderRadius: dart.nullCheck(border_radius.BorderRadiusGeometry.lerp(this.borderRadius, b.borderRadius, t))});
-      }
-      if (circle_border.CircleBorder.is(b)) {
-        return new rounded_rectangle_border._RoundedRectangleToCircleBorder.new({side: borders.BorderSide.lerp(this.side, b.side, t), borderRadius: this.borderRadius, circleness: t});
-      }
-      return super.lerpTo(b, t);
+    set onTap(value) {
+      super.onTap = value;
     }
-    copyWith(opts) {
-      let t0, t0$;
-      let side = opts && 'side' in opts ? opts.side : null;
-      let borderRadius = opts && 'borderRadius' in opts ? opts.borderRadius : null;
-      return new rounded_rectangle_border.RoundedRectangleBorder.new({side: (t0 = side, t0 == null ? this.side : t0), borderRadius: (t0$ = borderRadius, t0$ == null ? this.borderRadius : t0$)});
+    get onDoubleTap() {
+      return this[onDoubleTap$];
     }
-    getInnerPath(rect, opts) {
-      let t0;
-      if (rect == null) dart.nullFailed(I[0], 104, 26, "rect");
-      let textDirection = opts && 'textDirection' in opts ? opts.textDirection : null;
-      t0 = ui.Path.new();
-      return (() => {
-        t0.addRRect(this.borderRadius.resolve(textDirection).toRRect(rect).deflate(this.side.width));
-        return t0;
-      })();
+    set onDoubleTap(value) {
+      super.onDoubleTap = value;
     }
-    getOuterPath(rect, opts) {
-      let t0;
-      if (rect == null) dart.nullFailed(I[0], 110, 26, "rect");
-      let textDirection = opts && 'textDirection' in opts ? opts.textDirection : null;
-      t0 = ui.Path.new();
-      return (() => {
-        t0.addRRect(this.borderRadius.resolve(textDirection).toRRect(rect));
-        return t0;
-      })();
+    get onLongPress() {
+      return this[onLongPress$];
     }
-    paint(canvas, rect, opts) {
-      let t0;
-      if (canvas == null) dart.nullFailed(I[0], 116, 21, "canvas");
-      if (rect == null) dart.nullFailed(I[0], 116, 34, "rect");
-      let textDirection = opts && 'textDirection' in opts ? opts.textDirection : null;
-      switch (this.side.style) {
-        case C[1] || CT.C1:
-        {
-          break;
-        }
-        case C[5] || CT.C5:
-        {
-          let width = this.side.width;
-          if (width === 0.0) {
-            canvas.drawRRect(this.borderRadius.resolve(textDirection).toRRect(rect), this.side.toPaint());
-          } else {
-            let outer = this.borderRadius.resolve(textDirection).toRRect(rect);
-            let inner = outer.deflate(width);
-            let paint = (t0 = ui.Paint.new(), (() => {
-              t0.color = this.side.color;
-              return t0;
-            })());
-            canvas.drawDRRect(outer, inner, paint);
-          }
-          break;
-        }
-        default:
-        {
-          dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
-        }
-      }
+    set onLongPress(value) {
+      super.onLongPress = value;
     }
-    _equals(other) {
-      if (other == null) return false;
-      if (!dart.equals(dart.runtimeType(other), this[$runtimeType])) return false;
-      return rounded_rectangle_border.RoundedRectangleBorder.is(other) && dart.equals(other.side, this.side) && dart.equals(other.borderRadius, this.borderRadius);
+    get doubleTapDelay() {
+      return this[doubleTapDelay$];
     }
-    get hashCode() {
-      return ui.hashValues(this.side, this.borderRadius);
+    set doubleTapDelay(value) {
+      super.doubleTapDelay = value;
     }
-    toString() {
-      return dart.str(object.objectRuntimeType(this, "RoundedRectangleBorder")) + "(" + dart.str(this.side) + ", " + dart.str(this.borderRadius) + ")";
+    get controller() {
+      return this[controller$];
+    }
+    set controller(value) {
+      super.controller = value;
+    }
+    createState() {
+      return new positioned_tap_detector._TapPositionDetectorState.new();
     }
   };
-  (rounded_rectangle_border.RoundedRectangleBorder.new = function(opts) {
-    let side = opts && 'side' in opts ? opts.side : C[0] || CT.C0;
-    if (side == null) dart.nullFailed(I[0], 33, 16, "side");
-    let borderRadius = opts && 'borderRadius' in opts ? opts.borderRadius : C[3] || CT.C3;
-    if (borderRadius == null) dart.nullFailed(I[0], 34, 10, "borderRadius");
-    this[borderRadius$] = borderRadius;
-    if (!(side != null)) dart.assertFailed(null, I[0], 35, 15, "side != null");
-    if (!(borderRadius != null)) dart.assertFailed(null, I[0], 36, 15, "borderRadius != null");
-    rounded_rectangle_border.RoundedRectangleBorder.__proto__.new.call(this, {side: side});
+  (positioned_tap_detector.PositionedTapDetector.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let child = opts && 'child' in opts ? opts.child : null;
+    let onTap = opts && 'onTap' in opts ? opts.onTap : null;
+    let onDoubleTap = opts && 'onDoubleTap' in opts ? opts.onDoubleTap : null;
+    let onLongPress = opts && 'onLongPress' in opts ? opts.onLongPress : null;
+    let doubleTapDelay = opts && 'doubleTapDelay' in opts ? opts.doubleTapDelay : C0 || CT.C0;
+    let behavior = opts && 'behavior' in opts ? opts.behavior : null;
+    let controller = opts && 'controller' in opts ? opts.controller : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[child$] = child;
+    this[onTap$] = onTap;
+    this[onDoubleTap$] = onDoubleTap;
+    this[onLongPress$] = onLongPress;
+    this[doubleTapDelay$] = doubleTapDelay;
+    this[behavior$] = behavior;
+    this[controller$] = controller;
+    positioned_tap_detector.PositionedTapDetector.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
     ;
-  }).prototype = rounded_rectangle_border.RoundedRectangleBorder.prototype;
-  dart.addTypeTests(rounded_rectangle_border.RoundedRectangleBorder);
-  dart.addTypeCaches(rounded_rectangle_border.RoundedRectangleBorder);
-  dart.setMethodSignature(rounded_rectangle_border.RoundedRectangleBorder, () => ({
-    __proto__: dart.getMethods(rounded_rectangle_border.RoundedRectangleBorder.__proto__),
-    scale: dart.fnType(borders.ShapeBorder, [core.double]),
-    copyWith: dart.fnType(rounded_rectangle_border.RoundedRectangleBorder, [], {borderRadius: dart.nullable(border_radius.BorderRadius), side: dart.nullable(borders.BorderSide)}, {}),
-    getInnerPath: dart.fnType(ui.Path, [ui.Rect], {textDirection: dart.nullable(ui.TextDirection)}, {}),
-    getOuterPath: dart.fnType(ui.Path, [ui.Rect], {textDirection: dart.nullable(ui.TextDirection)}, {}),
-    paint: dart.fnType(dart.void, [ui.Canvas, ui.Rect], {textDirection: dart.nullable(ui.TextDirection)}, {})
+  }).prototype = positioned_tap_detector.PositionedTapDetector.prototype;
+  dart.addTypeTests(positioned_tap_detector.PositionedTapDetector);
+  dart.addTypeCaches(positioned_tap_detector.PositionedTapDetector);
+  dart.setMethodSignature(positioned_tap_detector.PositionedTapDetector, () => ({
+    __proto__: dart.getMethods(positioned_tap_detector.PositionedTapDetector.__proto__),
+    createState: dart.fnType(dart.legacy(positioned_tap_detector._TapPositionDetectorState), [])
   }));
-  dart.setGetterSignature(rounded_rectangle_border.RoundedRectangleBorder, () => ({
-    __proto__: dart.getGetters(rounded_rectangle_border.RoundedRectangleBorder.__proto__),
-    dimensions: edge_insets.EdgeInsetsGeometry
+  dart.setLibraryUri(positioned_tap_detector.PositionedTapDetector, L0);
+  dart.setFieldSignature(positioned_tap_detector.PositionedTapDetector, () => ({
+    __proto__: dart.getFields(positioned_tap_detector.PositionedTapDetector.__proto__),
+    child: dart.finalFieldType(dart.legacy(framework.Widget)),
+    behavior: dart.finalFieldType(dart.legacy(proxy_box.HitTestBehavior)),
+    onTap: dart.finalFieldType(dart.legacy(dart.fnType(dart.dynamic, [dart.legacy(positioned_tap_detector.TapPosition)]))),
+    onDoubleTap: dart.finalFieldType(dart.legacy(dart.fnType(dart.dynamic, [dart.legacy(positioned_tap_detector.TapPosition)]))),
+    onLongPress: dart.finalFieldType(dart.legacy(dart.fnType(dart.dynamic, [dart.legacy(positioned_tap_detector.TapPosition)]))),
+    doubleTapDelay: dart.finalFieldType(dart.legacy(core.Duration)),
+    controller: dart.finalFieldType(dart.legacy(positioned_tap_detector.PositionedTapController))
   }));
-  dart.setLibraryUri(rounded_rectangle_border.RoundedRectangleBorder, I[1]);
-  dart.setFieldSignature(rounded_rectangle_border.RoundedRectangleBorder, () => ({
-    __proto__: dart.getFields(rounded_rectangle_border.RoundedRectangleBorder.__proto__),
-    borderRadius: dart.finalFieldType(border_radius.BorderRadiusGeometry)
-  }));
-  dart.defineExtensionMethods(rounded_rectangle_border.RoundedRectangleBorder, ['_equals', 'toString']);
-  dart.defineExtensionAccessors(rounded_rectangle_border.RoundedRectangleBorder, ['hashCode']);
-  var borderRadius$0 = dart.privateName(rounded_rectangle_border, "_RoundedRectangleToCircleBorder.borderRadius");
-  var circleness$ = dart.privateName(rounded_rectangle_border, "_RoundedRectangleToCircleBorder.circleness");
-  var _adjustRect = dart.privateName(rounded_rectangle_border, "_adjustRect");
-  var _adjustBorderRadius = dart.privateName(rounded_rectangle_border, "_adjustBorderRadius");
-  rounded_rectangle_border._RoundedRectangleToCircleBorder = class _RoundedRectangleToCircleBorder extends borders.OutlinedBorder {
-    get borderRadius() {
-      return this[borderRadius$0];
+  dart.defineLazy(positioned_tap_detector.PositionedTapDetector, {
+    /*positioned_tap_detector.PositionedTapDetector._DEFAULT_DELAY*/get _DEFAULT_DELAY() {
+      return C0 || CT.C0;
+    },
+    /*positioned_tap_detector.PositionedTapDetector._DOUBLE_TAP_MAX_OFFSET*/get _DOUBLE_TAP_MAX_OFFSET() {
+      return 48;
     }
-    set borderRadius(value) {
-      super.borderRadius = value;
+  }, true);
+  var _controller = dart.privateName(positioned_tap_detector, "_controller");
+  var _tapController = dart.privateName(positioned_tap_detector, "_tapController");
+  var _pendingTap = dart.privateName(positioned_tap_detector, "_pendingTap");
+  var _firstTap = dart.privateName(positioned_tap_detector, "_firstTap");
+  var _stream = dart.privateName(positioned_tap_detector, "_stream");
+  var _sink = dart.privateName(positioned_tap_detector, "_sink");
+  var _updateController = dart.privateName(positioned_tap_detector, "_updateController");
+  var _onTimeout = dart.privateName(positioned_tap_detector, "_onTimeout");
+  var _onTapConfirmed = dart.privateName(positioned_tap_detector, "_onTapConfirmed");
+  var _state = dart.privateName(positioned_tap_detector, "_state");
+  var _postCallback = dart.privateName(positioned_tap_detector, "_postCallback");
+  var _handleSecondTap = dart.privateName(positioned_tap_detector, "_handleSecondTap");
+  var _isDoubleTap = dart.privateName(positioned_tap_detector, "_isDoubleTap");
+  var _onTapDownEvent = dart.privateName(positioned_tap_detector, "_onTapDownEvent");
+  var _onTapEvent = dart.privateName(positioned_tap_detector, "_onTapEvent");
+  var _onLongPressEvent = dart.privateName(positioned_tap_detector, "_onLongPressEvent");
+  var _getTapPositions = dart.privateName(positioned_tap_detector, "_getTapPositions");
+  var _getWidgetTopLeft = dart.privateName(positioned_tap_detector, "_getWidgetTopLeft");
+  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  var C3;
+  var C4;
+  var C5;
+  var C6;
+  var C7;
+  var C2;
+  var C1;
+  positioned_tap_detector._TapPositionDetectorState = class _TapPositionDetectorState extends framework.State$(dart.legacy(positioned_tap_detector.PositionedTapDetector)) {
+    get [_stream]() {
+      return this[_controller].stream;
     }
-    get circleness() {
-      return this[circleness$];
+    get [_sink]() {
+      return this[_controller].sink;
     }
-    set circleness(value) {
-      super.circleness = value;
+    initState() {
+      this[_updateController]();
+      this[_stream].timeout(this.widget.doubleTapDelay).handleError(dart.bind(this, _onTimeout), {test: dart.fn(e => TimeoutExceptionL().is(e), dynamicToboolL())}).listen(dart.bind(this, _onTapConfirmed));
+      super.initState();
     }
-    get dimensions() {
-      return new edge_insets.EdgeInsets.all(this.side.width);
-    }
-    scale(t) {
-      if (t == null) dart.nullFailed(I[0], 172, 28, "t");
-      return new rounded_rectangle_border._RoundedRectangleToCircleBorder.new({side: this.side.scale(t), borderRadius: this.borderRadius['*'](t), circleness: t});
-    }
-    lerpFrom(a, t) {
-      if (t == null) dart.nullFailed(I[0], 181, 48, "t");
-      if (!(t != null)) dart.assertFailed(null, I[0], 182, 12, "t != null");
-      if (rounded_rectangle_border.RoundedRectangleBorder.is(a)) {
-        return new rounded_rectangle_border._RoundedRectangleToCircleBorder.new({side: borders.BorderSide.lerp(a.side, this.side, t), borderRadius: dart.nullCheck(border_radius.BorderRadiusGeometry.lerp(a.borderRadius, this.borderRadius, t)), circleness: dart.notNull(this.circleness) * dart.notNull(t)});
+    didUpdateWidget(oldWidget) {
+      PositionedTapDetectorL().as(oldWidget);
+      super.didUpdateWidget(oldWidget);
+      if (!dart.equals(this.widget.controller, oldWidget.controller)) {
+        this[_updateController]();
       }
-      if (circle_border.CircleBorder.is(a)) {
-        return new rounded_rectangle_border._RoundedRectangleToCircleBorder.new({side: borders.BorderSide.lerp(a.side, this.side, t), borderRadius: this.borderRadius, circleness: dart.notNull(this.circleness) + (1.0 - dart.notNull(this.circleness)) * (1.0 - dart.notNull(t))});
-      }
-      if (rounded_rectangle_border._RoundedRectangleToCircleBorder.is(a)) {
-        return new rounded_rectangle_border._RoundedRectangleToCircleBorder.new({side: borders.BorderSide.lerp(a.side, this.side, t), borderRadius: dart.nullCheck(border_radius.BorderRadiusGeometry.lerp(a.borderRadius, this.borderRadius, t)), circleness: dart.nullCheck(ui.lerpDouble(a.circleness, this.circleness, t))});
-      }
-      return super.lerpFrom(a, t);
     }
-    lerpTo(b, t) {
-      if (t == null) dart.nullFailed(I[0], 208, 46, "t");
-      if (rounded_rectangle_border.RoundedRectangleBorder.is(b)) {
-        return new rounded_rectangle_border._RoundedRectangleToCircleBorder.new({side: borders.BorderSide.lerp(this.side, b.side, t), borderRadius: dart.nullCheck(border_radius.BorderRadiusGeometry.lerp(this.borderRadius, b.borderRadius, t)), circleness: dart.notNull(this.circleness) * (1.0 - dart.notNull(t))});
+    [_updateController]() {
+      let t0;
+      t0 = this[_tapController];
+      t0 == null ? null : t0[_state] = null;
+      if (this.widget.controller != null) {
+        this.widget.controller[_state] = this;
+        this[_tapController] = this.widget.controller;
       }
-      if (circle_border.CircleBorder.is(b)) {
-        return new rounded_rectangle_border._RoundedRectangleToCircleBorder.new({side: borders.BorderSide.lerp(this.side, b.side, t), borderRadius: this.borderRadius, circleness: dart.notNull(this.circleness) + (1.0 - dart.notNull(this.circleness)) * dart.notNull(t)});
-      }
-      if (rounded_rectangle_border._RoundedRectangleToCircleBorder.is(b)) {
-        return new rounded_rectangle_border._RoundedRectangleToCircleBorder.new({side: borders.BorderSide.lerp(this.side, b.side, t), borderRadius: dart.nullCheck(border_radius.BorderRadiusGeometry.lerp(this.borderRadius, b.borderRadius, t)), circleness: dart.nullCheck(ui.lerpDouble(this.circleness, b.circleness, t))});
-      }
-      return super.lerpTo(b, t);
     }
-    [_adjustRect](rect) {
-      if (rect == null) dart.nullFailed(I[0], 233, 25, "rect");
-      if (this.circleness === 0.0 || rect.width == rect.height) return rect;
-      if (dart.notNull(rect.width) < dart.notNull(rect.height)) {
-        let delta = dart.notNull(this.circleness) * (dart.notNull(rect.height) - dart.notNull(rect.width)) / 2.0;
-        return new ui.Rect.fromLTRB(rect.left, dart.notNull(rect.top) + delta, rect.right, dart.notNull(rect.bottom) - delta);
+    [_onTimeout](error) {
+      if (this[_firstTap] != null && this[_pendingTap] == null) {
+        this[_postCallback](this[_firstTap], this.widget.onTap);
+      }
+    }
+    [_onTapConfirmed](details) {
+      if (this[_firstTap] == null) {
+        this[_firstTap] = details;
       } else {
-        let delta = dart.notNull(this.circleness) * (dart.notNull(rect.width) - dart.notNull(rect.height)) / 2.0;
-        return new ui.Rect.fromLTRB(dart.notNull(rect.left) + delta, rect.top, dart.notNull(rect.right) - delta, rect.bottom);
+        this[_handleSecondTap](details);
       }
     }
-    [_adjustBorderRadius](rect, textDirection) {
-      if (rect == null) dart.nullFailed(I[0], 255, 42, "rect");
-      let resolvedRadius = this.borderRadius.resolve(textDirection);
-      if (this.circleness === 0.0) return resolvedRadius;
-      return border_radius.BorderRadius.lerp(resolvedRadius, new border_radius.BorderRadius.circular(dart.notNull(rect.shortestSide) / 2.0), this.circleness);
+    [_handleSecondTap](secondTap) {
+      if (dart.test(this[_isDoubleTap](this[_firstTap], secondTap))) {
+        this[_postCallback](secondTap, this.widget.onDoubleTap);
+      } else {
+        this[_postCallback](this[_firstTap], this.widget.onTap);
+        this[_postCallback](secondTap, this.widget.onTap);
+      }
     }
-    getInnerPath(rect, opts) {
-      let t0;
-      if (rect == null) dart.nullFailed(I[0], 263, 26, "rect");
-      let textDirection = opts && 'textDirection' in opts ? opts.textDirection : null;
-      t0 = ui.Path.new();
-      return (() => {
-        t0.addRRect(dart.nullCheck(this[_adjustBorderRadius](rect, textDirection)).toRRect(this[_adjustRect](rect)).deflate(this.side.width));
-        return t0;
-      })();
+    [_isDoubleTap](d1, d2) {
+      let dx = dart.notNull(d1.globalPosition.dx) - dart.notNull(d2.globalPosition.dx);
+      let dy = dart.notNull(d1.globalPosition.dy) - dart.notNull(d2.globalPosition.dy);
+      return math.sqrt(dx * dx + dy * dy) <= 48;
     }
-    getOuterPath(rect, opts) {
-      let t0;
-      if (rect == null) dart.nullFailed(I[0], 269, 26, "rect");
-      let textDirection = opts && 'textDirection' in opts ? opts.textDirection : null;
-      t0 = ui.Path.new();
-      return (() => {
-        t0.addRRect(dart.nullCheck(this[_adjustBorderRadius](rect, textDirection)).toRRect(this[_adjustRect](rect)));
-        return t0;
-      })();
+    [_onTapDownEvent](details) {
+      this[_pendingTap] = details;
     }
-    copyWith(opts) {
+    [_onTapEvent]() {
+      if (this.widget.onDoubleTap == null) {
+        this[_postCallback](this[_pendingTap], this.widget.onTap);
+      } else {
+        this[_sink].add(this[_pendingTap]);
+      }
+      this[_pendingTap] = null;
+    }
+    [_onLongPressEvent]() {
+      if (this[_firstTap] == null) {
+        this[_postCallback](this[_pendingTap], this.widget.onLongPress);
+      } else {
+        this[_sink].add(this[_pendingTap]);
+        this[_pendingTap] = null;
+      }
+    }
+    [_postCallback](details, callback) {
+      return async.async(dart.void, (function* _postCallback() {
+        this[_firstTap] = null;
+        if (callback != null) {
+          callback(this[_getTapPositions](details));
+        }
+      }).bind(this));
+    }
+    [_getTapPositions](details) {
+      let topLeft = this[_getWidgetTopLeft]();
+      let global = details.globalPosition;
+      let relative = topLeft != null ? global['-'](topLeft) : null;
+      return new positioned_tap_detector.TapPosition.new(global, relative);
+    }
+    [_getWidgetTopLeft]() {
       let t0, t0$, t0$0;
-      let side = opts && 'side' in opts ? opts.side : null;
-      let borderRadius = opts && 'borderRadius' in opts ? opts.borderRadius : null;
-      let circleness = opts && 'circleness' in opts ? opts.circleness : null;
-      return new rounded_rectangle_border._RoundedRectangleToCircleBorder.new({side: (t0 = side, t0 == null ? this.side : t0), borderRadius: (t0$ = borderRadius, t0$ == null ? this.borderRadius : t0$), circleness: (t0$0 = circleness, t0$0 == null ? this.circleness : t0$0)});
+      let translation = (t0$0 = (t0$ = (t0 = this.context, t0 == null ? null : t0.findRenderObject()), t0$ == null ? null : t0$.getTransformTo(null)), t0$0 == null ? null : t0$0.getTranslation());
+      return translation != null ? new ui.Offset.new(translation.x, translation.y) : null;
     }
-    paint(canvas, rect, opts) {
+    dispose() {
       let t0;
-      if (canvas == null) dart.nullFailed(I[0], 284, 21, "canvas");
-      if (rect == null) dart.nullFailed(I[0], 284, 34, "rect");
-      let textDirection = opts && 'textDirection' in opts ? opts.textDirection : null;
-      switch (this.side.style) {
-        case C[1] || CT.C1:
-        {
-          break;
-        }
-        case C[5] || CT.C5:
-        {
-          let width = this.side.width;
-          if (width === 0.0) {
-            canvas.drawRRect(dart.nullCheck(this[_adjustBorderRadius](rect, textDirection)).toRRect(this[_adjustRect](rect)), this.side.toPaint());
-          } else {
-            let outer = dart.nullCheck(this[_adjustBorderRadius](rect, textDirection)).toRRect(this[_adjustRect](rect));
-            let inner = outer.deflate(width);
-            let paint = (t0 = ui.Paint.new(), (() => {
-              t0.color = this.side.color;
-              return t0;
-            })());
-            canvas.drawDRRect(outer, inner, paint);
-          }
-          break;
-        }
-        default:
-        {
-          dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
-        }
-      }
+      this[_controller].close();
+      t0 = this[_tapController];
+      t0 == null ? null : t0[_state] = null;
+      super.dispose();
+    }
+    build(context) {
+      let t0;
+      if (this.widget.controller != null) return this.widget.child;
+      return new gesture_detector.GestureDetector.new({child: this.widget.child, behavior: (t0 = this.widget.behavior, t0 == null ? this.widget.child == null ? proxy_box.HitTestBehavior.translucent : proxy_box.HitTestBehavior.deferToChild : t0), onTap: dart.bind(this, _onTapEvent), onLongPress: dart.bind(this, _onLongPressEvent), onTapDown: dart.bind(this, _onTapDownEvent), $creationLocationd_0dea112b090073317d4: C1 || CT.C1});
+    }
+  };
+  (positioned_tap_detector._TapPositionDetectorState.new = function() {
+    this[_controller] = StreamControllerOfTapDownDetailsL().new();
+    this[_tapController] = null;
+    this[_pendingTap] = null;
+    this[_firstTap] = null;
+    positioned_tap_detector._TapPositionDetectorState.__proto__.new.call(this);
+    ;
+  }).prototype = positioned_tap_detector._TapPositionDetectorState.prototype;
+  dart.addTypeTests(positioned_tap_detector._TapPositionDetectorState);
+  dart.addTypeCaches(positioned_tap_detector._TapPositionDetectorState);
+  dart.setMethodSignature(positioned_tap_detector._TapPositionDetectorState, () => ({
+    __proto__: dart.getMethods(positioned_tap_detector._TapPositionDetectorState.__proto__),
+    didUpdateWidget: dart.fnType(dart.void, [dart.legacy(core.Object)]),
+    [_updateController]: dart.fnType(dart.void, []),
+    [_onTimeout]: dart.fnType(dart.void, [dart.dynamic]),
+    [_onTapConfirmed]: dart.fnType(dart.void, [dart.legacy(tap.TapDownDetails)]),
+    [_handleSecondTap]: dart.fnType(dart.void, [dart.legacy(tap.TapDownDetails)]),
+    [_isDoubleTap]: dart.fnType(dart.legacy(core.bool), [dart.legacy(tap.TapDownDetails), dart.legacy(tap.TapDownDetails)]),
+    [_onTapDownEvent]: dart.fnType(dart.void, [dart.legacy(tap.TapDownDetails)]),
+    [_onTapEvent]: dart.fnType(dart.void, []),
+    [_onLongPressEvent]: dart.fnType(dart.void, []),
+    [_postCallback]: dart.fnType(dart.void, [dart.legacy(tap.TapDownDetails), dart.legacy(dart.fnType(dart.dynamic, [dart.legacy(positioned_tap_detector.TapPosition)]))]),
+    [_getTapPositions]: dart.fnType(dart.legacy(positioned_tap_detector.TapPosition), [dart.legacy(tap.TapDownDetails)]),
+    [_getWidgetTopLeft]: dart.fnType(dart.legacy(ui.Offset), []),
+    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
+  }));
+  dart.setGetterSignature(positioned_tap_detector._TapPositionDetectorState, () => ({
+    __proto__: dart.getGetters(positioned_tap_detector._TapPositionDetectorState.__proto__),
+    [_stream]: dart.legacy(async.Stream$(dart.legacy(tap.TapDownDetails))),
+    [_sink]: dart.legacy(core.Sink$(dart.legacy(tap.TapDownDetails)))
+  }));
+  dart.setLibraryUri(positioned_tap_detector._TapPositionDetectorState, L0);
+  dart.setFieldSignature(positioned_tap_detector._TapPositionDetectorState, () => ({
+    __proto__: dart.getFields(positioned_tap_detector._TapPositionDetectorState.__proto__),
+    [_controller]: dart.fieldType(dart.legacy(async.StreamController$(dart.legacy(tap.TapDownDetails)))),
+    [_tapController]: dart.fieldType(dart.legacy(positioned_tap_detector.PositionedTapController)),
+    [_pendingTap]: dart.fieldType(dart.legacy(tap.TapDownDetails)),
+    [_firstTap]: dart.fieldType(dart.legacy(tap.TapDownDetails))
+  }));
+  var global$ = dart.privateName(positioned_tap_detector, "TapPosition.global");
+  var relative$ = dart.privateName(positioned_tap_detector, "TapPosition.relative");
+  positioned_tap_detector.TapPosition = class TapPosition extends core.Object {
+    get global() {
+      return this[global$];
+    }
+    set global(value) {
+      this[global$] = value;
+    }
+    get relative() {
+      return this[relative$];
+    }
+    set relative(value) {
+      this[relative$] = value;
     }
     _equals(other) {
       if (other == null) return false;
-      if (!dart.equals(dart.runtimeType(other), this[$runtimeType])) return false;
-      return rounded_rectangle_border._RoundedRectangleToCircleBorder.is(other) && dart.equals(other.side, this.side) && dart.equals(other.borderRadius, this.borderRadius) && other.circleness == this.circleness;
+      if (!TapPositionL().is(other)) return false;
+      let typedOther = TapPositionL().as(other);
+      return dart.equals(this.global, typedOther.global) && dart.equals(this.relative, dart.dload(other, 'relative'));
     }
     get hashCode() {
-      return ui.hashValues(this.side, this.borderRadius, this.circleness);
-    }
-    toString() {
-      return "RoundedRectangleBorder(" + dart.str(this.side) + ", " + dart.str(this.borderRadius) + ", " + (dart.notNull(this.circleness) * 100)[$toStringAsFixed](1) + "% of the way to being a CircleBorder)";
+      return ui.hashValues(this.global, this.relative);
     }
   };
-  (rounded_rectangle_border._RoundedRectangleToCircleBorder.new = function(opts) {
-    let side = opts && 'side' in opts ? opts.side : C[0] || CT.C0;
-    if (side == null) dart.nullFailed(I[0], 154, 16, "side");
-    let borderRadius = opts && 'borderRadius' in opts ? opts.borderRadius : C[3] || CT.C3;
-    if (borderRadius == null) dart.nullFailed(I[0], 155, 10, "borderRadius");
-    let circleness = opts && 'circleness' in opts ? opts.circleness : null;
-    if (circleness == null) dart.nullFailed(I[0], 156, 19, "circleness");
-    this[borderRadius$0] = borderRadius;
-    this[circleness$] = circleness;
-    if (!(side != null)) dart.assertFailed(null, I[0], 157, 15, "side != null");
-    if (!(borderRadius != null)) dart.assertFailed(null, I[0], 158, 15, "borderRadius != null");
-    if (!(circleness != null)) dart.assertFailed(null, I[0], 159, 15, "circleness != null");
-    rounded_rectangle_border._RoundedRectangleToCircleBorder.__proto__.new.call(this, {side: side});
+  (positioned_tap_detector.TapPosition.new = function(global, relative) {
+    this[global$] = global;
+    this[relative$] = relative;
     ;
-  }).prototype = rounded_rectangle_border._RoundedRectangleToCircleBorder.prototype;
-  dart.addTypeTests(rounded_rectangle_border._RoundedRectangleToCircleBorder);
-  dart.addTypeCaches(rounded_rectangle_border._RoundedRectangleToCircleBorder);
-  dart.setMethodSignature(rounded_rectangle_border._RoundedRectangleToCircleBorder, () => ({
-    __proto__: dart.getMethods(rounded_rectangle_border._RoundedRectangleToCircleBorder.__proto__),
-    scale: dart.fnType(borders.ShapeBorder, [core.double]),
-    [_adjustRect]: dart.fnType(ui.Rect, [ui.Rect]),
-    [_adjustBorderRadius]: dart.fnType(dart.nullable(border_radius.BorderRadius), [ui.Rect, dart.nullable(ui.TextDirection)]),
-    getInnerPath: dart.fnType(ui.Path, [ui.Rect], {textDirection: dart.nullable(ui.TextDirection)}, {}),
-    getOuterPath: dart.fnType(ui.Path, [ui.Rect], {textDirection: dart.nullable(ui.TextDirection)}, {}),
-    copyWith: dart.fnType(rounded_rectangle_border._RoundedRectangleToCircleBorder, [], {borderRadius: dart.nullable(border_radius.BorderRadius), circleness: dart.nullable(core.double), side: dart.nullable(borders.BorderSide)}, {}),
-    paint: dart.fnType(dart.void, [ui.Canvas, ui.Rect], {textDirection: dart.nullable(ui.TextDirection)}, {})
+  }).prototype = positioned_tap_detector.TapPosition.prototype;
+  dart.addTypeTests(positioned_tap_detector.TapPosition);
+  dart.addTypeCaches(positioned_tap_detector.TapPosition);
+  dart.setMethodSignature(positioned_tap_detector.TapPosition, () => ({
+    __proto__: dart.getMethods(positioned_tap_detector.TapPosition.__proto__),
+    _equals: dart.fnType(dart.legacy(core.bool), [dart.dynamic]),
+    [$_equals]: dart.fnType(dart.legacy(core.bool), [dart.dynamic])
   }));
-  dart.setGetterSignature(rounded_rectangle_border._RoundedRectangleToCircleBorder, () => ({
-    __proto__: dart.getGetters(rounded_rectangle_border._RoundedRectangleToCircleBorder.__proto__),
-    dimensions: edge_insets.EdgeInsetsGeometry
+  dart.setGetterSignature(positioned_tap_detector.TapPosition, () => ({
+    __proto__: dart.getGetters(positioned_tap_detector.TapPosition.__proto__),
+    hashCode: dart.legacy(core.int),
+    [$hashCode]: dart.legacy(core.int)
   }));
-  dart.setLibraryUri(rounded_rectangle_border._RoundedRectangleToCircleBorder, I[1]);
-  dart.setFieldSignature(rounded_rectangle_border._RoundedRectangleToCircleBorder, () => ({
-    __proto__: dart.getFields(rounded_rectangle_border._RoundedRectangleToCircleBorder.__proto__),
-    borderRadius: dart.finalFieldType(border_radius.BorderRadiusGeometry),
-    circleness: dart.finalFieldType(core.double)
+  dart.setLibraryUri(positioned_tap_detector.TapPosition, L0);
+  dart.setFieldSignature(positioned_tap_detector.TapPosition, () => ({
+    __proto__: dart.getFields(positioned_tap_detector.TapPosition.__proto__),
+    global: dart.fieldType(dart.legacy(ui.Offset)),
+    relative: dart.fieldType(dart.legacy(ui.Offset))
   }));
-  dart.defineExtensionMethods(rounded_rectangle_border._RoundedRectangleToCircleBorder, ['_equals', 'toString']);
-  dart.defineExtensionAccessors(rounded_rectangle_border._RoundedRectangleToCircleBorder, ['hashCode']);
-  dart.trackLibraries("packages/flutter/src/painting/rounded_rectangle_border.dart", {
-    "package:flutter/src/painting/rounded_rectangle_border.dart": rounded_rectangle_border
+  dart.defineExtensionMethods(positioned_tap_detector.TapPosition, ['_equals']);
+  dart.defineExtensionAccessors(positioned_tap_detector.TapPosition, ['hashCode']);
+  positioned_tap_detector.PositionedTapController = class PositionedTapController extends core.Object {
+    onTap() {
+      let t0;
+      t0 = this[_state];
+      return t0 == null ? null : t0[_onTapEvent]();
+    }
+    onLongPress() {
+      let t0;
+      t0 = this[_state];
+      return t0 == null ? null : t0[_onLongPressEvent]();
+    }
+    onTapDown(details) {
+      let t0;
+      t0 = this[_state];
+      return t0 == null ? null : t0[_onTapDownEvent](details);
+    }
+  };
+  (positioned_tap_detector.PositionedTapController.new = function() {
+    this[_state] = null;
+    ;
+  }).prototype = positioned_tap_detector.PositionedTapController.prototype;
+  dart.addTypeTests(positioned_tap_detector.PositionedTapController);
+  dart.addTypeCaches(positioned_tap_detector.PositionedTapController);
+  dart.setMethodSignature(positioned_tap_detector.PositionedTapController, () => ({
+    __proto__: dart.getMethods(positioned_tap_detector.PositionedTapController.__proto__),
+    onTap: dart.fnType(dart.void, []),
+    onLongPress: dart.fnType(dart.void, []),
+    onTapDown: dart.fnType(dart.void, [dart.legacy(tap.TapDownDetails)])
+  }));
+  dart.setLibraryUri(positioned_tap_detector.PositionedTapController, L0);
+  dart.setFieldSignature(positioned_tap_detector.PositionedTapController, () => ({
+    __proto__: dart.getFields(positioned_tap_detector.PositionedTapController.__proto__),
+    [_state]: dart.fieldType(dart.legacy(positioned_tap_detector._TapPositionDetectorState))
+  }));
+  dart.trackLibraries("packages/positioned_tap_detector/positioned_tap_detector.dart", {
+    "package:positioned_tap_detector/positioned_tap_detector.dart": positioned_tap_detector
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["rounded_rectangle_border.dart"],"names":[],"mappings":"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","file":"../../../../../../../../packages/flutter/src/painting/rounded_rectangle_border.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["positioned_tap_detector.dart"],"names":[],"mappings":"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","file":"../../../../../../../packages/positioned_tap_detector/positioned_tap_detector.dart.lib.js"}');
   // Exports:
   return {
-    src__painting__rounded_rectangle_border: rounded_rectangle_border
+    positioned_tap_detector: positioned_tap_detector
   };
 }));
 
-//# sourceMappingURL=rounded_rectangle_border.dart.lib.js.map
+//# sourceMappingURL=positioned_tap_detector.dart.lib.js.map
