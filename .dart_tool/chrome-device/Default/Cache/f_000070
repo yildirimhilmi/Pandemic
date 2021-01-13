@@ -1,228 +1,283 @@
-define(['dart_sdk', 'packages/flutter/src/painting/borders.dart', 'packages/flutter/src/painting/colors.dart', 'packages/flutter/src/foundation/debug.dart'], (function load__packages__flutter__src__material__floating_action_button_theme_dart(dart_sdk, packages__flutter__src__painting__borders$46dart, packages__flutter__src__painting__colors$46dart, packages__flutter__src__foundation__debug$46dart) {
+define(['dart_sdk'], (function load__packages__flutter__src__gestures__lsq_solver_dart(dart_sdk) {
   'use strict';
   const core = dart_sdk.core;
-  const ui = dart_sdk.ui;
+  const _native_typed_data = dart_sdk._native_typed_data;
+  const math = dart_sdk.math;
+  const _internal = dart_sdk._internal;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const borders = packages__flutter__src__painting__borders$46dart.src__painting__borders;
-  const colors = packages__flutter__src__painting__colors$46dart.src__painting__colors;
-  const diagnostics = packages__flutter__src__foundation__debug$46dart.src__foundation__diagnostics;
-  var floating_action_button_theme = Object.create(dart.library);
-  var $runtimeType = dartx.runtimeType;
+  var lsq_solver = Object.create(dart.library);
+  var $_get = dartx._get;
+  var $_set = dartx._set;
+  var $length = dartx.length;
   dart._checkModuleNullSafetyMode(false);
-  var T = Object.create({
-    DiagnosticsPropertyOfShapeBorder: () => (T.DiagnosticsPropertyOfShapeBorder = dart.constFn(diagnostics.DiagnosticsProperty$(borders.ShapeBorder)))()
-  });
-  const CT = Object.create(null);
-  dart.defineLazy(CT, {
-    get C0() {
-      return C[0] = dart.const({
-        __proto__: floating_action_button_theme.FloatingActionButtonThemeData.prototype,
-        [shape$]: null,
-        [highlightElevation$]: null,
-        [disabledElevation$]: null,
-        [hoverElevation$]: null,
-        [focusElevation$]: null,
-        [elevation$]: null,
-        [splashColor$]: null,
-        [hoverColor$]: null,
-        [focusColor$]: null,
-        [backgroundColor$]: null,
-        [foregroundColor$]: null
-      });
-    }
-  }, false);
-  var C = [void 0];
   var I = [
-    "file:///C:/src/flutter/flutter/packages/flutter/lib/src/material/floating_action_button_theme.dart",
-    "package:flutter/src/material/floating_action_button_theme.dart"
+    "file:///C:/src/flutter/flutter/packages/flutter/lib/src/gestures/lsq_solver.dart",
+    "package:flutter/src/gestures/lsq_solver.dart"
   ];
-  var foregroundColor$ = dart.privateName(floating_action_button_theme, "FloatingActionButtonThemeData.foregroundColor");
-  var backgroundColor$ = dart.privateName(floating_action_button_theme, "FloatingActionButtonThemeData.backgroundColor");
-  var focusColor$ = dart.privateName(floating_action_button_theme, "FloatingActionButtonThemeData.focusColor");
-  var hoverColor$ = dart.privateName(floating_action_button_theme, "FloatingActionButtonThemeData.hoverColor");
-  var splashColor$ = dart.privateName(floating_action_button_theme, "FloatingActionButtonThemeData.splashColor");
-  var elevation$ = dart.privateName(floating_action_button_theme, "FloatingActionButtonThemeData.elevation");
-  var focusElevation$ = dart.privateName(floating_action_button_theme, "FloatingActionButtonThemeData.focusElevation");
-  var hoverElevation$ = dart.privateName(floating_action_button_theme, "FloatingActionButtonThemeData.hoverElevation");
-  var disabledElevation$ = dart.privateName(floating_action_button_theme, "FloatingActionButtonThemeData.disabledElevation");
-  var highlightElevation$ = dart.privateName(floating_action_button_theme, "FloatingActionButtonThemeData.highlightElevation");
-  var shape$ = dart.privateName(floating_action_button_theme, "FloatingActionButtonThemeData.shape");
-  const Object_Diagnosticable$36 = class Object_Diagnosticable extends core.Object {};
-  (Object_Diagnosticable$36.new = function() {
-  }).prototype = Object_Diagnosticable$36.prototype;
-  dart.applyMixin(Object_Diagnosticable$36, diagnostics.Diagnosticable);
-  floating_action_button_theme.FloatingActionButtonThemeData = class FloatingActionButtonThemeData extends Object_Diagnosticable$36 {
-    get foregroundColor() {
-      return this[foregroundColor$];
+  var _offset = dart.privateName(lsq_solver, "_offset");
+  var _length = dart.privateName(lsq_solver, "_length");
+  var _elements = dart.privateName(lsq_solver, "_elements");
+  lsq_solver._Vector = class _Vector extends core.Object {
+    _get(i) {
+      if (i == null) dart.nullFailed(I[0], 29, 26, "i");
+      return this[_elements][$_get](dart.notNull(i) + dart.notNull(this[_offset]));
     }
-    set foregroundColor(value) {
-      super.foregroundColor = value;
+    _set(i, value$) {
+      let value = value$;
+      if (i == null) dart.nullFailed(I[0], 30, 25, "i");
+      if (value == null) dart.nullFailed(I[0], 30, 35, "value");
+      this[_elements][$_set](dart.notNull(i) + dart.notNull(this[_offset]), value);
+      return value$;
     }
-    get backgroundColor() {
-      return this[backgroundColor$];
+    ['*'](a) {
+      if (a == null) dart.nullFailed(I[0], 34, 29, "a");
+      let result = 0.0;
+      for (let i = 0; i < dart.notNull(this[_length]); i = i + 1)
+        result = result + dart.notNull(this._get(i)) * dart.notNull(a._get(i));
+      return result;
     }
-    set backgroundColor(value) {
-      super.backgroundColor = value;
-    }
-    get focusColor() {
-      return this[focusColor$];
-    }
-    set focusColor(value) {
-      super.focusColor = value;
-    }
-    get hoverColor() {
-      return this[hoverColor$];
-    }
-    set hoverColor(value) {
-      super.hoverColor = value;
-    }
-    get splashColor() {
-      return this[splashColor$];
-    }
-    set splashColor(value) {
-      super.splashColor = value;
-    }
-    get elevation() {
-      return this[elevation$];
-    }
-    set elevation(value) {
-      super.elevation = value;
-    }
-    get focusElevation() {
-      return this[focusElevation$];
-    }
-    set focusElevation(value) {
-      super.focusElevation = value;
-    }
-    get hoverElevation() {
-      return this[hoverElevation$];
-    }
-    set hoverElevation(value) {
-      super.hoverElevation = value;
-    }
-    get disabledElevation() {
-      return this[disabledElevation$];
-    }
-    set disabledElevation(value) {
-      super.disabledElevation = value;
-    }
-    get highlightElevation() {
-      return this[highlightElevation$];
-    }
-    set highlightElevation(value) {
-      super.highlightElevation = value;
-    }
-    get shape() {
-      return this[shape$];
-    }
-    set shape(value) {
-      super.shape = value;
-    }
-    copyWith(opts) {
-      let t0, t0$, t0$0, t0$1, t0$2, t0$3, t0$4, t0$5, t0$6, t0$7, t0$8;
-      let foregroundColor = opts && 'foregroundColor' in opts ? opts.foregroundColor : null;
-      let backgroundColor = opts && 'backgroundColor' in opts ? opts.backgroundColor : null;
-      let focusColor = opts && 'focusColor' in opts ? opts.focusColor : null;
-      let hoverColor = opts && 'hoverColor' in opts ? opts.hoverColor : null;
-      let splashColor = opts && 'splashColor' in opts ? opts.splashColor : null;
-      let elevation = opts && 'elevation' in opts ? opts.elevation : null;
-      let focusElevation = opts && 'focusElevation' in opts ? opts.focusElevation : null;
-      let hoverElevation = opts && 'hoverElevation' in opts ? opts.hoverElevation : null;
-      let disabledElevation = opts && 'disabledElevation' in opts ? opts.disabledElevation : null;
-      let highlightElevation = opts && 'highlightElevation' in opts ? opts.highlightElevation : null;
-      let shape = opts && 'shape' in opts ? opts.shape : null;
-      return new floating_action_button_theme.FloatingActionButtonThemeData.new({foregroundColor: (t0 = foregroundColor, t0 == null ? this.foregroundColor : t0), backgroundColor: (t0$ = backgroundColor, t0$ == null ? this.backgroundColor : t0$), focusColor: (t0$0 = focusColor, t0$0 == null ? this.focusColor : t0$0), hoverColor: (t0$1 = hoverColor, t0$1 == null ? this.hoverColor : t0$1), splashColor: (t0$2 = splashColor, t0$2 == null ? this.splashColor : t0$2), elevation: (t0$3 = elevation, t0$3 == null ? this.elevation : t0$3), focusElevation: (t0$4 = focusElevation, t0$4 == null ? this.focusElevation : t0$4), hoverElevation: (t0$5 = hoverElevation, t0$5 == null ? this.hoverElevation : t0$5), disabledElevation: (t0$6 = disabledElevation, t0$6 == null ? this.disabledElevation : t0$6), highlightElevation: (t0$7 = highlightElevation, t0$7 == null ? this.highlightElevation : t0$7), shape: (t0$8 = shape, t0$8 == null ? this.shape : t0$8)});
-    }
-    static lerp(a, b, t) {
-      let t0, t0$, t0$0, t0$1, t0$2, t0$3, t0$4, t0$5, t0$6, t0$7, t0$8, t0$9, t0$10, t0$11, t0$12, t0$13, t0$14, t0$15, t0$16, t0$17, t0$18, t0$19;
-      if (t == null) dart.nullFailed(I[0], 127, 121, "t");
-      if (!(t != null)) dart.assertFailed(null, I[0], 128, 12, "t != null");
-      if (a == null && b == null) return null;
-      return new floating_action_button_theme.FloatingActionButtonThemeData.new({foregroundColor: ui.Color.lerp((t0 = a, t0 == null ? null : t0.foregroundColor), (t0$ = b, t0$ == null ? null : t0$.foregroundColor), t), backgroundColor: ui.Color.lerp((t0$0 = a, t0$0 == null ? null : t0$0.backgroundColor), (t0$1 = b, t0$1 == null ? null : t0$1.backgroundColor), t), focusColor: ui.Color.lerp((t0$2 = a, t0$2 == null ? null : t0$2.focusColor), (t0$3 = b, t0$3 == null ? null : t0$3.focusColor), t), hoverColor: ui.Color.lerp((t0$4 = a, t0$4 == null ? null : t0$4.hoverColor), (t0$5 = b, t0$5 == null ? null : t0$5.hoverColor), t), splashColor: ui.Color.lerp((t0$6 = a, t0$6 == null ? null : t0$6.splashColor), (t0$7 = b, t0$7 == null ? null : t0$7.splashColor), t), elevation: ui.lerpDouble((t0$8 = a, t0$8 == null ? null : t0$8.elevation), (t0$9 = b, t0$9 == null ? null : t0$9.elevation), t), focusElevation: ui.lerpDouble((t0$10 = a, t0$10 == null ? null : t0$10.focusElevation), (t0$11 = b, t0$11 == null ? null : t0$11.focusElevation), t), hoverElevation: ui.lerpDouble((t0$12 = a, t0$12 == null ? null : t0$12.hoverElevation), (t0$13 = b, t0$13 == null ? null : t0$13.hoverElevation), t), disabledElevation: ui.lerpDouble((t0$14 = a, t0$14 == null ? null : t0$14.disabledElevation), (t0$15 = b, t0$15 == null ? null : t0$15.disabledElevation), t), highlightElevation: ui.lerpDouble((t0$16 = a, t0$16 == null ? null : t0$16.highlightElevation), (t0$17 = b, t0$17 == null ? null : t0$17.highlightElevation), t), shape: borders.ShapeBorder.lerp((t0$18 = a, t0$18 == null ? null : t0$18.shape), (t0$19 = b, t0$19 == null ? null : t0$19.shape), t)});
-    }
-    get hashCode() {
-      return ui.hashValues(this.foregroundColor, this.backgroundColor, this.focusColor, this.hoverColor, this.splashColor, this.elevation, this.focusElevation, this.hoverElevation, this.disabledElevation, this.highlightElevation, this.shape);
-    }
-    _equals(other) {
-      if (other == null) return false;
-      if (this === other) return true;
-      if (!dart.equals(dart.runtimeType(other), this[$runtimeType])) return false;
-      return floating_action_button_theme.FloatingActionButtonThemeData.is(other) && dart.equals(other.foregroundColor, this.foregroundColor) && dart.equals(other.backgroundColor, this.backgroundColor) && dart.equals(other.focusColor, this.focusColor) && dart.equals(other.hoverColor, this.hoverColor) && dart.equals(other.splashColor, this.splashColor) && other.elevation == this.elevation && other.focusElevation == this.focusElevation && other.hoverElevation == this.hoverElevation && other.disabledElevation == this.disabledElevation && other.highlightElevation == this.highlightElevation && dart.equals(other.shape, this.shape);
-    }
-    debugFillProperties(properties) {
-      if (properties == null) dart.nullFailed(I[0], 184, 56, "properties");
-      super.debugFillProperties(properties);
-      let defaultData = C[0] || CT.C0;
-      properties.add(new colors.ColorProperty.new("foregroundColor", this.foregroundColor, {defaultValue: defaultData.foregroundColor}));
-      properties.add(new colors.ColorProperty.new("backgroundColor", this.backgroundColor, {defaultValue: defaultData.backgroundColor}));
-      properties.add(new colors.ColorProperty.new("focusColor", this.focusColor, {defaultValue: defaultData.focusColor}));
-      properties.add(new colors.ColorProperty.new("hoverColor", this.hoverColor, {defaultValue: defaultData.hoverColor}));
-      properties.add(new colors.ColorProperty.new("splashColor", this.splashColor, {defaultValue: defaultData.splashColor}));
-      properties.add(new diagnostics.DoubleProperty.new("elevation", this.elevation, {defaultValue: defaultData.elevation}));
-      properties.add(new diagnostics.DoubleProperty.new("focusElevation", this.focusElevation, {defaultValue: defaultData.focusElevation}));
-      properties.add(new diagnostics.DoubleProperty.new("hoverElevation", this.hoverElevation, {defaultValue: defaultData.hoverElevation}));
-      properties.add(new diagnostics.DoubleProperty.new("disabledElevation", this.disabledElevation, {defaultValue: defaultData.disabledElevation}));
-      properties.add(new diagnostics.DoubleProperty.new("highlightElevation", this.highlightElevation, {defaultValue: defaultData.highlightElevation}));
-      properties.add(new (T.DiagnosticsPropertyOfShapeBorder()).new("shape", this.shape, {defaultValue: defaultData.shape}));
+    norm() {
+      return math.sqrt(this['*'](this));
     }
   };
-  (floating_action_button_theme.FloatingActionButtonThemeData.new = function(opts) {
-    let foregroundColor = opts && 'foregroundColor' in opts ? opts.foregroundColor : null;
-    let backgroundColor = opts && 'backgroundColor' in opts ? opts.backgroundColor : null;
-    let focusColor = opts && 'focusColor' in opts ? opts.focusColor : null;
-    let hoverColor = opts && 'hoverColor' in opts ? opts.hoverColor : null;
-    let splashColor = opts && 'splashColor' in opts ? opts.splashColor : null;
-    let elevation = opts && 'elevation' in opts ? opts.elevation : null;
-    let focusElevation = opts && 'focusElevation' in opts ? opts.focusElevation : null;
-    let hoverElevation = opts && 'hoverElevation' in opts ? opts.hoverElevation : null;
-    let disabledElevation = opts && 'disabledElevation' in opts ? opts.disabledElevation : null;
-    let highlightElevation = opts && 'highlightElevation' in opts ? opts.highlightElevation : null;
-    let shape = opts && 'shape' in opts ? opts.shape : null;
-    this[foregroundColor$] = foregroundColor;
-    this[backgroundColor$] = backgroundColor;
-    this[focusColor$] = focusColor;
-    this[hoverColor$] = hoverColor;
-    this[splashColor$] = splashColor;
-    this[elevation$] = elevation;
-    this[focusElevation$] = focusElevation;
-    this[hoverElevation$] = hoverElevation;
-    this[disabledElevation$] = disabledElevation;
-    this[highlightElevation$] = highlightElevation;
-    this[shape$] = shape;
+  (lsq_solver._Vector.new = function(size) {
+    if (size == null) dart.nullFailed(I[0], 13, 15, "size");
+    this[_offset] = 0;
+    this[_length] = size;
+    this[_elements] = _native_typed_data.NativeFloat64List.new(size);
     ;
-  }).prototype = floating_action_button_theme.FloatingActionButtonThemeData.prototype;
-  dart.addTypeTests(floating_action_button_theme.FloatingActionButtonThemeData);
-  dart.addTypeCaches(floating_action_button_theme.FloatingActionButtonThemeData);
-  dart.setMethodSignature(floating_action_button_theme.FloatingActionButtonThemeData, () => ({
-    __proto__: dart.getMethods(floating_action_button_theme.FloatingActionButtonThemeData.__proto__),
-    copyWith: dart.fnType(floating_action_button_theme.FloatingActionButtonThemeData, [], {backgroundColor: dart.nullable(ui.Color), disabledElevation: dart.nullable(core.double), elevation: dart.nullable(core.double), focusColor: dart.nullable(ui.Color), focusElevation: dart.nullable(core.double), foregroundColor: dart.nullable(ui.Color), highlightElevation: dart.nullable(core.double), hoverColor: dart.nullable(ui.Color), hoverElevation: dart.nullable(core.double), shape: dart.nullable(borders.ShapeBorder), splashColor: dart.nullable(ui.Color)}, {})
+  }).prototype = lsq_solver._Vector.prototype;
+  (lsq_solver._Vector.fromVOL = function(values, offset, length) {
+    if (values == null) dart.nullFailed(I[0], 18, 32, "values");
+    if (offset == null) dart.nullFailed(I[0], 18, 44, "offset");
+    if (length == null) dart.nullFailed(I[0], 18, 56, "length");
+    this[_offset] = offset;
+    this[_length] = length;
+    this[_elements] = values;
+    ;
+  }).prototype = lsq_solver._Vector.prototype;
+  dart.addTypeTests(lsq_solver._Vector);
+  dart.addTypeCaches(lsq_solver._Vector);
+  dart.setMethodSignature(lsq_solver._Vector, () => ({
+    __proto__: dart.getMethods(lsq_solver._Vector.__proto__),
+    _get: dart.fnType(core.double, [core.int]),
+    _set: dart.fnType(dart.void, [core.int, core.double]),
+    '*': dart.fnType(core.double, [lsq_solver._Vector]),
+    norm: dart.fnType(core.double, [])
   }));
-  dart.setLibraryUri(floating_action_button_theme.FloatingActionButtonThemeData, I[1]);
-  dart.setFieldSignature(floating_action_button_theme.FloatingActionButtonThemeData, () => ({
-    __proto__: dart.getFields(floating_action_button_theme.FloatingActionButtonThemeData.__proto__),
-    foregroundColor: dart.finalFieldType(dart.nullable(ui.Color)),
-    backgroundColor: dart.finalFieldType(dart.nullable(ui.Color)),
-    focusColor: dart.finalFieldType(dart.nullable(ui.Color)),
-    hoverColor: dart.finalFieldType(dart.nullable(ui.Color)),
-    splashColor: dart.finalFieldType(dart.nullable(ui.Color)),
-    elevation: dart.finalFieldType(dart.nullable(core.double)),
-    focusElevation: dart.finalFieldType(dart.nullable(core.double)),
-    hoverElevation: dart.finalFieldType(dart.nullable(core.double)),
-    disabledElevation: dart.finalFieldType(dart.nullable(core.double)),
-    highlightElevation: dart.finalFieldType(dart.nullable(core.double)),
-    shape: dart.finalFieldType(dart.nullable(borders.ShapeBorder))
+  dart.setLibraryUri(lsq_solver._Vector, I[1]);
+  dart.setFieldSignature(lsq_solver._Vector, () => ({
+    __proto__: dart.getFields(lsq_solver._Vector.__proto__),
+    [_offset]: dart.finalFieldType(core.int),
+    [_length]: dart.finalFieldType(core.int),
+    [_elements]: dart.finalFieldType(core.List$(core.double))
   }));
-  dart.defineExtensionMethods(floating_action_button_theme.FloatingActionButtonThemeData, ['_equals']);
-  dart.defineExtensionAccessors(floating_action_button_theme.FloatingActionButtonThemeData, ['hashCode']);
-  dart.trackLibraries("packages/flutter/src/material/floating_action_button_theme.dart", {
-    "package:flutter/src/material/floating_action_button_theme.dart": floating_action_button_theme
+  var _columns = dart.privateName(lsq_solver, "_columns");
+  lsq_solver._Matrix = class _Matrix extends core.Object {
+    get(row, col) {
+      if (row == null) dart.nullFailed(I[0], 53, 18, "row");
+      if (col == null) dart.nullFailed(I[0], 53, 27, "col");
+      return this[_elements][$_get](dart.notNull(row) * dart.notNull(this[_columns]) + dart.notNull(col));
+    }
+    set(row, col, value) {
+      if (row == null) dart.nullFailed(I[0], 54, 16, "row");
+      if (col == null) dart.nullFailed(I[0], 54, 25, "col");
+      if (value == null) dart.nullFailed(I[0], 54, 37, "value");
+      this[_elements][$_set](dart.notNull(row) * dart.notNull(this[_columns]) + dart.notNull(col), value);
+    }
+    getRow(row) {
+      if (row == null) dart.nullFailed(I[0], 58, 22, "row");
+      return new lsq_solver._Vector.fromVOL(this[_elements], dart.notNull(row) * dart.notNull(this[_columns]), this[_columns]);
+    }
+  };
+  (lsq_solver._Matrix.new = function(rows, cols) {
+    if (rows == null) dart.nullFailed(I[0], 46, 15, "rows");
+    if (cols == null) dart.nullFailed(I[0], 46, 25, "cols");
+    this[_columns] = cols;
+    this[_elements] = _native_typed_data.NativeFloat64List.new(dart.notNull(rows) * dart.notNull(cols));
+    ;
+  }).prototype = lsq_solver._Matrix.prototype;
+  dart.addTypeTests(lsq_solver._Matrix);
+  dart.addTypeCaches(lsq_solver._Matrix);
+  dart.setMethodSignature(lsq_solver._Matrix, () => ({
+    __proto__: dart.getMethods(lsq_solver._Matrix.__proto__),
+    get: dart.fnType(core.double, [core.int, core.int]),
+    set: dart.fnType(dart.void, [core.int, core.int, core.double]),
+    getRow: dart.fnType(lsq_solver._Vector, [core.int])
+  }));
+  dart.setLibraryUri(lsq_solver._Matrix, I[1]);
+  dart.setFieldSignature(lsq_solver._Matrix, () => ({
+    __proto__: dart.getFields(lsq_solver._Matrix.__proto__),
+    [_columns]: dart.finalFieldType(core.int),
+    [_elements]: dart.finalFieldType(core.List$(core.double))
+  }));
+  var coefficients = dart.privateName(lsq_solver, "PolynomialFit.coefficients");
+  var __PolynomialFit_confidence = dart.privateName(lsq_solver, "_#PolynomialFit#confidence");
+  var __PolynomialFit_confidence_isSet = dart.privateName(lsq_solver, "_#PolynomialFit#confidence#isSet");
+  lsq_solver.PolynomialFit = class PolynomialFit extends core.Object {
+    get coefficients() {
+      return this[coefficients];
+    }
+    set coefficients(value) {
+      super.coefficients = value;
+    }
+    get confidence() {
+      let t0;
+      return dart.test(this[__PolynomialFit_confidence_isSet]) ? (t0 = this[__PolynomialFit_confidence], t0) : dart.throw(new _internal.LateError.fieldNI("confidence"));
+    }
+    set confidence(t0) {
+      if (t0 == null) dart.nullFailed(I[0], 78, 15, "null");
+      this[__PolynomialFit_confidence_isSet] = true;
+      this[__PolynomialFit_confidence] = t0;
+    }
+  };
+  (lsq_solver.PolynomialFit.new = function(degree) {
+    if (degree == null) dart.nullFailed(I[0], 70, 21, "degree");
+    this[__PolynomialFit_confidence] = null;
+    this[__PolynomialFit_confidence_isSet] = false;
+    this[coefficients] = _native_typed_data.NativeFloat64List.new(dart.notNull(degree) + 1);
+    ;
+  }).prototype = lsq_solver.PolynomialFit.prototype;
+  dart.addTypeTests(lsq_solver.PolynomialFit);
+  dart.addTypeCaches(lsq_solver.PolynomialFit);
+  dart.setGetterSignature(lsq_solver.PolynomialFit, () => ({
+    __proto__: dart.getGetters(lsq_solver.PolynomialFit.__proto__),
+    confidence: core.double
+  }));
+  dart.setSetterSignature(lsq_solver.PolynomialFit, () => ({
+    __proto__: dart.getSetters(lsq_solver.PolynomialFit.__proto__),
+    confidence: core.double
+  }));
+  dart.setLibraryUri(lsq_solver.PolynomialFit, I[1]);
+  dart.setFieldSignature(lsq_solver.PolynomialFit, () => ({
+    __proto__: dart.getFields(lsq_solver.PolynomialFit.__proto__),
+    coefficients: dart.finalFieldType(core.List$(core.double)),
+    [__PolynomialFit_confidence]: dart.fieldType(dart.nullable(core.double)),
+    [__PolynomialFit_confidence_isSet]: dart.fieldType(core.bool)
+  }));
+  var x$ = dart.privateName(lsq_solver, "LeastSquaresSolver.x");
+  var y$ = dart.privateName(lsq_solver, "LeastSquaresSolver.y");
+  var w$ = dart.privateName(lsq_solver, "LeastSquaresSolver.w");
+  lsq_solver.LeastSquaresSolver = class LeastSquaresSolver extends core.Object {
+    get x() {
+      return this[x$];
+    }
+    set x(value) {
+      super.x = value;
+    }
+    get y() {
+      return this[y$];
+    }
+    set y(value) {
+      super.y = value;
+    }
+    get w() {
+      return this[w$];
+    }
+    set w(value) {
+      super.w = value;
+    }
+    solve(degree) {
+      let t2, t1, t2$, t1$;
+      if (degree == null) dart.nullFailed(I[0], 102, 28, "degree");
+      if (dart.notNull(degree) > dart.notNull(this.x[$length])) return null;
+      let result = new lsq_solver.PolynomialFit.new(degree);
+      let m = this.x[$length];
+      let n = dart.notNull(degree) + 1;
+      let a = new lsq_solver._Matrix.new(n, m);
+      for (let h = 0; h < dart.notNull(m); h = h + 1) {
+        a.set(0, h, this.w[$_get](h));
+        for (let i = 1; i < n; i = i + 1)
+          a.set(i, h, dart.notNull(a.get(i - 1, h)) * dart.notNull(this.x[$_get](h)));
+      }
+      let q = new lsq_solver._Matrix.new(n, m);
+      let r = new lsq_solver._Matrix.new(n, n);
+      for (let j = 0; j < n; j = j + 1) {
+        for (let h = 0; h < dart.notNull(m); h = h + 1)
+          q.set(j, h, a.get(j, h));
+        for (let i = 0; i < j; i = i + 1) {
+          let dot = q.getRow(j)['*'](q.getRow(i));
+          for (let h = 0; h < dart.notNull(m); h = h + 1)
+            q.set(j, h, dart.notNull(q.get(j, h)) - dart.notNull(dot) * dart.notNull(q.get(i, h)));
+        }
+        let norm = q.getRow(j).norm();
+        if (dart.notNull(norm) < 1e-10) {
+          return null;
+        }
+        let inverseNorm = 1.0 / dart.notNull(norm);
+        for (let h = 0; h < dart.notNull(m); h = h + 1)
+          q.set(j, h, dart.notNull(q.get(j, h)) * inverseNorm);
+        for (let i = 0; i < n; i = i + 1)
+          r.set(j, i, i < j ? 0.0 : q.getRow(j)['*'](a.getRow(i)));
+      }
+      let wy = new lsq_solver._Vector.new(m);
+      for (let h = 0; h < dart.notNull(m); h = h + 1)
+        wy._set(h, dart.notNull(this.y[$_get](h)) * dart.notNull(this.w[$_get](h)));
+      for (let i = n - 1; i >= 0; i = i - 1) {
+        result.coefficients[$_set](i, q.getRow(i)['*'](wy));
+        for (let j = n - 1; j > i; j = j - 1) {
+          t1 = result.coefficients;
+          t2 = i;
+          t1[$_set](t2, dart.notNull(t1[$_get](t2)) - dart.notNull(r.get(i, j)) * dart.notNull(result.coefficients[$_get](j)));
+        }
+        t1$ = result.coefficients;
+        t2$ = i;
+        t1$[$_set](t2$, dart.notNull(t1$[$_get](t2$)) / dart.notNull(r.get(i, i)));
+      }
+      let yMean = 0.0;
+      for (let h = 0; h < dart.notNull(m); h = h + 1)
+        yMean = yMean + dart.notNull(this.y[$_get](h));
+      yMean = yMean / dart.notNull(m);
+      let sumSquaredError = 0.0;
+      let sumSquaredTotal = 0.0;
+      for (let h = 0; h < dart.notNull(m); h = h + 1) {
+        let term = 1.0;
+        let err = dart.notNull(this.y[$_get](h)) - dart.notNull(result.coefficients[$_get](0));
+        for (let i = 1; i < n; i = i + 1) {
+          term = term * dart.notNull(this.x[$_get](h));
+          err = err - term * dart.notNull(result.coefficients[$_get](i));
+        }
+        sumSquaredError = sumSquaredError + dart.notNull(this.w[$_get](h)) * dart.notNull(this.w[$_get](h)) * err * err;
+        let v = dart.notNull(this.y[$_get](h)) - yMean;
+        sumSquaredTotal = sumSquaredTotal + dart.notNull(this.w[$_get](h)) * dart.notNull(this.w[$_get](h)) * v * v;
+      }
+      result.confidence = sumSquaredTotal <= 1e-10 ? 1.0 : 1.0 - sumSquaredError / sumSquaredTotal;
+      return result;
+    }
+  };
+  (lsq_solver.LeastSquaresSolver.new = function(x, y, w) {
+    if (x == null) dart.nullFailed(I[0], 86, 27, "x");
+    if (y == null) dart.nullFailed(I[0], 86, 35, "y");
+    if (w == null) dart.nullFailed(I[0], 86, 43, "w");
+    this[x$] = x;
+    this[y$] = y;
+    this[w$] = w;
+    if (!(x[$length] == y[$length])) dart.assertFailed(null, I[0], 87, 14, "x.length == y.length");
+    if (!(y[$length] == w[$length])) dart.assertFailed(null, I[0], 88, 14, "y.length == w.length");
+    ;
+  }).prototype = lsq_solver.LeastSquaresSolver.prototype;
+  dart.addTypeTests(lsq_solver.LeastSquaresSolver);
+  dart.addTypeCaches(lsq_solver.LeastSquaresSolver);
+  dart.setMethodSignature(lsq_solver.LeastSquaresSolver, () => ({
+    __proto__: dart.getMethods(lsq_solver.LeastSquaresSolver.__proto__),
+    solve: dart.fnType(dart.nullable(lsq_solver.PolynomialFit), [core.int])
+  }));
+  dart.setLibraryUri(lsq_solver.LeastSquaresSolver, I[1]);
+  dart.setFieldSignature(lsq_solver.LeastSquaresSolver, () => ({
+    __proto__: dart.getFields(lsq_solver.LeastSquaresSolver.__proto__),
+    x: dart.finalFieldType(core.List$(core.double)),
+    y: dart.finalFieldType(core.List$(core.double)),
+    w: dart.finalFieldType(core.List$(core.double))
+  }));
+  dart.trackLibraries("packages/flutter/src/gestures/lsq_solver.dart", {
+    "package:flutter/src/gestures/lsq_solver.dart": lsq_solver
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["floating_action_button_theme.dart"],"names":[],"mappings":"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","file":"../../../../../../../../packages/flutter/src/material/floating_action_button_theme.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["lsq_solver.dart"],"names":[],"mappings":"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","file":"../../../../../../../../packages/flutter/src/gestures/lsq_solver.dart.lib.js"}');
   // Exports:
   return {
-    src__material__floating_action_button_theme: floating_action_button_theme
+    src__gestures__lsq_solver: lsq_solver
   };
 }));
 
-//# sourceMappingURL=floating_action_button_theme.dart.lib.js.map
+//# sourceMappingURL=lsq_solver.dart.lib.js.map

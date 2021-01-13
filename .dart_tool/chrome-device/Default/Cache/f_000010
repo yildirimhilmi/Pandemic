@@ -1,1313 +1,553 @@
-define(['dart_sdk', 'packages/flutter/src/material/icon_button.dart', 'packages/flutter/src/foundation/debug.dart', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/animation/listener_helpers.dart', 'packages/flutter/src/rendering/custom_paint.dart', 'packages/flutter/src/animation/curves.dart', 'packages/flutter/src/animation/animation_controller.dart', 'packages/flutter/src/rendering/layer.dart', 'packages/flutter/src/cupertino/activity_indicator.dart', 'packages/flutter/src/foundation/_platform_web.dart', 'packages/flutter/src/painting/edge_insets.dart'], (function load__packages__flutter__src__material__progress_indicator_dart(dart_sdk, packages__flutter__src__material__icon_button$46dart, packages__flutter__src__foundation__debug$46dart, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__animation__listener_helpers$46dart, packages__flutter__src__rendering__custom_paint$46dart, packages__flutter__src__animation__curves$46dart, packages__flutter__src__animation__animation_controller$46dart, packages__flutter__src__rendering__layer$46dart, packages__flutter__src__cupertino__activity_indicator$46dart, packages__flutter__src__foundation___platform_web$46dart, packages__flutter__src__painting__edge_insets$46dart) {
+define(['dart_sdk', 'packages/flutter/src/painting/basic_types.dart'], (function load__packages__flutter__src__painting__edge_insets_dart(dart_sdk, packages__flutter__src__painting__basic_types$46dart) {
   'use strict';
   const core = dart_sdk.core;
-  const ui = dart_sdk.ui;
   const _internal = dart_sdk._internal;
-  const math = dart_sdk.math;
+  const ui = dart_sdk.ui;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const theme$ = packages__flutter__src__material__icon_button$46dart.src__material__theme;
-  const material = packages__flutter__src__material__icon_button$46dart.src__material__material;
-  const diagnostics = packages__flutter__src__foundation__debug$46dart.src__foundation__diagnostics;
-  const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
-  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
-  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
-  const container = packages__flutter__src__widgets__widget_span$46dart.src__widgets__container;
-  const transitions = packages__flutter__src__widgets__widget_span$46dart.src__widgets__transitions;
-  const ticker_provider = packages__flutter__src__widgets__widget_span$46dart.src__widgets__ticker_provider;
-  const animation = packages__flutter__src__animation__listener_helpers$46dart.src__animation__animation;
-  const tween = packages__flutter__src__animation__listener_helpers$46dart.src__animation__tween;
-  const custom_paint = packages__flutter__src__rendering__custom_paint$46dart.src__rendering__custom_paint;
-  const curves = packages__flutter__src__animation__curves$46dart.src__animation__curves;
-  const animation_controller = packages__flutter__src__animation__animation_controller$46dart.src__animation__animation_controller;
-  const box = packages__flutter__src__rendering__layer$46dart.src__rendering__box;
-  const activity_indicator = packages__flutter__src__cupertino__activity_indicator$46dart.src__cupertino__activity_indicator;
-  const platform = packages__flutter__src__foundation___platform_web$46dart.src__foundation__platform;
-  const edge_insets = packages__flutter__src__painting__edge_insets$46dart.src__painting__edge_insets;
-  var progress_indicator = Object.create(dart.library);
-  var $round = dartx.round;
+  const basic_types = packages__flutter__src__painting__basic_types$46dart.src__painting__basic_types;
+  var edge_insets = Object.create(dart.library);
   var $clamp = dartx.clamp;
+  var $toStringAsFixed = dartx.toStringAsFixed;
+  var $truncate = dartx.truncate;
+  var $toDouble = dartx.toDouble;
+  var $modulo = dartx['%'];
   dart._checkModuleNullSafetyMode(false);
-  var T = Object.create({
-    _ActivityIndicatorTypeL: () => (T._ActivityIndicatorTypeL = dart.constFn(dart.legacy(progress_indicator._ActivityIndicatorType)))(),
-    _LocationL: () => (T._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))(),
-    doubleAnddoubleTovoid: () => (T.doubleAnddoubleTovoid = dart.constFn(dart.fnType(dart.void, [core.double, core.double])))(),
-    WidgetN: () => (T.WidgetN = dart.constFn(dart.nullable(framework.Widget)))(),
-    BuildContextAndWidgetNToWidget: () => (T.BuildContextAndWidgetNToWidget = dart.constFn(dart.fnType(framework.Widget, [framework.BuildContext, T.WidgetN()])))()
-  });
   const CT = Object.create(null);
   dart.defineLazy(CT, {
     get C0() {
       return C[0] = dart.const({
-        __proto__: progress_indicator._ActivityIndicatorType.prototype,
-        [_name$]: "_ActivityIndicatorType.material",
+        __proto__: basic_types.Axis.prototype,
+        [_name]: "Axis.horizontal",
         index: 0
       });
     },
     get C1() {
       return C[1] = dart.const({
-        __proto__: progress_indicator._ActivityIndicatorType.prototype,
-        [_name$]: "_ActivityIndicatorType.adaptive",
+        __proto__: basic_types.Axis.prototype,
+        [_name]: "Axis.vertical",
         index: 1
       });
     },
     get C2() {
-      return C[2] = dart.constList([C[0] || CT.C0, C[1] || CT.C1], T._ActivityIndicatorTypeL());
+      return C[2] = dart.const({
+        __proto__: edge_insets._MixedEdgeInsets.prototype,
+        [_MixedEdgeInsets__bottom]: 1 / 0,
+        [_MixedEdgeInsets__top]: 1 / 0,
+        [_MixedEdgeInsets__end]: 1 / 0,
+        [_MixedEdgeInsets__start]: 1 / 0,
+        [_MixedEdgeInsets__right]: 1 / 0,
+        [_MixedEdgeInsets__left]: 1 / 0
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: edge_insets.EdgeInsets.prototype,
+        [bottom$]: 0,
+        [right$]: 0,
+        [top$]: 0,
+        [left$]: 0
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: ui.TextDirection.prototype,
+        [_name$]: "TextDirection.rtl",
+        index: 0
+      });
     },
     get C5() {
       return C[5] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "label",
-        [_Location_column]: 7,
-        [_Location_line]: 130,
-        [_Location_file]: null
+        __proto__: ui.TextDirection.prototype,
+        [_name$]: "TextDirection.ltr",
+        index: 1
       });
     },
     get C6() {
       return C[6] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "value",
-        [_Location_column]: 7,
-        [_Location_line]: 131,
-        [_Location_file]: null
-      });
-    },
-    get C7() {
-      return C[7] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 7,
-        [_Location_line]: 132,
-        [_Location_file]: null
-      });
-    },
-    get C4() {
-      return C[4] = dart.constList([C[5] || CT.C5, C[6] || CT.C6, C[7] || CT.C7], T._LocationL());
-    },
-    get C3() {
-      return C[3] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[4] || CT.C4,
-        [_Location_name]: null,
-        [_Location_column]: 12,
-        [_Location_line]: 129,
-        [_Location_file]: "file:///C:/src/flutter/flutter/packages/flutter/lib/src/material/progress_indicator.dart"
-      });
-    },
-    get C8() {
-      return C[8] = dart.const({
-        __proto__: ui.TextDirection.prototype,
-        [_name]: "TextDirection.rtl",
-        index: 0
-      });
-    },
-    get C9() {
-      return C[9] = dart.const({
-        __proto__: ui.TextDirection.prototype,
-        [_name]: "TextDirection.ltr",
-        index: 1
-      });
-    },
-    get C11() {
-      return C[11] = dart.const({
-        __proto__: curves.Cubic.prototype,
-        [Cubic_d]: 1,
-        [Cubic_c]: 0.8,
-        [Cubic_b]: 0,
-        [Cubic_a]: 0.2
-      });
-    },
-    get C10() {
-      return C[10] = dart.const({
-        __proto__: curves.Interval.prototype,
-        [Interval_curve]: C[11] || CT.C11,
-        [Interval_end]: 0.4166666666666667,
-        [Interval_begin]: 0
-      });
-    },
-    get C13() {
-      return C[13] = dart.const({
-        __proto__: curves.Cubic.prototype,
-        [Cubic_d]: 1,
-        [Cubic_c]: 1,
-        [Cubic_b]: 0,
-        [Cubic_a]: 0.4
-      });
-    },
-    get C12() {
-      return C[12] = dart.const({
-        __proto__: curves.Interval.prototype,
-        [Interval_curve]: C[13] || CT.C13,
-        [Interval_end]: 0.6016666666666667,
-        [Interval_begin]: 0.185
-      });
-    },
-    get C15() {
-      return C[15] = dart.const({
-        __proto__: curves.Cubic.prototype,
-        [Cubic_d]: 1,
-        [Cubic_c]: 0.65,
-        [Cubic_b]: 0,
-        [Cubic_a]: 0
-      });
-    },
-    get C14() {
-      return C[14] = dart.const({
-        __proto__: curves.Interval.prototype,
-        [Interval_curve]: C[15] || CT.C15,
-        [Interval_end]: 0.8705555555555555,
-        [Interval_begin]: 0.5555555555555556
-      });
-    },
-    get C17() {
-      return C[17] = dart.const({
-        __proto__: curves.Cubic.prototype,
-        [Cubic_d]: 1,
-        [Cubic_c]: 0.45,
-        [Cubic_b]: 0,
-        [Cubic_a]: 0.1
-      });
-    },
-    get C16() {
-      return C[16] = dart.const({
-        __proto__: curves.Interval.prototype,
-        [Interval_curve]: C[17] || CT.C17,
-        [Interval_end]: 1,
-        [Interval_begin]: 0.7038888888888889
-      });
-    },
-    get C18() {
-      return C[18] = dart.const({
-        __proto__: core.Duration.prototype,
-        [Duration__duration]: 1800000
-      });
-    },
-    get C21() {
-      return C[21] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "painter",
-        [_Location_column]: 11,
-        [_Location_line]: 369,
-        [_Location_file]: null
-      });
-    },
-    get C20() {
-      return C[20] = dart.constList([C[21] || CT.C21], T._LocationL());
-    },
-    get C19() {
-      return C[19] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[20] || CT.C20,
-        [_Location_name]: null,
-        [_Location_column]: 16,
-        [_Location_line]: 368,
-        [_Location_file]: "file:///C:/src/flutter/flutter/packages/flutter/lib/src/material/progress_indicator.dart"
-      });
-    },
-    get C24() {
-      return C[24] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "constraints",
-        [_Location_column]: 9,
-        [_Location_line]: 364,
-        [_Location_file]: null
-      });
-    },
-    get C25() {
-      return C[25] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 9,
-        [_Location_line]: 368,
-        [_Location_file]: null
-      });
-    },
-    get C23() {
-      return C[23] = dart.constList([C[24] || CT.C24, C[25] || CT.C25], T._LocationL());
-    },
-    get C22() {
-      return C[22] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[23] || CT.C23,
-        [_Location_name]: null,
-        [_Location_column]: 14,
-        [_Location_line]: 363,
-        [_Location_file]: "file:///C:/src/flutter/flutter/packages/flutter/lib/src/material/progress_indicator.dart"
-      });
-    },
-    get C28() {
-      return C[28] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "animation",
-        [_Location_column]: 7,
-        [_Location_line]: 389,
-        [_Location_file]: null
-      });
-    },
-    get C29() {
-      return C[29] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "builder",
-        [_Location_column]: 7,
-        [_Location_line]: 390,
-        [_Location_file]: null
-      });
-    },
-    get C27() {
-      return C[27] = dart.constList([C[28] || CT.C28, C[29] || CT.C29], T._LocationL());
-    },
-    get C26() {
-      return C[26] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[27] || CT.C27,
-        [_Location_name]: null,
-        [_Location_column]: 12,
-        [_Location_line]: 388,
-        [_Location_file]: "file:///C:/src/flutter/flutter/packages/flutter/lib/src/material/progress_indicator.dart"
-      });
-    },
-    get C30() {
-      return C[30] = dart.const({
-        __proto__: core.Duration.prototype,
-        [Duration__duration]: 2961926000.0
-      });
-    },
-    get C33() {
-      return C[33] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "key",
-        [_Location_column]: 39,
-        [_Location_line]: 644,
-        [_Location_file]: null
-      });
-    },
-    get C32() {
-      return C[32] = dart.constList([C[33] || CT.C33], T._LocationL());
-    },
-    get C31() {
-      return C[31] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[32] || CT.C32,
-        [_Location_name]: null,
-        [_Location_column]: 12,
-        [_Location_line]: 644,
-        [_Location_file]: "file:///C:/src/flutter/flutter/packages/flutter/lib/src/material/progress_indicator.dart"
-      });
-    },
-    get C34() {
-      return C[34] = dart.const({
-        __proto__: box.BoxConstraints.prototype,
-        [BoxConstraints_maxHeight]: 1 / 0,
-        [BoxConstraints_minHeight]: 36,
-        [BoxConstraints_maxWidth]: 1 / 0,
-        [BoxConstraints_minWidth]: 36
-      });
-    },
-    get C37() {
-      return C[37] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "painter",
-        [_Location_column]: 11,
-        [_Location_line]: 656,
-        [_Location_file]: null
-      });
-    },
-    get C36() {
-      return C[36] = dart.constList([C[37] || CT.C37], T._LocationL());
-    },
-    get C35() {
-      return C[35] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[36] || CT.C36,
-        [_Location_name]: null,
-        [_Location_column]: 16,
-        [_Location_line]: 655,
-        [_Location_file]: "file:///C:/src/flutter/flutter/packages/flutter/lib/src/material/progress_indicator.dart"
-      });
-    },
-    get C40() {
-      return C[40] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "constraints",
-        [_Location_column]: 9,
-        [_Location_line]: 651,
-        [_Location_file]: null
-      });
-    },
-    get C41() {
-      return C[41] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 9,
-        [_Location_line]: 655,
-        [_Location_file]: null
-      });
-    },
-    get C39() {
-      return C[39] = dart.constList([C[40] || CT.C40, C[41] || CT.C41], T._LocationL());
-    },
-    get C38() {
-      return C[38] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[39] || CT.C39,
-        [_Location_name]: null,
-        [_Location_column]: 14,
-        [_Location_line]: 650,
-        [_Location_file]: "file:///C:/src/flutter/flutter/packages/flutter/lib/src/material/progress_indicator.dart"
-      });
-    },
-    get C44() {
-      return C[44] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "animation",
-        [_Location_column]: 7,
-        [_Location_line]: 673,
-        [_Location_file]: null
-      });
-    },
-    get C45() {
-      return C[45] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "builder",
-        [_Location_column]: 7,
-        [_Location_line]: 674,
-        [_Location_file]: null
-      });
-    },
-    get C43() {
-      return C[43] = dart.constList([C[44] || CT.C44, C[45] || CT.C45], T._LocationL());
-    },
-    get C42() {
-      return C[42] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[43] || CT.C43,
-        [_Location_name]: null,
-        [_Location_column]: 12,
-        [_Location_line]: 672,
-        [_Location_file]: "file:///C:/src/flutter/flutter/packages/flutter/lib/src/material/progress_indicator.dart"
-      });
-    },
-    get C46() {
-      return C[46] = dart.const({
-        __proto__: platform.TargetPlatform.prototype,
-        [_name$0]: "TargetPlatform.iOS",
-        index: 2
-      });
-    },
-    get C47() {
-      return C[47] = dart.const({
-        __proto__: platform.TargetPlatform.prototype,
-        [_name$0]: "TargetPlatform.macOS",
-        index: 4
-      });
-    },
-    get C48() {
-      return C[48] = dart.const({
-        __proto__: platform.TargetPlatform.prototype,
-        [_name$0]: "TargetPlatform.android",
-        index: 0
-      });
-    },
-    get C49() {
-      return C[49] = dart.const({
-        __proto__: platform.TargetPlatform.prototype,
-        [_name$0]: "TargetPlatform.fuchsia",
-        index: 1
-      });
-    },
-    get C50() {
-      return C[50] = dart.const({
-        __proto__: platform.TargetPlatform.prototype,
-        [_name$0]: "TargetPlatform.linux",
-        index: 3
-      });
-    },
-    get C51() {
-      return C[51] = dart.const({
-        __proto__: platform.TargetPlatform.prototype,
-        [_name$0]: "TargetPlatform.windows",
-        index: 5
-      });
-    },
-    get C53() {
-      return C[53] = dart.const({
-        __proto__: curves.Cubic.prototype,
-        [Cubic_d]: 1,
-        [Cubic_c]: 0.2,
-        [Cubic_b]: 0,
-        [Cubic_a]: 0.4
-      });
-    },
-    get C52() {
-      return C[52] = dart.const({
-        __proto__: curves.Interval.prototype,
-        [Interval_curve]: C[53] || CT.C53,
-        [Interval_end]: 0.5,
-        [Interval_begin]: 0
-      });
-    },
-    get C54() {
-      return C[54] = dart.const({
-        __proto__: curves.SawTooth.prototype,
-        [SawTooth_count]: 2222
-      });
-    },
-    get C55() {
-      return C[55] = dart.const({
-        __proto__: curves.Interval.prototype,
-        [Interval_curve]: C[53] || CT.C53,
-        [Interval_end]: 1,
-        [Interval_begin]: 0.5
-      });
-    },
-    get C56() {
-      return C[56] = dart.const({
-        __proto__: curves.SawTooth.prototype,
-        [SawTooth_count]: 1333
-      });
-    },
-    get C57() {
-      return C[57] = dart.const({
-        __proto__: edge_insets.EdgeInsets.prototype,
-        [EdgeInsets_bottom]: 4,
-        [EdgeInsets_right]: 4,
-        [EdgeInsets_top]: 4,
-        [EdgeInsets_left]: 4
-      });
-    },
-    get C58() {
-      return C[58] = dart.const({
-        __proto__: edge_insets.EdgeInsets.prototype,
-        [EdgeInsets_bottom]: 12,
-        [EdgeInsets_right]: 12,
-        [EdgeInsets_top]: 12,
-        [EdgeInsets_left]: 12
-      });
-    },
-    get C61() {
-      return C[61] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "painter",
-        [_Location_column]: 15,
-        [_Location_line]: 843,
-        [_Location_file]: null
-      });
-    },
-    get C60() {
-      return C[60] = dart.constList([C[61] || CT.C61], T._LocationL());
-    },
-    get C59() {
-      return C[59] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[60] || CT.C60,
-        [_Location_name]: null,
-        [_Location_column]: 20,
-        [_Location_line]: 842,
-        [_Location_file]: "file:///C:/src/flutter/flutter/packages/flutter/lib/src/material/progress_indicator.dart"
-      });
-    },
-    get C64() {
-      return C[64] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "padding",
-        [_Location_column]: 13,
-        [_Location_line]: 841,
-        [_Location_file]: null
-      });
-    },
-    get C65() {
-      return C[65] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 13,
-        [_Location_line]: 842,
-        [_Location_file]: null
-      });
-    },
-    get C63() {
-      return C[63] = dart.constList([C[64] || CT.C64, C[65] || CT.C65], T._LocationL());
-    },
-    get C62() {
-      return C[62] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[63] || CT.C63,
-        [_Location_name]: null,
-        [_Location_column]: 18,
-        [_Location_line]: 840,
-        [_Location_file]: "file:///C:/src/flutter/flutter/packages/flutter/lib/src/material/progress_indicator.dart"
-      });
-    },
-    get C68() {
-      return C[68] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "type",
-        [_Location_column]: 11,
-        [_Location_line]: 837,
-        [_Location_file]: null
-      });
-    },
-    get C69() {
-      return C[69] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "color",
-        [_Location_column]: 11,
-        [_Location_line]: 838,
-        [_Location_file]: null
-      });
-    },
-    get C70() {
-      return C[70] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "elevation",
-        [_Location_column]: 11,
-        [_Location_line]: 839,
-        [_Location_file]: null
-      });
-    },
-    get C71() {
-      return C[71] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 11,
-        [_Location_line]: 840,
-        [_Location_file]: null
-      });
-    },
-    get C67() {
-      return C[67] = dart.constList([C[68] || CT.C68, C[69] || CT.C69, C[70] || CT.C70, C[71] || CT.C71], T._LocationL());
-    },
-    get C66() {
-      return C[66] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[67] || CT.C67,
-        [_Location_name]: null,
-        [_Location_column]: 16,
-        [_Location_line]: 836,
-        [_Location_file]: "file:///C:/src/flutter/flutter/packages/flutter/lib/src/material/progress_indicator.dart"
-      });
-    },
-    get C74() {
-      return C[74] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "width",
-        [_Location_column]: 9,
-        [_Location_line]: 833,
-        [_Location_file]: null
-      });
-    },
-    get C75() {
-      return C[75] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "height",
-        [_Location_column]: 9,
-        [_Location_line]: 834,
-        [_Location_file]: null
-      });
-    },
-    get C76() {
-      return C[76] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "margin",
-        [_Location_column]: 9,
-        [_Location_line]: 835,
-        [_Location_file]: null
-      });
-    },
-    get C77() {
-      return C[77] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 9,
-        [_Location_line]: 836,
-        [_Location_file]: null
-      });
-    },
-    get C73() {
-      return C[73] = dart.constList([C[74] || CT.C74, C[75] || CT.C75, C[76] || CT.C76, C[77] || CT.C77], T._LocationL());
-    },
-    get C72() {
-      return C[72] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[73] || CT.C73,
-        [_Location_name]: null,
-        [_Location_column]: 14,
-        [_Location_line]: 832,
-        [_Location_file]: "file:///C:/src/flutter/flutter/packages/flutter/lib/src/material/progress_indicator.dart"
+        __proto__: edge_insets.EdgeInsetsDirectional.prototype,
+        [bottom$0]: 0,
+        [end$]: 0,
+        [top$0]: 0,
+        [start$]: 0
       });
     }
   }, false);
-  var C = Array(78).fill(void 0);
+  var C = Array(7).fill(void 0);
   var I = [
-    "file:///C:/src/flutter/flutter/packages/flutter/lib/src/material/progress_indicator.dart",
-    "package:flutter/src/material/progress_indicator.dart"
+    "file:///C:/src/flutter/flutter/packages/flutter/lib/src/painting/edge_insets.dart",
+    "package:flutter/src/painting/edge_insets.dart"
   ];
-  var _name$ = dart.privateName(progress_indicator, "_name");
-  progress_indicator._ActivityIndicatorType = class _ActivityIndicatorType extends core.Object {
-    toString() {
-      return this[_name$];
+  var _left = dart.privateName(edge_insets, "_left");
+  var _right = dart.privateName(edge_insets, "_right");
+  var _start = dart.privateName(edge_insets, "_start");
+  var _end = dart.privateName(edge_insets, "_end");
+  var _top = dart.privateName(edge_insets, "_top");
+  var _bottom = dart.privateName(edge_insets, "_bottom");
+  var _name = dart.privateName(basic_types, "_name");
+  var _MixedEdgeInsets__bottom = dart.privateName(edge_insets, "_MixedEdgeInsets._bottom");
+  var _MixedEdgeInsets__top = dart.privateName(edge_insets, "_MixedEdgeInsets._top");
+  var _MixedEdgeInsets__end = dart.privateName(edge_insets, "_MixedEdgeInsets._end");
+  var _MixedEdgeInsets__start = dart.privateName(edge_insets, "_MixedEdgeInsets._start");
+  var _MixedEdgeInsets__right = dart.privateName(edge_insets, "_MixedEdgeInsets._right");
+  var _MixedEdgeInsets__left = dart.privateName(edge_insets, "_MixedEdgeInsets._left");
+  edge_insets.EdgeInsetsGeometry = class EdgeInsetsGeometry extends core.Object {
+    get isNonNegative() {
+      return dart.notNull(this[_left]) >= 0.0 && dart.notNull(this[_right]) >= 0.0 && dart.notNull(this[_start]) >= 0.0 && dart.notNull(this[_end]) >= 0.0 && dart.notNull(this[_top]) >= 0.0 && dart.notNull(this[_bottom]) >= 0.0;
     }
-  };
-  (progress_indicator._ActivityIndicatorType.new = function(index, _name) {
-    if (index == null) dart.nullFailed(I[0], 18, 6, "index");
-    if (_name == null) dart.nullFailed(I[0], 18, 6, "_name");
-    this.index = index;
-    this[_name$] = _name;
-    ;
-  }).prototype = progress_indicator._ActivityIndicatorType.prototype;
-  dart.addTypeTests(progress_indicator._ActivityIndicatorType);
-  dart.addTypeCaches(progress_indicator._ActivityIndicatorType);
-  dart.setLibraryUri(progress_indicator._ActivityIndicatorType, I[1]);
-  dart.setFieldSignature(progress_indicator._ActivityIndicatorType, () => ({
-    __proto__: dart.getFields(progress_indicator._ActivityIndicatorType.__proto__),
-    index: dart.finalFieldType(core.int),
-    [_name$]: dart.finalFieldType(core.String)
-  }));
-  dart.defineExtensionMethods(progress_indicator._ActivityIndicatorType, ['toString']);
-  progress_indicator._ActivityIndicatorType.material = C[0] || CT.C0;
-  progress_indicator._ActivityIndicatorType.adaptive = C[1] || CT.C1;
-  progress_indicator._ActivityIndicatorType.values = C[2] || CT.C2;
-  var value$ = dart.privateName(progress_indicator, "ProgressIndicator.value");
-  var backgroundColor$ = dart.privateName(progress_indicator, "ProgressIndicator.backgroundColor");
-  var valueColor$ = dart.privateName(progress_indicator, "ProgressIndicator.valueColor");
-  var semanticsLabel$ = dart.privateName(progress_indicator, "ProgressIndicator.semanticsLabel");
-  var semanticsValue$ = dart.privateName(progress_indicator, "ProgressIndicator.semanticsValue");
-  var _getBackgroundColor = dart.privateName(progress_indicator, "_getBackgroundColor");
-  var _getValueColor = dart.privateName(progress_indicator, "_getValueColor");
-  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
-  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
-  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
-  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
-  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
-  var _buildSemanticsWrapper = dart.privateName(progress_indicator, "_buildSemanticsWrapper");
-  progress_indicator.ProgressIndicator = class ProgressIndicator extends framework.StatefulWidget {
-    get value() {
-      return this[value$];
+    get horizontal() {
+      return dart.notNull(this[_left]) + dart.notNull(this[_right]) + dart.notNull(this[_start]) + dart.notNull(this[_end]);
     }
-    set value(value) {
-      super.value = value;
+    get vertical() {
+      return dart.notNull(this[_top]) + dart.notNull(this[_bottom]);
     }
-    get backgroundColor() {
-      return this[backgroundColor$];
-    }
-    set backgroundColor(value) {
-      super.backgroundColor = value;
-    }
-    get valueColor() {
-      return this[valueColor$];
-    }
-    set valueColor(value) {
-      super.valueColor = value;
-    }
-    get semanticsLabel() {
-      return this[semanticsLabel$];
-    }
-    set semanticsLabel(value) {
-      super.semanticsLabel = value;
-    }
-    get semanticsValue() {
-      return this[semanticsValue$];
-    }
-    set semanticsValue(value) {
-      super.semanticsValue = value;
-    }
-    [_getBackgroundColor](context) {
-      let t0;
-      if (context == null) dart.nullFailed(I[0], 112, 42, "context");
-      t0 = this.backgroundColor;
-      return t0 == null ? theme$.Theme.of(context).backgroundColor : t0;
-    }
-    [_getValueColor](context) {
-      let t0, t0$;
-      if (context == null) dart.nullFailed(I[0], 113, 37, "context");
-      t0$ = (t0 = this.valueColor, t0 == null ? null : t0.value);
-      return t0$ == null ? theme$.Theme.of(context).accentColor : t0$;
-    }
-    debugFillProperties(properties) {
-      if (properties == null) dart.nullFailed(I[0], 116, 56, "properties");
-      super.debugFillProperties(properties);
-      properties.add(new diagnostics.PercentProperty.new("value", this.value, {showName: false, ifNull: "<indeterminate>"}));
-    }
-    [_buildSemanticsWrapper](opts) {
-      let context = opts && 'context' in opts ? opts.context : null;
-      if (context == null) dart.nullFailed(I[0], 122, 27, "context");
-      let child = opts && 'child' in opts ? opts.child : null;
-      if (child == null) dart.nullFailed(I[0], 123, 21, "child");
-      let expandedSemanticsValue = this.semanticsValue;
-      if (this.value != null) {
-        expandedSemanticsValue == null ? expandedSemanticsValue = dart.str((dart.nullCheck(this.value) * 100)[$round]()) + "%" : null;
-      }
-      return new basic.Semantics.new({label: this.semanticsLabel, value: expandedSemanticsValue, child: child, $creationLocationd_0dea112b090073317d4: C[3] || CT.C3});
-    }
-  };
-  (progress_indicator.ProgressIndicator.new = function(opts) {
-    let key = opts && 'key' in opts ? opts.key : null;
-    let value = opts && 'value' in opts ? opts.value : null;
-    let backgroundColor = opts && 'backgroundColor' in opts ? opts.backgroundColor : null;
-    let valueColor = opts && 'valueColor' in opts ? opts.valueColor : null;
-    let semanticsLabel = opts && 'semanticsLabel' in opts ? opts.semanticsLabel : null;
-    let semanticsValue = opts && 'semanticsValue' in opts ? opts.semanticsValue : null;
-    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
-    this[value$] = value;
-    this[backgroundColor$] = backgroundColor;
-    this[valueColor$] = valueColor;
-    this[semanticsLabel$] = semanticsLabel;
-    this[semanticsValue$] = semanticsValue;
-    progress_indicator.ProgressIndicator.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
-    ;
-  }).prototype = progress_indicator.ProgressIndicator.prototype;
-  dart.addTypeTests(progress_indicator.ProgressIndicator);
-  dart.addTypeCaches(progress_indicator.ProgressIndicator);
-  dart.setMethodSignature(progress_indicator.ProgressIndicator, () => ({
-    __proto__: dart.getMethods(progress_indicator.ProgressIndicator.__proto__),
-    [_getBackgroundColor]: dart.fnType(ui.Color, [framework.BuildContext]),
-    [_getValueColor]: dart.fnType(ui.Color, [framework.BuildContext]),
-    [_buildSemanticsWrapper]: dart.fnType(framework.Widget, [], {}, {child: framework.Widget, context: framework.BuildContext})
-  }));
-  dart.setLibraryUri(progress_indicator.ProgressIndicator, I[1]);
-  dart.setFieldSignature(progress_indicator.ProgressIndicator, () => ({
-    __proto__: dart.getFields(progress_indicator.ProgressIndicator.__proto__),
-    value: dart.finalFieldType(dart.nullable(core.double)),
-    backgroundColor: dart.finalFieldType(dart.nullable(ui.Color)),
-    valueColor: dart.finalFieldType(dart.nullable(animation.Animation$(dart.nullable(ui.Color)))),
-    semanticsLabel: dart.finalFieldType(dart.nullable(core.String)),
-    semanticsValue: dart.finalFieldType(dart.nullable(core.String))
-  }));
-  var backgroundColor$0 = dart.privateName(progress_indicator, "_LinearProgressIndicatorPainter.backgroundColor");
-  var valueColor$0 = dart.privateName(progress_indicator, "_LinearProgressIndicatorPainter.valueColor");
-  var value$0 = dart.privateName(progress_indicator, "_LinearProgressIndicatorPainter.value");
-  var animationValue$ = dart.privateName(progress_indicator, "_LinearProgressIndicatorPainter.animationValue");
-  var textDirection$ = dart.privateName(progress_indicator, "_LinearProgressIndicatorPainter.textDirection");
-  var _name = dart.privateName(ui, "_name");
-  var Cubic_d = dart.privateName(curves, "Cubic.d");
-  var Cubic_c = dart.privateName(curves, "Cubic.c");
-  var Cubic_b = dart.privateName(curves, "Cubic.b");
-  var Cubic_a = dart.privateName(curves, "Cubic.a");
-  var Interval_curve = dart.privateName(curves, "Interval.curve");
-  var Interval_end = dart.privateName(curves, "Interval.end");
-  var Interval_begin = dart.privateName(curves, "Interval.begin");
-  progress_indicator._LinearProgressIndicatorPainter = class _LinearProgressIndicatorPainter extends custom_paint.CustomPainter {
-    get backgroundColor() {
-      return this[backgroundColor$0];
-    }
-    set backgroundColor(value) {
-      super.backgroundColor = value;
-    }
-    get valueColor() {
-      return this[valueColor$0];
-    }
-    set valueColor(value) {
-      super.valueColor = value;
-    }
-    get value() {
-      return this[value$0];
-    }
-    set value(value) {
-      super.value = value;
-    }
-    get animationValue() {
-      return this[animationValue$];
-    }
-    set animationValue(value) {
-      super.animationValue = value;
-    }
-    get textDirection() {
-      return this[textDirection$];
-    }
-    set textDirection(value) {
-      super.textDirection = value;
-    }
-    paint(canvas, size) {
-      let t0;
-      if (canvas == null) dart.nullFailed(I[0], 176, 21, "canvas");
-      if (size == null) dart.nullFailed(I[0], 176, 34, "size");
-      let paint = (t0 = ui.Paint.new(), (() => {
-        t0.color = this.backgroundColor;
-        t0.style = ui.PaintingStyle.fill;
-        return t0;
-      })());
-      canvas.drawRect(ui.Offset.zero['&'](size), paint);
-      paint.color = this.valueColor;
-      const drawBar = (x, width) => {
-        if (x == null) dart.nullFailed(I[0], 184, 25, "x");
-        if (width == null) dart.nullFailed(I[0], 184, 35, "width");
-        if (dart.notNull(width) <= 0.0) return;
-        let left = null;
-        switch (this.textDirection) {
-          case C[8] || CT.C8:
-          {
-            left = dart.notNull(size.width) - dart.notNull(width) - dart.notNull(x);
-            break;
-          }
-          case C[9] || CT.C9:
-          {
-            left = x;
-            break;
-          }
-          default:
-          {
-            dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
-          }
-        }
-        canvas.drawRect(new ui.Offset.new(left, 0.0)['&'](new ui.Size.new(width, size.height)), paint);
-      };
-      dart.fn(drawBar, T.doubleAnddoubleTovoid());
-      if (this.value != null) {
-        drawBar(0.0, dart.nullCheck(this.value)[$clamp](0.0, 1.0) * dart.notNull(size.width));
-      } else {
-        let x1 = dart.notNull(size.width) * dart.notNull(progress_indicator._LinearProgressIndicatorPainter.line1Tail.transform(this.animationValue));
-        let width1 = dart.notNull(size.width) * dart.notNull(progress_indicator._LinearProgressIndicatorPainter.line1Head.transform(this.animationValue)) - x1;
-        let x2 = dart.notNull(size.width) * dart.notNull(progress_indicator._LinearProgressIndicatorPainter.line2Tail.transform(this.animationValue));
-        let width2 = dart.notNull(size.width) * dart.notNull(progress_indicator._LinearProgressIndicatorPainter.line2Head.transform(this.animationValue)) - x2;
-        drawBar(x1, width1);
-        drawBar(x2, width2);
-      }
-    }
-    shouldRepaint(oldPainter) {
-      progress_indicator._LinearProgressIndicatorPainter.as(oldPainter);
-      if (oldPainter == null) dart.nullFailed(I[0], 215, 54, "oldPainter");
-      return !dart.equals(oldPainter.backgroundColor, this.backgroundColor) || !dart.equals(oldPainter.valueColor, this.valueColor) || oldPainter.value != this.value || oldPainter.animationValue != this.animationValue || !dart.equals(oldPainter.textDirection, this.textDirection);
-    }
-  };
-  (progress_indicator._LinearProgressIndicatorPainter.new = function(opts) {
-    let backgroundColor = opts && 'backgroundColor' in opts ? opts.backgroundColor : null;
-    if (backgroundColor == null) dart.nullFailed(I[0], 139, 19, "backgroundColor");
-    let valueColor = opts && 'valueColor' in opts ? opts.valueColor : null;
-    if (valueColor == null) dart.nullFailed(I[0], 140, 19, "valueColor");
-    let value = opts && 'value' in opts ? opts.value : null;
-    let animationValue = opts && 'animationValue' in opts ? opts.animationValue : null;
-    if (animationValue == null) dart.nullFailed(I[0], 142, 19, "animationValue");
-    let textDirection = opts && 'textDirection' in opts ? opts.textDirection : null;
-    if (textDirection == null) dart.nullFailed(I[0], 143, 19, "textDirection");
-    this[backgroundColor$0] = backgroundColor;
-    this[valueColor$0] = valueColor;
-    this[value$0] = value;
-    this[animationValue$] = animationValue;
-    this[textDirection$] = textDirection;
-    if (!(textDirection != null)) dart.assertFailed(null, I[0], 144, 15, "textDirection != null");
-    progress_indicator._LinearProgressIndicatorPainter.__proto__.new.call(this);
-    ;
-  }).prototype = progress_indicator._LinearProgressIndicatorPainter.prototype;
-  dart.addTypeTests(progress_indicator._LinearProgressIndicatorPainter);
-  dart.addTypeCaches(progress_indicator._LinearProgressIndicatorPainter);
-  dart.setMethodSignature(progress_indicator._LinearProgressIndicatorPainter, () => ({
-    __proto__: dart.getMethods(progress_indicator._LinearProgressIndicatorPainter.__proto__),
-    paint: dart.fnType(dart.void, [ui.Canvas, ui.Size]),
-    shouldRepaint: dart.fnType(core.bool, [dart.nullable(core.Object)])
-  }));
-  dart.setLibraryUri(progress_indicator._LinearProgressIndicatorPainter, I[1]);
-  dart.setFieldSignature(progress_indicator._LinearProgressIndicatorPainter, () => ({
-    __proto__: dart.getFields(progress_indicator._LinearProgressIndicatorPainter.__proto__),
-    backgroundColor: dart.finalFieldType(ui.Color),
-    valueColor: dart.finalFieldType(ui.Color),
-    value: dart.finalFieldType(dart.nullable(core.double)),
-    animationValue: dart.finalFieldType(core.double),
-    textDirection: dart.finalFieldType(ui.TextDirection)
-  }));
-  dart.defineLazy(progress_indicator._LinearProgressIndicatorPainter, {
-    /*progress_indicator._LinearProgressIndicatorPainter.line1Head*/get line1Head() {
-      return C[10] || CT.C10;
-    },
-    /*progress_indicator._LinearProgressIndicatorPainter.line1Tail*/get line1Tail() {
-      return C[12] || CT.C12;
-    },
-    /*progress_indicator._LinearProgressIndicatorPainter.line2Head*/get line2Head() {
-      return C[14] || CT.C14;
-    },
-    /*progress_indicator._LinearProgressIndicatorPainter.line2Tail*/get line2Tail() {
-      return C[16] || CT.C16;
-    }
-  }, false);
-  var minHeight$ = dart.privateName(progress_indicator, "LinearProgressIndicator.minHeight");
-  progress_indicator.LinearProgressIndicator = class LinearProgressIndicator extends progress_indicator.ProgressIndicator {
-    get minHeight() {
-      return this[minHeight$];
-    }
-    set minHeight(value) {
-      super.minHeight = value;
-    }
-    createState() {
-      return new progress_indicator._LinearProgressIndicatorState.new();
-    }
-  };
-  (progress_indicator.LinearProgressIndicator.new = function(opts) {
-    let key = opts && 'key' in opts ? opts.key : null;
-    let value = opts && 'value' in opts ? opts.value : null;
-    let backgroundColor = opts && 'backgroundColor' in opts ? opts.backgroundColor : null;
-    let valueColor = opts && 'valueColor' in opts ? opts.valueColor : null;
-    let minHeight = opts && 'minHeight' in opts ? opts.minHeight : null;
-    let semanticsLabel = opts && 'semanticsLabel' in opts ? opts.semanticsLabel : null;
-    let semanticsValue = opts && 'semanticsValue' in opts ? opts.semanticsValue : null;
-    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
-    this[minHeight$] = minHeight;
-    if (!(minHeight == null || dart.notNull(minHeight) > 0)) dart.assertFailed(null, I[0], 312, 15, "minHeight == null || minHeight > 0");
-    progress_indicator.LinearProgressIndicator.__proto__.new.call(this, {key: key, value: value, backgroundColor: backgroundColor, valueColor: valueColor, semanticsLabel: semanticsLabel, semanticsValue: semanticsValue, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
-    ;
-  }).prototype = progress_indicator.LinearProgressIndicator.prototype;
-  dart.addTypeTests(progress_indicator.LinearProgressIndicator);
-  dart.addTypeCaches(progress_indicator.LinearProgressIndicator);
-  dart.setMethodSignature(progress_indicator.LinearProgressIndicator, () => ({
-    __proto__: dart.getMethods(progress_indicator.LinearProgressIndicator.__proto__),
-    createState: dart.fnType(progress_indicator._LinearProgressIndicatorState, [])
-  }));
-  dart.setLibraryUri(progress_indicator.LinearProgressIndicator, I[1]);
-  dart.setFieldSignature(progress_indicator.LinearProgressIndicator, () => ({
-    __proto__: dart.getFields(progress_indicator.LinearProgressIndicator.__proto__),
-    minHeight: dart.finalFieldType(dart.nullable(core.double))
-  }));
-  var ___LinearProgressIndicatorState__controller = dart.privateName(progress_indicator, "_#_LinearProgressIndicatorState#_controller");
-  var ___LinearProgressIndicatorState__controller_isSet = dart.privateName(progress_indicator, "_#_LinearProgressIndicatorState#_controller#isSet");
-  var _controller = dart.privateName(progress_indicator, "_controller");
-  var Duration__duration = dart.privateName(core, "Duration._duration");
-  var _buildIndicator = dart.privateName(progress_indicator, "_buildIndicator");
-  const State_SingleTickerProviderStateMixin$36 = class State_SingleTickerProviderStateMixin extends framework.State$(progress_indicator.LinearProgressIndicator) {};
-  (State_SingleTickerProviderStateMixin$36.new = function() {
-    ticker_provider.SingleTickerProviderStateMixin$(progress_indicator.LinearProgressIndicator)[dart.mixinNew].call(this);
-    State_SingleTickerProviderStateMixin$36.__proto__.new.call(this);
-  }).prototype = State_SingleTickerProviderStateMixin$36.prototype;
-  dart.applyMixin(State_SingleTickerProviderStateMixin$36, ticker_provider.SingleTickerProviderStateMixin$(progress_indicator.LinearProgressIndicator));
-  progress_indicator._LinearProgressIndicatorState = class _LinearProgressIndicatorState extends State_SingleTickerProviderStateMixin$36 {
-    get [_controller]() {
-      let t0;
-      return dart.test(this[___LinearProgressIndicatorState__controller_isSet]) ? (t0 = this[___LinearProgressIndicatorState__controller], t0) : dart.throw(new _internal.LateError.fieldNI("_controller"));
-    }
-    set [_controller](t0) {
-      if (t0 == null) dart.nullFailed(I[0], 332, 28, "null");
-      this[___LinearProgressIndicatorState__controller_isSet] = true;
-      this[___LinearProgressIndicatorState__controller] = t0;
-    }
-    initState() {
-      super.initState();
-      this[_controller] = new animation_controller.AnimationController.new({duration: C[18] || CT.C18, vsync: this});
-      if (this.widget.value == null) this[_controller].repeat();
-    }
-    didUpdateWidget(oldWidget) {
-      progress_indicator.LinearProgressIndicator.as(oldWidget);
-      if (oldWidget == null) dart.nullFailed(I[0], 346, 48, "oldWidget");
-      super.didUpdateWidget(oldWidget);
-      if (this.widget.value == null && !dart.test(this[_controller].isAnimating))
-        this[_controller].repeat();
-      else if (this.widget.value != null && dart.test(this[_controller].isAnimating)) this[_controller].stop();
-    }
-    dispose() {
-      this[_controller].dispose();
-      super.dispose();
-    }
-    [_buildIndicator](context, animationValue, textDirection) {
-      let t1;
-      if (context == null) dart.nullFailed(I[0], 360, 39, "context");
-      if (animationValue == null) dart.nullFailed(I[0], 360, 55, "animationValue");
-      if (textDirection == null) dart.nullFailed(I[0], 360, 85, "textDirection");
-      return this.widget[_buildSemanticsWrapper]({context: context, child: new container.Container.new({constraints: new box.BoxConstraints.new({minWidth: 1 / 0, minHeight: (t1 = this.widget.minHeight, t1 == null ? 4.0 : t1)}), child: new basic.CustomPaint.new({painter: new progress_indicator._LinearProgressIndicatorPainter.new({backgroundColor: this.widget[_getBackgroundColor](context), valueColor: this.widget[_getValueColor](context), value: this.widget.value, animationValue: animationValue, textDirection: textDirection}), $creationLocationd_0dea112b090073317d4: C[19] || CT.C19}), $creationLocationd_0dea112b090073317d4: C[22] || CT.C22})});
-    }
-    build(context) {
-      if (context == null) dart.nullFailed(I[0], 382, 29, "context");
-      let textDirection = basic.Directionality.of(context);
-      if (this.widget.value != null) return this[_buildIndicator](context, this[_controller].value, textDirection);
-      return new transitions.AnimatedBuilder.new({animation: this[_controller].view, builder: dart.fn((context, child) => {
-          if (context == null) dart.nullFailed(I[0], 390, 30, "context");
-          return this[_buildIndicator](context, this[_controller].value, textDirection);
-        }, T.BuildContextAndWidgetNToWidget()), $creationLocationd_0dea112b090073317d4: C[26] || CT.C26});
-    }
-  };
-  (progress_indicator._LinearProgressIndicatorState.new = function() {
-    this[___LinearProgressIndicatorState__controller] = null;
-    this[___LinearProgressIndicatorState__controller_isSet] = false;
-    progress_indicator._LinearProgressIndicatorState.__proto__.new.call(this);
-    ;
-  }).prototype = progress_indicator._LinearProgressIndicatorState.prototype;
-  dart.addTypeTests(progress_indicator._LinearProgressIndicatorState);
-  dart.addTypeCaches(progress_indicator._LinearProgressIndicatorState);
-  dart.setMethodSignature(progress_indicator._LinearProgressIndicatorState, () => ({
-    __proto__: dart.getMethods(progress_indicator._LinearProgressIndicatorState.__proto__),
-    [_buildIndicator]: dart.fnType(framework.Widget, [framework.BuildContext, core.double, ui.TextDirection]),
-    build: dart.fnType(framework.Widget, [framework.BuildContext])
-  }));
-  dart.setGetterSignature(progress_indicator._LinearProgressIndicatorState, () => ({
-    __proto__: dart.getGetters(progress_indicator._LinearProgressIndicatorState.__proto__),
-    [_controller]: animation_controller.AnimationController
-  }));
-  dart.setSetterSignature(progress_indicator._LinearProgressIndicatorState, () => ({
-    __proto__: dart.getSetters(progress_indicator._LinearProgressIndicatorState.__proto__),
-    [_controller]: animation_controller.AnimationController
-  }));
-  dart.setLibraryUri(progress_indicator._LinearProgressIndicatorState, I[1]);
-  dart.setFieldSignature(progress_indicator._LinearProgressIndicatorState, () => ({
-    __proto__: dart.getFields(progress_indicator._LinearProgressIndicatorState.__proto__),
-    [___LinearProgressIndicatorState__controller]: dart.fieldType(dart.nullable(animation_controller.AnimationController)),
-    [___LinearProgressIndicatorState__controller_isSet]: dart.fieldType(core.bool)
-  }));
-  progress_indicator._CircularProgressIndicatorPainter = class _CircularProgressIndicatorPainter extends custom_paint.CustomPainter {
-    paint(canvas, size) {
-      let t1, t1$;
-      if (canvas == null) dart.nullFailed(I[0], 432, 21, "canvas");
-      if (size == null) dart.nullFailed(I[0], 432, 34, "size");
-      let paint = (t1 = ui.Paint.new(), (() => {
-        t1.color = this.valueColor;
-        t1.strokeWidth = this.strokeWidth;
-        t1.style = ui.PaintingStyle.stroke;
-        return t1;
-      })());
-      if (this.backgroundColor != null) {
-        let backgroundPaint = (t1$ = ui.Paint.new(), (() => {
-          t1$.color = dart.nullCheck(this.backgroundColor);
-          t1$.strokeWidth = this.strokeWidth;
-          t1$.style = ui.PaintingStyle.stroke;
-          return t1$;
-        })());
-        canvas.drawArc(ui.Offset.zero['&'](size), 0.0, 6.282185307179586, false, backgroundPaint);
-      }
-      if (this.value == null) paint.strokeCap = ui.StrokeCap.square;
-      canvas.drawArc(ui.Offset.zero['&'](size), this.arcStart, this.arcSweep, false, paint);
-    }
-    shouldRepaint(oldPainter) {
-      progress_indicator._CircularProgressIndicatorPainter.as(oldPainter);
-      if (oldPainter == null) dart.nullFailed(I[0], 452, 56, "oldPainter");
-      return !dart.equals(oldPainter.backgroundColor, this.backgroundColor) || !dart.equals(oldPainter.valueColor, this.valueColor) || oldPainter.value != this.value || oldPainter.headValue != this.headValue || oldPainter.tailValue != this.tailValue || oldPainter.offsetValue != this.offsetValue || oldPainter.rotationValue != this.rotationValue || oldPainter.strokeWidth != this.strokeWidth;
-    }
-  };
-  (progress_indicator._CircularProgressIndicatorPainter.new = function(opts) {
-    let backgroundColor = opts && 'backgroundColor' in opts ? opts.backgroundColor : null;
-    let valueColor = opts && 'valueColor' in opts ? opts.valueColor : null;
-    if (valueColor == null) dart.nullFailed(I[0], 400, 19, "valueColor");
-    let value = opts && 'value' in opts ? opts.value : null;
-    let headValue = opts && 'headValue' in opts ? opts.headValue : null;
-    if (headValue == null) dart.nullFailed(I[0], 402, 19, "headValue");
-    let tailValue = opts && 'tailValue' in opts ? opts.tailValue : null;
-    if (tailValue == null) dart.nullFailed(I[0], 403, 19, "tailValue");
-    let offsetValue = opts && 'offsetValue' in opts ? opts.offsetValue : null;
-    if (offsetValue == null) dart.nullFailed(I[0], 404, 19, "offsetValue");
-    let rotationValue = opts && 'rotationValue' in opts ? opts.rotationValue : null;
-    if (rotationValue == null) dart.nullFailed(I[0], 405, 19, "rotationValue");
-    let strokeWidth = opts && 'strokeWidth' in opts ? opts.strokeWidth : null;
-    if (strokeWidth == null) dart.nullFailed(I[0], 406, 19, "strokeWidth");
-    this.backgroundColor = backgroundColor;
-    this.valueColor = valueColor;
-    this.value = value;
-    this.headValue = headValue;
-    this.tailValue = tailValue;
-    this.offsetValue = offsetValue;
-    this.rotationValue = rotationValue;
-    this.strokeWidth = strokeWidth;
-    this.arcStart = value != null ? -1.5707963267948966 : -1.5707963267948966 + dart.notNull(tailValue) * 3 / 2 * 3.141592653589793 + dart.notNull(rotationValue) * 3.141592653589793 * 2.0 + dart.notNull(offsetValue) * 0.5 * 3.141592653589793;
-    this.arcSweep = value != null ? value[$clamp](0.0, 1.0) * 6.282185307179586 : math.max(core.double, dart.notNull(headValue) * 3 / 2 * 3.141592653589793 - dart.notNull(tailValue) * 3 / 2 * 3.141592653589793, 0.001);
-    progress_indicator._CircularProgressIndicatorPainter.__proto__.new.call(this);
-    ;
-  }).prototype = progress_indicator._CircularProgressIndicatorPainter.prototype;
-  dart.addTypeTests(progress_indicator._CircularProgressIndicatorPainter);
-  dart.addTypeCaches(progress_indicator._CircularProgressIndicatorPainter);
-  dart.setMethodSignature(progress_indicator._CircularProgressIndicatorPainter, () => ({
-    __proto__: dart.getMethods(progress_indicator._CircularProgressIndicatorPainter.__proto__),
-    paint: dart.fnType(dart.void, [ui.Canvas, ui.Size]),
-    shouldRepaint: dart.fnType(core.bool, [dart.nullable(core.Object)])
-  }));
-  dart.setLibraryUri(progress_indicator._CircularProgressIndicatorPainter, I[1]);
-  dart.setFieldSignature(progress_indicator._CircularProgressIndicatorPainter, () => ({
-    __proto__: dart.getFields(progress_indicator._CircularProgressIndicatorPainter.__proto__),
-    backgroundColor: dart.finalFieldType(dart.nullable(ui.Color)),
-    valueColor: dart.finalFieldType(ui.Color),
-    value: dart.finalFieldType(dart.nullable(core.double)),
-    headValue: dart.finalFieldType(core.double),
-    tailValue: dart.finalFieldType(core.double),
-    offsetValue: dart.finalFieldType(core.double),
-    rotationValue: dart.finalFieldType(core.double),
-    strokeWidth: dart.finalFieldType(core.double),
-    arcStart: dart.finalFieldType(core.double),
-    arcSweep: dart.finalFieldType(core.double)
-  }));
-  dart.defineLazy(progress_indicator._CircularProgressIndicatorPainter, {
-    /*progress_indicator._CircularProgressIndicatorPainter._twoPi*/get _twoPi() {
-      return 6.283185307179586;
-    },
-    /*progress_indicator._CircularProgressIndicatorPainter._epsilon*/get _epsilon() {
-      return 0.001;
-    },
-    /*progress_indicator._CircularProgressIndicatorPainter._sweep*/get _sweep() {
-      return 6.282185307179586;
-    },
-    /*progress_indicator._CircularProgressIndicatorPainter._startAngle*/get _startAngle() {
-      return -1.5707963267948966;
-    }
-  }, false);
-  var _indicatorType = dart.privateName(progress_indicator, "CircularProgressIndicator._indicatorType");
-  var strokeWidth$ = dart.privateName(progress_indicator, "CircularProgressIndicator.strokeWidth");
-  var _indicatorType$ = dart.privateName(progress_indicator, "_indicatorType");
-  progress_indicator.CircularProgressIndicator = class CircularProgressIndicator extends progress_indicator.ProgressIndicator {
-    get [_indicatorType$]() {
-      return this[_indicatorType];
-    }
-    set [_indicatorType$](value) {
-      super[_indicatorType$] = value;
-    }
-    get strokeWidth() {
-      return this[strokeWidth$];
-    }
-    set strokeWidth(value) {
-      super.strokeWidth = value;
-    }
-    createState() {
-      return new progress_indicator._CircularProgressIndicatorState.new();
-    }
-  };
-  (progress_indicator.CircularProgressIndicator.new = function(opts) {
-    let key = opts && 'key' in opts ? opts.key : null;
-    let value = opts && 'value' in opts ? opts.value : null;
-    let backgroundColor = opts && 'backgroundColor' in opts ? opts.backgroundColor : null;
-    let valueColor = opts && 'valueColor' in opts ? opts.valueColor : null;
-    let strokeWidth = opts && 'strokeWidth' in opts ? opts.strokeWidth : 4;
-    if (strokeWidth == null) dart.nullFailed(I[0], 547, 10, "strokeWidth");
-    let semanticsLabel = opts && 'semanticsLabel' in opts ? opts.semanticsLabel : null;
-    let semanticsValue = opts && 'semanticsValue' in opts ? opts.semanticsValue : null;
-    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
-    this[strokeWidth$] = strokeWidth;
-    this[_indicatorType] = progress_indicator._ActivityIndicatorType.material;
-    progress_indicator.CircularProgressIndicator.__proto__.new.call(this, {key: key, value: value, backgroundColor: backgroundColor, valueColor: valueColor, semanticsLabel: semanticsLabel, semanticsValue: semanticsValue, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
-    ;
-  }).prototype = progress_indicator.CircularProgressIndicator.prototype;
-  (progress_indicator.CircularProgressIndicator.adaptive = function(opts) {
-    let key = opts && 'key' in opts ? opts.key : null;
-    let value = opts && 'value' in opts ? opts.value : null;
-    let backgroundColor = opts && 'backgroundColor' in opts ? opts.backgroundColor : null;
-    let valueColor = opts && 'valueColor' in opts ? opts.valueColor : null;
-    let strokeWidth = opts && 'strokeWidth' in opts ? opts.strokeWidth : 4;
-    if (strokeWidth == null) dart.nullFailed(I[0], 573, 10, "strokeWidth");
-    let semanticsLabel = opts && 'semanticsLabel' in opts ? opts.semanticsLabel : null;
-    let semanticsValue = opts && 'semanticsValue' in opts ? opts.semanticsValue : null;
-    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
-    this[strokeWidth$] = strokeWidth;
-    this[_indicatorType] = progress_indicator._ActivityIndicatorType.adaptive;
-    progress_indicator.CircularProgressIndicator.__proto__.new.call(this, {key: key, value: value, backgroundColor: backgroundColor, valueColor: valueColor, semanticsLabel: semanticsLabel, semanticsValue: semanticsValue, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
-    ;
-  }).prototype = progress_indicator.CircularProgressIndicator.prototype;
-  dart.addTypeTests(progress_indicator.CircularProgressIndicator);
-  dart.addTypeCaches(progress_indicator.CircularProgressIndicator);
-  dart.setMethodSignature(progress_indicator.CircularProgressIndicator, () => ({
-    __proto__: dart.getMethods(progress_indicator.CircularProgressIndicator.__proto__),
-    createState: dart.fnType(progress_indicator._CircularProgressIndicatorState, [])
-  }));
-  dart.setLibraryUri(progress_indicator.CircularProgressIndicator, I[1]);
-  dart.setFieldSignature(progress_indicator.CircularProgressIndicator, () => ({
-    __proto__: dart.getFields(progress_indicator.CircularProgressIndicator.__proto__),
-    [_indicatorType$]: dart.finalFieldType(progress_indicator._ActivityIndicatorType),
-    strokeWidth: dart.finalFieldType(core.double)
-  }));
-  var ___CircularProgressIndicatorState__controller = dart.privateName(progress_indicator, "_#_CircularProgressIndicatorState#_controller");
-  var ___CircularProgressIndicatorState__controller_isSet = dart.privateName(progress_indicator, "_#_CircularProgressIndicatorState#_controller#isSet");
-  var _buildCupertinoIndicator = dart.privateName(progress_indicator, "_buildCupertinoIndicator");
-  var BoxConstraints_maxHeight = dart.privateName(box, "BoxConstraints.maxHeight");
-  var BoxConstraints_minHeight = dart.privateName(box, "BoxConstraints.minHeight");
-  var BoxConstraints_maxWidth = dart.privateName(box, "BoxConstraints.maxWidth");
-  var BoxConstraints_minWidth = dart.privateName(box, "BoxConstraints.minWidth");
-  var _buildMaterialIndicator = dart.privateName(progress_indicator, "_buildMaterialIndicator");
-  var _buildAnimation = dart.privateName(progress_indicator, "_buildAnimation");
-  var _name$0 = dart.privateName(platform, "_name");
-  var SawTooth_count = dart.privateName(curves, "SawTooth.count");
-  const State_SingleTickerProviderStateMixin$36$ = class State_SingleTickerProviderStateMixin extends framework.State$(progress_indicator.CircularProgressIndicator) {};
-  (State_SingleTickerProviderStateMixin$36$.new = function() {
-    ticker_provider.SingleTickerProviderStateMixin$(progress_indicator.CircularProgressIndicator)[dart.mixinNew].call(this);
-    State_SingleTickerProviderStateMixin$36$.__proto__.new.call(this);
-  }).prototype = State_SingleTickerProviderStateMixin$36$.prototype;
-  dart.applyMixin(State_SingleTickerProviderStateMixin$36$, ticker_provider.SingleTickerProviderStateMixin$(progress_indicator.CircularProgressIndicator));
-  progress_indicator._CircularProgressIndicatorState = class _CircularProgressIndicatorState extends State_SingleTickerProviderStateMixin$36$ {
-    get [_controller]() {
-      let t1;
-      return dart.test(this[___CircularProgressIndicatorState__controller_isSet]) ? (t1 = this[___CircularProgressIndicatorState__controller], t1) : dart.throw(new _internal.LateError.fieldNI("_controller"));
-    }
-    set [_controller](t1) {
-      if (t1 == null) dart.nullFailed(I[0], 615, 28, "null");
-      this[___CircularProgressIndicatorState__controller_isSet] = true;
-      this[___CircularProgressIndicatorState__controller] = t1;
-    }
-    initState() {
-      super.initState();
-      this[_controller] = new animation_controller.AnimationController.new({duration: C[30] || CT.C30, vsync: this});
-      if (this.widget.value == null) this[_controller].repeat();
-    }
-    didUpdateWidget(oldWidget) {
-      progress_indicator.CircularProgressIndicator.as(oldWidget);
-      if (oldWidget == null) dart.nullFailed(I[0], 629, 50, "oldWidget");
-      super.didUpdateWidget(oldWidget);
-      if (this.widget.value == null && !dart.test(this[_controller].isAnimating))
-        this[_controller].repeat();
-      else if (this.widget.value != null && dart.test(this[_controller].isAnimating)) this[_controller].stop();
-    }
-    dispose() {
-      this[_controller].dispose();
-      super.dispose();
-    }
-    [_buildCupertinoIndicator](context) {
-      if (context == null) dart.nullFailed(I[0], 643, 48, "context");
-      return new activity_indicator.CupertinoActivityIndicator.new({key: this.widget.key, $creationLocationd_0dea112b090073317d4: C[31] || CT.C31});
-    }
-    [_buildMaterialIndicator](context, headValue, tailValue, offsetValue, rotationValue) {
-      if (context == null) dart.nullFailed(I[0], 647, 47, "context");
-      if (headValue == null) dart.nullFailed(I[0], 647, 63, "headValue");
-      if (tailValue == null) dart.nullFailed(I[0], 647, 81, "tailValue");
-      if (offsetValue == null) dart.nullFailed(I[0], 647, 99, "offsetValue");
-      if (rotationValue == null) dart.nullFailed(I[0], 647, 119, "rotationValue");
-      return this.widget[_buildSemanticsWrapper]({context: context, child: new container.Container.new({constraints: C[34] || CT.C34, child: new basic.CustomPaint.new({painter: new progress_indicator._CircularProgressIndicatorPainter.new({backgroundColor: this.widget.backgroundColor, valueColor: this.widget[_getValueColor](context), value: this.widget.value, headValue: headValue, tailValue: tailValue, offsetValue: offsetValue, rotationValue: rotationValue, strokeWidth: this.widget.strokeWidth}), $creationLocationd_0dea112b090073317d4: C[35] || CT.C35}), $creationLocationd_0dea112b090073317d4: C[38] || CT.C38})});
-    }
-    [_buildAnimation]() {
-      return new transitions.AnimatedBuilder.new({animation: this[_controller], builder: dart.fn((context, child) => {
-          if (context == null) dart.nullFailed(I[0], 674, 30, "context");
-          return this[_buildMaterialIndicator](context, progress_indicator._CircularProgressIndicatorState._strokeHeadTween.evaluate(this[_controller]), progress_indicator._CircularProgressIndicatorState._strokeTailTween.evaluate(this[_controller]), progress_indicator._CircularProgressIndicatorState._offsetTween.evaluate(this[_controller]), progress_indicator._CircularProgressIndicatorState._rotationTween.evaluate(this[_controller]));
-        }, T.BuildContextAndWidgetNToWidget()), $creationLocationd_0dea112b090073317d4: C[42] || CT.C42});
-    }
-    build(context) {
-      if (context == null) dart.nullFailed(I[0], 687, 29, "context");
-      switch (this.widget[_indicatorType$]) {
+    along(axis) {
+      if (axis == null) dart.nullFailed(I[0], 67, 21, "axis");
+      if (!(axis != null)) dart.assertFailed(null, I[0], 68, 12, "axis != null");
+      switch (axis) {
         case C[0] || CT.C0:
         {
-          if (this.widget.value != null) return this[_buildMaterialIndicator](context, 0.0, 0.0, 0.0, 0.0);
-          return this[_buildAnimation]();
+          return this.horizontal;
         }
         case C[1] || CT.C1:
         {
-          let theme = theme$.Theme.of(context);
-          if (!(theme.platform != null)) dart.assertFailed(null, I[0], 695, 16, "theme.platform != null");
-          switch (theme.platform) {
-            case C[46] || CT.C46:
-            case C[47] || CT.C47:
-            {
-              return this[_buildCupertinoIndicator](context);
-            }
-            case C[48] || CT.C48:
-            case C[49] || CT.C49:
-            case C[50] || CT.C50:
-            case C[51] || CT.C51:
-            {
-              if (this.widget.value != null) return this[_buildMaterialIndicator](context, 0.0, 0.0, 0.0, 0.0);
-              return this[_buildAnimation]();
-            }
-            default:
-            {
-              dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
-            }
-          }
+          return this.vertical;
+        }
+        default:
+        {
+          dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
+        }
+      }
+    }
+    get collapsedSize() {
+      return new ui.Size.new(this.horizontal, this.vertical);
+    }
+    get flipped() {
+      return new edge_insets._MixedEdgeInsets.fromLRSETB(this[_right], this[_left], this[_end], this[_start], this[_bottom], this[_top]);
+    }
+    inflateSize(size) {
+      if (size == null) dart.nullFailed(I[0], 92, 25, "size");
+      return new ui.Size.new(dart.notNull(size.width) + dart.notNull(this.horizontal), dart.notNull(size.height) + dart.notNull(this.vertical));
+    }
+    deflateSize(size) {
+      if (size == null) dart.nullFailed(I[0], 108, 25, "size");
+      return new ui.Size.new(dart.notNull(size.width) - dart.notNull(this.horizontal), dart.notNull(size.height) - dart.notNull(this.vertical));
+    }
+    subtract(other) {
+      if (other == null) dart.nullFailed(I[0], 128, 50, "other");
+      return new edge_insets._MixedEdgeInsets.fromLRSETB(dart.notNull(this[_left]) - dart.notNull(other[_left]), dart.notNull(this[_right]) - dart.notNull(other[_right]), dart.notNull(this[_start]) - dart.notNull(other[_start]), dart.notNull(this[_end]) - dart.notNull(other[_end]), dart.notNull(this[_top]) - dart.notNull(other[_top]), dart.notNull(this[_bottom]) - dart.notNull(other[_bottom]));
+    }
+    add(other) {
+      if (other == null) dart.nullFailed(I[0], 150, 45, "other");
+      return new edge_insets._MixedEdgeInsets.fromLRSETB(dart.notNull(this[_left]) + dart.notNull(other[_left]), dart.notNull(this[_right]) + dart.notNull(other[_right]), dart.notNull(this[_start]) + dart.notNull(other[_start]), dart.notNull(this[_end]) + dart.notNull(other[_end]), dart.notNull(this[_top]) + dart.notNull(other[_top]), dart.notNull(this[_bottom]) + dart.notNull(other[_bottom]));
+    }
+    clamp(min, max) {
+      if (min == null) dart.nullFailed(I[0], 163, 47, "min");
+      if (max == null) dart.nullFailed(I[0], 163, 71, "max");
+      return new edge_insets._MixedEdgeInsets.fromLRSETB(this[_left][$clamp](min[_left], max[_left]), this[_right][$clamp](min[_right], max[_right]), this[_start][$clamp](min[_start], max[_start]), this[_end][$clamp](min[_end], max[_end]), this[_top][$clamp](min[_top], max[_top]), this[_bottom][$clamp](min[_bottom], max[_bottom]));
+    }
+    static lerp(a, b, t) {
+      if (t == null) dart.nullFailed(I[0], 219, 88, "t");
+      if (!(t != null)) dart.assertFailed(null, I[0], 220, 12, "t != null");
+      if (a == null && b == null) return null;
+      if (a == null) return dart.nullCheck(b)['*'](t);
+      if (b == null) return a['*'](1.0 - dart.notNull(t));
+      if (edge_insets.EdgeInsets.is(a) && edge_insets.EdgeInsets.is(b)) return edge_insets.EdgeInsets.lerp(a, b, t);
+      if (edge_insets.EdgeInsetsDirectional.is(a) && edge_insets.EdgeInsetsDirectional.is(b)) return edge_insets.EdgeInsetsDirectional.lerp(a, b, t);
+      return new edge_insets._MixedEdgeInsets.fromLRSETB(dart.nullCheck(ui.lerpDouble(a[_left], b[_left], t)), dart.nullCheck(ui.lerpDouble(a[_right], b[_right], t)), dart.nullCheck(ui.lerpDouble(a[_start], b[_start], t)), dart.nullCheck(ui.lerpDouble(a[_end], b[_end], t)), dart.nullCheck(ui.lerpDouble(a[_top], b[_top], t)), dart.nullCheck(ui.lerpDouble(a[_bottom], b[_bottom], t)));
+    }
+    toString() {
+      if (this[_start] === 0.0 && this[_end] === 0.0) {
+        if (this[_left] === 0.0 && this[_right] === 0.0 && this[_top] === 0.0 && this[_bottom] === 0.0) return "EdgeInsets.zero";
+        if (this[_left] == this[_right] && this[_right] == this[_top] && this[_top] == this[_bottom]) return "EdgeInsets.all(" + this[_left][$toStringAsFixed](1) + ")";
+        return "EdgeInsets(" + this[_left][$toStringAsFixed](1) + ", " + this[_top][$toStringAsFixed](1) + ", " + this[_right][$toStringAsFixed](1) + ", " + this[_bottom][$toStringAsFixed](1) + ")";
+      }
+      if (this[_left] === 0.0 && this[_right] === 0.0) {
+        return "EdgeInsetsDirectional(" + this[_start][$toStringAsFixed](1) + ", " + this[_top][$toStringAsFixed](1) + ", " + this[_end][$toStringAsFixed](1) + ", " + this[_bottom][$toStringAsFixed](1) + ")";
+      }
+      return "EdgeInsets(" + this[_left][$toStringAsFixed](1) + ", " + this[_top][$toStringAsFixed](1) + ", " + this[_right][$toStringAsFixed](1) + ", " + this[_bottom][$toStringAsFixed](1) + ")" + " + " + "EdgeInsetsDirectional(" + this[_start][$toStringAsFixed](1) + ", " + "0.0, " + this[_end][$toStringAsFixed](1) + ", " + "0.0)";
+    }
+    _equals(other) {
+      if (other == null) return false;
+      return edge_insets.EdgeInsetsGeometry.is(other) && other[_left] == this[_left] && other[_right] == this[_right] && other[_start] == this[_start] && other[_end] == this[_end] && other[_top] == this[_top] && other[_bottom] == this[_bottom];
+    }
+    get hashCode() {
+      return ui.hashValues(this[_left], this[_right], this[_start], this[_end], this[_top], this[_bottom]);
+    }
+  };
+  (edge_insets.EdgeInsetsGeometry.new = function() {
+    ;
+  }).prototype = edge_insets.EdgeInsetsGeometry.prototype;
+  dart.addTypeTests(edge_insets.EdgeInsetsGeometry);
+  dart.addTypeCaches(edge_insets.EdgeInsetsGeometry);
+  dart.setMethodSignature(edge_insets.EdgeInsetsGeometry, () => ({
+    __proto__: dart.getMethods(edge_insets.EdgeInsetsGeometry.__proto__),
+    along: dart.fnType(core.double, [basic_types.Axis]),
+    inflateSize: dart.fnType(ui.Size, [ui.Size]),
+    deflateSize: dart.fnType(ui.Size, [ui.Size]),
+    subtract: dart.fnType(edge_insets.EdgeInsetsGeometry, [edge_insets.EdgeInsetsGeometry]),
+    add: dart.fnType(edge_insets.EdgeInsetsGeometry, [edge_insets.EdgeInsetsGeometry]),
+    clamp: dart.fnType(edge_insets.EdgeInsetsGeometry, [edge_insets.EdgeInsetsGeometry, edge_insets.EdgeInsetsGeometry])
+  }));
+  dart.setGetterSignature(edge_insets.EdgeInsetsGeometry, () => ({
+    __proto__: dart.getGetters(edge_insets.EdgeInsetsGeometry.__proto__),
+    isNonNegative: core.bool,
+    horizontal: core.double,
+    vertical: core.double,
+    collapsedSize: ui.Size,
+    flipped: edge_insets.EdgeInsetsGeometry
+  }));
+  dart.setLibraryUri(edge_insets.EdgeInsetsGeometry, I[1]);
+  dart.defineExtensionMethods(edge_insets.EdgeInsetsGeometry, ['toString', '_equals']);
+  dart.defineExtensionAccessors(edge_insets.EdgeInsetsGeometry, ['hashCode']);
+  dart.defineLazy(edge_insets.EdgeInsetsGeometry, {
+    /*edge_insets.EdgeInsetsGeometry.infinity*/get infinity() {
+      return C[2] || CT.C2;
+    }
+  }, false);
+  var left$ = dart.privateName(edge_insets, "EdgeInsets.left");
+  var top$ = dart.privateName(edge_insets, "EdgeInsets.top");
+  var right$ = dart.privateName(edge_insets, "EdgeInsets.right");
+  var bottom$ = dart.privateName(edge_insets, "EdgeInsets.bottom");
+  edge_insets.EdgeInsets = class EdgeInsets extends edge_insets.EdgeInsetsGeometry {
+    get left() {
+      return this[left$];
+    }
+    set left(value) {
+      super.left = value;
+    }
+    get top() {
+      return this[top$];
+    }
+    set top(value) {
+      super.top = value;
+    }
+    get right() {
+      return this[right$];
+    }
+    set right(value) {
+      super.right = value;
+    }
+    get bottom() {
+      return this[bottom$];
+    }
+    set bottom(value) {
+      super.bottom = value;
+    }
+    get [_left]() {
+      return this.left;
+    }
+    get [_top]() {
+      return this.top;
+    }
+    get [_right]() {
+      return this.right;
+    }
+    get [_bottom]() {
+      return this.bottom;
+    }
+    get [_start]() {
+      return 0.0;
+    }
+    get [_end]() {
+      return 0.0;
+    }
+    get topLeft() {
+      return new ui.Offset.new(this.left, this.top);
+    }
+    get topRight() {
+      return new ui.Offset.new(-dart.notNull(this.right), this.top);
+    }
+    get bottomLeft() {
+      return new ui.Offset.new(this.left, -dart.notNull(this.bottom));
+    }
+    get bottomRight() {
+      return new ui.Offset.new(-dart.notNull(this.right), -dart.notNull(this.bottom));
+    }
+    get flipped() {
+      return new edge_insets.EdgeInsets.fromLTRB(this.right, this.bottom, this.left, this.top);
+    }
+    inflateRect(rect) {
+      if (rect == null) dart.nullFailed(I[0], 471, 25, "rect");
+      return new ui.Rect.fromLTRB(dart.notNull(rect.left) - dart.notNull(this.left), dart.notNull(rect.top) - dart.notNull(this.top), dart.notNull(rect.right) + dart.notNull(this.right), dart.notNull(rect.bottom) + dart.notNull(this.bottom));
+    }
+    deflateRect(rect) {
+      if (rect == null) dart.nullFailed(I[0], 488, 25, "rect");
+      return new ui.Rect.fromLTRB(dart.notNull(rect.left) + dart.notNull(this.left), dart.notNull(rect.top) + dart.notNull(this.top), dart.notNull(rect.right) - dart.notNull(this.right), dart.notNull(rect.bottom) - dart.notNull(this.bottom));
+    }
+    subtract(other) {
+      if (other == null) dart.nullFailed(I[0], 493, 50, "other");
+      if (edge_insets.EdgeInsets.is(other)) return this['-'](other);
+      return super.subtract(other);
+    }
+    add(other) {
+      if (other == null) dart.nullFailed(I[0], 500, 45, "other");
+      if (edge_insets.EdgeInsets.is(other)) return this['+'](other);
+      return super.add(other);
+    }
+    clamp(min, max) {
+      if (min == null) dart.nullFailed(I[0], 507, 47, "min");
+      if (max == null) dart.nullFailed(I[0], 507, 71, "max");
+      return new edge_insets.EdgeInsets.fromLTRB(this[_left][$clamp](min[_left], max[_left]), this[_top][$clamp](min[_top], max[_top]), this[_right][$clamp](min[_right], max[_right]), this[_bottom][$clamp](min[_bottom], max[_bottom]));
+    }
+    ['-'](other) {
+      if (other == null) dart.nullFailed(I[0], 517, 36, "other");
+      return new edge_insets.EdgeInsets.fromLTRB(dart.notNull(this.left) - dart.notNull(other.left), dart.notNull(this.top) - dart.notNull(other.top), dart.notNull(this.right) - dart.notNull(other.right), dart.notNull(this.bottom) - dart.notNull(other.bottom));
+    }
+    ['+'](other) {
+      if (other == null) dart.nullFailed(I[0], 527, 36, "other");
+      return new edge_insets.EdgeInsets.fromLTRB(dart.notNull(this.left) + dart.notNull(other.left), dart.notNull(this.top) + dart.notNull(other.top), dart.notNull(this.right) + dart.notNull(other.right), dart.notNull(this.bottom) + dart.notNull(other.bottom));
+    }
+    _negate() {
+      return new edge_insets.EdgeInsets.fromLTRB(-dart.notNull(this.left), -dart.notNull(this.top), -dart.notNull(this.right), -dart.notNull(this.bottom));
+    }
+    ['*'](other) {
+      if (other == null) dart.nullFailed(I[0], 551, 32, "other");
+      return new edge_insets.EdgeInsets.fromLTRB(dart.notNull(this.left) * dart.notNull(other), dart.notNull(this.top) * dart.notNull(other), dart.notNull(this.right) * dart.notNull(other), dart.notNull(this.bottom) * dart.notNull(other));
+    }
+    ['/'](other) {
+      if (other == null) dart.nullFailed(I[0], 562, 32, "other");
+      return new edge_insets.EdgeInsets.fromLTRB(dart.notNull(this.left) / dart.notNull(other), dart.notNull(this.top) / dart.notNull(other), dart.notNull(this.right) / dart.notNull(other), dart.notNull(this.bottom) / dart.notNull(other));
+    }
+    ['~/'](other) {
+      if (other == null) dart.nullFailed(I[0], 573, 33, "other");
+      return new edge_insets.EdgeInsets.fromLTRB((dart.notNull(this.left) / dart.notNull(other))[$truncate]()[$toDouble](), (dart.notNull(this.top) / dart.notNull(other))[$truncate]()[$toDouble](), (dart.notNull(this.right) / dart.notNull(other))[$truncate]()[$toDouble](), (dart.notNull(this.bottom) / dart.notNull(other))[$truncate]()[$toDouble]());
+    }
+    ['%'](other) {
+      if (other == null) dart.nullFailed(I[0], 584, 32, "other");
+      return new edge_insets.EdgeInsets.fromLTRB(this.left[$modulo](other), this.top[$modulo](other), this.right[$modulo](other), this.bottom[$modulo](other));
+    }
+    static lerp(a, b, t) {
+      if (t == null) dart.nullFailed(I[0], 598, 64, "t");
+      if (!(t != null)) dart.assertFailed(null, I[0], 599, 12, "t != null");
+      if (a == null && b == null) return null;
+      if (a == null) return dart.nullCheck(b)['*'](t);
+      if (b == null) return a['*'](1.0 - dart.notNull(t));
+      return new edge_insets.EdgeInsets.fromLTRB(dart.nullCheck(ui.lerpDouble(a.left, b.left, t)), dart.nullCheck(ui.lerpDouble(a.top, b.top, t)), dart.nullCheck(ui.lerpDouble(a.right, b.right, t)), dart.nullCheck(ui.lerpDouble(a.bottom, b.bottom, t)));
+    }
+    resolve(direction) {
+      return this;
+    }
+    copyWith(opts) {
+      let t0, t0$, t0$0, t0$1;
+      let left = opts && 'left' in opts ? opts.left : null;
+      let top = opts && 'top' in opts ? opts.top : null;
+      let right = opts && 'right' in opts ? opts.right : null;
+      let bottom = opts && 'bottom' in opts ? opts.bottom : null;
+      return new edge_insets.EdgeInsets.only({left: (t0 = left, t0 == null ? this.left : t0), top: (t0$ = top, t0$ == null ? this.top : t0$), right: (t0$0 = right, t0$0 == null ? this.right : t0$0), bottom: (t0$1 = bottom, t0$1 == null ? this.bottom : t0$1)});
+    }
+  };
+  (edge_insets.EdgeInsets.fromLTRB = function(left, top, right, bottom) {
+    if (left == null) dart.nullFailed(I[0], 343, 34, "left");
+    if (top == null) dart.nullFailed(I[0], 343, 45, "top");
+    if (right == null) dart.nullFailed(I[0], 343, 55, "right");
+    if (bottom == null) dart.nullFailed(I[0], 343, 67, "bottom");
+    this[left$] = left;
+    this[top$] = top;
+    this[right$] = right;
+    this[bottom$] = bottom;
+    edge_insets.EdgeInsets.__proto__.new.call(this);
+    ;
+  }).prototype = edge_insets.EdgeInsets.prototype;
+  (edge_insets.EdgeInsets.all = function(value) {
+    if (value == null) dart.nullFailed(I[0], 355, 31, "value");
+    this[left$] = value;
+    this[top$] = value;
+    this[right$] = value;
+    this[bottom$] = value;
+    edge_insets.EdgeInsets.__proto__.new.call(this);
+    ;
+  }).prototype = edge_insets.EdgeInsets.prototype;
+  (edge_insets.EdgeInsets.only = function(opts) {
+    let left = opts && 'left' in opts ? opts.left : 0;
+    if (left == null) dart.nullFailed(I[0], 372, 10, "left");
+    let top = opts && 'top' in opts ? opts.top : 0;
+    if (top == null) dart.nullFailed(I[0], 373, 10, "top");
+    let right = opts && 'right' in opts ? opts.right : 0;
+    if (right == null) dart.nullFailed(I[0], 374, 10, "right");
+    let bottom = opts && 'bottom' in opts ? opts.bottom : 0;
+    if (bottom == null) dart.nullFailed(I[0], 375, 10, "bottom");
+    this[left$] = left;
+    this[top$] = top;
+    this[right$] = right;
+    this[bottom$] = bottom;
+    edge_insets.EdgeInsets.__proto__.new.call(this);
+    ;
+  }).prototype = edge_insets.EdgeInsets.prototype;
+  (edge_insets.EdgeInsets.symmetric = function(opts) {
+    let vertical = opts && 'vertical' in opts ? opts.vertical : 0;
+    if (vertical == null) dart.nullFailed(I[0], 389, 12, "vertical");
+    let horizontal = opts && 'horizontal' in opts ? opts.horizontal : 0;
+    if (horizontal == null) dart.nullFailed(I[0], 390, 12, "horizontal");
+    this[left$] = horizontal;
+    this[top$] = vertical;
+    this[right$] = horizontal;
+    this[bottom$] = vertical;
+    edge_insets.EdgeInsets.__proto__.new.call(this);
+    ;
+  }).prototype = edge_insets.EdgeInsets.prototype;
+  (edge_insets.EdgeInsets.fromWindowPadding = function(padding, devicePixelRatio) {
+    if (padding == null) dart.nullFailed(I[0], 402, 49, "padding");
+    if (devicePixelRatio == null) dart.nullFailed(I[0], 402, 65, "devicePixelRatio");
+    this[left$] = dart.notNull(padding.left) / dart.notNull(devicePixelRatio);
+    this[top$] = dart.notNull(padding.top) / dart.notNull(devicePixelRatio);
+    this[right$] = dart.notNull(padding.right) / dart.notNull(devicePixelRatio);
+    this[bottom$] = dart.notNull(padding.bottom) / dart.notNull(devicePixelRatio);
+    edge_insets.EdgeInsets.__proto__.new.call(this);
+    ;
+  }).prototype = edge_insets.EdgeInsets.prototype;
+  dart.addTypeTests(edge_insets.EdgeInsets);
+  dart.addTypeCaches(edge_insets.EdgeInsets);
+  dart.setMethodSignature(edge_insets.EdgeInsets, () => ({
+    __proto__: dart.getMethods(edge_insets.EdgeInsets.__proto__),
+    inflateRect: dart.fnType(ui.Rect, [ui.Rect]),
+    deflateRect: dart.fnType(ui.Rect, [ui.Rect]),
+    '-': dart.fnType(edge_insets.EdgeInsets, [edge_insets.EdgeInsets]),
+    '+': dart.fnType(edge_insets.EdgeInsets, [edge_insets.EdgeInsets]),
+    _negate: dart.fnType(edge_insets.EdgeInsets, []),
+    '*': dart.fnType(edge_insets.EdgeInsets, [core.double]),
+    '/': dart.fnType(edge_insets.EdgeInsets, [core.double]),
+    '~/': dart.fnType(edge_insets.EdgeInsets, [core.double]),
+    '%': dart.fnType(edge_insets.EdgeInsets, [core.double]),
+    resolve: dart.fnType(edge_insets.EdgeInsets, [dart.nullable(ui.TextDirection)]),
+    copyWith: dart.fnType(edge_insets.EdgeInsets, [], {bottom: dart.nullable(core.double), left: dart.nullable(core.double), right: dart.nullable(core.double), top: dart.nullable(core.double)}, {})
+  }));
+  dart.setGetterSignature(edge_insets.EdgeInsets, () => ({
+    __proto__: dart.getGetters(edge_insets.EdgeInsets.__proto__),
+    [_left]: core.double,
+    [_top]: core.double,
+    [_right]: core.double,
+    [_bottom]: core.double,
+    [_start]: core.double,
+    [_end]: core.double,
+    topLeft: ui.Offset,
+    topRight: ui.Offset,
+    bottomLeft: ui.Offset,
+    bottomRight: ui.Offset,
+    flipped: edge_insets.EdgeInsets
+  }));
+  dart.setLibraryUri(edge_insets.EdgeInsets, I[1]);
+  dart.setFieldSignature(edge_insets.EdgeInsets, () => ({
+    __proto__: dart.getFields(edge_insets.EdgeInsets.__proto__),
+    left: dart.finalFieldType(core.double),
+    top: dart.finalFieldType(core.double),
+    right: dart.finalFieldType(core.double),
+    bottom: dart.finalFieldType(core.double)
+  }));
+  dart.defineLazy(edge_insets.EdgeInsets, {
+    /*edge_insets.EdgeInsets.zero*/get zero() {
+      return C[3] || CT.C3;
+    }
+  }, false);
+  var start$ = dart.privateName(edge_insets, "EdgeInsetsDirectional.start");
+  var top$0 = dart.privateName(edge_insets, "EdgeInsetsDirectional.top");
+  var end$ = dart.privateName(edge_insets, "EdgeInsetsDirectional.end");
+  var bottom$0 = dart.privateName(edge_insets, "EdgeInsetsDirectional.bottom");
+  var _name$ = dart.privateName(ui, "_name");
+  edge_insets.EdgeInsetsDirectional = class EdgeInsetsDirectional extends edge_insets.EdgeInsetsGeometry {
+    get start() {
+      return this[start$];
+    }
+    set start(value) {
+      super.start = value;
+    }
+    get top() {
+      return this[top$0];
+    }
+    set top(value) {
+      super.top = value;
+    }
+    get end() {
+      return this[end$];
+    }
+    set end(value) {
+      super.end = value;
+    }
+    get bottom() {
+      return this[bottom$0];
+    }
+    set bottom(value) {
+      super.bottom = value;
+    }
+    get [_start]() {
+      return this.start;
+    }
+    get [_top]() {
+      return this.top;
+    }
+    get [_end]() {
+      return this.end;
+    }
+    get [_bottom]() {
+      return this.bottom;
+    }
+    get [_left]() {
+      return 0.0;
+    }
+    get [_right]() {
+      return 0.0;
+    }
+    get isNonNegative() {
+      return dart.notNull(this.start) >= 0.0 && dart.notNull(this.top) >= 0.0 && dart.notNull(this.end) >= 0.0 && dart.notNull(this.bottom) >= 0.0;
+    }
+    get flipped() {
+      return new edge_insets.EdgeInsetsDirectional.fromSTEB(this.end, this.bottom, this.start, this.top);
+    }
+    subtract(other) {
+      if (other == null) dart.nullFailed(I[0], 724, 50, "other");
+      if (edge_insets.EdgeInsetsDirectional.is(other)) return this['-'](other);
+      return super.subtract(other);
+    }
+    add(other) {
+      if (other == null) dart.nullFailed(I[0], 731, 45, "other");
+      if (edge_insets.EdgeInsetsDirectional.is(other)) return this['+'](other);
+      return super.add(other);
+    }
+    ['-'](other) {
+      if (other == null) dart.nullFailed(I[0], 738, 58, "other");
+      return new edge_insets.EdgeInsetsDirectional.fromSTEB(dart.notNull(this.start) - dart.notNull(other.start), dart.notNull(this.top) - dart.notNull(other.top), dart.notNull(this.end) - dart.notNull(other.end), dart.notNull(this.bottom) - dart.notNull(other.bottom));
+    }
+    ['+'](other) {
+      if (other == null) dart.nullFailed(I[0], 748, 58, "other");
+      return new edge_insets.EdgeInsetsDirectional.fromSTEB(dart.notNull(this.start) + dart.notNull(other.start), dart.notNull(this.top) + dart.notNull(other.top), dart.notNull(this.end) + dart.notNull(other.end), dart.notNull(this.bottom) + dart.notNull(other.bottom));
+    }
+    _negate() {
+      return new edge_insets.EdgeInsetsDirectional.fromSTEB(-dart.notNull(this.start), -dart.notNull(this.top), -dart.notNull(this.end), -dart.notNull(this.bottom));
+    }
+    ['*'](other) {
+      if (other == null) dart.nullFailed(I[0], 772, 43, "other");
+      return new edge_insets.EdgeInsetsDirectional.fromSTEB(dart.notNull(this.start) * dart.notNull(other), dart.notNull(this.top) * dart.notNull(other), dart.notNull(this.end) * dart.notNull(other), dart.notNull(this.bottom) * dart.notNull(other));
+    }
+    ['/'](other) {
+      if (other == null) dart.nullFailed(I[0], 783, 43, "other");
+      return new edge_insets.EdgeInsetsDirectional.fromSTEB(dart.notNull(this.start) / dart.notNull(other), dart.notNull(this.top) / dart.notNull(other), dart.notNull(this.end) / dart.notNull(other), dart.notNull(this.bottom) / dart.notNull(other));
+    }
+    ['~/'](other) {
+      if (other == null) dart.nullFailed(I[0], 794, 44, "other");
+      return new edge_insets.EdgeInsetsDirectional.fromSTEB((dart.notNull(this.start) / dart.notNull(other))[$truncate]()[$toDouble](), (dart.notNull(this.top) / dart.notNull(other))[$truncate]()[$toDouble](), (dart.notNull(this.end) / dart.notNull(other))[$truncate]()[$toDouble](), (dart.notNull(this.bottom) / dart.notNull(other))[$truncate]()[$toDouble]());
+    }
+    ['%'](other) {
+      if (other == null) dart.nullFailed(I[0], 805, 43, "other");
+      return new edge_insets.EdgeInsetsDirectional.fromSTEB(this.start[$modulo](other), this.top[$modulo](other), this.end[$modulo](other), this.bottom[$modulo](other));
+    }
+    static lerp(a, b, t) {
+      if (t == null) dart.nullFailed(I[0], 823, 97, "t");
+      if (!(t != null)) dart.assertFailed(null, I[0], 824, 12, "t != null");
+      if (a == null && b == null) return null;
+      if (a == null) return dart.nullCheck(b)['*'](t);
+      if (b == null) return a['*'](1.0 - dart.notNull(t));
+      return new edge_insets.EdgeInsetsDirectional.fromSTEB(dart.nullCheck(ui.lerpDouble(a.start, b.start, t)), dart.nullCheck(ui.lerpDouble(a.top, b.top, t)), dart.nullCheck(ui.lerpDouble(a.end, b.end, t)), dart.nullCheck(ui.lerpDouble(a.bottom, b.bottom, t)));
+    }
+    resolve(direction) {
+      if (!(direction != null)) dart.assertFailed(null, I[0], 841, 12, "direction != null");
+      switch (dart.nullCheck(direction)) {
+        case C[4] || CT.C4:
+        {
+          return new edge_insets.EdgeInsets.fromLTRB(this.end, this.top, this.start, this.bottom);
+        }
+        case C[5] || CT.C5:
+        {
+          return new edge_insets.EdgeInsets.fromLTRB(this.start, this.top, this.end, this.bottom);
         }
         default:
         {
@@ -1316,202 +556,198 @@ define(['dart_sdk', 'packages/flutter/src/material/icon_button.dart', 'packages/
       }
     }
   };
-  (progress_indicator._CircularProgressIndicatorState.new = function() {
-    this[___CircularProgressIndicatorState__controller] = null;
-    this[___CircularProgressIndicatorState__controller_isSet] = false;
-    progress_indicator._CircularProgressIndicatorState.__proto__.new.call(this);
+  (edge_insets.EdgeInsetsDirectional.fromSTEB = function(start, top, end, bottom) {
+    if (start == null) dart.nullFailed(I[0], 647, 45, "start");
+    if (top == null) dart.nullFailed(I[0], 647, 57, "top");
+    if (end == null) dart.nullFailed(I[0], 647, 67, "end");
+    if (bottom == null) dart.nullFailed(I[0], 647, 77, "bottom");
+    this[start$] = start;
+    this[top$0] = top;
+    this[end$] = end;
+    this[bottom$0] = bottom;
+    edge_insets.EdgeInsetsDirectional.__proto__.new.call(this);
     ;
-  }).prototype = progress_indicator._CircularProgressIndicatorState.prototype;
-  dart.addTypeTests(progress_indicator._CircularProgressIndicatorState);
-  dart.addTypeCaches(progress_indicator._CircularProgressIndicatorState);
-  dart.setMethodSignature(progress_indicator._CircularProgressIndicatorState, () => ({
-    __proto__: dart.getMethods(progress_indicator._CircularProgressIndicatorState.__proto__),
-    [_buildCupertinoIndicator]: dart.fnType(framework.Widget, [framework.BuildContext]),
-    [_buildMaterialIndicator]: dart.fnType(framework.Widget, [framework.BuildContext, core.double, core.double, core.double, core.double]),
-    [_buildAnimation]: dart.fnType(framework.Widget, []),
-    build: dart.fnType(framework.Widget, [framework.BuildContext])
+  }).prototype = edge_insets.EdgeInsetsDirectional.prototype;
+  (edge_insets.EdgeInsetsDirectional.only = function(opts) {
+    let start = opts && 'start' in opts ? opts.start : 0;
+    if (start == null) dart.nullFailed(I[0], 660, 10, "start");
+    let top = opts && 'top' in opts ? opts.top : 0;
+    if (top == null) dart.nullFailed(I[0], 661, 10, "top");
+    let end = opts && 'end' in opts ? opts.end : 0;
+    if (end == null) dart.nullFailed(I[0], 662, 10, "end");
+    let bottom = opts && 'bottom' in opts ? opts.bottom : 0;
+    if (bottom == null) dart.nullFailed(I[0], 663, 10, "bottom");
+    this[start$] = start;
+    this[top$0] = top;
+    this[end$] = end;
+    this[bottom$0] = bottom;
+    edge_insets.EdgeInsetsDirectional.__proto__.new.call(this);
+    ;
+  }).prototype = edge_insets.EdgeInsetsDirectional.prototype;
+  dart.addTypeTests(edge_insets.EdgeInsetsDirectional);
+  dart.addTypeCaches(edge_insets.EdgeInsetsDirectional);
+  dart.setMethodSignature(edge_insets.EdgeInsetsDirectional, () => ({
+    __proto__: dart.getMethods(edge_insets.EdgeInsetsDirectional.__proto__),
+    '-': dart.fnType(edge_insets.EdgeInsetsDirectional, [edge_insets.EdgeInsetsDirectional]),
+    '+': dart.fnType(edge_insets.EdgeInsetsDirectional, [edge_insets.EdgeInsetsDirectional]),
+    _negate: dart.fnType(edge_insets.EdgeInsetsDirectional, []),
+    '*': dart.fnType(edge_insets.EdgeInsetsDirectional, [core.double]),
+    '/': dart.fnType(edge_insets.EdgeInsetsDirectional, [core.double]),
+    '~/': dart.fnType(edge_insets.EdgeInsetsDirectional, [core.double]),
+    '%': dart.fnType(edge_insets.EdgeInsetsDirectional, [core.double]),
+    resolve: dart.fnType(edge_insets.EdgeInsets, [dart.nullable(ui.TextDirection)])
   }));
-  dart.setGetterSignature(progress_indicator._CircularProgressIndicatorState, () => ({
-    __proto__: dart.getGetters(progress_indicator._CircularProgressIndicatorState.__proto__),
-    [_controller]: animation_controller.AnimationController
+  dart.setGetterSignature(edge_insets.EdgeInsetsDirectional, () => ({
+    __proto__: dart.getGetters(edge_insets.EdgeInsetsDirectional.__proto__),
+    [_start]: core.double,
+    [_top]: core.double,
+    [_end]: core.double,
+    [_bottom]: core.double,
+    [_left]: core.double,
+    [_right]: core.double,
+    flipped: edge_insets.EdgeInsetsDirectional
   }));
-  dart.setSetterSignature(progress_indicator._CircularProgressIndicatorState, () => ({
-    __proto__: dart.getSetters(progress_indicator._CircularProgressIndicatorState.__proto__),
-    [_controller]: animation_controller.AnimationController
+  dart.setLibraryUri(edge_insets.EdgeInsetsDirectional, I[1]);
+  dart.setFieldSignature(edge_insets.EdgeInsetsDirectional, () => ({
+    __proto__: dart.getFields(edge_insets.EdgeInsetsDirectional.__proto__),
+    start: dart.finalFieldType(core.double),
+    top: dart.finalFieldType(core.double),
+    end: dart.finalFieldType(core.double),
+    bottom: dart.finalFieldType(core.double)
   }));
-  dart.setLibraryUri(progress_indicator._CircularProgressIndicatorState, I[1]);
-  dart.setFieldSignature(progress_indicator._CircularProgressIndicatorState, () => ({
-    __proto__: dart.getFields(progress_indicator._CircularProgressIndicatorState.__proto__),
-    [___CircularProgressIndicatorState__controller]: dart.fieldType(dart.nullable(animation_controller.AnimationController)),
-    [___CircularProgressIndicatorState__controller_isSet]: dart.fieldType(core.bool)
-  }));
-  dart.defineLazy(progress_indicator._CircularProgressIndicatorState, {
-    /*progress_indicator._CircularProgressIndicatorState._pathCount*/get _pathCount() {
-      return 2222;
-    },
-    /*progress_indicator._CircularProgressIndicatorState._rotationCount*/get _rotationCount() {
-      return 1333;
-    },
-    /*progress_indicator._CircularProgressIndicatorState._strokeHeadTween*/get _strokeHeadTween() {
-      return new tween.CurveTween.new({curve: C[52] || CT.C52}).chain(new tween.CurveTween.new({curve: C[54] || CT.C54}));
-    },
-    /*progress_indicator._CircularProgressIndicatorState._strokeTailTween*/get _strokeTailTween() {
-      return new tween.CurveTween.new({curve: C[55] || CT.C55}).chain(new tween.CurveTween.new({curve: C[54] || CT.C54}));
-    },
-    /*progress_indicator._CircularProgressIndicatorState._offsetTween*/get _offsetTween() {
-      return new tween.CurveTween.new({curve: C[54] || CT.C54});
-    },
-    /*progress_indicator._CircularProgressIndicatorState._rotationTween*/get _rotationTween() {
-      return new tween.CurveTween.new({curve: C[56] || CT.C56});
+  dart.defineLazy(edge_insets.EdgeInsetsDirectional, {
+    /*edge_insets.EdgeInsetsDirectional.zero*/get zero() {
+      return C[6] || CT.C6;
     }
   }, false);
-  progress_indicator._RefreshProgressIndicatorPainter = class _RefreshProgressIndicatorPainter extends progress_indicator._CircularProgressIndicatorPainter {
-    paintArrowhead(canvas, size) {
-      let t2, t2$;
-      if (canvas == null) dart.nullFailed(I[0], 734, 30, "canvas");
-      if (size == null) dart.nullFailed(I[0], 734, 43, "size");
-      let arcEnd = dart.notNull(this.arcStart) + dart.notNull(this.arcSweep);
-      let ux = math.cos(arcEnd);
-      let uy = math.sin(arcEnd);
-      if (!(size.width == size.height)) dart.assertFailed(null, I[0], 741, 12, "size.width == size.height");
-      let radius = dart.notNull(size.width) / 2.0;
-      let arrowheadPointX = radius + ux * radius + -uy * dart.notNull(this.strokeWidth) * 2.0 * dart.notNull(this.arrowheadScale);
-      let arrowheadPointY = radius + uy * radius + ux * dart.notNull(this.strokeWidth) * 2.0 * dart.notNull(this.arrowheadScale);
-      let arrowheadRadius = dart.notNull(this.strokeWidth) * 1.5 * dart.notNull(this.arrowheadScale);
-      let innerRadius = radius - arrowheadRadius;
-      let outerRadius = radius + arrowheadRadius;
-      let path = (t2 = ui.Path.new(), (() => {
-        t2.moveTo(radius + ux * innerRadius, radius + uy * innerRadius);
-        t2.lineTo(radius + ux * outerRadius, radius + uy * outerRadius);
-        t2.lineTo(arrowheadPointX, arrowheadPointY);
-        t2.close();
-        return t2;
-      })());
-      let paint = (t2$ = ui.Paint.new(), (() => {
-        t2$.color = this.valueColor;
-        t2$.strokeWidth = this.strokeWidth;
-        t2$.style = ui.PaintingStyle.fill;
-        return t2$;
-      })());
-      canvas.drawPath(path, paint);
+  const _left$ = _MixedEdgeInsets__left;
+  const _right$ = _MixedEdgeInsets__right;
+  const _start$ = _MixedEdgeInsets__start;
+  const _end$ = _MixedEdgeInsets__end;
+  const _top$ = _MixedEdgeInsets__top;
+  const _bottom$ = _MixedEdgeInsets__bottom;
+  edge_insets._MixedEdgeInsets = class _MixedEdgeInsets extends edge_insets.EdgeInsetsGeometry {
+    get [_left]() {
+      return this[_left$];
     }
-    paint(canvas, size) {
-      if (canvas == null) dart.nullFailed(I[0], 762, 21, "canvas");
-      if (size == null) dart.nullFailed(I[0], 762, 34, "size");
-      super.paint(canvas, size);
-      if (dart.notNull(this.arrowheadScale) > 0.0) this.paintArrowhead(canvas, size);
+    set [_left](value) {
+      super[_left] = value;
     }
-  };
-  (progress_indicator._RefreshProgressIndicatorPainter.new = function(opts) {
-    let valueColor = opts && 'valueColor' in opts ? opts.valueColor : null;
-    if (valueColor == null) dart.nullFailed(I[0], 714, 20, "valueColor");
-    let value = opts && 'value' in opts ? opts.value : null;
-    let headValue = opts && 'headValue' in opts ? opts.headValue : null;
-    if (headValue == null) dart.nullFailed(I[0], 716, 21, "headValue");
-    let tailValue = opts && 'tailValue' in opts ? opts.tailValue : null;
-    if (tailValue == null) dart.nullFailed(I[0], 717, 21, "tailValue");
-    let offsetValue = opts && 'offsetValue' in opts ? opts.offsetValue : null;
-    if (offsetValue == null) dart.nullFailed(I[0], 718, 21, "offsetValue");
-    let rotationValue = opts && 'rotationValue' in opts ? opts.rotationValue : null;
-    if (rotationValue == null) dart.nullFailed(I[0], 719, 21, "rotationValue");
-    let strokeWidth = opts && 'strokeWidth' in opts ? opts.strokeWidth : null;
-    if (strokeWidth == null) dart.nullFailed(I[0], 720, 21, "strokeWidth");
-    let arrowheadScale = opts && 'arrowheadScale' in opts ? opts.arrowheadScale : null;
-    if (arrowheadScale == null) dart.nullFailed(I[0], 721, 19, "arrowheadScale");
-    this.arrowheadScale = arrowheadScale;
-    progress_indicator._RefreshProgressIndicatorPainter.__proto__.new.call(this, {valueColor: valueColor, value: value, headValue: headValue, tailValue: tailValue, offsetValue: offsetValue, rotationValue: rotationValue, strokeWidth: strokeWidth});
-    ;
-  }).prototype = progress_indicator._RefreshProgressIndicatorPainter.prototype;
-  dart.addTypeTests(progress_indicator._RefreshProgressIndicatorPainter);
-  dart.addTypeCaches(progress_indicator._RefreshProgressIndicatorPainter);
-  dart.setMethodSignature(progress_indicator._RefreshProgressIndicatorPainter, () => ({
-    __proto__: dart.getMethods(progress_indicator._RefreshProgressIndicatorPainter.__proto__),
-    paintArrowhead: dart.fnType(dart.void, [ui.Canvas, ui.Size])
-  }));
-  dart.setLibraryUri(progress_indicator._RefreshProgressIndicatorPainter, I[1]);
-  dart.setFieldSignature(progress_indicator._RefreshProgressIndicatorPainter, () => ({
-    __proto__: dart.getFields(progress_indicator._RefreshProgressIndicatorPainter.__proto__),
-    arrowheadScale: dart.finalFieldType(core.double)
-  }));
-  progress_indicator.RefreshProgressIndicator = class RefreshProgressIndicator extends progress_indicator.CircularProgressIndicator {
-    createState() {
-      return new progress_indicator._RefreshProgressIndicatorState.new();
+    get [_right]() {
+      return this[_right$];
     }
-  };
-  (progress_indicator.RefreshProgressIndicator.new = function(opts) {
-    let key = opts && 'key' in opts ? opts.key : null;
-    let value = opts && 'value' in opts ? opts.value : null;
-    let backgroundColor = opts && 'backgroundColor' in opts ? opts.backgroundColor : null;
-    let valueColor = opts && 'valueColor' in opts ? opts.valueColor : null;
-    let strokeWidth = opts && 'strokeWidth' in opts ? opts.strokeWidth : 2;
-    if (strokeWidth == null) dart.nullFailed(I[0], 794, 12, "strokeWidth");
-    let semanticsLabel = opts && 'semanticsLabel' in opts ? opts.semanticsLabel : null;
-    let semanticsValue = opts && 'semanticsValue' in opts ? opts.semanticsValue : null;
-    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
-    progress_indicator.RefreshProgressIndicator.__proto__.new.call(this, {key: key, value: value, backgroundColor: backgroundColor, valueColor: valueColor, strokeWidth: strokeWidth, semanticsLabel: semanticsLabel, semanticsValue: semanticsValue, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
-    ;
-  }).prototype = progress_indicator.RefreshProgressIndicator.prototype;
-  dart.addTypeTests(progress_indicator.RefreshProgressIndicator);
-  dart.addTypeCaches(progress_indicator.RefreshProgressIndicator);
-  dart.setMethodSignature(progress_indicator.RefreshProgressIndicator, () => ({
-    __proto__: dart.getMethods(progress_indicator.RefreshProgressIndicator.__proto__),
-    createState: dart.fnType(progress_indicator._RefreshProgressIndicatorState, [])
-  }));
-  dart.setLibraryUri(progress_indicator.RefreshProgressIndicator, I[1]);
-  var EdgeInsets_bottom = dart.privateName(edge_insets, "EdgeInsets.bottom");
-  var EdgeInsets_right = dart.privateName(edge_insets, "EdgeInsets.right");
-  var EdgeInsets_top = dart.privateName(edge_insets, "EdgeInsets.top");
-  var EdgeInsets_left = dart.privateName(edge_insets, "EdgeInsets.left");
-  progress_indicator._RefreshProgressIndicatorState = class _RefreshProgressIndicatorState extends progress_indicator._CircularProgressIndicatorState {
-    build(context) {
-      if (context == null) dart.nullFailed(I[0], 819, 29, "context");
-      if (this.widget.value != null)
-        this[_controller].value = dart.nullCheck(this.widget.value) * (1333 / 2 / 2961926);
-      else if (!dart.test(this[_controller].isAnimating)) this[_controller].repeat();
-      return this[_buildAnimation]();
+    set [_right](value) {
+      super[_right] = value;
     }
-    [_buildMaterialIndicator](context, headValue, tailValue, offsetValue, rotationValue) {
-      let t2;
-      if (context == null) dart.nullFailed(I[0], 828, 47, "context");
-      if (headValue == null) dart.nullFailed(I[0], 828, 63, "headValue");
-      if (tailValue == null) dart.nullFailed(I[0], 828, 81, "tailValue");
-      if (offsetValue == null) dart.nullFailed(I[0], 828, 99, "offsetValue");
-      if (rotationValue == null) dart.nullFailed(I[0], 828, 119, "rotationValue");
-      let arrowheadScale = this.widget.value == null ? 0.0 : (dart.nullCheck(this.widget.value) * 2.0)[$clamp](0.0, 1.0);
-      return this.widget[_buildSemanticsWrapper]({context: context, child: new container.Container.new({width: 40, height: 40, margin: C[57] || CT.C57, child: new material.Material.new({type: material.MaterialType.circle, color: (t2 = this.widget.backgroundColor, t2 == null ? theme$.Theme.of(context).canvasColor : t2), elevation: 2.0, child: new basic.Padding.new({padding: C[58] || CT.C58, child: new basic.CustomPaint.new({painter: new progress_indicator._RefreshProgressIndicatorPainter.new({valueColor: this.widget[_getValueColor](context), value: null, headValue: headValue, tailValue: tailValue, offsetValue: offsetValue, rotationValue: rotationValue, strokeWidth: this.widget.strokeWidth, arrowheadScale: arrowheadScale}), $creationLocationd_0dea112b090073317d4: C[59] || CT.C59}), $creationLocationd_0dea112b090073317d4: C[62] || CT.C62}), $creationLocationd_0dea112b090073317d4: C[66] || CT.C66}), $creationLocationd_0dea112b090073317d4: C[72] || CT.C72})});
+    get [_start]() {
+      return this[_start$];
+    }
+    set [_start](value) {
+      super[_start] = value;
+    }
+    get [_end]() {
+      return this[_end$];
+    }
+    set [_end](value) {
+      super[_end] = value;
+    }
+    get [_top]() {
+      return this[_top$];
+    }
+    set [_top](value) {
+      super[_top] = value;
+    }
+    get [_bottom]() {
+      return this[_bottom$];
+    }
+    set [_bottom](value) {
+      super[_bottom] = value;
+    }
+    get isNonNegative() {
+      return dart.notNull(this[_left]) >= 0.0 && dart.notNull(this[_right]) >= 0.0 && dart.notNull(this[_start]) >= 0.0 && dart.notNull(this[_end]) >= 0.0 && dart.notNull(this[_top]) >= 0.0 && dart.notNull(this[_bottom]) >= 0.0;
+    }
+    _negate() {
+      return new edge_insets._MixedEdgeInsets.fromLRSETB(-dart.notNull(this[_left]), -dart.notNull(this[_right]), -dart.notNull(this[_start]), -dart.notNull(this[_end]), -dart.notNull(this[_top]), -dart.notNull(this[_bottom]));
+    }
+    ['*'](other) {
+      if (other == null) dart.nullFailed(I[0], 895, 38, "other");
+      return new edge_insets._MixedEdgeInsets.fromLRSETB(dart.notNull(this[_left]) * dart.notNull(other), dart.notNull(this[_right]) * dart.notNull(other), dart.notNull(this[_start]) * dart.notNull(other), dart.notNull(this[_end]) * dart.notNull(other), dart.notNull(this[_top]) * dart.notNull(other), dart.notNull(this[_bottom]) * dart.notNull(other));
+    }
+    ['/'](other) {
+      if (other == null) dart.nullFailed(I[0], 907, 38, "other");
+      return new edge_insets._MixedEdgeInsets.fromLRSETB(dart.notNull(this[_left]) / dart.notNull(other), dart.notNull(this[_right]) / dart.notNull(other), dart.notNull(this[_start]) / dart.notNull(other), dart.notNull(this[_end]) / dart.notNull(other), dart.notNull(this[_top]) / dart.notNull(other), dart.notNull(this[_bottom]) / dart.notNull(other));
+    }
+    ['~/'](other) {
+      if (other == null) dart.nullFailed(I[0], 919, 39, "other");
+      return new edge_insets._MixedEdgeInsets.fromLRSETB((dart.notNull(this[_left]) / dart.notNull(other))[$truncate]()[$toDouble](), (dart.notNull(this[_right]) / dart.notNull(other))[$truncate]()[$toDouble](), (dart.notNull(this[_start]) / dart.notNull(other))[$truncate]()[$toDouble](), (dart.notNull(this[_end]) / dart.notNull(other))[$truncate]()[$toDouble](), (dart.notNull(this[_top]) / dart.notNull(other))[$truncate]()[$toDouble](), (dart.notNull(this[_bottom]) / dart.notNull(other))[$truncate]()[$toDouble]());
+    }
+    ['%'](other) {
+      if (other == null) dart.nullFailed(I[0], 931, 38, "other");
+      return new edge_insets._MixedEdgeInsets.fromLRSETB(this[_left][$modulo](other), this[_right][$modulo](other), this[_start][$modulo](other), this[_end][$modulo](other), this[_top][$modulo](other), this[_bottom][$modulo](other));
+    }
+    resolve(direction) {
+      if (!(direction != null)) dart.assertFailed(null, I[0], 944, 12, "direction != null");
+      switch (dart.nullCheck(direction)) {
+        case C[4] || CT.C4:
+        {
+          return new edge_insets.EdgeInsets.fromLTRB(dart.notNull(this[_end]) + dart.notNull(this[_left]), this[_top], dart.notNull(this[_start]) + dart.notNull(this[_right]), this[_bottom]);
+        }
+        case C[5] || CT.C5:
+        {
+          return new edge_insets.EdgeInsets.fromLTRB(dart.notNull(this[_start]) + dart.notNull(this[_left]), this[_top], dart.notNull(this[_end]) + dart.notNull(this[_right]), this[_bottom]);
+        }
+        default:
+        {
+          dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
+        }
+      }
     }
   };
-  (progress_indicator._RefreshProgressIndicatorState.new = function() {
-    progress_indicator._RefreshProgressIndicatorState.__proto__.new.call(this);
+  (edge_insets._MixedEdgeInsets.fromLRSETB = function(_left, _right, _start, _end, _top, _bottom) {
+    if (_left == null) dart.nullFailed(I[0], 852, 42, "_left");
+    if (_right == null) dart.nullFailed(I[0], 852, 54, "_right");
+    if (_start == null) dart.nullFailed(I[0], 852, 67, "_start");
+    if (_end == null) dart.nullFailed(I[0], 852, 80, "_end");
+    if (_top == null) dart.nullFailed(I[0], 852, 91, "_top");
+    if (_bottom == null) dart.nullFailed(I[0], 852, 102, "_bottom");
+    this[_left$] = _left;
+    this[_right$] = _right;
+    this[_start$] = _start;
+    this[_end$] = _end;
+    this[_top$] = _top;
+    this[_bottom$] = _bottom;
+    edge_insets._MixedEdgeInsets.__proto__.new.call(this);
     ;
-  }).prototype = progress_indicator._RefreshProgressIndicatorState.prototype;
-  dart.addTypeTests(progress_indicator._RefreshProgressIndicatorState);
-  dart.addTypeCaches(progress_indicator._RefreshProgressIndicatorState);
-  dart.setLibraryUri(progress_indicator._RefreshProgressIndicatorState, I[1]);
-  dart.defineLazy(progress_indicator._RefreshProgressIndicatorState, {
-    /*progress_indicator._RefreshProgressIndicatorState._indicatorSize*/get _indicatorSize() {
-      return 40;
-    }
-  }, false);
-  dart.defineLazy(progress_indicator, {
-    /*progress_indicator._kMinCircularProgressIndicatorSize*/get _kMinCircularProgressIndicatorSize() {
-      return 36;
-    },
-    /*progress_indicator._kIndeterminateLinearDuration*/get _kIndeterminateLinearDuration() {
-      return 1800;
-    },
-    /*progress_indicator._kIndeterminateCircularDuration*/get _kIndeterminateCircularDuration() {
-      return 2961926;
-    }
-  }, false);
-  dart.trackLibraries("packages/flutter/src/material/progress_indicator.dart", {
-    "package:flutter/src/material/progress_indicator.dart": progress_indicator
+  }).prototype = edge_insets._MixedEdgeInsets.prototype;
+  dart.addTypeTests(edge_insets._MixedEdgeInsets);
+  dart.addTypeCaches(edge_insets._MixedEdgeInsets);
+  dart.setMethodSignature(edge_insets._MixedEdgeInsets, () => ({
+    __proto__: dart.getMethods(edge_insets._MixedEdgeInsets.__proto__),
+    _negate: dart.fnType(edge_insets._MixedEdgeInsets, []),
+    '*': dart.fnType(edge_insets._MixedEdgeInsets, [core.double]),
+    '/': dart.fnType(edge_insets._MixedEdgeInsets, [core.double]),
+    '~/': dart.fnType(edge_insets._MixedEdgeInsets, [core.double]),
+    '%': dart.fnType(edge_insets._MixedEdgeInsets, [core.double]),
+    resolve: dart.fnType(edge_insets.EdgeInsets, [dart.nullable(ui.TextDirection)])
+  }));
+  dart.setLibraryUri(edge_insets._MixedEdgeInsets, I[1]);
+  dart.setFieldSignature(edge_insets._MixedEdgeInsets, () => ({
+    __proto__: dart.getFields(edge_insets._MixedEdgeInsets.__proto__),
+    [_left]: dart.finalFieldType(core.double),
+    [_right]: dart.finalFieldType(core.double),
+    [_start]: dart.finalFieldType(core.double),
+    [_end]: dart.finalFieldType(core.double),
+    [_top]: dart.finalFieldType(core.double),
+    [_bottom]: dart.finalFieldType(core.double)
+  }));
+  dart.trackLibraries("packages/flutter/src/painting/edge_insets.dart", {
+    "package:flutter/src/painting/edge_insets.dart": edge_insets
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["progress_indicator.dart"],"names":[],"mappings":"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","file":"../../../../../../../../packages/flutter/src/material/progress_indicator.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["edge_insets.dart"],"names":[],"mappings":"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","file":"../../../../../../../../packages/flutter/src/painting/edge_insets.dart.lib.js"}');
   // Exports:
   return {
-    src__material__progress_indicator: progress_indicator
+    src__painting__edge_insets: edge_insets
   };
 }));
 
-//# sourceMappingURL=progress_indicator.dart.lib.js.map
+//# sourceMappingURL=edge_insets.dart.lib.js.map

@@ -1,496 +1,488 @@
-define(['dart_sdk', 'packages/flutter/src/gestures/constants.dart', 'packages/flutter/src/gestures/recognizer.dart', 'packages/flutter/src/gestures/events.dart', 'packages/flutter/src/gestures/arena.dart', 'packages/flutter/src/foundation/debug.dart'], (function load__packages__flutter__src__gestures__tap_dart(dart_sdk, packages__flutter__src__gestures__constants$46dart, packages__flutter__src__gestures__recognizer$46dart, packages__flutter__src__gestures__events$46dart, packages__flutter__src__gestures__arena$46dart, packages__flutter__src__foundation__debug$46dart) {
+define(['dart_sdk', 'packages/flutter/src/widgets/layout_builder.dart', 'packages/flutter/src/widgets/widget_span.dart', 'packages/responsive_builder/src/sizing_information.dart', 'packages/flutter/src/rendering/layer.dart', 'packages/responsive_builder/src/device_screen_type.dart'], (function load__packages__responsive_builder__src__widget_builders_dart(dart_sdk, packages__flutter__src__widgets__layout_builder$46dart, packages__flutter__src__widgets__widget_span$46dart, packages__responsive_builder__src__sizing_information$46dart, packages__flutter__src__rendering__layer$46dart, packages__responsive_builder__src__device_screen_type$46dart) {
   'use strict';
   const core = dart_sdk.core;
   const ui = dart_sdk.ui;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const constants = packages__flutter__src__gestures__constants$46dart.src__gestures__constants;
-  const recognizer = packages__flutter__src__gestures__recognizer$46dart.src__gestures__recognizer;
-  const events = packages__flutter__src__gestures__events$46dart.src__gestures__events;
-  const arena = packages__flutter__src__gestures__arena$46dart.src__gestures__arena;
-  const diagnostics = packages__flutter__src__foundation__debug$46dart.src__foundation__diagnostics;
-  var tap = Object.create(dart.library);
+  const layout_builder = packages__flutter__src__widgets__layout_builder$46dart.src__widgets__layout_builder;
+  const media_query = packages__flutter__src__widgets__widget_span$46dart.src__widgets__media_query;
+  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
+  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
+  const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
+  const sizing_information = packages__responsive_builder__src__sizing_information$46dart.src__sizing_information;
+  const box = packages__flutter__src__rendering__layer$46dart.src__rendering__box;
+  const device_screen_type = packages__responsive_builder__src__device_screen_type$46dart.src__device_screen_type;
+  var widget_builders = Object.create(dart.library);
+  var responsive_sizing_config = Object.create(dart.library);
+  var helpers = Object.create(dart.library);
+  var responsive_builder = Object.create(dart.library);
   dart._checkModuleNullSafetyMode(false);
   var T = Object.create({
-    DiagnosticsPropertyOfOffset: () => (T.DiagnosticsPropertyOfOffset = dart.constFn(diagnostics.DiagnosticsProperty$(ui.Offset)))(),
-    DiagnosticsPropertyOfint: () => (T.DiagnosticsPropertyOfint = dart.constFn(diagnostics.DiagnosticsProperty$(core.int)))(),
-    VoidTovoid: () => (T.VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))()
+    WidgetL: () => (T.WidgetL = dart.constFn(dart.legacy(framework.Widget)))(),
+    BuildContextL: () => (T.BuildContextL = dart.constFn(dart.legacy(framework.BuildContext)))(),
+    BoxConstraintsL: () => (T.BoxConstraintsL = dart.constFn(dart.legacy(box.BoxConstraints)))(),
+    BuildContextLAndBoxConstraintsLToWidgetL: () => (T.BuildContextLAndBoxConstraintsLToWidgetL = dart.constFn(dart.fnType(T.WidgetL(), [T.BuildContextL(), T.BoxConstraintsL()])))(),
+    _LocationL: () => (T._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))(),
+    BuildContextLToWidgetL: () => (T.BuildContextLToWidgetL = dart.constFn(dart.fnType(T.WidgetL(), [T.BuildContextL()])))(),
+    SizingInformationL: () => (T.SizingInformationL = dart.constFn(dart.legacy(sizing_information.SizingInformation)))(),
+    BuildContextLAndSizingInformationLToWidgetL: () => (T.BuildContextLAndSizingInformationLToWidgetL = dart.constFn(dart.fnType(T.WidgetL(), [T.BuildContextL(), T.SizingInformationL()])))()
   });
   const CT = Object.create(null);
   dart.defineLazy(CT, {
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "builder",
+        [_Location_column]: 26,
+        [_Location_line]: 26,
+        [_Location_file]: null
+      });
+    },
+    get C1() {
+      return C[1] = dart.constList([C[2] || CT.C2], T._LocationL());
+    },
     get C0() {
       return C[0] = dart.const({
-        __proto__: ui.Offset.prototype,
-        [OffsetBase__dy]: 0,
-        [OffsetBase__dx]: 0
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[1] || CT.C1,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 26,
+        [_Location_file]: "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/responsive_builder-0.2.0+2/lib/src/widget_builders.dart"
+      });
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "builder",
+        [_Location_column]: 7,
+        [_Location_line]: 52,
+        [_Location_file]: null
+      });
+    },
+    get C4() {
+      return C[4] = dart.constList([C[5] || CT.C5], T._LocationL());
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[4] || CT.C4,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 51,
+        [_Location_file]: "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/responsive_builder-0.2.0+2/lib/src/widget_builders.dart"
+      });
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "breakpoints",
+        [_Location_column]: 7,
+        [_Location_line]: 111,
+        [_Location_file]: null
+      });
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "builder",
+        [_Location_column]: 7,
+        [_Location_line]: 112,
+        [_Location_file]: null
+      });
+    },
+    get C7() {
+      return C[7] = dart.constList([C[8] || CT.C8, C[9] || CT.C9], T._LocationL());
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[7] || CT.C7,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 110,
+        [_Location_file]: "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/responsive_builder-0.2.0+2/lib/src/widget_builders.dart"
+      });
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: sizing_information.ScreenBreakpoints.prototype,
+        [ScreenBreakpoints_desktop]: 950,
+        [ScreenBreakpoints_tablet]: 600,
+        [ScreenBreakpoints_watch]: 300
       });
     }
   }, false);
-  var C = [void 0];
+  var C = Array(11).fill(void 0);
   var I = [
-    "file:///C:/src/flutter/flutter/packages/flutter/lib/src/gestures/tap.dart",
-    "package:flutter/src/gestures/tap.dart"
+    "package:responsive_builder/src/widget_builders.dart",
+    "package:responsive_builder/src/responsive_sizing_config.dart",
+    "package:responsive_builder/src/helpers.dart"
   ];
-  var globalPosition$ = dart.privateName(tap, "TapDownDetails.globalPosition");
-  var kind$ = dart.privateName(tap, "TapDownDetails.kind");
-  var localPosition$ = dart.privateName(tap, "TapDownDetails.localPosition");
-  var OffsetBase__dy = dart.privateName(ui, "OffsetBase._dy");
-  var OffsetBase__dx = dart.privateName(ui, "OffsetBase._dx");
-  tap.TapDownDetails = class TapDownDetails extends core.Object {
-    get globalPosition() {
-      return this[globalPosition$];
+  var builder$ = dart.privateName(widget_builders, "ResponsiveBuilder.builder");
+  var breakpoints$ = dart.privateName(widget_builders, "ResponsiveBuilder.breakpoints");
+  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  widget_builders.ResponsiveBuilder = class ResponsiveBuilder extends framework.StatelessWidget {
+    get builder() {
+      return this[builder$];
     }
-    set globalPosition(value) {
-      super.globalPosition = value;
+    set builder(value) {
+      super.builder = value;
     }
-    get kind() {
-      return this[kind$];
+    get breakpoints() {
+      return this[breakpoints$];
     }
-    set kind(value) {
-      super.kind = value;
+    set breakpoints(value) {
+      super.breakpoints = value;
     }
-    get localPosition() {
-      return this[localPosition$];
-    }
-    set localPosition(value) {
-      super.localPosition = value;
-    }
-  };
-  (tap.TapDownDetails.new = function(opts) {
-    let t0;
-    let globalPosition = opts && 'globalPosition' in opts ? opts.globalPosition : C[0] || CT.C0;
-    if (globalPosition == null) dart.nullFailed(I[0], 25, 10, "globalPosition");
-    let localPosition = opts && 'localPosition' in opts ? opts.localPosition : null;
-    let kind = opts && 'kind' in opts ? opts.kind : null;
-    this[globalPosition$] = globalPosition;
-    this[kind$] = kind;
-    if (!(globalPosition != null)) dart.assertFailed(null, I[0], 28, 15, "globalPosition != null");
-    this[localPosition$] = (t0 = localPosition, t0 == null ? globalPosition : t0);
-    ;
-  }).prototype = tap.TapDownDetails.prototype;
-  dart.addTypeTests(tap.TapDownDetails);
-  dart.addTypeCaches(tap.TapDownDetails);
-  dart.setLibraryUri(tap.TapDownDetails, I[1]);
-  dart.setFieldSignature(tap.TapDownDetails, () => ({
-    __proto__: dart.getFields(tap.TapDownDetails.__proto__),
-    globalPosition: dart.finalFieldType(ui.Offset),
-    kind: dart.finalFieldType(dart.nullable(ui.PointerDeviceKind)),
-    localPosition: dart.finalFieldType(ui.Offset)
-  }));
-  var globalPosition$0 = dart.privateName(tap, "TapUpDetails.globalPosition");
-  var localPosition$0 = dart.privateName(tap, "TapUpDetails.localPosition");
-  var kind$0 = dart.privateName(tap, "TapUpDetails.kind");
-  tap.TapUpDetails = class TapUpDetails extends core.Object {
-    get globalPosition() {
-      return this[globalPosition$0];
-    }
-    set globalPosition(value) {
-      super.globalPosition = value;
-    }
-    get localPosition() {
-      return this[localPosition$0];
-    }
-    set localPosition(value) {
-      super.localPosition = value;
-    }
-    get kind() {
-      return this[kind$0];
-    }
-    set kind(value) {
-      super.kind = value;
+    build(context) {
+      return new layout_builder.LayoutBuilder.new({builder: dart.fn((context, boxConstraints) => {
+          let t1, t0;
+          let mediaQuery = media_query.MediaQuery.of(context);
+          let sizingInformation = new sizing_information.SizingInformation.new({deviceScreenType: helpers.getDeviceType(mediaQuery.size, this.breakpoints), screenSize: mediaQuery.size, localWidgetSize: new ui.Size.new(boxConstraints.maxWidth, boxConstraints.maxHeight)});
+          t0 = context;
+          t1 = sizingInformation;
+          return this.builder(t0, t1);
+        }, T.BuildContextLAndBoxConstraintsLToWidgetL()), $creationLocationd_0dea112b090073317d4: C[0] || CT.C0});
     }
   };
-  (tap.TapUpDetails.new = function(opts) {
-    let t0;
-    let kind = opts && 'kind' in opts ? opts.kind : null;
-    if (kind == null) dart.nullFailed(I[0], 62, 19, "kind");
-    let globalPosition = opts && 'globalPosition' in opts ? opts.globalPosition : C[0] || CT.C0;
-    if (globalPosition == null) dart.nullFailed(I[0], 63, 10, "globalPosition");
-    let localPosition = opts && 'localPosition' in opts ? opts.localPosition : null;
-    this[kind$0] = kind;
-    this[globalPosition$0] = globalPosition;
-    if (!(globalPosition != null)) dart.assertFailed(null, I[0], 65, 15, "globalPosition != null");
-    this[localPosition$0] = (t0 = localPosition, t0 == null ? globalPosition : t0);
+  (widget_builders.ResponsiveBuilder.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let builder = opts && 'builder' in opts ? opts.builder : null;
+    let breakpoints = opts && 'breakpoints' in opts ? opts.breakpoints : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[builder$] = builder;
+    this[breakpoints$] = breakpoints;
+    widget_builders.ResponsiveBuilder.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
     ;
-  }).prototype = tap.TapUpDetails.prototype;
-  dart.addTypeTests(tap.TapUpDetails);
-  dart.addTypeCaches(tap.TapUpDetails);
-  dart.setLibraryUri(tap.TapUpDetails, I[1]);
-  dart.setFieldSignature(tap.TapUpDetails, () => ({
-    __proto__: dart.getFields(tap.TapUpDetails.__proto__),
-    globalPosition: dart.finalFieldType(ui.Offset),
-    localPosition: dart.finalFieldType(ui.Offset),
-    kind: dart.finalFieldType(ui.PointerDeviceKind)
+  }).prototype = widget_builders.ResponsiveBuilder.prototype;
+  dart.addTypeTests(widget_builders.ResponsiveBuilder);
+  dart.addTypeCaches(widget_builders.ResponsiveBuilder);
+  dart.setMethodSignature(widget_builders.ResponsiveBuilder, () => ({
+    __proto__: dart.getMethods(widget_builders.ResponsiveBuilder.__proto__),
+    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
   }));
-  var _sentTapDown = dart.privateName(tap, "_sentTapDown");
-  var _wonArenaForPrimaryPointer = dart.privateName(tap, "_wonArenaForPrimaryPointer");
-  var _down = dart.privateName(tap, "_down");
-  var _up = dart.privateName(tap, "_up");
-  var _checkUp = dart.privateName(tap, "_checkUp");
-  var _checkCancel = dart.privateName(tap, "_checkCancel");
-  var _reset = dart.privateName(tap, "_reset");
-  var _checkDown = dart.privateName(tap, "_checkDown");
-  tap.BaseTapGestureRecognizer = class BaseTapGestureRecognizer extends recognizer.PrimaryPointerGestureRecognizer {
-    addAllowedPointer(event) {
-      if (event == null) dart.nullFailed(I[0], 191, 43, "event");
-      if (!(event != null)) dart.assertFailed(null, I[0], 192, 12, "event != null");
-      if (dart.equals(this.state, recognizer.GestureRecognizerState.ready)) {
-        this[_down] = event;
-      }
-      if (this[_down] != null) {
-        super.addAllowedPointer(event);
-      }
+  dart.setLibraryUri(widget_builders.ResponsiveBuilder, I[0]);
+  dart.setFieldSignature(widget_builders.ResponsiveBuilder, () => ({
+    __proto__: dart.getFields(widget_builders.ResponsiveBuilder.__proto__),
+    builder: dart.finalFieldType(dart.legacy(dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext), dart.legacy(sizing_information.SizingInformation)]))),
+    breakpoints: dart.finalFieldType(dart.legacy(sizing_information.ScreenBreakpoints))
+  }));
+  var landscape$ = dart.privateName(widget_builders, "OrientationLayoutBuilder.landscape");
+  var portrait$ = dart.privateName(widget_builders, "OrientationLayoutBuilder.portrait");
+  widget_builders.OrientationLayoutBuilder = class OrientationLayoutBuilder extends framework.StatelessWidget {
+    get landscape() {
+      return this[landscape$];
     }
-    startTrackingPointer(pointer, transform = null) {
-      if (pointer == null) dart.nullFailed(I[0], 211, 33, "pointer");
-      if (!(this[_down] != null)) dart.assertFailed(null, I[0], 214, 12, "_down != null");
-      super.startTrackingPointer(pointer, transform);
+    set landscape(value) {
+      super.landscape = value;
     }
-    handlePrimaryPointer(event) {
-      if (event == null) dart.nullFailed(I[0], 219, 42, "event");
-      if (events.PointerUpEvent.is(event)) {
-        this[_up] = event;
-        this[_checkUp]();
-      } else if (events.PointerCancelEvent.is(event)) {
-        this.resolve(arena.GestureDisposition.rejected);
-        if (dart.test(this[_sentTapDown])) {
-          this[_checkCancel](event, "");
-        }
-        this[_reset]();
-      } else if (event.buttons != dart.nullCheck(this[_down]).buttons) {
-        this.resolve(arena.GestureDisposition.rejected);
-        this.stopTrackingPointer(dart.nullCheck(this.primaryPointer));
-      }
+    get portrait() {
+      return this[portrait$];
     }
-    resolve(disposition) {
-      if (disposition == null) dart.nullFailed(I[0], 236, 35, "disposition");
-      if (dart.test(this[_wonArenaForPrimaryPointer]) && dart.equals(disposition, arena.GestureDisposition.rejected)) {
-        if (!dart.test(this[_sentTapDown])) dart.assertFailed(null, I[0], 241, 14, "_sentTapDown");
-        this[_checkCancel](null, "spontaneous");
-        this[_reset]();
-      }
-      super.resolve(disposition);
+    set portrait(value) {
+      super.portrait = value;
     }
-    didExceedDeadline() {
-      this[_checkDown]();
-    }
-    acceptGesture(pointer) {
-      if (pointer == null) dart.nullFailed(I[0], 254, 26, "pointer");
-      super.acceptGesture(pointer);
-      if (pointer == this.primaryPointer) {
-        this[_checkDown]();
-        this[_wonArenaForPrimaryPointer] = true;
-        this[_checkUp]();
-      }
-    }
-    rejectGesture(pointer) {
-      if (pointer == null) dart.nullFailed(I[0], 264, 26, "pointer");
-      super.rejectGesture(pointer);
-      if (pointer == this.primaryPointer) {
-        if (!!dart.equals(this.state, recognizer.GestureRecognizerState.possible)) dart.assertFailed(null, I[0], 268, 14, "state != GestureRecognizerState.possible");
-        if (dart.test(this[_sentTapDown])) this[_checkCancel](null, "forced");
-        this[_reset]();
-      }
-    }
-    [_checkDown]() {
-      if (dart.test(this[_sentTapDown])) {
-        return;
-      }
-      this.handleTapDown({down: dart.nullCheck(this[_down])});
-      this[_sentTapDown] = true;
-    }
-    [_checkUp]() {
-      if (!dart.test(this[_wonArenaForPrimaryPointer]) || this[_up] == null) {
-        return;
-      }
-      this.handleTapUp({down: dart.nullCheck(this[_down]), up: dart.nullCheck(this[_up])});
-      this[_reset]();
-    }
-    [_checkCancel](event, note) {
-      if (note == null) dart.nullFailed(I[0], 291, 55, "note");
-      this.handleTapCancel({down: dart.nullCheck(this[_down]), cancel: event, reason: note});
-    }
-    [_reset]() {
-      this[_sentTapDown] = false;
-      this[_wonArenaForPrimaryPointer] = false;
-      this[_up] = null;
-      this[_down] = null;
-    }
-    get debugDescription() {
-      return "base tap";
-    }
-    debugFillProperties(properties) {
-      let t0, t0$, t0$0, t0$1;
-      if (properties == null) dart.nullFailed(I[0], 306, 56, "properties");
-      super.debugFillProperties(properties);
-      properties.add(new diagnostics.FlagProperty.new("wonArenaForPrimaryPointer", {value: this[_wonArenaForPrimaryPointer], ifTrue: "won arena"}));
-      properties.add(new (T.DiagnosticsPropertyOfOffset()).new("finalPosition", (t0 = this[_up], t0 == null ? null : t0.position), {defaultValue: null}));
-      properties.add(new (T.DiagnosticsPropertyOfOffset()).new("finalLocalPosition", (t0$ = this[_up], t0$ == null ? null : t0$.localPosition), {defaultValue: (t0$0 = this[_up], t0$0 == null ? null : t0$0.position)}));
-      properties.add(new (T.DiagnosticsPropertyOfint()).new("button", (t0$1 = this[_down], t0$1 == null ? null : t0$1.buttons), {defaultValue: null}));
-      properties.add(new diagnostics.FlagProperty.new("sentTapDown", {value: this[_sentTapDown], ifTrue: "sent tap down"}));
+    build(context) {
+      return new basic.Builder.new({builder: dart.fn(context => {
+          let t0, t0$;
+          let orientation = media_query.MediaQuery.of(context).orientation;
+          if (dart.equals(orientation, media_query.Orientation.landscape)) {
+            if (this.landscape != null) {
+              t0 = context;
+              return this.landscape(t0);
+            }
+          }
+          t0$ = context;
+          return this.portrait(t0$);
+        }, T.BuildContextLToWidgetL()), $creationLocationd_0dea112b090073317d4: C[3] || CT.C3});
     }
   };
-  (tap.BaseTapGestureRecognizer.new = function(opts) {
-    let debugOwner = opts && 'debugOwner' in opts ? opts.debugOwner : null;
-    this[_sentTapDown] = false;
-    this[_wonArenaForPrimaryPointer] = false;
-    this[_down] = null;
-    this[_up] = null;
-    tap.BaseTapGestureRecognizer.__proto__.new.call(this, {deadline: constants.kPressTimeout, debugOwner: debugOwner});
+  (widget_builders.OrientationLayoutBuilder.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let landscape = opts && 'landscape' in opts ? opts.landscape : null;
+    let portrait = opts && 'portrait' in opts ? opts.portrait : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[landscape$] = landscape;
+    this[portrait$] = portrait;
+    widget_builders.OrientationLayoutBuilder.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
     ;
-  }).prototype = tap.BaseTapGestureRecognizer.prototype;
-  dart.addTypeTests(tap.BaseTapGestureRecognizer);
-  dart.addTypeCaches(tap.BaseTapGestureRecognizer);
-  dart.setMethodSignature(tap.BaseTapGestureRecognizer, () => ({
-    __proto__: dart.getMethods(tap.BaseTapGestureRecognizer.__proto__),
-    handlePrimaryPointer: dart.fnType(dart.void, [events.PointerEvent]),
-    [_checkDown]: dart.fnType(dart.void, []),
-    [_checkUp]: dart.fnType(dart.void, []),
-    [_checkCancel]: dart.fnType(dart.void, [dart.nullable(events.PointerCancelEvent), core.String]),
-    [_reset]: dart.fnType(dart.void, [])
+  }).prototype = widget_builders.OrientationLayoutBuilder.prototype;
+  dart.addTypeTests(widget_builders.OrientationLayoutBuilder);
+  dart.addTypeCaches(widget_builders.OrientationLayoutBuilder);
+  dart.setMethodSignature(widget_builders.OrientationLayoutBuilder, () => ({
+    __proto__: dart.getMethods(widget_builders.OrientationLayoutBuilder.__proto__),
+    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
   }));
-  dart.setGetterSignature(tap.BaseTapGestureRecognizer, () => ({
-    __proto__: dart.getGetters(tap.BaseTapGestureRecognizer.__proto__),
-    debugDescription: core.String
+  dart.setLibraryUri(widget_builders.OrientationLayoutBuilder, I[0]);
+  dart.setFieldSignature(widget_builders.OrientationLayoutBuilder, () => ({
+    __proto__: dart.getFields(widget_builders.OrientationLayoutBuilder.__proto__),
+    landscape: dart.finalFieldType(dart.legacy(dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)]))),
+    portrait: dart.finalFieldType(dart.legacy(dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])))
   }));
-  dart.setLibraryUri(tap.BaseTapGestureRecognizer, I[1]);
-  dart.setFieldSignature(tap.BaseTapGestureRecognizer, () => ({
-    __proto__: dart.getFields(tap.BaseTapGestureRecognizer.__proto__),
-    [_sentTapDown]: dart.fieldType(core.bool),
-    [_wonArenaForPrimaryPointer]: dart.fieldType(core.bool),
-    [_down]: dart.fieldType(dart.nullable(events.PointerDownEvent)),
-    [_up]: dart.fieldType(dart.nullable(events.PointerUpEvent))
-  }));
-  var onTapDown = dart.privateName(tap, "TapGestureRecognizer.onTapDown");
-  var onTapUp = dart.privateName(tap, "TapGestureRecognizer.onTapUp");
-  var onTap = dart.privateName(tap, "TapGestureRecognizer.onTap");
-  var onTapCancel = dart.privateName(tap, "TapGestureRecognizer.onTapCancel");
-  var onSecondaryTap = dart.privateName(tap, "TapGestureRecognizer.onSecondaryTap");
-  var onSecondaryTapDown = dart.privateName(tap, "TapGestureRecognizer.onSecondaryTapDown");
-  var onSecondaryTapUp = dart.privateName(tap, "TapGestureRecognizer.onSecondaryTapUp");
-  var onSecondaryTapCancel = dart.privateName(tap, "TapGestureRecognizer.onSecondaryTapCancel");
-  var onTertiaryTapDown = dart.privateName(tap, "TapGestureRecognizer.onTertiaryTapDown");
-  var onTertiaryTapUp = dart.privateName(tap, "TapGestureRecognizer.onTertiaryTapUp");
-  var onTertiaryTapCancel = dart.privateName(tap, "TapGestureRecognizer.onTertiaryTapCancel");
-  tap.TapGestureRecognizer = class TapGestureRecognizer extends tap.BaseTapGestureRecognizer {
-    get onTapDown() {
-      return this[onTapDown];
+  var breakpoints$0 = dart.privateName(widget_builders, "ScreenTypeLayout.breakpoints");
+  var watch$ = dart.privateName(widget_builders, "ScreenTypeLayout.watch");
+  var mobile$ = dart.privateName(widget_builders, "ScreenTypeLayout.mobile");
+  var tablet$ = dart.privateName(widget_builders, "ScreenTypeLayout.tablet");
+  var desktop$ = dart.privateName(widget_builders, "ScreenTypeLayout.desktop");
+  widget_builders.ScreenTypeLayout = class ScreenTypeLayout extends framework.StatelessWidget {
+    get breakpoints() {
+      return this[breakpoints$0];
     }
-    set onTapDown(value) {
-      this[onTapDown] = value;
+    set breakpoints(value) {
+      super.breakpoints = value;
     }
-    get onTapUp() {
-      return this[onTapUp];
+    get watch() {
+      return this[watch$];
     }
-    set onTapUp(value) {
-      this[onTapUp] = value;
+    set watch(value) {
+      super.watch = value;
     }
-    get onTap() {
-      return this[onTap];
+    get mobile() {
+      return this[mobile$];
     }
-    set onTap(value) {
-      this[onTap] = value;
+    set mobile(value) {
+      super.mobile = value;
     }
-    get onTapCancel() {
-      return this[onTapCancel];
+    get tablet() {
+      return this[tablet$];
     }
-    set onTapCancel(value) {
-      this[onTapCancel] = value;
+    set tablet(value) {
+      super.tablet = value;
     }
-    get onSecondaryTap() {
-      return this[onSecondaryTap];
+    get desktop() {
+      return this[desktop$];
     }
-    set onSecondaryTap(value) {
-      this[onSecondaryTap] = value;
+    set desktop(value) {
+      super.desktop = value;
     }
-    get onSecondaryTapDown() {
-      return this[onSecondaryTapDown];
+    static _builderOrNull(widget) {
+      return widget == null ? null : dart.fn(_ => widget, T.BuildContextLToWidgetL());
     }
-    set onSecondaryTapDown(value) {
-      this[onSecondaryTapDown] = value;
-    }
-    get onSecondaryTapUp() {
-      return this[onSecondaryTapUp];
-    }
-    set onSecondaryTapUp(value) {
-      this[onSecondaryTapUp] = value;
-    }
-    get onSecondaryTapCancel() {
-      return this[onSecondaryTapCancel];
-    }
-    set onSecondaryTapCancel(value) {
-      this[onSecondaryTapCancel] = value;
-    }
-    get onTertiaryTapDown() {
-      return this[onTertiaryTapDown];
-    }
-    set onTertiaryTapDown(value) {
-      this[onTertiaryTapDown] = value;
-    }
-    get onTertiaryTapUp() {
-      return this[onTertiaryTapUp];
-    }
-    set onTertiaryTapUp(value) {
-      this[onTertiaryTapUp] = value;
-    }
-    get onTertiaryTapCancel() {
-      return this[onTertiaryTapCancel];
-    }
-    set onTertiaryTapCancel(value) {
-      this[onTertiaryTapCancel] = value;
-    }
-    isPointerAllowed(event) {
-      if (event == null) dart.nullFailed(I[0], 532, 42, "event");
-      switch (event.buttons) {
-        case 1:
-        {
-          if (this.onTapDown == null && this.onTap == null && this.onTapUp == null && this.onTapCancel == null) return false;
-          break;
-        }
-        case 2:
-        {
-          if (this.onSecondaryTap == null && this.onSecondaryTapDown == null && this.onSecondaryTapUp == null && this.onSecondaryTapCancel == null) return false;
-          break;
-        }
-        case 4:
-        {
-          if (this.onTertiaryTapDown == null && this.onTertiaryTapUp == null && this.onTertiaryTapCancel == null) return false;
-          break;
-        }
-        default:
-        {
-          return false;
-        }
-      }
-      return super.isPointerAllowed(event);
-    }
-    handleTapDown(opts) {
-      let down = opts && 'down' in opts ? opts.down : null;
-      if (down == null) dart.nullFailed(I[0], 562, 49, "down");
-      let details = new tap.TapDownDetails.new({globalPosition: down.position, localPosition: down.localPosition, kind: this.getKindForPointer(down.pointer)});
-      switch (down.buttons) {
-        case 1:
-        {
-          if (this.onTapDown != null) this.invokeCallback(dart.void, "onTapDown", dart.fn(() => dart.nullCheck(this.onTapDown)(details), T.VoidTovoid()));
-          break;
-        }
-        case 2:
-        {
-          if (this.onSecondaryTapDown != null) this.invokeCallback(dart.void, "onSecondaryTapDown", dart.fn(() => dart.nullCheck(this.onSecondaryTapDown)(details), T.VoidTovoid()));
-          break;
-        }
-        case 4:
-        {
-          if (this.onTertiaryTapDown != null) this.invokeCallback(dart.void, "onTertiaryTapDown", dart.fn(() => dart.nullCheck(this.onTertiaryTapDown)(details), T.VoidTovoid()));
-          break;
-        }
-        default:
-      }
-    }
-    handleTapUp(opts) {
-      let down = opts && 'down' in opts ? opts.down : null;
-      if (down == null) dart.nullFailed(I[0], 587, 48, "down");
-      let up = opts && 'up' in opts ? opts.up : null;
-      if (up == null) dart.nullFailed(I[0], 587, 78, "up");
-      let details = new tap.TapUpDetails.new({kind: up.kind, globalPosition: up.position, localPosition: up.localPosition});
-      switch (down.buttons) {
-        case 1:
-        {
-          if (this.onTapUp != null) this.invokeCallback(dart.void, "onTapUp", dart.fn(() => dart.nullCheck(this.onTapUp)(details), T.VoidTovoid()));
-          if (this.onTap != null) this.invokeCallback(dart.void, "onTap", dart.nullCheck(this.onTap));
-          break;
-        }
-        case 2:
-        {
-          if (this.onSecondaryTapUp != null) this.invokeCallback(dart.void, "onSecondaryTapUp", dart.fn(() => dart.nullCheck(this.onSecondaryTapUp)(details), T.VoidTovoid()));
-          if (this.onSecondaryTap != null) this.invokeCallback(dart.void, "onSecondaryTap", dart.fn(() => dart.nullCheck(this.onSecondaryTap)(), T.VoidTovoid()));
-          break;
-        }
-        case 4:
-        {
-          if (this.onTertiaryTapUp != null) this.invokeCallback(dart.void, "onTertiaryTapUp", dart.fn(() => dart.nullCheck(this.onTertiaryTapUp)(details), T.VoidTovoid()));
-          break;
-        }
-        default:
-      }
-    }
-    handleTapCancel(opts) {
-      let down = opts && 'down' in opts ? opts.down : null;
-      if (down == null) dart.nullFailed(I[0], 616, 52, "down");
-      let cancel = opts && 'cancel' in opts ? opts.cancel : null;
-      let reason = opts && 'reason' in opts ? opts.reason : null;
-      if (reason == null) dart.nullFailed(I[0], 616, 102, "reason");
-      let note = reason === "" ? reason : dart.str(reason) + " ";
-      switch (down.buttons) {
-        case 1:
-        {
-          if (this.onTapCancel != null) this.invokeCallback(dart.void, dart.str(note) + "onTapCancel", dart.nullCheck(this.onTapCancel));
-          break;
-        }
-        case 2:
-        {
-          if (this.onSecondaryTapCancel != null) this.invokeCallback(dart.void, dart.str(note) + "onSecondaryTapCancel", dart.nullCheck(this.onSecondaryTapCancel));
-          break;
-        }
-        case 4:
-        {
-          if (this.onTertiaryTapCancel != null) this.invokeCallback(dart.void, dart.str(note) + "onTertiaryTapCancel", dart.nullCheck(this.onTertiaryTapCancel));
-          break;
-        }
-        default:
-      }
-    }
-    get debugDescription() {
-      return "tap";
+    build(context) {
+      return new widget_builders.ResponsiveBuilder.new({breakpoints: this.breakpoints, builder: dart.fn((context, sizingInformation) => {
+          let t0, t0$, t0$0, t0$1, t0$2;
+          if (sizingInformation.deviceScreenType == device_screen_type.DeviceScreenType.desktop) {
+            if (this.desktop != null) {
+              t0 = context;
+              return this.desktop(t0);
+            }
+            if (this.tablet != null) {
+              t0$ = context;
+              return this.tablet(t0$);
+            }
+          }
+          if (sizingInformation.deviceScreenType == device_screen_type.DeviceScreenType.tablet) {
+            if (this.tablet != null) {
+              t0$0 = context;
+              return this.tablet(t0$0);
+            }
+          }
+          if (sizingInformation.deviceScreenType == device_screen_type.DeviceScreenType.watch && this.watch != null) {
+            t0$1 = context;
+            return this.watch(t0$1);
+          }
+          t0$2 = context;
+          return this.mobile(t0$2);
+        }, T.BuildContextLAndSizingInformationLToWidgetL()), $creationLocationd_0dea112b090073317d4: C[6] || CT.C6});
     }
   };
-  (tap.TapGestureRecognizer.new = function(opts) {
-    let debugOwner = opts && 'debugOwner' in opts ? opts.debugOwner : null;
-    this[onTapDown] = null;
-    this[onTapUp] = null;
-    this[onTap] = null;
-    this[onTapCancel] = null;
-    this[onSecondaryTap] = null;
-    this[onSecondaryTapDown] = null;
-    this[onSecondaryTapUp] = null;
-    this[onSecondaryTapCancel] = null;
-    this[onTertiaryTapDown] = null;
-    this[onTertiaryTapUp] = null;
-    this[onTertiaryTapCancel] = null;
-    tap.TapGestureRecognizer.__proto__.new.call(this, {debugOwner: debugOwner});
+  (widget_builders.ScreenTypeLayout.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let breakpoints = opts && 'breakpoints' in opts ? opts.breakpoints : null;
+    let watch = opts && 'watch' in opts ? opts.watch : null;
+    let mobile = opts && 'mobile' in opts ? opts.mobile : null;
+    let tablet = opts && 'tablet' in opts ? opts.tablet : null;
+    let desktop = opts && 'desktop' in opts ? opts.desktop : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[breakpoints$0] = breakpoints;
+    this[watch$] = widget_builders.ScreenTypeLayout._builderOrNull(watch);
+    this[mobile$] = widget_builders.ScreenTypeLayout._builderOrNull(mobile);
+    this[tablet$] = widget_builders.ScreenTypeLayout._builderOrNull(tablet);
+    this[desktop$] = widget_builders.ScreenTypeLayout._builderOrNull(desktop);
+    widget_builders.ScreenTypeLayout.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
     ;
-  }).prototype = tap.TapGestureRecognizer.prototype;
-  dart.addTypeTests(tap.TapGestureRecognizer);
-  dart.addTypeCaches(tap.TapGestureRecognizer);
-  dart.setMethodSignature(tap.TapGestureRecognizer, () => ({
-    __proto__: dart.getMethods(tap.TapGestureRecognizer.__proto__),
-    handleTapDown: dart.fnType(dart.void, [], {}, {down: events.PointerDownEvent}),
-    handleTapUp: dart.fnType(dart.void, [], {}, {down: events.PointerDownEvent, up: events.PointerUpEvent}),
-    handleTapCancel: dart.fnType(dart.void, [], {cancel: dart.nullable(events.PointerCancelEvent)}, {down: events.PointerDownEvent, reason: core.String})
+  }).prototype = widget_builders.ScreenTypeLayout.prototype;
+  (widget_builders.ScreenTypeLayout.builder = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let breakpoints = opts && 'breakpoints' in opts ? opts.breakpoints : null;
+    let watch = opts && 'watch' in opts ? opts.watch : null;
+    let mobile = opts && 'mobile' in opts ? opts.mobile : null;
+    let tablet = opts && 'tablet' in opts ? opts.tablet : null;
+    let desktop = opts && 'desktop' in opts ? opts.desktop : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[breakpoints$0] = breakpoints;
+    this[watch$] = watch;
+    this[mobile$] = mobile;
+    this[tablet$] = tablet;
+    this[desktop$] = desktop;
+    widget_builders.ScreenTypeLayout.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = widget_builders.ScreenTypeLayout.prototype;
+  dart.addTypeTests(widget_builders.ScreenTypeLayout);
+  dart.addTypeCaches(widget_builders.ScreenTypeLayout);
+  dart.setMethodSignature(widget_builders.ScreenTypeLayout, () => ({
+    __proto__: dart.getMethods(widget_builders.ScreenTypeLayout.__proto__),
+    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
   }));
-  dart.setLibraryUri(tap.TapGestureRecognizer, I[1]);
-  dart.setFieldSignature(tap.TapGestureRecognizer, () => ({
-    __proto__: dart.getFields(tap.TapGestureRecognizer.__proto__),
-    onTapDown: dart.fieldType(dart.nullable(dart.fnType(dart.void, [tap.TapDownDetails]))),
-    onTapUp: dart.fieldType(dart.nullable(dart.fnType(dart.void, [tap.TapUpDetails]))),
-    onTap: dart.fieldType(dart.nullable(dart.fnType(dart.void, []))),
-    onTapCancel: dart.fieldType(dart.nullable(dart.fnType(dart.void, []))),
-    onSecondaryTap: dart.fieldType(dart.nullable(dart.fnType(dart.void, []))),
-    onSecondaryTapDown: dart.fieldType(dart.nullable(dart.fnType(dart.void, [tap.TapDownDetails]))),
-    onSecondaryTapUp: dart.fieldType(dart.nullable(dart.fnType(dart.void, [tap.TapUpDetails]))),
-    onSecondaryTapCancel: dart.fieldType(dart.nullable(dart.fnType(dart.void, []))),
-    onTertiaryTapDown: dart.fieldType(dart.nullable(dart.fnType(dart.void, [tap.TapDownDetails]))),
-    onTertiaryTapUp: dart.fieldType(dart.nullable(dart.fnType(dart.void, [tap.TapUpDetails]))),
-    onTertiaryTapCancel: dart.fieldType(dart.nullable(dart.fnType(dart.void, [])))
+  dart.setLibraryUri(widget_builders.ScreenTypeLayout, I[0]);
+  dart.setFieldSignature(widget_builders.ScreenTypeLayout, () => ({
+    __proto__: dart.getFields(widget_builders.ScreenTypeLayout.__proto__),
+    breakpoints: dart.finalFieldType(dart.legacy(sizing_information.ScreenBreakpoints)),
+    watch: dart.finalFieldType(dart.legacy(dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)]))),
+    mobile: dart.finalFieldType(dart.legacy(dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)]))),
+    tablet: dart.finalFieldType(dart.legacy(dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)]))),
+    desktop: dart.finalFieldType(dart.legacy(dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])))
   }));
-  dart.trackLibraries("packages/flutter/src/gestures/tap.dart", {
-    "package:flutter/src/gestures/tap.dart": tap
+  var _customBreakPoints = dart.privateName(responsive_sizing_config, "_customBreakPoints");
+  var ScreenBreakpoints_desktop = dart.privateName(sizing_information, "ScreenBreakpoints.desktop");
+  var ScreenBreakpoints_tablet = dart.privateName(sizing_information, "ScreenBreakpoints.tablet");
+  var ScreenBreakpoints_watch = dart.privateName(sizing_information, "ScreenBreakpoints.watch");
+  responsive_sizing_config.ResponsiveSizingConfig = class ResponsiveSizingConfig extends core.Object {
+    static get instance() {
+      if (responsive_sizing_config.ResponsiveSizingConfig._instance == null) {
+        responsive_sizing_config.ResponsiveSizingConfig._instance = new responsive_sizing_config.ResponsiveSizingConfig.new();
+      }
+      return responsive_sizing_config.ResponsiveSizingConfig._instance;
+    }
+    setCustomBreakpoints(customBreakpoints) {
+      this[_customBreakPoints] = customBreakpoints;
+    }
+    get breakpoints() {
+      let t0;
+      t0 = this[_customBreakPoints];
+      return t0 == null ? responsive_sizing_config.ResponsiveSizingConfig._defaultBreakPoints : t0;
+    }
+  };
+  (responsive_sizing_config.ResponsiveSizingConfig.new = function() {
+    this[_customBreakPoints] = null;
+    ;
+  }).prototype = responsive_sizing_config.ResponsiveSizingConfig.prototype;
+  dart.addTypeTests(responsive_sizing_config.ResponsiveSizingConfig);
+  dart.addTypeCaches(responsive_sizing_config.ResponsiveSizingConfig);
+  dart.setMethodSignature(responsive_sizing_config.ResponsiveSizingConfig, () => ({
+    __proto__: dart.getMethods(responsive_sizing_config.ResponsiveSizingConfig.__proto__),
+    setCustomBreakpoints: dart.fnType(dart.void, [dart.legacy(sizing_information.ScreenBreakpoints)])
+  }));
+  dart.setGetterSignature(responsive_sizing_config.ResponsiveSizingConfig, () => ({
+    __proto__: dart.getGetters(responsive_sizing_config.ResponsiveSizingConfig.__proto__),
+    breakpoints: dart.legacy(sizing_information.ScreenBreakpoints)
+  }));
+  dart.setLibraryUri(responsive_sizing_config.ResponsiveSizingConfig, I[1]);
+  dart.setFieldSignature(responsive_sizing_config.ResponsiveSizingConfig, () => ({
+    __proto__: dart.getFields(responsive_sizing_config.ResponsiveSizingConfig.__proto__),
+    [_customBreakPoints]: dart.fieldType(dart.legacy(sizing_information.ScreenBreakpoints))
+  }));
+  dart.defineLazy(responsive_sizing_config.ResponsiveSizingConfig, {
+    /*responsive_sizing_config.ResponsiveSizingConfig._instance*/get _instance() {
+      return null;
+    },
+    set _instance(_) {},
+    /*responsive_sizing_config.ResponsiveSizingConfig._defaultBreakPoints*/get _defaultBreakPoints() {
+      return C[10] || CT.C10;
+    }
+  }, true);
+  const _is_ScreenTypeValueBuilder_default = Symbol('_is_ScreenTypeValueBuilder_default');
+  helpers.ScreenTypeValueBuilder$ = dart.generic(T => {
+    var TL = () => (TL = dart.constFn(dart.legacy(T)))();
+    class ScreenTypeValueBuilder extends core.Object {
+      getValueForType(opts) {
+        let context = opts && 'context' in opts ? opts.context : null;
+        let mobile = opts && 'mobile' in opts ? opts.mobile : null;
+        TL().as(mobile);
+        let tablet = opts && 'tablet' in opts ? opts.tablet : null;
+        TL().as(tablet);
+        let desktop = opts && 'desktop' in opts ? opts.desktop : null;
+        TL().as(desktop);
+        let watch = opts && 'watch' in opts ? opts.watch : null;
+        TL().as(watch);
+        return helpers.getValueForScreenType(TL(), {context: context, mobile: mobile, tablet: tablet, desktop: desktop, watch: watch});
+      }
+    }
+    (ScreenTypeValueBuilder.new = function() {
+      ;
+    }).prototype = ScreenTypeValueBuilder.prototype;
+    dart.addTypeTests(ScreenTypeValueBuilder);
+    ScreenTypeValueBuilder.prototype[_is_ScreenTypeValueBuilder_default] = true;
+    dart.addTypeCaches(ScreenTypeValueBuilder);
+    dart.setMethodSignature(ScreenTypeValueBuilder, () => ({
+      __proto__: dart.getMethods(ScreenTypeValueBuilder.__proto__),
+      getValueForType: dart.fnType(dart.legacy(T), [], {context: dart.legacy(framework.BuildContext), desktop: dart.legacy(core.Object), mobile: dart.legacy(core.Object), tablet: dart.legacy(core.Object), watch: dart.legacy(core.Object)}, {})
+    }));
+    dart.setLibraryUri(ScreenTypeValueBuilder, I[2]);
+    return ScreenTypeValueBuilder;
+  });
+  helpers.ScreenTypeValueBuilder = helpers.ScreenTypeValueBuilder$();
+  dart.addTypeTests(helpers.ScreenTypeValueBuilder, _is_ScreenTypeValueBuilder_default);
+  helpers.getDeviceType = function getDeviceType(size, breakpoint = null) {
+    let deviceWidth = size.shortestSide;
+    if (true) {
+      deviceWidth = size.width;
+    }
+    if (breakpoint != null) {
+      if (dart.notNull(deviceWidth) > dart.notNull(breakpoint.desktop)) {
+        return device_screen_type.DeviceScreenType.desktop;
+      }
+      if (dart.notNull(deviceWidth) > dart.notNull(breakpoint.tablet)) {
+        return device_screen_type.DeviceScreenType.tablet;
+      }
+      if (dart.notNull(deviceWidth) < dart.notNull(breakpoint.watch)) {
+        return device_screen_type.DeviceScreenType.watch;
+      }
+    } else {
+      if (dart.notNull(deviceWidth) >= dart.notNull(responsive_sizing_config.ResponsiveSizingConfig.instance.breakpoints.desktop)) {
+        return device_screen_type.DeviceScreenType.desktop;
+      }
+      if (dart.notNull(deviceWidth) >= dart.notNull(responsive_sizing_config.ResponsiveSizingConfig.instance.breakpoints.tablet)) {
+        return device_screen_type.DeviceScreenType.tablet;
+      }
+      if (dart.notNull(deviceWidth) < dart.notNull(responsive_sizing_config.ResponsiveSizingConfig.instance.breakpoints.watch)) {
+        return device_screen_type.DeviceScreenType.watch;
+      }
+    }
+    return device_screen_type.DeviceScreenType.mobile;
+  };
+  helpers.getValueForScreenType = function getValueForScreenType(T, opts) {
+    let context = opts && 'context' in opts ? opts.context : null;
+    let mobile = opts && 'mobile' in opts ? opts.mobile : null;
+    let tablet = opts && 'tablet' in opts ? opts.tablet : null;
+    let desktop = opts && 'desktop' in opts ? opts.desktop : null;
+    let watch = opts && 'watch' in opts ? opts.watch : null;
+    let deviceScreenType = helpers.getDeviceType(media_query.MediaQuery.of(context).size);
+    if (deviceScreenType == device_screen_type.DeviceScreenType.desktop) {
+      if (desktop != null) return desktop;
+      if (tablet != null) return tablet;
+    }
+    if (deviceScreenType == device_screen_type.DeviceScreenType.tablet) {
+      if (tablet != null) return tablet;
+    }
+    if (deviceScreenType == device_screen_type.DeviceScreenType.watch && watch != null) {
+      return watch;
+    }
+    return mobile;
+  };
+  dart.trackLibraries("packages/responsive_builder/src/widget_builders.dart", {
+    "package:responsive_builder/src/widget_builders.dart": widget_builders,
+    "package:responsive_builder/src/responsive_sizing_config.dart": responsive_sizing_config,
+    "package:responsive_builder/src/helpers.dart": helpers,
+    "package:responsive_builder/responsive_builder.dart": responsive_builder
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["tap.dart"],"names":[],"mappings":"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","file":"../../../../../../../../packages/flutter/src/gestures/tap.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["widget_builders.dart","responsive_sizing_config.dart","helpers.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAgBI;;;;;;IAEsB;;;;;;UAME;AACxB,YAAO,gDAAuB,SAAC,SAAS;;AAClC,2BAAwB,0BAAG,OAAO;AAClC,kCAAoB,gEACJ,sBAAc,AAAW,UAAD,OAAO,+BACrC,AAAW,UAAD,wBAElB,gBAAK,AAAe,cAAD,WAAW,AAAe,cAAD;AAElD,eAAe,OAAO;eAAE,iBAAiB;gBAAlC,AAAO;;IAElB;;;QAf6B;QAAU;QAAc;;IAAd;IAAc;AAC/C,qEAAW,GAAG;;EAAC;;;;;;;;;;;;;;;;IAmBD;;;;;;IACA;;;;;;UAQM;AACxB,YAAO,iCACI,QAAC;;AACJ,4BAAyB,AAAY,0BAAT,OAAO;AACvC,cAAgB,YAAZ,WAAW,EAAgB;AAC7B,gBAAI,kBAAa;AACf,mBAAiB,OAAO;oBAAjB,AAAS;;;AAIpB,gBAAgB,OAAO;gBAAhB,AAAQ;;IAGrB;;;QAnBM;QACC;QACA;;IADA;IACA;AACF,4EAAW,GAAG;;EAAC;;;;;;;;;;;;;;;;;;;IA4BI;;;;;;IAEJ;;;;;;IACA;;;;;;IACA;;;;;;IACA;;;;;;0BAwBuB;AACzC,YAAO,AAAO,OAAD,IAAI,OAAO,OAAQ,QAAC,KAAM,MAAM;IAC/C;UAG0B;AACxB,YAAO,yDACQ,2BACJ,SAAC,SAAS;;AAEjB,cAAI,AAAkB,AAAiB,iBAAlB,qBAAsC;AAEzD,gBAAI,gBAAW,MAAM;mBAAe,OAAO;oBAAf,AAAO;;AAEnC,gBAAI,eAAU,MAAM;oBAAc,OAAO;oBAAd,AAAM;;;AAGnC,cAAI,AAAkB,AAAiB,iBAAlB,qBAAsC;AACzD,gBAAI,eAAU,MAAM;qBAAc,OAAO;oBAAd,AAAM;;;AAGnC,cAAI,AAAkB,AAAiB,iBAAlB,qBAAsC,6CACvD,cAAS;AACX,mBAAa,OAAO;kBAAb,AAAK;;AAId,iBAAc,OAAO;gBAAd,AAAM;;IAGnB;;;QAnDS;QACA;QACE;QACA;QACA;QACA;;IAJF;IAKQ,eAAE,gDAAe,KAAK;IACrB,gBAAE,gDAAe,MAAM;IACvB,gBAAE,gDAAe,MAAM;IACtB,iBAAE,gDAAe,OAAO;AACrC,oEAAW,GAAG;;EAAC;;QAGZ;QACA;QACA;QACA;QACA;QACA;;IAJA;IACA;IACA;IACA;IACA;AACH,oEAAW,GAAG;;EAAC;;;;;;;;;;;;;;;;;;;;;;AC/FnB,UAAI,AAAU,6DAAG;AACqB,QAApC,4DAAY;;AAGd,YAAO;IACT;yBAW4C;AACJ,MAAtC,2BAAqB,iBAAiB;IACxC;;;AAGI;0BAAsB;IAAmB;;;IAR3B;;EASpB;;;;;;;;;;;;;;;;;MAxBgC,yDAAS;;;;MASR,mEAAmB;;;;;;;;;YCoEnC;YACX;;YACA;;YACA;;YACA;;AAEF,cAAO,+CACM,OAAO,UACR,MAAM,UACN,MAAM,WACL,OAAO,SACT,KAAK;MAClB;;;;IACF;;;;;;;;;;;;;iDArFO,MACa;AAEX,sBAAc,AAAK,IAAD;AAEzB;AAC0B,MAAxB,cAAc,AAAK,IAAD;;AAIpB,QAAI,UAAU,IAAI;AAChB,UAAgB,aAAZ,WAAW,iBAAG,AAAW,UAAD;AAC1B,cAAwB;;AAG1B,UAAgB,aAAZ,WAAW,iBAAG,AAAW,UAAD;AAC1B,cAAwB;;AAG1B,UAAgB,aAAZ,WAAW,iBAAG,AAAW,UAAD;AAC1B,cAAwB;;;AAI1B,UAAgB,aAAZ,WAAW,kBAA2B,AAAS,AAAY;AAC7D,cAAwB;;AAG1B,UAAgB,aAAZ,WAAW,kBAA2B,AAAS,AAAY;AAC7D,cAAwB;;AAG1B,UAAgB,aAAZ,WAAW,iBAA0B,AAAS,AAAY;AAC5D,cAAwB;;;AAI5B,UAAwB;EAC1B;;QAIe;QACX;QACA;QACA;QACA;AAEE,2BAAmB,sBAAyB,AAAY,0BAAT,OAAO;AAE1D,QAAI,AAAiB,gBAAD,IAAqB;AAEvC,UAAI,OAAO,IAAI,MAAM,MAAO,QAAO;AAEnC,UAAI,MAAM,IAAI,MAAM,MAAO,OAAM;;AAGnC,QAAI,AAAiB,gBAAD,IAAqB;AACvC,UAAI,MAAM,IAAI,MAAM,MAAO,OAAM;;AAGnC,QAAI,AAAiB,gBAAD,IAAqB,6CAAS,KAAK,IAAI;AACzD,YAAO,MAAK;;AAId,UAAO,OAAM;EACf","file":"../../../../../../../../../packages/responsive_builder/src/widget_builders.dart.lib.js"}');
   // Exports:
   return {
-    src__gestures__tap: tap
+    src__widget_builders: widget_builders,
+    src__responsive_sizing_config: responsive_sizing_config,
+    src__helpers: helpers,
+    responsive_builder: responsive_builder
   };
 }));
 
-//# sourceMappingURL=tap.dart.lib.js.map
+//# sourceMappingURL=widget_builders.dart.lib.js.map
