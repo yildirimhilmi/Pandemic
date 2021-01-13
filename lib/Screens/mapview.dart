@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong/latlong.dart' as location;
+import 'package:my_website_project/utils/table.dart';
 
 location.LatLng istanbul = new location.LatLng(41.015137, 28.979530);
 location.LatLng istanbul2 = new location.LatLng(41.015137, 28.979530);
@@ -53,7 +54,7 @@ class _MapViewState extends State<MapView> {
                       onTap: () {
                         AwesomeDialog(
                           context: context,
-                          width: 500,
+                          width: 1000,
                           dialogType: DialogType.INFO,
                           buttonsBorderRadius:
                               BorderRadius.all(Radius.circular(2)),
@@ -61,11 +62,8 @@ class _MapViewState extends State<MapView> {
                           animType: AnimType.BOTTOMSLIDE,
                           title: 'Misir Carsisi Info',
                           btnOkText: "More Information",
-                          body: Center(
-                            child: Text(
-                              'If the body is specified, then title and description will be ignored, this allows to further customize the dialogue.',
-                              style: TextStyle(fontStyle: FontStyle.italic),
-                            ),
+                          body: new smallInfo(
+                            percentage: "50",
                           ),
                           showCloseIcon: true,
                           btnCancelOnPress: () {},
