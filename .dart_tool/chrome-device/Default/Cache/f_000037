@@ -1,732 +1,658 @@
-define(['dart_sdk', 'packages/flutter_map/src/core/point.dart', 'packages/flutter_map/src/core/bounds.dart', 'packages/latlong/latlong.dart', 'packages/tuple/tuple.dart', 'packages/proj4dart/src/classes/projection_tuple.dart', 'packages/proj4dart/src/classes/point.dart'], (function load__packages__flutter_map__src__geo__crs__crs_dart(dart_sdk, packages__flutter_map__src__core__point$46dart, packages__flutter_map__src__core__bounds$46dart, packages__latlong__latlong$46dart, packages__tuple__tuple$46dart, packages__proj4dart__src__classes__projection_tuple$46dart, packages__proj4dart__src__classes__point$46dart) {
+define(['dart_sdk', 'packages/flutter/src/painting/edge_insets.dart', 'packages/flutter/src/painting/colors.dart', 'packages/flutter/src/foundation/debug.dart', 'packages/flutter/src/painting/decoration.dart', 'packages/flutter/src/painting/placeholder_span.dart', 'packages/flutter/src/painting/strut_style.dart', 'packages/flutter/src/services/text_editing.dart', 'packages/flutter/src/painting/box_fit.dart', 'packages/flutter/src/painting/alignment.dart', 'packages/flutter/src/painting/_network_image_web.dart'], (function load__packages__flutter__src__painting__flutter_logo_dart(dart_sdk, packages__flutter__src__painting__edge_insets$46dart, packages__flutter__src__painting__colors$46dart, packages__flutter__src__foundation__debug$46dart, packages__flutter__src__painting__decoration$46dart, packages__flutter__src__painting__placeholder_span$46dart, packages__flutter__src__painting__strut_style$46dart, packages__flutter__src__services__text_editing$46dart, packages__flutter__src__painting__box_fit$46dart, packages__flutter__src__painting__alignment$46dart, packages__flutter__src__painting___network_image_web$46dart) {
   'use strict';
   const core = dart_sdk.core;
+  const ui = dart_sdk.ui;
+  const _internal = dart_sdk._internal;
+  const _interceptors = dart_sdk._interceptors;
+  const _native_typed_data = dart_sdk._native_typed_data;
+  const _engine = dart_sdk._engine;
   const math = dart_sdk.math;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const point = packages__flutter_map__src__core__point$46dart.src__core__point;
-  const bounds = packages__flutter_map__src__core__bounds$46dart.src__core__bounds;
-  const latlong = packages__latlong__latlong$46dart.latlong;
-  const tuple = packages__tuple__tuple$46dart.tuple;
-  const projection = packages__proj4dart__src__classes__projection_tuple$46dart.src__classes__projection;
-  const point$ = packages__proj4dart__src__classes__point$46dart.src__classes__point;
-  var crs = Object.create(dart.library);
-  var $toDouble = dartx.toDouble;
-  var $isNotEmpty = dartx.isNotEmpty;
-  var $map = dartx.map;
-  var $toList = dartx.toList;
-  var $isEmpty = dartx.isEmpty;
-  var $length = dartx.length;
-  var $_get = dartx._get;
-  var $floor = dartx.floor;
-  var $indexOf = dartx.indexOf;
-  var $round = dartx.round;
-  var $compareTo = dartx.compareTo;
-  var numL = () => (numL = dart.constFn(dart.legacy(core.num)))();
-  var CustomPointOfnumL = () => (CustomPointOfnumL = dart.constFn(point.CustomPoint$(numL())))();
-  var BoundsOfnumL = () => (BoundsOfnumL = dart.constFn(bounds.Bounds$(numL())))();
+  const edge_insets = packages__flutter__src__painting__edge_insets$46dart.src__painting__edge_insets;
+  const colors = packages__flutter__src__painting__colors$46dart.src__painting__colors;
+  const diagnostics = packages__flutter__src__foundation__debug$46dart.src__foundation__diagnostics;
+  const debug = packages__flutter__src__foundation__debug$46dart.src__foundation__debug;
+  const decoration = packages__flutter__src__painting__decoration$46dart.src__painting__decoration;
+  const text_painter = packages__flutter__src__painting__placeholder_span$46dart.src__painting__text_painter;
+  const text_span = packages__flutter__src__painting__placeholder_span$46dart.src__painting__text_span;
+  const text_style = packages__flutter__src__painting__strut_style$46dart.src__painting__text_style;
+  const text_editing = packages__flutter__src__services__text_editing$46dart.src__services__text_editing;
+  const box_fit = packages__flutter__src__painting__box_fit$46dart.src__painting__box_fit;
+  const alignment = packages__flutter__src__painting__alignment$46dart.src__painting__alignment;
+  const image_provider = packages__flutter__src__painting___network_image_web$46dart.src__painting__image_provider;
+  var flutter_logo = Object.create(dart.library);
+  var $isFinite = dartx.isFinite;
+  var $clamp = dartx.clamp;
+  var $single = dartx.single;
+  var $abs = dartx.abs;
+  var FlutterLogoStyleL = () => (FlutterLogoStyleL = dart.constFn(dart.legacy(flutter_logo.FlutterLogoStyle)))();
+  var FlutterLogoDecorationN = () => (FlutterLogoDecorationN = dart.constFn(dart.nullable(flutter_logo.FlutterLogoDecoration)))();
+  var EnumPropertyOfFlutterLogoStyle = () => (EnumPropertyOfFlutterLogoStyle = dart.constFn(diagnostics.EnumProperty$(flutter_logo.FlutterLogoStyle)))();
+  var JSArrayOfColor = () => (JSArrayOfColor = dart.constFn(_interceptors.JSArray$(ui.Color)))();
   var doubleL = () => (doubleL = dart.constFn(dart.legacy(core.double)))();
-  var Tuple2OfdoubleL$doubleL = () => (Tuple2OfdoubleL$doubleL = dart.constFn(tuple.Tuple2$(doubleL(), doubleL())))();
-  var doubleLTodoubleL = () => (doubleLTodoubleL = dart.constFn(dart.fnType(doubleL(), [doubleL()])))();
-  var TransformationL = () => (TransformationL = dart.constFn(dart.legacy(crs.Transformation)))();
-  var CustomPointLOfnumL = () => (CustomPointLOfnumL = dart.constFn(dart.legacy(CustomPointOfnumL())))();
-  var CustomPointLOfnumLToTransformationL = () => (CustomPointLOfnumLToTransformationL = dart.constFn(dart.fnType(TransformationL(), [CustomPointLOfnumL()])))();
-  var BoundsOfdoubleL = () => (BoundsOfdoubleL = dart.constFn(bounds.Bounds$(doubleL())))();
-  var CustomPointOfdoubleL = () => (CustomPointOfdoubleL = dart.constFn(point.CustomPoint$(doubleL())))();
+  var JSArrayOfdouble = () => (JSArrayOfdouble = dart.constFn(_interceptors.JSArray$(core.double)))();
   const CT = Object.create(null);
-  var L0 = "package:flutter_map/src/geo/crs/crs.dart";
-  var L1 = "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_map-0.10.1+1/lib/src/geo/crs/crs.dart";
+  var L1 = "package:flutter/src/painting/flutter_logo.dart";
+  var L0 = "file:///C:/src/flutter/packages/flutter/lib/src/painting/flutter_logo.dart";
   dart.defineLazy(CT, {
     get C0() {
       return C0 = dart.const({
-        __proto__: crs._LonLat.prototype
+        __proto__: flutter_logo.FlutterLogoStyle.prototype,
+        [_name$]: "FlutterLogoStyle.markOnly",
+        index: 0
       });
     },
     get C1() {
       return C1 = dart.const({
-        __proto__: Tuple2OfdoubleL$doubleL().prototype,
-        [Tuple2_item2]: 180,
-        [Tuple2_item1]: -180
+        __proto__: flutter_logo.FlutterLogoStyle.prototype,
+        [_name$]: "FlutterLogoStyle.horizontal",
+        index: 1
       });
     },
     get C2() {
       return C2 = dart.const({
-        __proto__: crs.SphericalMercator.prototype
+        __proto__: flutter_logo.FlutterLogoStyle.prototype,
+        [_name$]: "FlutterLogoStyle.stacked",
+        index: 2
       });
     },
     get C3() {
-      return C3 = dart.const({
-        __proto__: crs.Transformation.prototype,
-        [Transformation_d]: 0.5,
-        [Transformation_c]: -2.495320233665337e-8,
-        [Transformation_b]: 0.5,
-        [Transformation_a]: 2.495320233665337e-8
-      });
+      return C3 = dart.constList([C0 || CT.C0, C1 || CT.C1, C2 || CT.C2], FlutterLogoStyleL());
     },
     get C4() {
       return C4 = dart.const({
-        __proto__: crs.Transformation.prototype,
-        [Transformation_d]: 0.5,
-        [Transformation_c]: -0.005555555555555556,
-        [Transformation_b]: 0.5,
-        [Transformation_a]: 0.005555555555555556
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4285887861.0
+      });
+    },
+    get C5() {
+      return C5 = dart.const({
+        __proto__: edge_insets.EdgeInsets.prototype,
+        [EdgeInsets_bottom]: 0,
+        [EdgeInsets_right]: 0,
+        [EdgeInsets_top]: 0,
+        [EdgeInsets_left]: 0
+      });
+    },
+    get C7() {
+      return C7 = dart.const({
+        __proto__: ui.TextAffinity.prototype,
+        [_name]: "TextAffinity.downstream",
+        index: 1
+      });
+    },
+    get C6() {
+      return C6 = dart.const({
+        __proto__: text_editing.TextSelection.prototype,
+        [TextRange_end]: 7,
+        [TextRange_start]: 0,
+        [TextSelection_isDirectional]: false,
+        [TextSelection_affinity]: C7 || CT.C7,
+        [TextSelection_extentOffset]: 7,
+        [TextSelection_baseOffset]: 0
+      });
+    },
+    get C8() {
+      return C8 = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4283745784.0
+      });
+    },
+    get C9() {
+      return C9 = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4280923894.0
+      });
+    },
+    get C10() {
+      return C10 = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278278043.0
+      });
+    },
+    get C11() {
+      return C11 = dart.const({
+        __proto__: ui.Offset.prototype,
+        [OffsetBase__dy]: 152.2773,
+        [OffsetBase__dx]: 125.1715
+      });
+    },
+    get C12() {
+      return C12 = dart.const({
+        __proto__: ui.Offset.prototype,
+        [OffsetBase__dy]: 158.5341,
+        [OffsetBase__dx]: 80.8297
+      });
+    },
+    get C13() {
+      return C13 = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 1713022
+      });
+    },
+    get C14() {
+      return C14 = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 1712989054
+      });
+    },
+    get C15() {
+      return C15 = dart.constList([0.7071, -0.7071, 0, 0, 0.7071, 0.7071, 0, 0, 0, 0, 1, 0, -77.697, 98.057, 0, 1], doubleL());
+    },
+    get C16() {
+      return C16 = dart.const({
+        __proto__: ui.Rect.prototype,
+        [Rect_bottom]: 162.5,
+        [Rect_right]: 99.19999999999999,
+        [Rect_top]: 123.1,
+        [Rect_left]: 59.8
+      });
+    },
+    get C17() {
+      return C17 = dart.const({
+        __proto__: ui.Size.prototype,
+        [OffsetBase__dy]: 232,
+        [OffsetBase__dx]: 820
+      });
+    },
+    get C18() {
+      return C18 = dart.const({
+        __proto__: ui.Size.prototype,
+        [OffsetBase__dy]: 306,
+        [OffsetBase__dx]: 252
+      });
+    },
+    get C19() {
+      return C19 = dart.const({
+        __proto__: ui.Size.prototype,
+        [OffsetBase__dy]: 202,
+        [OffsetBase__dx]: 202
+      });
+    },
+    get C20() {
+      return C20 = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294967295.0
+      });
+    },
+    get C21() {
+      return C21 = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 16777215
       });
     }
   }, false);
-  crs.Crs = class Crs extends core.Object {
-    latLngToPoint(latlng, zoom) {
-      try {
-        let projectedPoint = this.projection.project(latlng);
-        let scale = this.scale(zoom);
-        return this.transformation.transform(projectedPoint, scale[$toDouble]());
-      } catch (e$) {
-        let e = dart.getThrown(e$);
-        return new (CustomPointOfnumL()).new(0.0, 0.0);
-      }
-    }
-    pointToLatLng(point, zoom) {
-      let scale = this.scale(zoom);
-      let untransformedPoint = this.transformation.untransform(point, scale[$toDouble]());
-      try {
-        return this.projection.unproject(untransformedPoint);
-      } catch (e$) {
-        let e = dart.getThrown(e$);
-        return null;
-      }
-    }
-    scale(zoom) {
-      return 256 * math.pow(2, zoom);
-    }
-    zoom(scale) {
-      return math.log(dart.notNull(scale) / 256) / 0.6931471805599453;
-    }
-    getProjectedBounds(zoom) {
-      if (dart.test(this.infinite)) return null;
-      let b = this.projection.bounds;
-      let s = this.scale(zoom);
-      let min = this.transformation.transform(b.min, s[$toDouble]());
-      let max = this.transformation.transform(b.max, s[$toDouble]());
-      return BoundsOfnumL().new(min, max);
-    }
-  };
-  (crs.Crs.new = function() {
-    ;
-  }).prototype = crs.Crs.prototype;
-  dart.addTypeTests(crs.Crs);
-  dart.addTypeCaches(crs.Crs);
-  dart.setMethodSignature(crs.Crs, () => ({
-    __proto__: dart.getMethods(crs.Crs.__proto__),
-    latLngToPoint: dart.fnType(dart.legacy(point.CustomPoint$(dart.legacy(core.num))), [dart.legacy(latlong.LatLng), dart.legacy(core.double)]),
-    pointToLatLng: dart.fnType(dart.legacy(latlong.LatLng), [dart.legacy(point.CustomPoint$(dart.legacy(core.num))), dart.legacy(core.double)]),
-    scale: dart.fnType(dart.legacy(core.num), [dart.legacy(core.double)]),
-    zoom: dart.fnType(dart.legacy(core.num), [dart.legacy(core.double)]),
-    getProjectedBounds: dart.fnType(dart.legacy(bounds.Bounds$(dart.legacy(core.num))), [dart.legacy(core.double)])
-  }));
-  dart.setLibraryUri(crs.Crs, L0);
+  var _name$ = dart.privateName(flutter_logo, "_name");
   var C0;
-  var code = dart.privateName(crs, "CrsSimple.code");
-  var projection$ = dart.privateName(crs, "CrsSimple.projection");
-  var transformation = dart.privateName(crs, "CrsSimple.transformation");
-  crs.CrsSimple = class CrsSimple extends crs.Crs {
-    get code() {
-      return this[code];
-    }
-    set code(value) {
-      super.code = value;
-    }
-    get projection() {
-      return this[projection$];
-    }
-    set projection(value) {
-      super.projection = value;
-    }
-    get transformation() {
-      return this[transformation];
-    }
-    set transformation(value) {
-      super.transformation = value;
-    }
-    get infinite() {
-      return false;
-    }
-    get wrapLat() {
-      return null;
-    }
-    get wrapLng() {
-      return null;
-    }
-  };
-  (crs.CrsSimple.new = function() {
-    this[code] = "CRS.SIMPLE";
-    this[projection$] = C0 || CT.C0;
-    this[transformation] = new crs.Transformation.new(1, 0, -1, 0);
-    crs.CrsSimple.__proto__.new.call(this);
-    ;
-  }).prototype = crs.CrsSimple.prototype;
-  dart.addTypeTests(crs.CrsSimple);
-  dart.addTypeCaches(crs.CrsSimple);
-  dart.setGetterSignature(crs.CrsSimple, () => ({
-    __proto__: dart.getGetters(crs.CrsSimple.__proto__),
-    infinite: dart.legacy(core.bool),
-    wrapLat: dart.legacy(tuple.Tuple2$(dart.legacy(core.double), dart.legacy(core.double))),
-    wrapLng: dart.legacy(tuple.Tuple2$(dart.legacy(core.double), dart.legacy(core.double)))
-  }));
-  dart.setLibraryUri(crs.CrsSimple, L0);
-  dart.setFieldSignature(crs.CrsSimple, () => ({
-    __proto__: dart.getFields(crs.CrsSimple.__proto__),
-    code: dart.finalFieldType(dart.legacy(core.String)),
-    projection: dart.finalFieldType(dart.legacy(crs.Projection)),
-    transformation: dart.finalFieldType(dart.legacy(crs.Transformation))
-  }));
-  var Tuple2_item2 = dart.privateName(tuple, "Tuple2.item2");
-  var Tuple2_item1 = dart.privateName(tuple, "Tuple2.item1");
   var C1;
-  var wrapLng = dart.privateName(crs, "Earth.wrapLng");
-  var wrapLat = dart.privateName(crs, "Earth.wrapLat");
-  crs.Earth = class Earth extends crs.Crs {
-    get wrapLng() {
-      return this[wrapLng];
-    }
-    set wrapLng(value) {
-      super.wrapLng = value;
-    }
-    get wrapLat() {
-      return this[wrapLat];
-    }
-    set wrapLat(value) {
-      super.wrapLat = value;
-    }
-    get infinite() {
-      return false;
-    }
-  };
-  (crs.Earth.new = function() {
-    this[wrapLng] = C1 || CT.C1;
-    this[wrapLat] = null;
-    crs.Earth.__proto__.new.call(this);
-    ;
-  }).prototype = crs.Earth.prototype;
-  dart.addTypeTests(crs.Earth);
-  dart.addTypeCaches(crs.Earth);
-  dart.setGetterSignature(crs.Earth, () => ({
-    __proto__: dart.getGetters(crs.Earth.__proto__),
-    infinite: dart.legacy(core.bool)
-  }));
-  dart.setLibraryUri(crs.Earth, L0);
-  dart.setFieldSignature(crs.Earth, () => ({
-    __proto__: dart.getFields(crs.Earth.__proto__),
-    wrapLng: dart.finalFieldType(dart.legacy(tuple.Tuple2$(dart.legacy(core.double), dart.legacy(core.double)))),
-    wrapLat: dart.finalFieldType(dart.legacy(tuple.Tuple2$(dart.legacy(core.double), dart.legacy(core.double))))
-  }));
   var C2;
-  var Transformation_d = dart.privateName(crs, "Transformation.d");
-  var Transformation_c = dart.privateName(crs, "Transformation.c");
-  var Transformation_b = dart.privateName(crs, "Transformation.b");
-  var Transformation_a = dart.privateName(crs, "Transformation.a");
   var C3;
-  var code$ = dart.privateName(crs, "Epsg3857.code");
-  var projection$0 = dart.privateName(crs, "Epsg3857.projection");
-  var transformation$ = dart.privateName(crs, "Epsg3857.transformation");
-  crs.Epsg3857 = class Epsg3857 extends crs.Earth {
-    get code() {
-      return this[code$];
-    }
-    set code(value) {
-      super.code = value;
-    }
-    get projection() {
-      return this[projection$0];
-    }
-    set projection(value) {
-      super.projection = value;
-    }
-    get transformation() {
-      return this[transformation$];
-    }
-    set transformation(value) {
-      super.transformation = value;
+  flutter_logo.FlutterLogoStyle = class FlutterLogoStyle extends core.Object {
+    toString() {
+      return this[_name$];
     }
   };
-  (crs.Epsg3857.new = function() {
-    this[code$] = "EPSG:3857";
-    this[projection$0] = C2 || CT.C2;
-    this[transformation$] = C3 || CT.C3;
-    crs.Epsg3857.__proto__.new.call(this);
+  (flutter_logo.FlutterLogoStyle.new = function(index, _name) {
+    if (index == null) dart.nullFailed(L0, 24, 6, "index");
+    if (_name == null) dart.nullFailed(L0, 24, 6, "_name");
+    this.index = index;
+    this[_name$] = _name;
     ;
-  }).prototype = crs.Epsg3857.prototype;
-  dart.addTypeTests(crs.Epsg3857);
-  dart.addTypeCaches(crs.Epsg3857);
-  dart.setLibraryUri(crs.Epsg3857, L0);
-  dart.setFieldSignature(crs.Epsg3857, () => ({
-    __proto__: dart.getFields(crs.Epsg3857.__proto__),
-    code: dart.finalFieldType(dart.legacy(core.String)),
-    projection: dart.finalFieldType(dart.legacy(crs.Projection)),
-    transformation: dart.finalFieldType(dart.legacy(crs.Transformation))
+  }).prototype = flutter_logo.FlutterLogoStyle.prototype;
+  dart.addTypeTests(flutter_logo.FlutterLogoStyle);
+  dart.addTypeCaches(flutter_logo.FlutterLogoStyle);
+  dart.setLibraryUri(flutter_logo.FlutterLogoStyle, L1);
+  dart.setFieldSignature(flutter_logo.FlutterLogoStyle, () => ({
+    __proto__: dart.getFields(flutter_logo.FlutterLogoStyle.__proto__),
+    index: dart.finalFieldType(core.int),
+    [_name$]: dart.finalFieldType(core.String)
   }));
-  dart.defineLazy(crs.Epsg3857, {
-    /*crs.Epsg3857._scale*/get _scale() {
-      return 2.495320233665337e-8;
-    }
-  }, true);
+  dart.defineExtensionMethods(flutter_logo.FlutterLogoStyle, ['toString']);
+  flutter_logo.FlutterLogoStyle.markOnly = C0 || CT.C0;
+  flutter_logo.FlutterLogoStyle.horizontal = C1 || CT.C1;
+  flutter_logo.FlutterLogoStyle.stacked = C2 || CT.C2;
+  flutter_logo.FlutterLogoStyle.values = C3 || CT.C3;
+  var Color_value = dart.privateName(ui, "Color.value");
   var C4;
-  var code$0 = dart.privateName(crs, "Epsg4326.code");
-  var projection$1 = dart.privateName(crs, "Epsg4326.projection");
-  var transformation$0 = dart.privateName(crs, "Epsg4326.transformation");
-  crs.Epsg4326 = class Epsg4326 extends crs.Earth {
-    get code() {
-      return this[code$0];
+  var EdgeInsets_bottom = dart.privateName(edge_insets, "EdgeInsets.bottom");
+  var EdgeInsets_right = dart.privateName(edge_insets, "EdgeInsets.right");
+  var EdgeInsets_top = dart.privateName(edge_insets, "EdgeInsets.top");
+  var EdgeInsets_left = dart.privateName(edge_insets, "EdgeInsets.left");
+  var C5;
+  var _position = dart.privateName(flutter_logo, "_position");
+  var _opacity = dart.privateName(flutter_logo, "_opacity");
+  var _inTransition = dart.privateName(flutter_logo, "_inTransition");
+  var textColor$ = dart.privateName(flutter_logo, "FlutterLogoDecoration.textColor");
+  var style$ = dart.privateName(flutter_logo, "FlutterLogoDecoration.style");
+  var margin$ = dart.privateName(flutter_logo, "FlutterLogoDecoration.margin");
+  var _position$ = dart.privateName(flutter_logo, "FlutterLogoDecoration._position");
+  var _opacity$ = dart.privateName(flutter_logo, "FlutterLogoDecoration._opacity");
+  flutter_logo.FlutterLogoDecoration = class FlutterLogoDecoration extends decoration.Decoration {
+    get textColor() {
+      return this[textColor$];
     }
-    set code(value) {
-      super.code = value;
+    set textColor(value) {
+      super.textColor = value;
     }
-    get projection() {
-      return this[projection$1];
+    get style() {
+      return this[style$];
     }
-    set projection(value) {
-      super.projection = value;
+    set style(value) {
+      super.style = value;
     }
-    get transformation() {
-      return this[transformation$0];
+    get margin() {
+      return this[margin$];
     }
-    set transformation(value) {
-      super.transformation = value;
+    set margin(value) {
+      super.margin = value;
+    }
+    get [_position]() {
+      return this[_position$];
+    }
+    set [_position](value) {
+      super[_position] = value;
+    }
+    get [_opacity]() {
+      return this[_opacity$];
+    }
+    set [_opacity](value) {
+      super[_opacity] = value;
+    }
+    get [_inTransition]() {
+      return this[_opacity] !== 1.0 || this[_position] !== -1.0 && this[_position] !== 0.0 && this[_position] !== 1.0;
+    }
+    debugAssertIsValid() {
+      if (!(this.textColor != null && this.style != null && this.margin != null && this[_position] != null && this[_position][$isFinite] && this[_opacity] != null && dart.notNull(this[_opacity]) >= 0.0 && dart.notNull(this[_opacity]) <= 1.0)) dart.assertFailed(null, L0, 82, 12, "textColor != null\r\n        && style != null\r\n        && margin != null\r\n        && _position != null\r\n        && _position.isFinite\r\n        && _opacity != null\r\n        && _opacity >= 0.0\r\n        && _opacity <= 1.0");
+      return true;
+    }
+    get isComplex() {
+      return !dart.test(this[_inTransition]);
+    }
+    static lerp(a, b, t) {
+      if (t == null) dart.nullFailed(L0, 109, 97, "t");
+      if (!(t != null)) dart.assertFailed(null, L0, 110, 12, "t != null");
+      if (!(a == null || dart.test(a.debugAssertIsValid()))) dart.assertFailed(null, L0, 111, 12, "a == null || a.debugAssertIsValid()");
+      if (!(b == null || dart.test(b.debugAssertIsValid()))) dart.assertFailed(null, L0, 112, 12, "b == null || b.debugAssertIsValid()");
+      if (a == null && b == null) return null;
+      if (a == null) {
+        return new flutter_logo.FlutterLogoDecoration.__(dart.nullCheck(b).textColor, b.style, b.margin['*'](t), b[_position], dart.notNull(b[_opacity]) * t[$clamp](0.0, 1.0));
+      }
+      if (b == null) {
+        return new flutter_logo.FlutterLogoDecoration.__(a.textColor, a.style, a.margin['*'](t), a[_position], dart.notNull(a[_opacity]) * (1.0 - dart.notNull(t))[$clamp](0.0, 1.0));
+      }
+      if (t === 0.0) return a;
+      if (t === 1.0) return b;
+      return new flutter_logo.FlutterLogoDecoration.__(dart.nullCheck(ui.Color.lerp(a.textColor, b.textColor, t)), dart.notNull(t) < 0.5 ? a.style : b.style, dart.nullCheck(edge_insets.EdgeInsets.lerp(a.margin, b.margin, t)), dart.notNull(a[_position]) + (dart.notNull(b[_position]) - dart.notNull(a[_position])) * dart.notNull(t), (dart.notNull(a[_opacity]) + (dart.notNull(b[_opacity]) - dart.notNull(a[_opacity])) * dart.notNull(t))[$clamp](0.0, 1.0));
+    }
+    lerpFrom(a, t) {
+      if (t == null) dart.nullFailed(L0, 147, 57, "t");
+      if (!dart.test(this.debugAssertIsValid())) dart.assertFailed(null, L0, 148, 12, "debugAssertIsValid()");
+      if (a == null || flutter_logo.FlutterLogoDecoration.is(a)) {
+        if (!(a == null || dart.test(a.debugAssertIsValid()))) dart.assertFailed(null, L0, 150, 14, "a == null || a.debugAssertIsValid()");
+        return flutter_logo.FlutterLogoDecoration.lerp(FlutterLogoDecorationN().as(a), this, t);
+      }
+      return FlutterLogoDecorationN().as(super.lerpFrom(a, t));
+    }
+    lerpTo(b, t) {
+      if (t == null) dart.nullFailed(L0, 157, 55, "t");
+      if (!dart.test(this.debugAssertIsValid())) dart.assertFailed(null, L0, 158, 12, "debugAssertIsValid()");
+      if (b == null || flutter_logo.FlutterLogoDecoration.is(b)) {
+        if (!(b == null || dart.test(b.debugAssertIsValid()))) dart.assertFailed(null, L0, 160, 14, "b == null || b.debugAssertIsValid()");
+        return flutter_logo.FlutterLogoDecoration.lerp(this, FlutterLogoDecorationN().as(b), t);
+      }
+      return FlutterLogoDecorationN().as(super.lerpTo(b, t));
+    }
+    hitTest(size, position, opts) {
+      if (size == null) dart.nullFailed(L0, 168, 21, "size");
+      if (position == null) dart.nullFailed(L0, 168, 34, "position");
+      let textDirection = opts && 'textDirection' in opts ? opts.textDirection : null;
+      return true;
+    }
+    createBoxPainter(onChanged = null) {
+      if (!dart.test(this.debugAssertIsValid())) dart.assertFailed(null, L0, 172, 12, "debugAssertIsValid()");
+      return new flutter_logo._FlutterLogoPainter.new(this);
+    }
+    getClipPath(rect, textDirection) {
+      let t0;
+      if (rect == null) dart.nullFailed(L0, 177, 25, "rect");
+      if (textDirection == null) dart.nullFailed(L0, 177, 45, "textDirection");
+      t0 = ui.Path.new();
+      return (() => {
+        t0.addRect(rect);
+        return t0;
+      })();
+    }
+    _equals(other) {
+      if (other == null) return false;
+      if (!dart.test(this.debugAssertIsValid())) dart.assertFailed(null, L0, 183, 12, "debugAssertIsValid()");
+      if (this === other) return true;
+      return flutter_logo.FlutterLogoDecoration.is(other) && dart.equals(other.textColor, this.textColor) && other[_position] == this[_position] && other[_opacity] == this[_opacity];
+    }
+    get hashCode() {
+      if (!dart.test(this.debugAssertIsValid())) dart.assertFailed(null, L0, 194, 12, "debugAssertIsValid()");
+      return ui.hashValues(this.textColor, this[_position], this[_opacity]);
+    }
+    debugFillProperties(properties) {
+      if (properties == null) dart.nullFailed(L0, 203, 56, "properties");
+      super.debugFillProperties(properties);
+      properties.add(new colors.ColorProperty.new("textColor", this.textColor));
+      properties.add(new (EnumPropertyOfFlutterLogoStyle()).new("style", this.style));
+      if (dart.test(this[_inTransition])) properties.add(diagnostics.DiagnosticsNode.message("transition " + dart.str(debug.debugFormatDouble(this[_position])) + ":" + dart.str(debug.debugFormatDouble(this[_opacity]))));
     }
   };
-  (crs.Epsg4326.new = function() {
-    this[code$0] = "EPSG:4326";
-    this[projection$1] = C0 || CT.C0;
-    this[transformation$0] = C4 || CT.C4;
-    crs.Epsg4326.__proto__.new.call(this);
+  (flutter_logo.FlutterLogoDecoration.new = function(opts) {
+    let textColor = opts && 'textColor' in opts ? opts.textColor : C4 || CT.C4;
+    if (textColor == null) dart.nullFailed(L0, 46, 10, "textColor");
+    let style = opts && 'style' in opts ? opts.style : C0 || CT.C0;
+    if (style == null) dart.nullFailed(L0, 47, 10, "style");
+    let margin = opts && 'margin' in opts ? opts.margin : C5 || CT.C5;
+    if (margin == null) dart.nullFailed(L0, 48, 10, "margin");
+    this[textColor$] = textColor;
+    this[style$] = style;
+    this[margin$] = margin;
+    if (!(textColor != null)) dart.assertFailed(null, L0, 49, 15, "textColor != null");
+    if (!(style != null)) dart.assertFailed(null, L0, 50, 15, "style != null");
+    if (!(margin != null)) dart.assertFailed(null, L0, 51, 15, "margin != null");
+    this[_position$] = style == flutter_logo.FlutterLogoStyle.markOnly ? 0.0 : style == flutter_logo.FlutterLogoStyle.horizontal ? 1.0 : -1.0;
+    this[_opacity$] = 1.0;
+    flutter_logo.FlutterLogoDecoration.__proto__.new.call(this);
     ;
-  }).prototype = crs.Epsg4326.prototype;
-  dart.addTypeTests(crs.Epsg4326);
-  dart.addTypeCaches(crs.Epsg4326);
-  dart.setLibraryUri(crs.Epsg4326, L0);
-  dart.setFieldSignature(crs.Epsg4326, () => ({
-    __proto__: dart.getFields(crs.Epsg4326.__proto__),
-    code: dart.finalFieldType(dart.legacy(core.String)),
-    projection: dart.finalFieldType(dart.legacy(crs.Projection)),
-    transformation: dart.finalFieldType(dart.legacy(crs.Transformation))
+  }).prototype = flutter_logo.FlutterLogoDecoration.prototype;
+  (flutter_logo.FlutterLogoDecoration.__ = function(textColor, style, margin, _position, _opacity) {
+    if (textColor == null) dart.nullFailed(L0, 55, 38, "textColor");
+    if (style == null) dart.nullFailed(L0, 55, 54, "style");
+    if (margin == null) dart.nullFailed(L0, 55, 66, "margin");
+    if (_position == null) dart.nullFailed(L0, 55, 79, "_position");
+    if (_opacity == null) dart.nullFailed(L0, 55, 95, "_opacity");
+    this[textColor$] = textColor;
+    this[style$] = style;
+    this[margin$] = margin;
+    this[_position$] = _position;
+    this[_opacity$] = _opacity;
+    flutter_logo.FlutterLogoDecoration.__proto__.new.call(this);
+    ;
+  }).prototype = flutter_logo.FlutterLogoDecoration.prototype;
+  dart.addTypeTests(flutter_logo.FlutterLogoDecoration);
+  dart.addTypeCaches(flutter_logo.FlutterLogoDecoration);
+  dart.setMethodSignature(flutter_logo.FlutterLogoDecoration, () => ({
+    __proto__: dart.getMethods(flutter_logo.FlutterLogoDecoration.__proto__),
+    lerpFrom: dart.fnType(dart.nullable(flutter_logo.FlutterLogoDecoration), [dart.nullable(decoration.Decoration), core.double]),
+    lerpTo: dart.fnType(dart.nullable(flutter_logo.FlutterLogoDecoration), [dart.nullable(decoration.Decoration), core.double]),
+    createBoxPainter: dart.fnType(decoration.BoxPainter, [], [dart.nullable(dart.fnType(dart.void, []))])
   }));
-  var _transformations = dart.privateName(crs, "_transformations");
-  var _scales = dart.privateName(crs, "_scales");
-  var _getTransformationByZoom = dart.privateName(crs, "_getTransformationByZoom");
-  var _closestElement = dart.privateName(crs, "_closestElement");
-  var code$1 = dart.privateName(crs, "Proj4Crs.code");
-  var projection$2 = dart.privateName(crs, "Proj4Crs.projection");
-  var transformation$1 = dart.privateName(crs, "Proj4Crs.transformation");
-  var infinite$ = dart.privateName(crs, "Proj4Crs.infinite");
-  var wrapLat$ = dart.privateName(crs, "Proj4Crs.wrapLat");
-  var wrapLng$ = dart.privateName(crs, "Proj4Crs.wrapLng");
-  crs.Proj4Crs = class Proj4Crs extends crs.Crs {
-    get code() {
-      return this[code$1];
+  dart.setGetterSignature(flutter_logo.FlutterLogoDecoration, () => ({
+    __proto__: dart.getGetters(flutter_logo.FlutterLogoDecoration.__proto__),
+    [_inTransition]: core.bool
+  }));
+  dart.setLibraryUri(flutter_logo.FlutterLogoDecoration, L1);
+  dart.setFieldSignature(flutter_logo.FlutterLogoDecoration, () => ({
+    __proto__: dart.getFields(flutter_logo.FlutterLogoDecoration.__proto__),
+    textColor: dart.finalFieldType(ui.Color),
+    style: dart.finalFieldType(flutter_logo.FlutterLogoStyle),
+    margin: dart.finalFieldType(edge_insets.EdgeInsets),
+    [_position]: dart.finalFieldType(core.double),
+    [_opacity]: dart.finalFieldType(core.double)
+  }));
+  dart.defineExtensionMethods(flutter_logo.FlutterLogoDecoration, ['_equals']);
+  dart.defineExtensionAccessors(flutter_logo.FlutterLogoDecoration, ['hashCode']);
+  var ___FlutterLogoPainter__textPainter = dart.privateName(flutter_logo, "_#_FlutterLogoPainter#_textPainter");
+  var ___FlutterLogoPainter__textPainter_isSet = dart.privateName(flutter_logo, "_#_FlutterLogoPainter#_textPainter#isSet");
+  var ___FlutterLogoPainter__textBoundingRect = dart.privateName(flutter_logo, "_#_FlutterLogoPainter#_textBoundingRect");
+  var ___FlutterLogoPainter__textBoundingRect_isSet = dart.privateName(flutter_logo, "_#_FlutterLogoPainter#_textBoundingRect#isSet");
+  var _config$ = dart.privateName(flutter_logo, "_config");
+  var _prepareText = dart.privateName(flutter_logo, "_prepareText");
+  var _textPainter = dart.privateName(flutter_logo, "_textPainter");
+  var _textBoundingRect = dart.privateName(flutter_logo, "_textBoundingRect");
+  var TextRange_end = dart.privateName(ui, "TextRange.end");
+  var TextRange_start = dart.privateName(ui, "TextRange.start");
+  var TextSelection_isDirectional = dart.privateName(text_editing, "TextSelection.isDirectional");
+  var _name = dart.privateName(ui, "_name");
+  var C7;
+  var TextSelection_affinity = dart.privateName(text_editing, "TextSelection.affinity");
+  var TextSelection_extentOffset = dart.privateName(text_editing, "TextSelection.extentOffset");
+  var TextSelection_baseOffset = dart.privateName(text_editing, "TextSelection.baseOffset");
+  var C6;
+  var C8;
+  var C9;
+  var C10;
+  var OffsetBase__dy = dart.privateName(ui, "OffsetBase._dy");
+  var OffsetBase__dx = dart.privateName(ui, "OffsetBase._dx");
+  var C11;
+  var C12;
+  var C13;
+  var C14;
+  var C15;
+  var Rect_bottom = dart.privateName(ui, "Rect.bottom");
+  var Rect_right = dart.privateName(ui, "Rect.right");
+  var Rect_top = dart.privateName(ui, "Rect.top");
+  var Rect_left = dart.privateName(ui, "Rect.left");
+  var C16;
+  var _paintLogo = dart.privateName(flutter_logo, "_paintLogo");
+  var C17;
+  var C18;
+  var C19;
+  var C20;
+  var C21;
+  flutter_logo._FlutterLogoPainter = class _FlutterLogoPainter extends decoration.BoxPainter {
+    get [_textPainter]() {
+      let t0;
+      return dart.test(this[___FlutterLogoPainter__textPainter_isSet]) ? (t0 = this[___FlutterLogoPainter__textPainter], t0) : dart.throw(new _internal.LateError.fieldNI("_textPainter"));
     }
-    set code(value) {
-      super.code = value;
+    set [_textPainter](t0) {
+      if (t0 == null) dart.nullFailed(L0, 225, 20, "null");
+      this[___FlutterLogoPainter__textPainter_isSet] = true;
+      this[___FlutterLogoPainter__textPainter] = t0;
     }
-    get projection() {
-      return this[projection$2];
+    get [_textBoundingRect]() {
+      let t1;
+      return dart.test(this[___FlutterLogoPainter__textBoundingRect_isSet]) ? (t1 = this[___FlutterLogoPainter__textBoundingRect], t1) : dart.throw(new _internal.LateError.fieldNI("_textBoundingRect"));
     }
-    set projection(value) {
-      super.projection = value;
+    set [_textBoundingRect](t1) {
+      if (t1 == null) dart.nullFailed(L0, 226, 13, "null");
+      this[___FlutterLogoPainter__textBoundingRect_isSet] = true;
+      this[___FlutterLogoPainter__textBoundingRect] = t1;
     }
-    get transformation() {
-      return this[transformation$1];
+    [_prepareText]() {
+      this[_textPainter] = new text_painter.TextPainter.new({text: new text_span.TextSpan.new({text: "Flutter", style: new text_style.TextStyle.new({color: this[_config$].textColor, fontFamily: "Roboto", fontSize: 100.0 * 350.0 / 247.0, fontWeight: ui.FontWeight.w300, textBaseline: ui.TextBaseline.alphabetic})}), textDirection: ui.TextDirection.ltr});
+      this[_textPainter].layout();
+      let textSize = this[_textPainter].getBoxesForSelection(C6 || CT.C6)[$single];
+      this[_textBoundingRect] = new ui.Rect.fromLTRB(textSize.left, textSize.top, textSize.right, textSize.bottom);
     }
-    set transformation(value) {
-      super.transformation = value;
+    [_paintLogo](canvas, rect) {
+      let t2, t2$, t2$0, t2$1, t2$2, t2$3, t2$4, t2$5;
+      if (canvas == null) dart.nullFailed(L0, 251, 26, "canvas");
+      if (rect == null) dart.nullFailed(L0, 251, 39, "rect");
+      canvas.save();
+      canvas.translate(rect.left, rect.top);
+      canvas.scale(dart.notNull(rect.width) / 202.0, dart.notNull(rect.height) / 202.0);
+      canvas.translate((202.0 - 166.0) / 2.0, 0.0);
+      let lightPaint = (t2 = ui.Paint.new(), (() => {
+        t2.color = C8 || CT.C8;
+        return t2;
+      })());
+      let mediumPaint = (t2$ = ui.Paint.new(), (() => {
+        t2$.color = C9 || CT.C9;
+        return t2$;
+      })());
+      let darkPaint = (t2$0 = ui.Paint.new(), (() => {
+        t2$0.color = C10 || CT.C10;
+        return t2$0;
+      })());
+      let triangleGradient = ui.Gradient.linear(C11 || CT.C11, C12 || CT.C12, JSArrayOfColor().of([C13 || CT.C13, C14 || CT.C14]));
+      let trianglePaint = (t2$1 = ui.Paint.new(), (() => {
+        t2$1.shader = triangleGradient;
+        return t2$1;
+      })());
+      let topBeam = (t2$2 = ui.Path.new(), (() => {
+        t2$2.moveTo(37.7, 128.9);
+        t2$2.lineTo(9.8, 101.0);
+        t2$2.lineTo(100.4, 10.4);
+        t2$2.lineTo(156.2, 10.4);
+        return t2$2;
+      })());
+      canvas.drawPath(topBeam, lightPaint);
+      let middleBeam = (t2$3 = ui.Path.new(), (() => {
+        t2$3.moveTo(156.2, 94.0);
+        t2$3.lineTo(100.4, 94.0);
+        t2$3.lineTo(78.5, 115.9);
+        t2$3.lineTo(106.4, 143.8);
+        return t2$3;
+      })());
+      canvas.drawPath(middleBeam, lightPaint);
+      let bottomBeam = (t2$4 = ui.Path.new(), (() => {
+        t2$4.moveTo(79.5, 170.7);
+        t2$4.lineTo(100.4, 191.6);
+        t2$4.lineTo(156.2, 191.6);
+        t2$4.lineTo(107.4, 142.8);
+        return t2$4;
+      })());
+      canvas.drawPath(bottomBeam, darkPaint);
+      canvas.save();
+      canvas.transform(_native_typed_data.NativeFloat64List.fromList(C15 || CT.C15));
+      canvas.drawRect(C16 || CT.C16, mediumPaint);
+      canvas.restore();
+      let triangle = (t2$5 = ui.Path.new(), (() => {
+        t2$5.moveTo(79.5, 170.7);
+        t2$5.lineTo(120.9, 156.4);
+        t2$5.lineTo(107.4, 142.8);
+        return t2$5;
+      })());
+      canvas.drawPath(triangle, trianglePaint);
+      canvas.restore();
     }
-    get infinite() {
-      return this[infinite$];
-    }
-    set infinite(value) {
-      super.infinite = value;
-    }
-    get wrapLat() {
-      return this[wrapLat$];
-    }
-    set wrapLat(value) {
-      super.wrapLat = value;
-    }
-    get wrapLng() {
-      return this[wrapLng$];
-    }
-    set wrapLng(value) {
-      super.wrapLng = value;
-    }
-    static fromFactory(opts) {
-      let code = opts && 'code' in opts ? opts.code : null;
-      let proj4Projection = opts && 'proj4Projection' in opts ? opts.proj4Projection : null;
-      let transformation = opts && 'transformation' in opts ? opts.transformation : null;
-      let origins = opts && 'origins' in opts ? opts.origins : null;
-      let bounds = opts && 'bounds' in opts ? opts.bounds : null;
-      let scales = opts && 'scales' in opts ? opts.scales : null;
-      let resolutions = opts && 'resolutions' in opts ? opts.resolutions : null;
-      let projection = new crs._Proj4Projection.new({proj4Projection: proj4Projection, bounds: bounds});
-      let transformations = null;
-      let infinite = null == bounds;
-      let finalScales = null;
-      if (null != scales && dart.test(scales[$isNotEmpty])) {
-        finalScales = scales;
-      } else if (null != resolutions && dart.test(resolutions[$isNotEmpty])) {
-        finalScales = resolutions[$map](doubleL(), dart.fn(r => 1 / dart.notNull(r), doubleLTodoubleL()))[$toList]({growable: false});
+    paint(canvas, offset, configuration) {
+      let t2, t2$, t2$0;
+      if (canvas == null) dart.nullFailed(L0, 328, 21, "canvas");
+      if (offset == null) dart.nullFailed(L0, 328, 36, "offset");
+      if (configuration == null) dart.nullFailed(L0, 328, 63, "configuration");
+      offset = offset['+'](this[_config$].margin.topLeft);
+      let canvasSize = this[_config$].margin.deflateSize(dart.nullCheck(configuration.size));
+      if (dart.test(canvasSize.isEmpty)) return;
+      let logoSize = null;
+      if (dart.notNull(this[_config$][_position]) > 0.0) {
+        logoSize = C17 || CT.C17;
+      } else if (dart.notNull(this[_config$][_position]) < 0.0) {
+        logoSize = C18 || CT.C18;
       } else {
-        dart.throw(core.Exception.new("Please provide scales or resolutions to determine scales"));
+        logoSize = C19 || CT.C19;
       }
-      if (null == origins || dart.test(origins[$isEmpty])) {
-        transformation == null ? transformation = new crs.Transformation.new(1, 0, -1, 0) : null;
+      let fittedSize = box_fit.applyBoxFit(box_fit.BoxFit.contain, logoSize, canvasSize);
+      if (!dart.equals(fittedSize.source, logoSize)) dart.assertFailed(null, L0, 345, 12, "fittedSize.source == logoSize");
+      let rect = alignment.Alignment.center.inscribe(fittedSize.destination, offset['&'](canvasSize));
+      let centerSquareHeight = canvasSize.shortestSide;
+      let centerSquare = new ui.Rect.fromLTWH(dart.notNull(offset.dx) + (dart.notNull(canvasSize.width) - dart.notNull(centerSquareHeight)) / 2.0, dart.notNull(offset.dy) + (dart.notNull(canvasSize.height) - dart.notNull(centerSquareHeight)) / 2.0, centerSquareHeight, centerSquareHeight);
+      let logoTargetSquare = null;
+      if (dart.notNull(this[_config$][_position]) > 0.0) {
+        logoTargetSquare = new ui.Rect.fromLTWH(rect.left, rect.top, rect.height, rect.height);
+      } else if (dart.notNull(this[_config$][_position]) < 0.0) {
+        let logoHeight = dart.notNull(rect.height) * 191.0 / 306.0;
+        logoTargetSquare = new ui.Rect.fromLTWH(dart.notNull(rect.left) + (dart.notNull(rect.width) - logoHeight) / 2.0, rect.top, logoHeight, logoHeight);
       } else {
-        if (origins[$length] === 1) {
-          let origin = origins[$_get](0);
-          transformation = new crs.Transformation.new(1, -dart.notNull(origin.x), -1, origin.y);
-        } else {
-          transformations = origins[$map](TransformationL(), dart.fn(p => new crs.Transformation.new(1, -dart.notNull(p.x), -1, p.y), CustomPointLOfnumLToTransformationL()))[$toList]();
-          transformation = null;
+        logoTargetSquare = centerSquare;
+      }
+      let logoSquare = dart.nullCheck(ui.Rect.lerp(centerSquare, logoTargetSquare, this[_config$][_position][$abs]()));
+      if (dart.notNull(this[_config$][_opacity]) < 1.0) {
+        canvas.saveLayer(offset['&'](canvasSize), (t2 = ui.Paint.new(), (() => {
+          t2.colorFilter = new _engine._CkBlendModeColorFilter.new((C20 || CT.C20).withOpacity(this[_config$][_opacity]), ui.BlendMode.modulate);
+          return t2;
+        })()));
+      }
+      if (this[_config$][_position] !== 0.0) {
+        if (dart.notNull(this[_config$][_position]) > 0.0) {
+          let fontSize = 2.0 / 3.0 * dart.notNull(logoSquare.height) * (1 - 10.4 * 2.0 / 202.0);
+          let scale = fontSize / 100.0;
+          let finalLeftTextPosition = 256.4 / 820.0 * dart.notNull(rect.width) - 32.0 / 350.0 * fontSize;
+          let initialLeftTextPosition = dart.notNull(rect.width) / 2.0 - dart.notNull(this[_textBoundingRect].width) * scale;
+          let textOffset = new ui.Offset.new(dart.notNull(rect.left) + dart.nullCheck(ui.lerpDouble(initialLeftTextPosition, finalLeftTextPosition, this[_config$][_position])), dart.notNull(rect.top) + (dart.notNull(rect.height) - dart.notNull(this[_textBoundingRect].height) * scale) / 2.0);
+          canvas.save();
+          if (dart.notNull(this[_config$][_position]) < 1.0) {
+            let center = logoSquare.center;
+            let path = (t2$ = ui.Path.new(), (() => {
+              t2$.moveTo(center.dx, center.dy);
+              t2$.lineTo(dart.notNull(center.dx) + dart.notNull(rect.width), dart.notNull(center.dy) - dart.notNull(rect.width));
+              t2$.lineTo(dart.notNull(center.dx) + dart.notNull(rect.width), dart.notNull(center.dy) + dart.notNull(rect.width));
+              t2$.close();
+              return t2$;
+            })());
+            canvas.clipPath(path);
+          }
+          canvas.translate(textOffset.dx, textOffset.dy);
+          canvas.scale(scale, scale);
+          this[_textPainter].paint(canvas, ui.Offset.zero);
+          canvas.restore();
+        } else if (dart.notNull(this[_config$][_position]) < 0.0) {
+          let fontSize = 0.35 * dart.notNull(logoTargetSquare.height) * (1 - 10.4 * 2.0 / 202.0);
+          let scale = fontSize / 100.0;
+          if (dart.notNull(this[_config$][_position]) > -1.0) {
+            canvas.saveLayer(this[_textBoundingRect], ui.Paint.new());
+          } else {
+            canvas.save();
+          }
+          canvas.translate(dart.notNull(logoTargetSquare.center.dx) - dart.notNull(this[_textBoundingRect].width) * scale / 2.0, logoTargetSquare.bottom);
+          canvas.scale(scale, scale);
+          this[_textPainter].paint(canvas, ui.Offset.zero);
+          if (dart.notNull(this[_config$][_position]) > -1.0) {
+            canvas.drawRect(this[_textBoundingRect].inflate(dart.notNull(this[_textBoundingRect].width) * 0.5), (t2$0 = ui.Paint.new(), (() => {
+              t2$0.blendMode = ui.BlendMode.modulate;
+              t2$0.shader = ui.Gradient.linear(new ui.Offset.new(dart.notNull(this[_textBoundingRect].width) * -0.5, 0.0), new ui.Offset.new(dart.notNull(this[_textBoundingRect].width) * 1.5, 0.0), JSArrayOfColor().of([C20 || CT.C20, C20 || CT.C20, C21 || CT.C21, C21 || CT.C21]), JSArrayOfdouble().of([0.0, math.max(core.double, 0.0, this[_config$][_position][$abs]() - 0.1), math.min(core.double, this[_config$][_position][$abs]() + 0.1, 1.0), 1.0]));
+              return t2$0;
+            })()));
+          }
+          canvas.restore();
         }
       }
-      return new crs.Proj4Crs.__({code: code, projection: projection, transformation: transformation, infinite: infinite, transformations: transformations, scales: finalScales});
-    }
-    latLngToPoint(latlng, zoom) {
-      try {
-        let projectedPoint = this.projection.project(latlng);
-        let scale = this.scale(zoom);
-        let transformation = this[_getTransformationByZoom](zoom);
-        return transformation.transform(projectedPoint, scale[$toDouble]());
-      } catch (e$) {
-        let e = dart.getThrown(e$);
-        return new (CustomPointOfnumL()).new(0.0, 0.0);
-      }
-    }
-    pointToLatLng(point, zoom) {
-      let scale = this.scale(zoom);
-      let transformation = this[_getTransformationByZoom](zoom);
-      let untransformedPoint = transformation.untransform(point, scale[$toDouble]());
-      try {
-        return this.projection.unproject(untransformedPoint);
-      } catch (e$) {
-        let e = dart.getThrown(e$);
-        return null;
-      }
-    }
-    getProjectedBounds(zoom) {
-      if (dart.test(this.infinite)) return null;
-      let b = this.projection.bounds;
-      let s = this.scale(zoom);
-      let transformation = this[_getTransformationByZoom](zoom);
-      let min = transformation.transform(b.min, s[$toDouble]());
-      let max = transformation.transform(b.max, s[$toDouble]());
-      return BoundsOfnumL().new(min, max);
-    }
-    scale(zoom) {
-      let iZoom = zoom[$floor]();
-      if (zoom === iZoom) {
-        return this[_scales][$_get](iZoom);
-      } else {
-        let baseScale = this[_scales][$_get](iZoom);
-        let nextScale = this[_scales][$_get](iZoom + 1);
-        let scaleDiff = dart.notNull(nextScale) - dart.notNull(baseScale);
-        let zDiff = dart.notNull(zoom) - iZoom;
-        return dart.notNull(baseScale) + scaleDiff * zDiff;
-      }
-    }
-    zoom(scale) {
-      let downScale = this[_closestElement](this[_scales], scale);
-      let downZoom = this[_scales][$indexOf](downScale);
-      if (scale == downScale) {
-        return downZoom;
-      }
-      if (downScale == null) {
-        return -1 / 0;
-      }
-      let nextZoom = dart.notNull(downZoom) + 1;
-      let nextScale = this[_scales][$_get](nextZoom);
-      if (nextScale == null) {
-        return 1 / 0;
-      }
-      let scaleDiff = dart.notNull(nextScale) - dart.notNull(downScale);
-      return (dart.notNull(scale) - dart.notNull(downScale)) / scaleDiff + dart.notNull(downZoom);
-    }
-    [_closestElement](array, element) {
-      let low = null;
-      for (let i = dart.notNull(array[$length]) - 1; i >= 0; i = i - 1) {
-        let curr = array[$_get](i);
-        if (dart.notNull(curr) <= dart.notNull(element) && (null == low || dart.notNull(low) < dart.notNull(curr))) {
-          low = curr;
-        }
-      }
-      return low;
-    }
-    [_getTransformationByZoom](zoom) {
-      if (null == this[_transformations]) {
-        return this.transformation;
-      }
-      let iZoom = zoom[$round]();
-      let lastIdx = dart.notNull(this[_transformations][$length]) - 1;
-      return this[_transformations][$_get](iZoom > lastIdx ? lastIdx : iZoom);
+      this[_paintLogo](canvas, logoSquare);
+      if (dart.notNull(this[_config$][_opacity]) < 1.0) canvas.restore();
     }
   };
-  (crs.Proj4Crs.__ = function(opts) {
-    let code = opts && 'code' in opts ? opts.code : null;
-    let projection = opts && 'projection' in opts ? opts.projection : null;
-    let transformation = opts && 'transformation' in opts ? opts.transformation : null;
-    let infinite = opts && 'infinite' in opts ? opts.infinite : null;
-    let transformations = opts && 'transformations' in opts ? opts.transformations : null;
-    let scales = opts && 'scales' in opts ? opts.scales : null;
-    this[wrapLat$] = null;
-    this[wrapLng$] = null;
-    this[code$1] = code;
-    this[projection$2] = projection;
-    this[transformation$1] = transformation;
-    this[infinite$] = infinite;
-    if (!(null != code)) dart.assertFailed(null, L1, 186, 16, "null != code");
-    if (!(null != projection)) dart.assertFailed(null, L1, 187, 16, "null != projection");
-    if (!(null != transformation || null != transformations)) dart.assertFailed(null, L1, 188, 16, "null != transformation || null != transformations");
-    if (!(null != infinite)) dart.assertFailed(null, L1, 189, 16, "null != infinite");
-    if (!(null != scales)) dart.assertFailed(null, L1, 190, 16, "null != scales");
-    this[_transformations] = transformations;
-    this[_scales] = scales;
-    crs.Proj4Crs.__proto__.new.call(this);
-    ;
-  }).prototype = crs.Proj4Crs.prototype;
-  dart.addTypeTests(crs.Proj4Crs);
-  dart.addTypeCaches(crs.Proj4Crs);
-  dart.setMethodSignature(crs.Proj4Crs, () => ({
-    __proto__: dart.getMethods(crs.Proj4Crs.__proto__),
-    [_closestElement]: dart.fnType(dart.legacy(core.double), [dart.legacy(core.List$(dart.legacy(core.double))), dart.legacy(core.double)]),
-    [_getTransformationByZoom]: dart.fnType(dart.legacy(crs.Transformation), [dart.legacy(core.double)])
+  (flutter_logo._FlutterLogoPainter.new = function(_config) {
+    if (_config == null) dart.nullFailed(L0, 215, 28, "_config");
+    this[___FlutterLogoPainter__textPainter] = null;
+    this[___FlutterLogoPainter__textPainter_isSet] = false;
+    this[___FlutterLogoPainter__textBoundingRect] = null;
+    this[___FlutterLogoPainter__textBoundingRect_isSet] = false;
+    this[_config$] = _config;
+    if (!(_config != null)) dart.assertFailed(null, L0, 216, 16, "_config != null");
+    if (!dart.test(_config.debugAssertIsValid())) dart.assertFailed(null, L0, 217, 16, "_config.debugAssertIsValid()");
+    flutter_logo._FlutterLogoPainter.__proto__.new.call(this, null);
+    this[_prepareText]();
+  }).prototype = flutter_logo._FlutterLogoPainter.prototype;
+  dart.addTypeTests(flutter_logo._FlutterLogoPainter);
+  dart.addTypeCaches(flutter_logo._FlutterLogoPainter);
+  dart.setMethodSignature(flutter_logo._FlutterLogoPainter, () => ({
+    __proto__: dart.getMethods(flutter_logo._FlutterLogoPainter.__proto__),
+    [_prepareText]: dart.fnType(dart.void, []),
+    [_paintLogo]: dart.fnType(dart.void, [ui.Canvas, ui.Rect]),
+    paint: dart.fnType(dart.void, [ui.Canvas, ui.Offset, image_provider.ImageConfiguration])
   }));
-  dart.setLibraryUri(crs.Proj4Crs, L0);
-  dart.setFieldSignature(crs.Proj4Crs, () => ({
-    __proto__: dart.getFields(crs.Proj4Crs.__proto__),
-    code: dart.finalFieldType(dart.legacy(core.String)),
-    projection: dart.finalFieldType(dart.legacy(crs.Projection)),
-    transformation: dart.finalFieldType(dart.legacy(crs.Transformation)),
-    infinite: dart.finalFieldType(dart.legacy(core.bool)),
-    wrapLat: dart.finalFieldType(dart.legacy(tuple.Tuple2$(dart.legacy(core.double), dart.legacy(core.double)))),
-    wrapLng: dart.finalFieldType(dart.legacy(tuple.Tuple2$(dart.legacy(core.double), dart.legacy(core.double)))),
-    [_transformations]: dart.finalFieldType(dart.legacy(core.List$(dart.legacy(crs.Transformation)))),
-    [_scales]: dart.finalFieldType(dart.legacy(core.List$(dart.legacy(core.double))))
+  dart.setGetterSignature(flutter_logo._FlutterLogoPainter, () => ({
+    __proto__: dart.getGetters(flutter_logo._FlutterLogoPainter.__proto__),
+    [_textPainter]: text_painter.TextPainter,
+    [_textBoundingRect]: ui.Rect
   }));
-  var _inclusive = dart.privateName(crs, "_inclusive");
-  crs.Projection = class Projection extends core.Object {
-    [_inclusive](start, end, value) {
-      if (value[$compareTo](core.num.as(start)) < 0) return doubleL().as(start);
-      if (value[$compareTo](core.num.as(end)) > 0) return doubleL().as(end);
-      return value;
-    }
-    inclusiveLat(value) {
-      return this[_inclusive](-90.0, 90.0, value);
-    }
-    inclusiveLng(value) {
-      if (value[$compareTo](-180) < 0) return -180.0;
-      if (value[$compareTo](180) > 0) return 180.0;
-      return value;
-    }
-  };
-  (crs.Projection.new = function() {
-    ;
-  }).prototype = crs.Projection.prototype;
-  dart.addTypeTests(crs.Projection);
-  dart.addTypeCaches(crs.Projection);
-  dart.setMethodSignature(crs.Projection, () => ({
-    __proto__: dart.getMethods(crs.Projection.__proto__),
-    [_inclusive]: dart.fnType(dart.legacy(core.double), [dart.legacy(core.Comparable), dart.legacy(core.Comparable), dart.legacy(core.double)]),
-    inclusiveLat: dart.fnType(dart.legacy(core.double), [dart.legacy(core.double)]),
-    inclusiveLng: dart.fnType(dart.legacy(core.double), [dart.legacy(core.double)])
+  dart.setSetterSignature(flutter_logo._FlutterLogoPainter, () => ({
+    __proto__: dart.getSetters(flutter_logo._FlutterLogoPainter.__proto__),
+    [_textPainter]: text_painter.TextPainter,
+    [_textBoundingRect]: ui.Rect
   }));
-  dart.setLibraryUri(crs.Projection, L0);
-  crs._LonLat = class _LonLat extends crs.Projection {
-    get bounds() {
-      return crs._LonLat._bounds;
-    }
-    project(latlng) {
-      return new (CustomPointOfnumL()).new(latlng.longitude, latlng.latitude);
-    }
-    unproject(point) {
-      return new latlong.LatLng.new(this.inclusiveLat(point.y), this.inclusiveLng(point.x));
-    }
-  };
-  (crs._LonLat.new = function() {
-    crs._LonLat.__proto__.new.call(this);
-    ;
-  }).prototype = crs._LonLat.prototype;
-  dart.addTypeTests(crs._LonLat);
-  dart.addTypeCaches(crs._LonLat);
-  dart.setMethodSignature(crs._LonLat, () => ({
-    __proto__: dart.getMethods(crs._LonLat.__proto__),
-    project: dart.fnType(dart.legacy(point.CustomPoint$(dart.legacy(core.num))), [dart.legacy(latlong.LatLng)]),
-    unproject: dart.fnType(dart.legacy(latlong.LatLng), [dart.legacy(point.CustomPoint$(dart.legacy(core.num)))])
+  dart.setLibraryUri(flutter_logo._FlutterLogoPainter, L1);
+  dart.setFieldSignature(flutter_logo._FlutterLogoPainter, () => ({
+    __proto__: dart.getFields(flutter_logo._FlutterLogoPainter.__proto__),
+    [_config$]: dart.finalFieldType(flutter_logo.FlutterLogoDecoration),
+    [___FlutterLogoPainter__textPainter]: dart.fieldType(dart.nullable(text_painter.TextPainter)),
+    [___FlutterLogoPainter__textPainter_isSet]: dart.fieldType(core.bool),
+    [___FlutterLogoPainter__textBoundingRect]: dart.fieldType(dart.nullable(ui.Rect)),
+    [___FlutterLogoPainter__textBoundingRect_isSet]: dart.fieldType(core.bool)
   }));
-  dart.setGetterSignature(crs._LonLat, () => ({
-    __proto__: dart.getGetters(crs._LonLat.__proto__),
-    bounds: dart.legacy(bounds.Bounds$(dart.legacy(core.double)))
-  }));
-  dart.setLibraryUri(crs._LonLat, L0);
-  dart.defineLazy(crs._LonLat, {
-    /*crs._LonLat._bounds*/get _bounds() {
-      return BoundsOfdoubleL().new(new (CustomPointOfdoubleL()).new(-180.0, -90.0), new (CustomPointOfdoubleL()).new(180.0, 90.0));
-    }
-  }, true);
-  crs.SphericalMercator = class SphericalMercator extends crs.Projection {
-    get bounds() {
-      return crs.SphericalMercator._bounds;
-    }
-    project(latlng) {
-      let d = 3.141592653589793 / 180;
-      let max = 85.0511287798;
-      let lat = math.max(doubleL(), math.min(doubleL(), max, latlng.latitude), -max);
-      let sin = math.sin(lat * d);
-      return new (CustomPointOfnumL()).new(6378137 * dart.notNull(latlng.longitude) * d, 6378137 * math.log((1 + sin) / (1 - sin)) / 2);
-    }
-    unproject(point) {
-      let d = 180 / 3.141592653589793;
-      return new latlong.LatLng.new(this.inclusiveLat((2 * math.atan(math.exp(dart.notNull(point.y) / 6378137)) - 3.141592653589793 / 2) * d), this.inclusiveLng(dart.notNull(point.x) * d / 6378137));
-    }
-  };
-  (crs.SphericalMercator.new = function() {
-    crs.SphericalMercator.__proto__.new.call(this);
-    ;
-  }).prototype = crs.SphericalMercator.prototype;
-  dart.addTypeTests(crs.SphericalMercator);
-  dart.addTypeCaches(crs.SphericalMercator);
-  dart.setMethodSignature(crs.SphericalMercator, () => ({
-    __proto__: dart.getMethods(crs.SphericalMercator.__proto__),
-    project: dart.fnType(dart.legacy(point.CustomPoint$(dart.legacy(core.num))), [dart.legacy(latlong.LatLng)]),
-    unproject: dart.fnType(dart.legacy(latlong.LatLng), [dart.legacy(point.CustomPoint$(dart.legacy(core.num)))])
-  }));
-  dart.setGetterSignature(crs.SphericalMercator, () => ({
-    __proto__: dart.getGetters(crs.SphericalMercator.__proto__),
-    bounds: dart.legacy(bounds.Bounds$(dart.legacy(core.double)))
-  }));
-  dart.setLibraryUri(crs.SphericalMercator, L0);
-  dart.defineLazy(crs.SphericalMercator, {
-    /*crs.SphericalMercator.r*/get r() {
-      return 6378137;
-    },
-    /*crs.SphericalMercator.maxLatitude*/get maxLatitude() {
-      return 85.0511287798;
-    },
-    /*crs.SphericalMercator._boundsD*/get _boundsD() {
-      return 20037508.342789244;
-    },
-    /*crs.SphericalMercator._bounds*/get _bounds() {
-      return BoundsOfdoubleL().new(new (CustomPointOfdoubleL()).new(-20037508.342789244, -20037508.342789244), new (CustomPointOfdoubleL()).new(20037508.342789244, 20037508.342789244));
-    }
-  }, true);
-  var bounds$ = dart.privateName(crs, "_Proj4Projection.bounds");
-  crs._Proj4Projection = class _Proj4Projection extends crs.Projection {
-    get bounds() {
-      return this[bounds$];
-    }
-    set bounds(value) {
-      super.bounds = value;
-    }
-    project(latlng) {
-      let point = this.epsg4326.transform(this.proj4Projection, new point$.Point.new({x: latlng.longitude, y: latlng.latitude}));
-      return new (CustomPointOfnumL()).new(point.x, point.y);
-    }
-    unproject(point) {
-      let point2 = this.proj4Projection.transform(this.epsg4326, new point$.Point.new({x: point.x, y: point.y}));
-      return new latlong.LatLng.new(this.inclusiveLat(point2.y), this.inclusiveLng(point2.x));
-    }
-  };
-  (crs._Proj4Projection.new = function(opts) {
-    let proj4Projection = opts && 'proj4Projection' in opts ? opts.proj4Projection : null;
-    let bounds = opts && 'bounds' in opts ? opts.bounds : null;
-    this.proj4Projection = proj4Projection;
-    this[bounds$] = bounds;
-    if (!(null != proj4Projection)) dart.assertFailed(null, L1, 447, 16, "null != proj4Projection");
-    this.epsg4326 = projection.Projection.WGS84;
-    crs._Proj4Projection.__proto__.new.call(this);
-    ;
-  }).prototype = crs._Proj4Projection.prototype;
-  dart.addTypeTests(crs._Proj4Projection);
-  dart.addTypeCaches(crs._Proj4Projection);
-  dart.setMethodSignature(crs._Proj4Projection, () => ({
-    __proto__: dart.getMethods(crs._Proj4Projection.__proto__),
-    project: dart.fnType(dart.legacy(point.CustomPoint$(dart.legacy(core.num))), [dart.legacy(latlong.LatLng)]),
-    unproject: dart.fnType(dart.legacy(latlong.LatLng), [dart.legacy(point.CustomPoint$(dart.legacy(core.num)))])
-  }));
-  dart.setLibraryUri(crs._Proj4Projection, L0);
-  dart.setFieldSignature(crs._Proj4Projection, () => ({
-    __proto__: dart.getFields(crs._Proj4Projection.__proto__),
-    epsg4326: dart.finalFieldType(dart.legacy(projection.Projection)),
-    proj4Projection: dart.finalFieldType(dart.legacy(projection.Projection)),
-    bounds: dart.finalFieldType(dart.legacy(bounds.Bounds$(dart.legacy(core.double))))
-  }));
-  crs.Transformation = class Transformation extends core.Object {
-    get a() {
-      return this[a$];
-    }
-    set a(value) {
-      super.a = value;
-    }
-    get b() {
-      return this[b$];
-    }
-    set b(value) {
-      super.b = value;
-    }
-    get c() {
-      return this[c$];
-    }
-    set c(value) {
-      super.c = value;
-    }
-    get d() {
-      return this[d$];
-    }
-    set d(value) {
-      super.d = value;
-    }
-    transform(point, scale) {
-      scale == null ? scale = 1.0 : null;
-      let x = dart.notNull(scale) * (dart.notNull(this.a) * dart.notNull(point.x) + dart.notNull(this.b));
-      let y = dart.notNull(scale) * (dart.notNull(this.c) * dart.notNull(point.y) + dart.notNull(this.d));
-      return new (CustomPointOfnumL()).new(x, y);
-    }
-    untransform(point, scale) {
-      scale == null ? scale = 1.0 : null;
-      let x = (dart.notNull(point.x) / dart.notNull(scale) - dart.notNull(this.b)) / dart.notNull(this.a);
-      let y = (dart.notNull(point.y) / dart.notNull(scale) - dart.notNull(this.d)) / dart.notNull(this.c);
-      return new (CustomPointOfnumL()).new(x, y);
-    }
-  };
-  (crs.Transformation.new = function(a, b, c, d) {
-    this[a$] = a;
-    this[b$] = b;
-    this[c$] = c;
-    this[d$] = d;
-    ;
-  }).prototype = crs.Transformation.prototype;
-  dart.addTypeTests(crs.Transformation);
-  dart.addTypeCaches(crs.Transformation);
-  const a$ = Transformation_a;
-  const b$ = Transformation_b;
-  const c$ = Transformation_c;
-  const d$ = Transformation_d;
-  dart.setMethodSignature(crs.Transformation, () => ({
-    __proto__: dart.getMethods(crs.Transformation.__proto__),
-    transform: dart.fnType(dart.legacy(point.CustomPoint$(dart.legacy(core.num))), [dart.legacy(point.CustomPoint$(dart.legacy(core.num))), dart.legacy(core.double)]),
-    untransform: dart.fnType(dart.legacy(point.CustomPoint$(dart.legacy(core.num))), [dart.legacy(point.CustomPoint$(dart.legacy(core.num))), dart.legacy(core.double)])
-  }));
-  dart.setLibraryUri(crs.Transformation, L0);
-  dart.setFieldSignature(crs.Transformation, () => ({
-    __proto__: dart.getFields(crs.Transformation.__proto__),
-    a: dart.finalFieldType(dart.legacy(core.num)),
-    b: dart.finalFieldType(dart.legacy(core.num)),
-    c: dart.finalFieldType(dart.legacy(core.num)),
-    d: dart.finalFieldType(dart.legacy(core.num))
-  }));
-  dart.trackLibraries("packages/flutter_map/src/geo/crs/crs.dart", {
-    "package:flutter_map/src/geo/crs/crs.dart": crs
+  dart.trackLibraries("packages/flutter/src/painting/flutter_logo.dart", {
+    "package:flutter/src/painting/flutter_logo.dart": flutter_logo
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["crs.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../packages/flutter_map/src/geo/crs/crs.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["flutter_logo.dart"],"names":[],"mappings":"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","file":"../../../../../../../packages/flutter/src/painting/flutter_logo.dart.lib.js"}');
   // Exports:
   return {
-    src__geo__crs__crs: crs
+    src__painting__flutter_logo: flutter_logo
   };
 }));
 
-//# sourceMappingURL=crs.dart.lib.js.map
+//# sourceMappingURL=flutter_logo.dart.lib.js.map

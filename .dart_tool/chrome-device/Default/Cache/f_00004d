@@ -1,409 +1,440 @@
-define(['dart_sdk', 'packages/flutter/src/painting/borders.dart', 'packages/flutter/src/painting/border_radius.dart', 'packages/flutter/src/painting/edge_insets.dart', 'packages/flutter/src/painting/circle_border.dart', 'packages/flutter/src/foundation/object.dart'], (function load__packages__flutter__src__painting__rounded_rectangle_border_dart(dart_sdk, packages__flutter__src__painting__borders$46dart, packages__flutter__src__painting__border_radius$46dart, packages__flutter__src__painting__edge_insets$46dart, packages__flutter__src__painting__circle_border$46dart, packages__flutter__src__foundation__object$46dart) {
+define(['dart_sdk', 'packages/collection/src/utils.dart'], (function load__packages__collection__src__priority_queue_dart(dart_sdk, packages__collection__src__utils$46dart) {
   'use strict';
   const core = dart_sdk.core;
-  const ui = dart_sdk.ui;
-  const _internal = dart_sdk._internal;
+  const collection = dart_sdk.collection;
+  const _interceptors = dart_sdk._interceptors;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const borders = packages__flutter__src__painting__borders$46dart.src__painting__borders;
-  const border_radius = packages__flutter__src__painting__border_radius$46dart.src__painting__border_radius;
-  const edge_insets = packages__flutter__src__painting__edge_insets$46dart.src__painting__edge_insets;
-  const circle_border = packages__flutter__src__painting__circle_border$46dart.src__painting__circle_border;
-  const object = packages__flutter__src__foundation__object$46dart.src__foundation__object;
-  var rounded_rectangle_border = Object.create(dart.library);
-  var $runtimeType = dartx.runtimeType;
-  var $toStringAsFixed = dartx.toStringAsFixed;
+  const utils = packages__collection__src__utils$46dart.src__utils;
+  var priority_queue = Object.create(dart.library);
+  var $_get = dartx._get;
+  var $take = dartx.take;
+  var $cast = dartx.cast;
+  var $sort = dartx.sort;
+  var $toString = dartx.toString;
+  var $length = dartx.length;
+  var $isOdd = dartx.isOdd;
+  var $rightShift = dartx['>>'];
+  var $_set = dartx._set;
+  var $truncate = dartx.truncate;
+  var $setRange = dartx.setRange;
+  var $iterator = dartx.iterator;
+  var ObjectN = () => (ObjectN = dart.constFn(dart.nullable(core.Object)))();
+  var ObjectNAndObjectNToint = () => (ObjectNAndObjectNToint = dart.constFn(dart.fnType(core.int, [ObjectN(), ObjectN()])))();
   const CT = Object.create(null);
-  var L0 = "file:///C:/src/flutter/packages/flutter/lib/src/painting/rounded_rectangle_border.dart";
-  var L1 = "package:flutter/src/painting/rounded_rectangle_border.dart";
+  var L1 = "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/collection-1.15.0-nullsafety.5/lib/src/priority_queue.dart";
+  var L0 = "package:collection/src/priority_queue.dart";
   dart.defineLazy(CT, {
-    get C1() {
-      return C1 = dart.const({
-        __proto__: borders.BorderStyle.prototype,
-        [_name]: "BorderStyle.none",
-        index: 0
-      });
-    },
-    get C2() {
-      return C2 = dart.const({
-        __proto__: ui.Color.prototype,
-        [Color_value]: 4278190080.0
-      });
-    },
     get C0() {
-      return C0 = dart.const({
-        __proto__: borders.BorderSide.prototype,
-        [BorderSide_style]: C1 || CT.C1,
-        [BorderSide_width]: 0,
-        [BorderSide_color]: C2 || CT.C2
-      });
+      return C0 = dart.fn(utils.defaultCompare, ObjectNAndObjectNToint());
     },
-    get C4() {
-      return C4 = dart.const({
-        __proto__: ui.Radius.prototype,
-        [Radius_y]: 0,
-        [Radius_x]: 0
-      });
-    },
-    get C3() {
-      return C3 = dart.const({
-        __proto__: border_radius.BorderRadius.prototype,
-        [BorderRadius_bottomRight]: C4 || CT.C4,
-        [BorderRadius_bottomLeft]: C4 || CT.C4,
-        [BorderRadius_topRight]: C4 || CT.C4,
-        [BorderRadius_topLeft]: C4 || CT.C4
-      });
-    },
-    get C5() {
-      return C5 = dart.const({
-        __proto__: borders.BorderStyle.prototype,
-        [_name]: "BorderStyle.solid",
-        index: 1
-      });
+    get C1() {
+      return C1 = dart.constList([], core.Null);
     }
   }, false);
-  var _name = dart.privateName(borders, "_name");
-  var C1;
-  var BorderSide_style = dart.privateName(borders, "BorderSide.style");
-  var BorderSide_width = dart.privateName(borders, "BorderSide.width");
-  var Color_value = dart.privateName(ui, "Color.value");
-  var C2;
-  var BorderSide_color = dart.privateName(borders, "BorderSide.color");
+  const _is_PriorityQueue_default = Symbol('_is_PriorityQueue_default');
+  priority_queue.PriorityQueue$ = dart.generic(E => {
+    class PriorityQueue extends core.Object {}
+    (PriorityQueue[dart.mixinNew] = function() {
+    }).prototype = PriorityQueue.prototype;
+    dart.addTypeTests(PriorityQueue);
+    PriorityQueue.prototype[_is_PriorityQueue_default] = true;
+    dart.addTypeCaches(PriorityQueue);
+    dart.setLibraryUri(PriorityQueue, L0);
+    return PriorityQueue;
+  });
+  priority_queue.PriorityQueue = priority_queue.PriorityQueue$();
+  dart.addTypeTests(priority_queue.PriorityQueue, _is_PriorityQueue_default);
+  var _queue$ = dart.privateName(priority_queue, "_queue");
+  var _length = dart.privateName(priority_queue, "_length");
+  var _modificationCount = dart.privateName(priority_queue, "_modificationCount");
   var C0;
-  var Radius_y = dart.privateName(ui, "Radius.y");
-  var Radius_x = dart.privateName(ui, "Radius.x");
-  var C4;
-  var BorderRadius_bottomRight = dart.privateName(border_radius, "BorderRadius.bottomRight");
-  var BorderRadius_bottomLeft = dart.privateName(border_radius, "BorderRadius.bottomLeft");
-  var BorderRadius_topRight = dart.privateName(border_radius, "BorderRadius.topRight");
-  var BorderRadius_topLeft = dart.privateName(border_radius, "BorderRadius.topLeft");
-  var C3;
-  var C5;
-  var borderRadius$ = dart.privateName(rounded_rectangle_border, "RoundedRectangleBorder.borderRadius");
-  rounded_rectangle_border.RoundedRectangleBorder = class RoundedRectangleBorder extends borders.OutlinedBorder {
-    get borderRadius() {
-      return this[borderRadius$];
-    }
-    set borderRadius(value) {
-      super.borderRadius = value;
-    }
-    get dimensions() {
-      return new edge_insets.EdgeInsets.all(this.side.width);
-    }
-    scale(t) {
-      if (t == null) dart.nullFailed(L0, 48, 28, "t");
-      return new rounded_rectangle_border.RoundedRectangleBorder.new({side: this.side.scale(t), borderRadius: this.borderRadius['*'](t)});
-    }
-    lerpFrom(a, t) {
-      if (t == null) dart.nullFailed(L0, 56, 48, "t");
-      if (!(t != null)) dart.assertFailed(null, L0, 57, 12, "t != null");
-      if (rounded_rectangle_border.RoundedRectangleBorder.is(a)) {
-        return new rounded_rectangle_border.RoundedRectangleBorder.new({side: borders.BorderSide.lerp(a.side, this.side, t), borderRadius: dart.nullCheck(border_radius.BorderRadiusGeometry.lerp(a.borderRadius, this.borderRadius, t))});
+  var _elementAt = dart.privateName(priority_queue, "_elementAt");
+  var _add = dart.privateName(priority_queue, "_add");
+  var C1;
+  var _locate = dart.privateName(priority_queue, "_locate");
+  var _removeLast = dart.privateName(priority_queue, "_removeLast");
+  var _bubbleUp = dart.privateName(priority_queue, "_bubbleUp");
+  var _bubbleDown = dart.privateName(priority_queue, "_bubbleDown");
+  var _toUnorderedList = dart.privateName(priority_queue, "_toUnorderedList");
+  var _grow = dart.privateName(priority_queue, "_grow");
+  const _is_HeapPriorityQueue_default = Symbol('_is_HeapPriorityQueue_default');
+  var comparison$ = dart.privateName(priority_queue, "HeapPriorityQueue.comparison");
+  priority_queue.HeapPriorityQueue$ = dart.generic(E => {
+    var EN = () => (EN = dart.constFn(dart.nullable(E)))();
+    var ListOfEN = () => (ListOfEN = dart.constFn(core.List$(EN())))();
+    var IterableOfE = () => (IterableOfE = dart.constFn(core.Iterable$(E)))();
+    var _UnorderedElementsIterableOfE = () => (_UnorderedElementsIterableOfE = dart.constFn(priority_queue._UnorderedElementsIterable$(E)))();
+    var SplayTreeSetOfE = () => (SplayTreeSetOfE = dart.constFn(collection.SplayTreeSet$(E)))();
+    var JSArrayOfE = () => (JSArrayOfE = dart.constFn(_interceptors.JSArray$(E)))();
+    class HeapPriorityQueue extends core.Object {
+      get comparison() {
+        return this[comparison$];
       }
-      if (circle_border.CircleBorder.is(a)) {
-        return new rounded_rectangle_border._RoundedRectangleToCircleBorder.new({side: borders.BorderSide.lerp(a.side, this.side, t), borderRadius: this.borderRadius, circleness: 1.0 - dart.notNull(t)});
+      set comparison(value) {
+        super.comparison = value;
       }
-      return super.lerpFrom(a, t);
-    }
-    lerpTo(b, t) {
-      if (t == null) dart.nullFailed(L0, 75, 46, "t");
-      if (!(t != null)) dart.assertFailed(null, L0, 76, 12, "t != null");
-      if (rounded_rectangle_border.RoundedRectangleBorder.is(b)) {
-        return new rounded_rectangle_border.RoundedRectangleBorder.new({side: borders.BorderSide.lerp(this.side, b.side, t), borderRadius: dart.nullCheck(border_radius.BorderRadiusGeometry.lerp(this.borderRadius, b.borderRadius, t))});
+      [_elementAt](index) {
+        let t0;
+        if (index == null) dart.nullFailed(L1, 207, 20, "index");
+        t0 = this[_queue$][$_get](index);
+        return t0 == null ? E.as(null) : t0;
       }
-      if (circle_border.CircleBorder.is(b)) {
-        return new rounded_rectangle_border._RoundedRectangleToCircleBorder.new({side: borders.BorderSide.lerp(this.side, b.side, t), borderRadius: this.borderRadius, circleness: t});
+      add(element) {
+        E.as(element);
+        this[_modificationCount] = dart.notNull(this[_modificationCount]) + 1;
+        this[_add](element);
       }
-      return super.lerpTo(b, t);
-    }
-    copyWith(opts) {
-      let t0, t0$;
-      let side = opts && 'side' in opts ? opts.side : null;
-      let borderRadius = opts && 'borderRadius' in opts ? opts.borderRadius : null;
-      return new rounded_rectangle_border.RoundedRectangleBorder.new({side: (t0 = side, t0 == null ? this.side : t0), borderRadius: (t0$ = borderRadius, t0$ == null ? this.borderRadius : t0$)});
-    }
-    getInnerPath(rect, opts) {
-      let t0;
-      if (rect == null) dart.nullFailed(L0, 104, 26, "rect");
-      let textDirection = opts && 'textDirection' in opts ? opts.textDirection : null;
-      t0 = ui.Path.new();
-      return (() => {
-        t0.addRRect(this.borderRadius.resolve(textDirection).toRRect(rect).deflate(this.side.width));
-        return t0;
-      })();
-    }
-    getOuterPath(rect, opts) {
-      let t0;
-      if (rect == null) dart.nullFailed(L0, 110, 26, "rect");
-      let textDirection = opts && 'textDirection' in opts ? opts.textDirection : null;
-      t0 = ui.Path.new();
-      return (() => {
-        t0.addRRect(this.borderRadius.resolve(textDirection).toRRect(rect));
-        return t0;
-      })();
-    }
-    paint(canvas, rect, opts) {
-      let t0;
-      if (canvas == null) dart.nullFailed(L0, 116, 21, "canvas");
-      if (rect == null) dart.nullFailed(L0, 116, 34, "rect");
-      let textDirection = opts && 'textDirection' in opts ? opts.textDirection : null;
-      switch (this.side.style) {
-        case C1 || CT.C1:
-        {
-          break;
+      addAll(elements) {
+        IterableOfE().as(elements);
+        if (elements == null) dart.nullFailed(L1, 216, 27, "elements");
+        let modified = 0;
+        for (let element of elements) {
+          modified = 1;
+          this[_add](element);
         }
-        case C5 || CT.C5:
-        {
-          let width = this.side.width;
-          if (width === 0.0) {
-            canvas.drawRRect(this.borderRadius.resolve(textDirection).toRRect(rect), this.side.toPaint());
+        this[_modificationCount] = dart.notNull(this[_modificationCount]) + modified;
+      }
+      clear() {
+        this[_modificationCount] = dart.notNull(this[_modificationCount]) + 1;
+        this[_queue$] = C1 || CT.C1;
+        this[_length] = 0;
+      }
+      contains(object) {
+        E.as(object);
+        return dart.notNull(this[_locate](object)) >= 0;
+      }
+      get unorderedElements() {
+        return new (_UnorderedElementsIterableOfE()).new(this);
+      }
+      get first() {
+        if (this[_length] === 0) dart.throw(new core.StateError.new("No element"));
+        return this[_elementAt](0);
+      }
+      get isEmpty() {
+        return this[_length] === 0;
+      }
+      get isNotEmpty() {
+        return this[_length] !== 0;
+      }
+      get length() {
+        return this[_length];
+      }
+      remove(element) {
+        let t1, t0;
+        E.as(element);
+        let index = this[_locate](element);
+        if (dart.notNull(index) < 0) return false;
+        this[_modificationCount] = dart.notNull(this[_modificationCount]) + 1;
+        let last = this[_removeLast]();
+        if (dart.notNull(index) < dart.notNull(this[_length])) {
+          let comp = (t0 = last, t1 = element, this.comparison(t0, t1));
+          if (dart.notNull(comp) <= 0) {
+            this[_bubbleUp](last, index);
           } else {
-            let outer = this.borderRadius.resolve(textDirection).toRRect(rect);
-            let inner = outer.deflate(width);
-            let paint = (t0 = ui.Paint.new(), (() => {
-              t0.color = this.side.color;
-              return t0;
-            })());
-            canvas.drawDRRect(outer, inner, paint);
+            this[_bubbleDown](last, index);
           }
-          break;
         }
-        default:
-        {
-          dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
+        return true;
+      }
+      removeAll() {
+        this[_modificationCount] = dart.notNull(this[_modificationCount]) + 1;
+        let result = this[_queue$];
+        let length = this[_length];
+        this[_queue$] = C1 || CT.C1;
+        this[_length] = 0;
+        return result[$take](length)[$cast](E);
+      }
+      removeFirst() {
+        if (this[_length] === 0) dart.throw(new core.StateError.new("No element"));
+        this[_modificationCount] = dart.notNull(this[_modificationCount]) + 1;
+        let result = this[_elementAt](0);
+        let last = this[_removeLast]();
+        if (dart.notNull(this[_length]) > 0) {
+          this[_bubbleDown](last, 0);
         }
+        return result;
       }
-    }
-    _equals(other) {
-      if (other == null) return false;
-      if (!dart.equals(dart.runtimeType(other), this[$runtimeType])) return false;
-      return rounded_rectangle_border.RoundedRectangleBorder.is(other) && dart.equals(other.side, this.side) && dart.equals(other.borderRadius, this.borderRadius);
-    }
-    get hashCode() {
-      return ui.hashValues(this.side, this.borderRadius);
-    }
-    toString() {
-      return dart.str(object.objectRuntimeType(this, "RoundedRectangleBorder")) + "(" + dart.str(this.side) + ", " + dart.str(this.borderRadius) + ")";
-    }
-  };
-  (rounded_rectangle_border.RoundedRectangleBorder.new = function(opts) {
-    let side = opts && 'side' in opts ? opts.side : C0 || CT.C0;
-    if (side == null) dart.nullFailed(L0, 33, 16, "side");
-    let borderRadius = opts && 'borderRadius' in opts ? opts.borderRadius : C3 || CT.C3;
-    if (borderRadius == null) dart.nullFailed(L0, 34, 10, "borderRadius");
-    this[borderRadius$] = borderRadius;
-    if (!(side != null)) dart.assertFailed(null, L0, 35, 15, "side != null");
-    if (!(borderRadius != null)) dart.assertFailed(null, L0, 36, 15, "borderRadius != null");
-    rounded_rectangle_border.RoundedRectangleBorder.__proto__.new.call(this, {side: side});
-    ;
-  }).prototype = rounded_rectangle_border.RoundedRectangleBorder.prototype;
-  dart.addTypeTests(rounded_rectangle_border.RoundedRectangleBorder);
-  dart.addTypeCaches(rounded_rectangle_border.RoundedRectangleBorder);
-  dart.setMethodSignature(rounded_rectangle_border.RoundedRectangleBorder, () => ({
-    __proto__: dart.getMethods(rounded_rectangle_border.RoundedRectangleBorder.__proto__),
-    scale: dart.fnType(borders.ShapeBorder, [core.double]),
-    copyWith: dart.fnType(rounded_rectangle_border.RoundedRectangleBorder, [], {borderRadius: dart.nullable(border_radius.BorderRadius), side: dart.nullable(borders.BorderSide)}, {}),
-    getInnerPath: dart.fnType(ui.Path, [ui.Rect], {textDirection: dart.nullable(ui.TextDirection)}, {}),
-    getOuterPath: dart.fnType(ui.Path, [ui.Rect], {textDirection: dart.nullable(ui.TextDirection)}, {}),
-    paint: dart.fnType(dart.void, [ui.Canvas, ui.Rect], {textDirection: dart.nullable(ui.TextDirection)}, {})
-  }));
-  dart.setGetterSignature(rounded_rectangle_border.RoundedRectangleBorder, () => ({
-    __proto__: dart.getGetters(rounded_rectangle_border.RoundedRectangleBorder.__proto__),
-    dimensions: edge_insets.EdgeInsetsGeometry
-  }));
-  dart.setLibraryUri(rounded_rectangle_border.RoundedRectangleBorder, L1);
-  dart.setFieldSignature(rounded_rectangle_border.RoundedRectangleBorder, () => ({
-    __proto__: dart.getFields(rounded_rectangle_border.RoundedRectangleBorder.__proto__),
-    borderRadius: dart.finalFieldType(border_radius.BorderRadiusGeometry)
-  }));
-  dart.defineExtensionMethods(rounded_rectangle_border.RoundedRectangleBorder, ['_equals', 'toString']);
-  dart.defineExtensionAccessors(rounded_rectangle_border.RoundedRectangleBorder, ['hashCode']);
-  var _adjustRect = dart.privateName(rounded_rectangle_border, "_adjustRect");
-  var _adjustBorderRadius = dart.privateName(rounded_rectangle_border, "_adjustBorderRadius");
-  var borderRadius$0 = dart.privateName(rounded_rectangle_border, "_RoundedRectangleToCircleBorder.borderRadius");
-  var circleness$ = dart.privateName(rounded_rectangle_border, "_RoundedRectangleToCircleBorder.circleness");
-  rounded_rectangle_border._RoundedRectangleToCircleBorder = class _RoundedRectangleToCircleBorder extends borders.OutlinedBorder {
-    get borderRadius() {
-      return this[borderRadius$0];
-    }
-    set borderRadius(value) {
-      super.borderRadius = value;
-    }
-    get circleness() {
-      return this[circleness$];
-    }
-    set circleness(value) {
-      super.circleness = value;
-    }
-    get dimensions() {
-      return new edge_insets.EdgeInsets.all(this.side.width);
-    }
-    scale(t) {
-      if (t == null) dart.nullFailed(L0, 172, 28, "t");
-      return new rounded_rectangle_border._RoundedRectangleToCircleBorder.new({side: this.side.scale(t), borderRadius: this.borderRadius['*'](t), circleness: t});
-    }
-    lerpFrom(a, t) {
-      if (t == null) dart.nullFailed(L0, 181, 48, "t");
-      if (!(t != null)) dart.assertFailed(null, L0, 182, 12, "t != null");
-      if (rounded_rectangle_border.RoundedRectangleBorder.is(a)) {
-        return new rounded_rectangle_border._RoundedRectangleToCircleBorder.new({side: borders.BorderSide.lerp(a.side, this.side, t), borderRadius: dart.nullCheck(border_radius.BorderRadiusGeometry.lerp(a.borderRadius, this.borderRadius, t)), circleness: dart.notNull(this.circleness) * dart.notNull(t)});
+      toList() {
+        let t0;
+        t0 = this[_toUnorderedList]();
+        return (() => {
+          t0[$sort](this.comparison);
+          return t0;
+        })();
       }
-      if (circle_border.CircleBorder.is(a)) {
-        return new rounded_rectangle_border._RoundedRectangleToCircleBorder.new({side: borders.BorderSide.lerp(a.side, this.side, t), borderRadius: this.borderRadius, circleness: dart.notNull(this.circleness) + (1.0 - dart.notNull(this.circleness)) * (1.0 - dart.notNull(t))});
-      }
-      if (rounded_rectangle_border._RoundedRectangleToCircleBorder.is(a)) {
-        return new rounded_rectangle_border._RoundedRectangleToCircleBorder.new({side: borders.BorderSide.lerp(a.side, this.side, t), borderRadius: dart.nullCheck(border_radius.BorderRadiusGeometry.lerp(a.borderRadius, this.borderRadius, t)), circleness: dart.nullCheck(ui.lerpDouble(a.circleness, this.circleness, t))});
-      }
-      return super.lerpFrom(a, t);
-    }
-    lerpTo(b, t) {
-      if (t == null) dart.nullFailed(L0, 208, 46, "t");
-      if (rounded_rectangle_border.RoundedRectangleBorder.is(b)) {
-        return new rounded_rectangle_border._RoundedRectangleToCircleBorder.new({side: borders.BorderSide.lerp(this.side, b.side, t), borderRadius: dart.nullCheck(border_radius.BorderRadiusGeometry.lerp(this.borderRadius, b.borderRadius, t)), circleness: dart.notNull(this.circleness) * (1.0 - dart.notNull(t))});
-      }
-      if (circle_border.CircleBorder.is(b)) {
-        return new rounded_rectangle_border._RoundedRectangleToCircleBorder.new({side: borders.BorderSide.lerp(this.side, b.side, t), borderRadius: this.borderRadius, circleness: dart.notNull(this.circleness) + (1.0 - dart.notNull(this.circleness)) * dart.notNull(t)});
-      }
-      if (rounded_rectangle_border._RoundedRectangleToCircleBorder.is(b)) {
-        return new rounded_rectangle_border._RoundedRectangleToCircleBorder.new({side: borders.BorderSide.lerp(this.side, b.side, t), borderRadius: dart.nullCheck(border_radius.BorderRadiusGeometry.lerp(this.borderRadius, b.borderRadius, t)), circleness: dart.nullCheck(ui.lerpDouble(this.circleness, b.circleness, t))});
-      }
-      return super.lerpTo(b, t);
-    }
-    [_adjustRect](rect) {
-      if (rect == null) dart.nullFailed(L0, 233, 25, "rect");
-      if (this.circleness === 0.0 || rect.width == rect.height) return rect;
-      if (dart.notNull(rect.width) < dart.notNull(rect.height)) {
-        let delta = dart.notNull(this.circleness) * (dart.notNull(rect.height) - dart.notNull(rect.width)) / 2.0;
-        return new ui.Rect.fromLTRB(rect.left, dart.notNull(rect.top) + delta, rect.right, dart.notNull(rect.bottom) - delta);
-      } else {
-        let delta = dart.notNull(this.circleness) * (dart.notNull(rect.width) - dart.notNull(rect.height)) / 2.0;
-        return new ui.Rect.fromLTRB(dart.notNull(rect.left) + delta, rect.top, dart.notNull(rect.right) - delta, rect.bottom);
-      }
-    }
-    [_adjustBorderRadius](rect, textDirection) {
-      if (rect == null) dart.nullFailed(L0, 255, 42, "rect");
-      let resolvedRadius = this.borderRadius.resolve(textDirection);
-      if (this.circleness === 0.0) return resolvedRadius;
-      return border_radius.BorderRadius.lerp(resolvedRadius, new border_radius.BorderRadius.circular(dart.notNull(rect.shortestSide) / 2.0), this.circleness);
-    }
-    getInnerPath(rect, opts) {
-      let t0;
-      if (rect == null) dart.nullFailed(L0, 263, 26, "rect");
-      let textDirection = opts && 'textDirection' in opts ? opts.textDirection : null;
-      t0 = ui.Path.new();
-      return (() => {
-        t0.addRRect(dart.nullCheck(this[_adjustBorderRadius](rect, textDirection)).toRRect(this[_adjustRect](rect)).deflate(this.side.width));
-        return t0;
-      })();
-    }
-    getOuterPath(rect, opts) {
-      let t0;
-      if (rect == null) dart.nullFailed(L0, 269, 26, "rect");
-      let textDirection = opts && 'textDirection' in opts ? opts.textDirection : null;
-      t0 = ui.Path.new();
-      return (() => {
-        t0.addRRect(dart.nullCheck(this[_adjustBorderRadius](rect, textDirection)).toRRect(this[_adjustRect](rect)));
-        return t0;
-      })();
-    }
-    copyWith(opts) {
-      let t0, t0$, t0$0;
-      let side = opts && 'side' in opts ? opts.side : null;
-      let borderRadius = opts && 'borderRadius' in opts ? opts.borderRadius : null;
-      let circleness = opts && 'circleness' in opts ? opts.circleness : null;
-      return new rounded_rectangle_border._RoundedRectangleToCircleBorder.new({side: (t0 = side, t0 == null ? this.side : t0), borderRadius: (t0$ = borderRadius, t0$ == null ? this.borderRadius : t0$), circleness: (t0$0 = circleness, t0$0 == null ? this.circleness : t0$0)});
-    }
-    paint(canvas, rect, opts) {
-      let t0;
-      if (canvas == null) dart.nullFailed(L0, 284, 21, "canvas");
-      if (rect == null) dart.nullFailed(L0, 284, 34, "rect");
-      let textDirection = opts && 'textDirection' in opts ? opts.textDirection : null;
-      switch (this.side.style) {
-        case C1 || CT.C1:
-        {
-          break;
+      toSet() {
+        let set = new (SplayTreeSetOfE()).new(this.comparison);
+        for (let i = 0; i < dart.notNull(this[_length]); i = i + 1) {
+          set.add(this[_elementAt](i));
         }
-        case C5 || CT.C5:
-        {
-          let width = this.side.width;
-          if (width === 0.0) {
-            canvas.drawRRect(dart.nullCheck(this[_adjustBorderRadius](rect, textDirection)).toRRect(this[_adjustRect](rect)), this.side.toPaint());
+        return set;
+      }
+      toUnorderedList() {
+        return this[_toUnorderedList]();
+      }
+      [_toUnorderedList]() {
+        return (() => {
+          let t0 = JSArrayOfE().of([]);
+          for (let i = 0; i < dart.notNull(this[_length]); i = i + 1)
+            t0.push(this[_elementAt](i));
+          return t0;
+        })();
+      }
+      toString() {
+        return dart.toString(this[_queue$][$take](this[_length]));
+      }
+      [_add](element) {
+        let t1;
+        if (this[_length] == this[_queue$][$length]) this[_grow]();
+        this[_bubbleUp](element, (t1 = this[_length], this[_length] = dart.notNull(t1) + 1, t1));
+      }
+      [_locate](object) {
+        let t2, t1;
+        if (this[_length] === 0) return -1;
+        let position = 1;
+        do {
+          let index = position - 1;
+          let element = this[_elementAt](index);
+          let comp = (t1 = element, t2 = object, this.comparison(t1, t2));
+          if (dart.notNull(comp) <= 0) {
+            if (comp === 0 && dart.equals(element, object)) return index;
+            let leftChildPosition = position * 2;
+            if (leftChildPosition <= dart.notNull(this[_length])) {
+              position = leftChildPosition;
+              continue;
+            }
+          }
+          do {
+            while (position[$isOdd]) {
+              position = position[$rightShift](1);
+            }
+            position = position + 1;
+          } while (position > dart.notNull(this[_length]));
+        } while (position !== 1);
+        return -1;
+      }
+      [_removeLast]() {
+        let newLength = dart.notNull(this[_length]) - 1;
+        let last = this[_elementAt](newLength);
+        this[_queue$][$_set](newLength, null);
+        this[_length] = newLength;
+        return last;
+      }
+      [_bubbleUp](element, index) {
+        let t2, t1;
+        if (index == null) dart.nullFailed(L1, 396, 33, "index");
+        while (dart.notNull(index) > 0) {
+          let parentIndex = ((dart.notNull(index) - 1) / 2)[$truncate]();
+          let parent = this[_elementAt](parentIndex);
+          if (dart.notNull((t1 = element, t2 = parent, this.comparison(t1, t2))) > 0) break;
+          this[_queue$][$_set](index, parent);
+          index = parentIndex;
+        }
+        this[_queue$][$_set](index, element);
+      }
+      [_bubbleDown](element, index) {
+        let t2, t1, t2$, t1$, t2$0, t1$0;
+        if (index == null) dart.nullFailed(L1, 412, 35, "index");
+        let rightChildIndex = dart.notNull(index) * 2 + 2;
+        while (rightChildIndex < dart.notNull(this[_length])) {
+          let leftChildIndex = rightChildIndex - 1;
+          let leftChild = this[_elementAt](leftChildIndex);
+          let rightChild = this[_elementAt](rightChildIndex);
+          let comp = (t1 = leftChild, t2 = rightChild, this.comparison(t1, t2));
+          let minChildIndex = null;
+          let minChild = null;
+          if (dart.notNull(comp) < 0) {
+            minChild = leftChild;
+            minChildIndex = leftChildIndex;
           } else {
-            let outer = dart.nullCheck(this[_adjustBorderRadius](rect, textDirection)).toRRect(this[_adjustRect](rect));
-            let inner = outer.deflate(width);
-            let paint = (t0 = ui.Paint.new(), (() => {
-              t0.color = this.side.color;
-              return t0;
-            })());
-            canvas.drawDRRect(outer, inner, paint);
+            minChild = rightChild;
+            minChildIndex = rightChildIndex;
           }
-          break;
+          comp = (t1$ = element, t2$ = minChild, this.comparison(t1$, t2$));
+          if (dart.notNull(comp) <= 0) {
+            this[_queue$][$_set](index, element);
+            return;
+          }
+          this[_queue$][$_set](index, minChild);
+          index = minChildIndex;
+          rightChildIndex = dart.notNull(index) * 2 + 2;
         }
-        default:
-        {
-          dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
+        let leftChildIndex = rightChildIndex - 1;
+        if (leftChildIndex < dart.notNull(this[_length])) {
+          let child = this[_elementAt](leftChildIndex);
+          let comp = (t1$0 = element, t2$0 = child, this.comparison(t1$0, t2$0));
+          if (dart.notNull(comp) > 0) {
+            this[_queue$][$_set](index, child);
+            index = leftChildIndex;
+          }
         }
+        this[_queue$][$_set](index, element);
+      }
+      [_grow]() {
+        let newCapacity = dart.notNull(this[_queue$][$length]) * 2 + 1;
+        if (newCapacity < 7) newCapacity = 7;
+        let newQueue = ListOfEN().filled(newCapacity, null);
+        newQueue[$setRange](0, this[_length], this[_queue$]);
+        this[_queue$] = newQueue;
       }
     }
-    _equals(other) {
-      if (other == null) return false;
-      if (!dart.equals(dart.runtimeType(other), this[$runtimeType])) return false;
-      return rounded_rectangle_border._RoundedRectangleToCircleBorder.is(other) && dart.equals(other.side, this.side) && dart.equals(other.borderRadius, this.borderRadius) && other.circleness == this.circleness;
+    (HeapPriorityQueue.new = function(comparison = null) {
+      let t0;
+      this[_queue$] = ListOfEN().filled(7, null);
+      this[_length] = 0;
+      this[_modificationCount] = 0;
+      this[comparison$] = (t0 = comparison, t0 == null ? C0 || CT.C0 : t0);
+      ;
+    }).prototype = HeapPriorityQueue.prototype;
+    dart.addTypeTests(HeapPriorityQueue);
+    HeapPriorityQueue.prototype[_is_HeapPriorityQueue_default] = true;
+    dart.addTypeCaches(HeapPriorityQueue);
+    HeapPriorityQueue[dart.implements] = () => [priority_queue.PriorityQueue$(E)];
+    dart.setMethodSignature(HeapPriorityQueue, () => ({
+      __proto__: dart.getMethods(HeapPriorityQueue.__proto__),
+      [_elementAt]: dart.fnType(E, [core.int]),
+      add: dart.fnType(dart.void, [dart.nullable(core.Object)]),
+      addAll: dart.fnType(dart.void, [dart.nullable(core.Object)]),
+      clear: dart.fnType(dart.void, []),
+      contains: dart.fnType(core.bool, [dart.nullable(core.Object)]),
+      remove: dart.fnType(core.bool, [dart.nullable(core.Object)]),
+      removeAll: dart.fnType(core.Iterable$(E), []),
+      removeFirst: dart.fnType(E, []),
+      toList: dart.fnType(core.List$(E), []),
+      toSet: dart.fnType(core.Set$(E), []),
+      toUnorderedList: dart.fnType(core.List$(E), []),
+      [_toUnorderedList]: dart.fnType(core.List$(E), []),
+      [_add]: dart.fnType(dart.void, [E]),
+      [_locate]: dart.fnType(core.int, [E]),
+      [_removeLast]: dart.fnType(E, []),
+      [_bubbleUp]: dart.fnType(dart.void, [E, core.int]),
+      [_bubbleDown]: dart.fnType(dart.void, [E, core.int]),
+      [_grow]: dart.fnType(dart.void, [])
+    }));
+    dart.setGetterSignature(HeapPriorityQueue, () => ({
+      __proto__: dart.getGetters(HeapPriorityQueue.__proto__),
+      unorderedElements: core.Iterable$(E),
+      first: E,
+      isEmpty: core.bool,
+      isNotEmpty: core.bool,
+      length: core.int
+    }));
+    dart.setLibraryUri(HeapPriorityQueue, L0);
+    dart.setFieldSignature(HeapPriorityQueue, () => ({
+      __proto__: dart.getFields(HeapPriorityQueue.__proto__),
+      comparison: dart.finalFieldType(dart.fnType(core.int, [E, E])),
+      [_queue$]: dart.fieldType(core.List$(dart.nullable(E))),
+      [_length]: dart.fieldType(core.int),
+      [_modificationCount]: dart.fieldType(core.int)
+    }));
+    dart.defineExtensionMethods(HeapPriorityQueue, ['toString']);
+    return HeapPriorityQueue;
+  });
+  priority_queue.HeapPriorityQueue = priority_queue.HeapPriorityQueue$();
+  dart.defineLazy(priority_queue.HeapPriorityQueue, {
+    /*priority_queue.HeapPriorityQueue._INITIAL_CAPACITY*/get _INITIAL_CAPACITY() {
+      return 7;
     }
-    get hashCode() {
-      return ui.hashValues(this.side, this.borderRadius, this.circleness);
+  }, false);
+  dart.addTypeTests(priority_queue.HeapPriorityQueue, _is_HeapPriorityQueue_default);
+  const _is__UnorderedElementsIterable_default = Symbol('_is__UnorderedElementsIterable_default');
+  priority_queue._UnorderedElementsIterable$ = dart.generic(E => {
+    var _UnorderedElementsIteratorOfE = () => (_UnorderedElementsIteratorOfE = dart.constFn(priority_queue._UnorderedElementsIterator$(E)))();
+    class _UnorderedElementsIterable extends core.Iterable$(E) {
+      get iterator() {
+        return new (_UnorderedElementsIteratorOfE()).new(this[_queue$]);
+      }
     }
-    toString() {
-      return "RoundedRectangleBorder(" + dart.str(this.side) + ", " + dart.str(this.borderRadius) + ", " + (dart.notNull(this.circleness) * 100)[$toStringAsFixed](1) + "% of the way to being a CircleBorder)";
+    (_UnorderedElementsIterable.new = function(_queue) {
+      if (_queue == null) dart.nullFailed(L1, 464, 35, "_queue");
+      this[_queue$] = _queue;
+      _UnorderedElementsIterable.__proto__.new.call(this);
+      ;
+    }).prototype = _UnorderedElementsIterable.prototype;
+    dart.addTypeTests(_UnorderedElementsIterable);
+    _UnorderedElementsIterable.prototype[_is__UnorderedElementsIterable_default] = true;
+    dart.addTypeCaches(_UnorderedElementsIterable);
+    dart.setGetterSignature(_UnorderedElementsIterable, () => ({
+      __proto__: dart.getGetters(_UnorderedElementsIterable.__proto__),
+      iterator: core.Iterator$(E),
+      [$iterator]: core.Iterator$(E)
+    }));
+    dart.setLibraryUri(_UnorderedElementsIterable, L0);
+    dart.setFieldSignature(_UnorderedElementsIterable, () => ({
+      __proto__: dart.getFields(_UnorderedElementsIterable.__proto__),
+      [_queue$]: dart.finalFieldType(priority_queue.HeapPriorityQueue$(E))
+    }));
+    dart.defineExtensionAccessors(_UnorderedElementsIterable, ['iterator']);
+    return _UnorderedElementsIterable;
+  });
+  priority_queue._UnorderedElementsIterable = priority_queue._UnorderedElementsIterable$();
+  dart.addTypeTests(priority_queue._UnorderedElementsIterable, _is__UnorderedElementsIterable_default);
+  var _current = dart.privateName(priority_queue, "_current");
+  var _index = dart.privateName(priority_queue, "_index");
+  var _initialModificationCount = dart.privateName(priority_queue, "_initialModificationCount");
+  const _is__UnorderedElementsIterator_default = Symbol('_is__UnorderedElementsIterator_default');
+  priority_queue._UnorderedElementsIterator$ = dart.generic(E => {
+    class _UnorderedElementsIterator extends core.Object {
+      moveNext() {
+        if (this[_initialModificationCount] != this[_queue$][_modificationCount]) {
+          dart.throw(new core.ConcurrentModificationError.new(this[_queue$]));
+        }
+        let nextIndex = dart.notNull(this[_index]) + 1;
+        if (0 <= nextIndex && nextIndex < dart.notNull(this[_queue$].length)) {
+          this[_current] = this[_queue$][_queue$][$_get](nextIndex);
+          this[_index] = nextIndex;
+          return true;
+        }
+        this[_current] = null;
+        this[_index] = -2;
+        return false;
+      }
+      get current() {
+        let t1;
+        return dart.notNull(this[_index]) < 0 ? dart.throw(new core.StateError.new("No element")) : (t1 = this[_current], t1 == null ? E.as(null) : t1);
+      }
     }
-  };
-  (rounded_rectangle_border._RoundedRectangleToCircleBorder.new = function(opts) {
-    let side = opts && 'side' in opts ? opts.side : C0 || CT.C0;
-    if (side == null) dart.nullFailed(L0, 154, 16, "side");
-    let borderRadius = opts && 'borderRadius' in opts ? opts.borderRadius : C3 || CT.C3;
-    if (borderRadius == null) dart.nullFailed(L0, 155, 10, "borderRadius");
-    let circleness = opts && 'circleness' in opts ? opts.circleness : null;
-    if (circleness == null) dart.nullFailed(L0, 156, 19, "circleness");
-    this[borderRadius$0] = borderRadius;
-    this[circleness$] = circleness;
-    if (!(side != null)) dart.assertFailed(null, L0, 157, 15, "side != null");
-    if (!(borderRadius != null)) dart.assertFailed(null, L0, 158, 15, "borderRadius != null");
-    if (!(circleness != null)) dart.assertFailed(null, L0, 159, 15, "circleness != null");
-    rounded_rectangle_border._RoundedRectangleToCircleBorder.__proto__.new.call(this, {side: side});
-    ;
-  }).prototype = rounded_rectangle_border._RoundedRectangleToCircleBorder.prototype;
-  dart.addTypeTests(rounded_rectangle_border._RoundedRectangleToCircleBorder);
-  dart.addTypeCaches(rounded_rectangle_border._RoundedRectangleToCircleBorder);
-  dart.setMethodSignature(rounded_rectangle_border._RoundedRectangleToCircleBorder, () => ({
-    __proto__: dart.getMethods(rounded_rectangle_border._RoundedRectangleToCircleBorder.__proto__),
-    scale: dart.fnType(borders.ShapeBorder, [core.double]),
-    [_adjustRect]: dart.fnType(ui.Rect, [ui.Rect]),
-    [_adjustBorderRadius]: dart.fnType(dart.nullable(border_radius.BorderRadius), [ui.Rect, dart.nullable(ui.TextDirection)]),
-    getInnerPath: dart.fnType(ui.Path, [ui.Rect], {textDirection: dart.nullable(ui.TextDirection)}, {}),
-    getOuterPath: dart.fnType(ui.Path, [ui.Rect], {textDirection: dart.nullable(ui.TextDirection)}, {}),
-    copyWith: dart.fnType(rounded_rectangle_border._RoundedRectangleToCircleBorder, [], {borderRadius: dart.nullable(border_radius.BorderRadius), circleness: dart.nullable(core.double), side: dart.nullable(borders.BorderSide)}, {}),
-    paint: dart.fnType(dart.void, [ui.Canvas, ui.Rect], {textDirection: dart.nullable(ui.TextDirection)}, {})
-  }));
-  dart.setGetterSignature(rounded_rectangle_border._RoundedRectangleToCircleBorder, () => ({
-    __proto__: dart.getGetters(rounded_rectangle_border._RoundedRectangleToCircleBorder.__proto__),
-    dimensions: edge_insets.EdgeInsetsGeometry
-  }));
-  dart.setLibraryUri(rounded_rectangle_border._RoundedRectangleToCircleBorder, L1);
-  dart.setFieldSignature(rounded_rectangle_border._RoundedRectangleToCircleBorder, () => ({
-    __proto__: dart.getFields(rounded_rectangle_border._RoundedRectangleToCircleBorder.__proto__),
-    borderRadius: dart.finalFieldType(border_radius.BorderRadiusGeometry),
-    circleness: dart.finalFieldType(core.double)
-  }));
-  dart.defineExtensionMethods(rounded_rectangle_border._RoundedRectangleToCircleBorder, ['_equals', 'toString']);
-  dart.defineExtensionAccessors(rounded_rectangle_border._RoundedRectangleToCircleBorder, ['hashCode']);
-  dart.trackLibraries("packages/flutter/src/painting/rounded_rectangle_border.dart", {
-    "package:flutter/src/painting/rounded_rectangle_border.dart": rounded_rectangle_border
+    (_UnorderedElementsIterator.new = function(_queue) {
+      if (_queue == null) dart.nullFailed(L1, 475, 35, "_queue");
+      this[_current] = null;
+      this[_index] = -1;
+      this[_queue$] = _queue;
+      this[_initialModificationCount] = _queue[_modificationCount];
+      ;
+    }).prototype = _UnorderedElementsIterator.prototype;
+    dart.addTypeTests(_UnorderedElementsIterator);
+    _UnorderedElementsIterator.prototype[_is__UnorderedElementsIterator_default] = true;
+    dart.addTypeCaches(_UnorderedElementsIterator);
+    _UnorderedElementsIterator[dart.implements] = () => [core.Iterator$(E)];
+    dart.setMethodSignature(_UnorderedElementsIterator, () => ({
+      __proto__: dart.getMethods(_UnorderedElementsIterator.__proto__),
+      moveNext: dart.fnType(core.bool, [])
+    }));
+    dart.setGetterSignature(_UnorderedElementsIterator, () => ({
+      __proto__: dart.getGetters(_UnorderedElementsIterator.__proto__),
+      current: E
+    }));
+    dart.setLibraryUri(_UnorderedElementsIterator, L0);
+    dart.setFieldSignature(_UnorderedElementsIterator, () => ({
+      __proto__: dart.getFields(_UnorderedElementsIterator.__proto__),
+      [_queue$]: dart.finalFieldType(priority_queue.HeapPriorityQueue$(E)),
+      [_initialModificationCount]: dart.finalFieldType(core.int),
+      [_current]: dart.fieldType(dart.nullable(E)),
+      [_index]: dart.fieldType(core.int)
+    }));
+    return _UnorderedElementsIterator;
+  });
+  priority_queue._UnorderedElementsIterator = priority_queue._UnorderedElementsIterator$();
+  dart.addTypeTests(priority_queue._UnorderedElementsIterator, _is__UnorderedElementsIterator_default);
+  dart.trackLibraries("packages/collection/src/priority_queue.dart", {
+    "package:collection/src/priority_queue.dart": priority_queue
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["rounded_rectangle_border.dart"],"names":[],"mappings":"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","file":"../../../../../../../packages/flutter/src/painting/rounded_rectangle_border.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["priority_queue.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;MAmLsB;;;;;;mBA2BH;;;AAAU,aAAA,AAAM,qBAAC,KAAK;qBAAN,OAAiB,KAAL;MAAU;;aAG5C;AACW,QAApB,2BAAkB,aAAlB,4BAAkB;AACL,QAAb,WAAK,OAAO;MACd;;yBAGwB;;AAClB,uBAAW;AACf,iBAAS,UAAW,SAAQ;AACd,UAAZ,WAAW;AACE,UAAb,WAAK,OAAO;;AAEgB,QAA9B,2BAAmB,aAAnB,4BAAsB,QAAQ;MAChC;;AAIsB,QAApB,2BAAkB,aAAlB,4BAAkB;AACD,QAAjB;AACW,QAAX,gBAAU;MACZ;;aAGgB;AAAW,cAAgB,cAAhB,cAAQ,MAAM,MAAK;MAAC;;AAUV,yDAA8B;MAAK;;AAItE,YAAI,AAAQ,kBAAG,GAAG,AAA8B,WAAxB,wBAAW;AACnC,cAAO,kBAAW;MACpB;;AAGoB,cAAA,AAAQ,mBAAG;MAAC;;AAGT,cAAA,AAAQ,mBAAG;MAAC;;AAGjB;MAAO;aAGX;;;AACR,oBAAQ,cAAQ,OAAO;AAC3B,YAAU,aAAN,KAAK,IAAG,GAAG,MAAO;AACF,QAApB,2BAAkB,aAAlB,4BAAkB;AACd,mBAAO;AACX,YAAU,aAAN,KAAK,iBAAG;AACN,2BAAkB,IAAI,OAAE,OAAO,EAAxB,AAAU;AACrB,cAAS,aAAL,IAAI,KAAI;AACY,YAAtB,gBAAU,IAAI,EAAE,KAAK;;AAEG,YAAxB,kBAAY,IAAI,EAAE,KAAK;;;AAG3B,cAAO;MACT;;AAUsB,QAApB,2BAAkB,aAAlB,4BAAkB;AACd,qBAAS;AACT,qBAAS;AACI,QAAjB;AACW,QAAX,gBAAU;AACV,cAAO,AAAO,AAAa,OAAd,QAAM,MAAM;MAC3B;;AAIE,YAAI,AAAQ,kBAAG,GAAG,AAA8B,WAAxB,wBAAW;AACf,QAApB,2BAAkB,aAAlB,4BAAkB;AACd,qBAAS,iBAAW;AACpB,mBAAO;AACX,YAAY,aAAR,iBAAU;AACQ,UAApB,kBAAY,IAAI,EAAE;;AAEpB,cAAO,OAAM;MACf;;;AAGoB;;AAAoB,oBAAK;;;MAAW;;AAIlD,kBAAM,4BAAgB;AAC1B,iBAAS,IAAI,GAAG,AAAE,CAAD,gBAAG,gBAAS,IAAA,AAAC,CAAA;AACN,UAAtB,AAAI,GAAD,KAAK,iBAAW,CAAC;;AAEtB,cAAO,IAAG;MACZ;;AAG6B;MAAkB;;AAG3C;;AAAC,mBAAS,IAAI,GAAG,AAAE,CAAD,gBAAG,gBAAS,IAAA,AAAC,CAAA;AAAI,qCAAW,CAAC;;;MAAE;;AAOnD,cAA4B,eAArB,AAAO,qBAAK;MACrB;aAKY;;AACV,YAAI,AAAQ,iBAAG,AAAO,wBAAQ,AAAO;AACR,QAA7B,gBAAU,OAAO,GAAS,oBAAP,mCAAO;MAC5B;gBAQc;;AACZ,YAAI,AAAQ,kBAAG,GAAG,MAAO,EAAC;AAMtB,uBAAW;AAIf;AACM,sBAAQ,AAAS,QAAD,GAAG;AACnB,wBAAU,iBAAW,KAAK;AAC1B,2BAAkB,OAAO,OAAE,MAAM,EAA1B,AAAU;AACrB,cAAS,aAAL,IAAI,KAAI;AACV,gBAAI,AAAK,IAAD,KAAI,KAAa,YAAR,OAAO,EAAI,MAAM,GAAE,MAAO,MAAK;AAG5C,oCAAoB,AAAS,QAAD,GAAG;AACnC,gBAAI,AAAkB,iBAAD,iBAAI;AACK,cAA5B,WAAW,iBAAiB;AAC5B;;;AAIJ;AACE,mBAAO,AAAS,QAAD;AAEC,cAAd,WAAA,AAAS,QAAD,cAAK;;AAGF,YAAb,WAAA,AAAS,QAAD,GAAI;mBACL,AAAS,QAAD,gBAAG;iBACb,QAAQ,KAAI;AACrB,cAAO,EAAC;MACV;;AAGM,wBAAoB,aAAR,iBAAU;AACtB,mBAAO,iBAAW,SAAS;AACP,QAAxB,AAAM,qBAAC,SAAS,EAAI;AACD,QAAnB,gBAAU,SAAS;AACnB,cAAO,KAAI;MACb;kBAOiB,SAAa;;;AAC5B,eAAa,aAAN,KAAK,IAAG;AACT,4BAA0B,EAAL,aAAN,KAAK,IAAG,KAAM;AAC7B,uBAAS,iBAAW,WAAW;AACnC,cAAgC,mBAAjB,OAAO,OAAE,MAAM,EAA1B,AAAU,4BAAoB,GAAG;AACf,UAAtB,AAAM,qBAAC,KAAK,EAAI,MAAM;AACH,UAAnB,QAAQ,WAAW;;AAEE,QAAvB,AAAM,qBAAC,KAAK,EAAI,OAAO;MACzB;oBAOmB,SAAa;;;AAC1B,8BAAwB,AAAI,aAAV,KAAK,IAAG,IAAI;AAClC,eAAO,AAAgB,eAAD,gBAAG;AACnB,+BAAiB,AAAgB,eAAD,GAAG;AACnC,0BAAY,iBAAW,cAAc;AACrC,2BAAa,iBAAW,eAAe;AACvC,2BAAkB,SAAS,OAAE,UAAU,EAAhC,AAAU;AACjB;AACF;AACF,cAAS,aAAL,IAAI,IAAG;AACW,YAApB,WAAW,SAAS;AACU,YAA9B,gBAAgB,cAAc;;AAET,YAArB,WAAW,UAAU;AACU,YAA/B,gBAAgB,eAAe;;AAEG,UAApC,cAAkB,OAAO,QAAE,QAAQ,EAA5B,AAAU;AACjB,cAAS,aAAL,IAAI,KAAI;AACa,YAAvB,AAAM,qBAAC,KAAK,EAAI,OAAO;AACvB;;AAEsB,UAAxB,AAAM,qBAAC,KAAK,EAAI,QAAQ;AACH,UAArB,QAAQ,aAAa;AACU,UAA/B,kBAAwB,AAAI,aAAV,KAAK,IAAG,IAAI;;AAE5B,6BAAiB,AAAgB,eAAD,GAAG;AACvC,YAAI,AAAe,cAAD,gBAAG;AACf,sBAAQ,iBAAW,cAAc;AACjC,6BAAkB,OAAO,SAAE,KAAK,EAAzB,AAAU;AACrB,cAAS,aAAL,IAAI,IAAG;AACY,YAArB,AAAM,qBAAC,KAAK,EAAI,KAAK;AACC,YAAtB,QAAQ,cAAc;;;AAGH,QAAvB,AAAM,qBAAC,KAAK,EAAI,OAAO;MACzB;;AAMM,0BAA4B,AAAI,aAAlB,AAAO,0BAAS,IAAI;AACtC,YAAI,AAAY,WAAD,MAAsB,AAA+B;AAChE,uBAAW,kBAAgB,WAAW,EAAE;AACP,QAArC,AAAS,QAAD,YAAU,GAAG,eAAS;AACb,QAAjB,gBAAS,QAAQ;MACnB;;sCA9PuC;;MArB9B,gBAAS,qBAAmC;MAKjD,gBAAU;MAKV,2BAAqB;MAYR,qBAAa,KAAX,UAAU,QAAV;;IAA4B;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;MA5B9B,kDAAiB;;;;;;;;;;AAiSN,yDAA8B;MAAO;;;UAFjC;;AAAhC;;IAAuC;;;;;;;;;;;;;;;;;;;;;;;;;;AAgBrC,YAAI,mCAA6B,AAAO;AACG,UAAzC,WAAM,yCAA4B;;AAEhC,wBAAmB,aAAP,gBAAS;AACzB,YAAI,AAAE,KAAG,SAAS,IAAI,AAAU,SAAD,gBAAG,AAAO;AACJ,UAAnC,iBAAW,AAAO,AAAM,8BAAC,SAAS;AAChB,UAAlB,eAAS,SAAS;AAClB,gBAAO;;AAEM,QAAf,iBAAW;AACA,QAAX,eAAS,CAAC;AACV,cAAO;MACT;;;AAII,cAAO,cAAP,gBAAS,IAAI,WAAM,wBAAW,kBAA0B,2BAAT,OAAiB,KAAL;MAAU;;;UArBzC;MAH7B;MACC,eAAS,CAAC;MAEkB;MACA,kCAAE,AAAO,MAAD;;IAAmB","file":"../../../../../../../../packages/collection/src/priority_queue.dart.lib.js"}');
   // Exports:
   return {
-    src__painting__rounded_rectangle_border: rounded_rectangle_border
+    src__priority_queue: priority_queue
   };
 }));
 
-//# sourceMappingURL=rounded_rectangle_border.dart.lib.js.map
+//# sourceMappingURL=priority_queue.dart.lib.js.map

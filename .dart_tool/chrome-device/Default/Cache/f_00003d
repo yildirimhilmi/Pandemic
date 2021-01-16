@@ -1,643 +1,569 @@
-define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/foundation/object.dart'], (function load__packages__flutter__src__widgets__async_dart(dart_sdk, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__foundation__object$46dart) {
+define(['dart_sdk', 'packages/flutter/src/foundation/synchronous_future.dart', 'packages/flutter/src/painting/image_stream.dart', 'packages/flutter/src/foundation/debug.dart', 'packages/flutter/src/painting/_network_image_web.dart'], (function load__packages__flutter_image__network_dart(dart_sdk, packages__flutter__src__foundation__synchronous_future$46dart, packages__flutter__src__painting__image_stream$46dart, packages__flutter__src__foundation__debug$46dart, packages__flutter__src__painting___network_image_web$46dart) {
   'use strict';
   const core = dart_sdk.core;
   const async = dart_sdk.async;
-  const _internal = dart_sdk._internal;
+  const _js_helper = dart_sdk._js_helper;
   const ui = dart_sdk.ui;
+  const typed_data = dart_sdk.typed_data;
+  const _http = dart_sdk._http;
+  const _native_typed_data = dart_sdk._native_typed_data;
+  const io = dart_sdk.io;
+  const math = dart_sdk.math;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
-  const object = packages__flutter__src__foundation__object$46dart.src__foundation__object;
-  var async$ = Object.create(dart.library);
-  var VoidTovoid = () => (VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))();
-  var ObjectAndStackTraceToNull = () => (ObjectAndStackTraceToNull = dart.constFn(dart.fnType(core.Null, [core.Object, core.StackTrace])))();
-  var ConnectionStateL = () => (ConnectionStateL = dart.constFn(dart.legacy(async$.ConnectionState)))();
+  const synchronous_future = packages__flutter__src__foundation__synchronous_future$46dart.src__foundation__synchronous_future;
+  const image_stream = packages__flutter__src__painting__image_stream$46dart.src__painting__image_stream;
+  const assertions = packages__flutter__src__foundation__debug$46dart.src__foundation__assertions;
+  const diagnostics = packages__flutter__src__foundation__debug$46dart.src__foundation__diagnostics;
+  const image_provider = packages__flutter__src__painting___network_image_web$46dart.src__painting__image_provider;
+  var network = Object.create(dart.library);
+  var $lengthInBytes = dartx.lengthInBytes;
+  var $runtimeType = dartx.runtimeType;
+  var $_equals = dartx._equals;
+  var $hashCode = dartx.hashCode;
+  var $toString = dartx.toString;
+  var $buffer = dartx.buffer;
+  var $length = dartx.length;
+  var $setAll = dartx.setAll;
+  var $setRange = dartx.setRange;
+  var $contains = dartx.contains;
+  var FetchInstructionsL = () => (FetchInstructionsL = dart.constFn(dart.legacy(network.FetchInstructions)))();
+  var FutureOfFetchInstructionsL = () => (FutureOfFetchInstructionsL = dart.constFn(async.Future$(FetchInstructionsL())))();
+  var FutureLOfFetchInstructionsL = () => (FutureLOfFetchInstructionsL = dart.constFn(dart.legacy(FutureOfFetchInstructionsL())))();
+  var UriL = () => (UriL = dart.constFn(dart.legacy(core.Uri)))();
+  var FetchFailureL = () => (FetchFailureL = dart.constFn(dart.legacy(network.FetchFailure)))();
+  var UriLAndFetchFailureLToFutureLOfFetchInstructionsL = () => (UriLAndFetchFailureLToFutureLOfFetchInstructionsL = dart.constFn(dart.fnType(FutureLOfFetchInstructionsL(), [UriL(), FetchFailureL()])))();
+  var NetworkImageWithRetryL = () => (NetworkImageWithRetryL = dart.constFn(dart.legacy(network.NetworkImageWithRetry)))();
+  var SynchronousFutureOfNetworkImageWithRetryL = () => (SynchronousFutureOfNetworkImageWithRetryL = dart.constFn(synchronous_future.SynchronousFuture$(NetworkImageWithRetryL())))();
+  var DiagnosticsNodeL = () => (DiagnosticsNodeL = dart.constFn(dart.legacy(diagnostics.DiagnosticsNode)))();
+  var SyncIterableOfDiagnosticsNodeL = () => (SyncIterableOfDiagnosticsNodeL = dart.constFn(_js_helper.SyncIterable$(DiagnosticsNodeL())))();
+  var IterableOfDiagnosticsNodeL = () => (IterableOfDiagnosticsNodeL = dart.constFn(core.Iterable$(DiagnosticsNodeL())))();
+  var IterableLOfDiagnosticsNodeL = () => (IterableLOfDiagnosticsNodeL = dart.constFn(dart.legacy(IterableOfDiagnosticsNodeL())))();
+  var VoidToIterableLOfDiagnosticsNodeL = () => (VoidToIterableLOfDiagnosticsNodeL = dart.constFn(dart.fnType(IterableLOfDiagnosticsNodeL(), [])))();
+  var boolL = () => (boolL = dart.constFn(dart.legacy(core.bool)))();
+  var VoidToboolL = () => (VoidToboolL = dart.constFn(dart.fnType(boolL(), [])))();
+  var _Uint8ListBuilderL = () => (_Uint8ListBuilderL = dart.constFn(dart.legacy(network._Uint8ListBuilder)))();
+  var intL = () => (intL = dart.constFn(dart.legacy(core.int)))();
+  var ListOfintL = () => (ListOfintL = dart.constFn(core.List$(intL())))();
+  var ListLOfintL = () => (ListLOfintL = dart.constFn(dart.legacy(ListOfintL())))();
+  var _Uint8ListBuilderLAndListLOfintLTo_Uint8ListBuilderL = () => (_Uint8ListBuilderLAndListLOfintLTo_Uint8ListBuilderL = dart.constFn(dart.fnType(_Uint8ListBuilderL(), [_Uint8ListBuilderL(), ListLOfintL()])))();
+  var ImageInfoL = () => (ImageInfoL = dart.constFn(dart.legacy(image_stream.ImageInfo)))();
+  var intLToboolL = () => (intLToboolL = dart.constFn(dart.fnType(boolL(), [intL()])))();
+  var SocketExceptionL = () => (SocketExceptionL = dart.constFn(dart.legacy(io.SocketException)))();
+  var FutureOfvoid = () => (FutureOfvoid = dart.constFn(async.Future$(dart.void)))();
   const CT = Object.create(null);
-  var L0 = "file:///C:/src/flutter/packages/flutter/lib/src/widgets/async.dart";
-  var L1 = "package:flutter/src/widgets/async.dart";
+  var L0 = "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_image-3.0.0/lib/network.dart";
+  var L1 = "package:flutter_image/network.dart";
   dart.defineLazy(CT, {
     get C0() {
-      return C0 = dart.const({
-        __proto__: async$.ConnectionState.prototype,
-        [_name$]: "ConnectionState.none",
-        index: 0
+      return C0 = dart.fn(network.NetworkImageWithRetry.defaultFetchStrategy, UriLAndFetchFailureLToFutureLOfFetchInstructionsL());
+    },
+    get C2() {
+      return C2 = dart.fn(network.FetchStrategyBuilder.defaultTransientHttpStatusCodePredicate, intLToboolL());
+    },
+    get C3() {
+      return C3 = dart.const({
+        __proto__: core.Duration.prototype,
+        [Duration__duration]: 1000000
+      });
+    },
+    get C4() {
+      return C4 = dart.const({
+        __proto__: core.Duration.prototype,
+        [Duration__duration]: 60000000
+      });
+    },
+    get C5() {
+      return C5 = dart.const({
+        __proto__: core.Duration.prototype,
+        [Duration__duration]: 30000000
       });
     },
     get C1() {
       return C1 = dart.const({
-        __proto__: async$.ConnectionState.prototype,
-        [_name$]: "ConnectionState.waiting",
-        index: 1
+        __proto__: network.FetchStrategyBuilder.prototype,
+        [FetchStrategyBuilder_transientHttpStatusCodePredicate]: C2 || CT.C2,
+        [FetchStrategyBuilder_exponentialBackoffMultiplier]: 2,
+        [FetchStrategyBuilder_initialPauseBetweenRetries]: C3 || CT.C3,
+        [FetchStrategyBuilder_maxAttempts]: 5,
+        [FetchStrategyBuilder_totalFetchTimeout]: C4 || CT.C4,
+        [FetchStrategyBuilder_timeout]: C5 || CT.C5
       });
     },
-    get C2() {
-      return C2 = dart.const({
-        __proto__: async$.ConnectionState.prototype,
-        [_name$]: "ConnectionState.active",
-        index: 2
-      });
-    },
-    get C3() {
-      return C3 = dart.const({
-        __proto__: async$.ConnectionState.prototype,
-        [_name$]: "ConnectionState.done",
-        index: 3
-      });
-    },
-    get C4() {
-      return C4 = dart.constList([C0 || CT.C0, C1 || CT.C1, C2 || CT.C2, C3 || CT.C3], ConnectionStateL());
-    },
-    get C5() {
-      return C5 = dart.const({
-        __proto__: core._StringStackTrace.prototype,
-        [_StringStackTrace__stackTrace]: ""
-      });
+    get C6() {
+      return C6 = dart.constList([0, 408, 500, 502, 503, 504], intL());
     }
   }, false);
-  const _is_StreamBuilderBase_default = Symbol('_is_StreamBuilderBase_default');
-  var stream$ = dart.privateName(async$, "StreamBuilderBase.stream");
-  async$.StreamBuilderBase$ = dart.generic((T, S) => {
-    var _StreamBuilderBaseStateOfT$S = () => (_StreamBuilderBaseStateOfT$S = dart.constFn(async$._StreamBuilderBaseState$(T, S)))();
-    class StreamBuilderBase extends framework.StatefulWidget {
-      get stream() {
-        return this[stream$];
-      }
-      set stream(value) {
-        super.stream = value;
-      }
-      afterConnected(current) {
-        S.as(current);
-        return current;
-      }
-      afterError(current, error, stackTrace) {
-        S.as(current);
-        if (error == null) dart.nullFailed(L0, 82, 34, "error");
-        if (stackTrace == null) dart.nullFailed(L0, 82, 52, "stackTrace");
-        return current;
-      }
-      afterDone(current) {
-        S.as(current);
-        return current;
-      }
-      afterDisconnected(current) {
-        S.as(current);
-        return current;
-      }
-      createState() {
-        return new (_StreamBuilderBaseStateOfT$S()).new();
-      }
-    }
-    (StreamBuilderBase.new = function(opts) {
-      let key = opts && 'key' in opts ? opts.key : null;
-      let stream = opts && 'stream' in opts ? opts.stream : null;
-      let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
-      this[stream$] = stream;
-      StreamBuilderBase.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
-      ;
-    }).prototype = StreamBuilderBase.prototype;
-    dart.addTypeTests(StreamBuilderBase);
-    StreamBuilderBase.prototype[_is_StreamBuilderBase_default] = true;
-    dart.addTypeCaches(StreamBuilderBase);
-    dart.setMethodSignature(StreamBuilderBase, () => ({
-      __proto__: dart.getMethods(StreamBuilderBase.__proto__),
-      afterConnected: dart.fnType(S, [dart.nullable(core.Object)]),
-      afterError: dart.fnType(S, [dart.nullable(core.Object), core.Object, core.StackTrace]),
-      afterDone: dart.fnType(S, [dart.nullable(core.Object)]),
-      afterDisconnected: dart.fnType(S, [dart.nullable(core.Object)]),
-      createState: dart.fnType(framework.State$(async$.StreamBuilderBase$(T, S)), [])
-    }));
-    dart.setLibraryUri(StreamBuilderBase, L1);
-    dart.setFieldSignature(StreamBuilderBase, () => ({
-      __proto__: dart.getFields(StreamBuilderBase.__proto__),
-      stream: dart.finalFieldType(dart.nullable(async.Stream$(T)))
-    }));
-    return StreamBuilderBase;
-  });
-  async$.StreamBuilderBase = async$.StreamBuilderBase$();
-  dart.addTypeTests(async$.StreamBuilderBase, _is_StreamBuilderBase_default);
-  var _subscription = dart.privateName(async$, "_subscription");
-  var ___StreamBuilderBaseState__summary = dart.privateName(async$, "_#_StreamBuilderBaseState#_summary");
-  var ___StreamBuilderBaseState__summary_isSet = dart.privateName(async$, "_#_StreamBuilderBaseState#_summary#isSet");
-  var _summary = dart.privateName(async$, "_summary");
-  var _subscribe = dart.privateName(async$, "_subscribe");
-  var _unsubscribe = dart.privateName(async$, "_unsubscribe");
-  const _is__StreamBuilderBaseState_default = Symbol('_is__StreamBuilderBaseState_default');
-  async$._StreamBuilderBaseState$ = dart.generic((T, S) => {
-    var StreamBuilderBaseOfT$S = () => (StreamBuilderBaseOfT$S = dart.constFn(async$.StreamBuilderBase$(T, S)))();
-    var TTovoid = () => (TTovoid = dart.constFn(dart.fnType(dart.void, [T])))();
-    class _StreamBuilderBaseState extends framework.State$(async$.StreamBuilderBase$(T, S)) {
-      get [_summary]() {
-        let t0;
-        return dart.test(this[___StreamBuilderBaseState__summary_isSet]) ? (t0 = this[___StreamBuilderBaseState__summary], t0) : dart.throw(new _internal.LateError.fieldNI("_summary"));
-      }
-      set [_summary](t0) {
-        this[___StreamBuilderBaseState__summary_isSet] = true;
-        this[___StreamBuilderBaseState__summary] = t0;
-      }
-      initState() {
-        super.initState();
-        this[_summary] = this.widget.initial();
-        this[_subscribe]();
-      }
-      didUpdateWidget(oldWidget) {
-        StreamBuilderBaseOfT$S().as(oldWidget);
-        if (oldWidget == null) dart.nullFailed(L0, 116, 48, "oldWidget");
-        super.didUpdateWidget(oldWidget);
-        if (!dart.equals(oldWidget.stream, this.widget.stream)) {
-          if (this[_subscription] != null) {
-            this[_unsubscribe]();
-            this[_summary] = this.widget.afterDisconnected(this[_summary]);
-          }
-          this[_subscribe]();
-        }
-      }
-      build(context) {
-        if (context == null) dart.nullFailed(L0, 128, 29, "context");
-        return this.widget.build(context, this[_summary]);
-      }
-      dispose() {
-        this[_unsubscribe]();
-        super.dispose();
-      }
-      [_subscribe]() {
-        if (this.widget.stream != null) {
-          this[_subscription] = dart.nullCheck(this.widget.stream).listen(dart.fn(data => {
-            this.setState(dart.fn(() => {
-              this[_summary] = this.widget.afterData(this[_summary], data);
-            }, VoidTovoid()));
-          }, TTovoid()), {onError: dart.fn((error, stackTrace) => {
-              if (error == null) dart.nullFailed(L0, 142, 27, "error");
-              if (stackTrace == null) dart.nullFailed(L0, 142, 45, "stackTrace");
-              this.setState(dart.fn(() => {
-                this[_summary] = this.widget.afterError(this[_summary], error, stackTrace);
-              }, VoidTovoid()));
-            }, ObjectAndStackTraceToNull()), onDone: dart.fn(() => {
-              this.setState(dart.fn(() => {
-                this[_summary] = this.widget.afterDone(this[_summary]);
-              }, VoidTovoid()));
-            }, VoidTovoid())});
-          this[_summary] = this.widget.afterConnected(this[_summary]);
-        }
-      }
-      [_unsubscribe]() {
-        if (this[_subscription] != null) {
-          dart.nullCheck(this[_subscription]).cancel();
-          this[_subscription] = null;
-        }
-      }
-    }
-    (_StreamBuilderBaseState.new = function() {
-      this[_subscription] = null;
-      this[___StreamBuilderBaseState__summary] = null;
-      this[___StreamBuilderBaseState__summary_isSet] = false;
-      _StreamBuilderBaseState.__proto__.new.call(this);
-      ;
-    }).prototype = _StreamBuilderBaseState.prototype;
-    dart.addTypeTests(_StreamBuilderBaseState);
-    _StreamBuilderBaseState.prototype[_is__StreamBuilderBaseState_default] = true;
-    dart.addTypeCaches(_StreamBuilderBaseState);
-    dart.setMethodSignature(_StreamBuilderBaseState, () => ({
-      __proto__: dart.getMethods(_StreamBuilderBaseState.__proto__),
-      build: dart.fnType(framework.Widget, [framework.BuildContext]),
-      [_subscribe]: dart.fnType(dart.void, []),
-      [_unsubscribe]: dart.fnType(dart.void, [])
-    }));
-    dart.setGetterSignature(_StreamBuilderBaseState, () => ({
-      __proto__: dart.getGetters(_StreamBuilderBaseState.__proto__),
-      [_summary]: S
-    }));
-    dart.setSetterSignature(_StreamBuilderBaseState, () => ({
-      __proto__: dart.getSetters(_StreamBuilderBaseState.__proto__),
-      [_summary]: S
-    }));
-    dart.setLibraryUri(_StreamBuilderBaseState, L1);
-    dart.setFieldSignature(_StreamBuilderBaseState, () => ({
-      __proto__: dart.getFields(_StreamBuilderBaseState.__proto__),
-      [_subscription]: dart.fieldType(dart.nullable(async.StreamSubscription$(T))),
-      [___StreamBuilderBaseState__summary]: dart.fieldType(dart.nullable(S)),
-      [___StreamBuilderBaseState__summary_isSet]: dart.fieldType(core.bool)
-    }));
-    return _StreamBuilderBaseState;
-  });
-  async$._StreamBuilderBaseState = async$._StreamBuilderBaseState$();
-  dart.addTypeTests(async$._StreamBuilderBaseState, _is__StreamBuilderBaseState_default);
-  var _name$ = dart.privateName(async$, "_name");
   var C0;
-  var C1;
+  var _loadWithRetry = dart.privateName(network, "_loadWithRetry");
+  var _debugCheckInstructions = dart.privateName(network, "_debugCheckInstructions");
+  var url$ = dart.privateName(network, "NetworkImageWithRetry.url");
+  var scale$ = dart.privateName(network, "NetworkImageWithRetry.scale");
+  var fetchStrategy$ = dart.privateName(network, "NetworkImageWithRetry.fetchStrategy");
   var C2;
+  var FetchStrategyBuilder_transientHttpStatusCodePredicate = dart.privateName(network, "FetchStrategyBuilder.transientHttpStatusCodePredicate");
+  var FetchStrategyBuilder_exponentialBackoffMultiplier = dart.privateName(network, "FetchStrategyBuilder.exponentialBackoffMultiplier");
+  var Duration__duration = dart.privateName(core, "Duration._duration");
   var C3;
+  var FetchStrategyBuilder_initialPauseBetweenRetries = dart.privateName(network, "FetchStrategyBuilder.initialPauseBetweenRetries");
+  var FetchStrategyBuilder_maxAttempts = dart.privateName(network, "FetchStrategyBuilder.maxAttempts");
   var C4;
-  async$.ConnectionState = class ConnectionState extends core.Object {
+  var FetchStrategyBuilder_totalFetchTimeout = dart.privateName(network, "FetchStrategyBuilder.totalFetchTimeout");
+  var C5;
+  var FetchStrategyBuilder_timeout = dart.privateName(network, "FetchStrategyBuilder.timeout");
+  var C1;
+  network.NetworkImageWithRetry = class NetworkImageWithRetry extends image_provider.ImageProvider {
+    get url() {
+      return this[url$];
+    }
+    set url(value) {
+      super.url = value;
+    }
+    get scale() {
+      return this[scale$];
+    }
+    set scale(value) {
+      super.scale = value;
+    }
+    get fetchStrategy() {
+      return this[fetchStrategy$];
+    }
+    set fetchStrategy(value) {
+      super.fetchStrategy = value;
+    }
+    static defaultFetchStrategy(uri, failure) {
+      return network.NetworkImageWithRetry._defaultFetchStrategyFunction(uri, failure);
+    }
+    obtainKey(configuration) {
+      return new (SynchronousFutureOfNetworkImageWithRetryL()).new(this);
+    }
+    load(key, decode) {
+      NetworkImageWithRetryL().as(key);
+      return new image_stream.OneFrameImageStreamCompleter.new(this[_loadWithRetry](key, decode), {informationCollector: dart.fn(() => new (SyncIterableOfDiagnosticsNodeL()).new((function*() {
+          yield new assertions.ErrorDescription.new("Image provider: " + dart.str(this));
+          yield new assertions.ErrorDescription.new("Image key: " + dart.str(key));
+        }).bind(this)), VoidToIterableLOfDiagnosticsNodeL())});
+    }
+    [_debugCheckInstructions](instructions) {
+      if (!dart.test(dart.fn(() => {
+        if (instructions == null) {
+          if (dart.equals(this.fetchStrategy, C0 || CT.C0)) {
+            dart.throw(new core.StateError.new("The default FetchStrategy returned null FetchInstructions. This\n" + "is likely a bug in " + dart.str(this.runtimeType) + ". Please file a bug at\n" + "https://github.com/flutter/flutter/issues."));
+          } else {
+            dart.throw(new core.StateError.new("The custom FetchStrategy used to fetch " + dart.str(this.url) + " returned null\n" + "FetchInstructions. FetchInstructions must never be null, but\n" + "instead instruct to either make another fetch attempt or give up."));
+          }
+        }
+        return true;
+      }, VoidToboolL())())) dart.assertFailed(null, L0, 84, 12, "() {\n      if (instructions == null) {\n        if (fetchStrategy == defaultFetchStrategy) {\n          throw StateError(\n            'The default FetchStrategy returned null FetchInstructions. This\\n'\n            'is likely a bug in $runtimeType. Please file a bug at\\n'\n            'https://github.com/flutter/flutter/issues.'\n          );\n        } else {\n          throw StateError(\n            'The custom FetchStrategy used to fetch $url returned null\\n'\n            'FetchInstructions. FetchInstructions must never be null, but\\n'\n            'instead instruct to either make another fetch attempt or give up.'\n          );\n        }\n      }\n      return true;\n    }()");
+    }
+    [_loadWithRetry](key, decode) {
+      return async.async(ImageInfoL(), (function* _loadWithRetry() {
+        let t0, t1, t0$, t1$, t2, t1$0;
+        if (!dart.equals(key, this)) dart.assertFailed(null, L0, 105, 12, "key == this");
+        let stopwatch = (t0 = new core.Stopwatch.new(), (() => {
+          t0.start();
+          return t0;
+        })());
+        let resolved = core.Uri.base.resolve(key.url);
+        let instructions = (yield (t0$ = resolved, t1 = null, this.fetchStrategy(t0$, t1)));
+        this[_debugCheckInstructions](instructions);
+        let attemptCount = 0;
+        let lastFailure = null;
+        while (!dart.test(instructions.shouldGiveUp)) {
+          attemptCount = attemptCount + 1;
+          let request = null;
+          try {
+            request = (yield network.NetworkImageWithRetry._client.getUrl(instructions.uri).timeout(instructions.timeout));
+            let response = (yield request.close().timeout(instructions.timeout));
+            if (response == null || response.statusCode !== 200) {
+              dart.throw(new network.FetchFailure.__({totalDuration: stopwatch.elapsed, attemptCount: attemptCount, httpStatusCode: response.statusCode}));
+            }
+            let builder = (yield response.fold(_Uint8ListBuilderL(), new network._Uint8ListBuilder.new(), dart.fn((buffer, bytes) => {
+              let t0;
+              t0 = buffer;
+              return (() => {
+                t0.add(bytes);
+                return t0;
+              })();
+            }, _Uint8ListBuilderLAndListLOfintLTo_Uint8ListBuilderL())).timeout(instructions.timeout));
+            let bytes = builder.data;
+            if (bytes[$lengthInBytes] === 0) return null;
+            let codec = (yield decode(bytes));
+            let image = (yield codec.getNextFrame()).image;
+            if (image == null) return null;
+            return new image_stream.ImageInfo.new({image: image, scale: key.scale});
+          } catch (e) {
+            let error = dart.getThrown(e);
+            t1$ = request;
+            t1$ == null ? null : t1$.close();
+            lastFailure = FetchFailureL().is(error) ? error : new network.FetchFailure.__({totalDuration: stopwatch.elapsed, attemptCount: attemptCount, originalException: error});
+            instructions = (yield (t1$0 = instructions.uri, t2 = lastFailure, this.fetchStrategy(t1$0, t2)));
+            this[_debugCheckInstructions](instructions);
+          }
+        }
+        if (instructions.alternativeImage != null) return instructions.alternativeImage;
+        if (!(lastFailure != null)) dart.assertFailed(null, L0, 165, 12, "lastFailure != null");
+        assertions.FlutterError.onError(new assertions.FlutterErrorDetails.new({exception: lastFailure, library: "package:flutter_image", context: new assertions.ErrorDescription.new(dart.str(this.runtimeType) + " failed to load " + dart.str(instructions.uri))}));
+        return null;
+      }).bind(this));
+    }
+    _equals(other) {
+      if (other == null) return false;
+      if (!dart.equals(dart.runtimeType(other), this.runtimeType)) return false;
+      let typedOther = NetworkImageWithRetryL().as(other);
+      return this.url == typedOther.url && this.scale == typedOther.scale;
+    }
+    get hashCode() {
+      return ui.hashValues(this.url, this.scale);
+    }
     toString() {
-      return this[_name$];
+      return dart.str(this.runtimeType) + "(\"" + dart.str(this.url) + "\", scale: " + dart.str(this.scale) + ")";
     }
   };
-  (async$.ConnectionState.new = function(index, _name) {
-    if (index == null) dart.nullFailed(L0, 177, 6, "index");
-    if (_name == null) dart.nullFailed(L0, 177, 6, "_name");
-    this.index = index;
-    this[_name$] = _name;
+  (network.NetworkImageWithRetry.new = function(url, opts) {
+    let scale = opts && 'scale' in opts ? opts.scale : 1;
+    let fetchStrategy = opts && 'fetchStrategy' in opts ? opts.fetchStrategy : C0 || CT.C0;
+    this[url$] = url;
+    this[scale$] = scale;
+    this[fetchStrategy$] = fetchStrategy;
+    if (!(url != null)) dart.assertFailed(null, L0, 33, 16, "url != null");
+    if (!(scale != null)) dart.assertFailed(null, L0, 34, 16, "scale != null");
+    if (!(fetchStrategy != null)) dart.assertFailed(null, L0, 35, 16, "fetchStrategy != null");
+    network.NetworkImageWithRetry.__proto__.new.call(this);
     ;
-  }).prototype = async$.ConnectionState.prototype;
-  dart.addTypeTests(async$.ConnectionState);
-  dart.addTypeCaches(async$.ConnectionState);
-  dart.setLibraryUri(async$.ConnectionState, L1);
-  dart.setFieldSignature(async$.ConnectionState, () => ({
-    __proto__: dart.getFields(async$.ConnectionState.__proto__),
-    index: dart.finalFieldType(core.int),
-    [_name$]: dart.finalFieldType(core.String)
+  }).prototype = network.NetworkImageWithRetry.prototype;
+  dart.addTypeTests(network.NetworkImageWithRetry);
+  dart.addTypeCaches(network.NetworkImageWithRetry);
+  dart.setMethodSignature(network.NetworkImageWithRetry, () => ({
+    __proto__: dart.getMethods(network.NetworkImageWithRetry.__proto__),
+    obtainKey: dart.fnType(dart.legacy(async.Future$(dart.legacy(network.NetworkImageWithRetry))), [dart.legacy(image_provider.ImageConfiguration)]),
+    load: dart.fnType(dart.legacy(image_stream.ImageStreamCompleter), [dart.legacy(core.Object), dart.legacy(dart.fnType(async.Future$(ui.Codec), [typed_data.Uint8List], {allowUpscaling: core.bool, cacheHeight: dart.nullable(core.int), cacheWidth: dart.nullable(core.int)}, {}))]),
+    [_debugCheckInstructions]: dart.fnType(dart.void, [dart.legacy(network.FetchInstructions)]),
+    [_loadWithRetry]: dart.fnType(dart.legacy(async.Future$(dart.legacy(image_stream.ImageInfo))), [dart.legacy(network.NetworkImageWithRetry), dart.legacy(dart.fnType(async.Future$(ui.Codec), [typed_data.Uint8List], {allowUpscaling: core.bool, cacheHeight: dart.nullable(core.int), cacheWidth: dart.nullable(core.int)}, {}))]),
+    _equals: dart.fnType(dart.legacy(core.bool), [dart.dynamic]),
+    [$_equals]: dart.fnType(dart.legacy(core.bool), [dart.dynamic]),
+    toString: dart.fnType(dart.legacy(core.String), []),
+    [$toString]: dart.fnType(dart.legacy(core.String), [])
   }));
-  dart.defineExtensionMethods(async$.ConnectionState, ['toString']);
-  async$.ConnectionState.none = C0 || CT.C0;
-  async$.ConnectionState.waiting = C1 || CT.C1;
-  async$.ConnectionState.active = C2 || CT.C2;
-  async$.ConnectionState.done = C3 || CT.C3;
-  async$.ConnectionState.values = C4 || CT.C4;
-  var _StringStackTrace__stackTrace = dart.privateName(core, "_StringStackTrace._stackTrace");
-  var C5;
-  const _is_AsyncSnapshot_default = Symbol('_is_AsyncSnapshot_default');
-  var connectionState$ = dart.privateName(async$, "AsyncSnapshot.connectionState");
-  var data$ = dart.privateName(async$, "AsyncSnapshot.data");
-  var error$ = dart.privateName(async$, "AsyncSnapshot.error");
-  var stackTrace$ = dart.privateName(async$, "AsyncSnapshot.stackTrace");
-  async$.AsyncSnapshot$ = dart.generic(T => {
-    var AsyncSnapshotOfT = () => (AsyncSnapshotOfT = dart.constFn(async$.AsyncSnapshot$(T)))();
-    class AsyncSnapshot extends core.Object {
-      get connectionState() {
-        return this[connectionState$];
+  dart.setGetterSignature(network.NetworkImageWithRetry, () => ({
+    __proto__: dart.getGetters(network.NetworkImageWithRetry.__proto__),
+    hashCode: dart.legacy(core.int),
+    [$hashCode]: dart.legacy(core.int)
+  }));
+  dart.setLibraryUri(network.NetworkImageWithRetry, L1);
+  dart.setFieldSignature(network.NetworkImageWithRetry, () => ({
+    __proto__: dart.getFields(network.NetworkImageWithRetry.__proto__),
+    url: dart.finalFieldType(dart.legacy(core.String)),
+    scale: dart.finalFieldType(dart.legacy(core.double)),
+    fetchStrategy: dart.finalFieldType(dart.legacy(dart.fnType(dart.legacy(async.Future$(dart.legacy(network.FetchInstructions))), [dart.legacy(core.Uri), dart.legacy(network.FetchFailure)])))
+  }));
+  dart.defineExtensionMethods(network.NetworkImageWithRetry, ['_equals', 'toString']);
+  dart.defineExtensionAccessors(network.NetworkImageWithRetry, ['hashCode']);
+  dart.defineLazy(network.NetworkImageWithRetry, {
+    /*network.NetworkImageWithRetry._client*/get _client() {
+      return _http.HttpClient.new();
+    },
+    /*network.NetworkImageWithRetry._defaultFetchStrategyFunction*/get _defaultFetchStrategyFunction() {
+      return (C1 || CT.C1).build();
+    }
+  }, true);
+  var shouldGiveUp = dart.privateName(network, "FetchInstructions.shouldGiveUp");
+  var timeout$ = dart.privateName(network, "FetchInstructions.timeout");
+  var uri$ = dart.privateName(network, "FetchInstructions.uri");
+  var alternativeImage$ = dart.privateName(network, "FetchInstructions.alternativeImage");
+  network.FetchInstructions = class FetchInstructions extends core.Object {
+    get shouldGiveUp() {
+      return this[shouldGiveUp];
+    }
+    set shouldGiveUp(value) {
+      super.shouldGiveUp = value;
+    }
+    get timeout() {
+      return this[timeout$];
+    }
+    set timeout(value) {
+      super.timeout = value;
+    }
+    get uri() {
+      return this[uri$];
+    }
+    set uri(value) {
+      super.uri = value;
+    }
+    get alternativeImage() {
+      return this[alternativeImage$];
+    }
+    set alternativeImage(value) {
+      super.alternativeImage = value;
+    }
+    toString() {
+      return dart.str(this.runtimeType) + "(\n" + "  shouldGiveUp: " + dart.str(this.shouldGiveUp) + "\n" + "  timeout: " + dart.str(this.timeout) + "\n" + "  uri: " + dart.str(this.uri) + "\n" + "  alternativeImage?: " + (this.alternativeImage != null ? "yes" : "no") + "\n" + ")";
+    }
+  };
+  (network.FetchInstructions.giveUp = function(opts) {
+    let uri = opts && 'uri' in opts ? opts.uri : null;
+    let alternativeImage = opts && 'alternativeImage' in opts ? opts.alternativeImage : null;
+    this[uri$] = uri;
+    this[alternativeImage$] = alternativeImage;
+    this[shouldGiveUp] = true;
+    this[timeout$] = null;
+    ;
+  }).prototype = network.FetchInstructions.prototype;
+  (network.FetchInstructions.attempt = function(opts) {
+    let uri = opts && 'uri' in opts ? opts.uri : null;
+    let timeout = opts && 'timeout' in opts ? opts.timeout : null;
+    this[uri$] = uri;
+    this[timeout$] = timeout;
+    this[shouldGiveUp] = false;
+    this[alternativeImage$] = null;
+    ;
+  }).prototype = network.FetchInstructions.prototype;
+  dart.addTypeTests(network.FetchInstructions);
+  dart.addTypeCaches(network.FetchInstructions);
+  dart.setMethodSignature(network.FetchInstructions, () => ({
+    __proto__: dart.getMethods(network.FetchInstructions.__proto__),
+    toString: dart.fnType(dart.legacy(core.String), []),
+    [$toString]: dart.fnType(dart.legacy(core.String), [])
+  }));
+  dart.setLibraryUri(network.FetchInstructions, L1);
+  dart.setFieldSignature(network.FetchInstructions, () => ({
+    __proto__: dart.getFields(network.FetchInstructions.__proto__),
+    shouldGiveUp: dart.finalFieldType(dart.legacy(core.bool)),
+    timeout: dart.finalFieldType(dart.legacy(core.Duration)),
+    uri: dart.finalFieldType(dart.legacy(core.Uri)),
+    alternativeImage: dart.finalFieldType(dart.legacy(async.Future$(dart.legacy(image_stream.ImageInfo))))
+  }));
+  dart.defineExtensionMethods(network.FetchInstructions, ['toString']);
+  var totalDuration$ = dart.privateName(network, "FetchFailure.totalDuration");
+  var attemptCount$ = dart.privateName(network, "FetchFailure.attemptCount");
+  var httpStatusCode$ = dart.privateName(network, "FetchFailure.httpStatusCode");
+  var originalException$ = dart.privateName(network, "FetchFailure.originalException");
+  network.FetchFailure = class FetchFailure extends core.Object {
+    get totalDuration() {
+      return this[totalDuration$];
+    }
+    set totalDuration(value) {
+      super.totalDuration = value;
+    }
+    get attemptCount() {
+      return this[attemptCount$];
+    }
+    set attemptCount(value) {
+      super.attemptCount = value;
+    }
+    get httpStatusCode() {
+      return this[httpStatusCode$];
+    }
+    set httpStatusCode(value) {
+      super.httpStatusCode = value;
+    }
+    get originalException() {
+      return this[originalException$];
+    }
+    set originalException(value) {
+      super.originalException = value;
+    }
+    toString() {
+      return dart.str(this.runtimeType) + "(\n" + "  attemptCount: " + dart.str(this.attemptCount) + "\n" + "  httpStatusCode: " + dart.str(this.httpStatusCode) + "\n" + "  totalDuration: " + dart.str(this.totalDuration) + "\n" + "  originalException: " + dart.str(this.originalException) + "\n" + ")";
+    }
+  };
+  (network.FetchFailure.__ = function(opts) {
+    let totalDuration = opts && 'totalDuration' in opts ? opts.totalDuration : null;
+    let attemptCount = opts && 'attemptCount' in opts ? opts.attemptCount : null;
+    let httpStatusCode = opts && 'httpStatusCode' in opts ? opts.httpStatusCode : null;
+    let originalException = opts && 'originalException' in opts ? opts.originalException : null;
+    this[totalDuration$] = totalDuration;
+    this[attemptCount$] = attemptCount;
+    this[httpStatusCode$] = httpStatusCode;
+    this[originalException$] = originalException;
+    if (!(totalDuration != null)) dart.assertFailed(null, L0, 265, 15, "totalDuration != null");
+    if (!(dart.notNull(attemptCount) > 0)) dart.assertFailed(null, L0, 266, 15, "attemptCount > 0");
+    ;
+  }).prototype = network.FetchFailure.prototype;
+  dart.addTypeTests(network.FetchFailure);
+  dart.addTypeCaches(network.FetchFailure);
+  network.FetchFailure[dart.implements] = () => [core.Exception];
+  dart.setMethodSignature(network.FetchFailure, () => ({
+    __proto__: dart.getMethods(network.FetchFailure.__proto__),
+    toString: dart.fnType(dart.legacy(core.String), []),
+    [$toString]: dart.fnType(dart.legacy(core.String), [])
+  }));
+  dart.setLibraryUri(network.FetchFailure, L1);
+  dart.setFieldSignature(network.FetchFailure, () => ({
+    __proto__: dart.getFields(network.FetchFailure.__proto__),
+    totalDuration: dart.finalFieldType(dart.legacy(core.Duration)),
+    attemptCount: dart.finalFieldType(dart.legacy(core.int)),
+    httpStatusCode: dart.finalFieldType(dart.legacy(core.int)),
+    originalException: dart.finalFieldType(dart.dynamic)
+  }));
+  dart.defineExtensionMethods(network.FetchFailure, ['toString']);
+  var _usedLength = dart.privateName(network, "_usedLength");
+  var _buffer = dart.privateName(network, "_buffer");
+  var _ensureCanAdd = dart.privateName(network, "_ensureCanAdd");
+  network._Uint8ListBuilder = class _Uint8ListBuilder extends core.Object {
+    get data() {
+      return typed_data.Uint8List.view(this[_buffer][$buffer], 0, this[_usedLength]);
+    }
+    add(bytes) {
+      this[_ensureCanAdd](bytes[$length]);
+      this[_buffer][$setAll](this[_usedLength], bytes);
+      this[_usedLength] = dart.notNull(this[_usedLength]) + dart.notNull(bytes[$length]);
+    }
+    [_ensureCanAdd](byteCount) {
+      let totalSpaceNeeded = dart.notNull(this[_usedLength]) + dart.notNull(byteCount);
+      let newLength = this[_buffer][$length];
+      while (totalSpaceNeeded > dart.notNull(newLength)) {
+        newLength = dart.notNull(newLength) * 2;
       }
-      set connectionState(value) {
-        super.connectionState = value;
-      }
-      get data() {
-        return this[data$];
-      }
-      set data(value) {
-        super.data = value;
-      }
-      get error() {
-        return this[error$];
-      }
-      set error(value) {
-        super.error = value;
-      }
-      get stackTrace() {
-        return this[stackTrace$];
-      }
-      set stackTrace(value) {
-        super.stackTrace = value;
-      }
-      get requireData() {
-        if (dart.test(this.hasData)) return dart.nullCheck(this.data);
-        if (dart.test(this.hasError)) dart.throw(dart.nullCheck(this.error));
-        dart.throw(new core.StateError.new("Snapshot has neither data nor error"));
-      }
-      inState(state) {
-        if (state == null) dart.nullFailed(L0, 280, 44, "state");
-        return new (AsyncSnapshotOfT()).__(state, this.data, this.error, this.stackTrace);
-      }
-      get hasData() {
-        return this.data != null;
-      }
-      get hasError() {
-        return this.error != null;
-      }
-      toString() {
-        return dart.str(object.objectRuntimeType(this, "AsyncSnapshot")) + "(" + dart.str(this.connectionState) + ", " + dart.str(this.data) + ", " + dart.str(this.error) + ", " + dart.str(this.stackTrace) + ")";
-      }
-      _equals(other) {
-        if (other == null) return false;
-        if (this === other) return true;
-        return AsyncSnapshotOfT().is(other) && dart.equals(other.connectionState, this.connectionState) && dart.equals(other.data, this.data) && dart.equals(other.error, this.error) && dart.equals(other.stackTrace, this.stackTrace);
-      }
-      get hashCode() {
-        return ui.hashValues(this.connectionState, this.data, this.error);
+      if (newLength != this[_buffer][$length]) {
+        let newBuffer = _native_typed_data.NativeUint8List.new(newLength);
+        newBuffer[$setAll](0, this[_buffer]);
+        newBuffer[$setRange](0, this[_usedLength], this[_buffer]);
+        this[_buffer] = newBuffer;
       }
     }
-    (AsyncSnapshot.__ = function(connectionState, data, error, stackTrace) {
-      if (connectionState == null) dart.nullFailed(L0, 210, 30, "connectionState");
-      this[connectionState$] = connectionState;
-      this[data$] = data;
-      this[error$] = error;
-      this[stackTrace$] = stackTrace;
-      if (!(connectionState != null)) dart.assertFailed(null, L0, 211, 14, "connectionState != null");
-      if (!!(data != null && error != null)) dart.assertFailed(null, L0, 212, 14, "!(data != null && error != null)");
-      if (!(stackTrace == null || error != null)) dart.assertFailed(null, L0, 213, 14, "stackTrace == null || error != null");
-      ;
-    }).prototype = AsyncSnapshot.prototype;
-    (AsyncSnapshot.nothing = function() {
-      AsyncSnapshot.__.call(this, async$.ConnectionState.none, null, null, null);
-    }).prototype = AsyncSnapshot.prototype;
-    (AsyncSnapshot.waiting = function() {
-      AsyncSnapshot.__.call(this, async$.ConnectionState.waiting, null, null, null);
-    }).prototype = AsyncSnapshot.prototype;
-    (AsyncSnapshot.withData = function(state, data) {
-      if (state == null) dart.nullFailed(L0, 222, 48, "state");
-      AsyncSnapshot.__.call(this, state, data, null, null);
-    }).prototype = AsyncSnapshot.prototype;
-    (AsyncSnapshot.withError = function(state, error, stackTrace = C5 || CT.C5) {
-      if (state == null) dart.nullFailed(L0, 229, 21, "state");
-      if (error == null) dart.nullFailed(L0, 230, 12, "error");
-      if (stackTrace == null) dart.nullFailed(L0, 231, 16, "stackTrace");
-      AsyncSnapshot.__.call(this, state, null, error, stackTrace);
-    }).prototype = AsyncSnapshot.prototype;
-    dart.addTypeTests(AsyncSnapshot);
-    AsyncSnapshot.prototype[_is_AsyncSnapshot_default] = true;
-    dart.addTypeCaches(AsyncSnapshot);
-    dart.setMethodSignature(AsyncSnapshot, () => ({
-      __proto__: dart.getMethods(AsyncSnapshot.__proto__),
-      inState: dart.fnType(async$.AsyncSnapshot$(T), [async$.ConnectionState])
-    }));
-    dart.setGetterSignature(AsyncSnapshot, () => ({
-      __proto__: dart.getGetters(AsyncSnapshot.__proto__),
-      requireData: T,
-      hasData: core.bool,
-      hasError: core.bool
-    }));
-    dart.setLibraryUri(AsyncSnapshot, L1);
-    dart.setFieldSignature(AsyncSnapshot, () => ({
-      __proto__: dart.getFields(AsyncSnapshot.__proto__),
-      connectionState: dart.finalFieldType(async$.ConnectionState),
-      data: dart.finalFieldType(dart.nullable(T)),
-      error: dart.finalFieldType(dart.nullable(core.Object)),
-      stackTrace: dart.finalFieldType(dart.nullable(core.StackTrace))
-    }));
-    dart.defineExtensionMethods(AsyncSnapshot, ['toString', '_equals']);
-    dart.defineExtensionAccessors(AsyncSnapshot, ['hashCode']);
-    return AsyncSnapshot;
-  });
-  async$.AsyncSnapshot = async$.AsyncSnapshot$();
-  dart.addTypeTests(async$.AsyncSnapshot, _is_AsyncSnapshot_default);
-  const _is_StreamBuilder_default = Symbol('_is_StreamBuilder_default');
-  var builder$ = dart.privateName(async$, "StreamBuilder.builder");
-  var initialData$ = dart.privateName(async$, "StreamBuilder.initialData");
-  async$.StreamBuilder$ = dart.generic(T => {
-    var AsyncSnapshotOfT = () => (AsyncSnapshotOfT = dart.constFn(async$.AsyncSnapshot$(T)))();
-    class StreamBuilder extends async$.StreamBuilderBase$(T, async$.AsyncSnapshot$(T)) {
-      get builder() {
-        return this[builder$];
-      }
-      set builder(value) {
-        super.builder = value;
-      }
-      get initialData() {
-        return this[initialData$];
-      }
-      set initialData(value) {
-        super.initialData = value;
-      }
-      initial() {
-        return this.initialData == null ? new (AsyncSnapshotOfT()).nothing() : new (AsyncSnapshotOfT()).withData(async$.ConnectionState.none, T.as(this.initialData));
-      }
-      afterConnected(current) {
-        AsyncSnapshotOfT().as(current);
-        if (current == null) dart.nullFailed(L0, 530, 52, "current");
-        return current.inState(async$.ConnectionState.waiting);
-      }
-      afterData(current, data) {
-        AsyncSnapshotOfT().as(current);
-        if (current == null) dart.nullFailed(L0, 533, 47, "current");
-        T.as(data);
-        return new (AsyncSnapshotOfT()).withData(async$.ConnectionState.active, data);
-      }
-      afterError(current, error, stackTrace) {
-        AsyncSnapshotOfT().as(current);
-        if (current == null) dart.nullFailed(L0, 538, 48, "current");
-        if (error == null) dart.nullFailed(L0, 538, 64, "error");
-        if (stackTrace == null) dart.nullFailed(L0, 538, 82, "stackTrace");
-        return new (AsyncSnapshotOfT()).withError(async$.ConnectionState.active, error, stackTrace);
-      }
-      afterDone(current) {
-        AsyncSnapshotOfT().as(current);
-        if (current == null) dart.nullFailed(L0, 543, 47, "current");
-        return current.inState(async$.ConnectionState.done);
-      }
-      afterDisconnected(current) {
-        AsyncSnapshotOfT().as(current);
-        if (current == null) dart.nullFailed(L0, 546, 55, "current");
-        return current.inState(async$.ConnectionState.none);
-      }
-      build(context, currentSummary) {
-        let t2, t1;
-        if (context == null) dart.nullFailed(L0, 549, 29, "context");
-        AsyncSnapshotOfT().as(currentSummary);
-        if (currentSummary == null) dart.nullFailed(L0, 549, 55, "currentSummary");
-        t1 = context;
-        t2 = currentSummary;
-        return this.builder(t1, t2);
-      }
+  };
+  (network._Uint8ListBuilder.new = function() {
+    this[_usedLength] = 0;
+    this[_buffer] = _native_typed_data.NativeUint8List.new(100000);
+    ;
+  }).prototype = network._Uint8ListBuilder.prototype;
+  dart.addTypeTests(network._Uint8ListBuilder);
+  dart.addTypeCaches(network._Uint8ListBuilder);
+  dart.setMethodSignature(network._Uint8ListBuilder, () => ({
+    __proto__: dart.getMethods(network._Uint8ListBuilder.__proto__),
+    add: dart.fnType(dart.void, [dart.legacy(core.List$(dart.legacy(core.int)))]),
+    [_ensureCanAdd]: dart.fnType(dart.void, [dart.legacy(core.int)])
+  }));
+  dart.setGetterSignature(network._Uint8ListBuilder, () => ({
+    __proto__: dart.getGetters(network._Uint8ListBuilder.__proto__),
+    data: dart.legacy(typed_data.Uint8List)
+  }));
+  dart.setLibraryUri(network._Uint8ListBuilder, L1);
+  dart.setFieldSignature(network._Uint8ListBuilder, () => ({
+    __proto__: dart.getFields(network._Uint8ListBuilder.__proto__),
+    [_usedLength]: dart.fieldType(dart.legacy(core.int)),
+    [_buffer]: dart.fieldType(dart.legacy(typed_data.Uint8List))
+  }));
+  dart.defineLazy(network._Uint8ListBuilder, {
+    /*network._Uint8ListBuilder._kInitialSize*/get _kInitialSize() {
+      return 100000;
     }
-    (StreamBuilder.new = function(opts) {
-      let key = opts && 'key' in opts ? opts.key : null;
-      let initialData = opts && 'initialData' in opts ? opts.initialData : null;
-      let stream = opts && 'stream' in opts ? opts.stream : null;
-      let builder = opts && 'builder' in opts ? opts.builder : null;
-      if (builder == null) dart.nullFailed(L0, 504, 19, "builder");
-      let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
-      this[initialData$] = initialData;
-      this[builder$] = builder;
-      if (!(builder != null)) dart.assertFailed(null, L0, 505, 15, "builder != null");
-      StreamBuilder.__proto__.new.call(this, {key: key, stream: stream, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
-      ;
-    }).prototype = StreamBuilder.prototype;
-    dart.addTypeTests(StreamBuilder);
-    StreamBuilder.prototype[_is_StreamBuilder_default] = true;
-    dart.addTypeCaches(StreamBuilder);
-    dart.setMethodSignature(StreamBuilder, () => ({
-      __proto__: dart.getMethods(StreamBuilder.__proto__),
-      initial: dart.fnType(async$.AsyncSnapshot$(T), []),
-      afterData: dart.fnType(async$.AsyncSnapshot$(T), [dart.nullable(core.Object), dart.nullable(core.Object)]),
-      build: dart.fnType(framework.Widget, [framework.BuildContext, dart.nullable(core.Object)])
-    }));
-    dart.setLibraryUri(StreamBuilder, L1);
-    dart.setFieldSignature(StreamBuilder, () => ({
-      __proto__: dart.getFields(StreamBuilder.__proto__),
-      builder: dart.finalFieldType(dart.fnType(framework.Widget, [framework.BuildContext, async$.AsyncSnapshot$(T)])),
-      initialData: dart.finalFieldType(dart.nullable(T))
-    }));
-    return StreamBuilder;
-  });
-  async$.StreamBuilder = async$.StreamBuilder$();
-  dart.addTypeTests(async$.StreamBuilder, _is_StreamBuilder_default);
-  const _is_FutureBuilder_default = Symbol('_is_FutureBuilder_default');
-  var future$ = dart.privateName(async$, "FutureBuilder.future");
-  var builder$0 = dart.privateName(async$, "FutureBuilder.builder");
-  var initialData$0 = dart.privateName(async$, "FutureBuilder.initialData");
-  async$.FutureBuilder$ = dart.generic(T => {
-    var _FutureBuilderStateOfT = () => (_FutureBuilderStateOfT = dart.constFn(async$._FutureBuilderState$(T)))();
-    class FutureBuilder extends framework.StatefulWidget {
-      get future() {
-        return this[future$];
-      }
-      set future(value) {
-        super.future = value;
-      }
-      get builder() {
-        return this[builder$0];
-      }
-      set builder(value) {
-        super.builder = value;
-      }
-      get initialData() {
-        return this[initialData$0];
-      }
-      set initialData(value) {
-        super.initialData = value;
-      }
-      createState() {
-        return new (_FutureBuilderStateOfT()).new();
-      }
+  }, true);
+  var C6;
+  network.FetchStrategyBuilder = class FetchStrategyBuilder extends core.Object {
+    get timeout() {
+      return this[timeout$0];
     }
-    (FutureBuilder.new = function(opts) {
-      let key = opts && 'key' in opts ? opts.key : null;
-      let future = opts && 'future' in opts ? opts.future : null;
-      let initialData = opts && 'initialData' in opts ? opts.initialData : null;
-      let builder = opts && 'builder' in opts ? opts.builder : null;
-      if (builder == null) dart.nullFailed(L0, 698, 19, "builder");
-      let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
-      this[future$] = future;
-      this[initialData$0] = initialData;
-      this[builder$0] = builder;
-      if (!(builder != null)) dart.assertFailed(null, L0, 699, 15, "builder != null");
-      FutureBuilder.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
-      ;
-    }).prototype = FutureBuilder.prototype;
-    dart.addTypeTests(FutureBuilder);
-    FutureBuilder.prototype[_is_FutureBuilder_default] = true;
-    dart.addTypeCaches(FutureBuilder);
-    dart.setMethodSignature(FutureBuilder, () => ({
-      __proto__: dart.getMethods(FutureBuilder.__proto__),
-      createState: dart.fnType(framework.State$(async$.FutureBuilder$(T)), [])
-    }));
-    dart.setLibraryUri(FutureBuilder, L1);
-    dart.setFieldSignature(FutureBuilder, () => ({
-      __proto__: dart.getFields(FutureBuilder.__proto__),
-      future: dart.finalFieldType(dart.nullable(async.Future$(T))),
-      builder: dart.finalFieldType(dart.fnType(framework.Widget, [framework.BuildContext, async$.AsyncSnapshot$(T)])),
-      initialData: dart.finalFieldType(dart.nullable(T))
-    }));
-    return FutureBuilder;
-  });
-  async$.FutureBuilder = async$.FutureBuilder$();
-  dart.addTypeTests(async$.FutureBuilder, _is_FutureBuilder_default);
-  var _activeCallbackIdentity = dart.privateName(async$, "_activeCallbackIdentity");
-  var ___FutureBuilderState__snapshot = dart.privateName(async$, "_#_FutureBuilderState#_snapshot");
-  var ___FutureBuilderState__snapshot_isSet = dart.privateName(async$, "_#_FutureBuilderState#_snapshot#isSet");
-  var _snapshot = dart.privateName(async$, "_snapshot");
-  const _is__FutureBuilderState_default = Symbol('_is__FutureBuilderState_default');
-  async$._FutureBuilderState$ = dart.generic(T => {
-    var AsyncSnapshotOfT = () => (AsyncSnapshotOfT = dart.constFn(async$.AsyncSnapshot$(T)))();
-    var FutureBuilderOfT = () => (FutureBuilderOfT = dart.constFn(async$.FutureBuilder$(T)))();
-    var BuildContextAndAsyncSnapshotOfTToWidget = () => (BuildContextAndAsyncSnapshotOfTToWidget = dart.constFn(dart.fnType(framework.Widget, [framework.BuildContext, AsyncSnapshotOfT()])))();
-    var TToNull = () => (TToNull = dart.constFn(dart.fnType(core.Null, [T])))();
-    class _FutureBuilderState extends framework.State$(async$.FutureBuilder$(T)) {
-      get [_snapshot]() {
+    set timeout(value) {
+      super.timeout = value;
+    }
+    get totalFetchTimeout() {
+      return this[totalFetchTimeout$];
+    }
+    set totalFetchTimeout(value) {
+      super.totalFetchTimeout = value;
+    }
+    get maxAttempts() {
+      return this[maxAttempts$];
+    }
+    set maxAttempts(value) {
+      super.maxAttempts = value;
+    }
+    get initialPauseBetweenRetries() {
+      return this[initialPauseBetweenRetries$];
+    }
+    set initialPauseBetweenRetries(value) {
+      super.initialPauseBetweenRetries = value;
+    }
+    get exponentialBackoffMultiplier() {
+      return this[exponentialBackoffMultiplier$];
+    }
+    set exponentialBackoffMultiplier(value) {
+      super.exponentialBackoffMultiplier = value;
+    }
+    get transientHttpStatusCodePredicate() {
+      return this[transientHttpStatusCodePredicate$];
+    }
+    set transientHttpStatusCodePredicate(value) {
+      super.transientHttpStatusCodePredicate = value;
+    }
+    static defaultTransientHttpStatusCodePredicate(statusCode) {
+      return network.FetchStrategyBuilder.defaultTransientHttpStatusCodes[$contains](statusCode);
+    }
+    build() {
+      return dart.fn((uri, failure) => async.async(FetchInstructionsL(), (function*() {
         let t1;
-        return dart.test(this[___FutureBuilderState__snapshot_isSet]) ? (t1 = this[___FutureBuilderState__snapshot], t1) : dart.throw(new _internal.LateError.fieldNI("_snapshot"));
-      }
-      set [_snapshot](t1) {
-        if (t1 == null) dart.nullFailed(L0, 753, 25, "null");
-        this[___FutureBuilderState__snapshot_isSet] = true;
-        this[___FutureBuilderState__snapshot] = t1;
-      }
-      initState() {
-        super.initState();
-        this[_snapshot] = this.widget.initialData == null ? new (AsyncSnapshotOfT()).nothing() : new (AsyncSnapshotOfT()).withData(async$.ConnectionState.none, T.as(this.widget.initialData));
-        this[_subscribe]();
-      }
-      didUpdateWidget(oldWidget) {
-        FutureBuilderOfT().as(oldWidget);
-        if (oldWidget == null) dart.nullFailed(L0, 765, 41, "oldWidget");
-        super.didUpdateWidget(oldWidget);
-        if (!dart.equals(oldWidget.future, this.widget.future)) {
-          if (this[_activeCallbackIdentity] != null) {
-            this[_unsubscribe]();
-            this[_snapshot] = this[_snapshot].inState(async$.ConnectionState.none);
-          }
-          this[_subscribe]();
+        if (failure == null) {
+          return new network.FetchInstructions.attempt({uri: uri, timeout: this.timeout});
         }
-      }
-      build(context) {
-        let t4, t3, t2;
-        if (context == null) dart.nullFailed(L0, 777, 29, "context");
-        t2 = this.widget;
-        t3 = context;
-        t4 = this[_snapshot];
-        return BuildContextAndAsyncSnapshotOfTToWidget().as(t2.builder)(t3, t4);
-      }
-      dispose() {
-        this[_unsubscribe]();
-        super.dispose();
-      }
-      [_subscribe]() {
-        if (this.widget.future != null) {
-          let callbackIdentity = new core.Object.new();
-          this[_activeCallbackIdentity] = callbackIdentity;
-          dart.nullCheck(this.widget.future).then(dart.void, dart.fn(data => {
-            if (dart.equals(this[_activeCallbackIdentity], callbackIdentity)) {
-              this.setState(dart.fn(() => {
-                this[_snapshot] = new (AsyncSnapshotOfT()).withData(async$.ConnectionState.done, data);
-              }, VoidTovoid()));
-            }
-          }, TToNull()), {onError: dart.fn((error, stackTrace) => {
-              if (error == null) dart.nullFailed(L0, 795, 27, "error");
-              if (stackTrace == null) dart.nullFailed(L0, 795, 45, "stackTrace");
-              if (dart.equals(this[_activeCallbackIdentity], callbackIdentity)) {
-                this.setState(dart.fn(() => {
-                  this[_snapshot] = new (AsyncSnapshotOfT()).withError(async$.ConnectionState.done, error, stackTrace);
-                }, VoidTovoid()));
-              }
-            }, ObjectAndStackTraceToNull())});
-          this[_snapshot] = this[_snapshot].inState(async$.ConnectionState.waiting);
+        let isRetriableFailure = dart.test((t1 = failure.httpStatusCode, this.transientHttpStatusCodePredicate(t1))) || SocketExceptionL().is(failure.originalException);
+        if (!isRetriableFailure || dart.test(failure.totalDuration['>'](this.totalFetchTimeout)) || dart.notNull(failure.attemptCount) > dart.notNull(this.maxAttempts)) {
+          return new network.FetchInstructions.giveUp({uri: uri});
         }
-      }
-      [_unsubscribe]() {
-        this[_activeCallbackIdentity] = null;
-      }
+        let pauseBetweenRetries = this.initialPauseBetweenRetries['*'](math.pow(this.exponentialBackoffMultiplier, dart.notNull(failure.attemptCount) - 1));
+        yield FutureOfvoid().delayed(pauseBetweenRetries);
+        return new network.FetchInstructions.attempt({uri: uri, timeout: this.timeout});
+      }).bind(this)), UriLAndFetchFailureLToFutureLOfFetchInstructionsL());
     }
-    (_FutureBuilderState.new = function() {
-      this[_activeCallbackIdentity] = null;
-      this[___FutureBuilderState__snapshot] = null;
-      this[___FutureBuilderState__snapshot_isSet] = false;
-      _FutureBuilderState.__proto__.new.call(this);
-      ;
-    }).prototype = _FutureBuilderState.prototype;
-    dart.addTypeTests(_FutureBuilderState);
-    _FutureBuilderState.prototype[_is__FutureBuilderState_default] = true;
-    dart.addTypeCaches(_FutureBuilderState);
-    dart.setMethodSignature(_FutureBuilderState, () => ({
-      __proto__: dart.getMethods(_FutureBuilderState.__proto__),
-      build: dart.fnType(framework.Widget, [framework.BuildContext]),
-      [_subscribe]: dart.fnType(dart.void, []),
-      [_unsubscribe]: dart.fnType(dart.void, [])
-    }));
-    dart.setGetterSignature(_FutureBuilderState, () => ({
-      __proto__: dart.getGetters(_FutureBuilderState.__proto__),
-      [_snapshot]: async$.AsyncSnapshot$(T)
-    }));
-    dart.setSetterSignature(_FutureBuilderState, () => ({
-      __proto__: dart.getSetters(_FutureBuilderState.__proto__),
-      [_snapshot]: async$.AsyncSnapshot$(T)
-    }));
-    dart.setLibraryUri(_FutureBuilderState, L1);
-    dart.setFieldSignature(_FutureBuilderState, () => ({
-      __proto__: dart.getFields(_FutureBuilderState.__proto__),
-      [_activeCallbackIdentity]: dart.fieldType(dart.nullable(core.Object)),
-      [___FutureBuilderState__snapshot]: dart.fieldType(dart.nullable(async$.AsyncSnapshot$(T))),
-      [___FutureBuilderState__snapshot_isSet]: dart.fieldType(core.bool)
-    }));
-    return _FutureBuilderState;
-  });
-  async$._FutureBuilderState = async$._FutureBuilderState$();
-  dart.addTypeTests(async$._FutureBuilderState, _is__FutureBuilderState_default);
-  dart.trackLibraries("packages/flutter/src/widgets/async.dart", {
-    "package:flutter/src/widgets/async.dart": async$
+  };
+  (network.FetchStrategyBuilder.new = function(opts) {
+    let timeout = opts && 'timeout' in opts ? opts.timeout : C5 || CT.C5;
+    let totalFetchTimeout = opts && 'totalFetchTimeout' in opts ? opts.totalFetchTimeout : C4 || CT.C4;
+    let maxAttempts = opts && 'maxAttempts' in opts ? opts.maxAttempts : 5;
+    let initialPauseBetweenRetries = opts && 'initialPauseBetweenRetries' in opts ? opts.initialPauseBetweenRetries : C3 || CT.C3;
+    let exponentialBackoffMultiplier = opts && 'exponentialBackoffMultiplier' in opts ? opts.exponentialBackoffMultiplier : 2;
+    let transientHttpStatusCodePredicate = opts && 'transientHttpStatusCodePredicate' in opts ? opts.transientHttpStatusCodePredicate : C2 || CT.C2;
+    this[timeout$0] = timeout;
+    this[totalFetchTimeout$] = totalFetchTimeout;
+    this[maxAttempts$] = maxAttempts;
+    this[initialPauseBetweenRetries$] = initialPauseBetweenRetries;
+    this[exponentialBackoffMultiplier$] = exponentialBackoffMultiplier;
+    this[transientHttpStatusCodePredicate$] = transientHttpStatusCodePredicate;
+    if (!(timeout != null)) dart.assertFailed(null, L0, 348, 15, "timeout != null");
+    if (!(totalFetchTimeout != null)) dart.assertFailed(null, L0, 349, 15, "totalFetchTimeout != null");
+    if (!(maxAttempts != null)) dart.assertFailed(null, L0, 350, 15, "maxAttempts != null");
+    if (!(initialPauseBetweenRetries != null)) dart.assertFailed(null, L0, 351, 15, "initialPauseBetweenRetries != null");
+    if (!(exponentialBackoffMultiplier != null)) dart.assertFailed(null, L0, 352, 15, "exponentialBackoffMultiplier != null");
+    if (!(transientHttpStatusCodePredicate != null)) dart.assertFailed(null, L0, 353, 15, "transientHttpStatusCodePredicate != null");
+    ;
+  }).prototype = network.FetchStrategyBuilder.prototype;
+  dart.addTypeTests(network.FetchStrategyBuilder);
+  dart.addTypeCaches(network.FetchStrategyBuilder);
+  const timeout$0 = FetchStrategyBuilder_timeout;
+  const totalFetchTimeout$ = FetchStrategyBuilder_totalFetchTimeout;
+  const maxAttempts$ = FetchStrategyBuilder_maxAttempts;
+  const initialPauseBetweenRetries$ = FetchStrategyBuilder_initialPauseBetweenRetries;
+  const exponentialBackoffMultiplier$ = FetchStrategyBuilder_exponentialBackoffMultiplier;
+  const transientHttpStatusCodePredicate$ = FetchStrategyBuilder_transientHttpStatusCodePredicate;
+  dart.setMethodSignature(network.FetchStrategyBuilder, () => ({
+    __proto__: dart.getMethods(network.FetchStrategyBuilder.__proto__),
+    build: dart.fnType(dart.legacy(dart.fnType(dart.legacy(async.Future$(dart.legacy(network.FetchInstructions))), [dart.legacy(core.Uri), dart.legacy(network.FetchFailure)])), [])
+  }));
+  dart.setLibraryUri(network.FetchStrategyBuilder, L1);
+  dart.setFieldSignature(network.FetchStrategyBuilder, () => ({
+    __proto__: dart.getFields(network.FetchStrategyBuilder.__proto__),
+    timeout: dart.finalFieldType(dart.legacy(core.Duration)),
+    totalFetchTimeout: dart.finalFieldType(dart.legacy(core.Duration)),
+    maxAttempts: dart.finalFieldType(dart.legacy(core.int)),
+    initialPauseBetweenRetries: dart.finalFieldType(dart.legacy(core.Duration)),
+    exponentialBackoffMultiplier: dart.finalFieldType(dart.legacy(core.num)),
+    transientHttpStatusCodePredicate: dart.finalFieldType(dart.legacy(dart.fnType(dart.legacy(core.bool), [dart.legacy(core.int)])))
+  }));
+  dart.defineLazy(network.FetchStrategyBuilder, {
+    /*network.FetchStrategyBuilder.defaultTransientHttpStatusCodes*/get defaultTransientHttpStatusCodes() {
+      return C6 || CT.C6;
+    }
+  }, true);
+  dart.setBaseClass(network.NetworkImageWithRetry, image_provider.ImageProvider$(network.NetworkImageWithRetry));
+  dart.trackLibraries("packages/flutter_image/network.dart", {
+    "package:flutter_image/network.dart": network
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["async.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;MAwDmB;;;;;;;aAaE;AAAY,sBAAO;;iBAYvB,SAAgB,OAAkB;aAAlC;YAAgB;YAAkB;AAAe,sBAAO;;;aAMzD;AAAY,sBAAO;;;aAMX;AAAY,sBAAO;;;AAMO;MAA+B;;;UAjDhD;UAAU;;;AAAY,uDAAW,GAAG;;IAAC;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAuD7D;MAAQ;;AAAR;;MAAQ;;AAII,QAAX;AACqB,QAA3B,iBAAW,AAAO;AACN,QAAZ;MACF;;oCAG6C;;AACX,QAA1B,sBAAgB,SAAS;AAC/B,yBAAI,AAAU,SAAD,SAAW,AAAO;AAC7B,cAAI,uBAAiB;AACL,YAAd;AAC6C,YAA7C,iBAAW,AAAO,8BAAkB;;AAE1B,UAAZ;;MAEJ;;YAG0B;AAAY,cAAA,AAAO,mBAAM,OAAO,EAAE;MAAS;;AAIrD,QAAd;AACe,QAAT;MACR;;AAGE,YAAI,AAAO,sBAAU;AAajB,UAZF,sBAA6B,AAAE,eAAf,AAAO,2BAAe,QAAG;AAGrC,YAFF,cAAS;AACoC,cAA3C,iBAAW,AAAO,sBAAU,gBAAU,IAAI;;mCAElC,SAAQ,OAAkB;kBAAlB;kBAAkB;AAGlC,cAFF,cAAS;AACkD,gBAAzD,iBAAW,AAAO,uBAAW,gBAAU,KAAK,EAAE,UAAU;;qDAEjD;AAGP,cAFF,cAAS;AAC8B,gBAArC,iBAAW,AAAO,sBAAU;;;AAGU,UAA1C,iBAAW,AAAO,2BAAe;;MAErC;;AAGE,YAAI,uBAAiB;AACI,UAAV,AAAE,eAAf;AACoB,UAApB,sBAAgB;;MAEpB;;;MAvDuB;iDAChB;;;;IAuDT;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAiCA;;;QAjBK;;;;;EAiBL;;;;;;;;;;;;;;;;;;;;;;;;;MAyCwB;;;;;;MAWb;;;;;;MAmBK;;;;;;MASI;;;;;;;AArBhB,sBAAI,eACF,MAAW,gBAAJ;AACT,sBAAI,gBACF,AAAY,WAAD,eAAL;AAC+C,QAAvD,WAAM,wBAAW;MACnB;;YAsByC;AAAU,2CAAmB,KAAK,EAAE,WAAM,YAAO;MAAW;;AAQjF,cAAA,AAAK,cAAG;MAAI;;AAMX,cAAA,AAAM,eAAG;MAAI;;AAGb,cAA2F,UAAxF,yBAAkB,MAAM,oBAAiB,eAAE,wBAAe,gBAAG,aAAI,gBAAG,cAAK,gBAAG,mBAAU;MAAE;;YAGxF;AACtB,YAAI,AAAU,SAAM,KAAK,EACvB,MAAO;AACT,cAAa,AAIT,uBAJG,KAAK,KACiB,YAAtB,AAAM,KAAD,kBAAoB,yBACd,YAAX,AAAM,KAAD,OAAS,cACF,YAAZ,AAAM,KAAD,QAAU,eACE,YAAjB,AAAM,KAAD,aAAe;MAC7B;;AAGoB,6BAAW,sBAAiB,WAAM;MAAM;;iCArGjC,iBAAsB,MAAW,OAAY;UAA7C;;MAAsB;MAAW;MAAY;YAC7D,AAAgB,eAAD,IAAI;WACnB,EAAE,IAAI,IAAI,QAAQ,KAAK,IAAI;YAC3B,AAAW,AAAQ,UAAT,IAAI,QAAQ,KAAK,IAAI;;IAAK;;kCAGQ,6BAAM,MAAM,MAAM;IAAK;;kCAGvB,gCAAS,MAAM,MAAM;IAAK;uCAGpC,OAAS;UAAT;kCAAuB,KAAK,EAAE,IAAI,EAAE,MAAM;IAAK;wCAO1E,OACT,OACI;UAFK;UACT;UACI;kCACD,KAAK,EAAE,MAAM,KAAK,EAAE,UAAU;IAAC;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;MAwRf;;;;;;MAUnB;;;;;;;AAGqB,cAAA,AAAY,qBAAG,OACvC,qCACA,kCAA0C,6BAAkB,KAAZ;MAAiB;;8BAGtB;;AAAY,cAAA,AAAQ,QAAD,SAAyB;MAAQ;gBAGzD,SAAW;8BAAX;;aAAW;AACrD,cAAO,mCAA0C,+BAAQ,IAAI;MAC/D;iBAG6C,SAAgB,OAAkB;8BAAlC;;YAAgB;YAAkB;AAC7E,cAAO,oCAA2C,+BAAQ,KAAK,EAAE,UAAU;MAC7E;;8BAG4C;;AAAY,cAAA,AAAQ,QAAD,SAAyB;MAAK;;8BAGzC;;AAAY,cAAA,AAAQ,QAAD,SAAyB;MAAK;YAG3E,SAA0B;;YAA1B;8BAA0B;;AAAmB,aAAQ,OAAO;aAAE,cAAc;cAA/B,AAAO;MAAyB;;;UAhDhG;UACA;UACM;UACG;;;MAFT;MAES;YACJ,AAAQ,OAAD,IAAI;AAClB,mDAAW,GAAG,UAAU,MAAM;;IAAC;;;;;;;;;;;;;;;;;;;;;;;;;;;MAyMnB;;;;;;MAyBW;;;;;;MASnB;;;;;;;AAGgC;MAAwB;;;UAjD1D;UACA;UACA;UACS;;;MAFT;MACA;MACS;YACJ,AAAQ,OAAD,IAAI;AAClB,mDAAW,GAAG;;IAAC;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAqDE;MAAS;;;AAAT;;MAAS;;AAIZ,QAAX;AAGwE,QAF9E,kBAAY,AAAO,AAAY,2BAAG,OAC5B,qCACA,kCAA0C,6BAAyB,KAAnB,AAAO;AACjD,QAAZ;MACF;;8BAGsC;;AACJ,QAA1B,sBAAgB,SAAS;AAC/B,yBAAI,AAAU,SAAD,SAAW,AAAO;AAC7B,cAAI,iCAA2B;AACf,YAAd;AACmD,YAAnD,kBAAY,AAAU,wBAAwB;;AAEpC,UAAZ;;MAEJ;YAG0B;;;AAAY;aAAe,OAAO;aAAE;cAAV,8CAAP;MAA2B;;AAIxD,QAAd;AACe,QAAT;MACR;;AAGE,YAAI,AAAO,sBAAU;AACN,iCAAmB;AACU,UAA1C,gCAA0B,gBAAgB;AAaxC,UAZW,AAAE,eAAf,AAAO,oCAAmB,QAAG;AAC3B,gBAA4B,YAAxB,+BAA2B,gBAAgB;AAG3C,cAFF,cAAS;AAC0D,gBAAjE,kBAAY,kCAA0C,6BAAM,IAAI;;;mCAG1D,SAAQ,OAAkB;kBAAlB;kBAAkB;AACpC,kBAA4B,YAAxB,+BAA2B,gBAAgB;AAG3C,gBAFF,cAAS;AACwE,kBAA/E,kBAAY,mCAA2C,6BAAM,KAAK,EAAE,UAAU;;;;AAI9B,UAAtD,kBAAY,AAAU,wBAAwB;;MAElD;;AAGgC,QAA9B,gCAA0B;MAC5B;;;MAxDQ;8CACc;;;;IAwDxB","file":"../../../../../../../packages/flutter/src/widgets/async.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["network.dart"],"names":[],"mappings":"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","file":"../../../../../../../packages/flutter_image/network.dart.lib.js"}');
   // Exports:
   return {
-    src__widgets__async: async$
+    network: network
   };
 }));
 
-//# sourceMappingURL=async.dart.lib.js.map
+//# sourceMappingURL=network.dart.lib.js.map
