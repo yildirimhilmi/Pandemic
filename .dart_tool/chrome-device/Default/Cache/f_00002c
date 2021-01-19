@@ -1,747 +1,768 @@
-define(['dart_sdk', 'packages/flutter/src/foundation/debug.dart', 'packages/flutter/src/foundation/change_notifier.dart', 'packages/flutter/src/foundation/key.dart', 'packages/vector_math/vector_math_64.dart', 'packages/flutter/src/semantics/semantics.dart', 'packages/flutter/src/rendering/layer.dart', 'packages/flutter/src/rendering/proxy_box.dart'], (function load__packages__flutter__src__rendering__custom_paint_dart(dart_sdk, packages__flutter__src__foundation__debug$46dart, packages__flutter__src__foundation__change_notifier$46dart, packages__flutter__src__foundation__key$46dart, packages__vector_math__vector_math_64$46dart, packages__flutter__src__semantics__semantics$46dart, packages__flutter__src__rendering__layer$46dart, packages__flutter__src__rendering__proxy_box$46dart) {
+define(['dart_sdk', 'packages/flutter/src/services/system_channels.dart'], (function load__packages__video_player_platform_interface__messages_dart(dart_sdk, packages__flutter__src__services__system_channels$46dart) {
   'use strict';
   const core = dart_sdk.core;
-  const ui = dart_sdk.ui;
-  const _internal = dart_sdk._internal;
-  const _interceptors = dart_sdk._interceptors;
   const _js_helper = dart_sdk._js_helper;
+  const async = dart_sdk.async;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const diagnostics = packages__flutter__src__foundation__debug$46dart.src__foundation__diagnostics;
-  const assertions = packages__flutter__src__foundation__debug$46dart.src__foundation__assertions;
-  const change_notifier = packages__flutter__src__foundation__change_notifier$46dart.src__foundation__change_notifier;
-  const key = packages__flutter__src__foundation__key$46dart.src__foundation__key;
-  const vector_math_64 = packages__vector_math__vector_math_64$46dart.vector_math_64;
-  const semantics = packages__flutter__src__semantics__semantics$46dart.src__semantics__semantics;
-  const object = packages__flutter__src__rendering__layer$46dart.src__rendering__object;
-  const proxy_box = packages__flutter__src__rendering__proxy_box$46dart.src__rendering__proxy_box;
-  var custom_paint = Object.create(dart.library);
-  var $toString = dartx.toString;
-  var $runtimeType = dartx.runtimeType;
-  var $isNotEmpty = dartx.isNotEmpty;
-  var $join = dartx.join;
-  var $addAll = dartx.addAll;
-  var $length = dartx.length;
-  var $_get = dartx._get;
-  var $containsKey = dartx.containsKey;
-  var $add = dartx.add;
+  const platform_channel = packages__flutter__src__services__system_channels$46dart.src__services__platform_channel;
+  const message_codecs = packages__flutter__src__services__system_channels$46dart.src__services__message_codecs;
+  const message_codec = packages__flutter__src__services__system_channels$46dart.src__services__message_codec;
+  var messages = Object.create(dart.library);
   var $_set = dartx._set;
-  var $insert = dartx.insert;
-  var $remove = dartx.remove;
-  var $cast = dartx.cast;
-  var VoidToint = () => (VoidToint = dart.constFn(dart.fnType(core.int, [])))();
-  var intTodynamic = () => (intTodynamic = dart.constFn(dart.fnType(dart.dynamic, [core.int])))();
-  var VoidTobool = () => (VoidTobool = dart.constFn(dart.fnType(core.bool, [])))();
-  var JSArrayOfDiagnosticsNode = () => (JSArrayOfDiagnosticsNode = dart.constFn(_interceptors.JSArray$(diagnostics.DiagnosticsNode)))();
-  var CustomPainterSemanticsL = () => (CustomPainterSemanticsL = dart.constFn(dart.legacy(custom_paint.CustomPainterSemantics)))();
-  var JSArrayOfSemanticsNode = () => (JSArrayOfSemanticsNode = dart.constFn(_interceptors.JSArray$(semantics.SemanticsNode)))();
-  var SemanticsNodeL = () => (SemanticsNodeL = dart.constFn(dart.legacy(semantics.SemanticsNode)))();
-  var LinkedMapOfKey$int = () => (LinkedMapOfKey$int = dart.constFn(_js_helper.LinkedMap$(key.Key, core.int)))();
-  var SemanticsNodeN = () => (SemanticsNodeN = dart.constFn(dart.nullable(semantics.SemanticsNode)))();
-  var ListOfSemanticsNodeN = () => (ListOfSemanticsNodeN = dart.constFn(core.List$(SemanticsNodeN())))();
-  var MapOfKey$SemanticsNode = () => (MapOfKey$SemanticsNode = dart.constFn(core.Map$(key.Key, semantics.SemanticsNode)))();
-  var VoidToMapOfKey$SemanticsNode = () => (VoidToMapOfKey$SemanticsNode = dart.constFn(dart.fnType(MapOfKey$SemanticsNode(), [])))();
-  var MapOfKey$SemanticsNodeTodynamic = () => (MapOfKey$SemanticsNodeTodynamic = dart.constFn(dart.fnType(dart.dynamic, [MapOfKey$SemanticsNode()])))();
-  var LinkedMapOfKey$SemanticsNode = () => (LinkedMapOfKey$SemanticsNode = dart.constFn(_js_helper.LinkedMap$(key.Key, semantics.SemanticsNode)))();
+  var $_get = dartx._get;
+  var intL = () => (intL = dart.constFn(dart.legacy(core.int)))();
+  var StringL = () => (StringL = dart.constFn(dart.legacy(core.String)))();
+  var boolL = () => (boolL = dart.constFn(dart.legacy(core.bool)))();
+  var doubleL = () => (doubleL = dart.constFn(dart.legacy(core.double)))();
+  var MapL = () => (MapL = dart.constFn(dart.legacy(core.Map)))();
+  var StringN = () => (StringN = dart.constFn(dart.nullable(core.String)))();
+  var TextureMessageL = () => (TextureMessageL = dart.constFn(dart.legacy(messages.TextureMessage)))();
+  var PositionMessageL = () => (PositionMessageL = dart.constFn(dart.legacy(messages.PositionMessage)))();
+  var FutureOfMapL = () => (FutureOfMapL = dart.constFn(async.Future$(MapL())))();
+  var FutureLOfMapL = () => (FutureLOfMapL = dart.constFn(dart.legacy(FutureOfMapL())))();
+  var dynamicToFutureLOfMapL = () => (dynamicToFutureLOfMapL = dart.constFn(dart.fnType(FutureLOfMapL(), [dart.dynamic])))();
   const CT = Object.create(null);
-  var L1 = "package:flutter/src/rendering/custom_paint.dart";
-  var L0 = "file:///C:/src/flutter/packages/flutter/lib/src/rendering/custom_paint.dart";
+  var L0 = "package:video_player_platform_interface/messages.dart";
   dart.defineLazy(CT, {
-    get C0() {
-      return C0 = dart.const({
-        __proto__: ui.Size.prototype,
-        [OffsetBase__dy]: 0,
-        [OffsetBase__dx]: 0
+    get C1() {
+      return C1 = dart.const({
+        __proto__: message_codecs.StandardMessageCodec.prototype
       });
     },
-    get C1() {
-      return C1 = dart.constList([], CustomPainterSemanticsL());
+    get C0() {
+      return C0 = dart.const({
+        __proto__: platform_channel.BasicMessageChannel.prototype,
+        [BasicMessageChannel__binaryMessenger]: null,
+        [BasicMessageChannel_codec]: C1 || CT.C1,
+        [BasicMessageChannel_name]: "dev.flutter.pigeon.VideoPlayerApi.initialize"
+      });
     },
     get C2() {
-      return C2 = dart.constList([], SemanticsNodeL());
+      return C2 = dart.const({
+        __proto__: platform_channel.BasicMessageChannel.prototype,
+        [BasicMessageChannel__binaryMessenger]: null,
+        [BasicMessageChannel_codec]: C1 || CT.C1,
+        [BasicMessageChannel_name]: "dev.flutter.pigeon.VideoPlayerApi.create"
+      });
+    },
+    get C3() {
+      return C3 = dart.const({
+        __proto__: platform_channel.BasicMessageChannel.prototype,
+        [BasicMessageChannel__binaryMessenger]: null,
+        [BasicMessageChannel_codec]: C1 || CT.C1,
+        [BasicMessageChannel_name]: "dev.flutter.pigeon.VideoPlayerApi.dispose"
+      });
+    },
+    get C4() {
+      return C4 = dart.const({
+        __proto__: platform_channel.BasicMessageChannel.prototype,
+        [BasicMessageChannel__binaryMessenger]: null,
+        [BasicMessageChannel_codec]: C1 || CT.C1,
+        [BasicMessageChannel_name]: "dev.flutter.pigeon.VideoPlayerApi.setLooping"
+      });
+    },
+    get C5() {
+      return C5 = dart.const({
+        __proto__: platform_channel.BasicMessageChannel.prototype,
+        [BasicMessageChannel__binaryMessenger]: null,
+        [BasicMessageChannel_codec]: C1 || CT.C1,
+        [BasicMessageChannel_name]: "dev.flutter.pigeon.VideoPlayerApi.setVolume"
+      });
+    },
+    get C6() {
+      return C6 = dart.const({
+        __proto__: platform_channel.BasicMessageChannel.prototype,
+        [BasicMessageChannel__binaryMessenger]: null,
+        [BasicMessageChannel_codec]: C1 || CT.C1,
+        [BasicMessageChannel_name]: "dev.flutter.pigeon.VideoPlayerApi.setPlaybackSpeed"
+      });
+    },
+    get C7() {
+      return C7 = dart.const({
+        __proto__: platform_channel.BasicMessageChannel.prototype,
+        [BasicMessageChannel__binaryMessenger]: null,
+        [BasicMessageChannel_codec]: C1 || CT.C1,
+        [BasicMessageChannel_name]: "dev.flutter.pigeon.VideoPlayerApi.play"
+      });
+    },
+    get C8() {
+      return C8 = dart.const({
+        __proto__: platform_channel.BasicMessageChannel.prototype,
+        [BasicMessageChannel__binaryMessenger]: null,
+        [BasicMessageChannel_codec]: C1 || CT.C1,
+        [BasicMessageChannel_name]: "dev.flutter.pigeon.VideoPlayerApi.position"
+      });
+    },
+    get C9() {
+      return C9 = dart.const({
+        __proto__: platform_channel.BasicMessageChannel.prototype,
+        [BasicMessageChannel__binaryMessenger]: null,
+        [BasicMessageChannel_codec]: C1 || CT.C1,
+        [BasicMessageChannel_name]: "dev.flutter.pigeon.VideoPlayerApi.seekTo"
+      });
+    },
+    get C10() {
+      return C10 = dart.const({
+        __proto__: platform_channel.BasicMessageChannel.prototype,
+        [BasicMessageChannel__binaryMessenger]: null,
+        [BasicMessageChannel_codec]: C1 || CT.C1,
+        [BasicMessageChannel_name]: "dev.flutter.pigeon.VideoPlayerApi.pause"
+      });
+    },
+    get C11() {
+      return C11 = dart.const({
+        __proto__: platform_channel.BasicMessageChannel.prototype,
+        [BasicMessageChannel__binaryMessenger]: null,
+        [BasicMessageChannel_codec]: C1 || CT.C1,
+        [BasicMessageChannel_name]: "dev.flutter.pigeon.VideoPlayerApi.setMixWithOthers"
+      });
     }
   }, false);
-  var _repaint = dart.privateName(custom_paint, "_repaint");
-  var _repaint$ = dart.privateName(custom_paint, "CustomPainter._repaint");
-  custom_paint.CustomPainter = class CustomPainter extends change_notifier.Listenable {
-    get [_repaint]() {
-      return this[_repaint$];
+  var _toMap = dart.privateName(messages, "_toMap");
+  var textureId = dart.privateName(messages, "TextureMessage.textureId");
+  messages.TextureMessage = class TextureMessage extends core.Object {
+    get textureId() {
+      return this[textureId];
     }
-    set [_repaint](value) {
-      super[_repaint] = value;
+    set textureId(value) {
+      this[textureId] = value;
     }
-    addListener(listener) {
-      let t0;
-      if (listener == null) dart.nullFailed(L0, 145, 33, "listener");
-      t0 = this[_repaint];
-      return t0 == null ? null : t0.addListener(listener);
+    [_toMap]() {
+      let pigeonMap = new _js_helper.LinkedMap.new();
+      pigeonMap[$_set]("textureId", this.textureId);
+      return pigeonMap;
     }
-    removeListener(listener) {
-      let t0;
-      if (listener == null) dart.nullFailed(L0, 154, 36, "listener");
-      t0 = this[_repaint];
-      return t0 == null ? null : t0.removeListener(listener);
-    }
-    get semanticsBuilder() {
-      return null;
-    }
-    shouldRebuildSemantics(oldDelegate) {
-      custom_paint.CustomPainter.as(oldDelegate);
-      if (oldDelegate == null) dart.nullFailed(L0, 226, 55, "oldDelegate");
-      return this.shouldRepaint(oldDelegate);
-    }
-    hitTest(position) {
-      if (position == null) dart.nullFailed(L0, 268, 24, "position");
-      return null;
-    }
-    toString() {
-      let t0, t0$;
-      return dart.str(diagnostics.describeIdentity(this)) + "(" + dart.str((t0$ = (t0 = this[_repaint], t0 == null ? null : dart.toString(t0)), t0$ == null ? "" : t0$)) + ")";
+    static _fromMap(pigeonMap) {
+      if (pigeonMap == null) {
+        return null;
+      }
+      let result = new messages.TextureMessage.new();
+      result.textureId = intL().as(pigeonMap[$_get]("textureId"));
+      return result;
     }
   };
-  (custom_paint.CustomPainter.new = function(opts) {
-    let repaint = opts && 'repaint' in opts ? opts.repaint : null;
-    this[_repaint$] = repaint;
-    custom_paint.CustomPainter.__proto__.new.call(this);
+  (messages.TextureMessage.new = function() {
+    this[textureId] = null;
     ;
-  }).prototype = custom_paint.CustomPainter.prototype;
-  dart.addTypeTests(custom_paint.CustomPainter);
-  dart.addTypeCaches(custom_paint.CustomPainter);
-  dart.setMethodSignature(custom_paint.CustomPainter, () => ({
-    __proto__: dart.getMethods(custom_paint.CustomPainter.__proto__),
-    addListener: dart.fnType(dart.void, [dart.fnType(dart.void, [])]),
-    removeListener: dart.fnType(dart.void, [dart.fnType(dart.void, [])]),
-    shouldRebuildSemantics: dart.fnType(core.bool, [dart.nullable(core.Object)]),
-    hitTest: dart.fnType(dart.nullable(core.bool), [ui.Offset])
+  }).prototype = messages.TextureMessage.prototype;
+  dart.addTypeTests(messages.TextureMessage);
+  dart.addTypeCaches(messages.TextureMessage);
+  dart.setMethodSignature(messages.TextureMessage, () => ({
+    __proto__: dart.getMethods(messages.TextureMessage.__proto__),
+    [_toMap]: dart.fnType(dart.legacy(core.Map), [])
   }));
-  dart.setGetterSignature(custom_paint.CustomPainter, () => ({
-    __proto__: dart.getGetters(custom_paint.CustomPainter.__proto__),
-    semanticsBuilder: dart.nullable(dart.fnType(core.List$(custom_paint.CustomPainterSemantics), [ui.Size]))
+  dart.setLibraryUri(messages.TextureMessage, L0);
+  dart.setFieldSignature(messages.TextureMessage, () => ({
+    __proto__: dart.getFields(messages.TextureMessage.__proto__),
+    textureId: dart.fieldType(dart.legacy(core.int))
   }));
-  dart.setLibraryUri(custom_paint.CustomPainter, L1);
-  dart.setFieldSignature(custom_paint.CustomPainter, () => ({
-    __proto__: dart.getFields(custom_paint.CustomPainter.__proto__),
-    [_repaint]: dart.finalFieldType(dart.nullable(change_notifier.Listenable))
-  }));
-  dart.defineExtensionMethods(custom_paint.CustomPainter, ['toString']);
-  var key$ = dart.privateName(custom_paint, "CustomPainterSemantics.key");
-  var rect$ = dart.privateName(custom_paint, "CustomPainterSemantics.rect");
-  var transform$ = dart.privateName(custom_paint, "CustomPainterSemantics.transform");
-  var properties$ = dart.privateName(custom_paint, "CustomPainterSemantics.properties");
-  var tags$ = dart.privateName(custom_paint, "CustomPainterSemantics.tags");
-  custom_paint.CustomPainterSemantics = class CustomPainterSemantics extends core.Object {
-    get key() {
-      return this[key$];
+  var asset = dart.privateName(messages, "CreateMessage.asset");
+  var uri = dart.privateName(messages, "CreateMessage.uri");
+  var packageName = dart.privateName(messages, "CreateMessage.packageName");
+  var formatHint = dart.privateName(messages, "CreateMessage.formatHint");
+  messages.CreateMessage = class CreateMessage extends core.Object {
+    get asset() {
+      return this[asset];
     }
-    set key(value) {
-      super.key = value;
+    set asset(value) {
+      this[asset] = value;
     }
-    get rect() {
-      return this[rect$];
+    get uri() {
+      return this[uri];
     }
-    set rect(value) {
-      super.rect = value;
+    set uri(value) {
+      this[uri] = value;
     }
-    get transform() {
-      return this[transform$];
+    get packageName() {
+      return this[packageName];
     }
-    set transform(value) {
-      super.transform = value;
+    set packageName(value) {
+      this[packageName] = value;
     }
-    get properties() {
-      return this[properties$];
+    get formatHint() {
+      return this[formatHint];
     }
-    set properties(value) {
-      super.properties = value;
+    set formatHint(value) {
+      this[formatHint] = value;
     }
-    get tags() {
-      return this[tags$];
+    [_toMap]() {
+      let pigeonMap = new _js_helper.LinkedMap.new();
+      pigeonMap[$_set]("asset", this.asset);
+      pigeonMap[$_set]("uri", this.uri);
+      pigeonMap[$_set]("packageName", this.packageName);
+      pigeonMap[$_set]("formatHint", this.formatHint);
+      return pigeonMap;
     }
-    set tags(value) {
-      super.tags = value;
+    static _fromMap(pigeonMap) {
+      if (pigeonMap == null) {
+        return null;
+      }
+      let result = new messages.CreateMessage.new();
+      result.asset = StringL().as(pigeonMap[$_get]("asset"));
+      result.uri = StringL().as(pigeonMap[$_get]("uri"));
+      result.packageName = StringL().as(pigeonMap[$_get]("packageName"));
+      result.formatHint = StringL().as(pigeonMap[$_get]("formatHint"));
+      return result;
     }
   };
-  (custom_paint.CustomPainterSemantics.new = function(opts) {
-    let key = opts && 'key' in opts ? opts.key : null;
-    let rect = opts && 'rect' in opts ? opts.rect : null;
-    if (rect == null) dart.nullFailed(L0, 296, 19, "rect");
-    let properties = opts && 'properties' in opts ? opts.properties : null;
-    if (properties == null) dart.nullFailed(L0, 297, 19, "properties");
-    let transform = opts && 'transform' in opts ? opts.transform : null;
-    let tags = opts && 'tags' in opts ? opts.tags : null;
-    this[key$] = key;
-    this[rect$] = rect;
-    this[properties$] = properties;
-    this[transform$] = transform;
-    this[tags$] = tags;
-    if (!(rect != null)) dart.assertFailed(null, L0, 300, 15, "rect != null");
-    if (!(properties != null)) dart.assertFailed(null, L0, 301, 15, "properties != null");
+  (messages.CreateMessage.new = function() {
+    this[asset] = null;
+    this[uri] = null;
+    this[packageName] = null;
+    this[formatHint] = null;
     ;
-  }).prototype = custom_paint.CustomPainterSemantics.prototype;
-  dart.addTypeTests(custom_paint.CustomPainterSemantics);
-  dart.addTypeCaches(custom_paint.CustomPainterSemantics);
-  dart.setLibraryUri(custom_paint.CustomPainterSemantics, L1);
-  dart.setFieldSignature(custom_paint.CustomPainterSemantics, () => ({
-    __proto__: dart.getFields(custom_paint.CustomPainterSemantics.__proto__),
-    key: dart.finalFieldType(dart.nullable(key.Key)),
-    rect: dart.finalFieldType(ui.Rect),
-    transform: dart.finalFieldType(dart.nullable(vector_math_64.Matrix4)),
-    properties: dart.finalFieldType(semantics.SemanticsProperties),
-    tags: dart.finalFieldType(dart.nullable(core.Set$(semantics.SemanticsTag)))
+  }).prototype = messages.CreateMessage.prototype;
+  dart.addTypeTests(messages.CreateMessage);
+  dart.addTypeCaches(messages.CreateMessage);
+  dart.setMethodSignature(messages.CreateMessage, () => ({
+    __proto__: dart.getMethods(messages.CreateMessage.__proto__),
+    [_toMap]: dart.fnType(dart.legacy(core.Map), [])
   }));
-  var OffsetBase__dy = dart.privateName(ui, "OffsetBase._dy");
-  var OffsetBase__dx = dart.privateName(ui, "OffsetBase._dx");
-  var C0;
-  var _backgroundSemanticsBuilder = dart.privateName(custom_paint, "_backgroundSemanticsBuilder");
-  var _foregroundSemanticsBuilder = dart.privateName(custom_paint, "_foregroundSemanticsBuilder");
-  var _backgroundSemanticsNodes = dart.privateName(custom_paint, "_backgroundSemanticsNodes");
-  var _foregroundSemanticsNodes = dart.privateName(custom_paint, "_foregroundSemanticsNodes");
-  var _painter = dart.privateName(custom_paint, "_painter");
-  var _foregroundPainter = dart.privateName(custom_paint, "_foregroundPainter");
-  var _preferredSize = dart.privateName(custom_paint, "_preferredSize");
-  var _didUpdatePainter = dart.privateName(custom_paint, "_didUpdatePainter");
-  var _paintWithPainter = dart.privateName(custom_paint, "_paintWithPainter");
-  var _setRasterCacheHints = dart.privateName(custom_paint, "_setRasterCacheHints");
+  dart.setLibraryUri(messages.CreateMessage, L0);
+  dart.setFieldSignature(messages.CreateMessage, () => ({
+    __proto__: dart.getFields(messages.CreateMessage.__proto__),
+    asset: dart.fieldType(dart.legacy(core.String)),
+    uri: dart.fieldType(dart.legacy(core.String)),
+    packageName: dart.fieldType(dart.legacy(core.String)),
+    formatHint: dart.fieldType(dart.legacy(core.String))
+  }));
+  var textureId$ = dart.privateName(messages, "LoopingMessage.textureId");
+  var isLooping = dart.privateName(messages, "LoopingMessage.isLooping");
+  messages.LoopingMessage = class LoopingMessage extends core.Object {
+    get textureId() {
+      return this[textureId$];
+    }
+    set textureId(value) {
+      this[textureId$] = value;
+    }
+    get isLooping() {
+      return this[isLooping];
+    }
+    set isLooping(value) {
+      this[isLooping] = value;
+    }
+    [_toMap]() {
+      let pigeonMap = new _js_helper.LinkedMap.new();
+      pigeonMap[$_set]("textureId", this.textureId);
+      pigeonMap[$_set]("isLooping", this.isLooping);
+      return pigeonMap;
+    }
+    static _fromMap(pigeonMap) {
+      if (pigeonMap == null) {
+        return null;
+      }
+      let result = new messages.LoopingMessage.new();
+      result.textureId = intL().as(pigeonMap[$_get]("textureId"));
+      result.isLooping = boolL().as(pigeonMap[$_get]("isLooping"));
+      return result;
+    }
+  };
+  (messages.LoopingMessage.new = function() {
+    this[textureId$] = null;
+    this[isLooping] = null;
+    ;
+  }).prototype = messages.LoopingMessage.prototype;
+  dart.addTypeTests(messages.LoopingMessage);
+  dart.addTypeCaches(messages.LoopingMessage);
+  dart.setMethodSignature(messages.LoopingMessage, () => ({
+    __proto__: dart.getMethods(messages.LoopingMessage.__proto__),
+    [_toMap]: dart.fnType(dart.legacy(core.Map), [])
+  }));
+  dart.setLibraryUri(messages.LoopingMessage, L0);
+  dart.setFieldSignature(messages.LoopingMessage, () => ({
+    __proto__: dart.getFields(messages.LoopingMessage.__proto__),
+    textureId: dart.fieldType(dart.legacy(core.int)),
+    isLooping: dart.fieldType(dart.legacy(core.bool))
+  }));
+  var textureId$0 = dart.privateName(messages, "VolumeMessage.textureId");
+  var volume = dart.privateName(messages, "VolumeMessage.volume");
+  messages.VolumeMessage = class VolumeMessage extends core.Object {
+    get textureId() {
+      return this[textureId$0];
+    }
+    set textureId(value) {
+      this[textureId$0] = value;
+    }
+    get volume() {
+      return this[volume];
+    }
+    set volume(value) {
+      this[volume] = value;
+    }
+    [_toMap]() {
+      let pigeonMap = new _js_helper.LinkedMap.new();
+      pigeonMap[$_set]("textureId", this.textureId);
+      pigeonMap[$_set]("volume", this.volume);
+      return pigeonMap;
+    }
+    static _fromMap(pigeonMap) {
+      if (pigeonMap == null) {
+        return null;
+      }
+      let result = new messages.VolumeMessage.new();
+      result.textureId = intL().as(pigeonMap[$_get]("textureId"));
+      result.volume = doubleL().as(pigeonMap[$_get]("volume"));
+      return result;
+    }
+  };
+  (messages.VolumeMessage.new = function() {
+    this[textureId$0] = null;
+    this[volume] = null;
+    ;
+  }).prototype = messages.VolumeMessage.prototype;
+  dart.addTypeTests(messages.VolumeMessage);
+  dart.addTypeCaches(messages.VolumeMessage);
+  dart.setMethodSignature(messages.VolumeMessage, () => ({
+    __proto__: dart.getMethods(messages.VolumeMessage.__proto__),
+    [_toMap]: dart.fnType(dart.legacy(core.Map), [])
+  }));
+  dart.setLibraryUri(messages.VolumeMessage, L0);
+  dart.setFieldSignature(messages.VolumeMessage, () => ({
+    __proto__: dart.getFields(messages.VolumeMessage.__proto__),
+    textureId: dart.fieldType(dart.legacy(core.int)),
+    volume: dart.fieldType(dart.legacy(core.double))
+  }));
+  var textureId$1 = dart.privateName(messages, "PlaybackSpeedMessage.textureId");
+  var speed = dart.privateName(messages, "PlaybackSpeedMessage.speed");
+  messages.PlaybackSpeedMessage = class PlaybackSpeedMessage extends core.Object {
+    get textureId() {
+      return this[textureId$1];
+    }
+    set textureId(value) {
+      this[textureId$1] = value;
+    }
+    get speed() {
+      return this[speed];
+    }
+    set speed(value) {
+      this[speed] = value;
+    }
+    [_toMap]() {
+      let pigeonMap = new _js_helper.LinkedMap.new();
+      pigeonMap[$_set]("textureId", this.textureId);
+      pigeonMap[$_set]("speed", this.speed);
+      return pigeonMap;
+    }
+    static _fromMap(pigeonMap) {
+      if (pigeonMap == null) {
+        return null;
+      }
+      let result = new messages.PlaybackSpeedMessage.new();
+      result.textureId = intL().as(pigeonMap[$_get]("textureId"));
+      result.speed = doubleL().as(pigeonMap[$_get]("speed"));
+      return result;
+    }
+  };
+  (messages.PlaybackSpeedMessage.new = function() {
+    this[textureId$1] = null;
+    this[speed] = null;
+    ;
+  }).prototype = messages.PlaybackSpeedMessage.prototype;
+  dart.addTypeTests(messages.PlaybackSpeedMessage);
+  dart.addTypeCaches(messages.PlaybackSpeedMessage);
+  dart.setMethodSignature(messages.PlaybackSpeedMessage, () => ({
+    __proto__: dart.getMethods(messages.PlaybackSpeedMessage.__proto__),
+    [_toMap]: dart.fnType(dart.legacy(core.Map), [])
+  }));
+  dart.setLibraryUri(messages.PlaybackSpeedMessage, L0);
+  dart.setFieldSignature(messages.PlaybackSpeedMessage, () => ({
+    __proto__: dart.getFields(messages.PlaybackSpeedMessage.__proto__),
+    textureId: dart.fieldType(dart.legacy(core.int)),
+    speed: dart.fieldType(dart.legacy(core.double))
+  }));
+  var textureId$2 = dart.privateName(messages, "PositionMessage.textureId");
+  var position = dart.privateName(messages, "PositionMessage.position");
+  messages.PositionMessage = class PositionMessage extends core.Object {
+    get textureId() {
+      return this[textureId$2];
+    }
+    set textureId(value) {
+      this[textureId$2] = value;
+    }
+    get position() {
+      return this[position];
+    }
+    set position(value) {
+      this[position] = value;
+    }
+    [_toMap]() {
+      let pigeonMap = new _js_helper.LinkedMap.new();
+      pigeonMap[$_set]("textureId", this.textureId);
+      pigeonMap[$_set]("position", this.position);
+      return pigeonMap;
+    }
+    static _fromMap(pigeonMap) {
+      if (pigeonMap == null) {
+        return null;
+      }
+      let result = new messages.PositionMessage.new();
+      result.textureId = intL().as(pigeonMap[$_get]("textureId"));
+      result.position = intL().as(pigeonMap[$_get]("position"));
+      return result;
+    }
+  };
+  (messages.PositionMessage.new = function() {
+    this[textureId$2] = null;
+    this[position] = null;
+    ;
+  }).prototype = messages.PositionMessage.prototype;
+  dart.addTypeTests(messages.PositionMessage);
+  dart.addTypeCaches(messages.PositionMessage);
+  dart.setMethodSignature(messages.PositionMessage, () => ({
+    __proto__: dart.getMethods(messages.PositionMessage.__proto__),
+    [_toMap]: dart.fnType(dart.legacy(core.Map), [])
+  }));
+  dart.setLibraryUri(messages.PositionMessage, L0);
+  dart.setFieldSignature(messages.PositionMessage, () => ({
+    __proto__: dart.getFields(messages.PositionMessage.__proto__),
+    textureId: dart.fieldType(dart.legacy(core.int)),
+    position: dart.fieldType(dart.legacy(core.int))
+  }));
+  var mixWithOthers = dart.privateName(messages, "MixWithOthersMessage.mixWithOthers");
+  messages.MixWithOthersMessage = class MixWithOthersMessage extends core.Object {
+    get mixWithOthers() {
+      return this[mixWithOthers];
+    }
+    set mixWithOthers(value) {
+      this[mixWithOthers] = value;
+    }
+    [_toMap]() {
+      let pigeonMap = new _js_helper.LinkedMap.new();
+      pigeonMap[$_set]("mixWithOthers", this.mixWithOthers);
+      return pigeonMap;
+    }
+    static _fromMap(pigeonMap) {
+      if (pigeonMap == null) {
+        return null;
+      }
+      let result = new messages.MixWithOthersMessage.new();
+      result.mixWithOthers = boolL().as(pigeonMap[$_get]("mixWithOthers"));
+      return result;
+    }
+  };
+  (messages.MixWithOthersMessage.new = function() {
+    this[mixWithOthers] = null;
+    ;
+  }).prototype = messages.MixWithOthersMessage.prototype;
+  dart.addTypeTests(messages.MixWithOthersMessage);
+  dart.addTypeCaches(messages.MixWithOthersMessage);
+  dart.setMethodSignature(messages.MixWithOthersMessage, () => ({
+    __proto__: dart.getMethods(messages.MixWithOthersMessage.__proto__),
+    [_toMap]: dart.fnType(dart.legacy(core.Map), [])
+  }));
+  dart.setLibraryUri(messages.MixWithOthersMessage, L0);
+  dart.setFieldSignature(messages.MixWithOthersMessage, () => ({
+    __proto__: dart.getFields(messages.MixWithOthersMessage.__proto__),
+    mixWithOthers: dart.fieldType(dart.legacy(core.bool))
+  }));
+  var BasicMessageChannel__binaryMessenger = dart.privateName(platform_channel, "BasicMessageChannel._binaryMessenger");
   var C1;
+  var BasicMessageChannel_codec = dart.privateName(platform_channel, "BasicMessageChannel.codec");
+  var BasicMessageChannel_name = dart.privateName(platform_channel, "BasicMessageChannel.name");
+  var C0;
   var C2;
-  var isComplex$ = dart.privateName(custom_paint, "RenderCustomPaint.isComplex");
-  var willChange$ = dart.privateName(custom_paint, "RenderCustomPaint.willChange");
-  custom_paint.RenderCustomPaint = class RenderCustomPaint extends proxy_box.RenderProxyBox {
-    get isComplex() {
-      return this[isComplex$];
-    }
-    set isComplex(value) {
-      this[isComplex$] = value;
-    }
-    get willChange() {
-      return this[willChange$];
-    }
-    set willChange(value) {
-      this[willChange$] = value;
-    }
-    get painter() {
-      return this[_painter];
-    }
-    set painter(value) {
-      if (dart.equals(this[_painter], value)) return;
-      let oldPainter = this[_painter];
-      this[_painter] = value;
-      this[_didUpdatePainter](this[_painter], oldPainter);
-    }
-    get foregroundPainter() {
-      return this[_foregroundPainter];
-    }
-    set foregroundPainter(value) {
-      if (dart.equals(this[_foregroundPainter], value)) return;
-      let oldPainter = this[_foregroundPainter];
-      this[_foregroundPainter] = value;
-      this[_didUpdatePainter](this[_foregroundPainter], oldPainter);
-    }
-    [_didUpdatePainter](newPainter, oldPainter) {
-      let t0, t0$;
-      if (newPainter == null) {
-        if (!(oldPainter != null)) dart.assertFailed(null, L0, 436, 14, "oldPainter != null");
-        this.markNeedsPaint();
-      } else if (oldPainter == null || !dart.equals(dart.runtimeType(newPainter), dart.runtimeType(oldPainter)) || dart.test(newPainter.shouldRepaint(oldPainter))) {
-        this.markNeedsPaint();
-      }
-      if (dart.test(this.attached)) {
-        t0 = oldPainter;
-        t0 == null ? null : t0.removeListener(dart.bind(this, 'markNeedsPaint'));
-        t0$ = newPainter;
-        t0$ == null ? null : t0$.addListener(dart.bind(this, 'markNeedsPaint'));
-      }
-      if (newPainter == null) {
-        if (!(oldPainter != null)) dart.assertFailed(null, L0, 450, 14, "oldPainter != null");
-        if (dart.test(this.attached)) this.markNeedsSemanticsUpdate();
-      } else if (oldPainter == null || !dart.equals(dart.runtimeType(newPainter), dart.runtimeType(oldPainter)) || dart.test(newPainter.shouldRebuildSemantics(oldPainter))) {
-        this.markNeedsSemanticsUpdate();
-      }
-    }
-    get preferredSize() {
-      return this[_preferredSize];
-    }
-    set preferredSize(value) {
-      if (value == null) dart.nullFailed(L0, 469, 26, "value");
-      if (!(value != null)) dart.assertFailed(null, L0, 470, 12, "value != null");
-      if (dart.equals(this.preferredSize, value)) return;
-      this[_preferredSize] = value;
-      this.markNeedsLayout();
-    }
-    attach(owner) {
-      let t0, t0$;
-      object.PipelineOwner.as(owner);
-      if (owner == null) dart.nullFailed(L0, 491, 29, "owner");
-      super.attach(owner);
-      t0 = this[_painter];
-      t0 == null ? null : t0.addListener(dart.bind(this, 'markNeedsPaint'));
-      t0$ = this[_foregroundPainter];
-      t0$ == null ? null : t0$.addListener(dart.bind(this, 'markNeedsPaint'));
-    }
-    detach() {
-      let t0, t0$;
-      t0 = this[_painter];
-      t0 == null ? null : t0.removeListener(dart.bind(this, 'markNeedsPaint'));
-      t0$ = this[_foregroundPainter];
-      t0$ == null ? null : t0$.removeListener(dart.bind(this, 'markNeedsPaint'));
-      super.detach();
-    }
-    hitTestChildren(result, opts) {
-      let t0;
-      if (result == null) dart.nullFailed(L0, 505, 41, "result");
-      let position = opts && 'position' in opts ? opts.position : null;
-      if (position == null) dart.nullFailed(L0, 505, 67, "position");
-      if (this[_foregroundPainter] != null && dart.test((t0 = dart.nullCheck(this[_foregroundPainter]).hitTest(position), t0 == null ? false : t0))) return true;
-      return super.hitTestChildren(result, {position: position});
-    }
-    hitTestSelf(position) {
-      let t0;
-      if (position == null) dart.nullFailed(L0, 512, 27, "position");
-      return this[_painter] != null && dart.test((t0 = dart.nullCheck(this[_painter]).hitTest(position), t0 == null ? true : t0));
-    }
-    performLayout() {
-      super.performLayout();
-      this.markNeedsSemanticsUpdate();
-    }
-    computeSizeForNoChild(constraints) {
-      if (constraints == null) dart.nullFailed(L0, 523, 45, "constraints");
-      return constraints.constrain(this.preferredSize);
-    }
-    [_paintWithPainter](canvas, offset, painter) {
-      if (canvas == null) dart.nullFailed(L0, 527, 33, "canvas");
-      if (offset == null) dart.nullFailed(L0, 527, 48, "offset");
-      if (painter == null) dart.nullFailed(L0, 527, 70, "painter");
-      let debugPreviousCanvasSaveCount = null;
-      let debugPreviousCanvasSaveCount$35isSet = false;
-      function debugPreviousCanvasSaveCount$35get() {
-        return debugPreviousCanvasSaveCount$35isSet ? debugPreviousCanvasSaveCount : dart.throw(new _internal.LateError.localNI("debugPreviousCanvasSaveCount"));
-      }
-      dart.fn(debugPreviousCanvasSaveCount$35get, VoidToint());
-      function debugPreviousCanvasSaveCount$35set(t3) {
-        if (t3 == null) dart.nullFailed(L0, 528, 14, "null");
-        debugPreviousCanvasSaveCount$35isSet = true;
-        return debugPreviousCanvasSaveCount = t3;
-      }
-      dart.fn(debugPreviousCanvasSaveCount$35set, intTodynamic());
-      canvas.save();
-      if (!dart.test(dart.fn(() => {
-        debugPreviousCanvasSaveCount$35set(canvas.getSaveCount());
-        return true;
-      }, VoidTobool())())) dart.assertFailed(null, L0, 530, 12, "() {\r\n      debugPreviousCanvasSaveCount = canvas.getSaveCount();\r\n      return true;\r\n    }()");
-      if (!dart.equals(offset, ui.Offset.zero)) canvas.translate(offset.dx, offset.dy);
-      painter.paint(canvas, this.size);
-      if (!dart.test(dart.fn(() => {
-        let debugNewCanvasSaveCount = canvas.getSaveCount();
-        if (dart.notNull(debugNewCanvasSaveCount) > dart.notNull(debugPreviousCanvasSaveCount$35get())) {
-          dart.throw(new assertions.FlutterError.fromParts(JSArrayOfDiagnosticsNode().of([new assertions.ErrorSummary.new("The " + dart.str(painter) + " custom painter called canvas.save() or canvas.saveLayer() at least " + dart.str(dart.notNull(debugNewCanvasSaveCount) - dart.notNull(debugPreviousCanvasSaveCount$35get())) + " more " + "time" + (dart.notNull(debugNewCanvasSaveCount) - dart.notNull(debugPreviousCanvasSaveCount$35get()) === 1 ? "" : "s") + " " + "than it called canvas.restore()."), new assertions.ErrorDescription.new("This leaves the canvas in an inconsistent state and will probably result in a broken display."), new assertions.ErrorHint.new("You must pair each call to save()/saveLayer() with a later matching call to restore().")])));
+  var C3;
+  var C4;
+  var C5;
+  var C6;
+  var C7;
+  var C8;
+  var C9;
+  var C10;
+  var C11;
+  messages.VideoPlayerApi = class VideoPlayerApi extends core.Object {
+    initialize() {
+      return async.async(dart.void, function* initialize() {
+        let channel = C0 || CT.C0;
+        let replyMap = MapL().as(yield channel.send(null));
+        if (replyMap == null) {
+          dart.throw(new message_codec.PlatformException.new({code: "channel-error", message: "Unable to establish connection on channel.", details: null}));
+        } else if (replyMap[$_get]("error") != null) {
+          let error = MapL().as(replyMap[$_get]("error"));
+          dart.throw(new message_codec.PlatformException.new({code: core.String.as(error[$_get]("code")), message: StringN().as(error[$_get]("message")), details: error[$_get]("details")}));
+        } else {
         }
-        if (dart.notNull(debugNewCanvasSaveCount) < dart.notNull(debugPreviousCanvasSaveCount$35get())) {
-          dart.throw(new assertions.FlutterError.fromParts(JSArrayOfDiagnosticsNode().of([new assertions.ErrorSummary.new("The " + dart.str(painter) + " custom painter called canvas.restore() " + dart.str(dart.notNull(debugPreviousCanvasSaveCount$35get()) - dart.notNull(debugNewCanvasSaveCount)) + " more " + "time" + (dart.notNull(debugPreviousCanvasSaveCount$35get()) - dart.notNull(debugNewCanvasSaveCount) === 1 ? "" : "s") + " " + "than it called canvas.save() or canvas.saveLayer()."), new assertions.ErrorDescription.new("This leaves the canvas in an inconsistent state and will result in a broken display."), new assertions.ErrorHint.new("You should only call restore() if you first called save() or saveLayer().")])));
-        }
-        return debugNewCanvasSaveCount == debugPreviousCanvasSaveCount$35get();
-      }, VoidTobool())())) dart.assertFailed(null, L0, 537, 12, "() {\r\n      // This isn't perfect. For example, we can't catch the case of\r\n      // someone first restoring, then setting a transform or whatnot,\r\n      // then saving.\r\n      // If this becomes a real problem, we could add logic to the\r\n      // Canvas class to lock the canvas at a particular save count\r\n      // such that restore() fails if it would take the lock count\r\n      // below that number.\r\n      final int debugNewCanvasSaveCount = canvas.getSaveCount();\r\n      if (debugNewCanvasSaveCount > debugPreviousCanvasSaveCount) {\r\n        throw FlutterError.fromParts(<DiagnosticsNode>[\r\n          ErrorSummary(\r\n            'The $painter custom painter called canvas.save() or canvas.saveLayer() at least '\r\n            '${debugNewCanvasSaveCount - debugPreviousCanvasSaveCount} more '\r\n            'time${debugNewCanvasSaveCount - debugPreviousCanvasSaveCount == 1 ? '' : 's' } '\r\n            'than it called canvas.restore().'\r\n          ),\r\n          ErrorDescription('This leaves the canvas in an inconsistent state and will probably result in a broken display.'),\r\n          ErrorHint('You must pair each call to save()/saveLayer() with a later matching call to restore().')\r\n        ]);\r\n      }\r\n      if (debugNewCanvasSaveCount < debugPreviousCanvasSaveCount) {\r\n        throw FlutterError.fromParts(<DiagnosticsNode>[\r\n          ErrorSummary('The $painter custom painter called canvas.restore() '\r\n            '${debugPreviousCanvasSaveCount - debugNewCanvasSaveCount} more '\r\n            'time${debugPreviousCanvasSaveCount - debugNewCanvasSaveCount == 1 ? '' : 's' } '\r\n            'than it called canvas.save() or canvas.saveLayer().'\r\n          ),\r\n          ErrorDescription('This leaves the canvas in an inconsistent state and will result in a broken display.'),\r\n          ErrorHint('You should only call restore() if you first called save() or saveLayer().')\r\n        ]);\r\n      }\r\n      return debugNewCanvasSaveCount == debugPreviousCanvasSaveCount;\r\n    }()");
-      canvas.restore();
+      });
     }
-    paint(context, offset) {
-      if (context == null) dart.nullFailed(L0, 575, 30, "context");
-      if (offset == null) dart.nullFailed(L0, 575, 46, "offset");
-      if (this[_painter] != null) {
-        this[_paintWithPainter](context.canvas, offset, dart.nullCheck(this[_painter]));
-        this[_setRasterCacheHints](context);
-      }
-      super.paint(context, offset);
-      if (this[_foregroundPainter] != null) {
-        this[_paintWithPainter](context.canvas, offset, dart.nullCheck(this[_foregroundPainter]));
-        this[_setRasterCacheHints](context);
-      }
-    }
-    [_setRasterCacheHints](context) {
-      if (context == null) dart.nullFailed(L0, 587, 45, "context");
-      if (dart.test(this.isComplex)) context.setIsComplexHint();
-      if (dart.test(this.willChange)) context.setWillChangeHint();
-    }
-    describeSemanticsConfiguration(config) {
-      let t5, t5$;
-      if (config == null) dart.nullFailed(L0, 601, 62, "config");
-      super.describeSemanticsConfiguration(config);
-      this[_backgroundSemanticsBuilder] = (t5 = this.painter, t5 == null ? null : t5.semanticsBuilder);
-      this[_foregroundSemanticsBuilder] = (t5$ = this.foregroundPainter, t5$ == null ? null : t5$.semanticsBuilder);
-      config.isSemanticBoundary = this[_backgroundSemanticsBuilder] != null || this[_foregroundSemanticsBuilder] != null;
-    }
-    assembleSemanticsNode(node, config, children) {
-      if (node == null) dart.nullFailed(L0, 616, 19, "node");
-      if (config == null) dart.nullFailed(L0, 617, 28, "config");
-      if (children == null) dart.nullFailed(L0, 618, 29, "children");
-      if (!dart.test(dart.fn(() => {
-        if (this.child == null && dart.test(children[$isNotEmpty])) {
-          dart.throw(new assertions.FlutterError.fromParts(JSArrayOfDiagnosticsNode().of([new assertions.ErrorSummary.new(dart.str(this[$runtimeType]) + " does not have a child widget but received a non-empty list of child SemanticsNode:\n" + dart.str(children[$join]("\n")))])));
+    create(arg) {
+      return async.async(TextureMessageL(), function* create() {
+        let requestMap = arg[_toMap]();
+        let channel = C2 || CT.C2;
+        let replyMap = MapL().as(yield channel.send(requestMap));
+        if (replyMap == null) {
+          dart.throw(new message_codec.PlatformException.new({code: "channel-error", message: "Unable to establish connection on channel.", details: null}));
+        } else if (replyMap[$_get]("error") != null) {
+          let error = MapL().as(replyMap[$_get]("error"));
+          dart.throw(new message_codec.PlatformException.new({code: core.String.as(error[$_get]("code")), message: StringN().as(error[$_get]("message")), details: error[$_get]("details")}));
+        } else {
+          return messages.TextureMessage._fromMap(MapL().as(replyMap[$_get]("result")));
         }
-        return true;
-      }, VoidTobool())())) dart.assertFailed(null, L0, 620, 12, "() {\r\n      if (child == null && children.isNotEmpty) {\r\n        throw FlutterError.fromParts(<DiagnosticsNode>[\r\n          ErrorSummary(\r\n            '$runtimeType does not have a child widget but received a non-empty list of child SemanticsNode:\\n'\r\n            '${children.join('\\n')}'\r\n          )\r\n        ]);\r\n      }\r\n      return true;\r\n    }()");
-      let backgroundSemantics = this[_backgroundSemanticsBuilder] != null ? dart.nullCheck(this[_backgroundSemanticsBuilder])(this.size) : C1 || CT.C1;
-      this[_backgroundSemanticsNodes] = custom_paint.RenderCustomPaint._updateSemanticsChildren(this[_backgroundSemanticsNodes], backgroundSemantics);
-      let foregroundSemantics = this[_foregroundSemanticsBuilder] != null ? dart.nullCheck(this[_foregroundSemanticsBuilder])(this.size) : C1 || CT.C1;
-      this[_foregroundSemanticsNodes] = custom_paint.RenderCustomPaint._updateSemanticsChildren(this[_foregroundSemanticsNodes], foregroundSemantics);
-      let hasBackgroundSemantics = this[_backgroundSemanticsNodes] != null && dart.test(dart.nullCheck(this[_backgroundSemanticsNodes])[$isNotEmpty]);
-      let hasForegroundSemantics = this[_foregroundSemanticsNodes] != null && dart.test(dart.nullCheck(this[_foregroundSemanticsNodes])[$isNotEmpty]);
-      let finalChildren = (() => {
-        let t5 = JSArrayOfSemanticsNode().of([]);
-        if (hasBackgroundSemantics) t5[$addAll](dart.nullCheck(this[_backgroundSemanticsNodes]));
-        t5[$addAll](children);
-        if (hasForegroundSemantics) t5[$addAll](dart.nullCheck(this[_foregroundSemanticsNodes]));
-        return t5;
-      })();
-      super.assembleSemanticsNode(node, config, finalChildren);
+      });
     }
-    clearSemantics() {
-      super.clearSemantics();
-      this[_backgroundSemanticsNodes] = null;
-      this[_foregroundSemanticsNodes] = null;
+    dispose(arg) {
+      return async.async(dart.void, function* dispose() {
+        let requestMap = arg[_toMap]();
+        let channel = C3 || CT.C3;
+        let replyMap = MapL().as(yield channel.send(requestMap));
+        if (replyMap == null) {
+          dart.throw(new message_codec.PlatformException.new({code: "channel-error", message: "Unable to establish connection on channel.", details: null}));
+        } else if (replyMap[$_get]("error") != null) {
+          let error = MapL().as(replyMap[$_get]("error"));
+          dart.throw(new message_codec.PlatformException.new({code: core.String.as(error[$_get]("code")), message: StringN().as(error[$_get]("message")), details: error[$_get]("details")}));
+        } else {
+        }
+      });
     }
-    static _updateSemanticsChildren(oldSemantics, newChildSemantics) {
-      let t6, t6$;
-      oldSemantics = (t6 = oldSemantics, t6 == null ? C2 || CT.C2 : t6);
-      newChildSemantics = (t6$ = newChildSemantics, t6$ == null ? C1 || CT.C1 : t6$);
-      if (!dart.test(dart.fn(() => {
-        let keys = new (LinkedMapOfKey$int()).new();
-        let information = JSArrayOfDiagnosticsNode().of([]);
-        for (let i = 0; i < dart.notNull(dart.nullCheck(newChildSemantics)[$length]); i = i + 1) {
-          let child = newChildSemantics[$_get](i);
-          if (child.key != null) {
-            if (dart.test(keys[$containsKey](child.key))) {
-              information[$add](new assertions.ErrorDescription.new("- duplicate key " + dart.str(child.key) + " found at position " + dart.str(i)));
-            }
-            keys[$_set](dart.nullCheck(child.key), i);
-          }
+    setLooping(arg) {
+      return async.async(dart.void, function* setLooping() {
+        let requestMap = arg[_toMap]();
+        let channel = C4 || CT.C4;
+        let replyMap = MapL().as(yield channel.send(requestMap));
+        if (replyMap == null) {
+          dart.throw(new message_codec.PlatformException.new({code: "channel-error", message: "Unable to establish connection on channel.", details: null}));
+        } else if (replyMap[$_get]("error") != null) {
+          let error = MapL().as(replyMap[$_get]("error"));
+          dart.throw(new message_codec.PlatformException.new({code: core.String.as(error[$_get]("code")), message: StringN().as(error[$_get]("message")), details: error[$_get]("details")}));
+        } else {
         }
-        if (dart.test(information[$isNotEmpty])) {
-          information[$insert](0, new assertions.ErrorSummary.new("Failed to update the list of CustomPainterSemantics:"));
-          dart.throw(new assertions.FlutterError.fromParts(information));
-        }
-        return true;
-      }, VoidTobool())())) dart.assertFailed(null, L0, 688, 12, "() {\r\n      final Map<Key, int> keys = HashMap<Key, int>();\r\n      final List<DiagnosticsNode> information = <DiagnosticsNode>[];\r\n      for (int i = 0; i < newChildSemantics!.length; i += 1) {\r\n        final CustomPainterSemantics child = newChildSemantics[i];\r\n        if (child.key != null) {\r\n          if (keys.containsKey(child.key)) {\r\n            information.add(ErrorDescription('- duplicate key ${child.key} found at position $i'));\r\n          }\r\n          keys[child.key!] = i;\r\n        }\r\n      }\r\n\r\n      if (information.isNotEmpty) {\r\n        information.insert(0, ErrorSummary('Failed to update the list of CustomPainterSemantics:'));\r\n        throw FlutterError.fromParts(information);\r\n      }\r\n\r\n      return true;\r\n    }()");
-      let newChildrenTop = 0;
-      let oldChildrenTop = 0;
-      let newChildrenBottom = dart.notNull(newChildSemantics[$length]) - 1;
-      let oldChildrenBottom = dart.notNull(oldSemantics[$length]) - 1;
-      let newChildren = ListOfSemanticsNodeN().filled(newChildSemantics[$length], null, {growable: false});
-      while (oldChildrenTop <= oldChildrenBottom && newChildrenTop <= newChildrenBottom) {
-        let oldChild = oldSemantics[$_get](oldChildrenTop);
-        let newSemantics = newChildSemantics[$_get](newChildrenTop);
-        if (!dart.test(custom_paint.RenderCustomPaint._canUpdateSemanticsChild(oldChild, newSemantics))) break;
-        let newChild = custom_paint.RenderCustomPaint._updateSemanticsChild(oldChild, newSemantics);
-        newChildren[$_set](newChildrenTop, newChild);
-        newChildrenTop = newChildrenTop + 1;
-        oldChildrenTop = oldChildrenTop + 1;
-      }
-      while (oldChildrenTop <= oldChildrenBottom && newChildrenTop <= newChildrenBottom) {
-        let oldChild = oldSemantics[$_get](oldChildrenBottom);
-        let newChild = newChildSemantics[$_get](newChildrenBottom);
-        if (!dart.test(custom_paint.RenderCustomPaint._canUpdateSemanticsChild(oldChild, newChild))) break;
-        oldChildrenBottom = oldChildrenBottom - 1;
-        newChildrenBottom = newChildrenBottom - 1;
-      }
-      let haveOldChildren = oldChildrenTop <= oldChildrenBottom;
-      let oldKeyedChildren = null;
-      let oldKeyedChildren$35isSet = false;
-      function oldKeyedChildren$35get() {
-        return oldKeyedChildren$35isSet ? oldKeyedChildren : dart.throw(new _internal.LateError.localNI("oldKeyedChildren"));
-      }
-      dart.fn(oldKeyedChildren$35get, VoidToMapOfKey$SemanticsNode());
-      function oldKeyedChildren$35set(t9) {
-        if (t9 == null) dart.nullFailed(L0, 740, 40, "null");
-        if (oldKeyedChildren$35isSet)
-          dart.throw(new _internal.LateError.localAI("oldKeyedChildren"));
-        else {
-          oldKeyedChildren$35isSet = true;
-          return oldKeyedChildren = t9;
-        }
-      }
-      dart.fn(oldKeyedChildren$35set, MapOfKey$SemanticsNodeTodynamic());
-      if (haveOldChildren) {
-        oldKeyedChildren$35set(new (LinkedMapOfKey$SemanticsNode()).new());
-        while (oldChildrenTop <= oldChildrenBottom) {
-          let oldChild = oldSemantics[$_get](oldChildrenTop);
-          if (oldChild.key != null) oldKeyedChildren$35get()[$_set](dart.nullCheck(oldChild.key), oldChild);
-          oldChildrenTop = oldChildrenTop + 1;
-        }
-      }
-      while (newChildrenTop <= newChildrenBottom) {
-        let oldChild = null;
-        let newSemantics = newChildSemantics[$_get](newChildrenTop);
-        if (haveOldChildren) {
-          let key = newSemantics.key;
-          if (key != null) {
-            oldChild = oldKeyedChildren$35get()[$_get](key);
-            if (oldChild != null) {
-              if (dart.test(custom_paint.RenderCustomPaint._canUpdateSemanticsChild(oldChild, newSemantics))) {
-                oldKeyedChildren$35get()[$remove](key);
-              } else {
-                oldChild = null;
-              }
-            }
-          }
-        }
-        if (!(oldChild == null || dart.test(custom_paint.RenderCustomPaint._canUpdateSemanticsChild(oldChild, newSemantics)))) dart.assertFailed(null, L0, 771, 14, "oldChild == null || _canUpdateSemanticsChild(oldChild, newSemantics)");
-        let newChild = custom_paint.RenderCustomPaint._updateSemanticsChild(oldChild, newSemantics);
-        if (!(dart.equals(oldChild, newChild) || oldChild == null)) dart.assertFailed(null, L0, 773, 14, "oldChild == newChild || oldChild == null");
-        newChildren[$_set](newChildrenTop, newChild);
-        newChildrenTop = newChildrenTop + 1;
-      }
-      if (!(oldChildrenTop === oldChildrenBottom + 1)) dart.assertFailed(null, L0, 779, 12, "oldChildrenTop == oldChildrenBottom + 1");
-      if (!(newChildrenTop === newChildrenBottom + 1)) dart.assertFailed(null, L0, 780, 12, "newChildrenTop == newChildrenBottom + 1");
-      if (!(dart.notNull(newChildSemantics[$length]) - newChildrenTop === dart.notNull(oldSemantics[$length]) - oldChildrenTop)) dart.assertFailed(null, L0, 781, 12, "newChildSemantics.length - newChildrenTop == oldSemantics.length - oldChildrenTop");
-      newChildrenBottom = dart.notNull(newChildSemantics[$length]) - 1;
-      oldChildrenBottom = dart.notNull(oldSemantics[$length]) - 1;
-      while (oldChildrenTop <= oldChildrenBottom && newChildrenTop <= newChildrenBottom) {
-        let oldChild = oldSemantics[$_get](oldChildrenTop);
-        let newSemantics = newChildSemantics[$_get](newChildrenTop);
-        if (!dart.test(custom_paint.RenderCustomPaint._canUpdateSemanticsChild(oldChild, newSemantics))) dart.assertFailed(null, L0, 789, 14, "_canUpdateSemanticsChild(oldChild, newSemantics)");
-        let newChild = custom_paint.RenderCustomPaint._updateSemanticsChild(oldChild, newSemantics);
-        if (!dart.equals(oldChild, newChild)) dart.assertFailed(null, L0, 791, 14, "oldChild == newChild");
-        newChildren[$_set](newChildrenTop, newChild);
-        newChildrenTop = newChildrenTop + 1;
-        oldChildrenTop = oldChildrenTop + 1;
-      }
-      if (!dart.test(dart.fn(() => {
-        for (let node of newChildren) {
-          if (!(node != null)) dart.assertFailed(null, L0, 799, 16, "node != null");
-        }
-        return true;
-      }, VoidTobool())())) dart.assertFailed(null, L0, 797, 12, "() {\r\n      for (final SemanticsNode? node in newChildren) {\r\n        assert(node != null);\r\n      }\r\n      return true;\r\n    }()");
-      return newChildren[$cast](semantics.SemanticsNode);
+      });
     }
-    static _canUpdateSemanticsChild(oldChild, newSemantics) {
-      if (oldChild == null) dart.nullFailed(L0, 811, 54, "oldChild");
-      if (newSemantics == null) dart.nullFailed(L0, 811, 87, "newSemantics");
-      return dart.equals(oldChild.key, newSemantics.key);
+    setVolume(arg) {
+      return async.async(dart.void, function* setVolume() {
+        let requestMap = arg[_toMap]();
+        let channel = C5 || CT.C5;
+        let replyMap = MapL().as(yield channel.send(requestMap));
+        if (replyMap == null) {
+          dart.throw(new message_codec.PlatformException.new({code: "channel-error", message: "Unable to establish connection on channel.", details: null}));
+        } else if (replyMap[$_get]("error") != null) {
+          let error = MapL().as(replyMap[$_get]("error"));
+          dart.throw(new message_codec.PlatformException.new({code: core.String.as(error[$_get]("code")), message: StringN().as(error[$_get]("message")), details: error[$_get]("details")}));
+        } else {
+        }
+      });
     }
-    static _updateSemanticsChild(oldChild, newSemantics) {
-      let t11, t11$;
-      if (newSemantics == null) dart.nullFailed(L0, 819, 94, "newSemantics");
-      if (!(oldChild == null || dart.test(custom_paint.RenderCustomPaint._canUpdateSemanticsChild(oldChild, newSemantics)))) dart.assertFailed(null, L0, 820, 12, "oldChild == null || _canUpdateSemanticsChild(oldChild, newSemantics)");
-      let newChild = (t11 = oldChild, t11 == null ? new semantics.SemanticsNode.new({key: newSemantics.key}) : t11);
-      let properties = newSemantics.properties;
-      let config = new semantics.SemanticsConfiguration.new();
-      if (properties.sortKey != null) {
-        config.sortKey = properties.sortKey;
-      }
-      if (properties.checked != null) {
-        config.isChecked = properties.checked;
-      }
-      if (properties.selected != null) {
-        config.isSelected = dart.nullCheck(properties.selected);
-      }
-      if (properties.button != null) {
-        config.isButton = dart.nullCheck(properties.button);
-      }
-      if (properties.link != null) {
-        config.isLink = dart.nullCheck(properties.link);
-      }
-      if (properties.textField != null) {
-        config.isTextField = dart.nullCheck(properties.textField);
-      }
-      if (properties.slider != null) {
-        config.isSlider = dart.nullCheck(properties.slider);
-      }
-      if (properties.readOnly != null) {
-        config.isReadOnly = dart.nullCheck(properties.readOnly);
-      }
-      if (properties.focusable != null) {
-        config.isFocusable = dart.nullCheck(properties.focusable);
-      }
-      if (properties.focused != null) {
-        config.isFocused = dart.nullCheck(properties.focused);
-      }
-      if (properties.enabled != null) {
-        config.isEnabled = properties.enabled;
-      }
-      if (properties.inMutuallyExclusiveGroup != null) {
-        config.isInMutuallyExclusiveGroup = dart.nullCheck(properties.inMutuallyExclusiveGroup);
-      }
-      if (properties.obscured != null) {
-        config.isObscured = dart.nullCheck(properties.obscured);
-      }
-      if (properties.multiline != null) {
-        config.isMultiline = dart.nullCheck(properties.multiline);
-      }
-      if (properties.hidden != null) {
-        config.isHidden = dart.nullCheck(properties.hidden);
-      }
-      if (properties.header != null) {
-        config.isHeader = dart.nullCheck(properties.header);
-      }
-      if (properties.scopesRoute != null) {
-        config.scopesRoute = dart.nullCheck(properties.scopesRoute);
-      }
-      if (properties.namesRoute != null) {
-        config.namesRoute = dart.nullCheck(properties.namesRoute);
-      }
-      if (properties.liveRegion != null) {
-        config.liveRegion = dart.nullCheck(properties.liveRegion);
-      }
-      if (properties.maxValueLength != null) {
-        config.maxValueLength = properties.maxValueLength;
-      }
-      if (properties.currentValueLength != null) {
-        config.currentValueLength = properties.currentValueLength;
-      }
-      if (properties.toggled != null) {
-        config.isToggled = properties.toggled;
-      }
-      if (properties.image != null) {
-        config.isImage = dart.nullCheck(properties.image);
-      }
-      if (properties.label != null) {
-        config.label = dart.nullCheck(properties.label);
-      }
-      if (properties.value != null) {
-        config.value = dart.nullCheck(properties.value);
-      }
-      if (properties.increasedValue != null) {
-        config.increasedValue = dart.nullCheck(properties.increasedValue);
-      }
-      if (properties.decreasedValue != null) {
-        config.decreasedValue = dart.nullCheck(properties.decreasedValue);
-      }
-      if (properties.hint != null) {
-        config.hint = dart.nullCheck(properties.hint);
-      }
-      if (properties.textDirection != null) {
-        config.textDirection = properties.textDirection;
-      }
-      if (properties.onTap != null) {
-        config.onTap = properties.onTap;
-      }
-      if (properties.onLongPress != null) {
-        config.onLongPress = properties.onLongPress;
-      }
-      if (properties.onScrollLeft != null) {
-        config.onScrollLeft = properties.onScrollLeft;
-      }
-      if (properties.onScrollRight != null) {
-        config.onScrollRight = properties.onScrollRight;
-      }
-      if (properties.onScrollUp != null) {
-        config.onScrollUp = properties.onScrollUp;
-      }
-      if (properties.onScrollDown != null) {
-        config.onScrollDown = properties.onScrollDown;
-      }
-      if (properties.onIncrease != null) {
-        config.onIncrease = properties.onIncrease;
-      }
-      if (properties.onDecrease != null) {
-        config.onDecrease = properties.onDecrease;
-      }
-      if (properties.onCopy != null) {
-        config.onCopy = properties.onCopy;
-      }
-      if (properties.onCut != null) {
-        config.onCut = properties.onCut;
-      }
-      if (properties.onPaste != null) {
-        config.onPaste = properties.onPaste;
-      }
-      if (properties.onMoveCursorForwardByCharacter != null) {
-        config.onMoveCursorForwardByCharacter = properties.onMoveCursorForwardByCharacter;
-      }
-      if (properties.onMoveCursorBackwardByCharacter != null) {
-        config.onMoveCursorBackwardByCharacter = properties.onMoveCursorBackwardByCharacter;
-      }
-      if (properties.onMoveCursorForwardByWord != null) {
-        config.onMoveCursorForwardByWord = properties.onMoveCursorForwardByWord;
-      }
-      if (properties.onMoveCursorBackwardByWord != null) {
-        config.onMoveCursorBackwardByWord = properties.onMoveCursorBackwardByWord;
-      }
-      if (properties.onSetSelection != null) {
-        config.onSetSelection = properties.onSetSelection;
-      }
-      if (properties.onDidGainAccessibilityFocus != null) {
-        config.onDidGainAccessibilityFocus = properties.onDidGainAccessibilityFocus;
-      }
-      if (properties.onDidLoseAccessibilityFocus != null) {
-        config.onDidLoseAccessibilityFocus = properties.onDidLoseAccessibilityFocus;
-      }
-      if (properties.onDismiss != null) {
-        config.onDismiss = properties.onDismiss;
-      }
-      newChild.updateWith({config: config, childrenInInversePaintOrder: C2 || CT.C2});
-      t11$ = newChild;
-      (() => {
-        t11$.rect = newSemantics.rect;
-        t11$.transform = newSemantics.transform;
-        t11$.tags = newSemantics.tags;
-        return t11$;
-      })();
-      return newChild;
+    setPlaybackSpeed(arg) {
+      return async.async(dart.void, function* setPlaybackSpeed() {
+        let requestMap = arg[_toMap]();
+        let channel = C6 || CT.C6;
+        let replyMap = MapL().as(yield channel.send(requestMap));
+        if (replyMap == null) {
+          dart.throw(new message_codec.PlatformException.new({code: "channel-error", message: "Unable to establish connection on channel.", details: null}));
+        } else if (replyMap[$_get]("error") != null) {
+          let error = MapL().as(replyMap[$_get]("error"));
+          dart.throw(new message_codec.PlatformException.new({code: core.String.as(error[$_get]("code")), message: StringN().as(error[$_get]("message")), details: error[$_get]("details")}));
+        } else {
+        }
+      });
+    }
+    play(arg) {
+      return async.async(dart.void, function* play() {
+        let requestMap = arg[_toMap]();
+        let channel = C7 || CT.C7;
+        let replyMap = MapL().as(yield channel.send(requestMap));
+        if (replyMap == null) {
+          dart.throw(new message_codec.PlatformException.new({code: "channel-error", message: "Unable to establish connection on channel.", details: null}));
+        } else if (replyMap[$_get]("error") != null) {
+          let error = MapL().as(replyMap[$_get]("error"));
+          dart.throw(new message_codec.PlatformException.new({code: core.String.as(error[$_get]("code")), message: StringN().as(error[$_get]("message")), details: error[$_get]("details")}));
+        } else {
+        }
+      });
+    }
+    position(arg) {
+      return async.async(PositionMessageL(), function* position() {
+        let requestMap = arg[_toMap]();
+        let channel = C8 || CT.C8;
+        let replyMap = MapL().as(yield channel.send(requestMap));
+        if (replyMap == null) {
+          dart.throw(new message_codec.PlatformException.new({code: "channel-error", message: "Unable to establish connection on channel.", details: null}));
+        } else if (replyMap[$_get]("error") != null) {
+          let error = MapL().as(replyMap[$_get]("error"));
+          dart.throw(new message_codec.PlatformException.new({code: core.String.as(error[$_get]("code")), message: StringN().as(error[$_get]("message")), details: error[$_get]("details")}));
+        } else {
+          return messages.PositionMessage._fromMap(MapL().as(replyMap[$_get]("result")));
+        }
+      });
+    }
+    seekTo(arg) {
+      return async.async(dart.void, function* seekTo() {
+        let requestMap = arg[_toMap]();
+        let channel = C9 || CT.C9;
+        let replyMap = MapL().as(yield channel.send(requestMap));
+        if (replyMap == null) {
+          dart.throw(new message_codec.PlatformException.new({code: "channel-error", message: "Unable to establish connection on channel.", details: null}));
+        } else if (replyMap[$_get]("error") != null) {
+          let error = MapL().as(replyMap[$_get]("error"));
+          dart.throw(new message_codec.PlatformException.new({code: core.String.as(error[$_get]("code")), message: StringN().as(error[$_get]("message")), details: error[$_get]("details")}));
+        } else {
+        }
+      });
+    }
+    pause(arg) {
+      return async.async(dart.void, function* pause() {
+        let requestMap = arg[_toMap]();
+        let channel = C10 || CT.C10;
+        let replyMap = MapL().as(yield channel.send(requestMap));
+        if (replyMap == null) {
+          dart.throw(new message_codec.PlatformException.new({code: "channel-error", message: "Unable to establish connection on channel.", details: null}));
+        } else if (replyMap[$_get]("error") != null) {
+          let error = MapL().as(replyMap[$_get]("error"));
+          dart.throw(new message_codec.PlatformException.new({code: core.String.as(error[$_get]("code")), message: StringN().as(error[$_get]("message")), details: error[$_get]("details")}));
+        } else {
+        }
+      });
+    }
+    setMixWithOthers(arg) {
+      return async.async(dart.void, function* setMixWithOthers() {
+        let requestMap = arg[_toMap]();
+        let channel = C11 || CT.C11;
+        let replyMap = MapL().as(yield channel.send(requestMap));
+        if (replyMap == null) {
+          dart.throw(new message_codec.PlatformException.new({code: "channel-error", message: "Unable to establish connection on channel.", details: null}));
+        } else if (replyMap[$_get]("error") != null) {
+          let error = MapL().as(replyMap[$_get]("error"));
+          dart.throw(new message_codec.PlatformException.new({code: core.String.as(error[$_get]("code")), message: StringN().as(error[$_get]("message")), details: error[$_get]("details")}));
+        } else {
+        }
+      });
     }
   };
-  (custom_paint.RenderCustomPaint.new = function(opts) {
-    let painter = opts && 'painter' in opts ? opts.painter : null;
-    let foregroundPainter = opts && 'foregroundPainter' in opts ? opts.foregroundPainter : null;
-    let preferredSize = opts && 'preferredSize' in opts ? opts.preferredSize : C0 || CT.C0;
-    if (preferredSize == null) dart.nullFailed(L0, 373, 10, "preferredSize");
-    let isComplex = opts && 'isComplex' in opts ? opts.isComplex : false;
-    if (isComplex == null) dart.nullFailed(L0, 374, 10, "isComplex");
-    let willChange = opts && 'willChange' in opts ? opts.willChange : false;
-    if (willChange == null) dart.nullFailed(L0, 375, 10, "willChange");
-    let child = opts && 'child' in opts ? opts.child : null;
-    this[_backgroundSemanticsBuilder] = null;
-    this[_foregroundSemanticsBuilder] = null;
-    this[_backgroundSemanticsNodes] = null;
-    this[_foregroundSemanticsNodes] = null;
-    this[isComplex$] = isComplex;
-    this[willChange$] = willChange;
-    if (!(preferredSize != null)) dart.assertFailed(null, L0, 377, 15, "preferredSize != null");
-    this[_painter] = painter;
-    this[_foregroundPainter] = foregroundPainter;
-    this[_preferredSize] = preferredSize;
-    custom_paint.RenderCustomPaint.__proto__.new.call(this, child);
+  (messages.VideoPlayerApi.new = function() {
     ;
-  }).prototype = custom_paint.RenderCustomPaint.prototype;
-  dart.addTypeTests(custom_paint.RenderCustomPaint);
-  dart.addTypeCaches(custom_paint.RenderCustomPaint);
-  dart.setMethodSignature(custom_paint.RenderCustomPaint, () => ({
-    __proto__: dart.getMethods(custom_paint.RenderCustomPaint.__proto__),
-    [_didUpdatePainter]: dart.fnType(dart.void, [dart.nullable(custom_paint.CustomPainter), dart.nullable(custom_paint.CustomPainter)]),
-    [_paintWithPainter]: dart.fnType(dart.void, [ui.Canvas, ui.Offset, custom_paint.CustomPainter]),
-    [_setRasterCacheHints]: dart.fnType(dart.void, [object.PaintingContext])
+  }).prototype = messages.VideoPlayerApi.prototype;
+  dart.addTypeTests(messages.VideoPlayerApi);
+  dart.addTypeCaches(messages.VideoPlayerApi);
+  dart.setMethodSignature(messages.VideoPlayerApi, () => ({
+    __proto__: dart.getMethods(messages.VideoPlayerApi.__proto__),
+    initialize: dart.fnType(dart.legacy(async.Future$(dart.void)), []),
+    create: dart.fnType(dart.legacy(async.Future$(dart.legacy(messages.TextureMessage))), [dart.legacy(messages.CreateMessage)]),
+    dispose: dart.fnType(dart.legacy(async.Future$(dart.void)), [dart.legacy(messages.TextureMessage)]),
+    setLooping: dart.fnType(dart.legacy(async.Future$(dart.void)), [dart.legacy(messages.LoopingMessage)]),
+    setVolume: dart.fnType(dart.legacy(async.Future$(dart.void)), [dart.legacy(messages.VolumeMessage)]),
+    setPlaybackSpeed: dart.fnType(dart.legacy(async.Future$(dart.void)), [dart.legacy(messages.PlaybackSpeedMessage)]),
+    play: dart.fnType(dart.legacy(async.Future$(dart.void)), [dart.legacy(messages.TextureMessage)]),
+    position: dart.fnType(dart.legacy(async.Future$(dart.legacy(messages.PositionMessage))), [dart.legacy(messages.TextureMessage)]),
+    seekTo: dart.fnType(dart.legacy(async.Future$(dart.void)), [dart.legacy(messages.PositionMessage)]),
+    pause: dart.fnType(dart.legacy(async.Future$(dart.void)), [dart.legacy(messages.TextureMessage)]),
+    setMixWithOthers: dart.fnType(dart.legacy(async.Future$(dart.void)), [dart.legacy(messages.MixWithOthersMessage)])
   }));
-  dart.setGetterSignature(custom_paint.RenderCustomPaint, () => ({
-    __proto__: dart.getGetters(custom_paint.RenderCustomPaint.__proto__),
-    painter: dart.nullable(custom_paint.CustomPainter),
-    foregroundPainter: dart.nullable(custom_paint.CustomPainter),
-    preferredSize: ui.Size
-  }));
-  dart.setSetterSignature(custom_paint.RenderCustomPaint, () => ({
-    __proto__: dart.getSetters(custom_paint.RenderCustomPaint.__proto__),
-    painter: dart.nullable(custom_paint.CustomPainter),
-    foregroundPainter: dart.nullable(custom_paint.CustomPainter),
-    preferredSize: ui.Size
-  }));
-  dart.setLibraryUri(custom_paint.RenderCustomPaint, L1);
-  dart.setFieldSignature(custom_paint.RenderCustomPaint, () => ({
-    __proto__: dart.getFields(custom_paint.RenderCustomPaint.__proto__),
-    [_painter]: dart.fieldType(dart.nullable(custom_paint.CustomPainter)),
-    [_foregroundPainter]: dart.fieldType(dart.nullable(custom_paint.CustomPainter)),
-    [_preferredSize]: dart.fieldType(ui.Size),
-    isComplex: dart.fieldType(core.bool),
-    willChange: dart.fieldType(core.bool),
-    [_backgroundSemanticsBuilder]: dart.fieldType(dart.nullable(dart.fnType(core.List$(custom_paint.CustomPainterSemantics), [ui.Size]))),
-    [_foregroundSemanticsBuilder]: dart.fieldType(dart.nullable(dart.fnType(core.List$(custom_paint.CustomPainterSemantics), [ui.Size]))),
-    [_backgroundSemanticsNodes]: dart.fieldType(dart.nullable(core.List$(semantics.SemanticsNode))),
-    [_foregroundSemanticsNodes]: dart.fieldType(dart.nullable(core.List$(semantics.SemanticsNode)))
-  }));
-  dart.trackLibraries("packages/flutter/src/rendering/custom_paint.dart", {
-    "package:flutter/src/rendering/custom_paint.dart": custom_paint
+  dart.setLibraryUri(messages.VideoPlayerApi, L0);
+  messages.TestHostVideoPlayerApi = class TestHostVideoPlayerApi extends core.Object {
+    static setup(api) {
+      {
+        let channel = C0 || CT.C0;
+        channel.setMockMessageHandler(dart.fn(message => async.async(MapL(), function*() {
+          api.initialize();
+          return new _js_helper.LinkedMap.new();
+        }), dynamicToFutureLOfMapL()));
+      }
+      {
+        let channel = C2 || CT.C2;
+        channel.setMockMessageHandler(dart.fn(message => async.async(MapL(), function*() {
+          let mapMessage = MapL().as(message);
+          let input = messages.CreateMessage._fromMap(mapMessage);
+          let output = api.create(input);
+          return new _js_helper.LinkedMap.from(["result", output[_toMap]()]);
+        }), dynamicToFutureLOfMapL()));
+      }
+      {
+        let channel = C3 || CT.C3;
+        channel.setMockMessageHandler(dart.fn(message => async.async(MapL(), function*() {
+          let mapMessage = MapL().as(message);
+          let input = messages.TextureMessage._fromMap(mapMessage);
+          api.dispose(input);
+          return new _js_helper.LinkedMap.new();
+        }), dynamicToFutureLOfMapL()));
+      }
+      {
+        let channel = C4 || CT.C4;
+        channel.setMockMessageHandler(dart.fn(message => async.async(MapL(), function*() {
+          let mapMessage = MapL().as(message);
+          let input = messages.LoopingMessage._fromMap(mapMessage);
+          api.setLooping(input);
+          return new _js_helper.LinkedMap.new();
+        }), dynamicToFutureLOfMapL()));
+      }
+      {
+        let channel = C5 || CT.C5;
+        channel.setMockMessageHandler(dart.fn(message => async.async(MapL(), function*() {
+          let mapMessage = MapL().as(message);
+          let input = messages.VolumeMessage._fromMap(mapMessage);
+          api.setVolume(input);
+          return new _js_helper.LinkedMap.new();
+        }), dynamicToFutureLOfMapL()));
+      }
+      {
+        let channel = C6 || CT.C6;
+        channel.setMockMessageHandler(dart.fn(message => async.async(MapL(), function*() {
+          let mapMessage = MapL().as(message);
+          let input = messages.PlaybackSpeedMessage._fromMap(mapMessage);
+          api.setPlaybackSpeed(input);
+          return new _js_helper.LinkedMap.new();
+        }), dynamicToFutureLOfMapL()));
+      }
+      {
+        let channel = C7 || CT.C7;
+        channel.setMockMessageHandler(dart.fn(message => async.async(MapL(), function*() {
+          let mapMessage = MapL().as(message);
+          let input = messages.TextureMessage._fromMap(mapMessage);
+          api.play(input);
+          return new _js_helper.LinkedMap.new();
+        }), dynamicToFutureLOfMapL()));
+      }
+      {
+        let channel = C8 || CT.C8;
+        channel.setMockMessageHandler(dart.fn(message => async.async(MapL(), function*() {
+          let mapMessage = MapL().as(message);
+          let input = messages.TextureMessage._fromMap(mapMessage);
+          let output = api.position(input);
+          return new _js_helper.LinkedMap.from(["result", output[_toMap]()]);
+        }), dynamicToFutureLOfMapL()));
+      }
+      {
+        let channel = C9 || CT.C9;
+        channel.setMockMessageHandler(dart.fn(message => async.async(MapL(), function*() {
+          let mapMessage = MapL().as(message);
+          let input = messages.PositionMessage._fromMap(mapMessage);
+          api.seekTo(input);
+          return new _js_helper.LinkedMap.new();
+        }), dynamicToFutureLOfMapL()));
+      }
+      {
+        let channel = C10 || CT.C10;
+        channel.setMockMessageHandler(dart.fn(message => async.async(MapL(), function*() {
+          let mapMessage = MapL().as(message);
+          let input = messages.TextureMessage._fromMap(mapMessage);
+          api.pause(input);
+          return new _js_helper.LinkedMap.new();
+        }), dynamicToFutureLOfMapL()));
+      }
+      {
+        let channel = C11 || CT.C11;
+        channel.setMockMessageHandler(dart.fn(message => async.async(MapL(), function*() {
+          let mapMessage = MapL().as(message);
+          let input = messages.MixWithOthersMessage._fromMap(mapMessage);
+          api.setMixWithOthers(input);
+          return new _js_helper.LinkedMap.new();
+        }), dynamicToFutureLOfMapL()));
+      }
+    }
+  };
+  (messages.TestHostVideoPlayerApi.new = function() {
+    ;
+  }).prototype = messages.TestHostVideoPlayerApi.prototype;
+  dart.addTypeTests(messages.TestHostVideoPlayerApi);
+  dart.addTypeCaches(messages.TestHostVideoPlayerApi);
+  dart.setLibraryUri(messages.TestHostVideoPlayerApi, L0);
+  dart.trackLibraries("packages/video_player_platform_interface/messages.dart", {
+    "package:video_player_platform_interface/messages.dart": messages
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["custom_paint.dart"],"names":[],"mappings":"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","file":"../../../../../../../packages/flutter/src/rendering/custom_paint.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["messages.dart"],"names":[],"mappings":"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","file":"../../../../../../../packages/video_player_platform_interface/messages.dart.lib.js"}');
   // Exports:
   return {
-    src__rendering__custom_paint: custom_paint
+    messages: messages
   };
 }));
 
-//# sourceMappingURL=custom_paint.dart.lib.js.map
+//# sourceMappingURL=messages.dart.lib.js.map

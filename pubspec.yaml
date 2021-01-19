@@ -30,11 +30,14 @@ dependencies:
   google_maps_flutter: ^0.5.28
   google_maps_flutter_web: ^0.1.0
   responsive_builder: ^0.2.0+2
+  square_percent_indicater: ^0.0.8
+  cached_video_player: ^1.0.3
+  percent_indicator: ^2.1.9
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  percent_indicator: ^2.1.9
+  
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

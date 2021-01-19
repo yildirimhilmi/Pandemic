@@ -19,15 +19,15 @@ define("main_module.bootstrap", ["web_entrypoint.dart", "dart_sdk"], function(ap
          main();
       });
     }
-    window.$dartAppId = "ADj5u32CbCS8zx/ui3VLFg==";
+    window.$dartAppId = "ntYS1vF5Tkkxry5GQ6aB/g==";
 window.$dartReloadConfiguration = "ReloadConfiguration.none";
 window.$dartModuleStrategy = "require-js";
 window.$loadModuleConfig = require;
 window.$dwdsVersion = "7.1.1";
-window.$dwdsDevHandlerPath = "http://localhost:51258/$dwdsSseHandler";
+window.$dwdsDevHandlerPath = "http://localhost:64144/$dwdsSseHandler";
 window.$dartEntrypointPath = "main_module.bootstrap.js";
 window.$requireLoader.forceLoadModule("dwds/src/injected/client");
-window.$dartExtensionUri = "ws://127.0.0.1:51260/$debug";
+window.$dartExtensionUri = "ws://127.0.0.1:64146/$debug";
 
   } else {
     if(window.$dartMainExecuted){
@@ -489,8 +489,12 @@ let modulePaths = {
  "packages/google_maps_flutter_web/src/shims/dart_ui_real.dart": "packages/google_maps_flutter_web/src/shims/dart_ui_real.dart.lib",
  "packages/my_website_project/main.dart": "packages/my_website_project/main.dart.lib",
  "packages/my_website_project/screenComponents/cardView.dart": "packages/my_website_project/screenComponents/cardView.dart.lib",
- "packages/my_website_project/Screens/mapview.dart": "packages/my_website_project/Screens/mapview.dart.lib",
- "packages/my_website_project/utils/table.dart": "packages/my_website_project/utils/table.dart.lib",
+ "packages/cached_video_player/cached_video_player.dart": "packages/cached_video_player/cached_video_player.dart.lib",
+ "packages/percent_indicator/percent_indicator.dart": "packages/percent_indicator/percent_indicator.dart.lib",
+ "packages/percent_indicator/linear_percent_indicator.dart": "packages/percent_indicator/linear_percent_indicator.dart.lib",
+ "packages/percent_indicator/circular_percent_indicator.dart": "packages/percent_indicator/circular_percent_indicator.dart.lib",
+ "packages/my_website_project/screenComponents/videoPlayer.dart": "packages/my_website_project/screenComponents/videoPlayer.dart.lib",
+ "packages/my_website_project/screenComponents/locations.dart": "packages/my_website_project/screenComponents/locations.dart.lib",
  "packages/latlong/latlong.dart": "packages/latlong/latlong.dart.lib",
  "packages/intl/src/intl_helpers.dart": "packages/intl/src/intl_helpers.dart.lib",
  "packages/intl/src/plural_rules.dart": "packages/intl/src/plural_rules.dart.lib",
@@ -809,7 +813,10 @@ let modulePaths = {
  "packages/flare_flutter/cache_asset.dart": "packages/flare_flutter/cache_asset.dart.lib",
  "packages/flare_flutter/flare_cache.dart": "packages/flare_flutter/flare_cache.dart.lib",
  "packages/awesome_dialog/src/animated_button.dart": "packages/awesome_dialog/src/animated_button.dart.lib",
- "packages/awesome_dialog/src/vertical_stack_header_dialog.dart": "packages/awesome_dialog/src/vertical_stack_header_dialog.dart.lib"
+ "packages/awesome_dialog/src/vertical_stack_header_dialog.dart": "packages/awesome_dialog/src/vertical_stack_header_dialog.dart.lib",
+ "packages/my_website_project/Screens/mapview.dart": "packages/my_website_project/Screens/mapview.dart.lib",
+ "packages/square_percent_indicater/square_percent_indicater.dart": "packages/square_percent_indicater/square_percent_indicater.dart.lib",
+ "packages/square_percent_indicater/Matrix4.dart": "packages/square_percent_indicater/Matrix4.dart.lib"
 };
 let moduleNames = {
  "web_entrypoint.dart.lib": "web_entrypoint.dart",
@@ -1221,8 +1228,12 @@ let moduleNames = {
  "packages/google_maps_flutter_web/src/shims/dart_ui_real.dart.lib": "packages/google_maps_flutter_web/src/shims/dart_ui_real.dart",
  "packages/my_website_project/main.dart.lib": "packages/my_website_project/main.dart",
  "packages/my_website_project/screenComponents/cardView.dart.lib": "packages/my_website_project/screenComponents/cardView.dart",
- "packages/my_website_project/Screens/mapview.dart.lib": "packages/my_website_project/Screens/mapview.dart",
- "packages/my_website_project/utils/table.dart.lib": "packages/my_website_project/utils/table.dart",
+ "packages/cached_video_player/cached_video_player.dart.lib": "packages/cached_video_player/cached_video_player.dart",
+ "packages/percent_indicator/percent_indicator.dart.lib": "packages/percent_indicator/percent_indicator.dart",
+ "packages/percent_indicator/linear_percent_indicator.dart.lib": "packages/percent_indicator/linear_percent_indicator.dart",
+ "packages/percent_indicator/circular_percent_indicator.dart.lib": "packages/percent_indicator/circular_percent_indicator.dart",
+ "packages/my_website_project/screenComponents/videoPlayer.dart.lib": "packages/my_website_project/screenComponents/videoPlayer.dart",
+ "packages/my_website_project/screenComponents/locations.dart.lib": "packages/my_website_project/screenComponents/locations.dart",
  "packages/latlong/latlong.dart.lib": "packages/latlong/latlong.dart",
  "packages/intl/src/intl_helpers.dart.lib": "packages/intl/src/intl_helpers.dart",
  "packages/intl/src/plural_rules.dart.lib": "packages/intl/src/plural_rules.dart",
@@ -1541,7 +1552,10 @@ let moduleNames = {
  "packages/flare_flutter/cache_asset.dart.lib": "packages/flare_flutter/cache_asset.dart",
  "packages/flare_flutter/flare_cache.dart.lib": "packages/flare_flutter/flare_cache.dart",
  "packages/awesome_dialog/src/animated_button.dart.lib": "packages/awesome_dialog/src/animated_button.dart",
- "packages/awesome_dialog/src/vertical_stack_header_dialog.dart.lib": "packages/awesome_dialog/src/vertical_stack_header_dialog.dart"
+ "packages/awesome_dialog/src/vertical_stack_header_dialog.dart.lib": "packages/awesome_dialog/src/vertical_stack_header_dialog.dart",
+ "packages/my_website_project/Screens/mapview.dart.lib": "packages/my_website_project/Screens/mapview.dart",
+ "packages/square_percent_indicater/square_percent_indicater.dart.lib": "packages/square_percent_indicater/square_percent_indicater.dart",
+ "packages/square_percent_indicater/Matrix4.dart.lib": "packages/square_percent_indicater/Matrix4.dart"
 };
 if(!window.$requireLoader) {
    window.$requireLoader = {

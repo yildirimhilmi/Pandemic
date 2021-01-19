@@ -1,618 +1,789 @@
-define(['dart_sdk'], (function load__packages__flare_dart__json_reader_dart(dart_sdk) {
+define(['dart_sdk', 'packages/source_span/src/location_mixin.dart', 'packages/html/src/utils.dart'], (function load__packages__html__src__html_input_stream_dart(dart_sdk, packages__source_span__src__location_mixin$46dart, packages__html__src__utils$46dart) {
   'use strict';
   const core = dart_sdk.core;
   const collection = dart_sdk.collection;
-  const _native_typed_data = dart_sdk._native_typed_data;
+  const _interceptors = dart_sdk._interceptors;
   const convert = dart_sdk.convert;
-  const typed_data = dart_sdk.typed_data;
-  const _js_helper = dart_sdk._js_helper;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  var json_reader = Object.create(dart.library);
-  var json_block_reader = Object.create(dart.library);
-  var binary_reader = Object.create(dart.library);
-  var block_reader = Object.create(dart.library);
-  var stream_reader = Object.create(dart.library);
-  var $_get = dartx._get;
-  var $remove = dartx.remove;
-  var $removeAt = dartx.removeAt;
-  var $toDouble = dartx.toDouble;
+  const file = packages__source_span__src__location_mixin$46dart.src__file;
+  const constants = packages__html__src__utils$46dart.src__constants;
+  const utils = packages__html__src__utils$46dart.src__utils;
+  var html_input_stream = Object.create(dart.library);
+  var encoding_parser = Object.create(dart.library);
+  var $codeUnits = dartx.codeUnits;
   var $length = dartx.length;
-  var $first = dartx.first;
-  var $toInt = dartx.toInt;
-  var $_set = dartx._set;
-  var $offsetInBytes = dartx.offsetInBytes;
-  var $buffer = dartx.buffer;
-  var $asByteData = dartx.asByteData;
-  var $getFloat32 = dartx.getFloat32;
-  var $getFloat64 = dartx.getFloat64;
-  var $getUint8 = dartx.getUint8;
-  var $lengthInBytes = dartx.lengthInBytes;
-  var $getInt8 = dartx.getInt8;
-  var $getUint16 = dartx.getUint16;
-  var $getInt16 = dartx.getInt16;
-  var $getUint32 = dartx.getUint32;
-  var $getInt32 = dartx.getInt32;
-  var $rightShift = dartx['>>'];
-  var $asUint8List = dartx.asUint8List;
-  var MapL = () => (MapL = dart.constFn(dart.legacy(core.Map)))();
-  var ListL = () => (ListL = dart.constFn(dart.legacy(core.List)))();
-  var numL = () => (numL = dart.constFn(dart.legacy(core.num)))();
-  var doubleL = () => (doubleL = dart.constFn(dart.legacy(core.double)))();
-  var intL = () => (intL = dart.constFn(dart.legacy(core.int)))();
+  var $_get = dartx._get;
+  var $add = dartx.add;
+  var $toLowerCase = dartx.toLowerCase;
+  var $contains = dartx.contains;
+  var $_equals = dartx._equals;
+  var $sublist = dartx.sublist;
+  var $replaceAll = dartx.replaceAll;
+  var $substring = dartx.substring;
+  var $indexOf = dartx.indexOf;
+  var $isNotEmpty = dartx.isNotEmpty;
+  var $join = dartx.join;
   var StringL = () => (StringL = dart.constFn(dart.legacy(core.String)))();
+  var intL = () => (intL = dart.constFn(dart.legacy(core.int)))();
+  var ListOfintL = () => (ListOfintL = dart.constFn(core.List$(intL())))();
+  var ListLOfintL = () => (ListLOfintL = dart.constFn(dart.legacy(ListOfintL())))();
+  var ListQueueOfStringL = () => (ListQueueOfStringL = dart.constFn(collection.ListQueue$(StringL())))();
+  var JSArrayOfintL = () => (JSArrayOfintL = dart.constFn(_interceptors.JSArray$(intL())))();
   var boolL = () => (boolL = dart.constFn(dart.legacy(core.bool)))();
-  var ByteDataL = () => (ByteDataL = dart.constFn(dart.legacy(typed_data.ByteData)))();
+  var StringLToboolL = () => (StringLToboolL = dart.constFn(dart.fnType(boolL(), [StringL()])))();
+  var _DispatchEntryL = () => (_DispatchEntryL = dart.constFn(dart.legacy(encoding_parser._DispatchEntry)))();
+  var JSArrayOf_DispatchEntryL = () => (JSArrayOf_DispatchEntryL = dart.constFn(_interceptors.JSArray$(_DispatchEntryL())))();
+  var StateErrorL = () => (StateErrorL = dart.constFn(dart.legacy(core.StateError)))();
+  var JSArrayOfStringL = () => (JSArrayOfStringL = dart.constFn(_interceptors.JSArray$(StringL())))();
   const CT = Object.create(null);
-  var L4 = "package:flare_dart/stream_reader.dart";
-  var L2 = "package:flare_dart/binary_reader.dart";
-  var L0 = "package:flare_dart/json_reader.dart";
-  var L1 = "package:flare_dart/json_block_reader.dart";
-  var L3 = "package:flare_dart/block_reader.dart";
+  var L0 = "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/html-0.14.0+4/lib/src/html_input_stream.dart";
+  var L1 = "package:html/src/html_input_stream.dart";
+  var L2 = "package:html/src/encoding_parser.dart";
   dart.defineLazy(CT, {
     get C0() {
-      return C0 = dart.const({
-        __proto__: convert.Base64Decoder.prototype
-      });
+      return C0 = dart.constList(["utf-16", "utf-16-be", "utf-16-le"], StringL());
+    },
+    get C1() {
+      return C1 = dart.fn(constants.isWhitespace, StringLToboolL());
+    },
+    get C2() {
+      return C2 = dart.fn(encoding_parser._isSpaceOrAngleBracket, StringLToboolL());
     }
   }, false);
-  var _readObject = dart.privateName(json_reader, "_readObject");
-  var _context = dart.privateName(json_reader, "_context");
-  var _readArray = dart.privateName(json_reader, "_readArray");
-  var _readLength = dart.privateName(json_reader, "_readLength");
+  var _rawBytes = dart.privateName(html_input_stream, "_rawBytes");
+  var _rawChars = dart.privateName(html_input_stream, "_rawChars");
+  var _lineStarts = dart.privateName(html_input_stream, "_lineStarts");
+  var _chars = dart.privateName(html_input_stream, "_chars");
+  var _offset = dart.privateName(html_input_stream, "_offset");
+  var _isSurrogatePair = dart.privateName(html_input_stream, "_isSurrogatePair");
   var C0;
-  var blockType = dart.privateName(json_reader, "JSONReader.blockType");
-  json_reader.JSONReader = class JSONReader extends core.Object {
-    get blockType() {
-      return this[blockType];
+  var _isLeadSurrogate = dart.privateName(html_input_stream, "_isLeadSurrogate");
+  var _isTrailSurrogate = dart.privateName(html_input_stream, "_isTrailSurrogate");
+  var charEncodingName = dart.privateName(html_input_stream, "HtmlInputStream.charEncodingName");
+  var charEncodingCertain = dart.privateName(html_input_stream, "HtmlInputStream.charEncodingCertain");
+  var generateSpans$ = dart.privateName(html_input_stream, "HtmlInputStream.generateSpans");
+  var sourceUrl$ = dart.privateName(html_input_stream, "HtmlInputStream.sourceUrl");
+  var errors = dart.privateName(html_input_stream, "HtmlInputStream.errors");
+  var fileInfo = dart.privateName(html_input_stream, "HtmlInputStream.fileInfo");
+  html_input_stream.HtmlInputStream = class HtmlInputStream extends core.Object {
+    get charEncodingName() {
+      return this[charEncodingName];
     }
-    set blockType(value) {
-      this[blockType] = value;
+    set charEncodingName(value) {
+      this[charEncodingName] = value;
     }
-    readProp(T, label) {
-      let head = this[_context].first;
-      if (MapL().is(head)) {
-        let prop = head[$_get](label);
-        head[$remove](label);
-        if (dart.legacy(T).is(prop)) {
-          return prop;
-        } else {
-          return null;
+    get charEncodingCertain() {
+      return this[charEncodingCertain];
+    }
+    set charEncodingCertain(value) {
+      this[charEncodingCertain] = value;
+    }
+    get generateSpans() {
+      return this[generateSpans$];
+    }
+    set generateSpans(value) {
+      super.generateSpans = value;
+    }
+    get sourceUrl() {
+      return this[sourceUrl$];
+    }
+    set sourceUrl(value) {
+      super.sourceUrl = value;
+    }
+    get errors() {
+      return this[errors];
+    }
+    set errors(value) {
+      this[errors] = value;
+    }
+    get fileInfo() {
+      return this[fileInfo];
+    }
+    set fileInfo(value) {
+      this[fileInfo] = value;
+    }
+    reset() {
+      this.errors = new (ListQueueOfStringL()).new();
+      this[_offset] = 0;
+      this[_lineStarts] = JSArrayOfintL().of([0]);
+      this[_chars] = JSArrayOfintL().of([]);
+      this[_rawChars] == null ? this[_rawChars] = html_input_stream._decodeBytes(this.charEncodingName, this[_rawBytes]) : null;
+      let skipNewline = false;
+      let wasSurrogatePair = false;
+      for (let i = 0; i < dart.notNull(this[_rawChars][$length]); i = i + 1) {
+        let c = this[_rawChars][$_get](i);
+        if (skipNewline) {
+          skipNewline = false;
+          if (c === 10) continue;
         }
-      } else if (ListL().is(head)) {
-        let prop = head[$removeAt](0);
-        if (dart.legacy(T).is(prop)) {
-          return prop;
-        } else {
-          return null;
+        let isSurrogatePair = this[_isSurrogatePair](this[_rawChars], i);
+        if (!dart.test(isSurrogatePair) && !dart.test(wasSurrogatePair)) {
+          if (dart.test(html_input_stream._invalidUnicode(c))) {
+            this.errors.add("invalid-codepoint");
+            if (55296 <= dart.notNull(c) && dart.notNull(c) <= 57343) {
+              c = 65533;
+            }
+          }
         }
+        wasSurrogatePair = isSurrogatePair;
+        if (c === 13) {
+          skipNewline = true;
+          c = 10;
+        }
+        this[_chars][$add](c);
+        if (c === 10) this[_lineStarts][$add](this[_chars][$length]);
+      }
+      if (this[_rawBytes] != null) this[_rawChars] = null;
+      this.fileInfo = new file.SourceFile.decoded(this[_chars], {url: this.sourceUrl});
+    }
+    detectEncoding(parseMeta = true) {
+      this.charEncodingName = this.detectBOM();
+      this.charEncodingCertain = true;
+      if (this.charEncodingName == null && dart.test(parseMeta)) {
+        this.charEncodingName = this.detectEncodingMeta();
+        this.charEncodingCertain = false;
+      }
+      if (this.charEncodingName == null) {
+        this.charEncodingCertain = false;
+        this.charEncodingName = "utf-8";
+      }
+      if (this.charEncodingName[$toLowerCase]() === "iso-8859-1") {
+        this.charEncodingName = "windows-1252";
+      }
+    }
+    changeEncoding(newEncoding) {
+      if (this[_rawBytes] == null) {
+        dart.throw(new core.StateError.new("cannot change encoding when parsing a String."));
+      }
+      newEncoding = html_input_stream.codecName(newEncoding);
+      if (dart.test((C0 || CT.C0)[$contains](newEncoding))) {
+        newEncoding = "utf-8";
+      }
+      if (newEncoding == null) {
+        return;
+      } else if (newEncoding == this.charEncodingName) {
+        this.charEncodingCertain = true;
+      } else {
+        this.charEncodingName = newEncoding;
+        this.charEncodingCertain = true;
+        this[_rawChars] = null;
+        this.reset();
+        dart.throw(new constants.ReparseException.new("Encoding changed from " + dart.str(this.charEncodingName) + " to " + dart.str(newEncoding)));
+      }
+    }
+    detectBOM() {
+      if (dart.test(html_input_stream._hasUtf8Bom(this[_rawBytes]))) {
+        return "utf-8";
       }
       return null;
     }
-    readFloat32(label) {
-      let t0, t0$;
-      let f = this.readProp(numL(), label);
-      t0$ = (t0 = f, t0 == null ? null : t0[$toDouble]());
-      return t0$ == null ? 0.0 : t0$;
-    }
-    readFloat32Array(length, label) {
-      let ar = _native_typed_data.NativeFloat32List.new(length);
-      this[_readArray](ar, label);
-      return ar;
-    }
-    [_readArray](ar, label) {
-      let array = this.readProp(ListL(), label);
-      if (array == null) {
-        return;
+    detectEncodingMeta() {
+      let parser = new encoding_parser.EncodingParser.new(utils.slice(intL(), this[_rawBytes], 0, 512));
+      let encoding = parser.getEncoding();
+      if (dart.test((C0 || CT.C0)[$contains](encoding))) {
+        encoding = "utf-8";
       }
-      for (let i = 0; i < dart.notNull(ar[$length]); i = i + 1) {
-        let val = numL().as(array[$_get](i));
-        ar[$_set](i, doubleL().is(ar[$first]) ? val[$toDouble]() : val[$toInt]());
+      return encoding;
+    }
+    get position() {
+      return this[_offset];
+    }
+    char() {
+      let t0, t0$, t0$0;
+      if (dart.notNull(this[_offset]) >= dart.notNull(this[_chars][$length])) return constants.eof;
+      return dart.test(this[_isSurrogatePair](this[_chars], this[_offset])) ? core.String.fromCharCodes(JSArrayOfintL().of([this[_chars][$_get]((t0 = this[_offset], this[_offset] = dart.notNull(t0) + 1, t0)), this[_chars][$_get]((t0$ = this[_offset], this[_offset] = dart.notNull(t0$) + 1, t0$))])) : core.String.fromCharCodes(JSArrayOfintL().of([this[_chars][$_get]((t0$0 = this[_offset], this[_offset] = dart.notNull(t0$0) + 1, t0$0))]));
+    }
+    peekChar() {
+      if (dart.notNull(this[_offset]) >= dart.notNull(this[_chars][$length])) return constants.eof;
+      return dart.test(this[_isSurrogatePair](this[_chars], this[_offset])) ? core.String.fromCharCodes(JSArrayOfintL().of([this[_chars][$_get](this[_offset]), this[_chars][$_get](dart.notNull(this[_offset]) + 1)])) : core.String.fromCharCodes(JSArrayOfintL().of([this[_chars][$_get](this[_offset])]));
+    }
+    [_isSurrogatePair](chars, i) {
+      return dart.notNull(i) + 1 < dart.notNull(chars[$length]) && dart.test(this[_isLeadSurrogate](chars[$_get](i))) && dart.test(this[_isTrailSurrogate](chars[$_get](dart.notNull(i) + 1)));
+    }
+    [_isLeadSurrogate](code) {
+      return (dart.notNull(code) & 64512) === 55296;
+    }
+    [_isTrailSurrogate](code) {
+      return (dart.notNull(code) & 64512) === 56320;
+    }
+    charsUntil(characters, opposite = false) {
+      let start = this[_offset];
+      let c = null;
+      while ((c = this.peekChar()) != null && characters[$contains](c)[$_equals](opposite)) {
+        this[_offset] = dart.notNull(this[_offset]) + dart.notNull(c[$codeUnits][$length]);
       }
+      return core.String.fromCharCodes(this[_chars][$sublist](start, this[_offset]));
     }
-    readFloat64(label) {
-      let t0, t0$;
-      let f = this.readProp(numL(), label);
-      t0$ = (t0 = f, t0 == null ? null : t0[$toDouble]());
-      return t0$ == null ? 0.0 : t0$;
-    }
-    readUint8(label) {
-      let t0;
-      t0 = this.readProp(intL(), label);
-      return t0 == null ? 0 : t0;
-    }
-    readUint8Length() {
-      return this[_readLength]();
-    }
-    isEOF() {
-      return dart.notNull(this[_context].length) <= 1 && dart.equals(dart.dload(this[_readObject], 'length'), 0);
-    }
-    readInt8(label) {
-      let t0;
-      t0 = this.readProp(intL(), label);
-      return t0 == null ? 0 : t0;
-    }
-    readUint16(label) {
-      let t0;
-      t0 = this.readProp(intL(), label);
-      return t0 == null ? 0 : t0;
-    }
-    readUint8Array(length, label) {
-      let ar = _native_typed_data.NativeUint8List.new(length);
-      this[_readArray](ar, label);
-      return ar;
-    }
-    readUint16Array(length, label) {
-      let ar = _native_typed_data.NativeUint16List.new(length);
-      this[_readArray](ar, label);
-      return ar;
-    }
-    readInt16(label) {
-      let t0;
-      t0 = this.readProp(intL(), label);
-      return t0 == null ? 0 : t0;
-    }
-    readUint16Length() {
-      return this[_readLength]();
-    }
-    readUint32Length() {
-      return this[_readLength]();
-    }
-    readUint32(label) {
-      let t0;
-      t0 = this.readProp(intL(), label);
-      return t0 == null ? 0 : t0;
-    }
-    readInt32(label) {
-      let t0;
-      t0 = this.readProp(intL(), label);
-      return t0 == null ? 0 : t0;
-    }
-    readVersion() {
-      let t0;
-      t0 = this.readProp(intL(), "version");
-      return t0 == null ? 0 : t0;
-    }
-    readString(label) {
-      let t0;
-      t0 = this.readProp(StringL(), label);
-      return t0 == null ? "" : t0;
-    }
-    readBool(label) {
-      let t0;
-      t0 = this.readProp(boolL(), label);
-      return t0 == null ? false : t0;
-    }
-    readId(label) {
-      let val = this.readProp(numL(), label);
-      return val != null ? val[$toInt]() + 1 : 0;
-    }
-    openArray(label) {
-      let array = this.readProp(dart.dynamic, label);
-      this[_context].addFirst(array);
-    }
-    closeArray() {
-      this[_context].removeFirst();
-    }
-    openObject(label) {
-      let o = this.readProp(dart.dynamic, label);
-      this[_context].addFirst(o);
-    }
-    closeObject() {
-      this[_context].removeFirst();
-    }
-    [_readLength]() {
-      if (ListL().is(this[_context].first)) {
-        return ListL().as(this[_context].first)[$length];
-      } else if (MapL().is(this[_context].first)) {
-        return MapL().as(this[_context].first)[$length];
+    unget(ch) {
+      if (ch != null) {
+        this[_offset] = dart.notNull(this[_offset]) - dart.notNull(ch[$codeUnits][$length]);
+        if (!(this.peekChar() == ch)) dart.assertFailed(null, L0, 256, 14, "peekChar() == ch");
       }
-      return 0;
-    }
-    readAsset() {
-      let encodedAsset = this.readString("data");
-      return (C0 || CT.C0).convert(encodedAsset, 22);
-    }
-    get containerType() {
-      return "json";
-    }
-    get context() {
-      return this[_context];
     }
   };
-  (json_reader.JSONReader.new = function(object) {
-    this[blockType] = null;
-    this[_readObject] = null;
-    this[_context] = null;
-    this[_readObject] = object[$_get]("container");
-    this[_context] = new collection.ListQueue.new();
-    this[_context].addFirst(this[_readObject]);
-  }).prototype = json_reader.JSONReader.prototype;
-  dart.addTypeTests(json_reader.JSONReader);
-  dart.addTypeCaches(json_reader.JSONReader);
-  json_reader.JSONReader[dart.implements] = () => [stream_reader.StreamReader];
-  dart.setMethodSignature(json_reader.JSONReader, () => ({
-    __proto__: dart.getMethods(json_reader.JSONReader.__proto__),
-    readProp: dart.gFnType(T => [dart.legacy(T), [dart.legacy(core.String)]]),
-    readFloat32: dart.fnType(dart.legacy(core.double), [dart.legacy(core.String)]),
-    readFloat32Array: dart.fnType(dart.legacy(typed_data.Float32List), [dart.legacy(core.int), dart.legacy(core.String)]),
-    [_readArray]: dart.fnType(dart.void, [dart.legacy(core.List), dart.legacy(core.String)]),
-    readFloat64: dart.fnType(dart.legacy(core.double), [dart.legacy(core.String)]),
-    readUint8: dart.fnType(dart.legacy(core.int), [dart.legacy(core.String)]),
-    readUint8Length: dart.fnType(dart.legacy(core.int), []),
-    isEOF: dart.fnType(dart.legacy(core.bool), []),
-    readInt8: dart.fnType(dart.legacy(core.int), [dart.legacy(core.String)]),
-    readUint16: dart.fnType(dart.legacy(core.int), [dart.legacy(core.String)]),
-    readUint8Array: dart.fnType(dart.legacy(typed_data.Uint8List), [dart.legacy(core.int), dart.legacy(core.String)]),
-    readUint16Array: dart.fnType(dart.legacy(typed_data.Uint16List), [dart.legacy(core.int), dart.legacy(core.String)]),
-    readInt16: dart.fnType(dart.legacy(core.int), [dart.legacy(core.String)]),
-    readUint16Length: dart.fnType(dart.legacy(core.int), []),
-    readUint32Length: dart.fnType(dart.legacy(core.int), []),
-    readUint32: dart.fnType(dart.legacy(core.int), [dart.legacy(core.String)]),
-    readInt32: dart.fnType(dart.legacy(core.int), [dart.legacy(core.String)]),
-    readVersion: dart.fnType(dart.legacy(core.int), []),
-    readString: dart.fnType(dart.legacy(core.String), [dart.legacy(core.String)]),
-    readBool: dart.fnType(dart.legacy(core.bool), [dart.legacy(core.String)]),
-    readId: dart.fnType(dart.legacy(core.int), [dart.legacy(core.String)]),
-    openArray: dart.fnType(dart.void, [dart.legacy(core.String)]),
-    closeArray: dart.fnType(dart.void, []),
-    openObject: dart.fnType(dart.void, [dart.legacy(core.String)]),
-    closeObject: dart.fnType(dart.void, []),
-    [_readLength]: dart.fnType(dart.legacy(core.int), []),
-    readAsset: dart.fnType(dart.legacy(typed_data.Uint8List), [])
+  (html_input_stream.HtmlInputStream.new = function(source, encoding = null, parseMeta = true, generateSpans = false, sourceUrl = null) {
+    this[charEncodingCertain] = true;
+    this[_rawBytes] = null;
+    this[_rawChars] = null;
+    this[errors] = null;
+    this[fileInfo] = null;
+    this[_lineStarts] = null;
+    this[_chars] = null;
+    this[_offset] = null;
+    this[generateSpans$] = generateSpans;
+    this[sourceUrl$] = sourceUrl;
+    this[charEncodingName] = html_input_stream.codecName(encoding);
+    if (StringL().is(source)) {
+      this[_rawChars] = source[$codeUnits];
+      this.charEncodingName = "utf-8";
+      this.charEncodingCertain = true;
+    } else if (ListLOfintL().is(source)) {
+      this[_rawBytes] = source;
+    } else {
+      dart.throw(new core.ArgumentError.value(source, "source", "Must be a String or List<int>."));
+    }
+    if (this.charEncodingName == null) {
+      this.detectEncoding(parseMeta);
+    }
+    this.reset();
+  }).prototype = html_input_stream.HtmlInputStream.prototype;
+  dart.addTypeTests(html_input_stream.HtmlInputStream);
+  dart.addTypeCaches(html_input_stream.HtmlInputStream);
+  dart.setMethodSignature(html_input_stream.HtmlInputStream, () => ({
+    __proto__: dart.getMethods(html_input_stream.HtmlInputStream.__proto__),
+    reset: dart.fnType(dart.void, []),
+    detectEncoding: dart.fnType(dart.void, [], [dart.legacy(core.bool)]),
+    changeEncoding: dart.fnType(dart.void, [dart.legacy(core.String)]),
+    detectBOM: dart.fnType(dart.legacy(core.String), []),
+    detectEncodingMeta: dart.fnType(dart.legacy(core.String), []),
+    char: dart.fnType(dart.legacy(core.String), []),
+    peekChar: dart.fnType(dart.legacy(core.String), []),
+    [_isSurrogatePair]: dart.fnType(dart.legacy(core.bool), [dart.legacy(core.List$(dart.legacy(core.int))), dart.legacy(core.int)]),
+    [_isLeadSurrogate]: dart.fnType(dart.legacy(core.bool), [dart.legacy(core.int)]),
+    [_isTrailSurrogate]: dart.fnType(dart.legacy(core.bool), [dart.legacy(core.int)]),
+    charsUntil: dart.fnType(dart.legacy(core.String), [dart.legacy(core.String)], [dart.legacy(core.bool)]),
+    unget: dart.fnType(dart.void, [dart.legacy(core.String)])
   }));
-  dart.setGetterSignature(json_reader.JSONReader, () => ({
-    __proto__: dart.getGetters(json_reader.JSONReader.__proto__),
-    containerType: dart.legacy(core.String),
-    context: dart.legacy(collection.ListQueue)
+  dart.setGetterSignature(html_input_stream.HtmlInputStream, () => ({
+    __proto__: dart.getGetters(html_input_stream.HtmlInputStream.__proto__),
+    position: dart.legacy(core.int)
   }));
-  dart.setLibraryUri(json_reader.JSONReader, L0);
-  dart.setFieldSignature(json_reader.JSONReader, () => ({
-    __proto__: dart.getFields(json_reader.JSONReader.__proto__),
-    blockType: dart.fieldType(dart.legacy(core.int)),
-    [_readObject]: dart.fieldType(dart.dynamic),
-    [_context]: dart.fieldType(dart.legacy(collection.ListQueue))
+  dart.setLibraryUri(html_input_stream.HtmlInputStream, L1);
+  dart.setFieldSignature(html_input_stream.HtmlInputStream, () => ({
+    __proto__: dart.getFields(html_input_stream.HtmlInputStream.__proto__),
+    charEncodingName: dart.fieldType(dart.legacy(core.String)),
+    charEncodingCertain: dart.fieldType(dart.legacy(core.bool)),
+    generateSpans: dart.finalFieldType(dart.legacy(core.bool)),
+    sourceUrl: dart.finalFieldType(dart.legacy(core.String)),
+    [_rawBytes]: dart.fieldType(dart.legacy(core.List$(dart.legacy(core.int)))),
+    [_rawChars]: dart.fieldType(dart.legacy(core.List$(dart.legacy(core.int)))),
+    errors: dart.fieldType(dart.legacy(collection.Queue$(dart.legacy(core.String)))),
+    fileInfo: dart.fieldType(dart.legacy(file.SourceFile)),
+    [_lineStarts]: dart.fieldType(dart.legacy(core.List$(dart.legacy(core.int)))),
+    [_chars]: dart.fieldType(dart.legacy(core.List$(dart.legacy(core.int)))),
+    [_offset]: dart.fieldType(dart.legacy(core.int))
   }));
-  var _peek = dart.privateName(json_block_reader, "_peek");
-  json_block_reader.JSONBlockReader = class JSONBlockReader extends json_reader.JSONReader {
-    readNextBlock(blockTypes = null) {
-      if (dart.test(this.isEOF())) {
+  dart.defineLazy(html_input_stream.HtmlInputStream, {
+    /*html_input_stream.HtmlInputStream.numBytesMeta*/get numBytesMeta() {
+      return 512;
+    },
+    /*html_input_stream.HtmlInputStream.defaultEncoding*/get defaultEncoding() {
+      return "utf-8";
+    }
+  }, true);
+  html_input_stream._invalidUnicode = function _invalidUnicode(c) {
+    if (1 <= dart.notNull(c) && dart.notNull(c) <= 8) return true;
+    if (14 <= dart.notNull(c) && dart.notNull(c) <= 31) return true;
+    if (127 <= dart.notNull(c) && dart.notNull(c) <= 159) return true;
+    if (55296 <= dart.notNull(c) && dart.notNull(c) <= 57343) return true;
+    if (64976 <= dart.notNull(c) && dart.notNull(c) <= 65007) return true;
+    switch (c) {
+      case 11:
+      case 65534:
+      case 65535:
+      case 131070:
+      case 131071:
+      case 196606:
+      case 196607:
+      case 262142:
+      case 262143:
+      case 327678:
+      case 327679:
+      case 393214:
+      case 393215:
+      case 458750:
+      case 458751:
+      case 524286:
+      case 524287:
+      case 589822:
+      case 589823:
+      case 655358:
+      case 655359:
+      case 720894:
+      case 720895:
+      case 786430:
+      case 786431:
+      case 851966:
+      case 851967:
+      case 917502:
+      case 917503:
+      case 983038:
+      case 983039:
+      case 1048574:
+      case 1048575:
+      case 1114110:
+      case 1114111:
+      {
+        return true;
+      }
+    }
+    return false;
+  };
+  html_input_stream.codecName = function codecName(encoding) {
+    let asciiPunctuation = core.RegExp.new("[\t-\r -/:-@[-`{-~]");
+    if (encoding == null) return null;
+    let canonicalName = encoding[$replaceAll](asciiPunctuation, "")[$toLowerCase]();
+    return constants.encodings[$_get](canonicalName);
+  };
+  html_input_stream._hasUtf8Bom = function _hasUtf8Bom(bytes, offset = 0, length = null) {
+    let end = length != null ? dart.notNull(offset) + dart.notNull(length) : bytes[$length];
+    return dart.notNull(offset) + 3 <= dart.notNull(end) && bytes[$_get](offset) === 239 && bytes[$_get](dart.notNull(offset) + 1) === 187 && bytes[$_get](dart.notNull(offset) + 2) === 191;
+  };
+  html_input_stream._decodeBytes = function _decodeBytes(encoding, bytes) {
+    switch (encoding) {
+      case "ascii":
+      {
+        return convert.ascii.decode(bytes)[$codeUnits];
+      }
+      case "utf-8":
+      {
+        return convert.utf8.decode(bytes)[$codeUnits];
+      }
+      default:
+      {
+        dart.throw(new core.ArgumentError.new("Encoding " + dart.str(encoding) + " not supported"));
+      }
+    }
+  };
+  var __position = dart.privateName(encoding_parser, "__position");
+  var _bytes$ = dart.privateName(encoding_parser, "_bytes");
+  var _length = dart.privateName(encoding_parser, "_length");
+  var _next = dart.privateName(encoding_parser, "_next");
+  var _previous = dart.privateName(encoding_parser, "_previous");
+  var _position = dart.privateName(encoding_parser, "_position");
+  var _currentByte = dart.privateName(encoding_parser, "_currentByte");
+  var C1;
+  var _skipChars = dart.privateName(encoding_parser, "_skipChars");
+  var _skipUntil = dart.privateName(encoding_parser, "_skipUntil");
+  var _matchBytes = dart.privateName(encoding_parser, "_matchBytes");
+  var _jumpTo = dart.privateName(encoding_parser, "_jumpTo");
+  var _slice = dart.privateName(encoding_parser, "_slice");
+  encoding_parser.EncodingBytes = class EncodingBytes extends core.Object {
+    get [_length]() {
+      return this[_bytes$].length;
+    }
+    [_next]() {
+      let p = this[__position] = dart.notNull(this[__position]) + 1;
+      if (p >= dart.notNull(this[_length])) {
+        dart.throw(new core.StateError.new("No more elements"));
+      } else if (p < 0) {
+        dart.throw(new core.RangeError.new(p));
+      }
+      return this[_bytes$][$_get](p);
+    }
+    [_previous]() {
+      let p = this[__position];
+      if (dart.notNull(p) >= dart.notNull(this[_length])) {
+        dart.throw(new core.StateError.new("No more elements"));
+      } else if (dart.notNull(p) < 0) {
+        dart.throw(new core.RangeError.new(p));
+      }
+      this[__position] = p = dart.notNull(p) - 1;
+      return this[_bytes$][$_get](p);
+    }
+    set [_position](value) {
+      if (dart.notNull(this[__position]) >= dart.notNull(this[_length])) {
+        dart.throw(new core.StateError.new("No more elements"));
+      }
+      this[__position] = value;
+    }
+    get [_position]() {
+      if (dart.notNull(this[__position]) >= dart.notNull(this[_length])) {
+        dart.throw(new core.StateError.new("No more elements"));
+      }
+      if (dart.notNull(this[__position]) >= 0) {
+        return this[__position];
+      } else {
+        return 0;
+      }
+    }
+    get [_currentByte]() {
+      return this[_bytes$][$_get](this[_position]);
+    }
+    [_skipChars](skipChars = null) {
+      skipChars == null ? skipChars = C1 || CT.C1 : null;
+      let p = this[_position];
+      while (dart.notNull(p) < dart.notNull(this[_length])) {
+        let c = this[_bytes$][$_get](p);
+        if (!dart.test(skipChars(c))) {
+          this[__position] = p;
+          return c;
+        }
+        p = dart.notNull(p) + 1;
+      }
+      this[__position] = p;
+      return null;
+    }
+    [_skipUntil](untilChars) {
+      let p = this[_position];
+      while (dart.notNull(p) < dart.notNull(this[_length])) {
+        let c = this[_bytes$][$_get](p);
+        if (dart.test(untilChars(c))) {
+          this[__position] = p;
+          return c;
+        }
+        p = dart.notNull(p) + 1;
+      }
+      return null;
+    }
+    [_matchBytes](bytes) {
+      let p = this[_position];
+      if (this[_bytes$].length < dart.notNull(p) + bytes.length) {
+        return false;
+      }
+      let data = this[_bytes$][$substring](p, dart.notNull(p) + bytes.length);
+      if (data === bytes) {
+        this[_position] = dart.notNull(this[_position]) + bytes.length;
+        return true;
+      }
+      return false;
+    }
+    [_jumpTo](bytes) {
+      let newPosition = this[_bytes$][$indexOf](bytes, this[_position]);
+      if (newPosition >= 0) {
+        this[__position] = newPosition + bytes.length - 1;
+        return true;
+      } else {
+        dart.throw(new core.StateError.new("No more elements"));
+      }
+    }
+    [_slice](start, end = null) {
+      end == null ? end = this[_length] : null;
+      if (dart.notNull(end) < 0) end = dart.notNull(end) + dart.notNull(this[_length]);
+      return this[_bytes$][$substring](start, end);
+    }
+  };
+  (encoding_parser.EncodingBytes.new = function(_bytes) {
+    this[__position] = -1;
+    this[_bytes$] = _bytes;
+    ;
+  }).prototype = encoding_parser.EncodingBytes.prototype;
+  dart.addTypeTests(encoding_parser.EncodingBytes);
+  dart.addTypeCaches(encoding_parser.EncodingBytes);
+  dart.setMethodSignature(encoding_parser.EncodingBytes, () => ({
+    __proto__: dart.getMethods(encoding_parser.EncodingBytes.__proto__),
+    [_next]: dart.fnType(dart.legacy(core.String), []),
+    [_previous]: dart.fnType(dart.legacy(core.String), []),
+    [_skipChars]: dart.fnType(dart.legacy(core.String), [], [dart.legacy(dart.fnType(dart.legacy(core.bool), [dart.legacy(core.String)]))]),
+    [_skipUntil]: dart.fnType(dart.legacy(core.String), [dart.legacy(dart.fnType(dart.legacy(core.bool), [dart.legacy(core.String)]))]),
+    [_matchBytes]: dart.fnType(dart.legacy(core.bool), [dart.legacy(core.String)]),
+    [_jumpTo]: dart.fnType(dart.legacy(core.bool), [dart.legacy(core.String)]),
+    [_slice]: dart.fnType(dart.legacy(core.String), [dart.legacy(core.int)], [dart.legacy(core.int)])
+  }));
+  dart.setGetterSignature(encoding_parser.EncodingBytes, () => ({
+    __proto__: dart.getGetters(encoding_parser.EncodingBytes.__proto__),
+    [_length]: dart.legacy(core.int),
+    [_position]: dart.legacy(core.int),
+    [_currentByte]: dart.legacy(core.String)
+  }));
+  dart.setSetterSignature(encoding_parser.EncodingBytes, () => ({
+    __proto__: dart.getSetters(encoding_parser.EncodingBytes.__proto__),
+    [_position]: dart.legacy(core.int)
+  }));
+  dart.setLibraryUri(encoding_parser.EncodingBytes, L2);
+  dart.setFieldSignature(encoding_parser.EncodingBytes, () => ({
+    __proto__: dart.getFields(encoding_parser.EncodingBytes.__proto__),
+    [_bytes$]: dart.finalFieldType(dart.legacy(core.String)),
+    [__position]: dart.fieldType(dart.legacy(core.int))
+  }));
+  encoding_parser._DispatchEntry = class _DispatchEntry extends core.Object {};
+  (encoding_parser._DispatchEntry.new = function(pattern, handler) {
+    this.pattern = pattern;
+    this.handler = handler;
+    ;
+  }).prototype = encoding_parser._DispatchEntry.prototype;
+  dart.addTypeTests(encoding_parser._DispatchEntry);
+  dart.addTypeCaches(encoding_parser._DispatchEntry);
+  dart.setLibraryUri(encoding_parser._DispatchEntry, L2);
+  dart.setFieldSignature(encoding_parser._DispatchEntry, () => ({
+    __proto__: dart.getFields(encoding_parser._DispatchEntry.__proto__),
+    pattern: dart.finalFieldType(dart.legacy(core.String)),
+    handler: dart.finalFieldType(dart.legacy(dart.fnType(dart.legacy(core.bool), [])))
+  }));
+  var _encoding = dart.privateName(encoding_parser, "_encoding");
+  var _data = dart.privateName(encoding_parser, "_data");
+  var _handleComment = dart.privateName(encoding_parser, "_handleComment");
+  var _handleMeta = dart.privateName(encoding_parser, "_handleMeta");
+  var _handlePossibleEndTag = dart.privateName(encoding_parser, "_handlePossibleEndTag");
+  var _handleOther = dart.privateName(encoding_parser, "_handleOther");
+  var _handlePossibleStartTag = dart.privateName(encoding_parser, "_handlePossibleStartTag");
+  var _getAttribute = dart.privateName(encoding_parser, "_getAttribute");
+  var _handlePossibleTag = dart.privateName(encoding_parser, "_handlePossibleTag");
+  var C2;
+  encoding_parser.EncodingParser = class EncodingParser extends core.Object {
+    getEncoding() {
+      let t0;
+      let methodDispatch = JSArrayOf_DispatchEntryL().of([new encoding_parser._DispatchEntry.new("<!--", dart.bind(this, _handleComment)), new encoding_parser._DispatchEntry.new("<meta", dart.bind(this, _handleMeta)), new encoding_parser._DispatchEntry.new("</", dart.bind(this, _handlePossibleEndTag)), new encoding_parser._DispatchEntry.new("<!", dart.bind(this, _handleOther)), new encoding_parser._DispatchEntry.new("<?", dart.bind(this, _handleOther)), new encoding_parser._DispatchEntry.new("<", dart.bind(this, _handlePossibleStartTag))]);
+      try {
+        for (;;) {
+          for (let dispatch of methodDispatch) {
+            if (dart.test(this[_data][_matchBytes](dispatch.pattern))) {
+              let keepParsing = dispatch.handler();
+              if (dart.test(keepParsing)) break;
+              return this[_encoding];
+            }
+          }
+          t0 = this[_data];
+          t0[_position] = dart.notNull(t0[_position]) + 1;
+        }
+      } catch (e) {
+        let _ = dart.getThrown(e);
+        if (StateErrorL().is(_)) {
+        } else
+          throw e;
+      }
+      return this[_encoding];
+    }
+    [_handleComment]() {
+      return this[_data][_jumpTo]("-->");
+    }
+    [_handleMeta]() {
+      if (!dart.test(constants.isWhitespace(this[_data][_currentByte]))) {
+        return true;
+      }
+      while (true) {
+        let attr = this[_getAttribute]();
+        if (attr == null) return true;
+        if (attr[$_get](0) === "charset") {
+          let tentativeEncoding = attr[$_get](1);
+          let codec = html_input_stream.codecName(tentativeEncoding);
+          if (codec != null) {
+            this[_encoding] = codec;
+            return false;
+          }
+        } else if (attr[$_get](0) === "content") {
+          let contentParser = new encoding_parser.ContentAttrParser.new(new encoding_parser.EncodingBytes.new(attr[$_get](1)));
+          let tentativeEncoding = contentParser.parse();
+          let codec = html_input_stream.codecName(tentativeEncoding);
+          if (codec != null) {
+            this[_encoding] = codec;
+            return false;
+          }
+        }
+      }
+    }
+    [_handlePossibleStartTag]() {
+      return this[_handlePossibleTag](false);
+    }
+    [_handlePossibleEndTag]() {
+      this[_data][_next]();
+      return this[_handlePossibleTag](true);
+    }
+    [_handlePossibleTag](endTag) {
+      if (!dart.test(constants.isLetter(this[_data][_currentByte]))) {
+        if (dart.test(endTag)) {
+          this[_data][_previous]();
+          this[_handleOther]();
+        }
+        return true;
+      }
+      let c = this[_data][_skipUntil](C2 || CT.C2);
+      if (c === "<") {
+        this[_data][_previous]();
+      } else {
+        let attr = this[_getAttribute]();
+        while (attr != null) {
+          attr = this[_getAttribute]();
+        }
+      }
+      return true;
+    }
+    [_handleOther]() {
+      return this[_data][_jumpTo](">");
+    }
+    [_getAttribute]() {
+      let c = this[_data][_skipChars](dart.fn(x => x === "/" || dart.test(constants.isWhitespace(x)), StringLToboolL()));
+      if (c === ">" || c == null) {
         return null;
       }
-      let obj = new _js_helper.LinkedMap.new();
-      obj[$_set]("container", this[_peek]());
-      let type = this.readBlockType(blockTypes);
-      let c = this.context.first;
-      if (MapL().is(c)) {
-        c[$remove](this.nextKey);
-      } else if (ListL().is(c)) {
-        c[$removeAt](0);
-      }
-      return new json_block_reader.JSONBlockReader.fromObject(type, obj);
-    }
-    readBlockType(blockTypes) {
-      let next = this[_peek]();
-      let bType = null;
-      if (MapL().is(next)) {
-        let c = this.context.first;
-        if (MapL().is(c)) {
-          bType = blockTypes[$_get](this.nextKey);
-        } else if (ListL().is(c)) {
-          let nType = next[$_get]("type");
-          bType = blockTypes[$_get](nType);
-        }
-      } else if (ListL().is(next)) {
-        bType = blockTypes[$_get](this.nextKey);
-      }
-      return bType;
-    }
-    [_peek]() {
-      let stream = this.context.first;
-      let next = null;
-      if (MapL().is(stream)) {
-        next = stream[$_get](this.nextKey);
-      } else if (ListL().is(stream)) {
-        next = stream[$_get](0);
-      }
-      return next;
-    }
-    get nextKey() {
-      return dart.dload(dart.dload(this.context.first, 'keys'), 'first');
-    }
-  };
-  (json_block_reader.JSONBlockReader.new = function(object) {
-    json_block_reader.JSONBlockReader.__proto__.new.call(this, object);
-    ;
-  }).prototype = json_block_reader.JSONBlockReader.prototype;
-  (json_block_reader.JSONBlockReader.fromObject = function(type, object) {
-    json_block_reader.JSONBlockReader.__proto__.new.call(this, object);
-    this.blockType = type;
-  }).prototype = json_block_reader.JSONBlockReader.prototype;
-  dart.addTypeTests(json_block_reader.JSONBlockReader);
-  dart.addTypeCaches(json_block_reader.JSONBlockReader);
-  dart.setMethodSignature(json_block_reader.JSONBlockReader, () => ({
-    __proto__: dart.getMethods(json_block_reader.JSONBlockReader.__proto__),
-    readNextBlock: dart.fnType(dart.legacy(json_block_reader.JSONBlockReader), [], [dart.legacy(core.Map$(dart.legacy(core.String), dart.legacy(core.int)))]),
-    readBlockType: dart.fnType(dart.legacy(core.int), [dart.legacy(core.Map$(dart.legacy(core.String), dart.legacy(core.int)))]),
-    [_peek]: dart.fnType(dart.dynamic, [])
-  }));
-  dart.setGetterSignature(json_block_reader.JSONBlockReader, () => ({
-    __proto__: dart.getGetters(json_block_reader.JSONBlockReader.__proto__),
-    nextKey: dart.dynamic
-  }));
-  dart.setLibraryUri(json_block_reader.JSONBlockReader, L1);
-  var _raw = dart.privateName(binary_reader, "_raw");
-  var _readIndex = dart.privateName(binary_reader, "_readIndex");
-  binary_reader.BinaryReader = class BinaryReader extends core.Object {
-    get raw() {
-      return this[_raw];
-    }
-    get readIndex() {
-      return this[_readIndex];
-    }
-    readBytes(length) {
-      let offset = dart.notNull(this[_readIndex]) + dart.notNull(this.raw[$offsetInBytes]);
-      this[_readIndex] = dart.notNull(this[_readIndex]) + dart.notNull(length);
-      return this.raw[$buffer][$asByteData](offset, length);
-    }
-    readFloat32(label = null) {
-      let value = this[_raw][$getFloat32](this[_readIndex], typed_data.Endian.little);
-      this[_readIndex] = dart.notNull(this[_readIndex]) + 4;
-      return value;
-    }
-    readFloat64(label = null) {
-      let value = this[_raw][$getFloat64](this[_readIndex], typed_data.Endian.little);
-      this[_readIndex] = dart.notNull(this[_readIndex]) + 8;
-      return value;
-    }
-    readUint8(label = null) {
-      let t0;
-      return this[_raw][$getUint8]((t0 = this[_readIndex], this[_readIndex] = dart.notNull(t0) + 1, t0));
-    }
-    isEOF() {
-      return dart.notNull(this[_readIndex]) >= dart.notNull(this[_raw][$lengthInBytes]);
-    }
-    readInt8(label = null) {
-      let t0;
-      return this[_raw][$getInt8]((t0 = this[_readIndex], this[_readIndex] = dart.notNull(t0) + 1, t0));
-    }
-    readUint16(label = null) {
-      let value = this[_raw][$getUint16](this[_readIndex], typed_data.Endian.little);
-      this[_readIndex] = dart.notNull(this[_readIndex]) + 2;
-      return value;
-    }
-    readUint16Array(length, label = null) {
-      let list = _native_typed_data.NativeUint16List.new(length);
-      for (let i = 0; i < dart.notNull(length); i = i + 1) {
-        list[$_set](i, this[_raw][$getUint16](this[_readIndex], typed_data.Endian.little));
-        this[_readIndex] = dart.notNull(this[_readIndex]) + 2;
-      }
-      return list;
-    }
-    readInt16(label = null) {
-      let value = this[_raw][$getInt16](this[_readIndex], typed_data.Endian.little);
-      this[_readIndex] = dart.notNull(this[_readIndex]) + 2;
-      return value;
-    }
-    readUint32(label = null) {
-      let value = this[_raw][$getUint32](this[_readIndex], typed_data.Endian.little);
-      this[_readIndex] = dart.notNull(this[_readIndex]) + 4;
-      return value;
-    }
-    readInt32(label = null) {
-      let value = this[_raw][$getInt32](this[_readIndex], typed_data.Endian.little);
-      this[_readIndex] = dart.notNull(this[_readIndex]) + 4;
-      return value;
-    }
-    readString(label = null) {
-      let length = this.readUint32();
-      let end = dart.notNull(this[_readIndex]) + dart.notNull(length);
-      let stringBuffer = new core.StringBuffer.new();
-      while (dart.notNull(this[_readIndex]) < end) {
-        let c1 = this.readUint8();
-        if (dart.notNull(c1) < 128) {
-          stringBuffer.writeCharCode(c1);
-        } else if (dart.notNull(c1) > 191 && dart.notNull(c1) < 224) {
-          let c2 = this.readUint8();
-          stringBuffer.writeCharCode((dart.notNull(c1) & 31) << 6 | dart.notNull(c2) & 63);
-        } else if (dart.notNull(c1) > 239 && dart.notNull(c1) < 365) {
-          let c2 = this.readUint8();
-          let c3 = this.readUint8();
-          let c4 = this.readUint8();
-          let u = ((dart.notNull(c1) & 7) << 18 | (dart.notNull(c2) & 63) << 12 | (dart.notNull(c3) & 63) << 6 | dart.notNull(c4) & 63) - 65536;
-          stringBuffer.writeCharCode(55296 + u[$rightShift](10));
-          stringBuffer.writeCharCode(56320 + (u & 1023));
+      let attrName = [];
+      let attrValue = [];
+      while (true) {
+        if (c == null) {
+          return null;
+        } else if (c === "=" && dart.test(attrName[$isNotEmpty])) {
+          break;
+        } else if (dart.test(constants.isWhitespace(c))) {
+          c = this[_data][_skipChars]();
+          c = this[_data][_next]();
+          break;
+        } else if (c === "/" || c === ">") {
+          return JSArrayOfStringL().of([attrName[$join](), ""]);
+        } else if (dart.test(constants.isLetter(c))) {
+          attrName[$add](c[$toLowerCase]());
         } else {
-          let c2 = this.readUint8();
-          let c3 = this.readUint8();
-          stringBuffer.writeCharCode((dart.notNull(c1) & 15) << 12 | (dart.notNull(c2) & 63) << 6 | dart.notNull(c3) & 63);
+          attrName[$add](c);
+        }
+        c = this[_data][_next]();
+      }
+      if (c !== "=") {
+        this[_data][_previous]();
+        return JSArrayOfStringL().of([attrName[$join](), ""]);
+      }
+      this[_data][_next]();
+      c = this[_data][_skipChars]();
+      if (c === "'" || c === "\"") {
+        let quoteChar = c;
+        while (true) {
+          c = this[_data][_next]();
+          if (c == quoteChar) {
+            this[_data][_next]();
+            return JSArrayOfStringL().of([attrName[$join](), attrValue[$join]()]);
+          } else if (dart.test(constants.isLetter(c))) {
+            attrValue[$add](c[$toLowerCase]());
+          } else {
+            attrValue[$add](c);
+          }
+        }
+      } else if (c === ">") {
+        return JSArrayOfStringL().of([attrName[$join](), ""]);
+      } else if (c == null) {
+        return null;
+      } else if (dart.test(constants.isLetter(c))) {
+        attrValue[$add](c[$toLowerCase]());
+      } else {
+        attrValue[$add](c);
+      }
+      while (true) {
+        c = this[_data][_next]();
+        if (dart.test(encoding_parser._isSpaceOrAngleBracket(c))) {
+          return JSArrayOfStringL().of([attrName[$join](), attrValue[$join]()]);
+        } else if (c == null) {
+          return null;
+        } else if (dart.test(constants.isLetter(c))) {
+          attrValue[$add](c[$toLowerCase]());
+        } else {
+          attrValue[$add](c);
         }
       }
-      return stringBuffer.toString();
-    }
-    readUint8Array(length, label = null) {
-      let offset = dart.notNull(this[_readIndex]) + dart.notNull(this[_raw][$offsetInBytes]);
-      this[_readIndex] = dart.notNull(this[_readIndex]) + dart.notNull(length);
-      return this[_raw][$buffer][$asUint8List](offset, length);
-    }
-    readVersion() {
-      return this.readUint32();
-    }
-    readUint8Length() {
-      return this.readUint8();
-    }
-    readUint32Length() {
-      return this.readUint32();
-    }
-    readUint16Length() {
-      return this.readUint16();
-    }
-    readId(label) {
-      return this.readUint16(label);
-    }
-    readFloat32Array(length, label) {
-      let list = _native_typed_data.NativeFloat32List.new(length);
-      for (let i = 0; i < dart.notNull(length); i = i + 1) {
-        list[$_set](i, this[_raw][$getFloat32](this[_readIndex], typed_data.Endian.little));
-        this[_readIndex] = dart.notNull(this[_readIndex]) + 4;
-      }
-      return list;
-    }
-    readBool(label) {
-      return this.readUint8(label) === 1;
-    }
-    readAsset() {
-      let length = this.readUint32();
-      return this.readUint8Array(length);
-    }
-    openArray(label) {
-    }
-    closeArray() {
-    }
-    openObject(label) {
-    }
-    closeObject() {
-    }
-    get containerType() {
-      return "bin";
     }
   };
-  (binary_reader.BinaryReader.new = function(data) {
-    this[_raw] = null;
-    this[_readIndex] = null;
-    this[_raw] = data;
-    this[_readIndex] = 0;
-  }).prototype = binary_reader.BinaryReader.prototype;
-  dart.addTypeTests(binary_reader.BinaryReader);
-  dart.addTypeCaches(binary_reader.BinaryReader);
-  binary_reader.BinaryReader[dart.implements] = () => [stream_reader.StreamReader];
-  dart.setMethodSignature(binary_reader.BinaryReader, () => ({
-    __proto__: dart.getMethods(binary_reader.BinaryReader.__proto__),
-    readBytes: dart.fnType(dart.legacy(typed_data.ByteData), [dart.legacy(core.int)]),
-    readFloat32: dart.fnType(dart.legacy(core.double), [], [dart.legacy(core.String)]),
-    readFloat64: dart.fnType(dart.legacy(core.double), [], [dart.legacy(core.String)]),
-    readUint8: dart.fnType(dart.legacy(core.int), [], [dart.legacy(core.String)]),
-    isEOF: dart.fnType(dart.legacy(core.bool), []),
-    readInt8: dart.fnType(dart.legacy(core.int), [], [dart.legacy(core.String)]),
-    readUint16: dart.fnType(dart.legacy(core.int), [], [dart.legacy(core.String)]),
-    readUint16Array: dart.fnType(dart.legacy(typed_data.Uint16List), [dart.legacy(core.int)], [dart.legacy(core.String)]),
-    readInt16: dart.fnType(dart.legacy(core.int), [], [dart.legacy(core.String)]),
-    readUint32: dart.fnType(dart.legacy(core.int), [], [dart.legacy(core.String)]),
-    readInt32: dart.fnType(dart.legacy(core.int), [], [dart.legacy(core.String)]),
-    readString: dart.fnType(dart.legacy(core.String), [], [dart.legacy(core.String)]),
-    readUint8Array: dart.fnType(dart.legacy(typed_data.Uint8List), [dart.legacy(core.int)], [dart.legacy(core.String)]),
-    readVersion: dart.fnType(dart.legacy(core.int), []),
-    readUint8Length: dart.fnType(dart.legacy(core.int), []),
-    readUint32Length: dart.fnType(dart.legacy(core.int), []),
-    readUint16Length: dart.fnType(dart.legacy(core.int), []),
-    readId: dart.fnType(dart.legacy(core.int), [dart.legacy(core.String)]),
-    readFloat32Array: dart.fnType(dart.legacy(typed_data.Float32List), [dart.legacy(core.int), dart.legacy(core.String)]),
-    readBool: dart.fnType(dart.legacy(core.bool), [dart.legacy(core.String)]),
-    readAsset: dart.fnType(dart.legacy(typed_data.Uint8List), []),
-    openArray: dart.fnType(dart.void, [dart.legacy(core.String)]),
-    closeArray: dart.fnType(dart.void, []),
-    openObject: dart.fnType(dart.void, [dart.legacy(core.String)]),
-    closeObject: dart.fnType(dart.void, [])
-  }));
-  dart.setGetterSignature(binary_reader.BinaryReader, () => ({
-    __proto__: dart.getGetters(binary_reader.BinaryReader.__proto__),
-    raw: dart.legacy(typed_data.ByteData),
-    readIndex: dart.legacy(core.int),
-    containerType: dart.legacy(core.String)
-  }));
-  dart.setLibraryUri(binary_reader.BinaryReader, L2);
-  dart.setFieldSignature(binary_reader.BinaryReader, () => ({
-    __proto__: dart.getFields(binary_reader.BinaryReader.__proto__),
-    [_raw]: dart.fieldType(dart.legacy(typed_data.ByteData)),
-    [_readIndex]: dart.fieldType(dart.legacy(core.int))
-  }));
-  var blockType$ = dart.privateName(block_reader, "BlockReader.blockType");
-  block_reader.BlockReader = class BlockReader extends binary_reader.BinaryReader {
-    get blockType() {
-      return this[blockType$];
-    }
-    set blockType(value) {
-      this[blockType$] = value;
-    }
-    readNextBlock(types) {
-      if (dart.test(this.isEOF())) {
-        return null;
-      }
-      let blockType = this.readUint8();
-      let length = this.readUint32();
-      return new block_reader.BlockReader.fromBlock(blockType, this.readBytes(length));
-    }
-  };
-  (block_reader.BlockReader.new = function(data) {
-    this[blockType$] = null;
-    block_reader.BlockReader.__proto__.new.call(this, data);
-    this.blockType = 0;
-  }).prototype = block_reader.BlockReader.prototype;
-  (block_reader.BlockReader.fromBlock = function(blockType, stream) {
-    this[blockType$] = blockType;
-    block_reader.BlockReader.__proto__.new.call(this, stream);
+  (encoding_parser.EncodingParser.new = function(bytes) {
+    this[_encoding] = null;
+    this[_data] = new encoding_parser.EncodingBytes.new(core.String.fromCharCodes(bytes)[$toLowerCase]());
     ;
-  }).prototype = block_reader.BlockReader.prototype;
-  dart.addTypeTests(block_reader.BlockReader);
-  dart.addTypeCaches(block_reader.BlockReader);
-  dart.setMethodSignature(block_reader.BlockReader, () => ({
-    __proto__: dart.getMethods(block_reader.BlockReader.__proto__),
-    readNextBlock: dart.fnType(dart.legacy(block_reader.BlockReader), [dart.legacy(core.Map$(dart.legacy(core.String), dart.legacy(core.int)))])
+  }).prototype = encoding_parser.EncodingParser.prototype;
+  dart.addTypeTests(encoding_parser.EncodingParser);
+  dart.addTypeCaches(encoding_parser.EncodingParser);
+  dart.setMethodSignature(encoding_parser.EncodingParser, () => ({
+    __proto__: dart.getMethods(encoding_parser.EncodingParser.__proto__),
+    getEncoding: dart.fnType(dart.legacy(core.String), []),
+    [_handleComment]: dart.fnType(dart.legacy(core.bool), []),
+    [_handleMeta]: dart.fnType(dart.legacy(core.bool), []),
+    [_handlePossibleStartTag]: dart.fnType(dart.legacy(core.bool), []),
+    [_handlePossibleEndTag]: dart.fnType(dart.legacy(core.bool), []),
+    [_handlePossibleTag]: dart.fnType(dart.legacy(core.bool), [dart.legacy(core.bool)]),
+    [_handleOther]: dart.fnType(dart.legacy(core.bool), []),
+    [_getAttribute]: dart.fnType(dart.legacy(core.List$(dart.legacy(core.String))), [])
   }));
-  dart.setLibraryUri(block_reader.BlockReader, L3);
-  dart.setFieldSignature(block_reader.BlockReader, () => ({
-    __proto__: dart.getFields(block_reader.BlockReader.__proto__),
-    blockType: dart.fieldType(dart.legacy(core.int))
+  dart.setLibraryUri(encoding_parser.EncodingParser, L2);
+  dart.setFieldSignature(encoding_parser.EncodingParser, () => ({
+    __proto__: dart.getFields(encoding_parser.EncodingParser.__proto__),
+    [_data]: dart.finalFieldType(dart.legacy(encoding_parser.EncodingBytes)),
+    [_encoding]: dart.fieldType(dart.legacy(core.String))
   }));
-  var blockType$0 = dart.privateName(stream_reader, "StreamReader.blockType");
-  stream_reader.StreamReader = class StreamReader extends core.Object {
-    get blockType() {
-      return this[blockType$0];
+  var data$ = dart.privateName(encoding_parser, "ContentAttrParser.data");
+  encoding_parser.ContentAttrParser = class ContentAttrParser extends core.Object {
+    get data() {
+      return this[data$];
     }
-    set blockType(value) {
-      this[blockType$0] = value;
+    set data(value) {
+      super.data = value;
     }
-    static new(data) {
-      let reader = null;
-      if (ByteDataL().is(data)) {
-        reader = new block_reader.BlockReader.new(data);
-        reader.readUint8("F");
-        reader.readUint8("L");
-        reader.readUint8("A");
-        reader.readUint8("R");
-        reader.readUint8("E");
-      } else if (MapL().is(data)) {
-        reader = new json_block_reader.JSONBlockReader.new(data);
+    parse() {
+      let t1, t1$, t1$0;
+      try {
+        this.data[_jumpTo]("charset");
+        t1 = this.data;
+        t1[_position] = dart.notNull(t1[_position]) + 1;
+        this.data[_skipChars]();
+        if (this.data[_currentByte] !== "=") {
+          return null;
+        }
+        t1$ = this.data;
+        t1$[_position] = dart.notNull(t1$[_position]) + 1;
+        this.data[_skipChars]();
+        if (this.data[_currentByte] === "\"" || this.data[_currentByte] === "'") {
+          let quoteMark = this.data[_currentByte];
+          t1$0 = this.data;
+          t1$0[_position] = dart.notNull(t1$0[_position]) + 1;
+          let oldPosition = this.data[_position];
+          if (dart.test(this.data[_jumpTo](quoteMark))) {
+            return this.data[_slice](oldPosition, this.data[_position]);
+          } else {
+            return null;
+          }
+        } else {
+          let oldPosition = this.data[_position];
+          try {
+            this.data[_skipUntil](C1 || CT.C1);
+            return this.data[_slice](oldPosition, this.data[_position]);
+          } catch (e) {
+            let _ = dart.getThrown(e);
+            if (StateErrorL().is(_)) {
+              return this.data[_slice](oldPosition);
+            } else
+              throw e;
+          }
+        }
+      } catch (e$) {
+        let _ = dart.getThrown(e$);
+        if (StateErrorL().is(_)) {
+          return null;
+        } else
+          throw e$;
       }
-      return reader;
     }
   };
-  (stream_reader.StreamReader[dart.mixinNew] = function() {
-    this[blockType$0] = 0;
-  }).prototype = stream_reader.StreamReader.prototype;
-  dart.addTypeTests(stream_reader.StreamReader);
-  dart.addTypeCaches(stream_reader.StreamReader);
-  dart.setLibraryUri(stream_reader.StreamReader, L4);
-  dart.setFieldSignature(stream_reader.StreamReader, () => ({
-    __proto__: dart.getFields(stream_reader.StreamReader.__proto__),
-    blockType: dart.fieldType(dart.legacy(core.int))
+  (encoding_parser.ContentAttrParser.new = function(data) {
+    this[data$] = data;
+    ;
+  }).prototype = encoding_parser.ContentAttrParser.prototype;
+  dart.addTypeTests(encoding_parser.ContentAttrParser);
+  dart.addTypeCaches(encoding_parser.ContentAttrParser);
+  dart.setMethodSignature(encoding_parser.ContentAttrParser, () => ({
+    __proto__: dart.getMethods(encoding_parser.ContentAttrParser.__proto__),
+    parse: dart.fnType(dart.legacy(core.String), [])
   }));
-  dart.trackLibraries("packages/flare_dart/json_reader.dart", {
-    "package:flare_dart/json_reader.dart": json_reader,
-    "package:flare_dart/json_block_reader.dart": json_block_reader,
-    "package:flare_dart/binary_reader.dart": binary_reader,
-    "package:flare_dart/block_reader.dart": block_reader,
-    "package:flare_dart/stream_reader.dart": stream_reader
+  dart.setLibraryUri(encoding_parser.ContentAttrParser, L2);
+  dart.setFieldSignature(encoding_parser.ContentAttrParser, () => ({
+    __proto__: dart.getFields(encoding_parser.ContentAttrParser.__proto__),
+    data: dart.finalFieldType(dart.legacy(encoding_parser.EncodingBytes))
+  }));
+  encoding_parser._isSpaceOrAngleBracket = function _isSpaceOrAngleBracket(char) {
+    return char === ">" || char === "<" || dart.test(constants.isWhitespace(char));
+  };
+  dart.trackLibraries("packages/html/src/html_input_stream.dart", {
+    "package:html/src/html_input_stream.dart": html_input_stream,
+    "package:html/src/encoding_parser.dart": encoding_parser
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["json_reader.dart","json_block_reader.dart","binary_reader.dart","block_reader.dart","stream_reader.dart"],"names":[],"mappings":"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","file":"../../../../../../../packages/flare_dart/json_reader.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["html_input_stream.dart","encoding_parser.dart"],"names":[],"mappings":"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","file":"../../../../../../../../packages/html/src/html_input_stream.dart.lib.js"}');
   // Exports:
   return {
-    json_reader: json_reader,
-    json_block_reader: json_block_reader,
-    binary_reader: binary_reader,
-    block_reader: block_reader,
-    stream_reader: stream_reader
+    src__html_input_stream: html_input_stream,
+    src__encoding_parser: encoding_parser
   };
 }));
 
-//# sourceMappingURL=json_reader.dart.lib.js.map
+//# sourceMappingURL=html_input_stream.dart.lib.js.map

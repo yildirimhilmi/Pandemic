@@ -1,62 +1,502 @@
-define(['dart_sdk'], (function load__packages__characters__src__grapheme_clusters__table_dart(dart_sdk) {
+define(['dart_sdk', 'packages/mgrs_dart/src/classes/lonlat.dart', 'packages/mgrs_dart/src/classes/bbox.dart', 'packages/unicode/unicode.dart', 'packages/mgrs_dart/src/classes/utm.dart'], (function load__packages__mgrs_dart__src__mgrs_dart(dart_sdk, packages__mgrs_dart__src__classes__lonlat$46dart, packages__mgrs_dart__src__classes__bbox$46dart, packages__unicode__unicode$46dart, packages__mgrs_dart__src__classes__utm$46dart) {
   'use strict';
   const core = dart_sdk.core;
+  const _interceptors = dart_sdk._interceptors;
+  const math = dart_sdk.math;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  var table = Object.create(dart.library);
-  var $rightShift = dartx['>>'];
-  var $codeUnitAt = dartx.codeUnitAt;
+  const lonlat = packages__mgrs_dart__src__classes__lonlat$46dart.src__classes__lonlat;
+  const bbox = packages__mgrs_dart__src__classes__bbox$46dart.src__classes__bbox;
+  const unicode = packages__unicode__unicode$46dart.unicode;
+  const utm$ = packages__mgrs_dart__src__classes__utm$46dart.src__classes__utm;
+  var mgrs$ = Object.create(dart.library);
+  var $toUpperCase = dartx.toUpperCase;
+  var $length = dartx.length;
+  var $_get = dartx._get;
+  var $truncate = dartx.truncate;
+  var $substring = dartx.substring;
+  var $floor = dartx.floor;
+  var $modulo = dartx['%'];
+  var $toDouble = dartx.toDouble;
+  var $truncateToDouble = dartx.truncateToDouble;
+  var $toLowerCase = dartx.toLowerCase;
+  var $indexOf = dartx.indexOf;
+  var $isEmpty = dartx.isEmpty;
+  var $replaceAll = dartx.replaceAll;
+  var $contains = dartx.contains;
+  var $round = dartx.round;
+  var LonLatL = () => (LonLatL = dart.constFn(dart.legacy(lonlat.LonLat)))();
+  var doubleL = () => (doubleL = dart.constFn(dart.legacy(core.double)))();
+  var JSArrayOfdoubleL = () => (JSArrayOfdoubleL = dart.constFn(_interceptors.JSArray$(doubleL())))();
+  var BBoxL = () => (BBoxL = dart.constFn(dart.legacy(bbox.BBox)))();
+  var StringL = () => (StringL = dart.constFn(dart.legacy(core.String)))();
+  var intL = () => (intL = dart.constFn(dart.legacy(core.int)))();
+  var JSArrayOfStringL = () => (JSArrayOfStringL = dart.constFn(_interceptors.JSArray$(StringL())))();
   const CT = Object.create(null);
-  var L0 = "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/characters-1.1.0-nullsafety.5/lib/src/grapheme_clusters/table.dart";
-  table.low = function low(codeUnit) {
-    if (codeUnit == null) dart.nullFailed(L0, 319, 13, "codeUnit");
-    let chunkStart = table._start[$codeUnitAt](codeUnit[$rightShift](6));
-    let index = chunkStart + (dart.notNull(codeUnit) & 63);
-    let bit = index & 1;
-    let pair = table._data[$codeUnitAt](index[$rightShift](1));
-    return (pair[$rightShift](4) & -bit | pair & 15 & bit - 1) >>> 0;
-  };
-  table.high = function high(lead, tail) {
-    if (lead == null) dart.nullFailed(L0, 327, 14, "lead");
-    if (tail == null) dart.nullFailed(L0, 327, 24, "tail");
-    let chunkStart = table._start[$codeUnitAt](1024 + (1023 & dart.notNull(lead)));
-    let index = chunkStart + (1023 & dart.notNull(tail));
-    let bit = index & 1;
-    let pair = table._data[$codeUnitAt](index[$rightShift](1));
-    return (pair[$rightShift](4) & -bit | pair & 15 & bit - 1) >>> 0;
-  };
-  table.move = function move(state, inputCategory) {
-    if (state == null) dart.nullFailed(L0, 340, 14, "state");
-    if (inputCategory == null) dart.nullFailed(L0, 340, 25, "inputCategory");
-    return table._stateMachine[$codeUnitAt]((dart.notNull(state) & 240 | dart.notNull(inputCategory)) >>> 0);
-  };
-  table.moveBack = function moveBack(state, inputCategory) {
-    if (state == null) dart.nullFailed(L0, 349, 18, "state");
-    if (inputCategory == null) dart.nullFailed(L0, 349, 29, "inputCategory");
-    return table._backStateMachine[$codeUnitAt]((dart.notNull(state) & 240 | dart.notNull(inputCategory)) >>> 0);
-  };
-  dart.defineLazy(table, {
-    /*table._data*/get _data() {
-      return "\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"3333s3#7333333339433333333333333CDDDDDDDDDDDDDDDDDDDDDDC433DDDDD4DDDDDDDDDDDDDDDDDD3CU33333333333333333333333333334T5333333333333333333333333333CCD3D33CD533333333333333333333333TEDTET53U5UE3333C33333333333333333333333333333CETUTDT5333333333333333333333333SUUUUUEUDDDDD43333433333333333333333333ET533E3333SDD3U3U4333343333C4333333333333CSD33343333333433333333333333333SUUUEDDDTE4333SDDSUSU333343333C43333333333333333s333333333337333333333333wwwww73sw33sww7swwwwwss33373733s33333w33333£ªªªªªªªªªªªªªªªªªªªªªªªªªªªªªªªº»»»»»»»»»»»»»»»»»»»ËÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌìîÞîîîîîîîîîîîîîÞîîîîîîîîîîîîîÞîîîîîîîîîîîîî>33333³»»»»»»»;3ÃÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌ334343C33333333333SET333333333333333EDTETD433333333CD33333333333333CD33333CDD4333333333333333333333333CDTDDDCTE43C4CD3C333333333333333D3C3333333333DDDDD42333333333333333333CDDD4333333333333333333333333DDDD433334333C53333333333333333333333C33TEDCSUUU433333333S533333333333333333333333333333CD4DDDDD3D5333333333333333333333333333CSEUCUSE4333D33333C43333333333333CDDD9DDD3DCD433333333CDCDDDDDDEDDD33433C3E433#\"\"\"\"\" \"\"\"\"\"\"\"\"2333333333333333CDUUDU53SEUUUD43SDD3U3U4333C43333C43333333333333SE43CD33333333DD33333CDDDDDDDDDD3333333343333333B!233333333333#\"\"\"333333s3CD533333333333333333333333333CESEU3333333333333333333DDDD433333CD2333333333333333333333333\"\"\"\"23333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333CDD33333333333333333333333333333CDDD3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333SUDDDDUDT43333333333343333333333333333333333333333333333333333TEDDTTEETD333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333CUDD3UUDE43333333333333D33333333333333333333333333333333333333333UEDDDTEE43333333333333333333333333333333333333333333333333333CEUDDDE33333333333333333333333333333333333333333333333333CDUDDEDD3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333D#\"2333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333CSUUUUUUUUUUUUUUUUUUUUUUUUUUU333CD4333333333333333333333333333333333333333333333333333333\"\"\"\"\"\"33EDDCTSE3333333333D33333333333DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDCDDDDDDDD3DDD4DCDD3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333CDDD33333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333CD4333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333CDDDDD333333333333333333333333333333333333333333333333333333333333333333333333333333333333333s73333s33333333333\"\"\"\"\"\"\"\"3333333373s333333333333333333333333333333CTDDDTU5D4DD333C433333D33333333333333DU433333333333333333333DDDUDUD3333S3333333333333333334333333333333s733333s33333333333CD4DDDD4D4DD4333333333sww73333333w3333333333sw3333s33333337333333sw333333333s733333333333333333UTEUS433333333C433333333333333C433333333333334443SUE4333333333333CDDDDDDDD4333333DDDDDT533333£ªªªªªªªªªªªªªª3SDDDDUUT5DDD43333C43333333333333333C33333333333EEDDDCC3DDDDUUUDDDDD3T5333333333333333333333333333CSDDD433E533333333333333333333333333DDDDDDD4333333333333333333333333333CD53333333333333333333333UEDTE433333333333333333333333333333333D433333333333333333CDDEDDD43333333S5333333333333333333333C333333D533333333333333333333333SUDDDDT533CD433333333333333333333333333333333333333333333333UEDUTD33343333333333333333333333333333333333333333333333333333333333333333333333333333333CUEDDD43333333333DU333333333333333333333333333C4TTU5S5SU3333C33333U3DDD43DD4333333333333333333333333333333333333333333333333333333333333333333333DDDDDDD533333333333333333333333DDDTTU43333333333333333333333333333DDD733333s373ss33w7733333ww733333333333ss33333333333333333333333333333ww3333333333333333333333333333wwww33333www33333333333333333333wwww333333333333333wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww333333wwwwwwwwwwwwwwwwwwwwwww7wwwwwswwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww7333swwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww733333333333333333333333swwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww7333333333333333333333333333333333333333333333333333333333swwwww7333333333333333333333333333333333333333333wwwwwwwwwwwwwwwwwwwww7wwwwwwswwwwwwwwwwwwwwwwwwwww73333swwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww7333333w7333333333333333733333333333333333333333333333sww733333s7333333s3wwwww333333333wwwwwwwwwwwwwwwwwwwwwwwwwwwwgffffffffffff6wwwwwww73333s33333333337swwwwsw73333wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwDDDDDDDDDDDDDDDDDDDDDDDD33333333DDDDDDDD33333333DDDDDDDDDDDDDDDD43333333DC44333333333333333333333333333SUDDDDTD33333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333UED4CTUE3S33333333333333DDDDD33333333333333333333DDDDD333343333DDDUD43333333333333333333IDDDDDDE4333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333CDDDDDDDDDDDDDDDDDDDDDDDDDDD33DDDDDDDDDDDDDDDDDDDDDDDDD33334333333C33333333333DD4DDDDDDD43333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333TD43EDD\"\"\"\"DDDD3DDD433333333333333CD43333333333333333333333333333333333333333333333333333333333333333333333333CD33333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333C33333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333433333333333333333333333333333333333333333333333333333333333333333333333333DD4333333333333333333333333333333333333333333333333333333333333333333EDDDCDDT43333333333333333333333333333333333333333CDDDDDDDDDD4EDDDETD3333333333333333333333333333333333333333333333333333333333333DDD3CC4DDD433333333333333333333333333333333SUUC4UT433333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333DU333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333CDDD333333333333333333333333333333333333333333333333333333CDDD3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333CDC433DD33333333333333333333D43C3333333333333333333333333333333333333333333333333333333333333333333333333333333333C4333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333334EDDDD3";
-    },
-    /*table._start*/get _start() {
-      return "฻᳛אါါါါါါါါါ 㢜ါါါါ䢜ါါါؠ㤫ద໺ါ෋؁㹾⊏౷ⓓ䂲ါᵑ཯⚁ژࡑൣ௦ൣᴪەປݱݜ⮘⏾✇ඡ⩒࣫ഓೣ✒ౢ䶝஗○⬡ٙ䋅ப໅ࢍါহ৙৹ਡါါါါါ䂮ါါါါါါါါါါါါါါୟ▱⏁ߵ࿢ါ⚞ါ๛ါါါ␧⛉❚ါ⭜ྭ଱މࢫါါ෻ါါါᵴါါါါါါါါ༯⍲ါ㣬एါ━ါါါါါ⒩ါ㗈हါါါ⎵ါါ⍅Ⱗ㑗⶝㒑⶝ॹ⯥┬ါါါါါ⌻ါါါါါါါ╦⎢ါါါါါ䂜ါ䊌ါ㶹ါါါါါါါါ⮬ါᛉါါါါါါါⰎါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါത䲕䲃ါါါါଌါ޻☉ృ♁ܟ⒃⑃ಱۡࠑါါါ▃੥੭ੵ੡੩ੱ੹੥੭ੵ੡੩ੱ੹੥੭ੵ੡੩ੱ੹੥੭ੵ੡੩ੱ੹੥੭ੵ੡੩ੱ੹੥੭ੵ੡੩ੱ੹੥੭ੵ੡੩ੱ੹੥੭ੵ੡੩ੱ੹੥੭ੵ੡੩ੱ੹੥੭ੵ੡੩ੱ੹੥੭ੵ੡੩ੱ੹੥੭ੵ੡੩ੱ੹੥੭ੵ੡੩ੱ੹੥੭ੵ੡੩ੱ੹੥੭ੵ੡੩ੱ੹੥੭ੵ੡੩ੱ੹੥੭ੵ੡੩ੱ੹੥੭ੵ੡੩ੱ੹੥੭ੵ੡੩ੱ੹੥੭ੵ੡੩ੱ੹੥੭ੵ੡੩ੱ੹੥੭ੵ੡੩ੱ੹੥੭ੵ੡੩ੱ੹੥੭ੵ੡੩ੱ੹੥੭ੵ੡੩ੱક૎ǰǰǰǰǰǰǰǰǰǰǰǰǰǰǰǰǰǰǰǰǰǰǰǰǰǰǰǰǰǰǰǰါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါ䊭ါါါါါါါါါါါ㢼ါါ᳛ါါ䲕ᳪ䃎ါ䧎Ὧ❒ᔆ㤿䒟ါါါါါ࿲ါါါါါါါါါါါါᄻᤚါါါါါါါါါါါါါါါါါါါᡩါါါါ㺉ါ㯙ါᶧါ䟏ါ㒡そⱖ⶝ါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါ ǰǰǰါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါ";
-    },
-    /*table._stateMachine*/get _stateMachine() {
-      return " 0000 @P`p`p± 0000 @P`p`p° 0000 @P`p`p° 1011 @P`p`p° 1111¡AQaqaq° 1011 @Qapaq° 1011 @Paq`p° 1011 @P`q`p° 01 @P`p`p° 1011 @P`p`p° 10111@P`p`p°!1111¡AQaqaq±";
-    },
-    /*table._backStateMachine*/get _backStateMachine() {
-      return "@0@@  0P`pPP±@0@@  0P`pPP°@0@@  0P`pPP°@0@@  1P`pPP°A1AA¡ 1QaqQQ°@0@@  1Q`pPP°@0@@  1QapQP°@0@@  1PaqQQ°à0@@  1P`pPP°±±±±±Á±±±±±±±±@0@@Ð 1P`pPP°A1AA¡!1QaqQQ±@0@@ 1P`pPP°";
+  var L0 = "package:mgrs_dart/src/mgrs.dart";
+  mgrs$.Mgrs = class Mgrs extends core.Object {
+    static inverse(mgrs) {
+      let bbox = mgrs$.Mgrs.UTMtoLL(mgrs$.Mgrs.decode(mgrs[$toUpperCase]()));
+      if (LonLatL().is(bbox)) {
+        return JSArrayOfdoubleL().of([bbox.lon, bbox.lat, bbox.lon, bbox.lat]);
+      } else if (BBoxL().is(bbox)) {
+        return JSArrayOfdoubleL().of([bbox.left, bbox.bottom, bbox.right, bbox.top]);
+      } else {
+        dart.throw(core.Exception.new("Neither bbox, nor lonlat"));
+      }
     }
-  }, false);
-  dart.trackLibraries("packages/characters/src/grapheme_clusters/table.dart", {
-    "package:characters/src/grapheme_clusters/table.dart": table
+    static toPoint(mgrs) {
+      if (mgrs === "") {
+        dart.throw(core.Exception.new("toPoint received a blank string"));
+      }
+      let utm = mgrs$.Mgrs.decode(mgrs[$toUpperCase]());
+      utm.accuracy = null;
+      let bbox = mgrs$.Mgrs.UTMtoLL(utm);
+      if (LonLatL().is(bbox)) {
+        return JSArrayOfdoubleL().of([bbox.lon, bbox.lat]);
+      } else if (BBoxL().is(bbox)) {
+        return JSArrayOfdoubleL().of([(dart.notNull(bbox.left) + dart.notNull(bbox.right)) / 2, (dart.notNull(bbox.top) + dart.notNull(bbox.bottom)) / 2]);
+      } else {
+        dart.throw(core.Exception.new("Neither bbox, nor lonlat"));
+      }
+    }
+    static forward(ll, accuracy) {
+      accuracy == null ? accuracy = 5 : null;
+      if (ll[$length] !== 2) {
+        dart.throw(core.Exception.new("forward received an invalid input: array must contain 2 numbers exactly"));
+      }
+      let lon = ll[$_get](0);
+      let lat = ll[$_get](1);
+      if (dart.notNull(lon) < -180 || dart.notNull(lon) > 180) {
+        dart.throw(core.Exception.new("forward received an invalid longitude of " + dart.str(lon)));
+      }
+      if (dart.notNull(lat) < -90 || dart.notNull(lat) > 90) {
+        dart.throw(core.Exception.new("forward received an invalid latitude of " + dart.str(lat)));
+      }
+      if (dart.notNull(lat) < -80 || dart.notNull(lat) > 84) {
+        dart.throw(core.Exception.new("forward received a latitude of " + dart.str(lat) + ", but this library does not support conversions of points in polar regions below 80°S and above 84°N"));
+      }
+      let utm = mgrs$.Mgrs.LLtoUTM(lat, lon);
+      return mgrs$.Mgrs.encode(utm, accuracy);
+    }
+    static encode(utm, accuracy) {
+      let seasting = "00000" + dart.str(utm.easting[$truncate]());
+      let snorthing = "00000" + dart.str(utm.northing[$truncate]());
+      let seastingWithAccuracy = seasting[$substring](seasting.length - 5, seasting.length);
+      seastingWithAccuracy = seastingWithAccuracy[$substring](dart.asInt(seastingWithAccuracy.length - dart.notNull(core.num.as(accuracy))));
+      let snorthingWithAccuracy = snorthing[$substring](snorthing.length - 5, snorthing.length);
+      snorthingWithAccuracy = snorthingWithAccuracy[$substring](dart.asInt(snorthingWithAccuracy.length - dart.notNull(core.num.as(accuracy))));
+      let value = dart.str(utm.zoneNumber) + dart.str(utm.zoneLetter) + dart.str(mgrs$.Mgrs.get100kID(utm.easting, utm.northing, utm.zoneNumber)) + seastingWithAccuracy + snorthingWithAccuracy;
+      return value;
+    }
+    static get100kID(easting, northing, zoneNumber) {
+      let setParm = mgrs$.Mgrs.get100kSetForZone(zoneNumber);
+      let setColumn = (dart.notNull(easting) / 100000)[$floor]();
+      let setRow = (dart.notNull(northing) / 100000)[$floor]()[$modulo](20);
+      return mgrs$.Mgrs.getLetter100kID(setColumn, setRow, setParm);
+    }
+    static get100kSetForZone(i) {
+      let setParm = i[$modulo](mgrs$.Mgrs.NUM_100K_SETS);
+      if (setParm === 0) {
+        setParm = mgrs$.Mgrs.NUM_100K_SETS;
+      }
+      return setParm;
+    }
+    static getLetter100kID(column, row, parm) {
+      let index = dart.notNull(parm) - 1;
+      let colOrigin = unicode.toRune(mgrs$.Mgrs.SET_ORIGIN_COLUMN_LETTERS[$_get](index));
+      let rowOrigin = unicode.toRune(mgrs$.Mgrs.SET_ORIGIN_ROW_LETTERS[$_get](index));
+      let colInt = dart.notNull(colOrigin) + dart.notNull(column) - 1;
+      let rowInt = dart.notNull(rowOrigin) + dart.notNull(row);
+      let rollover = false;
+      if (colInt > dart.notNull(mgrs$.Mgrs.Z)) {
+        colInt = colInt - dart.notNull(mgrs$.Mgrs.Z) + dart.notNull(mgrs$.Mgrs.A) - 1;
+        rollover = true;
+      }
+      if (colInt === mgrs$.Mgrs.I || dart.notNull(colOrigin) < dart.notNull(mgrs$.Mgrs.I) && colInt > dart.notNull(mgrs$.Mgrs.I) || (colInt > dart.notNull(mgrs$.Mgrs.I) || dart.notNull(colOrigin) < dart.notNull(mgrs$.Mgrs.I)) && rollover) {
+        colInt = colInt + 1;
+      }
+      if (colInt === mgrs$.Mgrs.O || dart.notNull(colOrigin) < dart.notNull(mgrs$.Mgrs.O) && colInt > dart.notNull(mgrs$.Mgrs.O) || (colInt > dart.notNull(mgrs$.Mgrs.O) || dart.notNull(colOrigin) < dart.notNull(mgrs$.Mgrs.O)) && rollover) {
+        colInt = colInt + 1;
+        if (colInt === mgrs$.Mgrs.I) {
+          colInt = colInt + 1;
+        }
+      }
+      if (colInt > dart.notNull(mgrs$.Mgrs.Z)) {
+        colInt = colInt - dart.notNull(mgrs$.Mgrs.Z) + dart.notNull(mgrs$.Mgrs.A) - 1;
+      }
+      if (rowInt > dart.notNull(mgrs$.Mgrs.V)) {
+        rowInt = rowInt - dart.notNull(mgrs$.Mgrs.V) + dart.notNull(mgrs$.Mgrs.A) - 1;
+        rollover = true;
+      } else {
+        rollover = false;
+      }
+      if (rowInt === mgrs$.Mgrs.I || dart.notNull(rowOrigin) < dart.notNull(mgrs$.Mgrs.I) && rowInt > dart.notNull(mgrs$.Mgrs.I) || (rowInt > dart.notNull(mgrs$.Mgrs.I) || dart.notNull(rowOrigin) < dart.notNull(mgrs$.Mgrs.I)) && rollover) {
+        rowInt = rowInt + 1;
+      }
+      if (rowInt === mgrs$.Mgrs.O || dart.notNull(rowOrigin) < dart.notNull(mgrs$.Mgrs.O) && rowInt > dart.notNull(mgrs$.Mgrs.O) || (rowInt > dart.notNull(mgrs$.Mgrs.O) || dart.notNull(rowOrigin) < dart.notNull(mgrs$.Mgrs.O)) && rollover) {
+        rowInt = rowInt + 1;
+        if (rowInt === mgrs$.Mgrs.I) {
+          rowInt = rowInt + 1;
+        }
+      }
+      if (rowInt > dart.notNull(mgrs$.Mgrs.V)) {
+        rowInt = rowInt - dart.notNull(mgrs$.Mgrs.V) + dart.notNull(mgrs$.Mgrs.A) - 1;
+      }
+      let twoLetter = dart.str(core.String.fromCharCode(colInt)) + dart.str(core.String.fromCharCode(rowInt));
+      return twoLetter;
+    }
+    static degToRad(deg) {
+      return dart.notNull(deg) * (3.141592653589793 / 180);
+    }
+    static radToDeg(rad) {
+      return 180 * (dart.notNull(rad) / 3.141592653589793);
+    }
+    static LLtoUTM(lat, lon) {
+      let Lat = lat;
+      let Long = lon;
+      let LatRad = mgrs$.Mgrs.degToRad(Lat);
+      let LongRad = mgrs$.Mgrs.degToRad(Long);
+      let ZoneNumber = ((dart.notNull(Long) + 180) / 6)[$floor]() + 1;
+      if (Long === 180) {
+        ZoneNumber = 60;
+      }
+      if (dart.notNull(Lat) >= 56 && dart.notNull(Lat) < 64 && dart.notNull(Long) >= 3 && dart.notNull(Long) < 12) {
+        ZoneNumber = 32;
+      }
+      if (dart.notNull(Lat) >= 72 && dart.notNull(Lat) < 84) {
+        if (dart.notNull(Long) >= 0 && dart.notNull(Long) < 9) {
+          ZoneNumber = 31;
+        } else if (dart.notNull(Long) >= 9 && dart.notNull(Long) < 21) {
+          ZoneNumber = 33;
+        } else if (dart.notNull(Long) >= 21 && dart.notNull(Long) < 33) {
+          ZoneNumber = 35;
+        } else if (dart.notNull(Long) >= 33 && dart.notNull(Long) < 42) {
+          ZoneNumber = 37;
+        }
+      }
+      let LongOrigin = ((ZoneNumber - 1) * 6 - 180 + 3)[$toDouble]();
+      let LongOriginRad = mgrs$.Mgrs.degToRad(LongOrigin);
+      let eccPrimeSquared = 0.00669438 / (1 - 0.00669438);
+      let N = 6378137 / math.sqrt(1 - 0.00669438 * math.sin(LatRad) * math.sin(LatRad));
+      let T = math.tan(LatRad) * math.tan(LatRad);
+      let C = eccPrimeSquared * math.cos(LatRad) * math.cos(LatRad);
+      let A = math.cos(LatRad) * (dart.notNull(LongRad) - dart.notNull(LongOriginRad));
+      let M = 6378137 * ((1 - 0.00669438 / 4 - 3 * 0.00669438 * 0.00669438 / 64 - 5 * 0.00669438 * 0.00669438 * 0.00669438 / 256) * dart.notNull(LatRad) - (3 * 0.00669438 / 8 + 3 * 0.00669438 * 0.00669438 / 32 + 45 * 0.00669438 * 0.00669438 * 0.00669438 / 1024) * math.sin(2 * dart.notNull(LatRad)) + (15 * 0.00669438 * 0.00669438 / 256 + 45 * 0.00669438 * 0.00669438 * 0.00669438 / 1024) * math.sin(4 * dart.notNull(LatRad)) - 35 * 0.00669438 * 0.00669438 * 0.00669438 / 3072 * math.sin(6 * dart.notNull(LatRad)));
+      let UTMEasting = 0.9996 * N * (A + (1 - T + C) * A * A * A / 6 + (5 - 18 * T + T * T + 72 * C - 58 * eccPrimeSquared) * A * A * A * A * A / 120) + 500000;
+      let UTMNorthing = 0.9996 * (M + N * math.tan(LatRad) * (A * A / 2 + (5 - T + 9 * C + 4 * C * C) * A * A * A * A / 24 + (61 - 58 * T + T * T + 600 * C - 330 * eccPrimeSquared) * A * A * A * A * A * A / 720));
+      if (dart.notNull(Lat) < 0) {
+        UTMNorthing = UTMNorthing + 10000000;
+      }
+      let utm = new utm$.UTM.new({easting: UTMEasting[$truncateToDouble](), northing: UTMNorthing[$truncateToDouble](), zoneNumber: ZoneNumber, zoneLetter: mgrs$.Mgrs.getLetterDesignator(Lat)});
+      return utm;
+    }
+    static getLetterDesignator(latitude) {
+      if (dart.notNull(latitude) <= 84 && dart.notNull(latitude) >= 72) {
+        return "X";
+      } else if (dart.notNull(latitude) < 72 && dart.notNull(latitude) >= -80) {
+        let index = ((dart.notNull(latitude) - -80) / 8)[$floor]();
+        return "CDEFGHJKLMNPQRSTUVWX"[$_get](index);
+      } else if (dart.notNull(latitude) > 84 || dart.notNull(latitude) < -80) {
+        return "Z";
+      }
+      return null;
+    }
+    static UTMtoLL(utm) {
+      let UTMNorthing = utm.northing;
+      let UTMEasting = utm.easting;
+      let zoneLetter = utm.zoneLetter;
+      let zoneNumber = utm.zoneNumber;
+      if (dart.notNull(zoneNumber) < 0 || dart.notNull(zoneNumber) > 60) {
+        return null;
+      }
+      let e1 = (1 - math.sqrt(1 - 0.00669438)) / (1 + math.sqrt(1 - 0.00669438));
+      let x = dart.notNull(UTMEasting) - 500000;
+      let y = UTMNorthing;
+      if (dart.notNull(mgrs$.Mgrs.ALPHABET[$indexOf](zoneLetter[$toLowerCase]())) < dart.notNull(mgrs$.Mgrs.ALPHABET[$indexOf]("N"[$toLowerCase]()))) {
+        y = dart.notNull(y) - 10000000;
+      }
+      let LongOrigin = (dart.notNull(zoneNumber) - 1) * 6 - 180 + 3;
+      let eccPrimeSquared = 0.00669438 / (1 - 0.00669438);
+      let M = dart.notNull(y) / 0.9996;
+      let mu = M / (6378137 * (1 - 0.00669438 / 4 - 3 * 0.00669438 * 0.00669438 / 64 - 5 * 0.00669438 * 0.00669438 * 0.00669438 / 256));
+      let phi1Rad = mu + (3 * e1 / 2 - 27 * e1 * e1 * e1 / 32) * math.sin(2 * mu) + (21 * e1 * e1 / 16 - 55 * e1 * e1 * e1 * e1 / 32) * math.sin(4 * mu) + 151 * e1 * e1 * e1 / 96 * math.sin(6 * mu);
+      let N1 = 6378137 / math.sqrt(1 - 0.00669438 * math.sin(phi1Rad) * math.sin(phi1Rad));
+      let T1 = math.tan(phi1Rad) * math.tan(phi1Rad);
+      let C1 = eccPrimeSquared * math.cos(phi1Rad) * math.cos(phi1Rad);
+      let R1 = 6378137 * (1 - 0.00669438) / math.pow(1 - 0.00669438 * math.sin(phi1Rad) * math.sin(phi1Rad), 1.5);
+      let D = x / (N1 * 0.9996);
+      let lat = phi1Rad - N1 * math.tan(phi1Rad) / R1 * (D * D / 2 - (5 + 3 * T1 + 10 * C1 - 4 * C1 * C1 - 9 * eccPrimeSquared) * D * D * D * D / 24 + (61 + 90 * T1 + 298 * C1 + 45 * T1 * T1 - 252 * eccPrimeSquared - 3 * C1 * C1) * D * D * D * D * D * D / 720);
+      lat = mgrs$.Mgrs.radToDeg(lat);
+      let lon = (D - (1 + 2 * T1 + C1) * D * D * D / 6 + (5 - 2 * C1 + 28 * T1 - 3 * C1 * C1 + 8 * eccPrimeSquared + 24 * T1 * T1) * D * D * D * D * D / 120) / math.cos(phi1Rad);
+      lon = LongOrigin + dart.notNull(mgrs$.Mgrs.radToDeg(lon));
+      if (utm.accuracy != null) {
+        let topRight = mgrs$.Mgrs.UTMtoLL(new utm$.UTM.new({easting: dart.notNull(utm.easting) + dart.notNull(utm.accuracy), northing: dart.notNull(utm.northing) + dart.notNull(utm.accuracy), zoneLetter: utm.zoneLetter, zoneNumber: utm.zoneNumber, accuracy: null}));
+        return new bbox.BBox.new({top: doubleL().as(dart.dload(topRight, 'lat')), right: doubleL().as(dart.dload(topRight, 'lon')), bottom: lat, left: lon});
+      } else {
+        return new lonlat.LonLat.new({lat: lat, lon: lon});
+      }
+    }
+    static decode(mgrsString) {
+      let t1;
+      if (mgrsString == null || mgrsString[$isEmpty]) {
+        dart.throw(core.Exception.new("MGRSPoint coverting from nothing"));
+      }
+      mgrsString = mgrsString[$replaceAll](" ", "");
+      let length = mgrsString.length;
+      let hunK = null;
+      let sb = "";
+      let i = 0;
+      for (let t0 = i; i < 2; i = i + 1) {
+        let letter = mgrsString[$_get](i);
+        if (!dart.test(mgrs$.Mgrs.ALPHABET[$contains](letter[$toLowerCase]()))) {
+          sb = sb + letter;
+        }
+      }
+      let zoneNumber = core.int.parse(sb);
+      if (i === 0 || i + 3 > length) {
+        dart.throw(core.Exception.new("MGRSPoint bad conversion from " + dart.str(mgrsString)));
+      }
+      let zoneLetter = mgrsString[$_get]((t1 = i, i = t1 + 1, t1));
+      if (dart.notNull(mgrs$.Mgrs.ALPHABET[$indexOf](zoneLetter[$toLowerCase]())) <= dart.notNull(mgrs$.Mgrs.ALPHABET[$indexOf]("A"[$toLowerCase]())) || zoneLetter === "B" || zoneLetter === "Y" || dart.notNull(mgrs$.Mgrs.ALPHABET[$indexOf](zoneLetter[$toLowerCase]())) >= dart.notNull(mgrs$.Mgrs.ALPHABET[$indexOf]("Z"[$toLowerCase]())) || zoneLetter === "I" || zoneLetter === "O") {
+        dart.throw(core.Exception.new("MGRSPoint zone letter " + zoneLetter + " not handled: " + dart.str(mgrsString)));
+      }
+      hunK = mgrsString[$substring](i, i = i + 2);
+      let set = mgrs$.Mgrs.get100kSetForZone(zoneNumber);
+      let east100k = mgrs$.Mgrs.getEastingFromChar(StringL().as(dart.dsend(hunK, '_get', [0])), set);
+      let north100k = mgrs$.Mgrs.getNorthingFromChar(StringL().as(dart.dsend(hunK, '_get', [1])), set);
+      while (dart.notNull(north100k) < dart.notNull(mgrs$.Mgrs.getMinNorthing(zoneLetter))) {
+        north100k = dart.notNull(north100k) + 2000000;
+      }
+      let remainder = length - i;
+      if (remainder[$modulo](2) !== 0) {
+        dart.throw(core.Exception.new("MGRSPoint has to have an even number of digits after the zone letter and two 100km letters - front half for easting meters, second half for northing meters " + dart.str(mgrsString)));
+      }
+      let sep = (remainder / 2)[$truncate]();
+      let sepEasting = 0.0;
+      let sepNorthing = 0.0;
+      let accuracyBonus = null;
+      let sepEastingString = null;
+      let sepNorthingString = null;
+      if (sep > 0) {
+        accuracyBonus = (100000 / math.pow(10, sep))[$round]();
+        sepEastingString = mgrsString[$substring](i, i + sep);
+        sepEasting = dart.notNull(core.double.parse(sepEastingString)) * dart.notNull(core.num.as(accuracyBonus));
+        sepNorthingString = mgrsString[$substring](i + sep);
+        sepNorthing = dart.notNull(core.double.parse(sepNorthingString)) * dart.notNull(core.num.as(accuracyBonus));
+      }
+      let easting = sepEasting + dart.notNull(east100k);
+      let northing = sepNorthing + dart.notNull(north100k);
+      let utm = new utm$.UTM.new({easting: easting, northing: northing, zoneLetter: zoneLetter, zoneNumber: zoneNumber, accuracy: intL().as(accuracyBonus)});
+      return utm;
+    }
+    static getEastingFromChar(e, set) {
+      let curCol = unicode.toRune(mgrs$.Mgrs.SET_ORIGIN_COLUMN_LETTERS[$_get](dart.notNull(set) - 1));
+      let eastingValue = 100000;
+      let rewindMarker = false;
+      while (curCol != unicode.toRune(e[$_get](0))) {
+        curCol = dart.notNull(curCol) + 1;
+        if (curCol == mgrs$.Mgrs.I) {
+          curCol = dart.notNull(curCol) + 1;
+        }
+        if (curCol == mgrs$.Mgrs.O) {
+          curCol = dart.notNull(curCol) + 1;
+        }
+        if (dart.notNull(curCol) > dart.notNull(mgrs$.Mgrs.Z)) {
+          if (rewindMarker) {
+            dart.throw(core.Exception.new("Bad character: " + dart.str(e)));
+          }
+          curCol = mgrs$.Mgrs.A;
+          rewindMarker = true;
+        }
+        eastingValue = eastingValue + 100000;
+      }
+      return eastingValue;
+    }
+    static getNorthingFromChar(n, set) {
+      if (dart.notNull(mgrs$.Mgrs.ALPHABET[$indexOf](n[$toLowerCase]())) > dart.notNull(mgrs$.Mgrs.ALPHABET[$indexOf]("V"[$toLowerCase]()))) {
+        dart.throw(core.Exception.new("MGRSPoint given invalid Northing " + dart.str(n)));
+      }
+      let curRow = unicode.toRune(mgrs$.Mgrs.SET_ORIGIN_ROW_LETTERS[$_get](dart.notNull(set) - 1));
+      let northingValue = 0;
+      let rewindMarker = false;
+      while (curRow != unicode.toRune(n[$_get](0))) {
+        curRow = dart.notNull(curRow) + 1;
+        if (curRow == mgrs$.Mgrs.I) {
+          curRow = dart.notNull(curRow) + 1;
+        }
+        if (curRow == mgrs$.Mgrs.O) {
+          curRow = dart.notNull(curRow) + 1;
+        }
+        if (dart.notNull(curRow) > dart.notNull(mgrs$.Mgrs.V)) {
+          if (rewindMarker) {
+            dart.throw(core.Exception.new("Bad character: " + dart.str(n)));
+          }
+          curRow = mgrs$.Mgrs.A;
+          rewindMarker = true;
+        }
+        northingValue = northingValue + 100000;
+      }
+      return northingValue;
+    }
+    static getMinNorthing(zoneLetter) {
+      let northing = null;
+      switch (zoneLetter) {
+        case "C":
+        {
+          northing = 1100000;
+          break;
+        }
+        case "D":
+        {
+          northing = 2000000;
+          break;
+        }
+        case "E":
+        {
+          northing = 2800000;
+          break;
+        }
+        case "F":
+        {
+          northing = 3700000;
+          break;
+        }
+        case "G":
+        {
+          northing = 4600000;
+          break;
+        }
+        case "H":
+        {
+          northing = 5500000;
+          break;
+        }
+        case "J":
+        {
+          northing = 6400000;
+          break;
+        }
+        case "K":
+        {
+          northing = 7300000;
+          break;
+        }
+        case "L":
+        {
+          northing = 8200000;
+          break;
+        }
+        case "M":
+        {
+          northing = 9100000;
+          break;
+        }
+        case "N":
+        {
+          northing = 0;
+          break;
+        }
+        case "P":
+        {
+          northing = 800000;
+          break;
+        }
+        case "Q":
+        {
+          northing = 1700000;
+          break;
+        }
+        case "R":
+        {
+          northing = 2600000;
+          break;
+        }
+        case "S":
+        {
+          northing = 3500000;
+          break;
+        }
+        case "T":
+        {
+          northing = 4400000;
+          break;
+        }
+        case "U":
+        {
+          northing = 5300000;
+          break;
+        }
+        case "V":
+        {
+          northing = 6200000;
+          break;
+        }
+        case "W":
+        {
+          northing = 7000000;
+          break;
+        }
+        case "X":
+        {
+          northing = 7900000;
+          break;
+        }
+        default:
+        {
+          northing = -1;
+        }
+      }
+      if (dart.notNull(northing) >= 0) {
+        return northing;
+      } else {
+        dart.throw(core.Exception.new("Invalid zone letter: " + dart.str(zoneLetter)));
+      }
+    }
+  };
+  (mgrs$.Mgrs.new = function() {
+    ;
+  }).prototype = mgrs$.Mgrs.prototype;
+  dart.addTypeTests(mgrs$.Mgrs);
+  dart.addTypeCaches(mgrs$.Mgrs);
+  dart.setLibraryUri(mgrs$.Mgrs, L0);
+  dart.defineLazy(mgrs$.Mgrs, {
+    /*mgrs$.Mgrs.NUM_100K_SETS*/get NUM_100K_SETS() {
+      return 6;
+    },
+    /*mgrs$.Mgrs.ALPHABET*/get ALPHABET() {
+      return JSArrayOfStringL().of(["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]);
+    },
+    /*mgrs$.Mgrs.SET_ORIGIN_COLUMN_LETTERS*/get SET_ORIGIN_COLUMN_LETTERS() {
+      return "AJSAJS";
+    },
+    /*mgrs$.Mgrs.SET_ORIGIN_ROW_LETTERS*/get SET_ORIGIN_ROW_LETTERS() {
+      return "AFAFAF";
+    },
+    /*mgrs$.Mgrs.A*/get A() {
+      return 65;
+    },
+    /*mgrs$.Mgrs.I*/get I() {
+      return 73;
+    },
+    /*mgrs$.Mgrs.O*/get O() {
+      return 79;
+    },
+    /*mgrs$.Mgrs.V*/get V() {
+      return 86;
+    },
+    /*mgrs$.Mgrs.Z*/get Z() {
+      return 90;
+    }
+  }, true);
+  dart.trackLibraries("packages/mgrs_dart/src/mgrs.dart", {
+    "package:mgrs_dart/src/mgrs.dart": mgrs$
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["table.dart"],"names":[],"mappings":";;;;;;;;;;;QA8TY;AACN,qBAAa,AAAO,0BAAW,AAAS,QAAD,cAAI;AAC3C,gBAAQ,AAAW,UAAD,IAAa,aAAT,QAAQ,IAAG;AACjC,cAAM,AAAM,KAAD,GAAG;AACd,eAAO,AAAM,yBAAW,AAAM,KAAD,cAAI;AACrC,UAA0B,EAAlB,AAAK,AAAM,IAAP,cAAI,KAAK,CAAC,GAAG,GAAI,AAAK,AAAO,IAAR,GAAG,KAAQ,AAAI,GAAD,GAAG;EACpD;6BAEa,MAAU;QAAV;QAAU;AACjB,qBAAa,AAAO,0BAAW,AAAK,QAAG,AAAM,oBAAE,IAAI;AACnD,gBAAQ,AAAW,UAAD,IAAI,AAAM,oBAAE,IAAI;AAClC,cAAM,AAAM,KAAD,GAAG;AACd,eAAO,AAAM,yBAAW,AAAM,KAAD,cAAI;AACrC,UAA0B,EAAlB,AAAK,AAAM,IAAP,cAAI,KAAK,CAAC,GAAG,GAAI,AAAK,AAAO,IAAR,GAAG,KAAQ,AAAI,GAAD,GAAG;EACpD;6BAOa,OAAW;QAAX;QAAW;AACpB,UAAA,AAAc,kCAA0B,CAAR,aAAN,KAAK,IAAG,mBAAQ,aAAa;EAAC;qCAQ3C,OAAW;QAAX;QAAW;AACxB,UAAA,AAAkB,sCAA0B,CAAR,aAAN,KAAK,IAAG,mBAAQ,aAAa;EAAC;;MAlVnD,WAAK;;;MAwIL,YAAM;;;MA2Lb,mBAAa;;;MAQb,uBAAiB","file":"../../../../../../../../../packages/characters/src/grapheme_clusters/table.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["mgrs.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;mBAoEqC;AAC7B,iBAAO,mBAAQ,kBAAO,AAAK,IAAD;AAC9B,UAAS,aAAL,IAAI;AACN,cAAO,wBAAC,AAAK,IAAD,MAAM,AAAK,IAAD,MAAM,AAAK,IAAD,MAAM,AAAK,IAAD;YACrC,KAAS,WAAL,IAAI;AACb,cAAO,wBAAC,AAAK,IAAD,OAAO,AAAK,IAAD,SAAS,AAAK,IAAD,QAAQ,AAAK,IAAD;;AAEL,QAA3C,WAAM,mBAAU;;IAEpB;mBAKmC;AACjC,UAAI,AAAK,IAAD,KAAI;AACwC,QAAlD,WAAM,mBAAU;;AAEd,gBAAM,kBAAO,AAAK,IAAD;AACF,MAAnB,AAAI,GAAD,YAAY;AACX,iBAAO,mBAAQ,GAAG;AACtB,UAAS,aAAL,IAAI;AACN,cAAO,wBAAC,AAAK,IAAD,MAAM,AAAK,IAAD;YACjB,KAAS,WAAL,IAAI;AACb,cAAO,wBAA0B,CAAd,aAAV,AAAK,IAAD,sBAAQ,AAAK,IAAD,WAAU,GAA4B,CAAf,aAAT,AAAK,IAAD,qBAAO,AAAK,IAAD,YAAW;;AAEtB,QAA3C,WAAM,mBAAU;;IAEpB;mBAWmC,IAAQ;AAC3B,MAAd,AAAS,QAAD,IAAC,OAAT,WAAa,IAAJ;AACT,UAAI,AAAG,EAAD,cAAW;AAE+D,QAD9E,WAAM,mBACF;;AAEF,gBAAM,AAAE,EAAA,QAAC;AACT,gBAAM,AAAE,EAAA,QAAC;AACb,UAAQ,aAAJ,GAAG,IAAG,CAAC,OAAW,aAAJ,GAAG,IAAG;AAC0C,QAAhE,WAAM,mBAAU,AAA+C,uDAAJ,GAAG;;AAEhE,UAAQ,aAAJ,GAAG,IAAG,CAAC,MAAU,aAAJ,GAAG,IAAG;AAC0C,QAA/D,WAAM,mBAAU,AAA8C,sDAAJ,GAAG;;AAE/D,UAAQ,aAAJ,GAAG,IAAG,CAAC,MAAU,aAAJ,GAAG,IAAG;AAEyH,QAD9I,WAAM,mBACF,AAAyI,6CAAxG,GAAG;;AAEtC,gBAAM,mBAAQ,GAAG,EAAE,GAAG;AAC1B,YAAO,mBAAO,GAAG,EAAE,QAAQ;IAC7B;kBAWyB,KAAK;AAExB,qBAAW,AAAgC,mBAAxB,AAAI,AAAQ,GAAT;AACtB,sBAAY,AAAiC,mBAAzB,AAAI,AAAS,GAAV;AACvB,iCACA,AAAS,QAAD,aAAW,AAAS,AAAO,QAAR,UAAU,GAAG,AAAS,QAAD;AAEsB,MAD1E,uBACI,AAAqB,oBAAD,wBAAW,AAAqB,AAAO,oBAAR,mCAAU,QAAQ;AACrE,kCACA,AAAU,SAAD,aAAW,AAAU,AAAO,SAAR,UAAU,GAAG,AAAU,SAAD;AAEA,MADvD,wBAAwB,AACnB,qBADwC,wBAC9B,AAAsB,AAAO,qBAAR,mCAAU,QAAQ;AAClD,kBACsI,SAAnI,AAAI,GAAD,wBAAc,AAAI,GAAD,wBAAc,qBAAU,AAAI,GAAD,UAAU,AAAI,GAAD,WAAW,AAAI,GAAD,gBAAc,oBAAoB,GAAC,qBAAqB;AACzI,YAAO,MAAK;IACd;qBAW+B,SAAgB,UAAc;AACvD,oBAAU,6BAAkB,UAAU;AACtC,sBAA+B,CAAV,aAAR,OAAO,IAAG;AACvB,mBAA6B,AAAQ,CAAlB,aAAT,QAAQ,IAAG,2BAAkB;AAC3C,YAAO,4BAAgB,SAAS,EAAE,MAAM,EAAE,OAAO;IACnD;6BASiC;AAC3B,oBAAU,AAAE,CAAD,UAAG;AAClB,UAAI,AAAQ,OAAD,KAAI;AACU,QAAvB,UAAU;;AAEZ,YAAO,QAAO;IAChB;2BAkBkC,QAAY,KAAS;AAEjD,kBAAa,aAAL,IAAI,IAAG;AACf,sBAAY,eAAe,AAAyB,4CAAC,KAAK;AAC1D,sBAAY,eAAe,AAAsB,yCAAC,KAAK;AAEvD,mBAAmB,AAAS,aAAnB,SAAS,iBAAG,MAAM,IAAG;AAC9B,mBAAmB,aAAV,SAAS,iBAAG,GAAG;AACxB,qBAAW;AACf,UAAI,AAAO,MAAD,gBAAG;AACgB,QAA3B,SAAS,AAAO,AAAI,AAAI,MAAT,gBAAG,6BAAI,gBAAI;AACX,QAAf,WAAW;;AAEb,UAAI,AAAO,MAAD,KAAI,gBACC,aAAV,SAAS,iBAAG,iBAAK,AAAO,MAAD,gBAAG,kBACzB,AAAO,MAAD,gBAAG,iBAAe,aAAV,SAAS,iBAAG,kBAAM,QAAQ;AACpC,QAAR,SAAA,AAAM,MAAA;;AAER,UAAI,AAAO,MAAD,KAAI,gBACC,aAAV,SAAS,iBAAG,iBAAK,AAAO,MAAD,gBAAG,kBACzB,AAAO,MAAD,gBAAG,iBAAe,aAAV,SAAS,iBAAG,kBAAM,QAAQ;AACpC,QAAR,SAAA,AAAM,MAAA;AACN,YAAI,AAAO,MAAD,KAAI;AACJ,UAAR,SAAA,AAAM,MAAA;;;AAGV,UAAI,AAAO,MAAD,gBAAG;AACgB,QAA3B,SAAS,AAAO,AAAI,AAAI,MAAT,gBAAG,6BAAI,gBAAI;;AAE5B,UAAI,AAAO,MAAD,gBAAG;AACgB,QAA3B,SAAS,AAAO,AAAI,AAAI,MAAT,gBAAG,6BAAI,gBAAI;AACX,QAAf,WAAW;;AAEK,QAAhB,WAAW;;AAEb,UAAM,AAAO,MAAD,KAAI,gBAAkB,aAAV,SAAS,iBAAG,iBAAO,AAAO,MAAD,gBAAG,kBAC7C,AAAO,MAAD,gBAAG,iBAAiB,aAAV,SAAS,iBAAG,kBAAO,QAAQ;AACxC,QAAR,SAAA,AAAM,MAAA;;AAER,UAAM,AAAO,MAAD,KAAI,gBAAkB,aAAV,SAAS,iBAAG,iBAAO,AAAO,MAAD,gBAAG,kBAC7C,AAAO,MAAD,gBAAG,iBAAiB,aAAV,SAAS,iBAAG,kBAAO,QAAQ;AACxC,QAAR,SAAA,AAAM,MAAA;AACN,YAAI,AAAO,MAAD,KAAI;AACJ,UAAR,SAAA,AAAM,MAAA;;;AAGV,UAAI,AAAO,MAAD,gBAAG;AACgB,QAA3B,SAAS,AAAO,AAAI,AAAI,MAAT,gBAAG,6BAAI,gBAAI;;AAExB,sBAC8D,SAApD,yBAAa,MAAM,cAAW,yBAAa,MAAM;AAC/D,YAAO,UAAS;IAClB;oBAS8B;AAC5B,YAAY,cAAJ,GAAG,KAAY,oBAAE;IAC3B;oBAS8B;AAC5B,YAAQ,AAAI,QAAO,aAAJ,GAAG;IACpB;mBAa0B,KAAY;AAChC,gBAAM,GAAG;AACT,iBAAO,GAAG;AAIV,mBAAS,oBAAS,GAAG;AACrB,oBAAU,oBAAS,IAAI;AACvB,uBAAgC,AAAQ,CAAb,CAAP,aAAL,IAAI,IAAG,OAAO,eAAa;AAE9C,UAAI,AAAK,IAAD,KAAI;AACK,QAAf,aAAa;;AAGf,UAAQ,aAAJ,GAAG,KAAI,MAAU,aAAJ,GAAG,IAAG,MAAW,aAAL,IAAI,KAAI,KAAU,aAAL,IAAI,IAAG;AAChC,QAAf,aAAa;;AAGf,UAAQ,aAAJ,GAAG,KAAI,MAAU,aAAJ,GAAG,IAAG;AACrB,YAAS,aAAL,IAAI,KAAI,KAAU,aAAL,IAAI,IAAG;AACP,UAAf,aAAa;cACR,KAAS,aAAL,IAAI,KAAI,KAAU,aAAL,IAAI,IAAG;AACd,UAAf,aAAa;cACR,KAAS,aAAL,IAAI,KAAI,MAAW,aAAL,IAAI,IAAG;AACf,UAAf,aAAa;cACR,KAAS,aAAL,IAAI,KAAI,MAAW,aAAL,IAAI,IAAG;AACf,UAAf,aAAa;;;AAGb,uBACiC,CAAf,AAAI,AAAM,CAA1B,AAAW,UAAD,GAAG,KAAK,IAAI,MAAM;AAE9B,0BAAgB,oBAAS,UAAU;AACnC,4BAA+B,cAAG,AAAE;AACpC,cAAM,UAAE,UAAU,AAAE,IAAa,AAAmB,aAAjB,SAAS,MAAM,IAAI,SAAS,MAAM;AACrE,cAAI,AAAiB,SAAR,MAAM,IAAI,SAAS,MAAM;AACtC,cAAI,AAAgB,AAAmB,eAApB,GAAG,SAAS,MAAM,IAAI,SAAS,MAAM;AACxD,cAAI,AAAiB,SAAR,MAAM,KAAa,aAAR,OAAO,iBAAG,aAAa;AAC/C,cAAM,WAIsD,AAC7C,AAIc,AAGA,CAX3B,AAAE,AACuB,AACkB,IADtB,aAAE,IACb,AAAE,AAAa,AAAa,8BAAE,KAC9B,AAAE,AAAa,AAAa,AAAa,2CAAE,oBAC/C,MAAM,IAGgD,CAFzD,AAAE,AAAa,AAAI,AACqB,iBADvB,IACV,AAAE,AAAa,AAAa,8BAAE,KAC9B,AAAG,AAAa,AAAa,AAAa,4CAAE,QAChD,SAAS,AAAE,iBAAE,MAAM,KAEmC,CADzD,AAAG,AAAa,AAAa,AAAM,+BAAJ,MACxB,AAAG,AAAa,AAAa,AAAa,4CAAE,QAChD,SAAS,AAAE,iBAAE,MAAM,KACtB,AAAG,AAAa,AAAa,AAAa,AAAQ,4CAAN,OACzC,SAAS,AAAE,iBAAE,MAAM;AAC3B,uBAAiB,AACX,AASW,SATb,CAAC,IACA,AAAE,AAC6B,CAD9B,GACc,AAAI,AAAI,AAAI,CAAvB,AAAE,AAAI,IAAF,CAAC,GAAG,CAAC,IAAI,CAAC,GAAG,CAAC,GAAG,CAAC,GAAG,IAC2B,AAC/C,AACA,AACA,AACA,AACA,CALL,AAAE,AAAS,AAAQ,AAAS,IAAxB,AAAG,KAAE,CAAC,GAAG,AAAE,CAAD,GAAG,CAAC,GAAG,AAAG,KAAE,CAAC,GAAG,AAAG,KAAE,eAAe,IAC/C,CAAC,GACD,CAAC,GACD,CAAC,GACD,CAAC,GACD,CAAC,GACD,OACZ;AACA,wBAAkB,UACjB,AAAE,CAAD,GACE,AAAE,AACmB,CADpB,GACG,SAAS,MAAM,KACd,AAAE,AAAI,AAAI,AAC0C,CADnD,GAAG,CAAC,GAAG,IACuB,AAAI,AAAI,AAAI,AAAI,CAA3C,AAAE,AAAI,AAAQ,IAAV,CAAC,GAAG,AAAE,IAAE,CAAC,GAAG,AAAE,AAAI,IAAF,CAAC,GAAG,CAAC,IAAI,CAAC,GAAG,CAAC,GAAG,CAAC,GAAG,CAAC,GAAG,KACU,AAClD,AACA,AACA,AACA,AACA,AACA,CANL,AAAG,AAAS,AAAQ,AAAU,KAAzB,AAAG,KAAE,CAAC,GAAG,AAAE,CAAD,GAAG,CAAC,GAAG,AAAI,MAAE,CAAC,GAAG,AAAI,MAAE,eAAe,IAClD,CAAC,GACD,CAAC,GACD,CAAC,GACD,CAAC,GACD,CAAC,GACD,CAAC,GACD;AACpB,UAAQ,aAAJ,GAAG,IAAG;AACe,QAAvB,cAAA,AAAY,WAAD,GAAI;;AAGb,gBAAM,2BACC,AAAW,UAAD,iCACT,AAAY,WAAD,mCACT,UAAU,cACV,+BAAoB,GAAG;AAErC,YAAO,IAAG;IACZ;+BAUyC;AACvC,UAAa,aAAT,QAAQ,KAAI,MAAe,aAAT,QAAQ,KAAI;AAEhC,cAAO;YACF,KAAa,aAAT,QAAQ,IAAG,MAAe,aAAT,QAAQ,KAAI,CAAC;AAKnC,oBAAgD,CAAd,CAAf,aAAT,QAAQ;AACtB,cAAkB,+BAAC,KAAK;YACnB,KAAa,aAAT,QAAQ,IAAG,MAAe,aAAT,QAAQ,IAAG,CAAC;AAGtC,cAAO;;AAET,YAAO;IACT;mBAiB2B;AACrB,wBAAc,AAAI,GAAD;AACjB,uBAAa,AAAI,GAAD;AAChB,uBAAa,AAAI,GAAD;AAChB,uBAAa,AAAI,GAAD;AAEpB,UAAe,aAAX,UAAU,IAAG,KAAgB,aAAX,UAAU,IAAG;AACjC,cAAO;;AAKL,eAAqC,CAA/B,AAAE,IAAE,UAAU,AAAE,oBAAkB,AAAE,IAAE,UAAU,AAAE;AAExD,cAAe,aAAX,UAAU,IAAG;AACjB,cAAI,WAAW;AAKnB,UAA+C,aAA3C,AAAS,8BAAQ,AAAW,UAAD,kCAC3B,AAAS,8BAAQ,AAAI;AACV,QAAb,IAAE,aAAF,CAAC,IAAI;;AAIH,uBAA8B,AAAI,AAAM,CAAf,aAAX,UAAU,IAAG,KAAK,IAAI,MAAM;AAE1C,4BAA+B,cAAG,AAAE;AACpC,cAAM,aAAF,CAAC;AACL,eAAK,AAAE,CAAD,IACH,WACE,AAAE,AACgB,AACkB,IADtB,aAAE,IACb,AAAE,AAAa,AAAa,8BAAE,KAC9B,AAAE,AAAa,AAAa,AAAa,2CAAE;AACnD,oBAAU,AAAG,AAC4C,AACY,EAFzD,GAC0B,CAArC,AAAE,AAAK,AAAI,IAAP,EAAE,GAAG,IAAI,AAAG,AAAK,AAAK,AAAK,KAAb,EAAE,GAAG,EAAE,GAAG,EAAE,GAAG,MAAM,SAAS,AAAE,IAAE,EAAE,IACL,CAAjD,AAAG,AAAK,AAAK,AAAK,KAAb,EAAE,GAAG,EAAE,GAAG,KAAK,AAAG,AAAK,AAAK,AAAK,AAAK,KAAlB,EAAE,GAAG,EAAE,GAAG,EAAE,GAAG,EAAE,GAAG,MAAM,SAAS,AAAE,IAAE,EAAE,IAClE,AAAI,AAAK,AAAK,AAAK,AAAM,MAAnB,EAAE,GAAG,EAAE,GAAG,EAAE,GAAG,KAAM,SAAS,AAAE,IAAE,EAAE;AAC3C,eACE,UAAE,UAAU,AAAE,IAAa,AAAoB,aAAlB,SAAS,OAAO,IAAI,SAAS,OAAO;AACnE,eAAK,AAAkB,SAAT,OAAO,IAAI,SAAS,OAAO;AACzC,eAAK,AAAgB,AAAoB,eAArB,GAAG,SAAS,OAAO,IAAI,SAAS,OAAO;AAC3D,eAAO,AACU,WAAhB,AAAE,kBACH,SAAS,AAAE,IAAa,AAAoB,aAAlB,SAAS,OAAO,IAAI,SAAS,OAAO,GAAG;AACjE,cAAI,AAAE,CAAD,IAAI,AAAG,EAAD;AACX,gBAAM,AAAQ,OAAD,GACZ,AAAG,AAAoB,AAAM,EAA3B,GAAG,SAAS,OAAO,IAAI,EAAE,IACvB,AAAE,AAAI,AAAI,AAMA,CANT,GAAG,CAAC,GAAG,IACsD,AACrD,AACA,AACA,AACA,CAJL,AAAE,AAAS,AAAU,AAAc,IAA/B,AAAE,IAAE,EAAE,GAAG,AAAG,KAAE,EAAE,GAAG,AAAE,AAAK,IAAH,EAAE,GAAG,EAAE,GAAG,AAAE,IAAE,eAAe,IACrD,CAAC,GACD,CAAC,GACD,CAAC,GACD,CAAC,GACD,KAMiB,AACf,AACA,AACA,AACA,AACA,AACA,CAXL,AAAG,AACY,AACC,AACI,AACS,KAHtB,AAAG,KAAE,EAAE,GACP,AAAI,MAAE,EAAE,GACR,AAAG,AAAK,KAAH,EAAE,GAAG,EAAE,GACZ,AAAI,MAAE,eAAe,GACrB,AAAE,AAAK,IAAH,EAAE,GAAG,EAAE,IACf,CAAC,GACD,CAAC,GACD,CAAC,GACD,CAAC,GACD,CAAC,GACD,CAAC,GACD;AACG,MAAnB,MAAM,oBAAS,GAAG;AACd,gBAaa,CAbN,AAAE,AAC6B,CAD9B,GACc,AAAI,AAAI,AAAI,CAA7B,AAAE,AAAS,IAAP,AAAE,IAAE,EAAE,GAAG,EAAE,IAAI,CAAC,GAAG,CAAC,GAAG,CAAC,GAAG,IAMV,AAChB,AACA,AACA,AACA,AACA,CAVL,AAAE,AACY,AACC,AACI,AACQ,IAHpB,AAAE,IAAE,EAAE,GACN,AAAG,KAAE,EAAE,GACP,AAAE,AAAK,IAAH,EAAE,GAAG,EAAE,GACX,AAAE,IAAE,eAAe,GACnB,AAAG,AAAK,KAAH,EAAE,GAAG,EAAE,IAChB,CAAC,GACD,CAAC,GACD,CAAC,GACD,CAAC,GACD,CAAC,GACD,OACR,SAAS,OAAO;AACY,MAAhC,MAAM,AAAW,UAAD,gBAAG,oBAAS,GAAG;AAC/B,UAAI,AAAI,GAAD,aAAa;AACd,uBAAW,mBACb,2BACuB,aAAZ,AAAI,GAAD,yBAAW,AAAI,GAAD,sBACH,aAAb,AAAI,GAAD,0BAAY,AAAI,GAAD,wBAChB,AAAI,GAAD,yBACH,AAAI,GAAD,uBACL;AAGd,cAAO,sCACW,WAAT,QAAQ,+BAAsB,WAAT,QAAQ,mBAAc,GAAG,QAAQ,GAAG;;AAElE,cAAO,6BAAY,GAAG,OAAO,GAAG;;IAEpC;kBAUyB;;AACvB,UAAI,AAAW,UAAD,IAAI,QAAQ,AAAW,UAAD;AACiB,QAAnD,WAAM,mBAAU;;AAGyB,MAA3C,aAAa,AAAW,UAAD,cAAY,KAAK;AACpC,mBAAS,AAAW,UAAD;AACnB;AACA,eAAK;AACL,cAAI;AAER,oBAAK,CAAC,EAAE,AAAE,CAAD,GAAG,GAAG,IAAA,AAAC,CAAA;AACV,qBAAS,AAAU,UAAA,QAAC,CAAC;AACzB,uBAAU,AAAS,+BAAS,AAAO,MAAD;AACpB,UAAZ,KAAA,AAAG,EAAD,GAAI,MAAM;;;AAGZ,uBAAiB,eAAM,EAAE;AAC7B,UAAI,AAAE,CAAD,KAAI,KAAK,AAAE,AAAI,CAAL,GAAG,IAAI,MAAM;AAGkC,QAA5D,WAAM,mBAAU,AAA2C,4CAAX,UAAU;;AAExD,uBAAa,AAAU,UAAA,SAAE,KAAD,CAAC;AAE7B,UAA+C,aAA3C,AAAS,8BAAQ,AAAW,UAAD,mCACvB,AAAS,8BAAQ,AAAI,yBACzB,AAAW,UAAD,KAAI,OACd,AAAW,UAAD,KAAI,OAC6B,aAA3C,AAAS,8BAAQ,AAAW,UAAD,mCACvB,AAAS,8BAAQ,AAAI,yBACzB,AAAW,UAAD,KAAI,OACd,AAAW,UAAD,KAAI;AAEqD,QADrE,WAAM,mBACF,AAAgE,2BAAvC,UAAU,GAAC,4BAAgB,UAAU;;AAE9B,MAAtC,OAAO,AAAW,UAAD,aAAW,CAAC,EAAE,IAAA,AAAE,CAAD,GAAI;AAChC,gBAAM,6BAAkB,UAAU;AAClC,qBAAW,2CAAuB,WAAJ,IAAI,WAAC,MAAI,GAAG;AAC1C,sBAAY,4CAAwB,WAAJ,IAAI,WAAC,MAAI,GAAG;AAGhD,aAAiB,aAAV,SAAS,iBAAG,0BAAe,UAAU;AACtB,QAApB,YAAU,aAAV,SAAS,IAAI;;AAGX,sBAAY,AAAO,MAAD,GAAG,CAAC;AAC1B,UAAI,AAAU,SAAD,UAAG,OAAK;AAE6J,QADhL,WAAM,mBACF,AAA2K,0KAAZ,UAAU;;AAE3K,gBAAsB,CAAf,AAAU,SAAD,GAAG;AACnB,uBAAa;AACb,wBAAc;AACd;AACG;AACA;AACP,UAAI,AAAI,GAAD,GAAG;AAC4C,QAApD,gBAA6C,CAA5B,AAAO,SAAE,SAAS,IAAI,GAAG;AACS,QAAnD,mBAAmB,AAAW,UAAD,aAAW,CAAC,EAAE,AAAE,CAAD,GAAG,GAAG;AACS,QAA3D,aAA4C,aAAxB,kBAAM,gBAAgB,8BAAI,aAAa;AACV,QAAjD,oBAAoB,AAAW,UAAD,aAAW,AAAE,CAAD,GAAG,GAAG;AACa,QAA7D,cAA8C,aAAzB,kBAAM,iBAAiB,8BAAI,aAAa;;AAE3D,oBAAU,AAAW,UAAD,gBAAG,QAAQ;AAC/B,qBAAW,AAAY,WAAD,gBAAG,SAAS;AAClC,gBAAM,2BACG,OAAO,YACN,QAAQ,cACN,UAAU,cACV,UAAU,sBACZ,aAAa;AAC3B,YAAO,IAAG;IACZ;8BAYqC,GAAO;AAGtC,mBAAS,eAAe,AAAyB,4CAAK,aAAJ,GAAG,IAAG;AACxD,yBAAe;AACf,yBAAe;AACnB,aAAO,MAAM,IAAI,eAAe,AAAC,CAAA,QAAC;AACxB,QAAR,SAAM,aAAN,MAAM;AACN,YAAI,AAAO,MAAD,IAAI;AACJ,UAAR,SAAM,aAAN,MAAM;;AAER,YAAI,AAAO,MAAD,IAAI;AACJ,UAAR,SAAM,aAAN,MAAM;;AAER,YAAW,aAAP,MAAM,iBAAG;AACX,cAAI,YAAY;AACsB,YAApC,WAAM,mBAAU,AAAmB,6BAAF,CAAC;;AAE1B,UAAV,SAAS;AACU,UAAnB,eAAe;;AAEK,QAAtB,eAAA,AAAa,YAAD,GAAI;;AAElB,YAAO,aAAY;IACrB;+BAkBsC,GAAO;AAC3C,UAAsC,aAAlC,AAAS,8BAAQ,AAAE,CAAD,kCAClB,AAAS,8BAAQ,AAAI;AAC+B,QAAtD,WAAM,mBAAU,AAAqC,+CAAF,CAAC;;AAIlD,mBAAS,eAAe,AAAsB,yCAAK,aAAJ,GAAG,IAAG;AACrD,0BAAgB;AAChB,yBAAe;AACnB,aAAO,MAAM,IAAI,eAAe,AAAC,CAAA,QAAC;AACxB,QAAR,SAAM,aAAN,MAAM;AACN,YAAI,AAAO,MAAD,IAAI;AACJ,UAAR,SAAM,aAAN,MAAM;;AAER,YAAI,AAAO,MAAD,IAAI;AACJ,UAAR,SAAM,aAAN,MAAM;;AAIR,YAAW,aAAP,MAAM,iBAAG;AACX,cAAI,YAAY;AAEsB,YAApC,WAAM,mBAAU,AAAmB,6BAAF,CAAC;;AAE1B,UAAV,SAAS;AACU,UAAnB,eAAe;;AAEM,QAAvB,gBAAA,AAAc,aAAD,GAAI;;AAEnB,YAAO,cAAa;IACtB;0BAYiC;AAC3B;AACJ,cAAQ,UAAU;;;AAEI,UAAlB,WAAW;AACX;;;;AAEkB,UAAlB,WAAW;AACX;;;;AAEkB,UAAlB,WAAW;AACX;;;;AAEkB,UAAlB,WAAW;AACX;;;;AAEkB,UAAlB,WAAW;AACX;;;;AAEkB,UAAlB,WAAW;AACX;;;;AAEkB,UAAlB,WAAW;AACX;;;;AAEkB,UAAlB,WAAW;AACX;;;;AAEkB,UAAlB,WAAW;AACX;;;;AAEkB,UAAlB,WAAW;AACX;;;;AAEY,UAAZ,WAAW;AACX;;;;AAEiB,UAAjB,WAAW;AACX;;;;AAEkB,UAAlB,WAAW;AACX;;;;AAEkB,UAAlB,WAAW;AACX;;;;AAEkB,UAAlB,WAAW;AACX;;;;AAEkB,UAAlB,WAAW;AACX;;;;AAEkB,UAAlB,WAAW;AACX;;;;AAEkB,UAAlB,WAAW;AACX;;;;AAEkB,UAAlB,WAAW;AACX;;;;AAEkB,UAAlB,WAAW;AACX;;;;AAEa,UAAb,WAAW,CAAC;;;AAEhB,UAAa,aAAT,QAAQ,KAAI;AACd,cAAO,SAAQ;;AAEoC,QAAnD,WAAM,mBAAU,AAAkC,mCAAX,UAAU;;IAErD;;;;EACF;;;;;MA5vBe,wBAAa;YAAG;;MAEhB,mBAAQ;YAAG,wBACtB,KACA,KACA,KACA,KACA,KACA,KACA,KACA,KACA,KACA,KACA,KACA,KACA,KACA,KACA,KACA,KACA,KACA,KACA,KACA,KACA,KACA,KACA,KACA,KACA,KACA;;MAKW,oCAAyB;YAAG;;MAK5B,iCAAsB;YAAG;;MAEzB,YAAC;YAAG;;MACJ,YAAC;YAAG;;MACJ,YAAC;YAAG;;MACJ,YAAC;YAAG;;MACJ,YAAC;YAAG","file":"../../../../../../../../packages/mgrs_dart/src/mgrs.dart.lib.js"}');
   // Exports:
   return {
-    src__grapheme_clusters__table: table
+    src__mgrs: mgrs$
   };
 }));
 
-//# sourceMappingURL=table.dart.lib.js.map
+//# sourceMappingURL=mgrs.dart.lib.js.map

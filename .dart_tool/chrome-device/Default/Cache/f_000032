@@ -1,1143 +1,1292 @@
-define(['dart_sdk', 'packages/simple_animations/simple_animations.dart', 'packages/flutter/src/animation/curves.dart', 'packages/flutter/src/animation/listener_helpers.dart', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/painting/alignment.dart'], (function load__packages__awesome_dialog__src__anims__anims_dart(dart_sdk, packages__simple_animations__simple_animations$46dart, packages__flutter__src__animation__curves$46dart, packages__flutter__src__animation__listener_helpers$46dart, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__painting__alignment$46dart) {
+define(['dart_sdk', 'packages/flutter/src/services/system_channels.dart', 'packages/flutter/src/gestures/events.dart'], (function load__packages__flutter__src__services__platform_views_dart(dart_sdk, packages__flutter__src__services__system_channels$46dart, packages__flutter__src__gestures__events$46dart) {
   'use strict';
   const core = dart_sdk.core;
+  const _js_helper = dart_sdk._js_helper;
+  const async = dart_sdk.async;
+  const typed_data = dart_sdk.typed_data;
+  const _interceptors = dart_sdk._interceptors;
+  const collection = dart_sdk.collection;
+  const _internal = dart_sdk._internal;
   const ui = dart_sdk.ui;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const simple_animations = packages__simple_animations__simple_animations$46dart.simple_animations;
-  const curves = packages__flutter__src__animation__curves$46dart.src__animation__curves;
-  const tween$ = packages__flutter__src__animation__listener_helpers$46dart.src__animation__tween;
-  const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
-  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
-  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
-  const alignment = packages__flutter__src__painting__alignment$46dart.src__painting__alignment;
-  var anims = Object.create(dart.library);
-  var $toString = dartx.toString;
-  var $round = dartx.round;
-  var SlideFromL = () => (SlideFromL = dart.constFn(dart.legacy(anims.SlideFrom)))();
-  var AniPropsL = () => (AniPropsL = dart.constFn(dart.legacy(anims.AniProps)))();
-  var MultiTweenOfAniPropsL = () => (MultiTweenOfAniPropsL = dart.constFn(simple_animations.MultiTween$(AniPropsL())))();
-  var MultiTweenValuesOfAniPropsL = () => (MultiTweenValuesOfAniPropsL = dart.constFn(simple_animations.MultiTweenValues$(AniPropsL())))();
-  var MultiTweenValuesLOfAniPropsL = () => (MultiTweenValuesLOfAniPropsL = dart.constFn(dart.legacy(MultiTweenValuesOfAniPropsL())))();
-  var CustomAnimationOfMultiTweenValuesLOfAniPropsL = () => (CustomAnimationOfMultiTweenValuesLOfAniPropsL = dart.constFn(simple_animations.CustomAnimation$(MultiTweenValuesLOfAniPropsL())))();
-  var doubleL = () => (doubleL = dart.constFn(dart.legacy(core.double)))();
-  var _LocationL = () => (_LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))();
-  var OpacityL = () => (OpacityL = dart.constFn(dart.legacy(basic.Opacity)))();
-  var BuildContextL = () => (BuildContextL = dart.constFn(dart.legacy(framework.BuildContext)))();
-  var WidgetL = () => (WidgetL = dart.constFn(dart.legacy(framework.Widget)))();
-  var BuildContextLAndWidgetLAndMultiTweenValuesLOfAniPropsLToOpacityL = () => (BuildContextLAndWidgetLAndMultiTweenValuesLOfAniPropsLToOpacityL = dart.constFn(dart.fnType(OpacityL(), [BuildContextL(), WidgetL(), MultiTweenValuesLOfAniPropsL()])))();
-  var TransformL = () => (TransformL = dart.constFn(dart.legacy(basic.Transform)))();
-  var BuildContextLAndWidgetLAndMultiTweenValuesLOfAniPropsLToTransformL = () => (BuildContextLAndWidgetLAndMultiTweenValuesLOfAniPropsLToTransformL = dart.constFn(dart.fnType(TransformL(), [BuildContextL(), WidgetL(), MultiTweenValuesLOfAniPropsL()])))();
+  const system_channels = packages__flutter__src__services__system_channels$46dart.src__services__system_channels;
+  const message_codec = packages__flutter__src__services__system_channels$46dart.src__services__message_codec;
+  const events = packages__flutter__src__gestures__events$46dart.src__gestures__events;
+  var platform_views = Object.create(dart.library);
+  var $containsKey = dartx.containsKey;
+  var $_get = dartx._get;
+  var $_set = dartx._set;
+  var $buffer = dartx.buffer;
+  var $lengthInBytes = dartx.lengthInBytes;
+  var $length = dartx.length;
+  var $map = dartx.map;
+  var $toList = dartx.toList;
+  var $isEmpty = dartx.isEmpty;
+  var $remove = dartx.remove;
+  var $clear = dartx.clear;
+  var $keys = dartx.keys;
+  var $indexOf = dartx.indexOf;
+  var $add = dartx.add;
+  var VoidTovoid = () => (VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))();
+  var IdentityMapOfint$VoidTovoid = () => (IdentityMapOfint$VoidTovoid = dart.constFn(_js_helper.IdentityMap$(core.int, VoidTovoid())))();
+  var FutureOfvoid = () => (FutureOfvoid = dart.constFn(async.Future$(dart.void)))();
+  var IdentityMapOfString$dynamic = () => (IdentityMapOfString$dynamic = dart.constFn(_js_helper.IdentityMap$(core.String, dart.dynamic)))();
+  var JSArrayOfint = () => (JSArrayOfint = dart.constFn(_interceptors.JSArray$(core.int)))();
+  var JSArrayOfdouble = () => (JSArrayOfdouble = dart.constFn(_interceptors.JSArray$(core.double)))();
+  var ListOfint = () => (ListOfint = dart.constFn(core.List$(core.int)))();
+  var AndroidPointerPropertiesToListOfint = () => (AndroidPointerPropertiesToListOfint = dart.constFn(dart.fnType(ListOfint(), [platform_views.AndroidPointerProperties])))();
+  var ListOfdouble = () => (ListOfdouble = dart.constFn(core.List$(core.double)))();
+  var AndroidPointerCoordsToListOfdouble = () => (AndroidPointerCoordsToListOfdouble = dart.constFn(dart.fnType(ListOfdouble(), [platform_views.AndroidPointerCoords])))();
+  var _AndroidViewStateL = () => (_AndroidViewStateL = dart.constFn(dart.legacy(platform_views._AndroidViewState)))();
+  var IdentityMapOfint$AndroidPointerCoords = () => (IdentityMapOfint$AndroidPointerCoords = dart.constFn(_js_helper.IdentityMap$(core.int, platform_views.AndroidPointerCoords)))();
+  var IdentityMapOfint$AndroidPointerProperties = () => (IdentityMapOfint$AndroidPointerProperties = dart.constFn(_js_helper.IdentityMap$(core.int, platform_views.AndroidPointerProperties)))();
+  var LinkedHashSetOfint = () => (LinkedHashSetOfint = dart.constFn(collection.LinkedHashSet$(core.int)))();
+  var intToAndroidPointerProperties = () => (intToAndroidPointerProperties = dart.constFn(dart.fnType(platform_views.AndroidPointerProperties, [core.int])))();
+  var intToAndroidPointerCoords = () => (intToAndroidPointerCoords = dart.constFn(dart.fnType(platform_views.AndroidPointerCoords, [core.int])))();
+  var intTovoid = () => (intTovoid = dart.constFn(dart.fnType(dart.void, [core.int])))();
+  var JSArrayOfintTovoid = () => (JSArrayOfintTovoid = dart.constFn(_interceptors.JSArray$(intTovoid())))();
   const CT = Object.create(null);
-  var L0 = "package:awesome_dialog/src/anims/anims.dart";
+  var L0 = "package:flutter/src/services/platform_views.dart";
+  var L1 = "file:///C:/src/flutter/packages/flutter/lib/src/services/platform_views.dart";
   dart.defineLazy(CT, {
     get C0() {
       return C0 = dart.const({
-        __proto__: anims.SlideFrom.prototype,
-        [_name$]: "SlideFrom.TOP",
+        __proto__: platform_views._AndroidViewState.prototype,
+        [_name$]: "_AndroidViewState.waitingForSize",
         index: 0
       });
     },
     get C1() {
       return C1 = dart.const({
-        __proto__: anims.SlideFrom.prototype,
-        [_name$]: "SlideFrom.BOTTOM",
+        __proto__: platform_views._AndroidViewState.prototype,
+        [_name$]: "_AndroidViewState.creating",
         index: 1
       });
     },
     get C2() {
       return C2 = dart.const({
-        __proto__: anims.SlideFrom.prototype,
-        [_name$]: "SlideFrom.LEFT",
+        __proto__: platform_views._AndroidViewState.prototype,
+        [_name$]: "_AndroidViewState.created",
         index: 2
       });
     },
     get C3() {
       return C3 = dart.const({
-        __proto__: anims.SlideFrom.prototype,
-        [_name$]: "SlideFrom.RIGHT",
+        __proto__: platform_views._AndroidViewState.prototype,
+        [_name$]: "_AndroidViewState.disposed",
         index: 3
       });
     },
     get C4() {
-      return C4 = dart.constList([C0 || CT.C0, C1 || CT.C1, C2 || CT.C2, C3 || CT.C3], SlideFromL());
+      return C4 = dart.constList([C0 || CT.C0, C1 || CT.C1, C2 || CT.C2, C3 || CT.C3], _AndroidViewStateL());
     },
     get C5() {
       return C5 = dart.const({
-        __proto__: anims.AniProps.prototype,
-        [_name$]: "AniProps.opacity",
+        __proto__: ui.PointerDeviceKind.prototype,
+        [_name]: "PointerDeviceKind.touch",
         index: 0
       });
     },
     get C6() {
       return C6 = dart.const({
-        __proto__: anims.AniProps.prototype,
-        [_name$]: "AniProps.translateX",
+        __proto__: ui.PointerDeviceKind.prototype,
+        [_name]: "PointerDeviceKind.mouse",
         index: 1
       });
     },
     get C7() {
       return C7 = dart.const({
-        __proto__: anims.AniProps.prototype,
-        [_name$]: "AniProps.scale",
+        __proto__: ui.PointerDeviceKind.prototype,
+        [_name]: "PointerDeviceKind.stylus",
         index: 2
       });
     },
     get C8() {
-      return C8 = dart.constList([C5 || CT.C5, C6 || CT.C6, C7 || CT.C7], AniPropsL());
+      return C8 = dart.const({
+        __proto__: ui.PointerDeviceKind.prototype,
+        [_name]: "PointerDeviceKind.invertedStylus",
+        index: 3
+      });
     },
     get C9() {
       return C9 = dart.const({
-        __proto__: simple_animations.CustomAnimationControl.prototype,
-        [_name]: "CustomAnimationControl.PLAY",
-        index: 1
+        __proto__: ui.PointerDeviceKind.prototype,
+        [_name]: "PointerDeviceKind.unknown",
+        index: 4
       });
     },
     get C10() {
       return C10 = dart.const({
-        __proto__: curves.Cubic.prototype,
-        [Cubic_d]: 1,
-        [Cubic_c]: 0.25,
-        [Cubic_b]: 0.1,
-        [Cubic_a]: 0.25
+        __proto__: ui.TextDirection.prototype,
+        [_name]: "TextDirection.ltr",
+        index: 1
       });
-    },
-    get C13() {
-      return C13 = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "offset",
-        [_Location_column]: 11,
-        [_Location_line]: 62,
-        [_Location_file]: null
-      });
-    },
-    get C14() {
-      return C14 = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 11,
-        [_Location_line]: 63,
-        [_Location_file]: null
-      });
-    },
-    get C12() {
-      return C12 = dart.constList([C13 || CT.C13, C14 || CT.C14], _LocationL());
     },
     get C11() {
       return C11 = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C12 || CT.C12,
-        [_Location_name]: null,
-        [_Location_column]: 26,
-        [_Location_line]: 61,
-        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/awesome_dialog-1.3.0/lib/src/anims/anims.dart"
-      });
-    },
-    get C17() {
-      return C17 = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "opacity",
-        [_Location_column]: 9,
-        [_Location_line]: 60,
-        [_Location_file]: null
-      });
-    },
-    get C18() {
-      return C18 = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 9,
-        [_Location_line]: 61,
-        [_Location_file]: null
-      });
-    },
-    get C16() {
-      return C16 = dart.constList([C17 || CT.C17, C18 || CT.C18], _LocationL());
-    },
-    get C15() {
-      return C15 = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C16 || CT.C16,
-        [_Location_name]: null,
-        [_Location_column]: 47,
-        [_Location_line]: 59,
-        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/awesome_dialog-1.3.0/lib/src/anims/anims.dart"
-      });
-    },
-    get C21() {
-      return C21 = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "delay",
-        [_Location_column]: 7,
-        [_Location_line]: 54,
-        [_Location_file]: null
-      });
-    },
-    get C22() {
-      return C22 = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "control",
-        [_Location_column]: 7,
-        [_Location_line]: 55,
-        [_Location_file]: null
-      });
-    },
-    get C23() {
-      return C23 = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "duration",
-        [_Location_column]: 7,
-        [_Location_line]: 56,
-        [_Location_file]: null
-      });
-    },
-    get C24() {
-      return C24 = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "tween",
-        [_Location_column]: 7,
-        [_Location_line]: 57,
-        [_Location_file]: null
-      });
-    },
-    get C25() {
-      return C25 = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 7,
-        [_Location_line]: 58,
-        [_Location_file]: null
-      });
-    },
-    get C26() {
-      return C26 = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "builder",
-        [_Location_column]: 7,
-        [_Location_line]: 59,
-        [_Location_file]: null
-      });
-    },
-    get C20() {
-      return C20 = dart.constList([C21 || CT.C21, C22 || CT.C22, C23 || CT.C23, C24 || CT.C24, C25 || CT.C25, C26 || CT.C26], _LocationL());
-    },
-    get C19() {
-      return C19 = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C20 || CT.C20,
-        [_Location_name]: null,
-        [_Location_column]: 12,
-        [_Location_line]: 53,
-        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/awesome_dialog-1.3.0/lib/src/anims/anims.dart"
-      });
-    },
-    get C29() {
-      return C29 = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "offset",
-        [_Location_column]: 9,
-        [_Location_line]: 105,
-        [_Location_file]: null
-      });
-    },
-    get C30() {
-      return C30 = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 9,
-        [_Location_line]: 106,
-        [_Location_file]: null
-      });
-    },
-    get C28() {
-      return C28 = dart.constList([C29 || CT.C29, C30 || CT.C30], _LocationL());
-    },
-    get C27() {
-      return C27 = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C28 || CT.C28,
-        [_Location_name]: null,
-        [_Location_column]: 57,
-        [_Location_line]: 104,
-        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/awesome_dialog-1.3.0/lib/src/anims/anims.dart"
-      });
-    },
-    get C33() {
-      return C33 = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "delay",
-        [_Location_column]: 7,
-        [_Location_line]: 99,
-        [_Location_file]: null
-      });
-    },
-    get C34() {
-      return C34 = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "control",
-        [_Location_column]: 7,
-        [_Location_line]: 100,
-        [_Location_file]: null
-      });
-    },
-    get C35() {
-      return C35 = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "duration",
-        [_Location_column]: 7,
-        [_Location_line]: 101,
-        [_Location_file]: null
-      });
-    },
-    get C36() {
-      return C36 = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "tween",
-        [_Location_column]: 7,
-        [_Location_line]: 102,
-        [_Location_file]: null
-      });
-    },
-    get C37() {
-      return C37 = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 7,
-        [_Location_line]: 103,
-        [_Location_file]: null
-      });
-    },
-    get C38() {
-      return C38 = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "builder",
-        [_Location_column]: 7,
-        [_Location_line]: 104,
-        [_Location_file]: null
-      });
-    },
-    get C32() {
-      return C32 = dart.constList([C33 || CT.C33, C34 || CT.C34, C35 || CT.C35, C36 || CT.C36, C37 || CT.C37, C38 || CT.C38], _LocationL());
-    },
-    get C31() {
-      return C31 = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C32 || CT.C32,
-        [_Location_name]: null,
-        [_Location_column]: 12,
-        [_Location_line]: 98,
-        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/awesome_dialog-1.3.0/lib/src/anims/anims.dart"
-      });
-    },
-    get C39() {
-      return C39 = dart.const({
-        __proto__: curves.Cubic.prototype,
-        [Cubic_d]: 1,
-        [Cubic_c]: 1,
-        [Cubic_b]: 0,
-        [Cubic_a]: 0.42
-      });
-    },
-    get C42() {
-      return C42 = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "scale",
-        [_Location_column]: 17,
-        [_Location_line]: 151,
-        [_Location_file]: null
-      });
-    },
-    get C43() {
-      return C43 = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "alignment",
-        [_Location_column]: 17,
-        [_Location_line]: 152,
-        [_Location_file]: null
-      });
-    },
-    get C44() {
-      return C44 = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 17,
-        [_Location_line]: 153,
-        [_Location_file]: null
-      });
-    },
-    get C41() {
-      return C41 = dart.constList([C42 || CT.C42, C43 || CT.C43, C44 || CT.C44], _LocationL());
-    },
-    get C40() {
-      return C40 = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C41 || CT.C41,
-        [_Location_name]: null,
-        [_Location_column]: 32,
-        [_Location_line]: 150,
-        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/awesome_dialog-1.3.0/lib/src/anims/anims.dart"
-      });
-    },
-    get C47() {
-      return C47 = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "opacity",
-        [_Location_column]: 15,
-        [_Location_line]: 149,
-        [_Location_file]: null
-      });
-    },
-    get C48() {
-      return C48 = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 15,
-        [_Location_line]: 150,
-        [_Location_file]: null
-      });
-    },
-    get C46() {
-      return C46 = dart.constList([C47 || CT.C47, C48 || CT.C48], _LocationL());
-    },
-    get C45() {
-      return C45 = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C46 || CT.C46,
-        [_Location_name]: null,
-        [_Location_column]: 49,
-        [_Location_line]: 148,
-        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/awesome_dialog-1.3.0/lib/src/anims/anims.dart"
-      });
-    },
-    get C51() {
-      return C51 = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "delay",
-        [_Location_column]: 9,
-        [_Location_line]: 143,
-        [_Location_file]: null
-      });
-    },
-    get C52() {
-      return C52 = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "control",
-        [_Location_column]: 9,
-        [_Location_line]: 144,
-        [_Location_file]: null
-      });
-    },
-    get C53() {
-      return C53 = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "duration",
-        [_Location_column]: 9,
-        [_Location_line]: 145,
-        [_Location_file]: null
-      });
-    },
-    get C54() {
-      return C54 = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "tween",
-        [_Location_column]: 9,
-        [_Location_line]: 146,
-        [_Location_file]: null
-      });
-    },
-    get C55() {
-      return C55 = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 9,
-        [_Location_line]: 147,
-        [_Location_file]: null
-      });
-    },
-    get C56() {
-      return C56 = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "builder",
-        [_Location_column]: 9,
-        [_Location_line]: 148,
-        [_Location_file]: null
-      });
-    },
-    get C50() {
-      return C50 = dart.constList([C51 || CT.C51, C52 || CT.C52, C53 || CT.C53, C54 || CT.C54, C55 || CT.C55, C56 || CT.C56], _LocationL());
-    },
-    get C49() {
-      return C49 = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C50 || CT.C50,
-        [_Location_name]: null,
-        [_Location_column]: 12,
-        [_Location_line]: 142,
-        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/awesome_dialog-1.3.0/lib/src/anims/anims.dart"
-      });
-    },
-    get C59() {
-      return C59 = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "scale",
-        [_Location_column]: 9,
-        [_Location_line]: 187,
-        [_Location_file]: null
-      });
-    },
-    get C60() {
-      return C60 = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "alignment",
-        [_Location_column]: 9,
-        [_Location_line]: 188,
-        [_Location_file]: null
-      });
-    },
-    get C61() {
-      return C61 = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 9,
-        [_Location_line]: 189,
-        [_Location_file]: null
-      });
-    },
-    get C58() {
-      return C58 = dart.constList([C59 || CT.C59, C60 || CT.C60, C61 || CT.C61], _LocationL());
-    },
-    get C57() {
-      return C57 = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C58 || CT.C58,
-        [_Location_name]: null,
-        [_Location_column]: 57,
-        [_Location_line]: 186,
-        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/awesome_dialog-1.3.0/lib/src/anims/anims.dart"
-      });
-    },
-    get C64() {
-      return C64 = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "delay",
-        [_Location_column]: 7,
-        [_Location_line]: 179,
-        [_Location_file]: null
-      });
-    },
-    get C65() {
-      return C65 = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "control",
-        [_Location_column]: 7,
-        [_Location_line]: 180,
-        [_Location_file]: null
-      });
-    },
-    get C66() {
-      return C66 = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "duration",
-        [_Location_column]: 7,
-        [_Location_line]: 183,
-        [_Location_file]: null
-      });
-    },
-    get C67() {
-      return C67 = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "tween",
-        [_Location_column]: 7,
-        [_Location_line]: 184,
-        [_Location_file]: null
-      });
-    },
-    get C68() {
-      return C68 = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 7,
-        [_Location_line]: 185,
-        [_Location_file]: null
-      });
-    },
-    get C69() {
-      return C69 = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "builder",
-        [_Location_column]: 7,
-        [_Location_line]: 186,
-        [_Location_file]: null
-      });
-    },
-    get C63() {
-      return C63 = dart.constList([C64 || CT.C64, C65 || CT.C65, C66 || CT.C66, C67 || CT.C67, C68 || CT.C68, C69 || CT.C69], _LocationL());
-    },
-    get C62() {
-      return C62 = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C63 || CT.C63,
-        [_Location_name]: null,
-        [_Location_column]: 12,
-        [_Location_line]: 178,
-        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/awesome_dialog-1.3.0/lib/src/anims/anims.dart"
+        __proto__: ui.TextDirection.prototype,
+        [_name]: "TextDirection.rtl",
+        index: 0
       });
     }
   }, false);
-  var _name$ = dart.privateName(anims, "_name");
+  var _nextPlatformViewId = dart.privateName(platform_views, "_nextPlatformViewId");
+  platform_views.PlatformViewsRegistry = class PlatformViewsRegistry extends core.Object {
+    getNextPlatformViewId() {
+      let t0;
+      t0 = this[_nextPlatformViewId];
+      this[_nextPlatformViewId] = dart.notNull(t0) + 1;
+      return t0;
+    }
+  };
+  (platform_views.PlatformViewsRegistry._instance = function() {
+    this[_nextPlatformViewId] = 0;
+    ;
+  }).prototype = platform_views.PlatformViewsRegistry.prototype;
+  dart.addTypeTests(platform_views.PlatformViewsRegistry);
+  dart.addTypeCaches(platform_views.PlatformViewsRegistry);
+  dart.setMethodSignature(platform_views.PlatformViewsRegistry, () => ({
+    __proto__: dart.getMethods(platform_views.PlatformViewsRegistry.__proto__),
+    getNextPlatformViewId: dart.fnType(core.int, [])
+  }));
+  dart.setLibraryUri(platform_views.PlatformViewsRegistry, L0);
+  dart.setFieldSignature(platform_views.PlatformViewsRegistry, () => ({
+    __proto__: dart.getFields(platform_views.PlatformViewsRegistry.__proto__),
+    [_nextPlatformViewId]: dart.fieldType(core.int)
+  }));
+  var _focusCallbacks = dart.privateName(platform_views, "_focusCallbacks");
+  var _onMethodCall = dart.privateName(platform_views, "_onMethodCall");
+  platform_views.PlatformViewsService = class PlatformViewsService extends core.Object {
+    [_onMethodCall](call) {
+      if (call == null) dart.nullFailed(L1, 60, 41, "call");
+      switch (call.method) {
+        case "viewFocused":
+        {
+          let id = core.int.as(call.arguments);
+          if (dart.test(this[_focusCallbacks][$containsKey](id))) {
+            dart.nullCheck(this[_focusCallbacks][$_get](id))();
+          }
+          break;
+        }
+        default:
+        {
+          dart.throw(new core.UnimplementedError.new(dart.str(call.method) + " was invoked but isn't implemented by PlatformViewsService"));
+        }
+      }
+      return FutureOfvoid().value();
+    }
+    static initAndroidView(opts) {
+      let t0;
+      let id = opts && 'id' in opts ? opts.id : null;
+      if (id == null) dart.nullFailed(L1, 107, 18, "id");
+      let viewType = opts && 'viewType' in opts ? opts.viewType : null;
+      if (viewType == null) dart.nullFailed(L1, 108, 21, "viewType");
+      let layoutDirection = opts && 'layoutDirection' in opts ? opts.layoutDirection : null;
+      if (layoutDirection == null) dart.nullFailed(L1, 109, 28, "layoutDirection");
+      let creationParams = opts && 'creationParams' in opts ? opts.creationParams : null;
+      let creationParamsCodec = opts && 'creationParamsCodec' in opts ? opts.creationParamsCodec : null;
+      let onFocus = opts && 'onFocus' in opts ? opts.onFocus : null;
+      if (!(id != null)) dart.assertFailed(null, L1, 114, 12, "id != null");
+      if (!(viewType != null)) dart.assertFailed(null, L1, 115, 12, "viewType != null");
+      if (!(layoutDirection != null)) dart.assertFailed(null, L1, 116, 12, "layoutDirection != null");
+      if (!(creationParams == null || creationParamsCodec != null)) dart.assertFailed(null, L1, 117, 12, "creationParams == null || creationParamsCodec != null");
+      let controller = new platform_views.TextureAndroidViewController.__({viewId: id, viewType: viewType, layoutDirection: layoutDirection, creationParams: creationParams, creationParamsCodec: creationParamsCodec});
+      platform_views.PlatformViewsService._instance[_focusCallbacks][$_set](id, (t0 = onFocus, t0 == null ? dart.fn(() => {
+      }, VoidTovoid()) : t0));
+      return controller;
+    }
+    static initSurfaceAndroidView(opts) {
+      let t0;
+      let id = opts && 'id' in opts ? opts.id : null;
+      if (id == null) dart.nullFailed(L1, 158, 18, "id");
+      let viewType = opts && 'viewType' in opts ? opts.viewType : null;
+      if (viewType == null) dart.nullFailed(L1, 159, 21, "viewType");
+      let layoutDirection = opts && 'layoutDirection' in opts ? opts.layoutDirection : null;
+      if (layoutDirection == null) dart.nullFailed(L1, 160, 28, "layoutDirection");
+      let creationParams = opts && 'creationParams' in opts ? opts.creationParams : null;
+      let creationParamsCodec = opts && 'creationParamsCodec' in opts ? opts.creationParamsCodec : null;
+      let onFocus = opts && 'onFocus' in opts ? opts.onFocus : null;
+      if (!(id != null)) dart.assertFailed(null, L1, 165, 12, "id != null");
+      if (!(viewType != null)) dart.assertFailed(null, L1, 166, 12, "viewType != null");
+      if (!(layoutDirection != null)) dart.assertFailed(null, L1, 167, 12, "layoutDirection != null");
+      if (!(creationParams == null || creationParamsCodec != null)) dart.assertFailed(null, L1, 168, 12, "creationParams == null || creationParamsCodec != null");
+      let controller = new platform_views.SurfaceAndroidViewController.__({viewId: id, viewType: viewType, layoutDirection: layoutDirection, creationParams: creationParams, creationParamsCodec: creationParamsCodec});
+      platform_views.PlatformViewsService._instance[_focusCallbacks][$_set](id, (t0 = onFocus, t0 == null ? dart.fn(() => {
+      }, VoidTovoid()) : t0));
+      return controller;
+    }
+    static initUiKitView(opts) {
+      let id = opts && 'id' in opts ? opts.id : null;
+      if (id == null) dart.nullFailed(L1, 194, 18, "id");
+      let viewType = opts && 'viewType' in opts ? opts.viewType : null;
+      if (viewType == null) dart.nullFailed(L1, 195, 21, "viewType");
+      let layoutDirection = opts && 'layoutDirection' in opts ? opts.layoutDirection : null;
+      if (layoutDirection == null) dart.nullFailed(L1, 196, 28, "layoutDirection");
+      let creationParams = opts && 'creationParams' in opts ? opts.creationParams : null;
+      let creationParamsCodec = opts && 'creationParamsCodec' in opts ? opts.creationParamsCodec : null;
+      return async.async(platform_views.UiKitViewController, function* initUiKitView() {
+        if (!(id != null)) dart.assertFailed(null, L1, 200, 12, "id != null");
+        if (!(viewType != null)) dart.assertFailed(null, L1, 201, 12, "viewType != null");
+        if (!(layoutDirection != null)) dart.assertFailed(null, L1, 202, 12, "layoutDirection != null");
+        if (!(creationParams == null || creationParamsCodec != null)) dart.assertFailed(null, L1, 203, 12, "creationParams == null || creationParamsCodec != null");
+        let args = new (IdentityMapOfString$dynamic()).from(["id", id, "viewType", viewType]);
+        if (creationParams != null) {
+          let paramsByteData = dart.nullCheck(dart.nullCheck(creationParamsCodec).encodeMessage(creationParams));
+          args[$_set]("params", typed_data.Uint8List.view(paramsByteData[$buffer], 0, paramsByteData[$lengthInBytes]));
+        }
+        yield system_channels.SystemChannels.platform_views.invokeMethod(dart.void, "create", args);
+        return new platform_views.UiKitViewController.__(id, layoutDirection);
+      });
+    }
+  };
+  (platform_views.PlatformViewsService.__ = function() {
+    this[_focusCallbacks] = new (IdentityMapOfint$VoidTovoid()).new();
+    system_channels.SystemChannels.platform_views.setMethodCallHandler(dart.bind(this, _onMethodCall));
+  }).prototype = platform_views.PlatformViewsService.prototype;
+  dart.addTypeTests(platform_views.PlatformViewsService);
+  dart.addTypeCaches(platform_views.PlatformViewsService);
+  dart.setMethodSignature(platform_views.PlatformViewsService, () => ({
+    __proto__: dart.getMethods(platform_views.PlatformViewsService.__proto__),
+    [_onMethodCall]: dart.fnType(async.Future$(dart.void), [message_codec.MethodCall])
+  }));
+  dart.setLibraryUri(platform_views.PlatformViewsService, L0);
+  dart.setFieldSignature(platform_views.PlatformViewsService, () => ({
+    __proto__: dart.getFields(platform_views.PlatformViewsService.__proto__),
+    [_focusCallbacks]: dart.finalFieldType(core.Map$(core.int, dart.fnType(dart.void, [])))
+  }));
+  dart.defineLazy(platform_views.PlatformViewsService, {
+    /*platform_views.PlatformViewsService._instance*/get _instance() {
+      return new platform_views.PlatformViewsService.__();
+    }
+  }, false);
+  var _asList = dart.privateName(platform_views, "_asList");
+  var id$ = dart.privateName(platform_views, "AndroidPointerProperties.id");
+  var toolType$ = dart.privateName(platform_views, "AndroidPointerProperties.toolType");
+  platform_views.AndroidPointerProperties = class AndroidPointerProperties extends core.Object {
+    get id() {
+      return this[id$];
+    }
+    set id(value) {
+      super.id = value;
+    }
+    get toolType() {
+      return this[toolType$];
+    }
+    set toolType(value) {
+      super.toolType = value;
+    }
+    [_asList]() {
+      return JSArrayOfint().of([this.id, this.toolType]);
+    }
+    toString() {
+      return "AndroidPointerProperties(id: " + dart.str(this.id) + ", toolType: " + dart.str(this.toolType) + ")";
+    }
+  };
+  (platform_views.AndroidPointerProperties.new = function(opts) {
+    let id = opts && 'id' in opts ? opts.id : null;
+    if (id == null) dart.nullFailed(L1, 231, 19, "id");
+    let toolType = opts && 'toolType' in opts ? opts.toolType : null;
+    if (toolType == null) dart.nullFailed(L1, 232, 19, "toolType");
+    this[id$] = id;
+    this[toolType$] = toolType;
+    if (!(id != null)) dart.assertFailed(null, L1, 233, 15, "id != null");
+    if (!(toolType != null)) dart.assertFailed(null, L1, 234, 15, "toolType != null");
+    ;
+  }).prototype = platform_views.AndroidPointerProperties.prototype;
+  dart.addTypeTests(platform_views.AndroidPointerProperties);
+  dart.addTypeCaches(platform_views.AndroidPointerProperties);
+  dart.setMethodSignature(platform_views.AndroidPointerProperties, () => ({
+    __proto__: dart.getMethods(platform_views.AndroidPointerProperties.__proto__),
+    [_asList]: dart.fnType(core.List$(core.int), [])
+  }));
+  dart.setLibraryUri(platform_views.AndroidPointerProperties, L0);
+  dart.setFieldSignature(platform_views.AndroidPointerProperties, () => ({
+    __proto__: dart.getFields(platform_views.AndroidPointerProperties.__proto__),
+    id: dart.finalFieldType(core.int),
+    toolType: dart.finalFieldType(core.int)
+  }));
+  dart.defineExtensionMethods(platform_views.AndroidPointerProperties, ['toString']);
+  dart.defineLazy(platform_views.AndroidPointerProperties, {
+    /*platform_views.AndroidPointerProperties.kToolTypeUnknown*/get kToolTypeUnknown() {
+      return 0;
+    },
+    /*platform_views.AndroidPointerProperties.kToolTypeFinger*/get kToolTypeFinger() {
+      return 1;
+    },
+    /*platform_views.AndroidPointerProperties.kToolTypeStylus*/get kToolTypeStylus() {
+      return 2;
+    },
+    /*platform_views.AndroidPointerProperties.kToolTypeMouse*/get kToolTypeMouse() {
+      return 3;
+    },
+    /*platform_views.AndroidPointerProperties.kToolTypeEraser*/get kToolTypeEraser() {
+      return 4;
+    }
+  }, false);
+  var orientation$ = dart.privateName(platform_views, "AndroidPointerCoords.orientation");
+  var pressure$ = dart.privateName(platform_views, "AndroidPointerCoords.pressure");
+  var size$ = dart.privateName(platform_views, "AndroidPointerCoords.size");
+  var toolMajor$ = dart.privateName(platform_views, "AndroidPointerCoords.toolMajor");
+  var toolMinor$ = dart.privateName(platform_views, "AndroidPointerCoords.toolMinor");
+  var touchMajor$ = dart.privateName(platform_views, "AndroidPointerCoords.touchMajor");
+  var touchMinor$ = dart.privateName(platform_views, "AndroidPointerCoords.touchMinor");
+  var x$ = dart.privateName(platform_views, "AndroidPointerCoords.x");
+  var y$ = dart.privateName(platform_views, "AndroidPointerCoords.y");
+  platform_views.AndroidPointerCoords = class AndroidPointerCoords extends core.Object {
+    get orientation() {
+      return this[orientation$];
+    }
+    set orientation(value) {
+      super.orientation = value;
+    }
+    get pressure() {
+      return this[pressure$];
+    }
+    set pressure(value) {
+      super.pressure = value;
+    }
+    get size() {
+      return this[size$];
+    }
+    set size(value) {
+      super.size = value;
+    }
+    get toolMajor() {
+      return this[toolMajor$];
+    }
+    set toolMajor(value) {
+      super.toolMajor = value;
+    }
+    get toolMinor() {
+      return this[toolMinor$];
+    }
+    set toolMinor(value) {
+      super.toolMinor = value;
+    }
+    get touchMajor() {
+      return this[touchMajor$];
+    }
+    set touchMajor(value) {
+      super.touchMajor = value;
+    }
+    get touchMinor() {
+      return this[touchMinor$];
+    }
+    set touchMinor(value) {
+      super.touchMinor = value;
+    }
+    get x() {
+      return this[x$];
+    }
+    set x(value) {
+      super.x = value;
+    }
+    get y() {
+      return this[y$];
+    }
+    set y(value) {
+      super.y = value;
+    }
+    [_asList]() {
+      return JSArrayOfdouble().of([this.orientation, this.pressure, this.size, this.toolMajor, this.toolMinor, this.touchMajor, this.touchMinor, this.x, this.y]);
+    }
+    toString() {
+      return "AndroidPointerCoords(orientation: " + dart.str(this.orientation) + ", pressure: " + dart.str(this.pressure) + ", size: " + dart.str(this.size) + ", toolMajor: " + dart.str(this.toolMajor) + ", toolMinor: " + dart.str(this.toolMinor) + ", touchMajor: " + dart.str(this.touchMajor) + ", touchMinor: " + dart.str(this.touchMinor) + ", x: " + dart.str(this.x) + ", y: " + dart.str(this.y) + ")";
+    }
+  };
+  (platform_views.AndroidPointerCoords.new = function(opts) {
+    let orientation = opts && 'orientation' in opts ? opts.orientation : null;
+    if (orientation == null) dart.nullFailed(L1, 274, 19, "orientation");
+    let pressure = opts && 'pressure' in opts ? opts.pressure : null;
+    if (pressure == null) dart.nullFailed(L1, 275, 19, "pressure");
+    let size = opts && 'size' in opts ? opts.size : null;
+    if (size == null) dart.nullFailed(L1, 276, 19, "size");
+    let toolMajor = opts && 'toolMajor' in opts ? opts.toolMajor : null;
+    if (toolMajor == null) dart.nullFailed(L1, 277, 19, "toolMajor");
+    let toolMinor = opts && 'toolMinor' in opts ? opts.toolMinor : null;
+    if (toolMinor == null) dart.nullFailed(L1, 278, 19, "toolMinor");
+    let touchMajor = opts && 'touchMajor' in opts ? opts.touchMajor : null;
+    if (touchMajor == null) dart.nullFailed(L1, 279, 19, "touchMajor");
+    let touchMinor = opts && 'touchMinor' in opts ? opts.touchMinor : null;
+    if (touchMinor == null) dart.nullFailed(L1, 280, 19, "touchMinor");
+    let x = opts && 'x' in opts ? opts.x : null;
+    if (x == null) dart.nullFailed(L1, 281, 19, "x");
+    let y = opts && 'y' in opts ? opts.y : null;
+    if (y == null) dart.nullFailed(L1, 282, 19, "y");
+    this[orientation$] = orientation;
+    this[pressure$] = pressure;
+    this[size$] = size;
+    this[toolMajor$] = toolMajor;
+    this[toolMinor$] = toolMinor;
+    this[touchMajor$] = touchMajor;
+    this[touchMinor$] = touchMinor;
+    this[x$] = x;
+    this[y$] = y;
+    if (!(orientation != null)) dart.assertFailed(null, L1, 283, 15, "orientation != null");
+    if (!(pressure != null)) dart.assertFailed(null, L1, 284, 15, "pressure != null");
+    if (!(size != null)) dart.assertFailed(null, L1, 285, 15, "size != null");
+    if (!(toolMajor != null)) dart.assertFailed(null, L1, 286, 15, "toolMajor != null");
+    if (!(toolMinor != null)) dart.assertFailed(null, L1, 287, 15, "toolMinor != null");
+    if (!(touchMajor != null)) dart.assertFailed(null, L1, 288, 15, "touchMajor != null");
+    if (!(touchMinor != null)) dart.assertFailed(null, L1, 289, 15, "touchMinor != null");
+    if (!(x != null)) dart.assertFailed(null, L1, 290, 15, "x != null");
+    if (!(y != null)) dart.assertFailed(null, L1, 291, 15, "y != null");
+    ;
+  }).prototype = platform_views.AndroidPointerCoords.prototype;
+  dart.addTypeTests(platform_views.AndroidPointerCoords);
+  dart.addTypeCaches(platform_views.AndroidPointerCoords);
+  dart.setMethodSignature(platform_views.AndroidPointerCoords, () => ({
+    __proto__: dart.getMethods(platform_views.AndroidPointerCoords.__proto__),
+    [_asList]: dart.fnType(core.List$(core.double), [])
+  }));
+  dart.setLibraryUri(platform_views.AndroidPointerCoords, L0);
+  dart.setFieldSignature(platform_views.AndroidPointerCoords, () => ({
+    __proto__: dart.getFields(platform_views.AndroidPointerCoords.__proto__),
+    orientation: dart.finalFieldType(core.double),
+    pressure: dart.finalFieldType(core.double),
+    size: dart.finalFieldType(core.double),
+    toolMajor: dart.finalFieldType(core.double),
+    toolMinor: dart.finalFieldType(core.double),
+    touchMajor: dart.finalFieldType(core.double),
+    touchMinor: dart.finalFieldType(core.double),
+    x: dart.finalFieldType(core.double),
+    y: dart.finalFieldType(core.double)
+  }));
+  dart.defineExtensionMethods(platform_views.AndroidPointerCoords, ['toString']);
+  var downTime$ = dart.privateName(platform_views, "AndroidMotionEvent.downTime");
+  var eventTime$ = dart.privateName(platform_views, "AndroidMotionEvent.eventTime");
+  var action$ = dart.privateName(platform_views, "AndroidMotionEvent.action");
+  var pointerCount$ = dart.privateName(platform_views, "AndroidMotionEvent.pointerCount");
+  var pointerProperties$ = dart.privateName(platform_views, "AndroidMotionEvent.pointerProperties");
+  var pointerCoords$ = dart.privateName(platform_views, "AndroidMotionEvent.pointerCoords");
+  var metaState$ = dart.privateName(platform_views, "AndroidMotionEvent.metaState");
+  var buttonState$ = dart.privateName(platform_views, "AndroidMotionEvent.buttonState");
+  var xPrecision$ = dart.privateName(platform_views, "AndroidMotionEvent.xPrecision");
+  var yPrecision$ = dart.privateName(platform_views, "AndroidMotionEvent.yPrecision");
+  var deviceId$ = dart.privateName(platform_views, "AndroidMotionEvent.deviceId");
+  var edgeFlags$ = dart.privateName(platform_views, "AndroidMotionEvent.edgeFlags");
+  var source$ = dart.privateName(platform_views, "AndroidMotionEvent.source");
+  var flags$ = dart.privateName(platform_views, "AndroidMotionEvent.flags");
+  var motionEventId$ = dart.privateName(platform_views, "AndroidMotionEvent.motionEventId");
+  platform_views.AndroidMotionEvent = class AndroidMotionEvent extends core.Object {
+    get downTime() {
+      return this[downTime$];
+    }
+    set downTime(value) {
+      super.downTime = value;
+    }
+    get eventTime() {
+      return this[eventTime$];
+    }
+    set eventTime(value) {
+      super.eventTime = value;
+    }
+    get action() {
+      return this[action$];
+    }
+    set action(value) {
+      super.action = value;
+    }
+    get pointerCount() {
+      return this[pointerCount$];
+    }
+    set pointerCount(value) {
+      super.pointerCount = value;
+    }
+    get pointerProperties() {
+      return this[pointerProperties$];
+    }
+    set pointerProperties(value) {
+      super.pointerProperties = value;
+    }
+    get pointerCoords() {
+      return this[pointerCoords$];
+    }
+    set pointerCoords(value) {
+      super.pointerCoords = value;
+    }
+    get metaState() {
+      return this[metaState$];
+    }
+    set metaState(value) {
+      super.metaState = value;
+    }
+    get buttonState() {
+      return this[buttonState$];
+    }
+    set buttonState(value) {
+      super.buttonState = value;
+    }
+    get xPrecision() {
+      return this[xPrecision$];
+    }
+    set xPrecision(value) {
+      super.xPrecision = value;
+    }
+    get yPrecision() {
+      return this[yPrecision$];
+    }
+    set yPrecision(value) {
+      super.yPrecision = value;
+    }
+    get deviceId() {
+      return this[deviceId$];
+    }
+    set deviceId(value) {
+      super.deviceId = value;
+    }
+    get edgeFlags() {
+      return this[edgeFlags$];
+    }
+    set edgeFlags(value) {
+      super.edgeFlags = value;
+    }
+    get source() {
+      return this[source$];
+    }
+    set source(value) {
+      super.source = value;
+    }
+    get flags() {
+      return this[flags$];
+    }
+    set flags(value) {
+      super.flags = value;
+    }
+    get motionEventId() {
+      return this[motionEventId$];
+    }
+    set motionEventId(value) {
+      super.motionEventId = value;
+    }
+    [_asList](viewId) {
+      if (viewId == null) dart.nullFailed(L1, 455, 29, "viewId");
+      return [viewId, this.downTime, this.eventTime, this.action, this.pointerCount, this.pointerProperties[$map](ListOfint(), dart.fn(p => {
+          if (p == null) dart.nullFailed(L1, 462, 66, "p");
+          return p[_asList]();
+        }, AndroidPointerPropertiesToListOfint()))[$toList](), this.pointerCoords[$map](ListOfdouble(), dart.fn(p => {
+          if (p == null) dart.nullFailed(L1, 463, 61, "p");
+          return p[_asList]();
+        }, AndroidPointerCoordsToListOfdouble()))[$toList](), this.metaState, this.buttonState, this.xPrecision, this.yPrecision, this.deviceId, this.edgeFlags, this.source, this.flags, this.motionEventId];
+    }
+    toString() {
+      return "AndroidPointerEvent(downTime: " + dart.str(this.downTime) + ", eventTime: " + dart.str(this.eventTime) + ", action: " + dart.str(this.action) + ", pointerCount: " + dart.str(this.pointerCount) + ", pointerProperties: " + dart.str(this.pointerProperties) + ", pointerCoords: " + dart.str(this.pointerCoords) + ", metaState: " + dart.str(this.metaState) + ", buttonState: " + dart.str(this.buttonState) + ", xPrecision: " + dart.str(this.xPrecision) + ", yPrecision: " + dart.str(this.yPrecision) + ", deviceId: " + dart.str(this.deviceId) + ", edgeFlags: " + dart.str(this.edgeFlags) + ", source: " + dart.str(this.source) + ", flags: " + dart.str(this.flags) + ")";
+    }
+  };
+  (platform_views.AndroidMotionEvent.new = function(opts) {
+    let downTime = opts && 'downTime' in opts ? opts.downTime : null;
+    if (downTime == null) dart.nullFailed(L1, 356, 19, "downTime");
+    let eventTime = opts && 'eventTime' in opts ? opts.eventTime : null;
+    if (eventTime == null) dart.nullFailed(L1, 357, 19, "eventTime");
+    let action = opts && 'action' in opts ? opts.action : null;
+    if (action == null) dart.nullFailed(L1, 358, 19, "action");
+    let pointerCount = opts && 'pointerCount' in opts ? opts.pointerCount : null;
+    if (pointerCount == null) dart.nullFailed(L1, 359, 19, "pointerCount");
+    let pointerProperties = opts && 'pointerProperties' in opts ? opts.pointerProperties : null;
+    if (pointerProperties == null) dart.nullFailed(L1, 360, 19, "pointerProperties");
+    let pointerCoords = opts && 'pointerCoords' in opts ? opts.pointerCoords : null;
+    if (pointerCoords == null) dart.nullFailed(L1, 361, 19, "pointerCoords");
+    let metaState = opts && 'metaState' in opts ? opts.metaState : null;
+    if (metaState == null) dart.nullFailed(L1, 362, 19, "metaState");
+    let buttonState = opts && 'buttonState' in opts ? opts.buttonState : null;
+    if (buttonState == null) dart.nullFailed(L1, 363, 19, "buttonState");
+    let xPrecision = opts && 'xPrecision' in opts ? opts.xPrecision : null;
+    if (xPrecision == null) dart.nullFailed(L1, 364, 19, "xPrecision");
+    let yPrecision = opts && 'yPrecision' in opts ? opts.yPrecision : null;
+    if (yPrecision == null) dart.nullFailed(L1, 365, 19, "yPrecision");
+    let deviceId = opts && 'deviceId' in opts ? opts.deviceId : null;
+    if (deviceId == null) dart.nullFailed(L1, 366, 19, "deviceId");
+    let edgeFlags = opts && 'edgeFlags' in opts ? opts.edgeFlags : null;
+    if (edgeFlags == null) dart.nullFailed(L1, 367, 19, "edgeFlags");
+    let source = opts && 'source' in opts ? opts.source : null;
+    if (source == null) dart.nullFailed(L1, 368, 19, "source");
+    let flags = opts && 'flags' in opts ? opts.flags : null;
+    if (flags == null) dart.nullFailed(L1, 369, 19, "flags");
+    let motionEventId = opts && 'motionEventId' in opts ? opts.motionEventId : null;
+    if (motionEventId == null) dart.nullFailed(L1, 370, 19, "motionEventId");
+    this[downTime$] = downTime;
+    this[eventTime$] = eventTime;
+    this[action$] = action;
+    this[pointerCount$] = pointerCount;
+    this[pointerProperties$] = pointerProperties;
+    this[pointerCoords$] = pointerCoords;
+    this[metaState$] = metaState;
+    this[buttonState$] = buttonState;
+    this[xPrecision$] = xPrecision;
+    this[yPrecision$] = yPrecision;
+    this[deviceId$] = deviceId;
+    this[edgeFlags$] = edgeFlags;
+    this[source$] = source;
+    this[flags$] = flags;
+    this[motionEventId$] = motionEventId;
+    if (!(downTime != null)) dart.assertFailed(null, L1, 371, 15, "downTime != null");
+    if (!(eventTime != null)) dart.assertFailed(null, L1, 372, 15, "eventTime != null");
+    if (!(action != null)) dart.assertFailed(null, L1, 373, 15, "action != null");
+    if (!(pointerCount != null)) dart.assertFailed(null, L1, 374, 15, "pointerCount != null");
+    if (!(pointerProperties != null)) dart.assertFailed(null, L1, 375, 15, "pointerProperties != null");
+    if (!(pointerCoords != null)) dart.assertFailed(null, L1, 376, 15, "pointerCoords != null");
+    if (!(metaState != null)) dart.assertFailed(null, L1, 377, 15, "metaState != null");
+    if (!(buttonState != null)) dart.assertFailed(null, L1, 378, 15, "buttonState != null");
+    if (!(xPrecision != null)) dart.assertFailed(null, L1, 379, 15, "xPrecision != null");
+    if (!(yPrecision != null)) dart.assertFailed(null, L1, 380, 15, "yPrecision != null");
+    if (!(deviceId != null)) dart.assertFailed(null, L1, 381, 15, "deviceId != null");
+    if (!(edgeFlags != null)) dart.assertFailed(null, L1, 382, 15, "edgeFlags != null");
+    if (!(source != null)) dart.assertFailed(null, L1, 383, 15, "source != null");
+    if (!(flags != null)) dart.assertFailed(null, L1, 384, 15, "flags != null");
+    if (!(pointerProperties[$length] == pointerCount)) dart.assertFailed(null, L1, 385, 15, "pointerProperties.length == pointerCount");
+    if (!(pointerCoords[$length] == pointerCount)) dart.assertFailed(null, L1, 386, 15, "pointerCoords.length == pointerCount");
+    ;
+  }).prototype = platform_views.AndroidMotionEvent.prototype;
+  dart.addTypeTests(platform_views.AndroidMotionEvent);
+  dart.addTypeCaches(platform_views.AndroidMotionEvent);
+  dart.setMethodSignature(platform_views.AndroidMotionEvent, () => ({
+    __proto__: dart.getMethods(platform_views.AndroidMotionEvent.__proto__),
+    [_asList]: dart.fnType(core.List, [core.int])
+  }));
+  dart.setLibraryUri(platform_views.AndroidMotionEvent, L0);
+  dart.setFieldSignature(platform_views.AndroidMotionEvent, () => ({
+    __proto__: dart.getFields(platform_views.AndroidMotionEvent.__proto__),
+    downTime: dart.finalFieldType(core.int),
+    eventTime: dart.finalFieldType(core.int),
+    action: dart.finalFieldType(core.int),
+    pointerCount: dart.finalFieldType(core.int),
+    pointerProperties: dart.finalFieldType(core.List$(platform_views.AndroidPointerProperties)),
+    pointerCoords: dart.finalFieldType(core.List$(platform_views.AndroidPointerCoords)),
+    metaState: dart.finalFieldType(core.int),
+    buttonState: dart.finalFieldType(core.int),
+    xPrecision: dart.finalFieldType(core.double),
+    yPrecision: dart.finalFieldType(core.double),
+    deviceId: dart.finalFieldType(core.int),
+    edgeFlags: dart.finalFieldType(core.int),
+    source: dart.finalFieldType(core.int),
+    flags: dart.finalFieldType(core.int),
+    motionEventId: dart.finalFieldType(core.int)
+  }));
+  dart.defineExtensionMethods(platform_views.AndroidMotionEvent, ['toString']);
+  var _name$ = dart.privateName(platform_views, "_name");
   var C0;
   var C1;
   var C2;
   var C3;
   var C4;
-  anims.SlideFrom = class SlideFrom extends core.Object {
+  platform_views._AndroidViewState = class _AndroidViewState extends core.Object {
     toString() {
       return this[_name$];
     }
   };
-  (anims.SlideFrom.new = function(index, _name) {
+  (platform_views._AndroidViewState.new = function(index, _name) {
+    if (index == null) dart.nullFailed(L1, 482, 6, "index");
+    if (_name == null) dart.nullFailed(L1, 482, 6, "_name");
     this.index = index;
     this[_name$] = _name;
     ;
-  }).prototype = anims.SlideFrom.prototype;
-  dart.addTypeTests(anims.SlideFrom);
-  dart.addTypeCaches(anims.SlideFrom);
-  dart.setMethodSignature(anims.SlideFrom, () => ({
-    __proto__: dart.getMethods(anims.SlideFrom.__proto__),
-    toString: dart.fnType(dart.legacy(core.String), []),
-    [$toString]: dart.fnType(dart.legacy(core.String), [])
+  }).prototype = platform_views._AndroidViewState.prototype;
+  dart.addTypeTests(platform_views._AndroidViewState);
+  dart.addTypeCaches(platform_views._AndroidViewState);
+  dart.setLibraryUri(platform_views._AndroidViewState, L0);
+  dart.setFieldSignature(platform_views._AndroidViewState, () => ({
+    __proto__: dart.getFields(platform_views._AndroidViewState.__proto__),
+    index: dart.finalFieldType(core.int),
+    [_name$]: dart.finalFieldType(core.String)
   }));
-  dart.setLibraryUri(anims.SlideFrom, L0);
-  dart.setFieldSignature(anims.SlideFrom, () => ({
-    __proto__: dart.getFields(anims.SlideFrom.__proto__),
-    index: dart.finalFieldType(dart.legacy(core.int)),
-    [_name$]: dart.finalFieldType(dart.legacy(core.String))
-  }));
-  dart.defineExtensionMethods(anims.SlideFrom, ['toString']);
-  anims.SlideFrom.TOP = C0 || CT.C0;
-  anims.SlideFrom.BOTTOM = C1 || CT.C1;
-  anims.SlideFrom.LEFT = C2 || CT.C2;
-  anims.SlideFrom.RIGHT = C3 || CT.C3;
-  anims.SlideFrom.values = C4 || CT.C4;
+  dart.defineExtensionMethods(platform_views._AndroidViewState, ['toString']);
+  platform_views._AndroidViewState.waitingForSize = C0 || CT.C0;
+  platform_views._AndroidViewState.creating = C1 || CT.C1;
+  platform_views._AndroidViewState.created = C2 || CT.C2;
+  platform_views._AndroidViewState.disposed = C3 || CT.C3;
+  platform_views._AndroidViewState.values = C4 || CT.C4;
+  var ___AndroidMotionEventConverter__pointTransformer = dart.privateName(platform_views, "_#_AndroidMotionEventConverter#_pointTransformer");
+  var ___AndroidMotionEventConverter__pointTransformer_isSet = dart.privateName(platform_views, "_#_AndroidMotionEventConverter#_pointTransformer#isSet");
+  var _pointTransformer = dart.privateName(platform_views, "_pointTransformer");
+  var _name = dart.privateName(ui, "_name");
   var C5;
   var C6;
   var C7;
   var C8;
-  anims.AniProps = class AniProps extends core.Object {
-    toString() {
-      return this[_name$];
-    }
-  };
-  (anims.AniProps.new = function(index, _name) {
-    this.index = index;
-    this[_name$] = _name;
-    ;
-  }).prototype = anims.AniProps.prototype;
-  dart.addTypeTests(anims.AniProps);
-  dart.addTypeCaches(anims.AniProps);
-  dart.setMethodSignature(anims.AniProps, () => ({
-    __proto__: dart.getMethods(anims.AniProps.__proto__),
-    toString: dart.fnType(dart.legacy(core.String), []),
-    [$toString]: dart.fnType(dart.legacy(core.String), [])
-  }));
-  dart.setLibraryUri(anims.AniProps, L0);
-  dart.setFieldSignature(anims.AniProps, () => ({
-    __proto__: dart.getFields(anims.AniProps.__proto__),
-    index: dart.finalFieldType(dart.legacy(core.int)),
-    [_name$]: dart.finalFieldType(dart.legacy(core.String))
-  }));
-  dart.defineExtensionMethods(anims.AniProps, ['toString']);
-  anims.AniProps.opacity = C5 || CT.C5;
-  anims.AniProps.translateX = C6 || CT.C6;
-  anims.AniProps.scale = C7 || CT.C7;
-  anims.AniProps.values = C8 || CT.C8;
-  var _name = dart.privateName(simple_animations, "_name");
   var C9;
-  var Cubic_d = dart.privateName(curves, "Cubic.d");
-  var Cubic_c = dart.privateName(curves, "Cubic.c");
-  var Cubic_b = dart.privateName(curves, "Cubic.b");
-  var Cubic_a = dart.privateName(curves, "Cubic.a");
+  platform_views._AndroidMotionEventConverter = class _AndroidMotionEventConverter extends core.Object {
+    get [_pointTransformer]() {
+      let t0;
+      return dart.test(this[___AndroidMotionEventConverter__pointTransformer_isSet]) ? (t0 = this[___AndroidMotionEventConverter__pointTransformer], t0) : dart.throw(new _internal.LateError.fieldNI("_pointTransformer"));
+    }
+    set [_pointTransformer](t0) {
+      if (t0 == null) dart.nullFailed(L1, 499, 25, "null");
+      this[___AndroidMotionEventConverter__pointTransformer_isSet] = true;
+      this[___AndroidMotionEventConverter__pointTransformer] = t0;
+    }
+    set pointTransformer(transformer) {
+      if (transformer == null) dart.nullFailed(L1, 501, 41, "transformer");
+      if (!(transformer != null)) dart.assertFailed(null, L1, 502, 12, "transformer != null");
+      this[_pointTransformer] = transformer;
+    }
+    handlePointerDownEvent(event) {
+      if (event == null) dart.nullFailed(L1, 508, 48, "event");
+      if (dart.test(this.pointerProperties[$isEmpty])) {
+        this.downTimeMillis = event.timeStamp.inMilliseconds;
+      }
+      let androidPointerId = 0;
+      while (dart.test(this.usedAndroidPointerIds.contains(androidPointerId))) {
+        androidPointerId = androidPointerId + 1;
+      }
+      this.usedAndroidPointerIds.add(androidPointerId);
+      this.pointerProperties[$_set](event.pointer, this.propertiesFor(event, androidPointerId));
+    }
+    updatePointerPositions(event) {
+      let t1;
+      if (event == null) dart.nullFailed(L1, 520, 44, "event");
+      let position = (t1 = event.position, this[_pointTransformer](t1));
+      this.pointerPositions[$_set](event.pointer, new platform_views.AndroidPointerCoords.new({orientation: event.orientation, pressure: event.pressure, size: event.size, toolMajor: event.radiusMajor, toolMinor: event.radiusMinor, touchMajor: event.radiusMajor, touchMinor: event.radiusMinor, x: position.dx, y: position.dy}));
+    }
+    handlePointerUpEvent(event) {
+      if (event == null) dart.nullFailed(L1, 535, 44, "event");
+      this.pointerPositions[$remove](event.pointer);
+      this.usedAndroidPointerIds.remove(dart.nullCheck(this.pointerProperties[$_get](event.pointer)).id);
+      this.pointerProperties[$remove](event.pointer);
+      if (dart.test(this.pointerProperties[$isEmpty])) {
+        this.downTimeMillis = null;
+      }
+    }
+    handlePointerCancelEvent(event) {
+      if (event == null) dart.nullFailed(L1, 544, 52, "event");
+      this.pointerPositions[$clear]();
+      this.pointerProperties[$clear]();
+      this.usedAndroidPointerIds.clear();
+      this.downTimeMillis = null;
+    }
+    toAndroidMotionEvent(event) {
+      if (event == null) dart.nullFailed(L1, 551, 57, "event");
+      let pointers = this.pointerPositions[$keys][$toList]();
+      let pointerIdx = pointers[$indexOf](event.pointer);
+      let numPointers = pointers[$length];
+      if (event.platformData === 1 || dart.test(this.isSinglePointerAction(event)) && dart.notNull(pointerIdx) < dart.notNull(numPointers) - 1) {
+        return null;
+      }
+      let action = null;
+      if (events.PointerDownEvent.is(event)) {
+        action = numPointers === 1 ? 0 : platform_views.AndroidViewController.pointerAction(pointerIdx, 5);
+      } else if (events.PointerUpEvent.is(event)) {
+        action = numPointers === 1 ? 1 : platform_views.AndroidViewController.pointerAction(pointerIdx, 6);
+      } else if (events.PointerMoveEvent.is(event)) {
+        action = 2;
+      } else if (events.PointerCancelEvent.is(event)) {
+        action = 3;
+      } else {
+        return null;
+      }
+      return new platform_views.AndroidMotionEvent.new({downTime: dart.nullCheck(this.downTimeMillis), eventTime: event.timeStamp.inMilliseconds, action: action, pointerCount: this.pointerPositions[$length], pointerProperties: pointers[$map](platform_views.AndroidPointerProperties, dart.fn(i => {
+          if (i == null) dart.nullFailed(L1, 595, 47, "i");
+          return dart.nullCheck(this.pointerProperties[$_get](i));
+        }, intToAndroidPointerProperties()))[$toList](), pointerCoords: pointers[$map](platform_views.AndroidPointerCoords, dart.fn(i => {
+          if (i == null) dart.nullFailed(L1, 598, 43, "i");
+          return dart.nullCheck(this.pointerPositions[$_get](i));
+        }, intToAndroidPointerCoords()))[$toList](), metaState: 0, buttonState: 0, xPrecision: 1.0, yPrecision: 1.0, deviceId: 0, edgeFlags: 0, source: 0, flags: 0, motionEventId: event.embedderId});
+    }
+    propertiesFor(event, pointerId) {
+      if (event == null) dart.nullFailed(L1, 612, 55, "event");
+      if (pointerId == null) dart.nullFailed(L1, 612, 66, "pointerId");
+      let toolType = 0;
+      switch (event.kind) {
+        case C5 || CT.C5:
+        {
+          toolType = 1;
+          break;
+        }
+        case C6 || CT.C6:
+        {
+          toolType = 3;
+          break;
+        }
+        case C7 || CT.C7:
+        {
+          toolType = 2;
+          break;
+        }
+        case C8 || CT.C8:
+        {
+          toolType = 4;
+          break;
+        }
+        case C9 || CT.C9:
+        {
+          toolType = 0;
+          break;
+        }
+        default:
+        {
+          dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
+        }
+      }
+      return new platform_views.AndroidPointerProperties.new({id: pointerId, toolType: toolType});
+    }
+    isSinglePointerAction(event) {
+      if (event == null) dart.nullFailed(L1, 634, 43, "event");
+      return !events.PointerDownEvent.is(event) && !events.PointerUpEvent.is(event);
+    }
+  };
+  (platform_views._AndroidMotionEventConverter.new = function() {
+    this.pointerPositions = new (IdentityMapOfint$AndroidPointerCoords()).new();
+    this.pointerProperties = new (IdentityMapOfint$AndroidPointerProperties()).new();
+    this.usedAndroidPointerIds = LinkedHashSetOfint().new();
+    this[___AndroidMotionEventConverter__pointTransformer] = null;
+    this[___AndroidMotionEventConverter__pointTransformer_isSet] = false;
+    this.downTimeMillis = null;
+    ;
+  }).prototype = platform_views._AndroidMotionEventConverter.prototype;
+  dart.addTypeTests(platform_views._AndroidMotionEventConverter);
+  dart.addTypeCaches(platform_views._AndroidMotionEventConverter);
+  dart.setMethodSignature(platform_views._AndroidMotionEventConverter, () => ({
+    __proto__: dart.getMethods(platform_views._AndroidMotionEventConverter.__proto__),
+    handlePointerDownEvent: dart.fnType(dart.void, [events.PointerDownEvent]),
+    updatePointerPositions: dart.fnType(dart.void, [events.PointerEvent]),
+    handlePointerUpEvent: dart.fnType(dart.void, [events.PointerUpEvent]),
+    handlePointerCancelEvent: dart.fnType(dart.void, [events.PointerCancelEvent]),
+    toAndroidMotionEvent: dart.fnType(dart.nullable(platform_views.AndroidMotionEvent), [events.PointerEvent]),
+    propertiesFor: dart.fnType(platform_views.AndroidPointerProperties, [events.PointerEvent, core.int]),
+    isSinglePointerAction: dart.fnType(core.bool, [events.PointerEvent])
+  }));
+  dart.setGetterSignature(platform_views._AndroidMotionEventConverter, () => ({
+    __proto__: dart.getGetters(platform_views._AndroidMotionEventConverter.__proto__),
+    [_pointTransformer]: dart.fnType(ui.Offset, [ui.Offset])
+  }));
+  dart.setSetterSignature(platform_views._AndroidMotionEventConverter, () => ({
+    __proto__: dart.getSetters(platform_views._AndroidMotionEventConverter.__proto__),
+    [_pointTransformer]: dart.fnType(ui.Offset, [ui.Offset]),
+    pointTransformer: dart.fnType(ui.Offset, [ui.Offset])
+  }));
+  dart.setLibraryUri(platform_views._AndroidMotionEventConverter, L0);
+  dart.setFieldSignature(platform_views._AndroidMotionEventConverter, () => ({
+    __proto__: dart.getFields(platform_views._AndroidMotionEventConverter.__proto__),
+    pointerPositions: dart.finalFieldType(core.Map$(core.int, platform_views.AndroidPointerCoords)),
+    pointerProperties: dart.finalFieldType(core.Map$(core.int, platform_views.AndroidPointerProperties)),
+    usedAndroidPointerIds: dart.finalFieldType(core.Set$(core.int)),
+    [___AndroidMotionEventConverter__pointTransformer]: dart.fieldType(dart.nullable(dart.fnType(ui.Offset, [ui.Offset]))),
+    [___AndroidMotionEventConverter__pointTransformer_isSet]: dart.fieldType(core.bool),
+    downTimeMillis: dart.fieldType(dart.nullable(core.int))
+  }));
+  var _motionEventConverter = dart.privateName(platform_views, "_motionEventConverter");
+  var _platformViewCreatedCallbacks = dart.privateName(platform_views, "_platformViewCreatedCallbacks");
+  var _viewType = dart.privateName(platform_views, "_viewType");
+  var _layoutDirection = dart.privateName(platform_views, "_layoutDirection");
+  var _creationParams = dart.privateName(platform_views, "_creationParams");
+  var _creationParamsCodec = dart.privateName(platform_views, "_creationParamsCodec");
+  var _state = dart.privateName(platform_views, "_state");
   var C10;
-  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
-  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
-  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
-  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
-  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
-  var C13;
-  var C14;
-  var C12;
   var C11;
-  var C17;
-  var C18;
-  var C16;
-  var C15;
-  var C21;
-  var C22;
-  var C23;
-  var C24;
-  var C25;
-  var C26;
-  var C20;
-  var C19;
-  var delay$ = dart.privateName(anims, "FadeIn.delay");
-  var child$ = dart.privateName(anims, "FadeIn.child");
-  var control$ = dart.privateName(anims, "FadeIn.control");
-  var from$ = dart.privateName(anims, "FadeIn.from");
-  var fade$ = dart.privateName(anims, "FadeIn.fade");
-  var curve$ = dart.privateName(anims, "FadeIn.curve");
-  anims.FadeIn = class FadeIn extends framework.StatelessWidget {
-    get delay() {
-      return this[delay$];
-    }
-    set delay(value) {
-      super.delay = value;
-    }
-    get child() {
-      return this[child$];
-    }
-    set child(value) {
-      super.child = value;
-    }
-    get control() {
-      return this[control$];
-    }
-    set control(value) {
-      super.control = value;
-    }
-    get from() {
-      return this[from$];
-    }
-    set from(value) {
-      super.from = value;
-    }
-    get fade() {
-      return this[fade$];
-    }
-    set fade(value) {
-      super.fade = value;
-    }
-    get curve() {
-      return this[curve$];
-    }
-    set curve(value) {
-      super.curve = value;
-    }
-    build(context) {
-      let t0;
-      let newTween = (t0 = new (MultiTweenOfAniPropsL()).new(), (() => {
-        t0.add(anims.AniProps.opacity, new tween$.Tween.new({begin: 0.0, end: 1.0}), new core.Duration.new({milliseconds: 500}));
-        t0.add(anims.AniProps.translateX, new tween$.Tween.new({begin: 60.0, end: 0.0}), new core.Duration.new({milliseconds: 500}), this.curve);
-        return t0;
-      })());
-      return new (CustomAnimationOfMultiTweenValuesLOfAniPropsL()).new({delay: new core.Duration.new({milliseconds: (200 * dart.notNull(this.delay))[$round]()}), control: this.control, duration: newTween.duration, tween: newTween, child: this.child, builder: dart.fn((context, child, animation) => new basic.Opacity.new({opacity: dart.test(this.fade) ? animation.get(doubleL(), anims.AniProps.opacity) : 1.0, child: new basic.Transform.translate({offset: anims.getOffset(animation, this.from), child: child, $creationLocationd_0dea112b090073317d4: C11 || CT.C11}), $creationLocationd_0dea112b090073317d4: C15 || CT.C15}), BuildContextLAndWidgetLAndMultiTweenValuesLOfAniPropsLToOpacityL()), $creationLocationd_0dea112b090073317d4: C19 || CT.C19});
-    }
-  };
-  (anims.FadeIn.new = function(opts) {
-    let delay = opts && 'delay' in opts ? opts.delay : 0;
-    let child = opts && 'child' in opts ? opts.child : null;
-    let fade = opts && 'fade' in opts ? opts.fade : true;
-    let control = opts && 'control' in opts ? opts.control : C9 || CT.C9;
-    let from = opts && 'from' in opts ? opts.from : C3 || CT.C3;
-    let curve = opts && 'curve' in opts ? opts.curve : C10 || CT.C10;
-    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
-    this[delay$] = delay;
-    this[child$] = child;
-    this[fade$] = fade;
-    this[control$] = control;
-    this[from$] = from;
-    this[curve$] = curve;
-    anims.FadeIn.__proto__.new.call(this, {$creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+  var _sendCreateMessage = dart.privateName(platform_views, "_sendCreateMessage");
+  var _sendDisposeMessage = dart.privateName(platform_views, "_sendDisposeMessage");
+  platform_views.PlatformViewController = class PlatformViewController extends core.Object {};
+  (platform_views.PlatformViewController.new = function() {
     ;
-  }).prototype = anims.FadeIn.prototype;
-  dart.addTypeTests(anims.FadeIn);
-  dart.addTypeCaches(anims.FadeIn);
-  dart.setMethodSignature(anims.FadeIn, () => ({
-    __proto__: dart.getMethods(anims.FadeIn.__proto__),
-    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
-  }));
-  dart.setLibraryUri(anims.FadeIn, L0);
-  dart.setFieldSignature(anims.FadeIn, () => ({
-    __proto__: dart.getFields(anims.FadeIn.__proto__),
-    delay: dart.finalFieldType(dart.legacy(core.double)),
-    child: dart.finalFieldType(dart.legacy(framework.Widget)),
-    control: dart.finalFieldType(dart.legacy(simple_animations.CustomAnimationControl)),
-    from: dart.finalFieldType(dart.legacy(anims.SlideFrom)),
-    fade: dart.finalFieldType(dart.legacy(core.bool)),
-    curve: dart.finalFieldType(dart.legacy(curves.Curve))
-  }));
-  var C29;
-  var C30;
-  var C28;
-  var C27;
-  var C33;
-  var C34;
-  var C35;
-  var C36;
-  var C37;
-  var C38;
-  var C32;
-  var C31;
-  var delay$0 = dart.privateName(anims, "Slide.delay");
-  var duration$ = dart.privateName(anims, "Slide.duration");
-  var child$0 = dart.privateName(anims, "Slide.child");
-  var control$0 = dart.privateName(anims, "Slide.control");
-  var from$0 = dart.privateName(anims, "Slide.from");
-  var slideDistance$ = dart.privateName(anims, "Slide.slideDistance");
-  var curve$0 = dart.privateName(anims, "Slide.curve");
-  anims.Slide = class Slide extends framework.StatelessWidget {
-    get delay() {
-      return this[delay$0];
+  }).prototype = platform_views.PlatformViewController.prototype;
+  dart.addTypeTests(platform_views.PlatformViewController);
+  dart.addTypeCaches(platform_views.PlatformViewController);
+  dart.setLibraryUri(platform_views.PlatformViewController, L0);
+  var viewId$ = dart.privateName(platform_views, "AndroidViewController.viewId");
+  platform_views.AndroidViewController = class AndroidViewController extends platform_views.PlatformViewController {
+    get viewId() {
+      return this[viewId$];
     }
-    set delay(value) {
-      super.delay = value;
+    set viewId(value) {
+      super.viewId = value;
     }
-    get duration() {
-      return this[duration$];
+    static _getAndroidDirection(direction) {
+      if (direction == null) dart.nullFailed(L1, 719, 49, "direction");
+      if (!(direction != null)) dart.assertFailed(null, L1, 720, 12, "direction != null");
+      switch (direction) {
+        case C10 || CT.C10:
+        {
+          return 0;
+        }
+        case C11 || CT.C11:
+        {
+          return 1;
+        }
+        default:
+        {
+          dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
+        }
+      }
     }
-    set duration(value) {
-      super.duration = value;
+    static pointerAction(pointerId, action) {
+      if (pointerId == null) dart.nullFailed(L1, 730, 32, "pointerId");
+      if (action == null) dart.nullFailed(L1, 730, 47, "action");
+      return dart.notNull(pointerId) << 8 & 65280 | dart.notNull(action) & 255;
     }
-    get child() {
-      return this[child$0];
+    create() {
+      return async.async(dart.void, (function* create() {
+        if (!!dart.equals(this[_state], platform_views._AndroidViewState.disposed)) dart.assertFailed("trying to create a disposed Android view", L1, 741, 12, "_state != _AndroidViewState.disposed");
+        yield this[_sendCreateMessage]();
+        this[_state] = platform_views._AndroidViewState.created;
+        for (let callback of this[_platformViewCreatedCallbacks]) {
+          callback(this.viewId);
+        }
+      }).bind(this));
     }
-    set child(value) {
-      super.child = value;
+    get id() {
+      return this.viewId;
     }
-    get control() {
-      return this[control$0];
+    sendMotionEvent(event) {
+      if (event == null) dart.nullFailed(L1, 781, 51, "event");
+      return async.async(dart.void, (function* sendMotionEvent() {
+        yield system_channels.SystemChannels.platform_views.invokeMethod(dart.dynamic, "touch", event[_asList](this.viewId));
+      }).bind(this));
     }
-    set control(value) {
-      super.control = value;
+    set pointTransformer(transformer) {
+      if (transformer == null) dart.nullFailed(L1, 792, 41, "transformer");
+      if (!(transformer != null)) dart.assertFailed(null, L1, 793, 12, "transformer != null");
+      this[_motionEventConverter][_pointTransformer] = transformer;
     }
-    get from() {
-      return this[from$0];
+    get isCreated() {
+      return dart.equals(this[_state], platform_views._AndroidViewState.created);
     }
-    set from(value) {
-      super.from = value;
+    addOnPlatformViewCreatedListener(listener) {
+      if (listener == null) dart.nullFailed(L1, 802, 69, "listener");
+      if (!(listener != null)) dart.assertFailed(null, L1, 803, 12, "listener != null");
+      if (!!dart.equals(this[_state], platform_views._AndroidViewState.disposed)) dart.assertFailed(null, L1, 804, 12, "_state != _AndroidViewState.disposed");
+      this[_platformViewCreatedCallbacks][$add](listener);
     }
-    get slideDistance() {
-      return this[slideDistance$];
+    removeOnPlatformViewCreatedListener(listener) {
+      if (listener == null) dart.nullFailed(L1, 810, 35, "listener");
+      if (!!dart.equals(this[_state], platform_views._AndroidViewState.disposed)) dart.assertFailed(null, L1, 811, 12, "_state != _AndroidViewState.disposed");
+      this[_platformViewCreatedCallbacks][$remove](listener);
     }
-    set slideDistance(value) {
-      super.slideDistance = value;
+    setLayoutDirection(layoutDirection) {
+      if (layoutDirection == null) dart.nullFailed(L1, 816, 49, "layoutDirection");
+      return async.async(dart.void, (function* setLayoutDirection() {
+        if (!!dart.equals(this[_state], platform_views._AndroidViewState.disposed)) dart.assertFailed("trying to set a layout direction for a disposed UIView. View id: " + dart.str(this.viewId), L1, 817, 12, "_state != _AndroidViewState.disposed");
+        if (dart.equals(layoutDirection, this[_layoutDirection])) return;
+        if (!(layoutDirection != null)) dart.assertFailed(null, L1, 823, 12, "layoutDirection != null");
+        this[_layoutDirection] = layoutDirection;
+        if (dart.equals(this[_state], platform_views._AndroidViewState.waitingForSize)) return;
+        yield system_channels.SystemChannels.platform_views.invokeMethod(dart.void, "setDirection", new (IdentityMapOfString$dynamic()).from(["id", this.viewId, "direction", platform_views.AndroidViewController._getAndroidDirection(layoutDirection)]));
+      }).bind(this));
     }
-    get curve() {
-      return this[curve$0];
+    dispatchPointerEvent(event) {
+      if (event == null) dart.nullFailed(L1, 850, 50, "event");
+      return async.async(dart.void, (function* dispatchPointerEvent() {
+        if (events.PointerHoverEvent.is(event)) {
+          return;
+        }
+        if (events.PointerDownEvent.is(event)) {
+          this[_motionEventConverter].handlePointerDownEvent(event);
+        }
+        this[_motionEventConverter].updatePointerPositions(event);
+        let androidEvent = this[_motionEventConverter].toAndroidMotionEvent(event);
+        if (events.PointerUpEvent.is(event)) {
+          this[_motionEventConverter].handlePointerUpEvent(event);
+        } else if (events.PointerCancelEvent.is(event)) {
+          this[_motionEventConverter].handlePointerCancelEvent(event);
+        }
+        if (androidEvent != null) {
+          yield this.sendMotionEvent(androidEvent);
+        }
+      }).bind(this));
     }
-    set curve(value) {
-      super.curve = value;
+    clearFocus() {
+      if (!dart.equals(this[_state], platform_views._AndroidViewState.created)) {
+        return FutureOfvoid().value();
+      }
+      return system_channels.SystemChannels.platform_views.invokeMethod(dart.void, "clearFocus", this.viewId);
     }
-    build(context) {
-      let t0;
-      let tween = (t0 = new (MultiTweenOfAniPropsL()).new(), (() => {
-        t0.add(anims.AniProps.translateX, new tween$.Tween.new({begin: this.slideDistance, end: 0.0}), new core.Duration.new({milliseconds: (500 * dart.notNull(this.duration))[$round]()}), this.curve);
-        return t0;
-      })());
-      return new (CustomAnimationOfMultiTweenValuesLOfAniPropsL()).new({delay: new core.Duration.new({milliseconds: (200 * dart.notNull(this.delay))[$round]()}), control: this.control, duration: tween.duration, tween: tween, child: this.child, builder: dart.fn((context, child, animation) => new basic.Transform.translate({offset: anims.getOffset(animation, this.from), child: child, $creationLocationd_0dea112b090073317d4: C27 || CT.C27}), BuildContextLAndWidgetLAndMultiTweenValuesLOfAniPropsLToTransformL()), $creationLocationd_0dea112b090073317d4: C31 || CT.C31});
+    dispose() {
+      return async.async(dart.void, (function* dispose() {
+        if (dart.equals(this[_state], platform_views._AndroidViewState.creating) || dart.equals(this[_state], platform_views._AndroidViewState.created)) yield this[_sendDisposeMessage]();
+        this[_platformViewCreatedCallbacks][$clear]();
+        this[_state] = platform_views._AndroidViewState.disposed;
+        platform_views.PlatformViewsService._instance[_focusCallbacks][$remove](this.viewId);
+      }).bind(this));
     }
   };
-  (anims.Slide.new = function(opts) {
-    let delay = opts && 'delay' in opts ? opts.delay : 0;
-    let child = opts && 'child' in opts ? opts.child : null;
-    let duration = opts && 'duration' in opts ? opts.duration : 1;
-    let slideDistance = opts && 'slideDistance' in opts ? opts.slideDistance : 60;
-    let control = opts && 'control' in opts ? opts.control : C9 || CT.C9;
-    let from = opts && 'from' in opts ? opts.from : C3 || CT.C3;
-    let curve = opts && 'curve' in opts ? opts.curve : C10 || CT.C10;
-    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
-    this[delay$0] = delay;
-    this[child$0] = child;
-    this[duration$] = duration;
-    this[slideDistance$] = slideDistance;
-    this[control$0] = control;
-    this[from$0] = from;
-    this[curve$0] = curve;
-    anims.Slide.__proto__.new.call(this, {$creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+  (platform_views.AndroidViewController.__ = function(opts) {
+    let viewId = opts && 'viewId' in opts ? opts.viewId : null;
+    if (viewId == null) dart.nullFailed(L1, 644, 19, "viewId");
+    let viewType = opts && 'viewType' in opts ? opts.viewType : null;
+    if (viewType == null) dart.nullFailed(L1, 645, 21, "viewType");
+    let layoutDirection = opts && 'layoutDirection' in opts ? opts.layoutDirection : null;
+    if (layoutDirection == null) dart.nullFailed(L1, 646, 28, "layoutDirection");
+    let creationParams = opts && 'creationParams' in opts ? opts.creationParams : null;
+    let creationParamsCodec = opts && 'creationParamsCodec' in opts ? opts.creationParamsCodec : null;
+    let waitingForSize = opts && 'waitingForSize' in opts ? opts.waitingForSize : false;
+    if (waitingForSize == null) dart.nullFailed(L1, 649, 10, "waitingForSize");
+    this[_motionEventConverter] = new platform_views._AndroidMotionEventConverter.new();
+    this[_platformViewCreatedCallbacks] = JSArrayOfintTovoid().of([]);
+    this[viewId$] = viewId;
+    if (!(viewId != null)) dart.assertFailed(null, L1, 650, 16, "viewId != null");
+    if (!(viewType != null)) dart.assertFailed(null, L1, 651, 16, "viewType != null");
+    if (!(layoutDirection != null)) dart.assertFailed(null, L1, 652, 16, "layoutDirection != null");
+    if (!(creationParams == null || creationParamsCodec != null)) dart.assertFailed(null, L1, 653, 16, "creationParams == null || creationParamsCodec != null");
+    this[_viewType] = viewType;
+    this[_layoutDirection] = layoutDirection;
+    this[_creationParams] = creationParams;
+    this[_creationParamsCodec] = creationParamsCodec;
+    this[_state] = dart.test(waitingForSize) ? platform_views._AndroidViewState.waitingForSize : platform_views._AndroidViewState.creating;
     ;
-  }).prototype = anims.Slide.prototype;
-  dart.addTypeTests(anims.Slide);
-  dart.addTypeCaches(anims.Slide);
-  dart.setMethodSignature(anims.Slide, () => ({
-    __proto__: dart.getMethods(anims.Slide.__proto__),
-    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
+  }).prototype = platform_views.AndroidViewController.prototype;
+  dart.addTypeTests(platform_views.AndroidViewController);
+  dart.addTypeCaches(platform_views.AndroidViewController);
+  dart.setMethodSignature(platform_views.AndroidViewController, () => ({
+    __proto__: dart.getMethods(platform_views.AndroidViewController.__proto__),
+    create: dart.fnType(async.Future$(dart.void), []),
+    sendMotionEvent: dart.fnType(async.Future$(dart.void), [platform_views.AndroidMotionEvent]),
+    addOnPlatformViewCreatedListener: dart.fnType(dart.void, [dart.fnType(dart.void, [core.int])]),
+    removeOnPlatformViewCreatedListener: dart.fnType(dart.void, [dart.fnType(dart.void, [core.int])]),
+    setLayoutDirection: dart.fnType(async.Future$(dart.void), [ui.TextDirection]),
+    dispatchPointerEvent: dart.fnType(async.Future$(dart.void), [events.PointerEvent]),
+    clearFocus: dart.fnType(async.Future$(dart.void), []),
+    dispose: dart.fnType(async.Future$(dart.void), [])
   }));
-  dart.setLibraryUri(anims.Slide, L0);
-  dart.setFieldSignature(anims.Slide, () => ({
-    __proto__: dart.getFields(anims.Slide.__proto__),
-    delay: dart.finalFieldType(dart.legacy(core.double)),
-    duration: dart.finalFieldType(dart.legacy(core.double)),
-    child: dart.finalFieldType(dart.legacy(framework.Widget)),
-    control: dart.finalFieldType(dart.legacy(simple_animations.CustomAnimationControl)),
-    from: dart.finalFieldType(dart.legacy(anims.SlideFrom)),
-    slideDistance: dart.finalFieldType(dart.legacy(core.double)),
-    curve: dart.finalFieldType(dart.legacy(curves.Curve))
+  dart.setGetterSignature(platform_views.AndroidViewController, () => ({
+    __proto__: dart.getGetters(platform_views.AndroidViewController.__proto__),
+    id: core.int,
+    isCreated: core.bool
   }));
-  var C39;
-  var C42;
-  var C43;
-  var C44;
-  var C41;
-  var C40;
-  var C47;
-  var C48;
-  var C46;
-  var C45;
-  var C51;
-  var C52;
-  var C53;
-  var C54;
-  var C55;
-  var C56;
-  var C50;
-  var C49;
-  var delay$1 = dart.privateName(anims, "ScaleFade.delay");
-  var child$1 = dart.privateName(anims, "ScaleFade.child");
-  var control$1 = dart.privateName(anims, "ScaleFade.control");
-  var duration$0 = dart.privateName(anims, "ScaleFade.duration");
-  var fade$0 = dart.privateName(anims, "ScaleFade.fade");
-  var scale$ = dart.privateName(anims, "ScaleFade.scale");
-  var curve$1 = dart.privateName(anims, "ScaleFade.curve");
-  anims.ScaleFade = class ScaleFade extends framework.StatelessWidget {
-    get delay() {
-      return this[delay$1];
+  dart.setSetterSignature(platform_views.AndroidViewController, () => ({
+    __proto__: dart.getSetters(platform_views.AndroidViewController.__proto__),
+    pointTransformer: dart.fnType(ui.Offset, [ui.Offset])
+  }));
+  dart.setLibraryUri(platform_views.AndroidViewController, L0);
+  dart.setFieldSignature(platform_views.AndroidViewController, () => ({
+    __proto__: dart.getFields(platform_views.AndroidViewController.__proto__),
+    viewId: dart.finalFieldType(core.int),
+    [_viewType]: dart.finalFieldType(core.String),
+    [_motionEventConverter]: dart.finalFieldType(platform_views._AndroidMotionEventConverter),
+    [_layoutDirection]: dart.fieldType(ui.TextDirection),
+    [_state]: dart.fieldType(platform_views._AndroidViewState),
+    [_creationParams]: dart.finalFieldType(dart.dynamic),
+    [_creationParamsCodec]: dart.finalFieldType(dart.nullable(message_codec.MessageCodec)),
+    [_platformViewCreatedCallbacks]: dart.finalFieldType(core.List$(dart.fnType(dart.void, [core.int])))
+  }));
+  dart.defineLazy(platform_views.AndroidViewController, {
+    /*platform_views.AndroidViewController.kActionDown*/get kActionDown() {
+      return 0;
+    },
+    /*platform_views.AndroidViewController.kActionUp*/get kActionUp() {
+      return 1;
+    },
+    /*platform_views.AndroidViewController.kActionMove*/get kActionMove() {
+      return 2;
+    },
+    /*platform_views.AndroidViewController.kActionCancel*/get kActionCancel() {
+      return 3;
+    },
+    /*platform_views.AndroidViewController.kActionPointerDown*/get kActionPointerDown() {
+      return 5;
+    },
+    /*platform_views.AndroidViewController.kActionPointerUp*/get kActionPointerUp() {
+      return 6;
+    },
+    /*platform_views.AndroidViewController.kAndroidLayoutDirectionLtr*/get kAndroidLayoutDirectionLtr() {
+      return 0;
+    },
+    /*platform_views.AndroidViewController.kAndroidLayoutDirectionRtl*/get kAndroidLayoutDirectionRtl() {
+      return 1;
     }
-    set delay(value) {
-      super.delay = value;
+  }, false);
+  platform_views.SurfaceAndroidViewController = class SurfaceAndroidViewController extends platform_views.AndroidViewController {
+    [_sendCreateMessage]() {
+      let args = new (IdentityMapOfString$dynamic()).from(["id", this.viewId, "viewType", this[_viewType], "direction", platform_views.AndroidViewController._getAndroidDirection(this[_layoutDirection]), "hybrid", true]);
+      if (this[_creationParams] != null) {
+        let paramsByteData = dart.nullCheck(dart.nullCheck(this[_creationParamsCodec]).encodeMessage(this[_creationParams]));
+        args[$_set]("params", typed_data.Uint8List.view(paramsByteData[$buffer], 0, paramsByteData[$lengthInBytes]));
+      }
+      return system_channels.SystemChannels.platform_views.invokeMethod(dart.void, "create", args);
     }
-    get child() {
-      return this[child$1];
+    get textureId() {
+      dart.throw(new core.UnimplementedError.new("Not supported for " + dart.str(dart.wrapType(platform_views.SurfaceAndroidViewController)) + "."));
     }
-    set child(value) {
-      super.child = value;
+    [_sendDisposeMessage]() {
+      return system_channels.SystemChannels.platform_views.invokeMethod(dart.void, "dispose", new (IdentityMapOfString$dynamic()).from(["id", this.viewId, "hybrid", true]));
     }
-    get control() {
-      return this[control$1];
-    }
-    set control(value) {
-      super.control = value;
-    }
-    get duration() {
-      return this[duration$0];
-    }
-    set duration(value) {
-      super.duration = value;
-    }
-    get fade() {
-      return this[fade$0];
-    }
-    set fade(value) {
-      super.fade = value;
-    }
-    get scale() {
-      return this[scale$];
-    }
-    set scale(value) {
-      super.scale = value;
-    }
-    get curve() {
-      return this[curve$1];
-    }
-    set curve(value) {
-      super.curve = value;
-    }
-    build(context) {
-      let t0;
-      let tween = (t0 = new (MultiTweenOfAniPropsL()).new(), (() => {
-        t0.add(anims.AniProps.opacity, dart.test(this.fade) ? new tween$.Tween.new({begin: 0.0, end: 1.0}) : new tween$.Tween.new({begin: 1.0, end: 1.0}), new core.Duration.new({milliseconds: (500 * dart.notNull(this.duration))[$round]()}));
-        t0.add(anims.AniProps.scale, new tween$.Tween.new({begin: this.scale, end: 1.0}), new core.Duration.new({milliseconds: (500 * dart.notNull(this.duration))[$round]()}), this.curve);
-        return t0;
-      })());
-      return new (CustomAnimationOfMultiTweenValuesLOfAniPropsL()).new({delay: new core.Duration.new({milliseconds: (200 * dart.notNull(this.delay))[$round]()}), control: this.control, duration: tween.duration, tween: tween, child: this.child, builder: dart.fn((context, child, animation) => new basic.Opacity.new({opacity: animation.get(doubleL(), anims.AniProps.opacity), child: new basic.Transform.scale({scale: animation.get(doubleL(), anims.AniProps.scale), alignment: alignment.Alignment.center, child: child, $creationLocationd_0dea112b090073317d4: C40 || CT.C40}), $creationLocationd_0dea112b090073317d4: C45 || CT.C45}), BuildContextLAndWidgetLAndMultiTweenValuesLOfAniPropsLToOpacityL()), $creationLocationd_0dea112b090073317d4: C49 || CT.C49});
+    setSize(size) {
+      if (size == null) dart.nullFailed(L1, 951, 29, "size");
+      dart.throw(new core.UnimplementedError.new("Not supported for " + dart.str(dart.wrapType(platform_views.SurfaceAndroidViewController)) + "."));
     }
   };
-  (anims.ScaleFade.new = function(opts) {
-    let delay = opts && 'delay' in opts ? opts.delay : 1;
-    let duration = opts && 'duration' in opts ? opts.duration : 1;
-    let child = opts && 'child' in opts ? opts.child : null;
-    let fade = opts && 'fade' in opts ? opts.fade : true;
-    let scale = opts && 'scale' in opts ? opts.scale : 0.7;
-    let control = opts && 'control' in opts ? opts.control : C9 || CT.C9;
-    let curve = opts && 'curve' in opts ? opts.curve : C39 || CT.C39;
-    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
-    this[delay$1] = delay;
-    this[duration$0] = duration;
-    this[child$1] = child;
-    this[fade$0] = fade;
-    this[scale$] = scale;
-    this[control$1] = control;
-    this[curve$1] = curve;
-    anims.ScaleFade.__proto__.new.call(this, {$creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+  (platform_views.SurfaceAndroidViewController.__ = function(opts) {
+    let viewId = opts && 'viewId' in opts ? opts.viewId : null;
+    if (viewId == null) dart.nullFailed(L1, 904, 18, "viewId");
+    let viewType = opts && 'viewType' in opts ? opts.viewType : null;
+    if (viewType == null) dart.nullFailed(L1, 905, 21, "viewType");
+    let layoutDirection = opts && 'layoutDirection' in opts ? opts.layoutDirection : null;
+    if (layoutDirection == null) dart.nullFailed(L1, 906, 28, "layoutDirection");
+    let creationParams = opts && 'creationParams' in opts ? opts.creationParams : null;
+    let creationParamsCodec = opts && 'creationParamsCodec' in opts ? opts.creationParamsCodec : null;
+    platform_views.SurfaceAndroidViewController.__proto__.__.call(this, {viewId: viewId, viewType: viewType, layoutDirection: layoutDirection, creationParams: creationParams, creationParamsCodec: creationParamsCodec});
     ;
-  }).prototype = anims.ScaleFade.prototype;
-  dart.addTypeTests(anims.ScaleFade);
-  dart.addTypeCaches(anims.ScaleFade);
-  dart.setMethodSignature(anims.ScaleFade, () => ({
-    __proto__: dart.getMethods(anims.ScaleFade.__proto__),
-    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
+  }).prototype = platform_views.SurfaceAndroidViewController.prototype;
+  dart.addTypeTests(platform_views.SurfaceAndroidViewController);
+  dart.addTypeCaches(platform_views.SurfaceAndroidViewController);
+  dart.setMethodSignature(platform_views.SurfaceAndroidViewController, () => ({
+    __proto__: dart.getMethods(platform_views.SurfaceAndroidViewController.__proto__),
+    [_sendCreateMessage]: dart.fnType(async.Future$(dart.void), []),
+    [_sendDisposeMessage]: dart.fnType(async.Future$(dart.void), []),
+    setSize: dart.fnType(async.Future$(dart.void), [ui.Size])
   }));
-  dart.setLibraryUri(anims.ScaleFade, L0);
-  dart.setFieldSignature(anims.ScaleFade, () => ({
-    __proto__: dart.getFields(anims.ScaleFade.__proto__),
-    delay: dart.finalFieldType(dart.legacy(core.double)),
-    child: dart.finalFieldType(dart.legacy(framework.Widget)),
-    control: dart.finalFieldType(dart.legacy(simple_animations.CustomAnimationControl)),
-    duration: dart.finalFieldType(dart.legacy(core.double)),
-    fade: dart.finalFieldType(dart.legacy(core.bool)),
-    scale: dart.finalFieldType(dart.legacy(core.double)),
-    curve: dart.finalFieldType(dart.legacy(curves.Curve))
+  dart.setGetterSignature(platform_views.SurfaceAndroidViewController, () => ({
+    __proto__: dart.getGetters(platform_views.SurfaceAndroidViewController.__proto__),
+    textureId: core.int
   }));
-  var C59;
-  var C60;
-  var C61;
-  var C58;
-  var C57;
-  var C64;
-  var C65;
-  var C66;
-  var C67;
-  var C68;
-  var C69;
-  var C63;
-  var C62;
-  var delay$2 = dart.privateName(anims, "ShowHide.delay");
-  var child$2 = dart.privateName(anims, "ShowHide.child");
-  var duration$1 = dart.privateName(anims, "ShowHide.duration");
-  var isShow$ = dart.privateName(anims, "ShowHide.isShow");
-  anims.ShowHide = class ShowHide extends framework.StatelessWidget {
-    get delay() {
-      return this[delay$2];
+  dart.setLibraryUri(platform_views.SurfaceAndroidViewController, L0);
+  var _textureId = dart.privateName(platform_views, "_textureId");
+  var __TextureAndroidViewController__size = dart.privateName(platform_views, "_#TextureAndroidViewController#_size");
+  var __TextureAndroidViewController__size_isSet = dart.privateName(platform_views, "_#TextureAndroidViewController#_size#isSet");
+  var _size = dart.privateName(platform_views, "_size");
+  platform_views.TextureAndroidViewController = class TextureAndroidViewController extends platform_views.AndroidViewController {
+    get textureId() {
+      return this[_textureId];
     }
-    set delay(value) {
-      super.delay = value;
+    get [_size]() {
+      let t1;
+      return dart.test(this[__TextureAndroidViewController__size_isSet]) ? (t1 = this[__TextureAndroidViewController__size], t1) : dart.throw(new _internal.LateError.fieldNI("_size"));
     }
-    get child() {
-      return this[child$2];
+    set [_size](t1) {
+      if (t1 == null) dart.nullFailed(L1, 988, 13, "null");
+      this[__TextureAndroidViewController__size_isSet] = true;
+      this[__TextureAndroidViewController__size] = t1;
     }
-    set child(value) {
-      super.child = value;
+    setSize(size) {
+      if (size == null) dart.nullFailed(L1, 991, 29, "size");
+      return async.async(dart.void, (function* setSize() {
+        if (!!dart.equals(this[_state], platform_views._AndroidViewState.disposed)) dart.assertFailed("trying to size a disposed Android View. View id: " + dart.str(this.viewId), L1, 992, 12, "_state != _AndroidViewState.disposed");
+        if (!(size != null)) dart.assertFailed(null, L1, 995, 12, "size != null");
+        if (!!dart.test(size.isEmpty)) dart.assertFailed(null, L1, 996, 12, "!size.isEmpty");
+        if (dart.equals(this[_state], platform_views._AndroidViewState.waitingForSize)) {
+          this[_size] = size;
+          return this.create();
+        }
+        yield system_channels.SystemChannels.platform_views.invokeMethod(dart.void, "resize", new (IdentityMapOfString$dynamic()).from(["id", this.viewId, "width", size.width, "height", size.height]));
+      }).bind(this));
     }
-    get duration() {
-      return this[duration$1];
+    create() {
+      return super.create();
     }
-    set duration(value) {
-      super.duration = value;
+    [_sendCreateMessage]() {
+      return async.async(dart.void, (function* _sendCreateMessage() {
+        if (!!dart.test(this[_size].isEmpty)) dart.assertFailed("trying to create " + dart.str(dart.wrapType(platform_views.TextureAndroidViewController)) + " without setting a valid size.", L1, 1020, 12, "!_size.isEmpty");
+        let args = new (IdentityMapOfString$dynamic()).from(["id", this.viewId, "viewType", this[_viewType], "width", this[_size].width, "height", this[_size].height, "direction", platform_views.AndroidViewController._getAndroidDirection(this[_layoutDirection])]);
+        if (this[_creationParams] != null) {
+          let paramsByteData = dart.nullCheck(dart.nullCheck(this[_creationParamsCodec]).encodeMessage(this[_creationParams]));
+          args[$_set]("params", typed_data.Uint8List.view(paramsByteData[$buffer], 0, paramsByteData[$lengthInBytes]));
+        }
+        this[_textureId] = (yield system_channels.SystemChannels.platform_views.invokeMethod(core.int, "create", args));
+      }).bind(this));
     }
-    get isShow() {
-      return this[isShow$];
-    }
-    set isShow(value) {
-      super.isShow = value;
-    }
-    build(context) {
-      let t0;
-      let tween = (t0 = new (MultiTweenOfAniPropsL()).new(), (() => {
-        t0.add(anims.AniProps.scale, new tween$.Tween.new({begin: 0.0, end: 1.0}), new core.Duration.new({milliseconds: (500 * dart.notNull(this.duration))[$round]()}), curves.Curves.linear);
-        return t0;
-      })());
-      return new (CustomAnimationOfMultiTweenValuesLOfAniPropsL()).new({delay: new core.Duration.new({milliseconds: (200 * dart.notNull(this.delay))[$round]()}), control: dart.test(this.isShow) ? simple_animations.CustomAnimationControl.PLAY : simple_animations.CustomAnimationControl.PLAY_REVERSE, duration: tween.duration, tween: tween, child: this.child, builder: dart.fn((context, child, animation) => new basic.Transform.scale({scale: animation.get(doubleL(), anims.AniProps.scale), alignment: alignment.Alignment.center, child: child, $creationLocationd_0dea112b090073317d4: C57 || CT.C57}), BuildContextLAndWidgetLAndMultiTweenValuesLOfAniPropsLToTransformL()), $creationLocationd_0dea112b090073317d4: C62 || CT.C62});
+    [_sendDisposeMessage]() {
+      return system_channels.SystemChannels.platform_views.invokeMethod(dart.void, "dispose", new (IdentityMapOfString$dynamic()).from(["id", this.viewId, "hybrid", false]));
     }
   };
-  (anims.ShowHide.new = function(opts) {
-    let delay = opts && 'delay' in opts ? opts.delay : 1;
-    let duration = opts && 'duration' in opts ? opts.duration : 1;
-    let child = opts && 'child' in opts ? opts.child : null;
-    let isShow = opts && 'isShow' in opts ? opts.isShow : true;
-    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
-    this[delay$2] = delay;
-    this[duration$1] = duration;
-    this[child$2] = child;
-    this[isShow$] = isShow;
-    anims.ShowHide.__proto__.new.call(this, {$creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+  (platform_views.TextureAndroidViewController.__ = function(opts) {
+    let viewId = opts && 'viewId' in opts ? opts.viewId : null;
+    if (viewId == null) dart.nullFailed(L1, 964, 18, "viewId");
+    let viewType = opts && 'viewType' in opts ? opts.viewType : null;
+    if (viewType == null) dart.nullFailed(L1, 965, 21, "viewType");
+    let layoutDirection = opts && 'layoutDirection' in opts ? opts.layoutDirection : null;
+    if (layoutDirection == null) dart.nullFailed(L1, 966, 28, "layoutDirection");
+    let creationParams = opts && 'creationParams' in opts ? opts.creationParams : null;
+    let creationParamsCodec = opts && 'creationParamsCodec' in opts ? opts.creationParamsCodec : null;
+    this[_textureId] = null;
+    this[__TextureAndroidViewController__size] = null;
+    this[__TextureAndroidViewController__size_isSet] = false;
+    platform_views.TextureAndroidViewController.__proto__.__.call(this, {viewId: viewId, viewType: viewType, layoutDirection: layoutDirection, creationParams: creationParams, creationParamsCodec: creationParamsCodec, waitingForSize: true});
     ;
-  }).prototype = anims.ShowHide.prototype;
-  dart.addTypeTests(anims.ShowHide);
-  dart.addTypeCaches(anims.ShowHide);
-  dart.setMethodSignature(anims.ShowHide, () => ({
-    __proto__: dart.getMethods(anims.ShowHide.__proto__),
-    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
+  }).prototype = platform_views.TextureAndroidViewController.prototype;
+  dart.addTypeTests(platform_views.TextureAndroidViewController);
+  dart.addTypeCaches(platform_views.TextureAndroidViewController);
+  dart.setMethodSignature(platform_views.TextureAndroidViewController, () => ({
+    __proto__: dart.getMethods(platform_views.TextureAndroidViewController.__proto__),
+    setSize: dart.fnType(async.Future$(dart.void), [ui.Size]),
+    [_sendCreateMessage]: dart.fnType(async.Future$(dart.void), []),
+    [_sendDisposeMessage]: dart.fnType(async.Future$(dart.void), [])
   }));
-  dart.setLibraryUri(anims.ShowHide, L0);
-  dart.setFieldSignature(anims.ShowHide, () => ({
-    __proto__: dart.getFields(anims.ShowHide.__proto__),
-    delay: dart.finalFieldType(dart.legacy(core.double)),
-    child: dart.finalFieldType(dart.legacy(framework.Widget)),
-    duration: dart.finalFieldType(dart.legacy(core.double)),
-    isShow: dart.finalFieldType(dart.legacy(core.bool))
+  dart.setGetterSignature(platform_views.TextureAndroidViewController, () => ({
+    __proto__: dart.getGetters(platform_views.TextureAndroidViewController.__proto__),
+    textureId: dart.nullable(core.int),
+    [_size]: ui.Size
   }));
-  anims.getOffset = function getOffset(animation, from) {
-    switch (from) {
-      case C0 || CT.C0:
-      {
-        return new ui.Offset.new(0.0, core.double.as(dart.dsend(animation.get(dart.dynamic, anims.AniProps.translateX), '_negate', [])));
-        break;
-      }
-      case C1 || CT.C1:
-      {
-        return new ui.Offset.new(0.0, animation.get(doubleL(), anims.AniProps.translateX));
-        break;
-      }
-      case C2 || CT.C2:
-      {
-        return new ui.Offset.new(core.double.as(dart.dsend(animation.get(dart.dynamic, anims.AniProps.translateX), '_negate', [])), 0.0);
-        break;
-      }
-      case C3 || CT.C3:
-      {
-        return new ui.Offset.new(animation.get(doubleL(), anims.AniProps.translateX), 0.0);
-        break;
-      }
-      default:
-      {
-        return new ui.Offset.new(0.0, 0.0);
-      }
+  dart.setSetterSignature(platform_views.TextureAndroidViewController, () => ({
+    __proto__: dart.getSetters(platform_views.TextureAndroidViewController.__proto__),
+    [_size]: ui.Size
+  }));
+  dart.setLibraryUri(platform_views.TextureAndroidViewController, L0);
+  dart.setFieldSignature(platform_views.TextureAndroidViewController, () => ({
+    __proto__: dart.getFields(platform_views.TextureAndroidViewController.__proto__),
+    [_textureId]: dart.fieldType(dart.nullable(core.int)),
+    [__TextureAndroidViewController__size]: dart.fieldType(dart.nullable(ui.Size)),
+    [__TextureAndroidViewController__size_isSet]: dart.fieldType(core.bool)
+  }));
+  var _debugDisposed = dart.privateName(platform_views, "_debugDisposed");
+  var id$0 = dart.privateName(platform_views, "UiKitViewController.id");
+  platform_views.UiKitViewController = class UiKitViewController extends core.Object {
+    get id() {
+      return this[id$0];
+    }
+    set id(value) {
+      super.id = value;
+    }
+    setLayoutDirection(layoutDirection) {
+      if (layoutDirection == null) dart.nullFailed(L1, 1073, 49, "layoutDirection");
+      return async.async(dart.void, (function* setLayoutDirection() {
+        if (!!dart.test(this[_debugDisposed])) dart.assertFailed("trying to set a layout direction for a disposed iOS UIView. View id: " + dart.str(this.id), L1, 1074, 12, "!_debugDisposed");
+        if (dart.equals(layoutDirection, this[_layoutDirection])) return;
+        if (!(layoutDirection != null)) dart.assertFailed(null, L1, 1079, 12, "layoutDirection != null");
+        this[_layoutDirection] = layoutDirection;
+      }).bind(this));
+    }
+    acceptGesture() {
+      let args = new (IdentityMapOfString$dynamic()).from(["id", this.id]);
+      return system_channels.SystemChannels.platform_views.invokeMethod(dart.void, "acceptGesture", args);
+    }
+    rejectGesture() {
+      let args = new (IdentityMapOfString$dynamic()).from(["id", this.id]);
+      return system_channels.SystemChannels.platform_views.invokeMethod(dart.void, "rejectGesture", args);
+    }
+    dispose() {
+      return async.async(dart.void, (function* dispose() {
+        this[_debugDisposed] = true;
+        yield system_channels.SystemChannels.platform_views.invokeMethod(dart.void, "dispose", this.id);
+      }).bind(this));
     }
   };
-  dart.trackLibraries("packages/awesome_dialog/src/anims/anims.dart", {
-    "package:awesome_dialog/src/anims/anims.dart": anims
+  (platform_views.UiKitViewController.__ = function(id, layoutDirection) {
+    if (id == null) dart.nullFailed(L1, 1055, 10, "id");
+    if (layoutDirection == null) dart.nullFailed(L1, 1056, 19, "layoutDirection");
+    this[_debugDisposed] = false;
+    this[id$0] = id;
+    if (!(id != null)) dart.assertFailed(null, L1, 1057, 14, "id != null");
+    if (!(layoutDirection != null)) dart.assertFailed(null, L1, 1058, 14, "layoutDirection != null");
+    this[_layoutDirection] = layoutDirection;
+    ;
+  }).prototype = platform_views.UiKitViewController.prototype;
+  dart.addTypeTests(platform_views.UiKitViewController);
+  dart.addTypeCaches(platform_views.UiKitViewController);
+  dart.setMethodSignature(platform_views.UiKitViewController, () => ({
+    __proto__: dart.getMethods(platform_views.UiKitViewController.__proto__),
+    setLayoutDirection: dart.fnType(async.Future$(dart.void), [ui.TextDirection]),
+    acceptGesture: dart.fnType(async.Future$(dart.void), []),
+    rejectGesture: dart.fnType(async.Future$(dart.void), []),
+    dispose: dart.fnType(async.Future$(dart.void), [])
+  }));
+  dart.setLibraryUri(platform_views.UiKitViewController, L0);
+  dart.setFieldSignature(platform_views.UiKitViewController, () => ({
+    __proto__: dart.getFields(platform_views.UiKitViewController.__proto__),
+    id: dart.finalFieldType(core.int),
+    [_debugDisposed]: dart.fieldType(core.bool),
+    [_layoutDirection]: dart.fieldType(ui.TextDirection)
+  }));
+  dart.defineLazy(platform_views, {
+    /*platform_views.platformViewsRegistry*/get platformViewsRegistry() {
+      return new platform_views.PlatformViewsRegistry._instance();
+    }
+  }, false);
+  dart.trackLibraries("packages/flutter/src/services/platform_views.dart", {
+    "package:flutter/src/services/platform_views.dart": platform_views
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["anims.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../packages/awesome_dialog/src/anims/anims.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["platform_views.dart"],"names":[],"mappings":"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","file":"../../../../../../../packages/flutter/src/services/platform_views.dart.lib.js"}');
   // Exports:
   return {
-    src__anims__anims: anims
+    src__services__platform_views: platform_views
   };
 }));
 
-//# sourceMappingURL=anims.dart.lib.js.map
+//# sourceMappingURL=platform_views.dart.lib.js.map

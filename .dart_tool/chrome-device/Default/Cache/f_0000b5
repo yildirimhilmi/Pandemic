@@ -1,295 +1,395 @@
-define(['dart_sdk'], (function load__packages__flutter_blurhash__src__blurhash_dart(dart_sdk) {
+define(['dart_sdk', 'packages/characters/src/grapheme_clusters/table.dart'], (function load__packages__characters__src__grapheme_clusters__breaks_dart(dart_sdk, packages__characters__src__grapheme_clusters__table$46dart) {
   'use strict';
   const core = dart_sdk.core;
-  const ui = dart_sdk.ui;
-  const _native_typed_data = dart_sdk._native_typed_data;
-  const math = dart_sdk.math;
-  const async = dart_sdk.async;
-  const typed_data = dart_sdk.typed_data;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  var blurhash = Object.create(dart.library);
-  var $_get = dartx._get;
-  var $floor = dartx.floor;
-  var $modulo = dartx['%'];
-  var $length = dartx.length;
-  var $substring = dartx.substring;
-  var $_set = dartx._set;
-  var $buffer = dartx.buffer;
-  var $asByteData = dartx.asByteData;
-  var $setUint8 = dartx.setUint8;
-  var $setInt32 = dartx.setInt32;
-  var $setUint32 = dartx.setUint32;
-  var $setUint16 = dartx.setUint16;
-  var $setRange = dartx.setRange;
-  var $round = dartx.round;
-  var $abs = dartx.abs;
-  var $codeUnits = dartx.codeUnits;
-  var $elementAt = dartx.elementAt;
-  var $indexOf = dartx.indexOf;
-  var $rightShift = dartx['>>'];
-  var Uint8ListL = () => (Uint8ListL = dart.constFn(dart.legacy(typed_data.Uint8List)))();
-  var FutureOfUint8ListL = () => (FutureOfUint8ListL = dart.constFn(async.Future$(Uint8ListL())))();
-  var ImageL = () => (ImageL = dart.constFn(dart.legacy(ui.Image)))();
-  var CompleterOfImageL = () => (CompleterOfImageL = dart.constFn(async.Completer$(ImageL())))();
-  var Uint8ListLToNull = () => (Uint8ListLToNull = dart.constFn(dart.fnType(core.Null, [Uint8ListL()])))();
-  var numL = () => (numL = dart.constFn(dart.legacy(core.num)))();
-  var ColorL = () => (ColorL = dart.constFn(dart.legacy(ui.Color)))();
-  var StyleL = () => (StyleL = dart.constFn(dart.legacy(blurhash.Style)))();
-  var StringL = () => (StringL = dart.constFn(dart.legacy(core.String)))();
-  var ListOfStyleL = () => (ListOfStyleL = dart.constFn(core.List$(StyleL())))();
-  var ListLOfStyleL = () => (ListLOfStyleL = dart.constFn(dart.legacy(ListOfStyleL())))();
+  const table = packages__characters__src__grapheme_clusters__table$46dart.src__grapheme_clusters__table;
+  var breaks = Object.create(dart.library);
+  var $codeUnitAt = dartx.codeUnitAt;
+  var $toRadixString = dartx.toRadixString;
   const CT = Object.create(null);
-  var L1 = "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_blurhash-0.5.0/lib/src/blurhash.dart";
-  var L0 = "package:flutter_blurhash/src/blurhash.dart";
-  dart.defineLazy(CT, {
-    get C3() {
-      return C3 = dart.constList([], ColorL());
-    },
-    get C2() {
-      return C2 = dart.const({
-        __proto__: blurhash.Style.prototype,
-        [background$]: null,
-        [stroke$]: null,
-        [colors$]: C3 || CT.C3,
-        [name$]: "one"
-      });
-    },
-    get C1() {
-      return C1 = dart.constList([C2 || CT.C2], StyleL());
-    },
-    get C0() {
-      return C0 = dart.constMap(StringL(), ListLOfStyleL(), ["flourish", C1 || CT.C1]);
+  var L1 = "package:characters/src/grapheme_clusters/breaks.dart";
+  var L0 = "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/characters-1.1.0-nullsafety.5/lib/src/grapheme_clusters/breaks.dart";
+  var base$ = dart.privateName(breaks, "Breaks.base");
+  var end$ = dart.privateName(breaks, "Breaks.end");
+  var cursor$ = dart.privateName(breaks, "Breaks.cursor");
+  var state$ = dart.privateName(breaks, "Breaks.state");
+  breaks.Breaks = class Breaks extends core.Object {
+    get base() {
+      return this[base$];
     }
-  }, false);
-  var name$ = dart.privateName(blurhash, "Style.name");
-  var colors$ = dart.privateName(blurhash, "Style.colors");
-  var stroke$ = dart.privateName(blurhash, "Style.stroke");
-  var background$ = dart.privateName(blurhash, "Style.background");
-  blurhash.Style = class Style extends core.Object {
-    get name() {
-      return this[name$];
+    set base(value) {
+      super.base = value;
     }
-    set name(value) {
-      super.name = value;
+    get end() {
+      return this[end$];
     }
-    get colors() {
-      return this[colors$];
+    set end(value) {
+      super.end = value;
     }
-    set colors(value) {
-      super.colors = value;
+    get cursor() {
+      return this[cursor$];
     }
-    get stroke() {
-      return this[stroke$];
+    set cursor(value) {
+      this[cursor$] = value;
     }
-    set stroke(value) {
-      super.stroke = value;
+    get state() {
+      return this[state$];
     }
-    get background() {
-      return this[background$];
+    set state(value) {
+      this[state$] = value;
     }
-    set background(value) {
-      super.background = value;
+    copy() {
+      return new breaks.Breaks.new(this.base, this.cursor, this.end, this.state);
     }
-  };
-  (blurhash.Style.new = function(opts) {
-    let name = opts && 'name' in opts ? opts.name : null;
-    let colors = opts && 'colors' in opts ? opts.colors : null;
-    let stroke = opts && 'stroke' in opts ? opts.stroke : null;
-    let background = opts && 'background' in opts ? opts.background : null;
-    this[name$] = name;
-    this[colors$] = colors;
-    this[stroke$] = stroke;
-    this[background$] = background;
-    ;
-  }).prototype = blurhash.Style.prototype;
-  dart.addTypeTests(blurhash.Style);
-  dart.addTypeCaches(blurhash.Style);
-  dart.setLibraryUri(blurhash.Style, L0);
-  dart.setFieldSignature(blurhash.Style, () => ({
-    __proto__: dart.getFields(blurhash.Style.__proto__),
-    name: dart.finalFieldType(dart.legacy(core.String)),
-    colors: dart.finalFieldType(dart.legacy(core.List$(dart.legacy(ui.Color)))),
-    stroke: dart.finalFieldType(dart.legacy(ui.Color)),
-    background: dart.finalFieldType(dart.legacy(ui.Color))
-  }));
-  blurhash.blurHashDecode = function blurHashDecode(opts) {
-    let t0, t0$, t0$0, t0$1;
-    let blurHash = opts && 'blurHash' in opts ? opts.blurHash : null;
-    let width = opts && 'width' in opts ? opts.width : null;
-    let height = opts && 'height' in opts ? opts.height : null;
-    let punch = opts && 'punch' in opts ? opts.punch : 1;
-    if (!(blurHash != null && width != null && height != null && punch != null)) dart.assertFailed(null, L1, 16, 10, "blurHash != null && width != null && height != null && punch != null");
-    blurhash._validateBlurHash(blurHash);
-    let sizeFlag = blurhash._decode83(blurHash[$_get](0));
-    let numY = (dart.notNull(sizeFlag) / 9)[$floor]() + 1;
-    let numX = sizeFlag[$modulo](9) + 1;
-    let quantisedMaximumValue = blurhash._decode83(blurHash[$_get](1));
-    let maximumValue = (dart.notNull(quantisedMaximumValue) + 1) / 166;
-    let colors = core.List.new(numX * numY);
-    for (let i = 0; i < dart.notNull(colors[$length]); i = i + 1) {
-      if (i === 0) {
-        let value = blurhash._decode83(blurHash[$substring](2, 6));
-        colors[$_set](i, blurhash._decodeDC(value));
-      } else {
-        let value = blurhash._decode83(blurHash[$substring](4 + i * 2, 6 + i * 2));
-        colors[$_set](i, blurhash._decodeAC(value, maximumValue * dart.notNull(punch)));
-      }
-    }
-    let bytesPerRow = dart.notNull(width) * 4;
-    let pixels = _native_typed_data.NativeUint8List.new(bytesPerRow * dart.notNull(height));
-    let p = 0;
-    for (let y = 0; y < dart.notNull(height); y = y + 1) {
-      for (let x = 0; x < dart.notNull(width); x = x + 1) {
-        let r = 0.0;
-        let g = 0.0;
-        let b = 0.0;
-        for (let j = 0; j < numY; j = j + 1) {
-          for (let i = 0; i < numX; i = i + 1) {
-            let basis = math.cos(3.141592653589793 * x * i / dart.notNull(width)) * math.cos(3.141592653589793 * y * j / dart.notNull(height));
-            let color = colors[$_get](i + j * numX);
-            r = r + dart.notNull(core.num.as(dart.dsend(dart.dsend(color, '_get', [0]), '*', [basis])));
-            g = g + dart.notNull(core.num.as(dart.dsend(dart.dsend(color, '_get', [1]), '*', [basis])));
-            b = b + dart.notNull(core.num.as(dart.dsend(dart.dsend(color, '_get', [2]), '*', [basis])));
+    nextBreak() {
+      let t0;
+      while (dart.notNull(this.cursor) < dart.notNull(this.end)) {
+        let breakAt = this.cursor;
+        let char = this.base[$codeUnitAt]((t0 = this.cursor, this.cursor = dart.notNull(t0) + 1, t0));
+        if ((char & 64512) !== 55296) {
+          this.state = table.move(this.state, table.low(char));
+          if ((dart.notNull(this.state) & 1) === 0) {
+            return breakAt;
+          }
+          continue;
+        }
+        let category = 2;
+        if (dart.notNull(this.cursor) < dart.notNull(this.end)) {
+          let nextChar = this.base[$codeUnitAt](this.cursor);
+          if ((nextChar & 64512) === 56320) {
+            category = table.high(char, nextChar);
+            this.cursor = dart.notNull(this.cursor) + 1;
           }
         }
-        let intR = blurhash._linearTosRGB(r);
-        let intG = blurhash._linearTosRGB(g);
-        let intB = blurhash._linearTosRGB(b);
-        pixels[$_set]((t0 = p, p = t0 + 1, t0), intR);
-        pixels[$_set]((t0$ = p, p = t0$ + 1, t0$), intG);
-        pixels[$_set]((t0$0 = p, p = t0$0 + 1, t0$0), intB);
-        pixels[$_set]((t0$1 = p, p = t0$1 + 1, t0$1), 255);
+        this.state = table.move(this.state, category);
+        if ((dart.notNull(this.state) & 1) === 0) {
+          return breakAt;
+        }
       }
+      this.state = table.move(this.state, 15);
+      if ((dart.notNull(this.state) & 1) === 0) return this.cursor;
+      return -1;
     }
-    return FutureOfUint8ListL().value(pixels);
   };
-  blurhash.blurHashDecodeImage = function blurHashDecodeImage(opts) {
-    let blurHash = opts && 'blurHash' in opts ? opts.blurHash : null;
-    let width = opts && 'width' in opts ? opts.width : null;
-    let height = opts && 'height' in opts ? opts.height : null;
-    let punch = opts && 'punch' in opts ? opts.punch : 1;
-    return async.async(ImageL(), function* blurHashDecodeImage() {
-      if (!(blurHash != null && width != null && height != null && punch != null)) dart.assertFailed(null, L1, 78, 10, "blurHash != null && width != null && height != null && punch != null");
-      blurhash._validateBlurHash(blurHash);
-      let completer = CompleterOfImageL().new();
-      if (true) {
-        let pixels = (yield blurhash.blurHashDecode({blurHash: blurHash, width: width, height: height, punch: punch}));
-        completer.complete(blurhash._createBmp(pixels, width, height));
+  (breaks.Breaks.new = function(base, cursor, end, state) {
+    if (base == null) dart.nullFailed(L0, 37, 15, "base");
+    if (cursor == null) dart.nullFailed(L0, 37, 26, "cursor");
+    if (end == null) dart.nullFailed(L0, 37, 39, "end");
+    if (state == null) dart.nullFailed(L0, 37, 49, "state");
+    this[base$] = base;
+    this[cursor$] = cursor;
+    this[end$] = end;
+    this[state$] = state;
+    ;
+  }).prototype = breaks.Breaks.prototype;
+  dart.addTypeTests(breaks.Breaks);
+  dart.addTypeCaches(breaks.Breaks);
+  dart.setMethodSignature(breaks.Breaks, () => ({
+    __proto__: dart.getMethods(breaks.Breaks.__proto__),
+    copy: dart.fnType(breaks.Breaks, []),
+    nextBreak: dart.fnType(core.int, [])
+  }));
+  dart.setLibraryUri(breaks.Breaks, L1);
+  dart.setFieldSignature(breaks.Breaks, () => ({
+    __proto__: dart.getFields(breaks.Breaks.__proto__),
+    base: dart.finalFieldType(core.String),
+    end: dart.finalFieldType(core.int),
+    cursor: dart.fieldType(core.int),
+    state: dart.fieldType(core.int)
+  }));
+  var _lookAhead = dart.privateName(breaks, "_lookAhead");
+  var base$0 = dart.privateName(breaks, "BackBreaks.base");
+  var start$ = dart.privateName(breaks, "BackBreaks.start");
+  var cursor$0 = dart.privateName(breaks, "BackBreaks.cursor");
+  var state$0 = dart.privateName(breaks, "BackBreaks.state");
+  breaks.BackBreaks = class BackBreaks extends core.Object {
+    get base() {
+      return this[base$0];
+    }
+    set base(value) {
+      super.base = value;
+    }
+    get start() {
+      return this[start$];
+    }
+    set start(value) {
+      super.start = value;
+    }
+    get cursor() {
+      return this[cursor$0];
+    }
+    set cursor(value) {
+      this[cursor$0] = value;
+    }
+    get state() {
+      return this[state$0];
+    }
+    set state(value) {
+      this[state$0] = value;
+    }
+    copy() {
+      return new breaks.BackBreaks.new(this.base, this.cursor, this.start, this.state);
+    }
+    nextBreak() {
+      while (dart.notNull(this.cursor) > dart.notNull(this.start)) {
+        let breakAt = this.cursor;
+        let char = this.base[$codeUnitAt](this.cursor = dart.notNull(this.cursor) - 1);
+        if ((char & 64512) !== 56320) {
+          this.state = table.moveBack(this.state, table.low(char));
+          if (dart.notNull(this.state) >= 208) this.state = this[_lookAhead](this.state);
+          if ((dart.notNull(this.state) & 1) === 0) {
+            return breakAt;
+          }
+          continue;
+        }
+        let category = 2;
+        if (dart.notNull(this.cursor) >= dart.notNull(this.start)) {
+          let prevChar = this.base[$codeUnitAt](dart.notNull(this.cursor) - 1);
+          if ((prevChar & 64512) === 55296) {
+            category = table.high(prevChar, char);
+            this.cursor = dart.notNull(this.cursor) - 1;
+          }
+        }
+        this.state = table.moveBack(this.state, category);
+        if (dart.notNull(this.state) >= 208) this.state = this[_lookAhead](this.state);
+        if ((dart.notNull(this.state) & 1) === 0) {
+          return breakAt;
+        }
+      }
+      this.state = table.moveBack(this.state, 15);
+      if (dart.notNull(this.state) >= 208) this.state = this[_lookAhead](this.state);
+      if ((dart.notNull(this.state) & 1) === 0) return this.cursor;
+      return -1;
+    }
+    [_lookAhead](state) {
+      if (state == null) dart.nullFailed(L0, 146, 22, "state");
+      return breaks.lookAhead(this.base, this.start, this.cursor, state);
+    }
+  };
+  (breaks.BackBreaks.new = function(base, cursor, start, state) {
+    if (base == null) dart.nullFailed(L0, 105, 19, "base");
+    if (cursor == null) dart.nullFailed(L0, 105, 30, "cursor");
+    if (start == null) dart.nullFailed(L0, 105, 43, "start");
+    if (state == null) dart.nullFailed(L0, 105, 55, "state");
+    this[base$0] = base;
+    this[cursor$0] = cursor;
+    this[start$] = start;
+    this[state$0] = state;
+    ;
+  }).prototype = breaks.BackBreaks.prototype;
+  dart.addTypeTests(breaks.BackBreaks);
+  dart.addTypeCaches(breaks.BackBreaks);
+  dart.setMethodSignature(breaks.BackBreaks, () => ({
+    __proto__: dart.getMethods(breaks.BackBreaks.__proto__),
+    copy: dart.fnType(breaks.BackBreaks, []),
+    nextBreak: dart.fnType(core.int, []),
+    [_lookAhead]: dart.fnType(core.int, [core.int])
+  }));
+  dart.setLibraryUri(breaks.BackBreaks, L1);
+  dart.setFieldSignature(breaks.BackBreaks, () => ({
+    __proto__: dart.getFields(breaks.BackBreaks.__proto__),
+    base: dart.finalFieldType(core.String),
+    start: dart.finalFieldType(core.int),
+    cursor: dart.fieldType(core.int),
+    state: dart.fieldType(core.int)
+  }));
+  breaks.lookAhead = function lookAhead(base, start, cursor, state) {
+    if (base == null) dart.nullFailed(L0, 155, 22, "base");
+    if (start == null) dart.nullFailed(L0, 155, 32, "start");
+    if (cursor == null) dart.nullFailed(L0, 155, 43, "cursor");
+    if (state == null) dart.nullFailed(L0, 155, 55, "state");
+    if (!(dart.notNull(state) >= 208)) dart.assertFailed(null, L0, 156, 10, "state >= stateLookaheadMin");
+    if (state === 208) {
+      return breaks.lookAheadRegional(base, start, cursor);
+    }
+    if (state === 224) {
+      let prevPic = breaks.lookAheadPictorgraphicExtend(base, start, cursor);
+      if (dart.notNull(prevPic) >= 0) return (144 | 1) >>> 0;
+      return 64;
+    }
+    dart.throw(new core.StateError.new("Unexpected state: " + state[$toRadixString](16)));
+  };
+  breaks.lookAheadRegional = function lookAheadRegional(base, start, cursor) {
+    if (base == null) dart.nullFailed(L0, 178, 30, "base");
+    if (start == null) dart.nullFailed(L0, 178, 40, "start");
+    if (cursor == null) dart.nullFailed(L0, 178, 51, "cursor");
+    let count = 0;
+    let index = cursor;
+    while (dart.notNull(index) - 2 >= dart.notNull(start)) {
+      let tail = base[$codeUnitAt](dart.notNull(index) - 1);
+      if ((tail & 64512) !== 56320) break;
+      let lead = base[$codeUnitAt](dart.notNull(index) - 2);
+      if ((lead & 64512) !== 55296) break;
+      let category = table.high(lead, tail);
+      if (category !== 6) break;
+      index = dart.notNull(index) - 2;
+      count = (count ^ 1) >>> 0;
+    }
+    if (count === 0) {
+      return (192 | 1) >>> 0;
+    } else {
+      return 144;
+    }
+  };
+  breaks.lookAheadPictorgraphicExtend = function lookAheadPictorgraphicExtend(base, start, cursor) {
+    if (base == null) dart.nullFailed(L0, 208, 41, "base");
+    if (start == null) dart.nullFailed(L0, 208, 51, "start");
+    if (cursor == null) dart.nullFailed(L0, 208, 62, "cursor");
+    let index = cursor;
+    while (dart.notNull(index) > dart.notNull(start)) {
+      let char = base[$codeUnitAt](index = dart.notNull(index) - 1);
+      let prevChar = 0;
+      let category = 2;
+      if ((char & 64512) !== 56320) {
+        category = table.low(char);
+      } else if (dart.notNull(index) > dart.notNull(start) && ((prevChar = base[$codeUnitAt](index = dart.notNull(index) - 1)) & 64512) === 55296) {
+        category = table.high(prevChar, char);
       } else {
-        blurhash.blurHashDecode({blurHash: blurHash, width: width, height: height, punch: punch}).then(core.Null, dart.fn(pixels => {
-          ui.decodeImageFromPixels(pixels, width, height, ui.PixelFormat.rgba8888, dart.bind(completer, 'complete'));
-        }, Uint8ListLToNull()));
+        break;
       }
-      return completer.future;
-    });
-  };
-  blurhash._createBmp = function _createBmp(pixels, width, height) {
-    return async.async(ImageL(), function* _createBmp() {
-      let size = dart.notNull(width) * dart.notNull(height) * 4 + 122;
-      let bmp = _native_typed_data.NativeUint8List.new(size);
-      let header = bmp[$buffer][$asByteData]();
-      header[$setUint8](0, 66);
-      header[$setUint8](1, 77);
-      header[$setInt32](2, size, typed_data.Endian.little);
-      header[$setInt32](10, 122, typed_data.Endian.little);
-      header[$setUint32](14, 108, typed_data.Endian.little);
-      header[$setUint32](18, width, typed_data.Endian.little);
-      header[$setUint32](22, -dart.notNull(height), typed_data.Endian.little);
-      header[$setUint16](26, 1, typed_data.Endian.little);
-      header[$setUint32](28, 32, typed_data.Endian.little);
-      header[$setUint32](30, 3, typed_data.Endian.little);
-      header[$setUint32](34, dart.notNull(width) * dart.notNull(height) * 4, typed_data.Endian.little);
-      header[$setUint32](54, 255, typed_data.Endian.little);
-      header[$setUint32](58, 65280, typed_data.Endian.little);
-      header[$setUint32](62, 16711680, typed_data.Endian.little);
-      header[$setUint32](66, 4278190080, typed_data.Endian.little);
-      bmp[$setRange](122, size, pixels);
-      let codec = (yield ui.instantiateImageCodec(bmp));
-      let frame = (yield codec.getNextFrame());
-      return frame.image;
-    });
-  };
-  blurhash._sRGBToLinear = function _sRGBToLinear(value) {
-    let v = dart.notNull(value) / 255;
-    if (v <= 0.04045) {
-      return v / 12.92;
-    } else {
-      return math.pow((v + 0.055) / 1.055, 2.4);
-    }
-  };
-  blurhash._linearTosRGB = function _linearTosRGB(value) {
-    let v = math.max(numL(), 0, math.min(numL(), 1, value));
-    if (v <= 0.0031308) {
-      return (v * 12.92 * 255 + 0.5)[$round]();
-    } else {
-      return ((1.055 * math.pow(v, 1 / 2.4) - 0.055) * 255 + 0.5)[$round]();
-    }
-  };
-  blurhash._validateBlurHash = function _validateBlurHash(blurHash) {
-    if (blurHash == null || blurHash.length < 6) {
-      dart.throw(core.Exception.new("The blurhash string must be at least 6 characters"));
-    }
-    let sizeFlag = blurhash._decode83(blurHash[$_get](0));
-    let numY = (dart.notNull(sizeFlag) / 9)[$floor]() + 1;
-    let numX = sizeFlag[$modulo](9) + 1;
-    if (blurHash.length !== 4 + 2 * numX * numY) {
-      dart.throw(core.Exception.new("blurhash length mismatch: length is " + dart.str(blurHash.length) + " but " + "it should be " + dart.str(4 + 2 * numX * numY)));
-    }
-  };
-  blurhash._sign = function _sign(n) {
-    return dart.notNull(n) < 0 ? -1 : 1;
-  };
-  blurhash._signPow = function _signPow(val, exp) {
-    return dart.notNull(blurhash._sign(val)) * math.pow(val[$abs](), exp);
-  };
-  blurhash._decode83 = function _decode83(str) {
-    let value = 0;
-    let units = str[$codeUnits];
-    let digits = blurhash._digitCharacters[$codeUnits];
-    for (let i = 0; i < dart.notNull(units[$length]); i = i + 1) {
-      let code = units[$elementAt](i);
-      let digit = digits[$indexOf](code);
-      if (digit === -1) {
-        dart.throw(new core.ArgumentError.value(str, "str"));
+      if (category === 7) {
+        return index;
       }
-      value = value * 83 + dart.notNull(digit);
+      if (category !== 4) break;
     }
-    return value;
+    return -1;
   };
-  blurhash._decodeDC = function _decodeDC(value) {
-    let intR = value[$rightShift](16);
-    let intG = dart.notNull(value) >> 8 & 255;
-    let intB = dart.notNull(value) & 255;
-    return [blurhash._sRGBToLinear(intR), blurhash._sRGBToLinear(intG), blurhash._sRGBToLinear(intB)];
-  };
-  blurhash._decodeAC = function _decodeAC(value, maximumValue) {
-    let quantR = (dart.notNull(value) / (19 * 19))[$floor]();
-    let quantG = (dart.notNull(value) / 19)[$floor]()[$modulo](19);
-    let quantB = value[$modulo](19);
-    let rgb = [dart.notNull(blurhash._signPow((quantR - 9) / 9, 2.0)) * dart.notNull(maximumValue), dart.notNull(blurhash._signPow((quantG - 9) / 9, 2.0)) * dart.notNull(maximumValue), dart.notNull(blurhash._signPow((quantB - 9) / 9, 2.0)) * dart.notNull(maximumValue)];
-    return rgb;
-  };
-  var C3;
-  var C2;
-  var C1;
-  var C0;
-  dart.defineLazy(blurhash, {
-    /*blurhash._digitCharacters*/get _digitCharacters() {
-      return "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz#$%*+,-.:;=?@[]^_{|}~";
-    },
-    /*blurhash.styles*/get styles() {
-      return C0 || CT.C0;
+  breaks.isGraphemeClusterBoundary = function isGraphemeClusterBoundary(text, start, end, index) {
+    if (text == null) dart.nullFailed(L0, 236, 39, "text");
+    if (start == null) dart.nullFailed(L0, 236, 49, "start");
+    if (end == null) dart.nullFailed(L0, 236, 60, "end");
+    if (index == null) dart.nullFailed(L0, 236, 69, "index");
+    if (!(0 <= dart.notNull(start))) dart.assertFailed(null, L0, 237, 10, "0 <= start");
+    if (!(dart.notNull(start) <= dart.notNull(index))) dart.assertFailed(null, L0, 238, 10, "start <= index");
+    if (!(dart.notNull(index) <= dart.notNull(end))) dart.assertFailed(null, L0, 239, 10, "index <= end");
+    if (!(dart.notNull(end) <= text.length)) dart.assertFailed(null, L0, 240, 10, "end <= text.length");
+    if (dart.notNull(start) < dart.notNull(index) && dart.notNull(index) < dart.notNull(end)) {
+      let char = text[$codeUnitAt](index);
+      let prevChar = text[$codeUnitAt](dart.notNull(index) - 1);
+      let catAfter = 2;
+      if ((char & 63488) !== 55296) {
+        catAfter = table.low(char);
+      } else if ((char & 64512) === 55296) {
+        if (dart.notNull(index) + 1 >= dart.notNull(end)) return true;
+        let nextChar = text[$codeUnitAt](dart.notNull(index) + 1);
+        if ((nextChar & 64512) !== 56320) return true;
+        catAfter = table.high(char, nextChar);
+      } else {
+        return (prevChar & 64512) !== 55296;
+      }
+      let catBefore = 2;
+      if ((prevChar & 64512) !== 56320) {
+        catBefore = table.low(prevChar);
+        index = dart.notNull(index) - 1;
+      } else {
+        index = dart.notNull(index) - 2;
+        if (dart.notNull(start) <= dart.notNull(index)) {
+          let prevPrevChar = text[$codeUnitAt](index);
+          if ((prevPrevChar & 64512) !== 55296) {
+            return true;
+          }
+          catBefore = table.high(prevPrevChar, prevChar);
+        } else {
+          return true;
+        }
+      }
+      let state = table.moveBack(176, catAfter);
+      if (!(dart.notNull(state) < 208)) dart.assertFailed(null, L0, 287, 12, "state < stateLookaheadMin");
+      state = table.moveBack(state, catBefore);
+      if (dart.notNull(state) >= 208) {
+        state = breaks.lookAhead(text, start, index, state);
+      }
+      return (dart.notNull(state) & 1) === 0;
     }
-  }, true);
-  dart.trackLibraries("packages/flutter_blurhash/src/blurhash.dart", {
-    "package:flutter_blurhash/src/blurhash.dart": blurhash
+    return start != end;
+  };
+  breaks.previousBreak = function previousBreak(text, start, end, index) {
+    if (text == null) dart.nullFailed(L0, 300, 26, "text");
+    if (start == null) dart.nullFailed(L0, 300, 36, "start");
+    if (end == null) dart.nullFailed(L0, 300, 47, "end");
+    if (index == null) dart.nullFailed(L0, 300, 56, "index");
+    if (!(0 <= dart.notNull(start))) dart.assertFailed(null, L0, 301, 10, "0 <= start");
+    if (!(dart.notNull(start) <= dart.notNull(index))) dart.assertFailed(null, L0, 302, 10, "start <= index");
+    if (!(dart.notNull(index) <= dart.notNull(end))) dart.assertFailed(null, L0, 303, 10, "index <= end");
+    if (!(dart.notNull(end) <= text.length)) dart.assertFailed(null, L0, 304, 10, "end <= text.length");
+    if (index == start || index == end) return index;
+    let indexBefore = index;
+    let nextChar = text[$codeUnitAt](index);
+    let category = 2;
+    if ((nextChar & 63488) !== 55296) {
+      category = table.low(nextChar);
+    } else if ((nextChar & 64512) === 55296) {
+      let indexAfter = dart.notNull(index) + 1;
+      if (indexAfter < dart.notNull(end)) {
+        let secondChar = text[$codeUnitAt](indexAfter);
+        if ((secondChar & 64512) === 56320) {
+          category = table.high(nextChar, secondChar);
+        }
+      }
+    } else {
+      let prevChar = text[$codeUnitAt](dart.notNull(index) - 1);
+      if ((prevChar & 64512) === 55296) {
+        category = table.high(prevChar, nextChar);
+        indexBefore = dart.notNull(indexBefore) - 1;
+      }
+    }
+    return new breaks.BackBreaks.new(text, indexBefore, start, table.moveBack(176, category)).nextBreak();
+  };
+  breaks.nextBreak = function nextBreak(text, start, end, index) {
+    if (text == null) dart.nullFailed(L0, 334, 22, "text");
+    if (start == null) dart.nullFailed(L0, 334, 32, "start");
+    if (end == null) dart.nullFailed(L0, 334, 43, "end");
+    if (index == null) dart.nullFailed(L0, 334, 52, "index");
+    if (!(0 <= dart.notNull(start))) dart.assertFailed(null, L0, 335, 10, "0 <= start");
+    if (!(dart.notNull(start) <= dart.notNull(index))) dart.assertFailed(null, L0, 336, 10, "start <= index");
+    if (!(dart.notNull(index) <= dart.notNull(end))) dart.assertFailed(null, L0, 337, 10, "index <= end");
+    if (!(dart.notNull(end) <= text.length)) dart.assertFailed(null, L0, 338, 10, "end <= text.length");
+    if (index == start || index == end) return index;
+    let indexBefore = dart.notNull(index) - 1;
+    let prevChar = text[$codeUnitAt](indexBefore);
+    let prevCategory = 2;
+    if ((prevChar & 63488) !== 55296) {
+      prevCategory = table.low(prevChar);
+    } else if ((prevChar & 64512) === 55296) {
+      let nextChar = text[$codeUnitAt](index);
+      if ((nextChar & 64512) === 56320) {
+        index = dart.notNull(index) + 1;
+        if (index == end) return end;
+        prevCategory = table.high(prevChar, nextChar);
+      }
+    } else if (indexBefore > dart.notNull(start)) {
+      let secondCharIndex = indexBefore - 1;
+      let secondChar = text[$codeUnitAt](secondCharIndex);
+      if ((secondChar & 64512) === 55296) {
+        indexBefore = secondCharIndex;
+        prevCategory = table.high(secondChar, prevChar);
+      }
+    }
+    let state = 48;
+    if (prevCategory === 6) {
+      let prevState = breaks.lookAheadRegional(text, start, indexBefore);
+      if (prevState !== 144) {
+        state = 160;
+      }
+    } else if (prevCategory === 1 || prevCategory === 4) {
+      let prevPic = breaks.lookAheadPictorgraphicExtend(text, start, indexBefore);
+      if (dart.notNull(prevPic) >= 0) {
+        state = prevCategory === 1 ? 144 : 128;
+      }
+    } else {
+      state = table.move(176, prevCategory);
+    }
+    return new breaks.Breaks.new(text, index, text.length, state).nextBreak();
+  };
+  dart.trackLibraries("packages/characters/src/grapheme_clusters/breaks.dart", {
+    "package:characters/src/grapheme_clusters/breaks.dart": breaks
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["blurhash.dart"],"names":[],"mappings":"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","file":"../../../../../../../../packages/flutter_blurhash/src/blurhash.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["breaks.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../packages/characters/src/grapheme_clusters/breaks.dart.lib.js"}');
   // Exports:
   return {
-    src__blurhash: blurhash
+    src__grapheme_clusters__breaks: breaks
   };
 }));
 
-//# sourceMappingURL=blurhash.dart.lib.js.map
+//# sourceMappingURL=breaks.dart.lib.js.map

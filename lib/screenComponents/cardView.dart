@@ -3,7 +3,10 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:latlong/latlong.dart' as location;
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:my_website_project/screenComponents/locations.dart';
+import 'package:my_website_project/screenComponents/videoPlayer.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+import 'package:cached_video_player/cached_video_player.dart';
 
 MapController globalMapController = MapController();
 location.LatLng istanbul2 = new location.LatLng(41.015137, 28.979530);
@@ -47,12 +50,14 @@ class _CardViewState extends State<CardView> with TickerProviderStateMixin {
               onTap: () {
                 AwesomeDialog(
                   context: context,
-                  width: 280,
+                  width: 500,
                   buttonsBorderRadius: BorderRadius.all(Radius.circular(2)),
                   headerAnimationLoop: false,
                   animType: AnimType.BOTTOMSLIDE,
                   title: 'INFO',
-                  desc: 'Dialog description here...',
+                  body: Container(
+                    child: Text("videos will be show here"),
+                  ),
                   showCloseIcon: true,
                   btnCancelOnPress: () {},
                   btnOkOnPress: () {},
@@ -63,15 +68,15 @@ class _CardViewState extends State<CardView> with TickerProviderStateMixin {
             GestureDetector(
               onDoubleTap: () {
                 animatedMapMove(
-                  istanbul2,
-                  10,
+                  misir[0],
+                  9,
                   globalMapController,
                   this,
                 );
               },
               onTap: () {
                 animatedMapMove(
-                  istanbul2,
+                  misir[0],
                   15,
                   globalMapController,
                   this,

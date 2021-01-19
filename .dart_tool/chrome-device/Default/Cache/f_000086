@@ -1,575 +1,436 @@
-define(['dart_sdk'], (function load__packages__intl__src__plural_rules_dart(dart_sdk) {
+define(['dart_sdk', 'packages/flutter/src/painting/basic_types.dart', 'packages/flutter/src/rendering/sliver.dart', 'packages/flutter/src/rendering/layer.dart', 'packages/flutter/src/foundation/debug.dart', 'packages/flutter/src/painting/edge_insets.dart'], (function load__packages__flutter__src__rendering__sliver_padding_dart(dart_sdk, packages__flutter__src__painting__basic_types$46dart, packages__flutter__src__rendering__sliver$46dart, packages__flutter__src__rendering__layer$46dart, packages__flutter__src__foundation__debug$46dart, packages__flutter__src__painting__edge_insets$46dart) {
   'use strict';
   const core = dart_sdk.core;
+  const _internal = dart_sdk._internal;
   const math = dart_sdk.math;
-  const _js_helper = dart_sdk._js_helper;
+  const ui = dart_sdk.ui;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  var plural_rules = Object.create(dart.library);
-  var $toString = dartx.toString;
-  var $round = dartx.round;
-  var $toStringAsFixed = dartx.toStringAsFixed;
-  var $indexOf = dartx.indexOf;
-  var $modulo = dartx['%'];
-  var $floor = dartx.floor;
-  var $containsKey = dartx.containsKey;
-  var PluralCaseL = () => (PluralCaseL = dart.constFn(dart.legacy(plural_rules.PluralCase)))();
-  var intL = () => (intL = dart.constFn(dart.legacy(core.int)))();
-  var VoidToPluralCaseL = () => (VoidToPluralCaseL = dart.constFn(dart.fnType(PluralCaseL(), [])))();
+  const basic_types = packages__flutter__src__painting__basic_types$46dart.src__painting__basic_types;
+  const sliver = packages__flutter__src__rendering__sliver$46dart.src__rendering__sliver;
+  const object = packages__flutter__src__rendering__layer$46dart.src__rendering__object;
+  const debug = packages__flutter__src__rendering__layer$46dart.src__rendering__debug;
+  const diagnostics = packages__flutter__src__foundation__debug$46dart.src__foundation__diagnostics;
+  const edge_insets = packages__flutter__src__painting__edge_insets$46dart.src__painting__edge_insets;
+  var sliver_padding = Object.create(dart.library);
+  var VoidTobool = () => (VoidTobool = dart.constFn(dart.fnType(core.bool, [])))();
+  var DiagnosticsPropertyOfEdgeInsetsGeometry = () => (DiagnosticsPropertyOfEdgeInsetsGeometry = dart.constFn(diagnostics.DiagnosticsProperty$(edge_insets.EdgeInsetsGeometry)))();
+  var EnumPropertyOfTextDirection = () => (EnumPropertyOfTextDirection = dart.constFn(diagnostics.EnumProperty$(ui.TextDirection)))();
   const CT = Object.create(null);
-  var L0 = "package:intl/src/plural_rules.dart";
+  var L1 = "package:flutter/src/rendering/sliver_padding.dart";
+  var L0 = "file:///C:/src/flutter/packages/flutter/lib/src/rendering/sliver_padding.dart";
   dart.defineLazy(CT, {
     get C0() {
       return C0 = dart.const({
-        __proto__: plural_rules.PluralCase.prototype,
-        [_name$]: "PluralCase.ZERO",
+        __proto__: basic_types.AxisDirection.prototype,
+        [_name]: "AxisDirection.up",
         index: 0
       });
     },
     get C1() {
       return C1 = dart.const({
-        __proto__: plural_rules.PluralCase.prototype,
-        [_name$]: "PluralCase.ONE",
+        __proto__: basic_types.AxisDirection.prototype,
+        [_name]: "AxisDirection.right",
         index: 1
       });
     },
     get C2() {
       return C2 = dart.const({
-        __proto__: plural_rules.PluralCase.prototype,
-        [_name$]: "PluralCase.TWO",
+        __proto__: basic_types.AxisDirection.prototype,
+        [_name]: "AxisDirection.down",
         index: 2
       });
     },
     get C3() {
       return C3 = dart.const({
-        __proto__: plural_rules.PluralCase.prototype,
-        [_name$]: "PluralCase.FEW",
+        __proto__: basic_types.AxisDirection.prototype,
+        [_name]: "AxisDirection.left",
         index: 3
       });
     },
     get C4() {
       return C4 = dart.const({
-        __proto__: plural_rules.PluralCase.prototype,
-        [_name$]: "PluralCase.MANY",
-        index: 4
+        __proto__: basic_types.Axis.prototype,
+        [_name]: "Axis.horizontal",
+        index: 0
       });
     },
     get C5() {
       return C5 = dart.const({
-        __proto__: plural_rules.PluralCase.prototype,
-        [_name$]: "PluralCase.OTHER",
-        index: 5
+        __proto__: basic_types.Axis.prototype,
+        [_name]: "Axis.vertical",
+        index: 1
       });
-    },
-    get C6() {
-      return C6 = dart.constList([C0 || CT.C0, C1 || CT.C1, C2 || CT.C2, C3 || CT.C3, C4 || CT.C4, C5 || CT.C5], PluralCaseL());
-    },
-    get C7() {
-      return C7 = dart.fn(plural_rules._es_rule, VoidToPluralCaseL());
-    },
-    get C8() {
-      return C8 = dart.fn(plural_rules._hi_rule, VoidToPluralCaseL());
-    },
-    get C9() {
-      return C9 = dart.fn(plural_rules._ar_rule, VoidToPluralCaseL());
-    },
-    get C10() {
-      return C10 = dart.fn(plural_rules._be_rule, VoidToPluralCaseL());
-    },
-    get C11() {
-      return C11 = dart.fn(plural_rules._br_rule, VoidToPluralCaseL());
-    },
-    get C12() {
-      return C12 = dart.fn(plural_rules._sr_rule, VoidToPluralCaseL());
-    },
-    get C13() {
-      return C13 = dart.fn(plural_rules._en_rule, VoidToPluralCaseL());
-    },
-    get C14() {
-      return C14 = dart.fn(plural_rules._cs_rule, VoidToPluralCaseL());
-    },
-    get C15() {
-      return C15 = dart.fn(plural_rules._cy_rule, VoidToPluralCaseL());
-    },
-    get C16() {
-      return C16 = dart.fn(plural_rules._da_rule, VoidToPluralCaseL());
-    },
-    get C17() {
-      return C17 = dart.fn(plural_rules._fil_rule, VoidToPluralCaseL());
-    },
-    get C18() {
-      return C18 = dart.fn(plural_rules._fr_rule, VoidToPluralCaseL());
-    },
-    get C19() {
-      return C19 = dart.fn(plural_rules._ga_rule, VoidToPluralCaseL());
-    },
-    get C20() {
-      return C20 = dart.fn(plural_rules._he_rule, VoidToPluralCaseL());
-    },
-    get C21() {
-      return C21 = dart.fn(plural_rules._default_rule, VoidToPluralCaseL());
-    },
-    get C22() {
-      return C22 = dart.fn(plural_rules._is_rule, VoidToPluralCaseL());
-    },
-    get C23() {
-      return C23 = dart.fn(plural_rules._ak_rule, VoidToPluralCaseL());
-    },
-    get C24() {
-      return C24 = dart.fn(plural_rules._lt_rule, VoidToPluralCaseL());
-    },
-    get C25() {
-      return C25 = dart.fn(plural_rules._lv_rule, VoidToPluralCaseL());
-    },
-    get C26() {
-      return C26 = dart.fn(plural_rules._mk_rule, VoidToPluralCaseL());
-    },
-    get C27() {
-      return C27 = dart.fn(plural_rules._ro_rule, VoidToPluralCaseL());
-    },
-    get C28() {
-      return C28 = dart.fn(plural_rules._mt_rule, VoidToPluralCaseL());
-    },
-    get C29() {
-      return C29 = dart.fn(plural_rules._pl_rule, VoidToPluralCaseL());
-    },
-    get C30() {
-      return C30 = dart.fn(plural_rules._pt_rule, VoidToPluralCaseL());
-    },
-    get C31() {
-      return C31 = dart.fn(plural_rules._pt_PT_rule, VoidToPluralCaseL());
-    },
-    get C32() {
-      return C32 = dart.fn(plural_rules._ru_rule, VoidToPluralCaseL());
-    },
-    get C33() {
-      return C33 = dart.fn(plural_rules._si_rule, VoidToPluralCaseL());
-    },
-    get C34() {
-      return C34 = dart.fn(plural_rules._sl_rule, VoidToPluralCaseL());
     }
   }, false);
-  var _name$ = dart.privateName(plural_rules, "_name");
+  var _name = dart.privateName(basic_types, "_name");
   var C0;
   var C1;
   var C2;
   var C3;
   var C4;
   var C5;
-  var C6;
-  plural_rules.PluralCase = class PluralCase extends core.Object {
-    toString() {
-      return this[_name$];
+  const RenderSliver_RenderObjectWithChildMixin$36 = class RenderSliver_RenderObjectWithChildMixin extends sliver.RenderSliver {};
+  (RenderSliver_RenderObjectWithChildMixin$36.new = function() {
+    object.RenderObjectWithChildMixin$(sliver.RenderSliver)[dart.mixinNew].call(this);
+    RenderSliver_RenderObjectWithChildMixin$36.__proto__.new.call(this);
+  }).prototype = RenderSliver_RenderObjectWithChildMixin$36.prototype;
+  dart.applyMixin(RenderSliver_RenderObjectWithChildMixin$36, object.RenderObjectWithChildMixin$(sliver.RenderSliver));
+  sliver_padding.RenderSliverEdgeInsetsPadding = class RenderSliverEdgeInsetsPadding extends RenderSliver_RenderObjectWithChildMixin$36 {
+    get beforePadding() {
+      if (!(this.constraints != null)) dart.assertFailed(null, L0, 40, 12, "constraints != null");
+      if (!(this.constraints.axisDirection != null)) dart.assertFailed(null, L0, 41, 12, "constraints.axisDirection != null");
+      if (!(this.constraints.growthDirection != null)) dart.assertFailed(null, L0, 42, 12, "constraints.growthDirection != null");
+      if (!(this.resolvedPadding != null)) dart.assertFailed(null, L0, 43, 12, "resolvedPadding != null");
+      switch (sliver.applyGrowthDirectionToAxisDirection(this.constraints.axisDirection, this.constraints.growthDirection)) {
+        case C0 || CT.C0:
+        {
+          return dart.nullCheck(this.resolvedPadding).bottom;
+        }
+        case C1 || CT.C1:
+        {
+          return dart.nullCheck(this.resolvedPadding).left;
+        }
+        case C2 || CT.C2:
+        {
+          return dart.nullCheck(this.resolvedPadding).top;
+        }
+        case C3 || CT.C3:
+        {
+          return dart.nullCheck(this.resolvedPadding).right;
+        }
+        default:
+        {
+          dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
+        }
+      }
+    }
+    get afterPadding() {
+      if (!(this.constraints != null)) dart.assertFailed(null, L0, 61, 12, "constraints != null");
+      if (!(this.constraints.axisDirection != null)) dart.assertFailed(null, L0, 62, 12, "constraints.axisDirection != null");
+      if (!(this.constraints.growthDirection != null)) dart.assertFailed(null, L0, 63, 12, "constraints.growthDirection != null");
+      if (!(this.resolvedPadding != null)) dart.assertFailed(null, L0, 64, 12, "resolvedPadding != null");
+      switch (sliver.applyGrowthDirectionToAxisDirection(this.constraints.axisDirection, this.constraints.growthDirection)) {
+        case C0 || CT.C0:
+        {
+          return dart.nullCheck(this.resolvedPadding).top;
+        }
+        case C1 || CT.C1:
+        {
+          return dart.nullCheck(this.resolvedPadding).right;
+        }
+        case C2 || CT.C2:
+        {
+          return dart.nullCheck(this.resolvedPadding).bottom;
+        }
+        case C3 || CT.C3:
+        {
+          return dart.nullCheck(this.resolvedPadding).left;
+        }
+        default:
+        {
+          dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
+        }
+      }
+    }
+    get mainAxisPadding() {
+      if (!(this.constraints != null)) dart.assertFailed(null, L0, 84, 12, "constraints != null");
+      if (!(this.constraints.axis != null)) dart.assertFailed(null, L0, 85, 12, "constraints.axis != null");
+      if (!(this.resolvedPadding != null)) dart.assertFailed(null, L0, 86, 12, "resolvedPadding != null");
+      return dart.nullCheck(this.resolvedPadding).along(this.constraints.axis);
+    }
+    get crossAxisPadding() {
+      if (!(this.constraints != null)) dart.assertFailed(null, L0, 97, 12, "constraints != null");
+      if (!(this.constraints.axis != null)) dart.assertFailed(null, L0, 98, 12, "constraints.axis != null");
+      if (!(this.resolvedPadding != null)) dart.assertFailed(null, L0, 99, 12, "resolvedPadding != null");
+      switch (this.constraints.axis) {
+        case C4 || CT.C4:
+        {
+          return dart.nullCheck(this.resolvedPadding).vertical;
+        }
+        case C5 || CT.C5:
+        {
+          return dart.nullCheck(this.resolvedPadding).horizontal;
+        }
+        default:
+        {
+          dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
+        }
+      }
+    }
+    setupParentData(child) {
+      object.RenderObject.as(child);
+      if (child == null) dart.nullFailed(L0, 109, 37, "child");
+      if (!sliver.SliverPhysicalParentData.is(child.parentData)) child.parentData = new sliver.SliverPhysicalParentData.new();
+    }
+    performLayout() {
+      let constraints = this.constraints;
+      if (!(this.resolvedPadding != null)) dart.assertFailed(null, L0, 117, 12, "resolvedPadding != null");
+      let beforePadding = this.beforePadding;
+      let afterPadding = this.afterPadding;
+      let mainAxisPadding = this.mainAxisPadding;
+      let crossAxisPadding = this.crossAxisPadding;
+      if (this.child == null) {
+        this.geometry = new sliver.SliverGeometry.new({scrollExtent: mainAxisPadding, paintExtent: math.min(core.double, mainAxisPadding, constraints.remainingPaintExtent), maxPaintExtent: mainAxisPadding});
+        return;
+      }
+      let beforePaddingPaintExtent = this.calculatePaintOffset(constraints, {from: 0.0, to: beforePadding});
+      let overlap = constraints.overlap;
+      if (dart.notNull(overlap) > 0) {
+        overlap = math.max(core.double, 0.0, dart.notNull(constraints.overlap) - dart.notNull(beforePaddingPaintExtent));
+      }
+      dart.nullCheck(this.child).layout(constraints.copyWith({scrollOffset: math.max(core.double, 0.0, dart.notNull(constraints.scrollOffset) - dart.notNull(beforePadding)), cacheOrigin: math.min(core.double, 0.0, dart.notNull(constraints.cacheOrigin) + dart.notNull(beforePadding)), overlap: overlap, remainingPaintExtent: dart.notNull(constraints.remainingPaintExtent) - dart.notNull(this.calculatePaintOffset(constraints, {from: 0.0, to: beforePadding})), remainingCacheExtent: dart.notNull(constraints.remainingCacheExtent) - dart.notNull(this.calculateCacheOffset(constraints, {from: 0.0, to: beforePadding})), crossAxisExtent: math.max(core.double, 0.0, dart.notNull(constraints.crossAxisExtent) - dart.notNull(crossAxisPadding)), precedingScrollExtent: dart.notNull(beforePadding) + dart.notNull(constraints.precedingScrollExtent)}), {parentUsesSize: true});
+      let childLayoutGeometry = dart.nullCheck(dart.nullCheck(this.child).geometry);
+      if (childLayoutGeometry.scrollOffsetCorrection != null) {
+        this.geometry = new sliver.SliverGeometry.new({scrollOffsetCorrection: childLayoutGeometry.scrollOffsetCorrection});
+        return;
+      }
+      let afterPaddingPaintExtent = this.calculatePaintOffset(constraints, {from: dart.notNull(beforePadding) + dart.notNull(childLayoutGeometry.scrollExtent), to: dart.notNull(mainAxisPadding) + dart.notNull(childLayoutGeometry.scrollExtent)});
+      let mainAxisPaddingPaintExtent = dart.notNull(beforePaddingPaintExtent) + dart.notNull(afterPaddingPaintExtent);
+      let beforePaddingCacheExtent = this.calculateCacheOffset(constraints, {from: 0.0, to: beforePadding});
+      let afterPaddingCacheExtent = this.calculateCacheOffset(constraints, {from: dart.notNull(beforePadding) + dart.notNull(childLayoutGeometry.scrollExtent), to: dart.notNull(mainAxisPadding) + dart.notNull(childLayoutGeometry.scrollExtent)});
+      let mainAxisPaddingCacheExtent = dart.notNull(afterPaddingCacheExtent) + dart.notNull(beforePaddingCacheExtent);
+      let paintExtent = math.min(core.double, dart.notNull(beforePaddingPaintExtent) + math.max(core.num, childLayoutGeometry.paintExtent, dart.notNull(childLayoutGeometry.layoutExtent) + dart.notNull(afterPaddingPaintExtent)), constraints.remainingPaintExtent);
+      this.geometry = new sliver.SliverGeometry.new({paintOrigin: childLayoutGeometry.paintOrigin, scrollExtent: dart.notNull(mainAxisPadding) + dart.notNull(childLayoutGeometry.scrollExtent), paintExtent: paintExtent, layoutExtent: math.min(core.double, mainAxisPaddingPaintExtent + dart.notNull(childLayoutGeometry.layoutExtent), paintExtent), cacheExtent: math.min(core.double, mainAxisPaddingCacheExtent + dart.notNull(childLayoutGeometry.cacheExtent), constraints.remainingCacheExtent), maxPaintExtent: dart.notNull(mainAxisPadding) + dart.notNull(childLayoutGeometry.maxPaintExtent), hitTestExtent: math.max(core.double, mainAxisPaddingPaintExtent + dart.notNull(childLayoutGeometry.paintExtent), dart.notNull(beforePaddingPaintExtent) + dart.notNull(childLayoutGeometry.hitTestExtent)), hasVisualOverflow: childLayoutGeometry.hasVisualOverflow});
+      let childParentData = sliver.SliverPhysicalParentData.as(dart.nullCheck(dart.nullCheck(this.child).parentData));
+      if (!(constraints.axisDirection != null)) dart.assertFailed(null, L0, 194, 12, "constraints.axisDirection != null");
+      if (!(constraints.growthDirection != null)) dart.assertFailed(null, L0, 195, 12, "constraints.growthDirection != null");
+      switch (sliver.applyGrowthDirectionToAxisDirection(constraints.axisDirection, constraints.growthDirection)) {
+        case C0 || CT.C0:
+        {
+          childParentData.paintOffset = new ui.Offset.new(dart.nullCheck(this.resolvedPadding).left, this.calculatePaintOffset(constraints, {from: dart.notNull(dart.nullCheck(this.resolvedPadding).bottom) + dart.notNull(childLayoutGeometry.scrollExtent), to: dart.notNull(dart.nullCheck(this.resolvedPadding).bottom) + dart.notNull(childLayoutGeometry.scrollExtent) + dart.notNull(dart.nullCheck(this.resolvedPadding).top)}));
+          break;
+        }
+        case C1 || CT.C1:
+        {
+          childParentData.paintOffset = new ui.Offset.new(this.calculatePaintOffset(constraints, {from: 0.0, to: dart.nullCheck(this.resolvedPadding).left}), dart.nullCheck(this.resolvedPadding).top);
+          break;
+        }
+        case C2 || CT.C2:
+        {
+          childParentData.paintOffset = new ui.Offset.new(dart.nullCheck(this.resolvedPadding).left, this.calculatePaintOffset(constraints, {from: 0.0, to: dart.nullCheck(this.resolvedPadding).top}));
+          break;
+        }
+        case C3 || CT.C3:
+        {
+          childParentData.paintOffset = new ui.Offset.new(this.calculatePaintOffset(constraints, {from: dart.notNull(dart.nullCheck(this.resolvedPadding).right) + dart.notNull(childLayoutGeometry.scrollExtent), to: dart.notNull(dart.nullCheck(this.resolvedPadding).right) + dart.notNull(childLayoutGeometry.scrollExtent) + dart.notNull(dart.nullCheck(this.resolvedPadding).left)}), dart.nullCheck(this.resolvedPadding).top);
+          break;
+        }
+        default:
+        {
+          dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
+        }
+      }
+      if (!(childParentData.paintOffset != null)) dart.assertFailed(null, L0, 210, 12, "childParentData.paintOffset != null");
+      if (!(beforePadding == this.beforePadding)) dart.assertFailed(null, L0, 211, 12, "beforePadding == this.beforePadding");
+      if (!(afterPadding == this.afterPadding)) dart.assertFailed(null, L0, 212, 12, "afterPadding == this.afterPadding");
+      if (!(mainAxisPadding == this.mainAxisPadding)) dart.assertFailed(null, L0, 213, 12, "mainAxisPadding == this.mainAxisPadding");
+      if (!(crossAxisPadding == this.crossAxisPadding)) dart.assertFailed(null, L0, 214, 12, "crossAxisPadding == this.crossAxisPadding");
+    }
+    hitTestChildren(result, opts) {
+      if (result == null) dart.nullFailed(L0, 218, 44, "result");
+      let mainAxisPosition = opts && 'mainAxisPosition' in opts ? opts.mainAxisPosition : null;
+      if (mainAxisPosition == null) dart.nullFailed(L0, 218, 70, "mainAxisPosition");
+      let crossAxisPosition = opts && 'crossAxisPosition' in opts ? opts.crossAxisPosition : null;
+      if (crossAxisPosition == null) dart.nullFailed(L0, 218, 104, "crossAxisPosition");
+      if (this.child != null && dart.notNull(dart.nullCheck(dart.nullCheck(this.child).geometry).hitTestExtent) > 0.0) {
+        let childParentData = sliver.SliverPhysicalParentData.as(dart.nullCheck(dart.nullCheck(this.child).parentData));
+        result.addWithAxisOffset({mainAxisPosition: mainAxisPosition, crossAxisPosition: crossAxisPosition, mainAxisOffset: this.childMainAxisPosition(dart.nullCheck(this.child)), crossAxisOffset: this.childCrossAxisPosition(dart.nullCheck(this.child)), paintOffset: childParentData.paintOffset, hitTest: dart.bind(dart.nullCheck(this.child), 'hitTest')});
+      }
+      return false;
+    }
+    childMainAxisPosition(child) {
+      sliver.RenderSliver.as(child);
+      if (child == null) dart.nullFailed(L0, 234, 45, "child");
+      if (!(child != null)) dart.assertFailed(null, L0, 235, 12, "child != null");
+      if (!dart.equals(child, this.child)) dart.assertFailed(null, L0, 236, 12, "child == this.child");
+      return this.calculatePaintOffset(this.constraints, {from: 0.0, to: this.beforePadding});
+    }
+    childCrossAxisPosition(child) {
+      sliver.RenderSliver.as(child);
+      if (child == null) dart.nullFailed(L0, 241, 46, "child");
+      if (!(child != null)) dart.assertFailed(null, L0, 242, 12, "child != null");
+      if (!dart.equals(child, this.child)) dart.assertFailed(null, L0, 243, 12, "child == this.child");
+      if (!(this.constraints != null)) dart.assertFailed(null, L0, 244, 12, "constraints != null");
+      if (!(this.constraints.axisDirection != null)) dart.assertFailed(null, L0, 245, 12, "constraints.axisDirection != null");
+      if (!(this.constraints.growthDirection != null)) dart.assertFailed(null, L0, 246, 12, "constraints.growthDirection != null");
+      if (!(this.resolvedPadding != null)) dart.assertFailed(null, L0, 247, 12, "resolvedPadding != null");
+      switch (sliver.applyGrowthDirectionToAxisDirection(this.constraints.axisDirection, this.constraints.growthDirection)) {
+        case C0 || CT.C0:
+        case C2 || CT.C2:
+        {
+          return dart.nullCheck(this.resolvedPadding).left;
+        }
+        case C3 || CT.C3:
+        case C1 || CT.C1:
+        {
+          return dart.nullCheck(this.resolvedPadding).top;
+        }
+        default:
+        {
+          dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
+        }
+      }
+    }
+    childScrollOffset(child) {
+      object.RenderObject.as(child);
+      if (child == null) dart.nullFailed(L0, 259, 42, "child");
+      if (!dart.equals(child.parent, this)) dart.assertFailed(null, L0, 260, 12, "child.parent == this");
+      return this.beforePadding;
+    }
+    applyPaintTransform(child, transform) {
+      object.RenderObject.as(child);
+      if (child == null) dart.nullFailed(L0, 265, 41, "child");
+      if (transform == null) dart.nullFailed(L0, 265, 56, "transform");
+      if (!(child != null)) dart.assertFailed(null, L0, 266, 12, "child != null");
+      if (!dart.equals(child, this.child)) dart.assertFailed(null, L0, 267, 12, "child == this.child");
+      let childParentData = sliver.SliverPhysicalParentData.as(dart.nullCheck(child.parentData));
+      childParentData.applyPaintTransform(transform);
+    }
+    paint(context, offset) {
+      if (context == null) dart.nullFailed(L0, 273, 30, "context");
+      if (offset == null) dart.nullFailed(L0, 273, 46, "offset");
+      if (this.child != null && dart.test(dart.nullCheck(dart.nullCheck(this.child).geometry).visible)) {
+        let childParentData = sliver.SliverPhysicalParentData.as(dart.nullCheck(dart.nullCheck(this.child).parentData));
+        context.paintChild(dart.nullCheck(this.child), offset['+'](childParentData.paintOffset));
+      }
+    }
+    debugPaint(context, offset) {
+      if (context == null) dart.nullFailed(L0, 281, 35, "context");
+      if (offset == null) dart.nullFailed(L0, 281, 51, "offset");
+      super.debugPaint(context, offset);
+      if (!dart.test(dart.fn(() => {
+        if (dart.test(debug.debugPaintSizeEnabled)) {
+          let parentSize = this.getAbsoluteSize();
+          let outerRect = offset['&'](parentSize);
+          let innerRect = null;
+          if (this.child != null) {
+            let childSize = dart.nullCheck(this.child).getAbsoluteSize();
+            let childParentData = sliver.SliverPhysicalParentData.as(dart.nullCheck(dart.nullCheck(this.child).parentData));
+            innerRect = offset['+'](childParentData.paintOffset)['&'](childSize);
+            if (!(dart.notNull(innerRect.top) >= dart.notNull(outerRect.top))) dart.assertFailed(null, L0, 292, 18, "innerRect.top >= outerRect.top");
+            if (!(dart.notNull(innerRect.left) >= dart.notNull(outerRect.left))) dart.assertFailed(null, L0, 293, 18, "innerRect.left >= outerRect.left");
+            if (!(dart.notNull(innerRect.right) <= dart.notNull(outerRect.right))) dart.assertFailed(null, L0, 294, 18, "innerRect.right <= outerRect.right");
+            if (!(dart.notNull(innerRect.bottom) <= dart.notNull(outerRect.bottom))) dart.assertFailed(null, L0, 295, 18, "innerRect.bottom <= outerRect.bottom");
+          }
+          debug.debugPaintPadding(context.canvas, outerRect, innerRect);
+        }
+        return true;
+      }, VoidTobool())())) dart.assertFailed(null, L0, 283, 12, "() {\r\n      if (debugPaintSizeEnabled) {\r\n        final Size parentSize = getAbsoluteSize();\r\n        final Rect outerRect = offset & parentSize;\r\n        Rect? innerRect;\r\n        if (child != null) {\r\n          final Size childSize = child!.getAbsoluteSize();\r\n          final SliverPhysicalParentData childParentData = child!.parentData! as SliverPhysicalParentData;\r\n          innerRect = (offset + childParentData.paintOffset) & childSize;\r\n          assert(innerRect.top >= outerRect.top);\r\n          assert(innerRect.left >= outerRect.left);\r\n          assert(innerRect.right <= outerRect.right);\r\n          assert(innerRect.bottom <= outerRect.bottom);\r\n        }\r\n        debugPaintPadding(context.canvas, outerRect, innerRect);\r\n      }\r\n      return true;\r\n    }()");
     }
   };
-  (plural_rules.PluralCase.new = function(index, _name) {
-    this.index = index;
-    this[_name$] = _name;
+  (sliver_padding.RenderSliverEdgeInsetsPadding.new = function() {
+    sliver_padding.RenderSliverEdgeInsetsPadding.__proto__.new.call(this);
     ;
-  }).prototype = plural_rules.PluralCase.prototype;
-  dart.addTypeTests(plural_rules.PluralCase);
-  dart.addTypeCaches(plural_rules.PluralCase);
-  dart.setMethodSignature(plural_rules.PluralCase, () => ({
-    __proto__: dart.getMethods(plural_rules.PluralCase.__proto__),
-    toString: dart.fnType(dart.legacy(core.String), []),
-    [$toString]: dart.fnType(dart.legacy(core.String), [])
+  }).prototype = sliver_padding.RenderSliverEdgeInsetsPadding.prototype;
+  dart.addTypeTests(sliver_padding.RenderSliverEdgeInsetsPadding);
+  dart.addTypeCaches(sliver_padding.RenderSliverEdgeInsetsPadding);
+  dart.setMethodSignature(sliver_padding.RenderSliverEdgeInsetsPadding, () => ({
+    __proto__: dart.getMethods(sliver_padding.RenderSliverEdgeInsetsPadding.__proto__),
+    performLayout: dart.fnType(dart.void, [])
   }));
-  dart.setLibraryUri(plural_rules.PluralCase, L0);
-  dart.setFieldSignature(plural_rules.PluralCase, () => ({
-    __proto__: dart.getFields(plural_rules.PluralCase.__proto__),
-    index: dart.finalFieldType(dart.legacy(core.int)),
-    [_name$]: dart.finalFieldType(dart.legacy(core.String))
+  dart.setGetterSignature(sliver_padding.RenderSliverEdgeInsetsPadding, () => ({
+    __proto__: dart.getGetters(sliver_padding.RenderSliverEdgeInsetsPadding.__proto__),
+    beforePadding: core.double,
+    afterPadding: core.double,
+    mainAxisPadding: core.double,
+    crossAxisPadding: core.double
   }));
-  dart.defineExtensionMethods(plural_rules.PluralCase, ['toString']);
-  plural_rules.PluralCase.ZERO = C0 || CT.C0;
-  plural_rules.PluralCase.ONE = C1 || CT.C1;
-  plural_rules.PluralCase.TWO = C2 || CT.C2;
-  plural_rules.PluralCase.FEW = C3 || CT.C3;
-  plural_rules.PluralCase.MANY = C4 || CT.C4;
-  plural_rules.PluralCase.OTHER = C5 || CT.C5;
-  plural_rules.PluralCase.values = C6 || CT.C6;
-  plural_rules._default_rule = function _default_rule() {
-    return plural_rules.OTHER;
+  dart.setLibraryUri(sliver_padding.RenderSliverEdgeInsetsPadding, L1);
+  var _resolvedPadding = dart.privateName(sliver_padding, "_resolvedPadding");
+  var _padding = dart.privateName(sliver_padding, "_padding");
+  var _textDirection = dart.privateName(sliver_padding, "_textDirection");
+  var _resolve = dart.privateName(sliver_padding, "_resolve");
+  var _markNeedsResolution = dart.privateName(sliver_padding, "_markNeedsResolution");
+  sliver_padding.RenderSliverPadding = class RenderSliverPadding extends sliver_padding.RenderSliverEdgeInsetsPadding {
+    get resolvedPadding() {
+      return this[_resolvedPadding];
+    }
+    [_resolve]() {
+      if (this.resolvedPadding != null) return;
+      this[_resolvedPadding] = this.padding.resolve(this.textDirection);
+      if (!dart.test(dart.nullCheck(this.resolvedPadding).isNonNegative)) dart.assertFailed(null, L0, 334, 12, "resolvedPadding!.isNonNegative");
+    }
+    [_markNeedsResolution]() {
+      this[_resolvedPadding] = null;
+      this.markNeedsLayout();
+    }
+    get padding() {
+      return this[_padding];
+    }
+    set padding(value) {
+      if (value == null) dart.nullFailed(L0, 348, 34, "value");
+      if (!(value != null)) dart.assertFailed(null, L0, 349, 12, "value != null");
+      if (!dart.test(this.padding.isNonNegative)) dart.assertFailed(null, L0, 350, 12, "padding.isNonNegative");
+      if (dart.equals(this[_padding], value)) return;
+      this[_padding] = value;
+      this[_markNeedsResolution]();
+    }
+    get textDirection() {
+      return this[_textDirection];
+    }
+    set textDirection(value) {
+      if (dart.equals(this[_textDirection], value)) return;
+      this[_textDirection] = value;
+      this[_markNeedsResolution]();
+    }
+    performLayout() {
+      this[_resolve]();
+      super.performLayout();
+    }
+    debugFillProperties(properties) {
+      if (properties == null) dart.nullFailed(L0, 377, 56, "properties");
+      super.debugFillProperties(properties);
+      properties.add(new (DiagnosticsPropertyOfEdgeInsetsGeometry()).new("padding", this.padding));
+      properties.add(new (EnumPropertyOfTextDirection()).new("textDirection", this.textDirection, {defaultValue: null}));
+    }
   };
-  plural_rules.startRuleEvaluation = function startRuleEvaluation(howMany, precision = 0) {
-    plural_rules._n = howMany;
-    plural_rules._precision = precision;
-    plural_rules._i = plural_rules._n[$round]();
-    plural_rules._updateVF(plural_rules._n, plural_rules._precision);
-    plural_rules._updateWT(plural_rules._f, plural_rules._v);
-  };
-  plural_rules._decimals = function _decimals(n, precision) {
-    let str = plural_rules._precision == null ? dart.str(n) : n[$toStringAsFixed](precision);
-    let result = str[$indexOf](".");
-    return result === -1 ? 0 : str.length - result - 1;
-  };
-  plural_rules._updateVF = function _updateVF(n, precision) {
-    let t0;
-    let defaultDigits = 3;
-    plural_rules._v = (t0 = precision, t0 == null ? math.min(intL(), plural_rules._decimals(n, precision), defaultDigits) : t0);
-    let base = dart.asNullableInt(math.pow(10, plural_rules._v));
-    plural_rules._f = (dart.notNull(n) * base)[$floor]()[$modulo](base);
-  };
-  plural_rules._updateWT = function _updateWT(v, f) {
-    if (f === 0) {
-      plural_rules._t = 0;
-      return;
-    }
-    while (f[$modulo](10) === 0) {
-      f = (dart.notNull(f) / 10)[$floor]();
-      v = dart.notNull(v) - 1;
-    }
-    plural_rules._t = f;
-  };
-  plural_rules._fil_rule = function _fil_rule() {
-    if (plural_rules._v === 0 && (plural_rules._i === 1 || plural_rules._i === 2 || plural_rules._i === 3) || plural_rules._v === 0 && plural_rules._i[$modulo](10) !== 4 && plural_rules._i[$modulo](10) !== 6 && plural_rules._i[$modulo](10) !== 9 || plural_rules._v !== 0 && plural_rules._f[$modulo](10) !== 4 && plural_rules._f[$modulo](10) !== 6 && plural_rules._f[$modulo](10) !== 9) {
-      return plural_rules.ONE;
-    }
-    return plural_rules.OTHER;
-  };
-  plural_rules._pt_PT_rule = function _pt_PT_rule() {
-    if (plural_rules._n === 1 && plural_rules._v === 0) {
-      return plural_rules.ONE;
-    }
-    return plural_rules.OTHER;
-  };
-  plural_rules._br_rule = function _br_rule() {
-    if (plural_rules._n[$modulo](10) === 1 && plural_rules._n[$modulo](100) !== 11 && plural_rules._n[$modulo](100) !== 71 && plural_rules._n[$modulo](100) !== 91) {
-      return plural_rules.ONE;
-    }
-    if (plural_rules._n[$modulo](10) === 2 && plural_rules._n[$modulo](100) !== 12 && plural_rules._n[$modulo](100) !== 72 && plural_rules._n[$modulo](100) !== 92) {
-      return plural_rules.TWO;
-    }
-    if ((plural_rules._n[$modulo](10) >= 3 && plural_rules._n[$modulo](10) <= 4 || plural_rules._n[$modulo](10) === 9) && (plural_rules._n[$modulo](100) < 10 || plural_rules._n[$modulo](100) > 19) && (plural_rules._n[$modulo](100) < 70 || plural_rules._n[$modulo](100) > 79) && (plural_rules._n[$modulo](100) < 90 || plural_rules._n[$modulo](100) > 99)) {
-      return plural_rules.FEW;
-    }
-    if (plural_rules._n !== 0 && plural_rules._n[$modulo](1000000) === 0) {
-      return plural_rules.MANY;
-    }
-    return plural_rules.OTHER;
-  };
-  plural_rules._sr_rule = function _sr_rule() {
-    if (plural_rules._v === 0 && plural_rules._i[$modulo](10) === 1 && plural_rules._i[$modulo](100) !== 11 || plural_rules._f[$modulo](10) === 1 && plural_rules._f[$modulo](100) !== 11) {
-      return plural_rules.ONE;
-    }
-    if (plural_rules._v === 0 && plural_rules._i[$modulo](10) >= 2 && plural_rules._i[$modulo](10) <= 4 && (plural_rules._i[$modulo](100) < 12 || plural_rules._i[$modulo](100) > 14) || plural_rules._f[$modulo](10) >= 2 && plural_rules._f[$modulo](10) <= 4 && (plural_rules._f[$modulo](100) < 12 || plural_rules._f[$modulo](100) > 14)) {
-      return plural_rules.FEW;
-    }
-    return plural_rules.OTHER;
-  };
-  plural_rules._ro_rule = function _ro_rule() {
-    if (plural_rules._i === 1 && plural_rules._v === 0) {
-      return plural_rules.ONE;
-    }
-    if (plural_rules._v !== 0 || plural_rules._n === 0 || plural_rules._n !== 1 && plural_rules._n[$modulo](100) >= 1 && plural_rules._n[$modulo](100) <= 19) {
-      return plural_rules.FEW;
-    }
-    return plural_rules.OTHER;
-  };
-  plural_rules._hi_rule = function _hi_rule() {
-    if (plural_rules._i === 0 || plural_rules._n === 1) {
-      return plural_rules.ONE;
-    }
-    return plural_rules.OTHER;
-  };
-  plural_rules._fr_rule = function _fr_rule() {
-    if (plural_rules._i === 0 || plural_rules._i === 1) {
-      return plural_rules.ONE;
-    }
-    return plural_rules.OTHER;
-  };
-  plural_rules._cs_rule = function _cs_rule() {
-    if (plural_rules._i === 1 && plural_rules._v === 0) {
-      return plural_rules.ONE;
-    }
-    if (dart.notNull(plural_rules._i) >= 2 && dart.notNull(plural_rules._i) <= 4 && plural_rules._v === 0) {
-      return plural_rules.FEW;
-    }
-    if (plural_rules._v !== 0) {
-      return plural_rules.MANY;
-    }
-    return plural_rules.OTHER;
-  };
-  plural_rules._pl_rule = function _pl_rule() {
-    if (plural_rules._i === 1 && plural_rules._v === 0) {
-      return plural_rules.ONE;
-    }
-    if (plural_rules._v === 0 && plural_rules._i[$modulo](10) >= 2 && plural_rules._i[$modulo](10) <= 4 && (plural_rules._i[$modulo](100) < 12 || plural_rules._i[$modulo](100) > 14)) {
-      return plural_rules.FEW;
-    }
-    if (plural_rules._v === 0 && plural_rules._i !== 1 && plural_rules._i[$modulo](10) >= 0 && plural_rules._i[$modulo](10) <= 1 || plural_rules._v === 0 && plural_rules._i[$modulo](10) >= 5 && plural_rules._i[$modulo](10) <= 9 || plural_rules._v === 0 && plural_rules._i[$modulo](100) >= 12 && plural_rules._i[$modulo](100) <= 14) {
-      return plural_rules.MANY;
-    }
-    return plural_rules.OTHER;
-  };
-  plural_rules._lv_rule = function _lv_rule() {
-    if (plural_rules._n[$modulo](10) === 0 || plural_rules._n[$modulo](100) >= 11 && plural_rules._n[$modulo](100) <= 19 || plural_rules._v === 2 && plural_rules._f[$modulo](100) >= 11 && plural_rules._f[$modulo](100) <= 19) {
-      return plural_rules.ZERO;
-    }
-    if (plural_rules._n[$modulo](10) === 1 && plural_rules._n[$modulo](100) !== 11 || plural_rules._v === 2 && plural_rules._f[$modulo](10) === 1 && plural_rules._f[$modulo](100) !== 11 || plural_rules._v !== 2 && plural_rules._f[$modulo](10) === 1) {
-      return plural_rules.ONE;
-    }
-    return plural_rules.OTHER;
-  };
-  plural_rules._he_rule = function _he_rule() {
-    if (plural_rules._i === 1 && plural_rules._v === 0) {
-      return plural_rules.ONE;
-    }
-    if (plural_rules._i === 2 && plural_rules._v === 0) {
-      return plural_rules.TWO;
-    }
-    if (plural_rules._v === 0 && (dart.notNull(plural_rules._n) < 0 || dart.notNull(plural_rules._n) > 10) && plural_rules._n[$modulo](10) === 0) {
-      return plural_rules.MANY;
-    }
-    return plural_rules.OTHER;
-  };
-  plural_rules._mt_rule = function _mt_rule() {
-    if (plural_rules._n === 1) {
-      return plural_rules.ONE;
-    }
-    if (plural_rules._n === 0 || plural_rules._n[$modulo](100) >= 2 && plural_rules._n[$modulo](100) <= 10) {
-      return plural_rules.FEW;
-    }
-    if (plural_rules._n[$modulo](100) >= 11 && plural_rules._n[$modulo](100) <= 19) {
-      return plural_rules.MANY;
-    }
-    return plural_rules.OTHER;
-  };
-  plural_rules._si_rule = function _si_rule() {
-    if (plural_rules._n === 0 || plural_rules._n === 1 || plural_rules._i === 0 && plural_rules._f === 1) {
-      return plural_rules.ONE;
-    }
-    return plural_rules.OTHER;
-  };
-  plural_rules._cy_rule = function _cy_rule() {
-    if (plural_rules._n === 0) {
-      return plural_rules.ZERO;
-    }
-    if (plural_rules._n === 1) {
-      return plural_rules.ONE;
-    }
-    if (plural_rules._n === 2) {
-      return plural_rules.TWO;
-    }
-    if (plural_rules._n === 3) {
-      return plural_rules.FEW;
-    }
-    if (plural_rules._n === 6) {
-      return plural_rules.MANY;
-    }
-    return plural_rules.OTHER;
-  };
-  plural_rules._da_rule = function _da_rule() {
-    if (plural_rules._n === 1 || plural_rules._t !== 0 && (plural_rules._i === 0 || plural_rules._i === 1)) {
-      return plural_rules.ONE;
-    }
-    return plural_rules.OTHER;
-  };
-  plural_rules._ru_rule = function _ru_rule() {
-    if (plural_rules._v === 0 && plural_rules._i[$modulo](10) === 1 && plural_rules._i[$modulo](100) !== 11) {
-      return plural_rules.ONE;
-    }
-    if (plural_rules._v === 0 && plural_rules._i[$modulo](10) >= 2 && plural_rules._i[$modulo](10) <= 4 && (plural_rules._i[$modulo](100) < 12 || plural_rules._i[$modulo](100) > 14)) {
-      return plural_rules.FEW;
-    }
-    if (plural_rules._v === 0 && plural_rules._i[$modulo](10) === 0 || plural_rules._v === 0 && plural_rules._i[$modulo](10) >= 5 && plural_rules._i[$modulo](10) <= 9 || plural_rules._v === 0 && plural_rules._i[$modulo](100) >= 11 && plural_rules._i[$modulo](100) <= 14) {
-      return plural_rules.MANY;
-    }
-    return plural_rules.OTHER;
-  };
-  plural_rules._be_rule = function _be_rule() {
-    if (plural_rules._n[$modulo](10) === 1 && plural_rules._n[$modulo](100) !== 11) {
-      return plural_rules.ONE;
-    }
-    if (plural_rules._n[$modulo](10) >= 2 && plural_rules._n[$modulo](10) <= 4 && (plural_rules._n[$modulo](100) < 12 || plural_rules._n[$modulo](100) > 14)) {
-      return plural_rules.FEW;
-    }
-    if (plural_rules._n[$modulo](10) === 0 || plural_rules._n[$modulo](10) >= 5 && plural_rules._n[$modulo](10) <= 9 || plural_rules._n[$modulo](100) >= 11 && plural_rules._n[$modulo](100) <= 14) {
-      return plural_rules.MANY;
-    }
-    return plural_rules.OTHER;
-  };
-  plural_rules._mk_rule = function _mk_rule() {
-    if (plural_rules._v === 0 && plural_rules._i[$modulo](10) === 1 || plural_rules._f[$modulo](10) === 1) {
-      return plural_rules.ONE;
-    }
-    return plural_rules.OTHER;
-  };
-  plural_rules._ga_rule = function _ga_rule() {
-    if (plural_rules._n === 1) {
-      return plural_rules.ONE;
-    }
-    if (plural_rules._n === 2) {
-      return plural_rules.TWO;
-    }
-    if (dart.notNull(plural_rules._n) >= 3 && dart.notNull(plural_rules._n) <= 6) {
-      return plural_rules.FEW;
-    }
-    if (dart.notNull(plural_rules._n) >= 7 && dart.notNull(plural_rules._n) <= 10) {
-      return plural_rules.MANY;
-    }
-    return plural_rules.OTHER;
-  };
-  plural_rules._pt_rule = function _pt_rule() {
-    if (dart.notNull(plural_rules._n) >= 0 && dart.notNull(plural_rules._n) <= 2 && plural_rules._n !== 2) {
-      return plural_rules.ONE;
-    }
-    return plural_rules.OTHER;
-  };
-  plural_rules._es_rule = function _es_rule() {
-    if (plural_rules._n === 1) {
-      return plural_rules.ONE;
-    }
-    return plural_rules.OTHER;
-  };
-  plural_rules._is_rule = function _is_rule() {
-    if (plural_rules._t === 0 && plural_rules._i[$modulo](10) === 1 && plural_rules._i[$modulo](100) !== 11 || plural_rules._t !== 0) {
-      return plural_rules.ONE;
-    }
-    return plural_rules.OTHER;
-  };
-  plural_rules._ar_rule = function _ar_rule() {
-    if (plural_rules._n === 0) {
-      return plural_rules.ZERO;
-    }
-    if (plural_rules._n === 1) {
-      return plural_rules.ONE;
-    }
-    if (plural_rules._n === 2) {
-      return plural_rules.TWO;
-    }
-    if (plural_rules._n[$modulo](100) >= 3 && plural_rules._n[$modulo](100) <= 10) {
-      return plural_rules.FEW;
-    }
-    if (plural_rules._n[$modulo](100) >= 11 && plural_rules._n[$modulo](100) <= 99) {
-      return plural_rules.MANY;
-    }
-    return plural_rules.OTHER;
-  };
-  plural_rules._sl_rule = function _sl_rule() {
-    if (plural_rules._v === 0 && plural_rules._i[$modulo](100) === 1) {
-      return plural_rules.ONE;
-    }
-    if (plural_rules._v === 0 && plural_rules._i[$modulo](100) === 2) {
-      return plural_rules.TWO;
-    }
-    if (plural_rules._v === 0 && plural_rules._i[$modulo](100) >= 3 && plural_rules._i[$modulo](100) <= 4 || plural_rules._v !== 0) {
-      return plural_rules.FEW;
-    }
-    return plural_rules.OTHER;
-  };
-  plural_rules._lt_rule = function _lt_rule() {
-    if (plural_rules._n[$modulo](10) === 1 && (plural_rules._n[$modulo](100) < 11 || plural_rules._n[$modulo](100) > 19)) {
-      return plural_rules.ONE;
-    }
-    if (plural_rules._n[$modulo](10) >= 2 && plural_rules._n[$modulo](10) <= 9 && (plural_rules._n[$modulo](100) < 11 || plural_rules._n[$modulo](100) > 19)) {
-      return plural_rules.FEW;
-    }
-    if (plural_rules._f !== 0) {
-      return plural_rules.MANY;
-    }
-    return plural_rules.OTHER;
-  };
-  plural_rules._en_rule = function _en_rule() {
-    if (plural_rules._i === 1 && plural_rules._v === 0) {
-      return plural_rules.ONE;
-    }
-    return plural_rules.OTHER;
-  };
-  plural_rules._ak_rule = function _ak_rule() {
-    if (dart.notNull(plural_rules._n) >= 0 && dart.notNull(plural_rules._n) <= 1) {
-      return plural_rules.ONE;
-    }
-    return plural_rules.OTHER;
-  };
-  plural_rules.localeHasPluralRules = function localeHasPluralRules(locale) {
-    return plural_rules.pluralRules[$containsKey](locale);
-  };
-  dart.copyProperties(plural_rules, {
-    get ZERO() {
-      return plural_rules.PluralCase.ZERO;
-    },
-    get ONE() {
-      return plural_rules.PluralCase.ONE;
-    },
-    get TWO() {
-      return plural_rules.PluralCase.TWO;
-    },
-    get FEW() {
-      return plural_rules.PluralCase.FEW;
-    },
-    get MANY() {
-      return plural_rules.PluralCase.MANY;
-    },
-    get OTHER() {
-      return plural_rules.PluralCase.OTHER;
-    }
-  });
-  var C7;
-  var C8;
-  var C9;
-  var C10;
-  var C11;
-  var C12;
-  var C13;
-  var C14;
-  var C15;
-  var C16;
-  var C17;
-  var C18;
-  var C19;
-  var C20;
-  var C21;
-  var C22;
-  var C23;
-  var C24;
-  var C25;
-  var C26;
-  var C27;
-  var C28;
-  var C29;
-  var C30;
-  var C31;
-  var C32;
-  var C33;
-  var C34;
-  dart.defineLazy(plural_rules, {
-    /*plural_rules._n*/get _n() {
-      return null;
-    },
-    set _n(_) {},
-    /*plural_rules._i*/get _i() {
-      return null;
-    },
-    set _i(_) {},
-    /*plural_rules._precision*/get _precision() {
-      return null;
-    },
-    set _precision(_) {},
-    /*plural_rules._v*/get _v() {
-      return 0;
-    },
-    set _v(_) {},
-    /*plural_rules._f*/get _f() {
-      return 0;
-    },
-    set _f(_) {},
-    /*plural_rules._t*/get _t() {
-      return 0;
-    },
-    set _t(_) {},
-    /*plural_rules.pluralRules*/get pluralRules() {
-      return new _js_helper.LinkedMap.from(["af", C7 || CT.C7, "am", C8 || CT.C8, "ar", C9 || CT.C9, "az", C7 || CT.C7, "be", C10 || CT.C10, "bg", C7 || CT.C7, "bn", C8 || CT.C8, "br", C11 || CT.C11, "bs", C12 || CT.C12, "ca", C13 || CT.C13, "chr", C7 || CT.C7, "cs", C14 || CT.C14, "cy", C15 || CT.C15, "da", C16 || CT.C16, "de", C13 || CT.C13, "de_AT", C13 || CT.C13, "de_CH", C13 || CT.C13, "el", C7 || CT.C7, "en", C13 || CT.C13, "en_AU", C13 || CT.C13, "en_CA", C13 || CT.C13, "en_GB", C13 || CT.C13, "en_IE", C13 || CT.C13, "en_IN", C13 || CT.C13, "en_SG", C13 || CT.C13, "en_US", C13 || CT.C13, "en_ZA", C13 || CT.C13, "es", C7 || CT.C7, "es_419", C7 || CT.C7, "es_ES", C7 || CT.C7, "es_MX", C7 || CT.C7, "es_US", C7 || CT.C7, "et", C13 || CT.C13, "eu", C7 || CT.C7, "fa", C8 || CT.C8, "fi", C13 || CT.C13, "fil", C17 || CT.C17, "fr", C18 || CT.C18, "fr_CA", C18 || CT.C18, "ga", C19 || CT.C19, "gl", C13 || CT.C13, "gsw", C7 || CT.C7, "gu", C8 || CT.C8, "haw", C7 || CT.C7, "he", C20 || CT.C20, "hi", C8 || CT.C8, "hr", C12 || CT.C12, "hu", C7 || CT.C7, "hy", C18 || CT.C18, "id", C21 || CT.C21, "in", C21 || CT.C21, "is", C22 || CT.C22, "it", C13 || CT.C13, "iw", C20 || CT.C20, "ja", C21 || CT.C21, "ka", C7 || CT.C7, "kk", C7 || CT.C7, "km", C21 || CT.C21, "kn", C8 || CT.C8, "ko", C21 || CT.C21, "ky", C7 || CT.C7, "ln", C23 || CT.C23, "lo", C21 || CT.C21, "lt", C24 || CT.C24, "lv", C25 || CT.C25, "mk", C26 || CT.C26, "ml", C7 || CT.C7, "mn", C7 || CT.C7, "mo", C27 || CT.C27, "mr", C8 || CT.C8, "ms", C21 || CT.C21, "mt", C28 || CT.C28, "my", C21 || CT.C21, "nb", C7 || CT.C7, "ne", C7 || CT.C7, "nl", C13 || CT.C13, "no", C7 || CT.C7, "no_NO", C7 || CT.C7, "or", C7 || CT.C7, "pa", C23 || CT.C23, "pl", C29 || CT.C29, "pt", C30 || CT.C30, "pt_BR", C30 || CT.C30, "pt_PT", C31 || CT.C31, "ro", C27 || CT.C27, "ru", C32 || CT.C32, "sh", C12 || CT.C12, "si", C33 || CT.C33, "sk", C14 || CT.C14, "sl", C34 || CT.C34, "sq", C7 || CT.C7, "sr", C12 || CT.C12, "sr_Latn", C12 || CT.C12, "sv", C13 || CT.C13, "sw", C13 || CT.C13, "ta", C7 || CT.C7, "te", C7 || CT.C7, "th", C21 || CT.C21, "tl", C17 || CT.C17, "tr", C7 || CT.C7, "uk", C32 || CT.C32, "ur", C13 || CT.C13, "uz", C7 || CT.C7, "vi", C21 || CT.C21, "zh", C21 || CT.C21, "zh_CN", C21 || CT.C21, "zh_HK", C21 || CT.C21, "zh_TW", C21 || CT.C21, "zu", C8 || CT.C8, "default", C21 || CT.C21]);
-    }
-  }, true);
-  dart.trackLibraries("packages/intl/src/plural_rules.dart", {
-    "package:intl/src/plural_rules.dart": plural_rules
+  (sliver_padding.RenderSliverPadding.new = function(opts) {
+    let padding = opts && 'padding' in opts ? opts.padding : null;
+    if (padding == null) dart.nullFailed(L0, 316, 33, "padding");
+    let textDirection = opts && 'textDirection' in opts ? opts.textDirection : null;
+    let child = opts && 'child' in opts ? opts.child : null;
+    this[_resolvedPadding] = null;
+    if (!(padding != null)) dart.assertFailed(null, L0, 319, 15, "padding != null");
+    if (!dart.test(padding.isNonNegative)) dart.assertFailed(null, L0, 320, 15, "padding.isNonNegative");
+    this[_padding] = padding;
+    this[_textDirection] = textDirection;
+    sliver_padding.RenderSliverPadding.__proto__.new.call(this);
+    this.child = child;
+  }).prototype = sliver_padding.RenderSliverPadding.prototype;
+  dart.addTypeTests(sliver_padding.RenderSliverPadding);
+  dart.addTypeCaches(sliver_padding.RenderSliverPadding);
+  dart.setMethodSignature(sliver_padding.RenderSliverPadding, () => ({
+    __proto__: dart.getMethods(sliver_padding.RenderSliverPadding.__proto__),
+    [_resolve]: dart.fnType(dart.void, []),
+    [_markNeedsResolution]: dart.fnType(dart.void, [])
+  }));
+  dart.setGetterSignature(sliver_padding.RenderSliverPadding, () => ({
+    __proto__: dart.getGetters(sliver_padding.RenderSliverPadding.__proto__),
+    resolvedPadding: dart.nullable(edge_insets.EdgeInsets),
+    padding: edge_insets.EdgeInsetsGeometry,
+    textDirection: dart.nullable(ui.TextDirection)
+  }));
+  dart.setSetterSignature(sliver_padding.RenderSliverPadding, () => ({
+    __proto__: dart.getSetters(sliver_padding.RenderSliverPadding.__proto__),
+    padding: edge_insets.EdgeInsetsGeometry,
+    textDirection: dart.nullable(ui.TextDirection)
+  }));
+  dart.setLibraryUri(sliver_padding.RenderSliverPadding, L1);
+  dart.setFieldSignature(sliver_padding.RenderSliverPadding, () => ({
+    __proto__: dart.getFields(sliver_padding.RenderSliverPadding.__proto__),
+    [_resolvedPadding]: dart.fieldType(dart.nullable(edge_insets.EdgeInsets)),
+    [_padding]: dart.fieldType(edge_insets.EdgeInsetsGeometry),
+    [_textDirection]: dart.fieldType(dart.nullable(ui.TextDirection))
+  }));
+  dart.trackLibraries("packages/flutter/src/rendering/sliver_padding.dart", {
+    "package:flutter/src/rendering/sliver_padding.dart": sliver_padding
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["plural_rules.dart"],"names":[],"mappings":"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M,yBAAJ,OAAM;AAC/C,YAAO;;AAET,QAAI,AAAG,AAAK,yBAAH,OAAM,KAAK,AAAG,AAAK,yBAAH,OAAM,MAAM,AAAG,AAAM,yBAAJ,OAAM,MAAM,AAAG,AAAM,yBAAJ,OAAM;AAC/D,YAAO;;AAET,QAAI,oBAAM;AACR,YAAO;;AAET,UAAO;EACT;;AAGE,QAAI,AAAG,oBAAG,KAAK,AAAG,oBAAG;AACnB,YAAO;;AAET,UAAO;EACT;;AAGE,QAAO,aAAH,oBAAM,KAAQ,aAAH,oBAAM;AACnB,YAAO;;AAET,UAAO;EACT;oEAqHiC;AAAW,UAAA,AAAY,wCAAY,MAAM;EAAC;;;AApbpD,YAAW;IAAI;;AAChB,YAAW;IAAG;;AACd,YAAW;IAAG;;AACd,YAAW;IAAG;;AACb,YAAW;IAAI;;AACd,YAAW;IAAK;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;MAjFpC,eAAE;;;;MAGF,eAAE;;;;MACF,uBAAU;;;;MAoDV,eAAE;YAAG;;;MAML,eAAE;YAAG;;;MAGL,eAAE;YAAG;;;MA6UC,wBAAW;YAAG,gCACtB,mBACA,mBACA,mBACA,mBACA,qBACA,mBACA,mBACA,qBACA,qBACA,qBACA,oBACA,qBACA,qBACA,qBACA,qBACA,wBACA,wBACA,mBACA,qBACA,wBACA,wBACA,wBACA,wBACA,wBACA,wBACA,wBACA,wBACA,mBACA,uBACA,sBACA,sBACA,sBACA,qBACA,mBACA,mBACA,qBACA,sBACA,qBACA,wBACA,qBACA,qBACA,oBACA,mBACA,oBACA,qBACA,mBACA,qBACA,mBACA,qBACA,qBACA,qBACA,qBACA,qBACA,qBACA,qBACA,mBACA,mBACA,qBACA,mBACA,qBACA,mBACA,qBACA,qBACA,qBACA,qBACA,qBACA,mBACA,mBACA,qBACA,mBACA,qBACA,qBACA,qBACA,mBACA,mBACA,qBACA,mBACA,sBACA,mBACA,qBACA,qBACA,qBACA,wBACA,wBACA,qBACA,qBACA,qBACA,qBACA,qBACA,qBACA,mBACA,qBACA,0BACA,qBACA,qBACA,mBACA,mBACA,qBACA,qBACA,mBACA,qBACA,qBACA,mBACA,qBACA,qBACA,wBACA,wBACA,wBACA,mBACA","file":"../../../../../../../../packages/intl/src/plural_rules.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["sliver_padding.dart"],"names":[],"mappings":"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","file":"../../../../../../../packages/flutter/src/rendering/sliver_padding.dart.lib.js"}');
   // Exports:
   return {
-    src__plural_rules: plural_rules
+    src__rendering__sliver_padding: sliver_padding
   };
 }));
 
-//# sourceMappingURL=plural_rules.dart.lib.js.map
+//# sourceMappingURL=sliver_padding.dart.lib.js.map

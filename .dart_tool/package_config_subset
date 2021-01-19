@@ -22,6 +22,10 @@ cached_network_image
 2.9
 file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/cached_network_image-2.3.3/
 file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/cached_network_image-2.3.3/lib/
+cached_video_player
+2.3
+file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/cached_video_player-1.0.3/
+file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/cached_video_player-1.0.3/lib/
 characters
 2.12
 file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/characters-1.1.0-nullsafety.5/
@@ -250,6 +254,10 @@ sqflite_common
 2.7
 file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/sqflite_common-1.0.3/
 file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/sqflite_common-1.0.3/lib/
+square_percent_indicater
+2.7
+file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/square_percent_indicater-0.0.8/
+file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/square_percent_indicater-0.0.8/lib/
 stack_trace
 2.12
 file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/stack_trace-1.10.0-nullsafety.6/

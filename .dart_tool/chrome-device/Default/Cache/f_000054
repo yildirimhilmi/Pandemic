@@ -1,328 +1,466 @@
-define(['dart_sdk', 'packages/vector_math/vector_math_64.dart', 'packages/flutter/src/painting/basic_types.dart', 'packages/flutter/src/foundation/debug.dart'], (function load__packages__flutter__src__painting__matrix_utils_dart(dart_sdk, packages__vector_math__vector_math_64$46dart, packages__flutter__src__painting__basic_types$46dart, packages__flutter__src__foundation__debug$46dart) {
+define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/rendering/proxy_box.dart', 'packages/flutter/src/gestures/tap.dart'], (function load__packages__positioned_tap_detector__positioned_tap_detector_dart(dart_sdk, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__rendering__proxy_box$46dart, packages__flutter__src__gestures__tap$46dart) {
   'use strict';
   const core = dart_sdk.core;
+  const async = dart_sdk.async;
+  const math = dart_sdk.math;
   const ui = dart_sdk.ui;
-  const _native_typed_data = dart_sdk._native_typed_data;
-  const _internal = dart_sdk._internal;
-  const _interceptors = dart_sdk._interceptors;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const vector_math_64 = packages__vector_math__vector_math_64$46dart.vector_math_64;
-  const basic_types = packages__flutter__src__painting__basic_types$46dart.src__painting__basic_types;
-  const diagnostics = packages__flutter__src__foundation__debug$46dart.src__foundation__diagnostics;
-  const debug = packages__flutter__src__foundation__debug$46dart.src__foundation__debug;
-  var matrix_utils = Object.create(dart.library);
-  var $_get = dartx._get;
-  var $_set = dartx._set;
-  var $isFinite = dartx.isFinite;
-  var $join = dartx.join;
-  var JSArrayOfString = () => (JSArrayOfString = dart.constFn(_interceptors.JSArray$(core.String)))();
-  var StringL = () => (StringL = dart.constFn(dart.legacy(core.String)))();
+  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
+  const gesture_detector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__gesture_detector;
+  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
+  const proxy_box = packages__flutter__src__rendering__proxy_box$46dart.src__rendering__proxy_box;
+  const tap = packages__flutter__src__gestures__tap$46dart.src__gestures__tap;
+  var positioned_tap_detector = Object.create(dart.library);
+  var $_equals = dartx._equals;
+  var $hashCode = dartx.hashCode;
+  var TapDownDetailsL = () => (TapDownDetailsL = dart.constFn(dart.legacy(tap.TapDownDetails)))();
+  var StreamControllerOfTapDownDetailsL = () => (StreamControllerOfTapDownDetailsL = dart.constFn(async.StreamController$(TapDownDetailsL())))();
+  var TimeoutExceptionL = () => (TimeoutExceptionL = dart.constFn(dart.legacy(async.TimeoutException)))();
+  var boolL = () => (boolL = dart.constFn(dart.legacy(core.bool)))();
+  var dynamicToboolL = () => (dynamicToboolL = dart.constFn(dart.fnType(boolL(), [dart.dynamic])))();
+  var PositionedTapDetectorL = () => (PositionedTapDetectorL = dart.constFn(dart.legacy(positioned_tap_detector.PositionedTapDetector)))();
+  var _LocationL = () => (_LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))();
+  var TapPositionL = () => (TapPositionL = dart.constFn(dart.legacy(positioned_tap_detector.TapPosition)))();
   const CT = Object.create(null);
-  var L0 = "file:///C:/src/flutter/packages/flutter/lib/src/painting/matrix_utils.dart";
-  var L1 = "package:flutter/src/painting/matrix_utils.dart";
+  var L0 = "package:positioned_tap_detector/positioned_tap_detector.dart";
   dart.defineLazy(CT, {
     get C0() {
       return C0 = dart.const({
-        __proto__: basic_types.Axis.prototype,
-        [_name]: "Axis.vertical",
-        index: 1
-      });
-    },
-    get C1() {
-      return C1 = dart.const({
-        __proto__: diagnostics._NoDefaultValue.prototype
-      });
-    },
-    get C2() {
-      return C2 = dart.const({
-        __proto__: diagnostics.DiagnosticLevel.prototype,
-        [_name$]: "DiagnosticLevel.info",
-        index: 3
+        __proto__: core.Duration.prototype,
+        [Duration__duration]: 250000
       });
     },
     get C3() {
-      return C3 = dart.constList(["null"], StringL());
+      return C3 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 152,
+        [_Location_file]: null
+      });
+    },
+    get C4() {
+      return C4 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "behavior",
+        [_Location_column]: 7,
+        [_Location_line]: 153,
+        [_Location_file]: null
+      });
+    },
+    get C5() {
+      return C5 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onTap",
+        [_Location_column]: 7,
+        [_Location_line]: 157,
+        [_Location_file]: null
+      });
+    },
+    get C6() {
+      return C6 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onLongPress",
+        [_Location_column]: 7,
+        [_Location_line]: 158,
+        [_Location_file]: null
+      });
+    },
+    get C7() {
+      return C7 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onTapDown",
+        [_Location_column]: 7,
+        [_Location_line]: 159,
+        [_Location_file]: null
+      });
+    },
+    get C2() {
+      return C2 = dart.constList([C3 || CT.C3, C4 || CT.C4, C5 || CT.C5, C6 || CT.C6, C7 || CT.C7], _LocationL());
+    },
+    get C1() {
+      return C1 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C2 || CT.C2,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 151,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/positioned_tap_detector-1.0.3/lib/positioned_tap_detector.dart"
+      });
     }
   }, false);
-  var _name = dart.privateName(basic_types, "_name");
+  var Duration__duration = dart.privateName(core, "Duration._duration");
   var C0;
-  matrix_utils.MatrixUtils = class MatrixUtils extends core.Object {
-    static getAsTranslation(transform) {
-      if (transform == null) dart.nullFailed(L0, 24, 43, "transform");
-      if (!(transform != null)) dart.assertFailed(null, L0, 25, 12, "transform != null");
-      let values = transform.storage;
-      if (values[$_get](0) === 1.0 && values[$_get](1) === 0.0 && values[$_get](2) === 0.0 && values[$_get](3) === 0.0 && values[$_get](4) === 0.0 && values[$_get](5) === 1.0 && values[$_get](6) === 0.0 && values[$_get](7) === 0.0 && values[$_get](8) === 0.0 && values[$_get](9) === 0.0 && values[$_get](10) === 1.0 && values[$_get](11) === 0.0 && values[$_get](14) === 0.0 && values[$_get](15) === 1.0) {
-        return new ui.Offset.new(values[$_get](12), values[$_get](13));
-      }
-      return null;
+  var child$ = dart.privateName(positioned_tap_detector, "PositionedTapDetector.child");
+  var behavior$ = dart.privateName(positioned_tap_detector, "PositionedTapDetector.behavior");
+  var onTap$ = dart.privateName(positioned_tap_detector, "PositionedTapDetector.onTap");
+  var onDoubleTap$ = dart.privateName(positioned_tap_detector, "PositionedTapDetector.onDoubleTap");
+  var onLongPress$ = dart.privateName(positioned_tap_detector, "PositionedTapDetector.onLongPress");
+  var doubleTapDelay$ = dart.privateName(positioned_tap_detector, "PositionedTapDetector.doubleTapDelay");
+  var controller$ = dart.privateName(positioned_tap_detector, "PositionedTapDetector.controller");
+  positioned_tap_detector.PositionedTapDetector = class PositionedTapDetector extends framework.StatefulWidget {
+    get child() {
+      return this[child$];
     }
-    static getAsScale(transform) {
-      if (transform == null) dart.nullFailed(L0, 51, 37, "transform");
-      if (!(transform != null)) dart.assertFailed(null, L0, 52, 12, "transform != null");
-      let values = transform.storage;
-      if (values[$_get](1) === 0.0 && values[$_get](2) === 0.0 && values[$_get](3) === 0.0 && values[$_get](4) === 0.0 && values[$_get](6) === 0.0 && values[$_get](7) === 0.0 && values[$_get](8) === 0.0 && values[$_get](9) === 0.0 && values[$_get](10) === 1.0 && values[$_get](11) === 0.0 && values[$_get](12) === 0.0 && values[$_get](13) === 0.0 && values[$_get](14) === 0.0 && values[$_get](15) === 1.0 && values[$_get](0) == values[$_get](5)) {
-        return values[$_get](0);
-      }
-      return null;
+    set child(value) {
+      super.child = value;
     }
-    static matrixEquals(a, b) {
-      if (a == b) return true;
-      if (!(a != null || b != null)) dart.assertFailed(null, L0, 80, 12, "a != null || b != null");
-      if (a == null) return matrix_utils.MatrixUtils.isIdentity(dart.nullCheck(b));
-      if (b == null) return matrix_utils.MatrixUtils.isIdentity(a);
-      if (!(a != null && b != null)) dart.assertFailed(null, L0, 85, 12, "a != null && b != null");
-      return a.storage[$_get](0) == b.storage[$_get](0) && a.storage[$_get](1) == b.storage[$_get](1) && a.storage[$_get](2) == b.storage[$_get](2) && a.storage[$_get](3) == b.storage[$_get](3) && a.storage[$_get](4) == b.storage[$_get](4) && a.storage[$_get](5) == b.storage[$_get](5) && a.storage[$_get](6) == b.storage[$_get](6) && a.storage[$_get](7) == b.storage[$_get](7) && a.storage[$_get](8) == b.storage[$_get](8) && a.storage[$_get](9) == b.storage[$_get](9) && a.storage[$_get](10) == b.storage[$_get](10) && a.storage[$_get](11) == b.storage[$_get](11) && a.storage[$_get](12) == b.storage[$_get](12) && a.storage[$_get](13) == b.storage[$_get](13) && a.storage[$_get](14) == b.storage[$_get](14) && a.storage[$_get](15) == b.storage[$_get](15);
+    get behavior() {
+      return this[behavior$];
     }
-    static isIdentity(a) {
-      if (a == null) dart.nullFailed(L0, 105, 34, "a");
-      if (!(a != null)) dart.assertFailed(null, L0, 106, 12, "a != null");
-      return a.storage[$_get](0) === 1.0 && a.storage[$_get](1) === 0.0 && a.storage[$_get](2) === 0.0 && a.storage[$_get](3) === 0.0 && a.storage[$_get](4) === 0.0 && a.storage[$_get](5) === 1.0 && a.storage[$_get](6) === 0.0 && a.storage[$_get](7) === 0.0 && a.storage[$_get](8) === 0.0 && a.storage[$_get](9) === 0.0 && a.storage[$_get](10) === 1.0 && a.storage[$_get](11) === 0.0 && a.storage[$_get](12) === 0.0 && a.storage[$_get](13) === 0.0 && a.storage[$_get](14) === 0.0 && a.storage[$_get](15) === 1.0;
+    set behavior(value) {
+      super.behavior = value;
     }
-    static transformPoint(transform, point) {
-      if (transform == null) dart.nullFailed(L0, 136, 40, "transform");
-      if (point == null) dart.nullFailed(L0, 136, 58, "point");
-      let storage = transform.storage;
-      let x = point.dx;
-      let y = point.dy;
-      let rx = dart.notNull(storage[$_get](0)) * dart.notNull(x) + dart.notNull(storage[$_get](4)) * dart.notNull(y) + dart.notNull(storage[$_get](12));
-      let ry = dart.notNull(storage[$_get](1)) * dart.notNull(x) + dart.notNull(storage[$_get](5)) * dart.notNull(y) + dart.notNull(storage[$_get](13));
-      let rw = dart.notNull(storage[$_get](3)) * dart.notNull(x) + dart.notNull(storage[$_get](7)) * dart.notNull(y) + dart.notNull(storage[$_get](15));
-      if (rw === 1.0) {
-        return new ui.Offset.new(rx, ry);
-      } else {
-        return new ui.Offset.new(rx / rw, ry / rw);
-      }
+    get onTap() {
+      return this[onTap$];
     }
-    static _safeTransformRect(transform, rect) {
-      if (transform == null) dart.nullFailed(L0, 161, 42, "transform");
-      if (rect == null) dart.nullFailed(L0, 161, 58, "rect");
-      let storage = transform.storage;
-      let isAffine = storage[$_get](3) === 0.0 && storage[$_get](7) === 0.0 && storage[$_get](15) === 1.0;
-      matrix_utils.MatrixUtils._accumulate(storage, rect.left, rect.top, true, isAffine);
-      matrix_utils.MatrixUtils._accumulate(storage, rect.right, rect.top, false, isAffine);
-      matrix_utils.MatrixUtils._accumulate(storage, rect.left, rect.bottom, false, isAffine);
-      matrix_utils.MatrixUtils._accumulate(storage, rect.right, rect.bottom, false, isAffine);
-      return new ui.Rect.fromLTRB(matrix_utils.MatrixUtils._minMax[$_get](0), matrix_utils.MatrixUtils._minMax[$_get](1), matrix_utils.MatrixUtils._minMax[$_get](2), matrix_utils.MatrixUtils._minMax[$_get](3));
+    set onTap(value) {
+      super.onTap = value;
     }
-    static get _minMax() {
-      let t1;
-      if (!dart.test(matrix_utils.MatrixUtils['_#_minMax#isSet'])) {
-        let t0 = _native_typed_data.NativeFloat64List.new(4);
-        if (dart.test(matrix_utils.MatrixUtils['_#_minMax#isSet'])) dart.throw(new _internal.LateError.fieldADI("_minMax"));
-        matrix_utils.MatrixUtils['_#_minMax'] = t0;
-        matrix_utils.MatrixUtils['_#_minMax#isSet'] = true;
-      }
-      t1 = matrix_utils.MatrixUtils['_#_minMax'];
-      return t1;
+    get onDoubleTap() {
+      return this[onDoubleTap$];
     }
-    static _accumulate(m, x, y, first, isAffine) {
-      let t3, t2, t1, t3$, t2$, t1$;
-      if (m == null) dart.nullFailed(L0, 176, 39, "m");
-      if (x == null) dart.nullFailed(L0, 176, 49, "x");
-      if (y == null) dart.nullFailed(L0, 176, 59, "y");
-      if (first == null) dart.nullFailed(L0, 176, 67, "first");
-      if (isAffine == null) dart.nullFailed(L0, 176, 79, "isAffine");
-      let w = dart.test(isAffine) ? 1.0 : 1.0 / (dart.notNull(m[$_get](3)) * dart.notNull(x) + dart.notNull(m[$_get](7)) * dart.notNull(y) + dart.notNull(m[$_get](15)));
-      let tx = (dart.notNull(m[$_get](0)) * dart.notNull(x) + dart.notNull(m[$_get](4)) * dart.notNull(y) + dart.notNull(m[$_get](12))) * w;
-      let ty = (dart.notNull(m[$_get](1)) * dart.notNull(x) + dart.notNull(m[$_get](5)) * dart.notNull(y) + dart.notNull(m[$_get](13))) * w;
-      if (dart.test(first)) {
-        matrix_utils.MatrixUtils._minMax[$_set](0, (t1 = matrix_utils.MatrixUtils._minMax, t2 = 2, t3 = tx, t1[$_set](t2, t3), t3));
-        matrix_utils.MatrixUtils._minMax[$_set](1, (t1$ = matrix_utils.MatrixUtils._minMax, t2$ = 3, t3$ = ty, t1$[$_set](t2$, t3$), t3$));
-      } else {
-        if (tx < dart.notNull(matrix_utils.MatrixUtils._minMax[$_get](0))) {
-          matrix_utils.MatrixUtils._minMax[$_set](0, tx);
-        }
-        if (ty < dart.notNull(matrix_utils.MatrixUtils._minMax[$_get](1))) {
-          matrix_utils.MatrixUtils._minMax[$_set](1, ty);
-        }
-        if (tx > dart.notNull(matrix_utils.MatrixUtils._minMax[$_get](2))) {
-          matrix_utils.MatrixUtils._minMax[$_set](2, tx);
-        }
-        if (ty > dart.notNull(matrix_utils.MatrixUtils._minMax[$_get](3))) {
-          matrix_utils.MatrixUtils._minMax[$_set](3, ty);
-        }
-      }
+    set onDoubleTap(value) {
+      super.onDoubleTap = value;
     }
-    static transformRect(transform, rect) {
-      if (transform == null) dart.nullFailed(L0, 205, 37, "transform");
-      if (rect == null) dart.nullFailed(L0, 205, 53, "rect");
-      let storage = transform.storage;
-      let x = rect.left;
-      let y = rect.top;
-      let w = dart.notNull(rect.right) - dart.notNull(x);
-      let h = dart.notNull(rect.bottom) - dart.notNull(y);
-      if (!w[$isFinite] || !h[$isFinite]) {
-        return matrix_utils.MatrixUtils._safeTransformRect(transform, rect);
-      }
-      let wx = dart.notNull(storage[$_get](0)) * w;
-      let hx = dart.notNull(storage[$_get](4)) * h;
-      let rx = dart.notNull(storage[$_get](0)) * dart.notNull(x) + dart.notNull(storage[$_get](4)) * dart.notNull(y) + dart.notNull(storage[$_get](12));
-      let wy = dart.notNull(storage[$_get](1)) * w;
-      let hy = dart.notNull(storage[$_get](5)) * h;
-      let ry = dart.notNull(storage[$_get](1)) * dart.notNull(x) + dart.notNull(storage[$_get](5)) * dart.notNull(y) + dart.notNull(storage[$_get](13));
-      if (storage[$_get](3) === 0.0 && storage[$_get](7) === 0.0 && storage[$_get](15) === 1.0) {
-        let left = rx;
-        let right = rx;
-        if (wx < 0) {
-          left = left + wx;
-        } else {
-          right = right + wx;
-        }
-        if (hx < 0) {
-          left = left + hx;
-        } else {
-          right = right + hx;
-        }
-        let top = ry;
-        let bottom = ry;
-        if (wy < 0) {
-          top = top + wy;
-        } else {
-          bottom = bottom + wy;
-        }
-        if (hy < 0) {
-          top = top + hy;
-        } else {
-          bottom = bottom + hy;
-        }
-        return new ui.Rect.fromLTRB(left, top, right, bottom);
-      } else {
-        let ww = dart.notNull(storage[$_get](3)) * w;
-        let hw = dart.notNull(storage[$_get](7)) * h;
-        let rw = dart.notNull(storage[$_get](3)) * dart.notNull(x) + dart.notNull(storage[$_get](7)) * dart.notNull(y) + dart.notNull(storage[$_get](15));
-        let ulx = rx / rw;
-        let uly = ry / rw;
-        let urx = (rx + wx) / (rw + ww);
-        let ury = (ry + wy) / (rw + ww);
-        let llx = (rx + hx) / (rw + hw);
-        let lly = (ry + hy) / (rw + hw);
-        let lrx = (rx + wx + hx) / (rw + ww + hw);
-        let lry = (ry + wy + hy) / (rw + ww + hw);
-        return new ui.Rect.fromLTRB(matrix_utils.MatrixUtils._min4(ulx, urx, llx, lrx), matrix_utils.MatrixUtils._min4(uly, ury, lly, lry), matrix_utils.MatrixUtils._max4(ulx, urx, llx, lrx), matrix_utils.MatrixUtils._max4(uly, ury, lly, lry));
-      }
+    get onLongPress() {
+      return this[onLongPress$];
     }
-    static _min4(a, b, c, d) {
-      if (a == null) dart.nullFailed(L0, 423, 30, "a");
-      if (b == null) dart.nullFailed(L0, 423, 40, "b");
-      if (c == null) dart.nullFailed(L0, 423, 50, "c");
-      if (d == null) dart.nullFailed(L0, 423, 60, "d");
-      let e = dart.notNull(a) < dart.notNull(b) ? a : b;
-      let f = dart.notNull(c) < dart.notNull(d) ? c : d;
-      return dart.notNull(e) < dart.notNull(f) ? e : f;
+    set onLongPress(value) {
+      super.onLongPress = value;
     }
-    static _max4(a, b, c, d) {
-      if (a == null) dart.nullFailed(L0, 428, 30, "a");
-      if (b == null) dart.nullFailed(L0, 428, 40, "b");
-      if (c == null) dart.nullFailed(L0, 428, 50, "c");
-      if (d == null) dart.nullFailed(L0, 428, 60, "d");
-      let e = dart.notNull(a) > dart.notNull(b) ? a : b;
-      let f = dart.notNull(c) > dart.notNull(d) ? c : d;
-      return dart.notNull(e) > dart.notNull(f) ? e : f;
+    get doubleTapDelay() {
+      return this[doubleTapDelay$];
     }
-    static inverseTransformRect(transform, rect) {
-      let t1;
-      if (transform == null) dart.nullFailed(L0, 440, 44, "transform");
-      if (rect == null) dart.nullFailed(L0, 440, 60, "rect");
-      if (!(rect != null)) dart.assertFailed(null, L0, 441, 12, "rect != null");
-      if (dart.test(matrix_utils.MatrixUtils.isIdentity(transform))) return rect;
-      transform = (t1 = vector_math_64.Matrix4.copy(transform), (() => {
-        t1.invert();
-        return t1;
-      })());
-      return matrix_utils.MatrixUtils.transformRect(transform, rect);
+    set doubleTapDelay(value) {
+      super.doubleTapDelay = value;
     }
-    static createCylindricalProjectionTransform(opts) {
-      let t1;
-      let radius = opts && 'radius' in opts ? opts.radius : null;
-      if (radius == null) dart.nullFailed(L0, 485, 21, "radius");
-      let angle = opts && 'angle' in opts ? opts.angle : null;
-      if (angle == null) dart.nullFailed(L0, 486, 21, "angle");
-      let perspective = opts && 'perspective' in opts ? opts.perspective : 0.001;
-      if (perspective == null) dart.nullFailed(L0, 487, 12, "perspective");
-      let orientation = opts && 'orientation' in opts ? opts.orientation : C0 || CT.C0;
-      if (orientation == null) dart.nullFailed(L0, 488, 10, "orientation");
-      if (!(radius != null)) dart.assertFailed(null, L0, 490, 12, "radius != null");
-      if (!(angle != null)) dart.assertFailed(null, L0, 491, 12, "angle != null");
-      if (!(dart.notNull(perspective) >= 0 && dart.notNull(perspective) <= 1.0)) dart.assertFailed(null, L0, 492, 12, "perspective >= 0 && perspective <= 1.0");
-      if (!(orientation != null)) dart.assertFailed(null, L0, 493, 12, "orientation != null");
-      let result = (t1 = vector_math_64.Matrix4.identity(), (() => {
-        t1.setEntry(3, 2, -dart.notNull(perspective));
-        t1.setEntry(2, 3, -dart.notNull(radius));
-        t1.setEntry(3, 3, dart.notNull(perspective) * dart.notNull(radius) + 1.0);
-        return t1;
-      })());
-      result = vector_math_64.Matrix4.as(result['*']((dart.equals(orientation, basic_types.Axis.horizontal) ? vector_math_64.Matrix4.rotationY(angle) : vector_math_64.Matrix4.rotationX(angle))['*'](vector_math_64.Matrix4.translationValues(0.0, 0.0, radius))));
-      return result;
+    get controller() {
+      return this[controller$];
     }
-    static forceToPoint(offset) {
-      let t1;
-      if (offset == null) dart.nullFailed(L0, 530, 38, "offset");
-      t1 = vector_math_64.Matrix4.identity();
-      return (() => {
-        t1.setRow(0, vector_math_64.Vector4.new(0.0, 0.0, 0.0, offset.dx));
-        t1.setRow(1, vector_math_64.Vector4.new(0.0, 0.0, 0.0, offset.dy));
-        return t1;
-      })();
+    set controller(value) {
+      super.controller = value;
+    }
+    createState() {
+      return new positioned_tap_detector._TapPositionDetectorState.new();
     }
   };
-  (matrix_utils.MatrixUtils.__ = function() {
+  (positioned_tap_detector.PositionedTapDetector.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let child = opts && 'child' in opts ? opts.child : null;
+    let onTap = opts && 'onTap' in opts ? opts.onTap : null;
+    let onDoubleTap = opts && 'onDoubleTap' in opts ? opts.onDoubleTap : null;
+    let onLongPress = opts && 'onLongPress' in opts ? opts.onLongPress : null;
+    let doubleTapDelay = opts && 'doubleTapDelay' in opts ? opts.doubleTapDelay : C0 || CT.C0;
+    let behavior = opts && 'behavior' in opts ? opts.behavior : null;
+    let controller = opts && 'controller' in opts ? opts.controller : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[child$] = child;
+    this[onTap$] = onTap;
+    this[onDoubleTap$] = onDoubleTap;
+    this[onLongPress$] = onLongPress;
+    this[doubleTapDelay$] = doubleTapDelay;
+    this[behavior$] = behavior;
+    this[controller$] = controller;
+    positioned_tap_detector.PositionedTapDetector.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
     ;
-  }).prototype = matrix_utils.MatrixUtils.prototype;
-  dart.addTypeTests(matrix_utils.MatrixUtils);
-  dart.addTypeCaches(matrix_utils.MatrixUtils);
-  dart.setLibraryUri(matrix_utils.MatrixUtils, L1);
-  dart.defineLazy(matrix_utils.MatrixUtils, {
-    /*matrix_utils.MatrixUtils['_#_minMax']*/get ['_#_minMax']() {
-      return null;
+  }).prototype = positioned_tap_detector.PositionedTapDetector.prototype;
+  dart.addTypeTests(positioned_tap_detector.PositionedTapDetector);
+  dart.addTypeCaches(positioned_tap_detector.PositionedTapDetector);
+  dart.setMethodSignature(positioned_tap_detector.PositionedTapDetector, () => ({
+    __proto__: dart.getMethods(positioned_tap_detector.PositionedTapDetector.__proto__),
+    createState: dart.fnType(dart.legacy(positioned_tap_detector._TapPositionDetectorState), [])
+  }));
+  dart.setLibraryUri(positioned_tap_detector.PositionedTapDetector, L0);
+  dart.setFieldSignature(positioned_tap_detector.PositionedTapDetector, () => ({
+    __proto__: dart.getFields(positioned_tap_detector.PositionedTapDetector.__proto__),
+    child: dart.finalFieldType(dart.legacy(framework.Widget)),
+    behavior: dart.finalFieldType(dart.legacy(proxy_box.HitTestBehavior)),
+    onTap: dart.finalFieldType(dart.legacy(dart.fnType(dart.dynamic, [dart.legacy(positioned_tap_detector.TapPosition)]))),
+    onDoubleTap: dart.finalFieldType(dart.legacy(dart.fnType(dart.dynamic, [dart.legacy(positioned_tap_detector.TapPosition)]))),
+    onLongPress: dart.finalFieldType(dart.legacy(dart.fnType(dart.dynamic, [dart.legacy(positioned_tap_detector.TapPosition)]))),
+    doubleTapDelay: dart.finalFieldType(dart.legacy(core.Duration)),
+    controller: dart.finalFieldType(dart.legacy(positioned_tap_detector.PositionedTapController))
+  }));
+  dart.defineLazy(positioned_tap_detector.PositionedTapDetector, {
+    /*positioned_tap_detector.PositionedTapDetector._DEFAULT_DELAY*/get _DEFAULT_DELAY() {
+      return C0 || CT.C0;
     },
-    set ['_#_minMax'](_) {},
-    /*matrix_utils.MatrixUtils['_#_minMax#isSet']*/get ['_#_minMax#isSet']() {
-      return false;
-    },
-    set ['_#_minMax#isSet'](_) {}
-  }, false);
-  var C1;
-  var _name$ = dart.privateName(diagnostics, "_name");
-  var C2;
-  matrix_utils.TransformProperty = class TransformProperty extends diagnostics.DiagnosticsProperty$(vector_math_64.Matrix4) {
-    valueToString(opts) {
-      let parentConfiguration = opts && 'parentConfiguration' in opts ? opts.parentConfiguration : null;
-      if (parentConfiguration != null && !dart.test(parentConfiguration.lineBreakProperties)) {
-        let values = JSArrayOfString().of([dart.str(debug.debugFormatDouble(dart.nullCheck(this.value).entry(0, 0))) + "," + dart.str(debug.debugFormatDouble(dart.nullCheck(this.value).entry(0, 1))) + "," + dart.str(debug.debugFormatDouble(dart.nullCheck(this.value).entry(0, 2))) + "," + dart.str(debug.debugFormatDouble(dart.nullCheck(this.value).entry(0, 3))), dart.str(debug.debugFormatDouble(dart.nullCheck(this.value).entry(1, 0))) + "," + dart.str(debug.debugFormatDouble(dart.nullCheck(this.value).entry(1, 1))) + "," + dart.str(debug.debugFormatDouble(dart.nullCheck(this.value).entry(1, 2))) + "," + dart.str(debug.debugFormatDouble(dart.nullCheck(this.value).entry(1, 3))), dart.str(debug.debugFormatDouble(dart.nullCheck(this.value).entry(2, 0))) + "," + dart.str(debug.debugFormatDouble(dart.nullCheck(this.value).entry(2, 1))) + "," + dart.str(debug.debugFormatDouble(dart.nullCheck(this.value).entry(2, 2))) + "," + dart.str(debug.debugFormatDouble(dart.nullCheck(this.value).entry(2, 3))), dart.str(debug.debugFormatDouble(dart.nullCheck(this.value).entry(3, 0))) + "," + dart.str(debug.debugFormatDouble(dart.nullCheck(this.value).entry(3, 1))) + "," + dart.str(debug.debugFormatDouble(dart.nullCheck(this.value).entry(3, 2))) + "," + dart.str(debug.debugFormatDouble(dart.nullCheck(this.value).entry(3, 3)))]);
-        return "[" + dart.str(values[$join]("; ")) + "]";
-      }
-      return matrix_utils.debugDescribeTransform(this.value)[$join]("\n");
+    /*positioned_tap_detector.PositionedTapDetector._DOUBLE_TAP_MAX_OFFSET*/get _DOUBLE_TAP_MAX_OFFSET() {
+      return 48;
     }
-  };
-  (matrix_utils.TransformProperty.new = function(name, value, opts) {
-    if (name == null) dart.nullFailed(L0, 558, 12, "name");
-    let showName = opts && 'showName' in opts ? opts.showName : true;
-    if (showName == null) dart.nullFailed(L0, 560, 10, "showName");
-    let defaultValue = opts && 'defaultValue' in opts ? opts.defaultValue : C1 || CT.C1;
-    let level = opts && 'level' in opts ? opts.level : C2 || CT.C2;
-    if (level == null) dart.nullFailed(L0, 562, 21, "level");
-    if (!(showName != null)) dart.assertFailed(null, L0, 563, 15, "showName != null");
-    if (!(level != null)) dart.assertFailed(null, L0, 564, 15, "level != null");
-    matrix_utils.TransformProperty.__proto__.new.call(this, name, value, {showName: showName, defaultValue: defaultValue, level: level});
-    ;
-  }).prototype = matrix_utils.TransformProperty.prototype;
-  dart.addTypeTests(matrix_utils.TransformProperty);
-  dart.addTypeCaches(matrix_utils.TransformProperty);
-  dart.setLibraryUri(matrix_utils.TransformProperty, L1);
+  }, true);
+  var _controller = dart.privateName(positioned_tap_detector, "_controller");
+  var _tapController = dart.privateName(positioned_tap_detector, "_tapController");
+  var _pendingTap = dart.privateName(positioned_tap_detector, "_pendingTap");
+  var _firstTap = dart.privateName(positioned_tap_detector, "_firstTap");
+  var _stream = dart.privateName(positioned_tap_detector, "_stream");
+  var _sink = dart.privateName(positioned_tap_detector, "_sink");
+  var _updateController = dart.privateName(positioned_tap_detector, "_updateController");
+  var _onTimeout = dart.privateName(positioned_tap_detector, "_onTimeout");
+  var _onTapConfirmed = dart.privateName(positioned_tap_detector, "_onTapConfirmed");
+  var _state = dart.privateName(positioned_tap_detector, "_state");
+  var _postCallback = dart.privateName(positioned_tap_detector, "_postCallback");
+  var _handleSecondTap = dart.privateName(positioned_tap_detector, "_handleSecondTap");
+  var _isDoubleTap = dart.privateName(positioned_tap_detector, "_isDoubleTap");
+  var _onTapDownEvent = dart.privateName(positioned_tap_detector, "_onTapDownEvent");
+  var _onTapEvent = dart.privateName(positioned_tap_detector, "_onTapEvent");
+  var _onLongPressEvent = dart.privateName(positioned_tap_detector, "_onLongPressEvent");
+  var _getTapPositions = dart.privateName(positioned_tap_detector, "_getTapPositions");
+  var _getWidgetTopLeft = dart.privateName(positioned_tap_detector, "_getWidgetTopLeft");
+  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
   var C3;
-  matrix_utils.debugDescribeTransform = function debugDescribeTransform(transform) {
-    if (transform == null) return C3 || CT.C3;
-    return JSArrayOfString().of(["[0] " + dart.str(debug.debugFormatDouble(transform.entry(0, 0))) + "," + dart.str(debug.debugFormatDouble(transform.entry(0, 1))) + "," + dart.str(debug.debugFormatDouble(transform.entry(0, 2))) + "," + dart.str(debug.debugFormatDouble(transform.entry(0, 3))), "[1] " + dart.str(debug.debugFormatDouble(transform.entry(1, 0))) + "," + dart.str(debug.debugFormatDouble(transform.entry(1, 1))) + "," + dart.str(debug.debugFormatDouble(transform.entry(1, 2))) + "," + dart.str(debug.debugFormatDouble(transform.entry(1, 3))), "[2] " + dart.str(debug.debugFormatDouble(transform.entry(2, 0))) + "," + dart.str(debug.debugFormatDouble(transform.entry(2, 1))) + "," + dart.str(debug.debugFormatDouble(transform.entry(2, 2))) + "," + dart.str(debug.debugFormatDouble(transform.entry(2, 3))), "[3] " + dart.str(debug.debugFormatDouble(transform.entry(3, 0))) + "," + dart.str(debug.debugFormatDouble(transform.entry(3, 1))) + "," + dart.str(debug.debugFormatDouble(transform.entry(3, 2))) + "," + dart.str(debug.debugFormatDouble(transform.entry(3, 3)))]);
+  var C4;
+  var C5;
+  var C6;
+  var C7;
+  var C2;
+  var C1;
+  positioned_tap_detector._TapPositionDetectorState = class _TapPositionDetectorState extends framework.State$(dart.legacy(positioned_tap_detector.PositionedTapDetector)) {
+    get [_stream]() {
+      return this[_controller].stream;
+    }
+    get [_sink]() {
+      return this[_controller].sink;
+    }
+    initState() {
+      this[_updateController]();
+      this[_stream].timeout(this.widget.doubleTapDelay).handleError(dart.bind(this, _onTimeout), {test: dart.fn(e => TimeoutExceptionL().is(e), dynamicToboolL())}).listen(dart.bind(this, _onTapConfirmed));
+      super.initState();
+    }
+    didUpdateWidget(oldWidget) {
+      PositionedTapDetectorL().as(oldWidget);
+      super.didUpdateWidget(oldWidget);
+      if (!dart.equals(this.widget.controller, oldWidget.controller)) {
+        this[_updateController]();
+      }
+    }
+    [_updateController]() {
+      let t0;
+      t0 = this[_tapController];
+      t0 == null ? null : t0[_state] = null;
+      if (this.widget.controller != null) {
+        this.widget.controller[_state] = this;
+        this[_tapController] = this.widget.controller;
+      }
+    }
+    [_onTimeout](error) {
+      if (this[_firstTap] != null && this[_pendingTap] == null) {
+        this[_postCallback](this[_firstTap], this.widget.onTap);
+      }
+    }
+    [_onTapConfirmed](details) {
+      if (this[_firstTap] == null) {
+        this[_firstTap] = details;
+      } else {
+        this[_handleSecondTap](details);
+      }
+    }
+    [_handleSecondTap](secondTap) {
+      if (dart.test(this[_isDoubleTap](this[_firstTap], secondTap))) {
+        this[_postCallback](secondTap, this.widget.onDoubleTap);
+      } else {
+        this[_postCallback](this[_firstTap], this.widget.onTap);
+        this[_postCallback](secondTap, this.widget.onTap);
+      }
+    }
+    [_isDoubleTap](d1, d2) {
+      let dx = dart.notNull(d1.globalPosition.dx) - dart.notNull(d2.globalPosition.dx);
+      let dy = dart.notNull(d1.globalPosition.dy) - dart.notNull(d2.globalPosition.dy);
+      return math.sqrt(dx * dx + dy * dy) <= 48;
+    }
+    [_onTapDownEvent](details) {
+      this[_pendingTap] = details;
+    }
+    [_onTapEvent]() {
+      if (this.widget.onDoubleTap == null) {
+        this[_postCallback](this[_pendingTap], this.widget.onTap);
+      } else {
+        this[_sink].add(this[_pendingTap]);
+      }
+      this[_pendingTap] = null;
+    }
+    [_onLongPressEvent]() {
+      if (this[_firstTap] == null) {
+        this[_postCallback](this[_pendingTap], this.widget.onLongPress);
+      } else {
+        this[_sink].add(this[_pendingTap]);
+        this[_pendingTap] = null;
+      }
+    }
+    [_postCallback](details, callback) {
+      return async.async(dart.void, (function* _postCallback() {
+        this[_firstTap] = null;
+        if (callback != null) {
+          callback(this[_getTapPositions](details));
+        }
+      }).bind(this));
+    }
+    [_getTapPositions](details) {
+      let topLeft = this[_getWidgetTopLeft]();
+      let global = details.globalPosition;
+      let relative = topLeft != null ? global['-'](topLeft) : null;
+      return new positioned_tap_detector.TapPosition.new(global, relative);
+    }
+    [_getWidgetTopLeft]() {
+      let t0, t0$, t0$0;
+      let translation = (t0$0 = (t0$ = (t0 = this.context, t0 == null ? null : t0.findRenderObject()), t0$ == null ? null : t0$.getTransformTo(null)), t0$0 == null ? null : t0$0.getTranslation());
+      return translation != null ? new ui.Offset.new(translation.x, translation.y) : null;
+    }
+    dispose() {
+      let t0;
+      this[_controller].close();
+      t0 = this[_tapController];
+      t0 == null ? null : t0[_state] = null;
+      super.dispose();
+    }
+    build(context) {
+      let t0;
+      if (this.widget.controller != null) return this.widget.child;
+      return new gesture_detector.GestureDetector.new({child: this.widget.child, behavior: (t0 = this.widget.behavior, t0 == null ? this.widget.child == null ? proxy_box.HitTestBehavior.translucent : proxy_box.HitTestBehavior.deferToChild : t0), onTap: dart.bind(this, _onTapEvent), onLongPress: dart.bind(this, _onLongPressEvent), onTapDown: dart.bind(this, _onTapDownEvent), $creationLocationd_0dea112b090073317d4: C1 || CT.C1});
+    }
   };
-  dart.trackLibraries("packages/flutter/src/painting/matrix_utils.dart", {
-    "package:flutter/src/painting/matrix_utils.dart": matrix_utils
+  (positioned_tap_detector._TapPositionDetectorState.new = function() {
+    this[_controller] = StreamControllerOfTapDownDetailsL().new();
+    this[_tapController] = null;
+    this[_pendingTap] = null;
+    this[_firstTap] = null;
+    positioned_tap_detector._TapPositionDetectorState.__proto__.new.call(this);
+    ;
+  }).prototype = positioned_tap_detector._TapPositionDetectorState.prototype;
+  dart.addTypeTests(positioned_tap_detector._TapPositionDetectorState);
+  dart.addTypeCaches(positioned_tap_detector._TapPositionDetectorState);
+  dart.setMethodSignature(positioned_tap_detector._TapPositionDetectorState, () => ({
+    __proto__: dart.getMethods(positioned_tap_detector._TapPositionDetectorState.__proto__),
+    didUpdateWidget: dart.fnType(dart.void, [dart.legacy(core.Object)]),
+    [_updateController]: dart.fnType(dart.void, []),
+    [_onTimeout]: dart.fnType(dart.void, [dart.dynamic]),
+    [_onTapConfirmed]: dart.fnType(dart.void, [dart.legacy(tap.TapDownDetails)]),
+    [_handleSecondTap]: dart.fnType(dart.void, [dart.legacy(tap.TapDownDetails)]),
+    [_isDoubleTap]: dart.fnType(dart.legacy(core.bool), [dart.legacy(tap.TapDownDetails), dart.legacy(tap.TapDownDetails)]),
+    [_onTapDownEvent]: dart.fnType(dart.void, [dart.legacy(tap.TapDownDetails)]),
+    [_onTapEvent]: dart.fnType(dart.void, []),
+    [_onLongPressEvent]: dart.fnType(dart.void, []),
+    [_postCallback]: dart.fnType(dart.void, [dart.legacy(tap.TapDownDetails), dart.legacy(dart.fnType(dart.dynamic, [dart.legacy(positioned_tap_detector.TapPosition)]))]),
+    [_getTapPositions]: dart.fnType(dart.legacy(positioned_tap_detector.TapPosition), [dart.legacy(tap.TapDownDetails)]),
+    [_getWidgetTopLeft]: dart.fnType(dart.legacy(ui.Offset), []),
+    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
+  }));
+  dart.setGetterSignature(positioned_tap_detector._TapPositionDetectorState, () => ({
+    __proto__: dart.getGetters(positioned_tap_detector._TapPositionDetectorState.__proto__),
+    [_stream]: dart.legacy(async.Stream$(dart.legacy(tap.TapDownDetails))),
+    [_sink]: dart.legacy(core.Sink$(dart.legacy(tap.TapDownDetails)))
+  }));
+  dart.setLibraryUri(positioned_tap_detector._TapPositionDetectorState, L0);
+  dart.setFieldSignature(positioned_tap_detector._TapPositionDetectorState, () => ({
+    __proto__: dart.getFields(positioned_tap_detector._TapPositionDetectorState.__proto__),
+    [_controller]: dart.fieldType(dart.legacy(async.StreamController$(dart.legacy(tap.TapDownDetails)))),
+    [_tapController]: dart.fieldType(dart.legacy(positioned_tap_detector.PositionedTapController)),
+    [_pendingTap]: dart.fieldType(dart.legacy(tap.TapDownDetails)),
+    [_firstTap]: dart.fieldType(dart.legacy(tap.TapDownDetails))
+  }));
+  var global$ = dart.privateName(positioned_tap_detector, "TapPosition.global");
+  var relative$ = dart.privateName(positioned_tap_detector, "TapPosition.relative");
+  positioned_tap_detector.TapPosition = class TapPosition extends core.Object {
+    get global() {
+      return this[global$];
+    }
+    set global(value) {
+      this[global$] = value;
+    }
+    get relative() {
+      return this[relative$];
+    }
+    set relative(value) {
+      this[relative$] = value;
+    }
+    _equals(other) {
+      if (other == null) return false;
+      if (!TapPositionL().is(other)) return false;
+      let typedOther = TapPositionL().as(other);
+      return dart.equals(this.global, typedOther.global) && dart.equals(this.relative, dart.dload(other, 'relative'));
+    }
+    get hashCode() {
+      return ui.hashValues(this.global, this.relative);
+    }
+  };
+  (positioned_tap_detector.TapPosition.new = function(global, relative) {
+    this[global$] = global;
+    this[relative$] = relative;
+    ;
+  }).prototype = positioned_tap_detector.TapPosition.prototype;
+  dart.addTypeTests(positioned_tap_detector.TapPosition);
+  dart.addTypeCaches(positioned_tap_detector.TapPosition);
+  dart.setMethodSignature(positioned_tap_detector.TapPosition, () => ({
+    __proto__: dart.getMethods(positioned_tap_detector.TapPosition.__proto__),
+    _equals: dart.fnType(dart.legacy(core.bool), [dart.dynamic]),
+    [$_equals]: dart.fnType(dart.legacy(core.bool), [dart.dynamic])
+  }));
+  dart.setGetterSignature(positioned_tap_detector.TapPosition, () => ({
+    __proto__: dart.getGetters(positioned_tap_detector.TapPosition.__proto__),
+    hashCode: dart.legacy(core.int),
+    [$hashCode]: dart.legacy(core.int)
+  }));
+  dart.setLibraryUri(positioned_tap_detector.TapPosition, L0);
+  dart.setFieldSignature(positioned_tap_detector.TapPosition, () => ({
+    __proto__: dart.getFields(positioned_tap_detector.TapPosition.__proto__),
+    global: dart.fieldType(dart.legacy(ui.Offset)),
+    relative: dart.fieldType(dart.legacy(ui.Offset))
+  }));
+  dart.defineExtensionMethods(positioned_tap_detector.TapPosition, ['_equals']);
+  dart.defineExtensionAccessors(positioned_tap_detector.TapPosition, ['hashCode']);
+  positioned_tap_detector.PositionedTapController = class PositionedTapController extends core.Object {
+    onTap() {
+      let t0;
+      t0 = this[_state];
+      return t0 == null ? null : t0[_onTapEvent]();
+    }
+    onLongPress() {
+      let t0;
+      t0 = this[_state];
+      return t0 == null ? null : t0[_onLongPressEvent]();
+    }
+    onTapDown(details) {
+      let t0;
+      t0 = this[_state];
+      return t0 == null ? null : t0[_onTapDownEvent](details);
+    }
+  };
+  (positioned_tap_detector.PositionedTapController.new = function() {
+    this[_state] = null;
+    ;
+  }).prototype = positioned_tap_detector.PositionedTapController.prototype;
+  dart.addTypeTests(positioned_tap_detector.PositionedTapController);
+  dart.addTypeCaches(positioned_tap_detector.PositionedTapController);
+  dart.setMethodSignature(positioned_tap_detector.PositionedTapController, () => ({
+    __proto__: dart.getMethods(positioned_tap_detector.PositionedTapController.__proto__),
+    onTap: dart.fnType(dart.void, []),
+    onLongPress: dart.fnType(dart.void, []),
+    onTapDown: dart.fnType(dart.void, [dart.legacy(tap.TapDownDetails)])
+  }));
+  dart.setLibraryUri(positioned_tap_detector.PositionedTapController, L0);
+  dart.setFieldSignature(positioned_tap_detector.PositionedTapController, () => ({
+    __proto__: dart.getFields(positioned_tap_detector.PositionedTapController.__proto__),
+    [_state]: dart.fieldType(dart.legacy(positioned_tap_detector._TapPositionDetectorState))
+  }));
+  dart.trackLibraries("packages/positioned_tap_detector/positioned_tap_detector.dart", {
+    "package:positioned_tap_detector/positioned_tap_detector.dart": positioned_tap_detector
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["matrix_utils.dart"],"names":[],"mappings":"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","file":"../../../../../../../packages/flutter/src/painting/matrix_utils.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["positioned_tap_detector.dart"],"names":[],"mappings":"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","file":"../../../../../../../packages/positioned_tap_detector/positioned_tap_detector.dart.lib.js"}');
   // Exports:
   return {
-    src__painting__matrix_utils: matrix_utils
+    positioned_tap_detector: positioned_tap_detector
   };
 }));
 
-//# sourceMappingURL=matrix_utils.dart.lib.js.map
+//# sourceMappingURL=positioned_tap_detector.dart.lib.js.map

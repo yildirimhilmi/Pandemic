@@ -1,976 +1,1803 @@
-define(['dart_sdk', 'packages/flutter/src/rendering/layer.dart', 'packages/flutter/src/gestures/recognizer.dart', 'packages/flutter/src/gestures/hit_test.dart', 'packages/flutter/src/gestures/events.dart', 'packages/flutter/src/foundation/basic_types.dart', 'packages/flutter/src/services/platform_views.dart', 'packages/flutter/src/gestures/binding.dart', 'packages/flutter/src/gestures/team.dart', 'packages/flutter/src/gestures/long_press.dart', 'packages/flutter/src/gestures/monodrag.dart', 'packages/flutter/src/gestures/drag_details.dart', 'packages/flutter/src/gestures/tap.dart', 'packages/flutter/src/gestures/arena.dart', 'packages/flutter/src/foundation/collections.dart'], (function load__packages__flutter__src__rendering__platform_view_dart(dart_sdk, packages__flutter__src__rendering__layer$46dart, packages__flutter__src__gestures__recognizer$46dart, packages__flutter__src__gestures__hit_test$46dart, packages__flutter__src__gestures__events$46dart, packages__flutter__src__foundation__basic_types$46dart, packages__flutter__src__services__platform_views$46dart, packages__flutter__src__gestures__binding$46dart, packages__flutter__src__gestures__team$46dart, packages__flutter__src__gestures__long_press$46dart, packages__flutter__src__gestures__monodrag$46dart, packages__flutter__src__gestures__drag_details$46dart, packages__flutter__src__gestures__tap$46dart, packages__flutter__src__gestures__arena$46dart, packages__flutter__src__foundation__collections$46dart) {
+define(['dart_sdk', 'packages/video_player/src/sub_rip.dart', 'packages/video_player_platform_interface/method_channel_video_player.dart', 'packages/flutter/src/services/system_channels.dart', 'packages/flutter/src/foundation/change_notifier.dart', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/rendering/layer.dart', 'packages/flutter/src/rendering/proxy_box.dart', 'packages/flutter/src/gestures/drag_details.dart', 'packages/flutter/src/gestures/tap.dart', 'packages/flutter/src/painting/edge_insets.dart', 'packages/flutter/src/rendering/stack.dart', 'packages/flutter/src/material/progress_indicator.dart', 'packages/flutter/src/animation/listener_helpers.dart', 'packages/flutter/src/material/colors.dart', 'packages/flutter/src/painting/alignment.dart', 'packages/flutter/src/painting/box_decoration.dart', 'packages/flutter/src/painting/border_radius.dart', 'packages/flutter/src/painting/strut_style.dart'], (function load__packages__video_player__video_player_dart(dart_sdk, packages__video_player__src__sub_rip$46dart, packages__video_player_platform_interface__method_channel_video_player$46dart, packages__flutter__src__services__system_channels$46dart, packages__flutter__src__foundation__change_notifier$46dart, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__rendering__layer$46dart, packages__flutter__src__rendering__proxy_box$46dart, packages__flutter__src__gestures__drag_details$46dart, packages__flutter__src__gestures__tap$46dart, packages__flutter__src__painting__edge_insets$46dart, packages__flutter__src__rendering__stack$46dart, packages__flutter__src__material__progress_indicator$46dart, packages__flutter__src__animation__listener_helpers$46dart, packages__flutter__src__material__colors$46dart, packages__flutter__src__painting__alignment$46dart, packages__flutter__src__painting__box_decoration$46dart, packages__flutter__src__painting__border_radius$46dart, packages__flutter__src__painting__strut_style$46dart) {
   'use strict';
   const core = dart_sdk.core;
   const ui = dart_sdk.ui;
-  const _internal = dart_sdk._internal;
   const async = dart_sdk.async;
-  const _js_helper = dart_sdk._js_helper;
-  const collection = dart_sdk.collection;
   const _interceptors = dart_sdk._interceptors;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const layer = packages__flutter__src__rendering__layer$46dart.src__rendering__layer;
+  const closed_caption_file = packages__video_player__src__sub_rip$46dart.src__closed_caption_file;
+  const video_player_platform_interface = packages__video_player_platform_interface__method_channel_video_player$46dart.video_player_platform_interface;
+  const message_codec = packages__flutter__src__services__system_channels$46dart.src__services__message_codec;
+  const change_notifier = packages__flutter__src__foundation__change_notifier$46dart.src__foundation__change_notifier;
+  const binding = packages__flutter__src__widgets__widget_span$46dart.src__widgets__binding;
+  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
+  const container = packages__flutter__src__widgets__widget_span$46dart.src__widgets__container;
+  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
+  const gesture_detector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__gesture_detector;
+  const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
+  const text = packages__flutter__src__widgets__widget_span$46dart.src__widgets__text;
   const box = packages__flutter__src__rendering__layer$46dart.src__rendering__box;
-  const mouse_cursor = packages__flutter__src__rendering__layer$46dart.src__rendering__mouse_cursor;
-  const mouse_tracking = packages__flutter__src__rendering__layer$46dart.src__rendering__mouse_tracking;
-  const object = packages__flutter__src__rendering__layer$46dart.src__rendering__object;
-  const recognizer = packages__flutter__src__gestures__recognizer$46dart.src__gestures__recognizer;
-  const hit_test = packages__flutter__src__gestures__hit_test$46dart.src__gestures__hit_test;
-  const events = packages__flutter__src__gestures__events$46dart.src__gestures__events;
-  const basic_types = packages__flutter__src__foundation__basic_types$46dart.src__foundation__basic_types;
-  const platform_views = packages__flutter__src__services__platform_views$46dart.src__services__platform_views;
-  const binding = packages__flutter__src__gestures__binding$46dart.src__gestures__binding;
-  const team = packages__flutter__src__gestures__team$46dart.src__gestures__team;
-  const long_press = packages__flutter__src__gestures__long_press$46dart.src__gestures__long_press;
-  const monodrag = packages__flutter__src__gestures__monodrag$46dart.src__gestures__monodrag;
+  const proxy_box = packages__flutter__src__rendering__proxy_box$46dart.src__rendering__proxy_box;
   const drag_details = packages__flutter__src__gestures__drag_details$46dart.src__gestures__drag_details;
   const tap = packages__flutter__src__gestures__tap$46dart.src__gestures__tap;
-  const arena = packages__flutter__src__gestures__arena$46dart.src__gestures__arena;
-  const collections = packages__flutter__src__foundation__collections$46dart.src__foundation__collections;
-  var platform_view = Object.create(dart.library);
-  var $length = dartx.length;
-  var $map = dartx.map;
-  var $toSet = dartx.toSet;
-  var $remove = dartx.remove;
-  var $containsKey = dartx.containsKey;
-  var $_set = dartx._set;
-  var $_get = dartx._get;
-  var $add = dartx.add;
-  var $forEach = dartx.forEach;
-  var $keys = dartx.keys;
-  var $clear = dartx.clear;
-  var PlatformViewHitTestBehaviorL = () => (PlatformViewHitTestBehaviorL = dart.constFn(dart.legacy(platform_view.PlatformViewHitTestBehavior)))();
-  var _PlatformViewStateL = () => (_PlatformViewStateL = dart.constFn(dart.legacy(platform_view._PlatformViewState)))();
-  var OffsetToOffset = () => (OffsetToOffset = dart.constFn(dart.fnType(ui.Offset, [ui.Offset])))();
-  var VoidTovoid = () => (VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))();
-  var DragDownDetailsTovoid = () => (DragDownDetailsTovoid = dart.constFn(dart.fnType(dart.void, [drag_details.DragDownDetails])))();
-  var TapDownDetailsTovoid = () => (TapDownDetailsTovoid = dart.constFn(dart.fnType(dart.void, [tap.TapDownDetails])))();
-  var FactoryOfOneSequenceGestureRecognizer = () => (FactoryOfOneSequenceGestureRecognizer = dart.constFn(basic_types.Factory$(recognizer.OneSequenceGestureRecognizer)))();
-  var FactoryOfOneSequenceGestureRecognizerToOneSequenceGestureRecognizer = () => (FactoryOfOneSequenceGestureRecognizerToOneSequenceGestureRecognizer = dart.constFn(dart.fnType(recognizer.OneSequenceGestureRecognizer, [FactoryOfOneSequenceGestureRecognizer()])))();
-  var ListOfPointerEvent = () => (ListOfPointerEvent = dart.constFn(core.List$(events.PointerEvent)))();
-  var IdentityMapOfint$ListOfPointerEvent = () => (IdentityMapOfint$ListOfPointerEvent = dart.constFn(_js_helper.IdentityMap$(core.int, ListOfPointerEvent())))();
-  var LinkedHashSetOfint = () => (LinkedHashSetOfint = dart.constFn(collection.LinkedHashSet$(core.int)))();
-  var JSArrayOfPointerEvent = () => (JSArrayOfPointerEvent = dart.constFn(_interceptors.JSArray$(events.PointerEvent)))();
+  const edge_insets = packages__flutter__src__painting__edge_insets$46dart.src__painting__edge_insets;
+  const stack = packages__flutter__src__rendering__stack$46dart.src__rendering__stack;
+  const progress_indicator = packages__flutter__src__material__progress_indicator$46dart.src__material__progress_indicator;
+  const animations = packages__flutter__src__animation__listener_helpers$46dart.src__animation__animations;
+  const colors = packages__flutter__src__material__colors$46dart.src__material__colors;
+  const alignment = packages__flutter__src__painting__alignment$46dart.src__painting__alignment;
+  const box_decoration = packages__flutter__src__painting__box_decoration$46dart.src__painting__box_decoration;
+  const border_radius = packages__flutter__src__painting__border_radius$46dart.src__painting__border_radius;
+  const text_style = packages__flutter__src__painting__strut_style$46dart.src__painting__text_style;
+  var video_player = Object.create(dart.library);
+  var $join = dartx.join;
+  var $toString = dartx.toString;
+  var $clamp = dartx.clamp;
+  var DurationRangeL = () => (DurationRangeL = dart.constFn(dart.legacy(video_player_platform_interface.DurationRange)))();
+  var CompleterOfvoid = () => (CompleterOfvoid = dart.constFn(async.Completer$(dart.void)))();
+  var VideoEventL = () => (VideoEventL = dart.constFn(dart.legacy(video_player_platform_interface.VideoEvent)))();
+  var VideoEventLTovoid = () => (VideoEventLTovoid = dart.constFn(dart.fnType(dart.void, [VideoEventL()])))();
+  var PlatformExceptionL = () => (PlatformExceptionL = dart.constFn(dart.legacy(message_codec.PlatformException)))();
+  var ObjectL = () => (ObjectL = dart.constFn(dart.legacy(core.Object)))();
+  var ObjectLTovoid = () => (ObjectLTovoid = dart.constFn(dart.fnType(dart.void, [ObjectL()])))();
+  var FutureOfNull = () => (FutureOfNull = dart.constFn(async.Future$(core.Null)))();
+  var FutureLOfNull = () => (FutureLOfNull = dart.constFn(dart.legacy(FutureOfNull())))();
+  var TimerL = () => (TimerL = dart.constFn(dart.legacy(async.Timer)))();
+  var TimerLToFutureLOfNull = () => (TimerLToFutureLOfNull = dart.constFn(dart.fnType(FutureLOfNull(), [TimerL()])))();
+  var DurationL = () => (DurationL = dart.constFn(dart.legacy(core.Duration)))();
+  var VoidToNull = () => (VoidToNull = dart.constFn(dart.fnType(core.Null, [])))();
+  var VideoPlayerL = () => (VideoPlayerL = dart.constFn(dart.legacy(video_player.VideoPlayer)))();
+  var _LocationL = () => (_LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))();
+  var RenderBoxL = () => (RenderBoxL = dart.constFn(dart.legacy(box.RenderBox)))();
+  var OffsetL = () => (OffsetL = dart.constFn(dart.legacy(ui.Offset)))();
+  var OffsetLTovoid = () => (OffsetLTovoid = dart.constFn(dart.fnType(dart.void, [OffsetL()])))();
+  var DragStartDetailsL = () => (DragStartDetailsL = dart.constFn(dart.legacy(drag_details.DragStartDetails)))();
+  var DragStartDetailsLToNull = () => (DragStartDetailsLToNull = dart.constFn(dart.fnType(core.Null, [DragStartDetailsL()])))();
+  var DragUpdateDetailsL = () => (DragUpdateDetailsL = dart.constFn(dart.legacy(drag_details.DragUpdateDetails)))();
+  var DragUpdateDetailsLToNull = () => (DragUpdateDetailsLToNull = dart.constFn(dart.fnType(core.Null, [DragUpdateDetailsL()])))();
+  var DragEndDetailsL = () => (DragEndDetailsL = dart.constFn(dart.legacy(drag_details.DragEndDetails)))();
+  var DragEndDetailsLToNull = () => (DragEndDetailsLToNull = dart.constFn(dart.fnType(core.Null, [DragEndDetailsL()])))();
+  var TapDownDetailsL = () => (TapDownDetailsL = dart.constFn(dart.legacy(tap.TapDownDetails)))();
+  var TapDownDetailsLToNull = () => (TapDownDetailsLToNull = dart.constFn(dart.fnType(core.Null, [TapDownDetailsL()])))();
+  var ColorL = () => (ColorL = dart.constFn(dart.legacy(ui.Color)))();
+  var AlwaysStoppedAnimationOfColorL = () => (AlwaysStoppedAnimationOfColorL = dart.constFn(animations.AlwaysStoppedAnimation$(ColorL())))();
+  var WidgetL = () => (WidgetL = dart.constFn(dart.legacy(framework.Widget)))();
+  var JSArrayOfWidgetL = () => (JSArrayOfWidgetL = dart.constFn(_interceptors.JSArray$(WidgetL())))();
   const CT = Object.create(null);
-  var L0 = "file:///C:/src/flutter/packages/flutter/lib/src/rendering/platform_view.dart";
-  var L1 = "package:flutter/src/rendering/platform_view.dart";
+  var L0 = "package:video_player/video_player.dart";
   dart.defineLazy(CT, {
     get C0() {
       return C0 = dart.const({
-        __proto__: platform_view.PlatformViewHitTestBehavior.prototype,
-        [_name$]: "PlatformViewHitTestBehavior.opaque",
-        index: 0
+        __proto__: core.Duration.prototype,
+        [Duration__duration]: 0
       });
     },
     get C1() {
       return C1 = dart.const({
-        __proto__: platform_view.PlatformViewHitTestBehavior.prototype,
-        [_name$]: "PlatformViewHitTestBehavior.translucent",
-        index: 1
+        __proto__: closed_caption_file.Caption.prototype,
+        [Caption_text]: null,
+        [Caption_end]: null,
+        [Caption_start]: null,
+        [Caption_number]: null
       });
     },
     get C2() {
-      return C2 = dart.const({
-        __proto__: platform_view.PlatformViewHitTestBehavior.prototype,
-        [_name$]: "PlatformViewHitTestBehavior.transparent",
-        index: 2
-      });
+      return C2 = dart.constList([], DurationRangeL());
     },
     get C3() {
-      return C3 = dart.constList([C0 || CT.C0, C1 || CT.C1, C2 || CT.C2], PlatformViewHitTestBehaviorL());
+      return C3 = dart.const({
+        __proto__: video_player_platform_interface.DataSourceType.prototype,
+        [_name]: "DataSourceType.asset",
+        index: 0
+      });
     },
     get C4() {
       return C4 = dart.const({
-        __proto__: platform_view._PlatformViewState.prototype,
-        [_name$]: "_PlatformViewState.uninitialized",
-        index: 0
+        __proto__: video_player_platform_interface.DataSourceType.prototype,
+        [_name]: "DataSourceType.network",
+        index: 1
       });
     },
     get C5() {
       return C5 = dart.const({
-        __proto__: platform_view._PlatformViewState.prototype,
-        [_name$]: "_PlatformViewState.resizing",
-        index: 1
+        __proto__: video_player_platform_interface.DataSourceType.prototype,
+        [_name]: "DataSourceType.file",
+        index: 2
       });
     },
     get C6() {
       return C6 = dart.const({
-        __proto__: platform_view._PlatformViewState.prototype,
-        [_name$]: "_PlatformViewState.ready",
-        index: 2
+        __proto__: video_player_platform_interface.VideoEventType.prototype,
+        [_name]: "VideoEventType.initialized",
+        index: 0
       });
     },
     get C7() {
-      return C7 = dart.constList([C4 || CT.C4, C5 || CT.C5, C6 || CT.C6], _PlatformViewStateL());
+      return C7 = dart.const({
+        __proto__: video_player_platform_interface.VideoEventType.prototype,
+        [_name]: "VideoEventType.completed",
+        index: 1
+      });
     },
     get C8() {
       return C8 = dart.const({
-        __proto__: ui.Clip.prototype,
-        [_name]: "Clip.hardEdge",
-        index: 1
+        __proto__: video_player_platform_interface.VideoEventType.prototype,
+        [_name]: "VideoEventType.bufferingUpdate",
+        index: 2
+      });
+    },
+    get C9() {
+      return C9 = dart.const({
+        __proto__: video_player_platform_interface.VideoEventType.prototype,
+        [_name]: "VideoEventType.bufferingStart",
+        index: 3
+      });
+    },
+    get C10() {
+      return C10 = dart.const({
+        __proto__: video_player_platform_interface.VideoEventType.prototype,
+        [_name]: "VideoEventType.bufferingEnd",
+        index: 4
+      });
+    },
+    get C11() {
+      return C11 = dart.const({
+        __proto__: video_player_platform_interface.VideoEventType.prototype,
+        [_name]: "VideoEventType.unknown",
+        index: 5
+      });
+    },
+    get C12() {
+      return C12 = dart.const({
+        __proto__: core.Duration.prototype,
+        [Duration__duration]: 500000
+      });
+    },
+    get C13() {
+      return C13 = dart.const({
+        __proto__: ui.AppLifecycleState.prototype,
+        [_name$]: "AppLifecycleState.paused",
+        index: 2
+      });
+    },
+    get C14() {
+      return C14 = dart.const({
+        __proto__: ui.AppLifecycleState.prototype,
+        [_name$]: "AppLifecycleState.resumed",
+        index: 0
+      });
+    },
+    get C16() {
+      return C16 = dart.constList([], _LocationL());
+    },
+    get C15() {
+      return C15 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C16 || CT.C16,
+        [_Location_name]: null,
+        [_Location_column]: 11,
+        [_Location_line]: 626,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/video_player-1.0.1/lib/video_player.dart"
+      });
+    },
+    get C17() {
+      return C17 = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 3003056128.0
+      });
+    },
+    get C18() {
+      return C18 = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 858927816
+      });
+    },
+    get C19() {
+      return C19 = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 2143865032
+      });
+    },
+    get C22() {
+      return C22 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "behavior",
+        [_Location_column]: 7,
+        [_Location_line]: 700,
+        [_Location_file]: null
+      });
+    },
+    get C23() {
+      return C23 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 701,
+        [_Location_file]: null
+      });
+    },
+    get C24() {
+      return C24 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onHorizontalDragStart",
+        [_Location_column]: 7,
+        [_Location_line]: 702,
+        [_Location_file]: null
+      });
+    },
+    get C25() {
+      return C25 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onHorizontalDragUpdate",
+        [_Location_column]: 7,
+        [_Location_line]: 711,
+        [_Location_file]: null
+      });
+    },
+    get C26() {
+      return C26 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onHorizontalDragEnd",
+        [_Location_column]: 7,
+        [_Location_line]: 717,
+        [_Location_file]: null
+      });
+    },
+    get C27() {
+      return C27 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onTapDown",
+        [_Location_column]: 7,
+        [_Location_line]: 722,
+        [_Location_file]: null
+      });
+    },
+    get C21() {
+      return C21 = dart.constList([C22 || CT.C22, C23 || CT.C23, C24 || CT.C24, C25 || CT.C25, C26 || CT.C26, C27 || CT.C27], _LocationL());
+    },
+    get C20() {
+      return C20 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C21 || CT.C21,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 699,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/video_player-1.0.1/lib/video_player.dart"
+      });
+    },
+    get C28() {
+      return C28 = dart.const({
+        __proto__: edge_insets.EdgeInsets.prototype,
+        [EdgeInsets_bottom]: 0,
+        [EdgeInsets_right]: 0,
+        [EdgeInsets_top]: 5,
+        [EdgeInsets_left]: 0
+      });
+    },
+    get C31() {
+      return C31 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "value",
+        [_Location_column]: 13,
+        [_Location_line]: 825,
+        [_Location_file]: null
+      });
+    },
+    get C32() {
+      return C32 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "valueColor",
+        [_Location_column]: 13,
+        [_Location_line]: 826,
+        [_Location_file]: null
+      });
+    },
+    get C33() {
+      return C33 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "backgroundColor",
+        [_Location_column]: 13,
+        [_Location_line]: 827,
+        [_Location_file]: null
+      });
+    },
+    get C30() {
+      return C30 = dart.constList([C31 || CT.C31, C32 || CT.C32, C33 || CT.C33], _LocationL());
+    },
+    get C29() {
+      return C29 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C30 || CT.C30,
+        [_Location_name]: null,
+        [_Location_column]: 11,
+        [_Location_line]: 824,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/video_player-1.0.1/lib/video_player.dart"
+      });
+    },
+    get C36() {
+      return C36 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "value",
+        [_Location_column]: 13,
+        [_Location_line]: 830,
+        [_Location_file]: null
+      });
+    },
+    get C37() {
+      return C37 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "valueColor",
+        [_Location_column]: 13,
+        [_Location_line]: 831,
+        [_Location_file]: null
+      });
+    },
+    get C38() {
+      return C38 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "backgroundColor",
+        [_Location_column]: 13,
+        [_Location_line]: 832,
+        [_Location_file]: null
+      });
+    },
+    get C35() {
+      return C35 = dart.constList([C36 || CT.C36, C37 || CT.C37, C38 || CT.C38], _LocationL());
+    },
+    get C34() {
+      return C34 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C35 || CT.C35,
+        [_Location_name]: null,
+        [_Location_column]: 11,
+        [_Location_line]: 829,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/video_player-1.0.1/lib/video_player.dart"
+      });
+    },
+    get C41() {
+      return C41 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "fit",
+        [_Location_column]: 9,
+        [_Location_line]: 822,
+        [_Location_file]: null
+      });
+    },
+    get C42() {
+      return C42 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 9,
+        [_Location_line]: 823,
+        [_Location_file]: null
+      });
+    },
+    get C40() {
+      return C40 = dart.constList([C41 || CT.C41, C42 || CT.C42], _LocationL());
+    },
+    get C39() {
+      return C39 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C40 || CT.C40,
+        [_Location_name]: null,
+        [_Location_column]: 27,
+        [_Location_line]: 821,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/video_player-1.0.1/lib/video_player.dart"
+      });
+    },
+    get C45() {
+      return C45 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "value",
+        [_Location_column]: 9,
+        [_Location_line]: 838,
+        [_Location_file]: null
+      });
+    },
+    get C46() {
+      return C46 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "valueColor",
+        [_Location_column]: 9,
+        [_Location_line]: 839,
+        [_Location_file]: null
+      });
+    },
+    get C47() {
+      return C47 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "backgroundColor",
+        [_Location_column]: 9,
+        [_Location_line]: 840,
+        [_Location_file]: null
+      });
+    },
+    get C44() {
+      return C44 = dart.constList([C45 || CT.C45, C46 || CT.C46, C47 || CT.C47], _LocationL());
+    },
+    get C43() {
+      return C43 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C44 || CT.C44,
+        [_Location_name]: null,
+        [_Location_column]: 27,
+        [_Location_line]: 837,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/video_player-1.0.1/lib/video_player.dart"
+      });
+    },
+    get C50() {
+      return C50 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "padding",
+        [_Location_column]: 7,
+        [_Location_line]: 844,
+        [_Location_file]: null
+      });
+    },
+    get C51() {
+      return C51 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 845,
+        [_Location_file]: null
+      });
+    },
+    get C49() {
+      return C49 = dart.constList([C50 || CT.C50, C51 || CT.C51], _LocationL());
+    },
+    get C48() {
+      return C48 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C49 || CT.C49,
+        [_Location_name]: null,
+        [_Location_column]: 44,
+        [_Location_line]: 843,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/video_player-1.0.1/lib/video_player.dart"
+      });
+    },
+    get C54() {
+      return C54 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 9,
+        [_Location_line]: 849,
+        [_Location_file]: null
+      });
+    },
+    get C55() {
+      return C55 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "controller",
+        [_Location_column]: 9,
+        [_Location_line]: 850,
+        [_Location_file]: null
+      });
+    },
+    get C53() {
+      return C53 = dart.constList([C54 || CT.C54, C55 || CT.C55], _LocationL());
+    },
+    get C52() {
+      return C52 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C53 || CT.C53,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 848,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/video_player-1.0.1/lib/video_player.dart"
+      });
+    },
+    get C56() {
+      return C56 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C16 || CT.C16,
+        [_Location_name]: null,
+        [_Location_column]: 23,
+        [_Location_line]: 902,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/video_player-1.0.1/lib/video_player.dart"
+      });
+    },
+    get C59() {
+      return C59 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "data",
+        [_Location_column]: 25,
+        [_Location_line]: 916,
+        [_Location_file]: null
+      });
+    },
+    get C60() {
+      return C60 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "style",
+        [_Location_column]: 31,
+        [_Location_line]: 916,
+        [_Location_file]: null
+      });
+    },
+    get C58() {
+      return C58 = dart.constList([C59 || CT.C59, C60 || CT.C60], _LocationL());
+    },
+    get C57() {
+      return C57 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C58 || CT.C58,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 916,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/video_player-1.0.1/lib/video_player.dart"
+      });
+    },
+    get C63() {
+      return C63 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "padding",
+        [_Location_column]: 13,
+        [_Location_line]: 915,
+        [_Location_file]: null
+      });
+    },
+    get C64() {
+      return C64 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 13,
+        [_Location_line]: 916,
+        [_Location_file]: null
+      });
+    },
+    get C62() {
+      return C62 = dart.constList([C63 || CT.C63, C64 || CT.C64], _LocationL());
+    },
+    get C61() {
+      return C61 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C62 || CT.C62,
+        [_Location_name]: null,
+        [_Location_column]: 18,
+        [_Location_line]: 914,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/video_player-1.0.1/lib/video_player.dart"
+      });
+    },
+    get C67() {
+      return C67 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "decoration",
+        [_Location_column]: 11,
+        [_Location_line]: 910,
+        [_Location_file]: null
+      });
+    },
+    get C68() {
+      return C68 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 11,
+        [_Location_line]: 914,
+        [_Location_file]: null
+      });
+    },
+    get C66() {
+      return C66 = dart.constList([C67 || CT.C67, C68 || CT.C68], _LocationL());
+    },
+    get C65() {
+      return C65 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C66 || CT.C66,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 909,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/video_player-1.0.1/lib/video_player.dart"
+      });
+    },
+    get C71() {
+      return C71 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "padding",
+        [_Location_column]: 9,
+        [_Location_line]: 908,
+        [_Location_file]: null
+      });
+    },
+    get C72() {
+      return C72 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 9,
+        [_Location_line]: 909,
+        [_Location_file]: null
+      });
+    },
+    get C70() {
+      return C70 = dart.constList([C71 || CT.C71, C72 || CT.C72], _LocationL());
+    },
+    get C69() {
+      return C69 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C70 || CT.C70,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 907,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/video_player-1.0.1/lib/video_player.dart"
+      });
+    },
+    get C75() {
+      return C75 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "alignment",
+        [_Location_column]: 7,
+        [_Location_line]: 906,
+        [_Location_file]: null
+      });
+    },
+    get C76() {
+      return C76 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 907,
+        [_Location_file]: null
+      });
+    },
+    get C74() {
+      return C74 = dart.constList([C75 || CT.C75, C76 || CT.C76], _LocationL());
+    },
+    get C73() {
+      return C73 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C74 || CT.C74,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 905,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/video_player-1.0.1/lib/video_player.dart"
       });
     }
   }, false);
-  var _name$ = dart.privateName(platform_view, "_name");
+  var Duration__duration = dart.privateName(core, "Duration._duration");
   var C0;
+  var Caption_text = dart.privateName(closed_caption_file, "Caption.text");
+  var Caption_end = dart.privateName(closed_caption_file, "Caption.end");
+  var Caption_start = dart.privateName(closed_caption_file, "Caption.start");
+  var Caption_number = dart.privateName(closed_caption_file, "Caption.number");
   var C1;
   var C2;
-  var C3;
-  platform_view.PlatformViewHitTestBehavior = class PlatformViewHitTestBehavior extends core.Object {
+  var duration$ = dart.privateName(video_player, "VideoPlayerValue.duration");
+  var position$ = dart.privateName(video_player, "VideoPlayerValue.position");
+  var caption$ = dart.privateName(video_player, "VideoPlayerValue.caption");
+  var buffered$ = dart.privateName(video_player, "VideoPlayerValue.buffered");
+  var isPlaying$ = dart.privateName(video_player, "VideoPlayerValue.isPlaying");
+  var isLooping$ = dart.privateName(video_player, "VideoPlayerValue.isLooping");
+  var isBuffering$ = dart.privateName(video_player, "VideoPlayerValue.isBuffering");
+  var volume$ = dart.privateName(video_player, "VideoPlayerValue.volume");
+  var playbackSpeed$ = dart.privateName(video_player, "VideoPlayerValue.playbackSpeed");
+  var errorDescription$ = dart.privateName(video_player, "VideoPlayerValue.errorDescription");
+  var size$ = dart.privateName(video_player, "VideoPlayerValue.size");
+  video_player.VideoPlayerValue = class VideoPlayerValue extends core.Object {
+    get duration() {
+      return this[duration$];
+    }
+    set duration(value) {
+      super.duration = value;
+    }
+    get position() {
+      return this[position$];
+    }
+    set position(value) {
+      super.position = value;
+    }
+    get caption() {
+      return this[caption$];
+    }
+    set caption(value) {
+      super.caption = value;
+    }
+    get buffered() {
+      return this[buffered$];
+    }
+    set buffered(value) {
+      super.buffered = value;
+    }
+    get isPlaying() {
+      return this[isPlaying$];
+    }
+    set isPlaying(value) {
+      super.isPlaying = value;
+    }
+    get isLooping() {
+      return this[isLooping$];
+    }
+    set isLooping(value) {
+      super.isLooping = value;
+    }
+    get isBuffering() {
+      return this[isBuffering$];
+    }
+    set isBuffering(value) {
+      super.isBuffering = value;
+    }
+    get volume() {
+      return this[volume$];
+    }
+    set volume(value) {
+      super.volume = value;
+    }
+    get playbackSpeed() {
+      return this[playbackSpeed$];
+    }
+    set playbackSpeed(value) {
+      super.playbackSpeed = value;
+    }
+    get errorDescription() {
+      return this[errorDescription$];
+    }
+    set errorDescription(value) {
+      super.errorDescription = value;
+    }
+    get size() {
+      return this[size$];
+    }
+    set size(value) {
+      super.size = value;
+    }
+    get initialized() {
+      return this.duration != null;
+    }
+    get hasError() {
+      return this.errorDescription != null;
+    }
+    get aspectRatio() {
+      if (this.size == null || this.size.width === 0 || this.size.height === 0) {
+        return 1.0;
+      }
+      let aspectRatio = dart.notNull(this.size.width) / dart.notNull(this.size.height);
+      if (aspectRatio <= 0) {
+        return 1.0;
+      }
+      return aspectRatio;
+    }
+    copyWith(opts) {
+      let t0, t0$, t0$0, t0$1, t0$2, t0$3, t0$4, t0$5, t0$6, t0$7, t0$8;
+      let duration = opts && 'duration' in opts ? opts.duration : null;
+      let size = opts && 'size' in opts ? opts.size : null;
+      let position = opts && 'position' in opts ? opts.position : null;
+      let caption = opts && 'caption' in opts ? opts.caption : null;
+      let buffered = opts && 'buffered' in opts ? opts.buffered : null;
+      let isPlaying = opts && 'isPlaying' in opts ? opts.isPlaying : null;
+      let isLooping = opts && 'isLooping' in opts ? opts.isLooping : null;
+      let isBuffering = opts && 'isBuffering' in opts ? opts.isBuffering : null;
+      let volume = opts && 'volume' in opts ? opts.volume : null;
+      let playbackSpeed = opts && 'playbackSpeed' in opts ? opts.playbackSpeed : null;
+      let errorDescription = opts && 'errorDescription' in opts ? opts.errorDescription : null;
+      return new video_player.VideoPlayerValue.new({duration: (t0 = duration, t0 == null ? this.duration : t0), size: (t0$ = size, t0$ == null ? this.size : t0$), position: (t0$0 = position, t0$0 == null ? this.position : t0$0), caption: (t0$1 = caption, t0$1 == null ? this.caption : t0$1), buffered: (t0$2 = buffered, t0$2 == null ? this.buffered : t0$2), isPlaying: (t0$3 = isPlaying, t0$3 == null ? this.isPlaying : t0$3), isLooping: (t0$4 = isLooping, t0$4 == null ? this.isLooping : t0$4), isBuffering: (t0$5 = isBuffering, t0$5 == null ? this.isBuffering : t0$5), volume: (t0$6 = volume, t0$6 == null ? this.volume : t0$6), playbackSpeed: (t0$7 = playbackSpeed, t0$7 == null ? this.playbackSpeed : t0$7), errorDescription: (t0$8 = errorDescription, t0$8 == null ? this.errorDescription : t0$8)});
+    }
     toString() {
-      return this[_name$];
+      return dart.str(this.runtimeType) + "(" + "duration: " + dart.str(this.duration) + ", " + "size: " + dart.str(this.size) + ", " + "position: " + dart.str(this.position) + ", " + "caption: " + dart.str(this.caption) + ", " + "buffered: [" + dart.str(this.buffered[$join](", ")) + "], " + "isPlaying: " + dart.str(this.isPlaying) + ", " + "isLooping: " + dart.str(this.isLooping) + ", " + "isBuffering: " + dart.str(this.isBuffering) + ", " + "volume: " + dart.str(this.volume) + ", " + "playbackSpeed: " + dart.str(this.playbackSpeed) + ", " + "errorDescription: " + dart.str(this.errorDescription) + ")";
     }
   };
-  (platform_view.PlatformViewHitTestBehavior.new = function(index, _name) {
-    if (index == null) dart.nullFailed(L0, 20, 6, "index");
-    if (_name == null) dart.nullFailed(L0, 20, 6, "_name");
-    this.index = index;
-    this[_name$] = _name;
+  (video_player.VideoPlayerValue.new = function(opts) {
+    let duration = opts && 'duration' in opts ? opts.duration : null;
+    let size = opts && 'size' in opts ? opts.size : null;
+    let position = opts && 'position' in opts ? opts.position : C0 || CT.C0;
+    let caption = opts && 'caption' in opts ? opts.caption : C1 || CT.C1;
+    let buffered = opts && 'buffered' in opts ? opts.buffered : C2 || CT.C2;
+    let isPlaying = opts && 'isPlaying' in opts ? opts.isPlaying : false;
+    let isLooping = opts && 'isLooping' in opts ? opts.isLooping : false;
+    let isBuffering = opts && 'isBuffering' in opts ? opts.isBuffering : false;
+    let volume = opts && 'volume' in opts ? opts.volume : 1;
+    let playbackSpeed = opts && 'playbackSpeed' in opts ? opts.playbackSpeed : 1;
+    let errorDescription = opts && 'errorDescription' in opts ? opts.errorDescription : null;
+    this[duration$] = duration;
+    this[size$] = size;
+    this[position$] = position;
+    this[caption$] = caption;
+    this[buffered$] = buffered;
+    this[isPlaying$] = isPlaying;
+    this[isLooping$] = isLooping;
+    this[isBuffering$] = isBuffering;
+    this[volume$] = volume;
+    this[playbackSpeed$] = playbackSpeed;
+    this[errorDescription$] = errorDescription;
     ;
-  }).prototype = platform_view.PlatformViewHitTestBehavior.prototype;
-  dart.addTypeTests(platform_view.PlatformViewHitTestBehavior);
-  dart.addTypeCaches(platform_view.PlatformViewHitTestBehavior);
-  dart.setLibraryUri(platform_view.PlatformViewHitTestBehavior, L1);
-  dart.setFieldSignature(platform_view.PlatformViewHitTestBehavior, () => ({
-    __proto__: dart.getFields(platform_view.PlatformViewHitTestBehavior.__proto__),
-    index: dart.finalFieldType(core.int),
-    [_name$]: dart.finalFieldType(core.String)
+  }).prototype = video_player.VideoPlayerValue.prototype;
+  (video_player.VideoPlayerValue.uninitialized = function() {
+    video_player.VideoPlayerValue.new.call(this, {duration: null});
+  }).prototype = video_player.VideoPlayerValue.prototype;
+  (video_player.VideoPlayerValue.erroneous = function(errorDescription) {
+    video_player.VideoPlayerValue.new.call(this, {duration: null, errorDescription: errorDescription});
+  }).prototype = video_player.VideoPlayerValue.prototype;
+  dart.addTypeTests(video_player.VideoPlayerValue);
+  dart.addTypeCaches(video_player.VideoPlayerValue);
+  dart.setMethodSignature(video_player.VideoPlayerValue, () => ({
+    __proto__: dart.getMethods(video_player.VideoPlayerValue.__proto__),
+    copyWith: dart.fnType(dart.legacy(video_player.VideoPlayerValue), [], {buffered: dart.legacy(core.List$(dart.legacy(video_player_platform_interface.DurationRange))), caption: dart.legacy(closed_caption_file.Caption), duration: dart.legacy(core.Duration), errorDescription: dart.legacy(core.String), isBuffering: dart.legacy(core.bool), isLooping: dart.legacy(core.bool), isPlaying: dart.legacy(core.bool), playbackSpeed: dart.legacy(core.double), position: dart.legacy(core.Duration), size: dart.legacy(ui.Size), volume: dart.legacy(core.double)}, {}),
+    toString: dart.fnType(dart.legacy(core.String), []),
+    [$toString]: dart.fnType(dart.legacy(core.String), [])
   }));
-  dart.defineExtensionMethods(platform_view.PlatformViewHitTestBehavior, ['toString']);
-  platform_view.PlatformViewHitTestBehavior.opaque = C0 || CT.C0;
-  platform_view.PlatformViewHitTestBehavior.translucent = C1 || CT.C1;
-  platform_view.PlatformViewHitTestBehavior.transparent = C2 || CT.C2;
-  platform_view.PlatformViewHitTestBehavior.values = C3 || CT.C3;
+  dart.setGetterSignature(video_player.VideoPlayerValue, () => ({
+    __proto__: dart.getGetters(video_player.VideoPlayerValue.__proto__),
+    initialized: dart.legacy(core.bool),
+    hasError: dart.legacy(core.bool),
+    aspectRatio: dart.legacy(core.double)
+  }));
+  dart.setLibraryUri(video_player.VideoPlayerValue, L0);
+  dart.setFieldSignature(video_player.VideoPlayerValue, () => ({
+    __proto__: dart.getFields(video_player.VideoPlayerValue.__proto__),
+    duration: dart.finalFieldType(dart.legacy(core.Duration)),
+    position: dart.finalFieldType(dart.legacy(core.Duration)),
+    caption: dart.finalFieldType(dart.legacy(closed_caption_file.Caption)),
+    buffered: dart.finalFieldType(dart.legacy(core.List$(dart.legacy(video_player_platform_interface.DurationRange)))),
+    isPlaying: dart.finalFieldType(dart.legacy(core.bool)),
+    isLooping: dart.finalFieldType(dart.legacy(core.bool)),
+    isBuffering: dart.finalFieldType(dart.legacy(core.bool)),
+    volume: dart.finalFieldType(dart.legacy(core.double)),
+    playbackSpeed: dart.finalFieldType(dart.legacy(core.double)),
+    errorDescription: dart.finalFieldType(dart.legacy(core.String)),
+    size: dart.finalFieldType(dart.legacy(ui.Size))
+  }));
+  dart.defineExtensionMethods(video_player.VideoPlayerValue, ['toString']);
+  var _textureId = dart.privateName(video_player, "_textureId");
+  var _closedCaptionFile = dart.privateName(video_player, "_closedCaptionFile");
+  var _timer = dart.privateName(video_player, "_timer");
+  var _isDisposed = dart.privateName(video_player, "_isDisposed");
+  var _creatingCompleter = dart.privateName(video_player, "_creatingCompleter");
+  var _eventSubscription = dart.privateName(video_player, "_eventSubscription");
+  var _lifeCycleObserver = dart.privateName(video_player, "_lifeCycleObserver");
+  var _name = dart.privateName(video_player_platform_interface, "_name");
+  var C3;
   var C4;
   var C5;
+  var _applyLooping = dart.privateName(video_player, "_applyLooping");
+  var _applyVolume = dart.privateName(video_player, "_applyVolume");
+  var _applyPlayPause = dart.privateName(video_player, "_applyPlayPause");
   var C6;
   var C7;
-  platform_view._PlatformViewState = class _PlatformViewState extends core.Object {
-    toString() {
-      return this[_name$];
-    }
-  };
-  (platform_view._PlatformViewState.new = function(index, _name) {
-    if (index == null) dart.nullFailed(L0, 35, 6, "index");
-    if (_name == null) dart.nullFailed(L0, 35, 6, "_name");
-    this.index = index;
-    this[_name$] = _name;
-    ;
-  }).prototype = platform_view._PlatformViewState.prototype;
-  dart.addTypeTests(platform_view._PlatformViewState);
-  dart.addTypeCaches(platform_view._PlatformViewState);
-  dart.setLibraryUri(platform_view._PlatformViewState, L1);
-  dart.setFieldSignature(platform_view._PlatformViewState, () => ({
-    __proto__: dart.getFields(platform_view._PlatformViewState.__proto__),
-    index: dart.finalFieldType(core.int),
-    [_name$]: dart.finalFieldType(core.String)
-  }));
-  dart.defineExtensionMethods(platform_view._PlatformViewState, ['toString']);
-  platform_view._PlatformViewState.uninitialized = C4 || CT.C4;
-  platform_view._PlatformViewState.resizing = C5 || CT.C5;
-  platform_view._PlatformViewState.ready = C6 || CT.C6;
-  platform_view._PlatformViewState.values = C7 || CT.C7;
-  var _name = dart.privateName(ui, "_name");
   var C8;
-  var _state = dart.privateName(platform_view, "_state");
-  var _clipBehavior = dart.privateName(platform_view, "_clipBehavior");
-  var __RenderAndroidView__currentAndroidViewSize = dart.privateName(platform_view, "_#RenderAndroidView#_currentAndroidViewSize");
-  var __RenderAndroidView__currentAndroidViewSize_isSet = dart.privateName(platform_view, "_#RenderAndroidView#_currentAndroidViewSize#isSet");
-  var _clipRectLayer = dart.privateName(platform_view, "_clipRectLayer");
-  var _viewController = dart.privateName(platform_view, "_viewController");
-  var _onPlatformViewCreated = dart.privateName(platform_view, "_onPlatformViewCreated");
-  var _sizePlatformView = dart.privateName(platform_view, "_sizePlatformView");
-  var _updateGestureRecognizersWithCallBack = dart.privateName(platform_view, "_updateGestureRecognizersWithCallBack");
-  var _currentAndroidViewSize = dart.privateName(platform_view, "_currentAndroidViewSize");
-  var _paintTexture = dart.privateName(platform_view, "_paintTexture");
-  var _hitTestBehavior = dart.privateName(platform_view, "_hitTestBehavior");
-  var _handlePointerEvent = dart.privateName(platform_view, "_handlePointerEvent");
-  var _gestureRecognizer = dart.privateName(platform_view, "_gestureRecognizer");
-  platform_view._PlatformViewGestureMixin = class _PlatformViewGestureMixin extends box.RenderBox {};
-  platform_view._PlatformViewGestureMixin[dart.mixinOn] = RenderBox => class _PlatformViewGestureMixin extends RenderBox {
-    set hitTestBehavior(value) {
-      if (value == null) dart.nullFailed(L0, 688, 51, "value");
-      if (!dart.equals(value, this[_hitTestBehavior])) {
-        this[_hitTestBehavior] = value;
-        if (this.owner != null) this.markNeedsPaint();
-      }
+  var C9;
+  var C10;
+  var C11;
+  var _getCaptionAt = dart.privateName(video_player, "_getCaptionAt");
+  var C12;
+  var _updatePosition = dart.privateName(video_player, "_updatePosition");
+  var _applyPlaybackSpeed = dart.privateName(video_player, "_applyPlaybackSpeed");
+  var dataSource$ = dart.privateName(video_player, "VideoPlayerController.dataSource");
+  var formatHint$ = dart.privateName(video_player, "VideoPlayerController.formatHint");
+  var dataSourceType = dart.privateName(video_player, "VideoPlayerController.dataSourceType");
+  var videoPlayerOptions$ = dart.privateName(video_player, "VideoPlayerController.videoPlayerOptions");
+  var package$ = dart.privateName(video_player, "VideoPlayerController.package");
+  var closedCaptionFile$ = dart.privateName(video_player, "VideoPlayerController.closedCaptionFile");
+  const dispose = Symbol("dispose");
+  video_player.VideoPlayerController = class VideoPlayerController extends change_notifier.ValueNotifier$(dart.legacy(video_player.VideoPlayerValue)) {
+    get dataSource() {
+      return this[dataSource$];
     }
-    [_updateGestureRecognizersWithCallBack](gestureRecognizers, handlePointerEvent) {
-      let t1, t1$;
-      if (gestureRecognizers == null) dart.nullFailed(L0, 703, 89, "gestureRecognizers");
-      if (handlePointerEvent == null) dart.nullFailed(L0, 703, 129, "handlePointerEvent");
-      if (!(gestureRecognizers != null)) dart.assertFailed(null, L0, 704, 12, "gestureRecognizers != null");
-      if (!(platform_view._factoriesTypeSet(recognizer.OneSequenceGestureRecognizer, gestureRecognizers)[$length] == gestureRecognizers[$length])) dart.assertFailed("There were multiple gesture recognizer factories for the same type, there must only be a single " + "gesture recognizer factory for each gesture recognizer type.", L0, 706, 5, "_factoriesTypeSet(gestureRecognizers).length == gestureRecognizers.length");
-      if (dart.test(platform_view._factoryTypesSetEquals(recognizer.OneSequenceGestureRecognizer, gestureRecognizers, (t1 = this[_gestureRecognizer], t1 == null ? null : t1.gestureRecognizerFactories)))) {
-        return;
-      }
-      t1$ = this[_gestureRecognizer];
-      t1$ == null ? null : t1$.dispose();
-      this[_gestureRecognizer] = new platform_view._PlatformViewGestureRecognizer.new(handlePointerEvent, gestureRecognizers);
-      this[_handlePointerEvent] = handlePointerEvent;
+    set dataSource(value) {
+      super.dataSource = value;
     }
-    hitTest(result, opts) {
-      if (result == null) dart.nullFailed(L0, 720, 33, "result");
-      let position = opts && 'position' in opts ? opts.position : null;
-      if (position == null) dart.nullFailed(L0, 720, 59, "position");
-      if (dart.equals(this[_hitTestBehavior], platform_view.PlatformViewHitTestBehavior.transparent) || !dart.test(this.size.contains(position))) {
-        return false;
-      }
-      result.add(new box.BoxHitTestEntry.new(this, position));
-      return dart.equals(this[_hitTestBehavior], platform_view.PlatformViewHitTestBehavior.opaque);
+    get formatHint() {
+      return this[formatHint$];
     }
-    hitTestSelf(position) {
-      if (position == null) dart.nullFailed(L0, 729, 27, "position");
-      return !dart.equals(this[_hitTestBehavior], platform_view.PlatformViewHitTestBehavior.transparent);
+    set formatHint(value) {
+      super.formatHint = value;
     }
-    get onEnter() {
-      return null;
+    get dataSourceType() {
+      return this[dataSourceType];
     }
-    get onExit() {
-      return null;
+    set dataSourceType(value) {
+      super.dataSourceType = value;
     }
-    get cursor() {
-      return mouse_cursor.MouseCursor.uncontrolled;
+    get videoPlayerOptions() {
+      return this[videoPlayerOptions$];
     }
-    get validForMouseTracker() {
-      return true;
+    set videoPlayerOptions(value) {
+      super.videoPlayerOptions = value;
     }
-    handleEvent(event, entry) {
-      let t1;
-      if (event == null) dart.nullFailed(L0, 744, 33, "event");
-      hit_test.HitTestEntry.as(entry);
-      if (entry == null) dart.nullFailed(L0, 744, 53, "entry");
-      if (events.PointerDownEvent.is(event)) {
-        dart.nullCheck(this[_gestureRecognizer]).addPointer(event);
-      }
-      if (events.PointerHoverEvent.is(event)) {
-        t1 = this[_handlePointerEvent];
-        t1 == null ? null : t1(event);
-      }
+    get package() {
+      return this[package$];
     }
-    detach() {
-      dart.nullCheck(this[_gestureRecognizer]).reset();
-      super.detach();
+    set package(value) {
+      super.package = value;
     }
-  };
-  (platform_view._PlatformViewGestureMixin[dart.mixinNew] = function() {
-    this[_hitTestBehavior] = null;
-    this[_handlePointerEvent] = null;
-    this[_gestureRecognizer] = null;
-  }).prototype = platform_view._PlatformViewGestureMixin.prototype;
-  dart.addTypeTests(platform_view._PlatformViewGestureMixin);
-  dart.addTypeCaches(platform_view._PlatformViewGestureMixin);
-  platform_view._PlatformViewGestureMixin[dart.implements] = () => [mouse_tracking.MouseTrackerAnnotation, box.RenderBox];
-  dart.setMethodSignature(platform_view._PlatformViewGestureMixin, () => ({
-    __proto__: dart.getMethods(platform_view._PlatformViewGestureMixin.__proto__),
-    [_updateGestureRecognizersWithCallBack]: dart.fnType(dart.void, [core.Set$(basic_types.Factory$(recognizer.OneSequenceGestureRecognizer)), dart.fnType(async.Future$(dart.void), [events.PointerEvent])])
-  }));
-  dart.setGetterSignature(platform_view._PlatformViewGestureMixin, () => ({
-    __proto__: dart.getGetters(platform_view._PlatformViewGestureMixin.__proto__),
-    onEnter: dart.nullable(dart.fnType(dart.void, [events.PointerEnterEvent])),
-    onExit: dart.nullable(dart.fnType(dart.void, [events.PointerExitEvent])),
-    cursor: mouse_cursor.MouseCursor,
-    validForMouseTracker: core.bool
-  }));
-  dart.setSetterSignature(platform_view._PlatformViewGestureMixin, () => ({
-    __proto__: dart.getSetters(platform_view._PlatformViewGestureMixin.__proto__),
-    hitTestBehavior: platform_view.PlatformViewHitTestBehavior
-  }));
-  dart.setLibraryUri(platform_view._PlatformViewGestureMixin, L1);
-  dart.setFieldSignature(platform_view._PlatformViewGestureMixin, () => ({
-    __proto__: dart.getFields(platform_view._PlatformViewGestureMixin.__proto__),
-    [_hitTestBehavior]: dart.fieldType(dart.nullable(platform_view.PlatformViewHitTestBehavior)),
-    [_handlePointerEvent]: dart.fieldType(dart.nullable(dart.fnType(async.Future$(dart.void), [events.PointerEvent]))),
-    [_gestureRecognizer]: dart.fieldType(dart.nullable(platform_view._PlatformViewGestureRecognizer))
-  }));
-  const RenderBox__PlatformViewGestureMixin$36 = class RenderBox__PlatformViewGestureMixin extends box.RenderBox {};
-  (RenderBox__PlatformViewGestureMixin$36.new = function() {
-    platform_view._PlatformViewGestureMixin[dart.mixinNew].call(this);
-    RenderBox__PlatformViewGestureMixin$36.__proto__.new.call(this);
-  }).prototype = RenderBox__PlatformViewGestureMixin$36.prototype;
-  dart.applyMixin(RenderBox__PlatformViewGestureMixin$36, platform_view._PlatformViewGestureMixin);
-  platform_view.RenderAndroidView = class RenderAndroidView extends RenderBox__PlatformViewGestureMixin$36 {
-    get viewcontroller() {
-      return this[_viewController];
+    get closedCaptionFile() {
+      return this[closedCaptionFile$];
     }
-    set viewController(viewController) {
-      if (viewController == null) dart.nullFailed(L0, 107, 44, "viewController");
-      if (!(this[_viewController] != null)) dart.assertFailed(null, L0, 108, 12, "_viewController != null");
-      if (!(viewController != null)) dart.assertFailed(null, L0, 109, 12, "viewController != null");
-      if (dart.equals(this[_viewController], viewController)) return;
-      this[_viewController].removeOnPlatformViewCreatedListener(dart.bind(this, _onPlatformViewCreated));
-      this[_viewController] = viewController;
-      this[_sizePlatformView]();
-      if (dart.test(this[_viewController].isCreated)) {
-        this.markNeedsSemanticsUpdate();
-      }
-      this[_viewController].addOnPlatformViewCreatedListener(dart.bind(this, _onPlatformViewCreated));
+    set closedCaptionFile(value) {
+      super.closedCaptionFile = value;
     }
-    get clipBehavior() {
-      return this[_clipBehavior];
+    get textureId() {
+      return this[_textureId];
     }
-    set clipBehavior(value) {
-      if (value == null) dart.nullFailed(L0, 126, 25, "value");
-      if (!(value != null)) dart.assertFailed(null, L0, 127, 12, "value != null");
-      if (!dart.equals(value, this[_clipBehavior])) {
-        this[_clipBehavior] = value;
-        this.markNeedsPaint();
-        this.markNeedsSemanticsUpdate();
-      }
-    }
-    [_onPlatformViewCreated](id) {
-      if (id == null) dart.nullFailed(L0, 135, 35, "id");
-      this.markNeedsSemanticsUpdate();
-    }
-    updateGestureRecognizers(gestureRecognizers) {
-      if (gestureRecognizers == null) dart.nullFailed(L0, 155, 76, "gestureRecognizers");
-      this[_updateGestureRecognizersWithCallBack](gestureRecognizers, dart.bind(this[_viewController], 'dispatchPointerEvent'));
-    }
-    get sizedByParent() {
-      return true;
-    }
-    get alwaysNeedsCompositing() {
-      return true;
-    }
-    get isRepaintBoundary() {
-      return true;
-    }
-    computeDryLayout(constraints) {
-      if (constraints == null) dart.nullFailed(L0, 169, 40, "constraints");
-      return constraints.biggest;
-    }
-    performResize() {
-      super.performResize();
-      this[_sizePlatformView]();
-    }
-    get [_currentAndroidViewSize]() {
-      let t0;
-      return dart.test(this[__RenderAndroidView__currentAndroidViewSize_isSet]) ? (t0 = this[__RenderAndroidView__currentAndroidViewSize], t0) : dart.throw(new _internal.LateError.fieldNI("_currentAndroidViewSize"));
-    }
-    set [_currentAndroidViewSize](t0) {
-      if (t0 == null) dart.nullFailed(L0, 179, 13, "null");
-      this[__RenderAndroidView__currentAndroidViewSize_isSet] = true;
-      this[__RenderAndroidView__currentAndroidViewSize] = t0;
-    }
-    [_sizePlatformView]() {
-      return async.async(dart.void, (function* _sizePlatformView() {
-        if (dart.equals(this[_state], platform_view._PlatformViewState.resizing) || dart.test(this.size.isEmpty)) {
-          return;
+    initialize() {
+      return async.async(dart.void, (function* initialize() {
+        let t0;
+        this[_lifeCycleObserver] = new video_player._VideoAppLifeCycleObserver.new(this);
+        this[_lifeCycleObserver].initialize();
+        this[_creatingCompleter] = CompleterOfvoid().new();
+        let dataSourceDescription = null;
+        switch (this.dataSourceType) {
+          case C3 || CT.C3:
+          {
+            dataSourceDescription = new video_player_platform_interface.DataSource.new({sourceType: video_player_platform_interface.DataSourceType.asset, asset: this.dataSource, package: this.package});
+            break;
+          }
+          case C4 || CT.C4:
+          {
+            dataSourceDescription = new video_player_platform_interface.DataSource.new({sourceType: video_player_platform_interface.DataSourceType.network, uri: this.dataSource, formatHint: this.formatHint});
+            break;
+          }
+          case C5 || CT.C5:
+          {
+            dataSourceDescription = new video_player_platform_interface.DataSource.new({sourceType: video_player_platform_interface.DataSourceType.file, uri: this.dataSource});
+            break;
+          }
         }
-        this[_state] = platform_view._PlatformViewState.resizing;
-        this.markNeedsPaint();
-        let targetSize = null;
-        do {
-          targetSize = this.size;
-          yield this[_viewController].setSize(targetSize);
-          this[_currentAndroidViewSize] = targetSize;
-        } while (!dart.equals(this.size, targetSize));
-        this[_state] = platform_view._PlatformViewState.ready;
-        this.markNeedsPaint();
+        if ((t0 = this.videoPlayerOptions, t0 == null ? null : t0.mixWithOthers) != null) {
+          yield video_player._videoPlayerPlatform.setMixWithOthers(this.videoPlayerOptions.mixWithOthers);
+        }
+        this[_textureId] = (yield video_player._videoPlayerPlatform.create(dataSourceDescription));
+        this[_creatingCompleter].complete(null);
+        let initializingCompleter = CompleterOfvoid().new();
+        const eventListener = event => {
+          let t0;
+          if (dart.test(this[_isDisposed])) {
+            return;
+          }
+          switch (event.eventType) {
+            case C6 || CT.C6:
+            {
+              this.value = this.value.copyWith({duration: event.duration, size: event.size});
+              initializingCompleter.complete(null);
+              this[_applyLooping]();
+              this[_applyVolume]();
+              this[_applyPlayPause]();
+              break;
+            }
+            case C7 || CT.C7:
+            {
+              this.value = this.value.copyWith({isPlaying: false, position: this.value.duration});
+              t0 = this[_timer];
+              t0 == null ? null : t0.cancel();
+              break;
+            }
+            case C8 || CT.C8:
+            {
+              this.value = this.value.copyWith({buffered: event.buffered});
+              break;
+            }
+            case C9 || CT.C9:
+            {
+              this.value = this.value.copyWith({isBuffering: true});
+              break;
+            }
+            case C10 || CT.C10:
+            {
+              this.value = this.value.copyWith({isBuffering: false});
+              break;
+            }
+            case C11 || CT.C11:
+            {
+              break;
+            }
+          }
+        };
+        dart.fn(eventListener, VideoEventLTovoid());
+        if (this.closedCaptionFile != null) {
+          if (this[_closedCaptionFile] == null) {
+            this[_closedCaptionFile] = (yield this.closedCaptionFile);
+          }
+          this.value = this.value.copyWith({caption: this[_getCaptionAt](this.value.position)});
+        }
+        const errorListener = obj => {
+          let t0;
+          let e = PlatformExceptionL().as(obj);
+          this.value = new video_player.VideoPlayerValue.erroneous(e.message);
+          t0 = this[_timer];
+          t0 == null ? null : t0.cancel();
+          if (!dart.test(initializingCompleter.isCompleted)) {
+            initializingCompleter.completeError(obj);
+          }
+        };
+        dart.fn(errorListener, ObjectLTovoid());
+        this[_eventSubscription] = video_player._videoPlayerPlatform.videoEventsFor(this[_textureId]).listen(eventListener, {onError: errorListener});
+        return initializingCompleter.future;
       }).bind(this));
     }
-    paint(context, offset) {
-      if (context == null) dart.nullFailed(L0, 207, 30, "context");
-      if (offset == null) dart.nullFailed(L0, 207, 46, "offset");
-      if (this[_viewController].textureId == null) return;
-      if ((dart.notNull(this.size.width) < dart.notNull(this[_currentAndroidViewSize].width) || dart.notNull(this.size.height) < dart.notNull(this[_currentAndroidViewSize].height)) && !dart.equals(this.clipBehavior, ui.Clip.none)) {
-        this[_clipRectLayer] = context.pushClipRect(true, offset, offset['&'](this.size), dart.bind(this, _paintTexture), {clipBehavior: this.clipBehavior, oldLayer: this[_clipRectLayer]});
-        return;
-      }
-      this[_clipRectLayer] = null;
-      this[_paintTexture](context, offset);
+    dispose() {
+      return async.async(dart.void, (function* dispose$() {
+        let t0, t0$;
+        if (this[_creatingCompleter] != null) {
+          yield this[_creatingCompleter].future;
+          if (!dart.test(this[_isDisposed])) {
+            this[_isDisposed] = true;
+            t0 = this[_timer];
+            t0 == null ? null : t0.cancel();
+            yield (t0$ = this[_eventSubscription], t0$ == null ? null : t0$.cancel());
+            yield video_player._videoPlayerPlatform.dispose(this[_textureId]);
+          }
+          this[_lifeCycleObserver].dispose();
+        }
+        this[_isDisposed] = true;
+        this[dispose]();
+      }).bind(this));
     }
-    [_paintTexture](context, offset) {
-      if (context == null) dart.nullFailed(L0, 224, 38, "context");
-      if (offset == null) dart.nullFailed(L0, 224, 54, "offset");
-      context.addLayer(new layer.TextureLayer.new({rect: offset['&'](this[_currentAndroidViewSize]), textureId: dart.nullCheck(this[_viewController].textureId), freeze: dart.equals(this[_state], platform_view._PlatformViewState.resizing)}));
+    play() {
+      return async.async(dart.void, (function* play() {
+        this.value = this.value.copyWith({isPlaying: true});
+        yield this[_applyPlayPause]();
+      }).bind(this));
     }
-    describeSemanticsConfiguration(config) {
-      if (config == null) dart.nullFailed(L0, 242, 63, "config");
-      super.describeSemanticsConfiguration(config);
-      config.isSemanticBoundary = true;
-      if (dart.test(this[_viewController].isCreated)) {
-        config.platformViewId = this[_viewController].viewId;
+    setLooping(looping) {
+      return async.async(dart.void, (function* setLooping() {
+        this.value = this.value.copyWith({isLooping: looping});
+        yield this[_applyLooping]();
+      }).bind(this));
+    }
+    pause() {
+      return async.async(dart.void, (function* pause() {
+        this.value = this.value.copyWith({isPlaying: false});
+        yield this[_applyPlayPause]();
+      }).bind(this));
+    }
+    [_applyLooping]() {
+      return async.async(dart.void, (function* _applyLooping() {
+        if (!dart.test(this.value.initialized) || dart.test(this[_isDisposed])) {
+          return;
+        }
+        yield video_player._videoPlayerPlatform.setLooping(this[_textureId], this.value.isLooping);
+      }).bind(this));
+    }
+    [_applyPlayPause]() {
+      return async.async(dart.void, (function* _applyPlayPause() {
+        let t0, t0$;
+        if (!dart.test(this.value.initialized) || dart.test(this[_isDisposed])) {
+          return;
+        }
+        if (dart.test(this.value.isPlaying)) {
+          yield video_player._videoPlayerPlatform.play(this[_textureId]);
+          t0 = this[_timer];
+          t0 == null ? null : t0.cancel();
+          this[_timer] = async.Timer.periodic(C12 || CT.C12, dart.fn(timer => async.async(core.Null, (function*() {
+            if (dart.test(this[_isDisposed])) {
+              return;
+            }
+            let newPosition = (yield this.position);
+            if (dart.test(this[_isDisposed])) {
+              return;
+            }
+            this[_updatePosition](newPosition);
+          }).bind(this)), TimerLToFutureLOfNull()));
+          yield this[_applyPlaybackSpeed]();
+        } else {
+          t0$ = this[_timer];
+          t0$ == null ? null : t0$.cancel();
+          yield video_player._videoPlayerPlatform.pause(this[_textureId]);
+        }
+      }).bind(this));
+    }
+    [_applyVolume]() {
+      return async.async(dart.void, (function* _applyVolume() {
+        if (!dart.test(this.value.initialized) || dart.test(this[_isDisposed])) {
+          return;
+        }
+        yield video_player._videoPlayerPlatform.setVolume(this[_textureId], this.value.volume);
+      }).bind(this));
+    }
+    [_applyPlaybackSpeed]() {
+      return async.async(dart.void, (function* _applyPlaybackSpeed() {
+        if (!dart.test(this.value.initialized) || dart.test(this[_isDisposed])) {
+          return;
+        }
+        if (!dart.test(this.value.isPlaying)) return;
+        yield video_player._videoPlayerPlatform.setPlaybackSpeed(this[_textureId], this.value.playbackSpeed);
+      }).bind(this));
+    }
+    get position() {
+      return async.async(DurationL(), (function* position() {
+        if (dart.test(this[_isDisposed])) {
+          return null;
+        }
+        return yield video_player._videoPlayerPlatform.getPosition(this[_textureId]);
+      }).bind(this));
+    }
+    seekTo(position) {
+      return async.async(dart.void, (function* seekTo() {
+        if (dart.test(this[_isDisposed])) {
+          return;
+        }
+        if (dart.test(position['>'](this.value.duration))) {
+          position = this.value.duration;
+        } else if (dart.test(position['<'](C0 || CT.C0))) {
+          position = C0 || CT.C0;
+        }
+        yield video_player._videoPlayerPlatform.seekTo(this[_textureId], position);
+        this[_updatePosition](position);
+      }).bind(this));
+    }
+    setVolume(volume) {
+      return async.async(dart.void, (function* setVolume() {
+        this.value = this.value.copyWith({volume: volume[$clamp](0.0, 1.0)});
+        yield this[_applyVolume]();
+      }).bind(this));
+    }
+    setPlaybackSpeed(speed) {
+      return async.async(dart.void, (function* setPlaybackSpeed() {
+        if (dart.notNull(speed) < 0) {
+          dart.throw(new core.ArgumentError.value(speed, "Negative playback speeds are generally unsupported."));
+        } else if (speed === 0) {
+          dart.throw(new core.ArgumentError.value(speed, "Zero playback speed is generally unsupported. Consider using [pause]."));
+        }
+        this.value = this.value.copyWith({playbackSpeed: speed});
+        yield this[_applyPlaybackSpeed]();
+      }).bind(this));
+    }
+    [_getCaptionAt](position) {
+      if (this[_closedCaptionFile] == null) {
+        return new closed_caption_file.Caption.new();
       }
+      for (let caption of this[_closedCaptionFile].captions) {
+        if (dart.test(caption.start['<='](position)) && dart.test(caption.end['>='](position))) {
+          return caption;
+        }
+      }
+      return new closed_caption_file.Caption.new();
+    }
+    [_updatePosition](position) {
+      this.value = this.value.copyWith({position: position});
+      this.value = this.value.copyWith({caption: this[_getCaptionAt](position)});
+    }
+    [dispose]() {
+      return super.dispose();
     }
   };
-  (platform_view.RenderAndroidView.new = function(opts) {
-    let viewController = opts && 'viewController' in opts ? opts.viewController : null;
-    if (viewController == null) dart.nullFailed(L0, 83, 36, "viewController");
-    let hitTestBehavior = opts && 'hitTestBehavior' in opts ? opts.hitTestBehavior : null;
-    if (hitTestBehavior == null) dart.nullFailed(L0, 84, 42, "hitTestBehavior");
-    let gestureRecognizers = opts && 'gestureRecognizers' in opts ? opts.gestureRecognizers : null;
-    if (gestureRecognizers == null) dart.nullFailed(L0, 85, 57, "gestureRecognizers");
-    let clipBehavior = opts && 'clipBehavior' in opts ? opts.clipBehavior : C8 || CT.C8;
-    if (clipBehavior == null) dart.nullFailed(L0, 86, 10, "clipBehavior");
-    this[_state] = platform_view._PlatformViewState.uninitialized;
-    this[_clipBehavior] = ui.Clip.hardEdge;
-    this[__RenderAndroidView__currentAndroidViewSize] = null;
-    this[__RenderAndroidView__currentAndroidViewSize_isSet] = false;
-    this[_clipRectLayer] = null;
-    if (!(viewController != null)) dart.assertFailed(null, L0, 87, 15, "viewController != null");
-    if (!(hitTestBehavior != null)) dart.assertFailed(null, L0, 88, 15, "hitTestBehavior != null");
-    if (!(gestureRecognizers != null)) dart.assertFailed(null, L0, 89, 15, "gestureRecognizers != null");
-    if (!(clipBehavior != null)) dart.assertFailed(null, L0, 90, 15, "clipBehavior != null");
-    this[_viewController] = viewController;
-    this[_clipBehavior] = clipBehavior;
-    platform_view.RenderAndroidView.__proto__.new.call(this);
-    this[_viewController].pointTransformer = dart.fn(offset => {
-      if (offset == null) dart.nullFailed(L0, 93, 48, "offset");
-      return this.globalToLocal(offset);
-    }, OffsetToOffset());
-    this.updateGestureRecognizers(gestureRecognizers);
-    this[_viewController].addOnPlatformViewCreatedListener(dart.bind(this, _onPlatformViewCreated));
-    this.hitTestBehavior = hitTestBehavior;
-  }).prototype = platform_view.RenderAndroidView.prototype;
-  dart.addTypeTests(platform_view.RenderAndroidView);
-  dart.addTypeCaches(platform_view.RenderAndroidView);
-  dart.setMethodSignature(platform_view.RenderAndroidView, () => ({
-    __proto__: dart.getMethods(platform_view.RenderAndroidView.__proto__),
-    [_onPlatformViewCreated]: dart.fnType(dart.void, [core.int]),
-    updateGestureRecognizers: dart.fnType(dart.void, [core.Set$(basic_types.Factory$(recognizer.OneSequenceGestureRecognizer))]),
-    [_sizePlatformView]: dart.fnType(async.Future$(dart.void), []),
-    [_paintTexture]: dart.fnType(dart.void, [object.PaintingContext, ui.Offset])
+  (video_player.VideoPlayerController.asset = function(dataSource, opts) {
+    let $package = opts && 'package' in opts ? opts.package : null;
+    let closedCaptionFile = opts && 'closedCaptionFile' in opts ? opts.closedCaptionFile : null;
+    let videoPlayerOptions = opts && 'videoPlayerOptions' in opts ? opts.videoPlayerOptions : null;
+    this[_textureId] = null;
+    this[_closedCaptionFile] = null;
+    this[_timer] = null;
+    this[_isDisposed] = false;
+    this[_creatingCompleter] = null;
+    this[_eventSubscription] = null;
+    this[_lifeCycleObserver] = null;
+    this[dataSource$] = dataSource;
+    this[package$] = $package;
+    this[closedCaptionFile$] = closedCaptionFile;
+    this[videoPlayerOptions$] = videoPlayerOptions;
+    this[dataSourceType] = video_player_platform_interface.DataSourceType.asset;
+    this[formatHint$] = null;
+    video_player.VideoPlayerController.__proto__.new.call(this, new video_player.VideoPlayerValue.new({duration: null}));
+    ;
+  }).prototype = video_player.VideoPlayerController.prototype;
+  (video_player.VideoPlayerController.network = function(dataSource, opts) {
+    let formatHint = opts && 'formatHint' in opts ? opts.formatHint : null;
+    let closedCaptionFile = opts && 'closedCaptionFile' in opts ? opts.closedCaptionFile : null;
+    let videoPlayerOptions = opts && 'videoPlayerOptions' in opts ? opts.videoPlayerOptions : null;
+    this[_textureId] = null;
+    this[_closedCaptionFile] = null;
+    this[_timer] = null;
+    this[_isDisposed] = false;
+    this[_creatingCompleter] = null;
+    this[_eventSubscription] = null;
+    this[_lifeCycleObserver] = null;
+    this[dataSource$] = dataSource;
+    this[formatHint$] = formatHint;
+    this[closedCaptionFile$] = closedCaptionFile;
+    this[videoPlayerOptions$] = videoPlayerOptions;
+    this[dataSourceType] = video_player_platform_interface.DataSourceType.network;
+    this[package$] = null;
+    video_player.VideoPlayerController.__proto__.new.call(this, new video_player.VideoPlayerValue.new({duration: null}));
+    ;
+  }).prototype = video_player.VideoPlayerController.prototype;
+  (video_player.VideoPlayerController.file = function(file, opts) {
+    let closedCaptionFile = opts && 'closedCaptionFile' in opts ? opts.closedCaptionFile : null;
+    let videoPlayerOptions = opts && 'videoPlayerOptions' in opts ? opts.videoPlayerOptions : null;
+    this[_textureId] = null;
+    this[_closedCaptionFile] = null;
+    this[_timer] = null;
+    this[_isDisposed] = false;
+    this[_creatingCompleter] = null;
+    this[_eventSubscription] = null;
+    this[_lifeCycleObserver] = null;
+    this[closedCaptionFile$] = closedCaptionFile;
+    this[videoPlayerOptions$] = videoPlayerOptions;
+    this[dataSource$] = "file://" + dart.str(file.path);
+    this[dataSourceType] = video_player_platform_interface.DataSourceType.file;
+    this[package$] = null;
+    this[formatHint$] = null;
+    video_player.VideoPlayerController.__proto__.new.call(this, new video_player.VideoPlayerValue.new({duration: null}));
+    ;
+  }).prototype = video_player.VideoPlayerController.prototype;
+  dart.addTypeTests(video_player.VideoPlayerController);
+  dart.addTypeCaches(video_player.VideoPlayerController);
+  dart.setMethodSignature(video_player.VideoPlayerController, () => ({
+    __proto__: dart.getMethods(video_player.VideoPlayerController.__proto__),
+    initialize: dart.fnType(dart.legacy(async.Future$(dart.void)), []),
+    dispose: dart.fnType(dart.legacy(async.Future$(dart.void)), []),
+    play: dart.fnType(dart.legacy(async.Future$(dart.void)), []),
+    setLooping: dart.fnType(dart.legacy(async.Future$(dart.void)), [dart.legacy(core.bool)]),
+    pause: dart.fnType(dart.legacy(async.Future$(dart.void)), []),
+    [_applyLooping]: dart.fnType(dart.legacy(async.Future$(dart.void)), []),
+    [_applyPlayPause]: dart.fnType(dart.legacy(async.Future$(dart.void)), []),
+    [_applyVolume]: dart.fnType(dart.legacy(async.Future$(dart.void)), []),
+    [_applyPlaybackSpeed]: dart.fnType(dart.legacy(async.Future$(dart.void)), []),
+    seekTo: dart.fnType(dart.legacy(async.Future$(dart.void)), [dart.legacy(core.Duration)]),
+    setVolume: dart.fnType(dart.legacy(async.Future$(dart.void)), [dart.legacy(core.double)]),
+    setPlaybackSpeed: dart.fnType(dart.legacy(async.Future$(dart.void)), [dart.legacy(core.double)]),
+    [_getCaptionAt]: dart.fnType(dart.legacy(closed_caption_file.Caption), [dart.legacy(core.Duration)]),
+    [_updatePosition]: dart.fnType(dart.void, [dart.legacy(core.Duration)])
   }));
-  dart.setGetterSignature(platform_view.RenderAndroidView, () => ({
-    __proto__: dart.getGetters(platform_view.RenderAndroidView.__proto__),
-    viewcontroller: platform_views.AndroidViewController,
-    clipBehavior: ui.Clip,
-    [_currentAndroidViewSize]: ui.Size
+  dart.setGetterSignature(video_player.VideoPlayerController, () => ({
+    __proto__: dart.getGetters(video_player.VideoPlayerController.__proto__),
+    textureId: dart.legacy(core.int),
+    position: dart.legacy(async.Future$(dart.legacy(core.Duration)))
   }));
-  dart.setSetterSignature(platform_view.RenderAndroidView, () => ({
-    __proto__: dart.getSetters(platform_view.RenderAndroidView.__proto__),
-    viewController: platform_views.AndroidViewController,
-    clipBehavior: ui.Clip,
-    [_currentAndroidViewSize]: ui.Size
+  dart.setLibraryUri(video_player.VideoPlayerController, L0);
+  dart.setFieldSignature(video_player.VideoPlayerController, () => ({
+    __proto__: dart.getFields(video_player.VideoPlayerController.__proto__),
+    [_textureId]: dart.fieldType(dart.legacy(core.int)),
+    dataSource: dart.finalFieldType(dart.legacy(core.String)),
+    formatHint: dart.finalFieldType(dart.legacy(video_player_platform_interface.VideoFormat)),
+    dataSourceType: dart.finalFieldType(dart.legacy(video_player_platform_interface.DataSourceType)),
+    videoPlayerOptions: dart.finalFieldType(dart.legacy(video_player_platform_interface.VideoPlayerOptions)),
+    package: dart.finalFieldType(dart.legacy(core.String)),
+    closedCaptionFile: dart.finalFieldType(dart.legacy(async.Future$(dart.legacy(closed_caption_file.ClosedCaptionFile)))),
+    [_closedCaptionFile]: dart.fieldType(dart.legacy(closed_caption_file.ClosedCaptionFile)),
+    [_timer]: dart.fieldType(dart.legacy(async.Timer)),
+    [_isDisposed]: dart.fieldType(dart.legacy(core.bool)),
+    [_creatingCompleter]: dart.fieldType(dart.legacy(async.Completer$(dart.void))),
+    [_eventSubscription]: dart.fieldType(dart.legacy(async.StreamSubscription)),
+    [_lifeCycleObserver]: dart.fieldType(dart.legacy(video_player._VideoAppLifeCycleObserver))
   }));
-  dart.setLibraryUri(platform_view.RenderAndroidView, L1);
-  dart.setFieldSignature(platform_view.RenderAndroidView, () => ({
-    __proto__: dart.getFields(platform_view.RenderAndroidView.__proto__),
-    [_state]: dart.fieldType(platform_view._PlatformViewState),
-    [_viewController]: dart.fieldType(platform_views.AndroidViewController),
-    [_clipBehavior]: dart.fieldType(ui.Clip),
-    [__RenderAndroidView__currentAndroidViewSize]: dart.fieldType(dart.nullable(ui.Size)),
-    [__RenderAndroidView__currentAndroidViewSize_isSet]: dart.fieldType(core.bool),
-    [_clipRectLayer]: dart.fieldType(dart.nullable(layer.ClipRectLayer))
-  }));
-  var _lastPointerDownEvent = dart.privateName(platform_view, "_lastPointerDownEvent");
-  var _handleGlobalPointerEvent = dart.privateName(platform_view, "_handleGlobalPointerEvent");
-  var hitTestBehavior$ = dart.privateName(platform_view, "RenderUiKitView.hitTestBehavior");
-  platform_view.RenderUiKitView = class RenderUiKitView extends box.RenderBox {
-    get hitTestBehavior() {
-      return this[hitTestBehavior$];
+  var _wasPlayingBeforePause = dart.privateName(video_player, "_wasPlayingBeforePause");
+  var _controller$ = dart.privateName(video_player, "_controller");
+  var _name$ = dart.privateName(ui, "_name");
+  var C13;
+  var C14;
+  const Object_WidgetsBindingObserver$36 = class Object_WidgetsBindingObserver extends core.Object {};
+  (Object_WidgetsBindingObserver$36.new = function() {
+  }).prototype = Object_WidgetsBindingObserver$36.prototype;
+  dart.applyMixin(Object_WidgetsBindingObserver$36, binding.WidgetsBindingObserver);
+  video_player._VideoAppLifeCycleObserver = class _VideoAppLifeCycleObserver extends Object_WidgetsBindingObserver$36 {
+    initialize() {
+      binding.WidgetsBinding.instance.addObserver(this);
     }
-    set hitTestBehavior(value) {
-      this[hitTestBehavior$] = value;
-    }
-    get viewController() {
-      return this[_viewController];
-    }
-    set viewController(viewController) {
-      if (viewController == null) dart.nullFailed(L0, 297, 42, "viewController");
-      if (!(viewController != null)) dart.assertFailed(null, L0, 298, 12, "viewController != null");
-      let needsSemanticsUpdate = this[_viewController].id != viewController.id;
-      this[_viewController] = viewController;
-      this.markNeedsPaint();
-      if (needsSemanticsUpdate) {
-        this.markNeedsSemanticsUpdate();
+    didChangeAppLifecycleState(state) {
+      switch (state) {
+        case C13 || CT.C13:
+        {
+          this[_wasPlayingBeforePause] = this[_controller$].value.isPlaying;
+          this[_controller$].pause();
+          break;
+        }
+        case C14 || CT.C14:
+        {
+          if (dart.test(this[_wasPlayingBeforePause])) {
+            this[_controller$].play();
+          }
+          break;
+        }
+        default:
       }
     }
-    updateGestureRecognizers(gestureRecognizers) {
-      let t1, t1$;
-      if (gestureRecognizers == null) dart.nullFailed(L0, 313, 76, "gestureRecognizers");
-      if (!(gestureRecognizers != null)) dart.assertFailed(null, L0, 314, 12, "gestureRecognizers != null");
-      if (!(platform_view._factoriesTypeSet(recognizer.OneSequenceGestureRecognizer, gestureRecognizers)[$length] == gestureRecognizers[$length])) dart.assertFailed("There were multiple gesture recognizer factories for the same type, there must only be a single " + "gesture recognizer factory for each gesture recognizer type.", L0, 316, 5, "_factoriesTypeSet(gestureRecognizers).length == gestureRecognizers.length");
-      if (dart.test(platform_view._factoryTypesSetEquals(recognizer.OneSequenceGestureRecognizer, gestureRecognizers, (t1 = this[_gestureRecognizer], t1 == null ? null : t1.gestureRecognizerFactories)))) {
-        return;
-      }
-      t1$ = this[_gestureRecognizer];
-      t1$ == null ? null : t1$.dispose();
-      this[_gestureRecognizer] = new platform_view._UiKitViewGestureRecognizer.new(this.viewController, gestureRecognizers);
-    }
-    get sizedByParent() {
-      return true;
-    }
-    get alwaysNeedsCompositing() {
-      return true;
-    }
-    get isRepaintBoundary() {
-      return true;
-    }
-    computeDryLayout(constraints) {
-      if (constraints == null) dart.nullFailed(L0, 340, 40, "constraints");
-      return constraints.biggest;
-    }
-    paint(context, offset) {
-      if (context == null) dart.nullFailed(L0, 345, 30, "context");
-      if (offset == null) dart.nullFailed(L0, 345, 46, "offset");
-      context.addLayer(new layer.PlatformViewLayer.new({rect: offset['&'](this.size), viewId: this[_viewController].id}));
-    }
-    hitTest(result, opts) {
-      if (result == null) dart.nullFailed(L0, 353, 33, "result");
-      let position = opts && 'position' in opts ? opts.position : null;
-      if (dart.equals(this.hitTestBehavior, platform_view.PlatformViewHitTestBehavior.transparent) || !dart.test(this.size.contains(dart.nullCheck(position)))) return false;
-      result.add(new box.BoxHitTestEntry.new(this, position));
-      return dart.equals(this.hitTestBehavior, platform_view.PlatformViewHitTestBehavior.opaque);
-    }
-    hitTestSelf(position) {
-      if (position == null) dart.nullFailed(L0, 361, 27, "position");
-      return !dart.equals(this.hitTestBehavior, platform_view.PlatformViewHitTestBehavior.transparent);
-    }
-    handleEvent(event, entry) {
-      let t1;
-      if (event == null) dart.nullFailed(L0, 364, 33, "event");
-      hit_test.HitTestEntry.as(entry);
-      if (entry == null) dart.nullFailed(L0, 364, 53, "entry");
-      if (!events.PointerDownEvent.is(event)) {
-        return;
-      }
-      dart.nullCheck(this[_gestureRecognizer]).addPointer(event);
-      this[_lastPointerDownEvent] = (t1 = event.original, t1 == null ? event : t1);
-    }
-    [_handleGlobalPointerEvent](event) {
-      let t1;
-      if (event == null) dart.nullFailed(L0, 373, 47, "event");
-      if (!events.PointerDownEvent.is(event)) {
-        return;
-      }
-      if (!dart.test(ui.Offset.zero['&'](this.size).contains(this.globalToLocal(event.position)))) {
-        return;
-      }
-      if (!dart.equals((t1 = event.original, t1 == null ? event : t1), this[_lastPointerDownEvent])) {
-        this[_viewController].rejectGesture();
-      }
-      this[_lastPointerDownEvent] = null;
-    }
-    describeSemanticsConfiguration(config) {
-      if (config == null) dart.nullFailed(L0, 391, 63, "config");
-      super.describeSemanticsConfiguration(config);
-      config.isSemanticBoundary = true;
-      config.platformViewId = this[_viewController].id;
-    }
-    attach(owner) {
-      object.PipelineOwner.as(owner);
-      if (owner == null) dart.nullFailed(L0, 398, 29, "owner");
-      super.attach(owner);
-      dart.nullCheck(binding.GestureBinding.instance).pointerRouter.addGlobalRoute(dart.bind(this, _handleGlobalPointerEvent));
-    }
-    detach() {
-      dart.nullCheck(binding.GestureBinding.instance).pointerRouter.removeGlobalRoute(dart.bind(this, _handleGlobalPointerEvent));
-      dart.nullCheck(this[_gestureRecognizer]).reset();
-      super.detach();
+    dispose() {
+      binding.WidgetsBinding.instance.removeObserver(this);
     }
   };
-  (platform_view.RenderUiKitView.new = function(opts) {
-    let viewController = opts && 'viewController' in opts ? opts.viewController : null;
-    if (viewController == null) dart.nullFailed(L0, 280, 34, "viewController");
-    let hitTestBehavior = opts && 'hitTestBehavior' in opts ? opts.hitTestBehavior : null;
-    if (hitTestBehavior == null) dart.nullFailed(L0, 281, 19, "hitTestBehavior");
-    let gestureRecognizers = opts && 'gestureRecognizers' in opts ? opts.gestureRecognizers : null;
-    if (gestureRecognizers == null) dart.nullFailed(L0, 282, 57, "gestureRecognizers");
-    this[_gestureRecognizer] = null;
-    this[_lastPointerDownEvent] = null;
-    this[hitTestBehavior$] = hitTestBehavior;
-    if (!(viewController != null)) dart.assertFailed(null, L0, 283, 15, "viewController != null");
-    if (!(hitTestBehavior != null)) dart.assertFailed(null, L0, 284, 15, "hitTestBehavior != null");
-    if (!(gestureRecognizers != null)) dart.assertFailed(null, L0, 285, 15, "gestureRecognizers != null");
-    this[_viewController] = viewController;
-    platform_view.RenderUiKitView.__proto__.new.call(this);
-    this.updateGestureRecognizers(gestureRecognizers);
-  }).prototype = platform_view.RenderUiKitView.prototype;
-  dart.addTypeTests(platform_view.RenderUiKitView);
-  dart.addTypeCaches(platform_view.RenderUiKitView);
-  dart.setMethodSignature(platform_view.RenderUiKitView, () => ({
-    __proto__: dart.getMethods(platform_view.RenderUiKitView.__proto__),
-    updateGestureRecognizers: dart.fnType(dart.void, [core.Set$(basic_types.Factory$(recognizer.OneSequenceGestureRecognizer))]),
-    hitTest: dart.fnType(core.bool, [box.BoxHitTestResult], {position: dart.nullable(ui.Offset)}, {}),
-    [_handleGlobalPointerEvent]: dart.fnType(dart.void, [events.PointerEvent])
+  (video_player._VideoAppLifeCycleObserver.new = function(_controller) {
+    this[_wasPlayingBeforePause] = false;
+    this[_controller$] = _controller;
+    ;
+  }).prototype = video_player._VideoAppLifeCycleObserver.prototype;
+  dart.addTypeTests(video_player._VideoAppLifeCycleObserver);
+  dart.addTypeCaches(video_player._VideoAppLifeCycleObserver);
+  dart.setMethodSignature(video_player._VideoAppLifeCycleObserver, () => ({
+    __proto__: dart.getMethods(video_player._VideoAppLifeCycleObserver.__proto__),
+    initialize: dart.fnType(dart.void, []),
+    didChangeAppLifecycleState: dart.fnType(dart.void, [dart.legacy(ui.AppLifecycleState)]),
+    dispose: dart.fnType(dart.void, [])
   }));
-  dart.setGetterSignature(platform_view.RenderUiKitView, () => ({
-    __proto__: dart.getGetters(platform_view.RenderUiKitView.__proto__),
-    viewController: platform_views.UiKitViewController
+  dart.setLibraryUri(video_player._VideoAppLifeCycleObserver, L0);
+  dart.setFieldSignature(video_player._VideoAppLifeCycleObserver, () => ({
+    __proto__: dart.getFields(video_player._VideoAppLifeCycleObserver.__proto__),
+    [_wasPlayingBeforePause]: dart.fieldType(dart.legacy(core.bool)),
+    [_controller$]: dart.finalFieldType(dart.legacy(video_player.VideoPlayerController))
   }));
-  dart.setSetterSignature(platform_view.RenderUiKitView, () => ({
-    __proto__: dart.getSetters(platform_view.RenderUiKitView.__proto__),
-    viewController: platform_views.UiKitViewController
-  }));
-  dart.setLibraryUri(platform_view.RenderUiKitView, L1);
-  dart.setFieldSignature(platform_view.RenderUiKitView, () => ({
-    __proto__: dart.getFields(platform_view.RenderUiKitView.__proto__),
-    [_viewController]: dart.fieldType(platform_views.UiKitViewController),
-    hitTestBehavior: dart.fieldType(platform_view.PlatformViewHitTestBehavior),
-    [_gestureRecognizer]: dart.fieldType(dart.nullable(platform_view._UiKitViewGestureRecognizer)),
-    [_lastPointerDownEvent]: dart.fieldType(dart.nullable(events.PointerEvent))
-  }));
-  var ___UiKitViewGestureRecognizer__gestureRecognizers = dart.privateName(platform_view, "_#_UiKitViewGestureRecognizer#_gestureRecognizers");
-  var ___UiKitViewGestureRecognizer__gestureRecognizers_isSet = dart.privateName(platform_view, "_#_UiKitViewGestureRecognizer#_gestureRecognizers#isSet");
-  var _gestureRecognizers = dart.privateName(platform_view, "_gestureRecognizers");
-  platform_view._UiKitViewGestureRecognizer = class _UiKitViewGestureRecognizer extends recognizer.OneSequenceGestureRecognizer {
-    get [_gestureRecognizers]() {
-      let t1;
-      return dart.test(this[___UiKitViewGestureRecognizer__gestureRecognizers_isSet]) ? (t1 = this[___UiKitViewGestureRecognizer__gestureRecognizers], t1) : dart.throw(new _internal.LateError.fieldNI("_gestureRecognizers"));
+  var controller$ = dart.privateName(video_player, "VideoPlayer.controller");
+  video_player.VideoPlayer = class VideoPlayer extends framework.StatefulWidget {
+    get controller() {
+      return this[controller$];
     }
-    set [_gestureRecognizers](t1) {
-      if (t1 == null) dart.nullFailed(L0, 448, 42, "null");
-      this[___UiKitViewGestureRecognizer__gestureRecognizers_isSet] = true;
-      this[___UiKitViewGestureRecognizer__gestureRecognizers] = t1;
+    set controller(value) {
+      super.controller = value;
     }
-    addAllowedPointer(event) {
-      if (event == null) dart.nullFailed(L0, 453, 43, "event");
-      this.startTrackingPointer(event.pointer, event.transform);
-      for (let recognizer of this[_gestureRecognizers]) {
-        recognizer.addPointer(event);
-      }
-    }
-    get debugDescription() {
-      return "UIKit view";
-    }
-    didStopTrackingLastPointer(pointer) {
-      if (pointer == null) dart.nullFailed(L0, 464, 39, "pointer");
-    }
-    handleEvent(event) {
-      if (event == null) dart.nullFailed(L0, 467, 33, "event");
-      this.stopTrackingIfPointerNoLongerDown(event);
-    }
-    acceptGesture(pointer) {
-      if (pointer == null) dart.nullFailed(L0, 472, 26, "pointer");
-      this.controller.acceptGesture();
-    }
-    rejectGesture(pointer) {
-      if (pointer == null) dart.nullFailed(L0, 477, 26, "pointer");
-      this.controller.rejectGesture();
-    }
-    reset() {
-      this.resolve(arena.GestureDisposition.rejected);
+    createState() {
+      return new video_player._VideoPlayerState.new();
     }
   };
-  (platform_view._UiKitViewGestureRecognizer.new = function(controller, gestureRecognizerFactories, opts) {
-    let t1;
-    if (controller == null) dart.nullFailed(L0, 418, 10, "controller");
-    if (gestureRecognizerFactories == null) dart.nullFailed(L0, 419, 10, "gestureRecognizerFactories");
-    let kind = opts && 'kind' in opts ? opts.kind : null;
-    this[___UiKitViewGestureRecognizer__gestureRecognizers] = null;
-    this[___UiKitViewGestureRecognizer__gestureRecognizers_isSet] = false;
-    this.controller = controller;
-    this.gestureRecognizerFactories = gestureRecognizerFactories;
-    platform_view._UiKitViewGestureRecognizer.__proto__.new.call(this, {kind: kind});
-    this.team = (t1 = new team.GestureArenaTeam.new(), (() => {
-      t1.captain = this;
-      return t1;
-    })());
-    this[_gestureRecognizers] = this.gestureRecognizerFactories[$map](recognizer.OneSequenceGestureRecognizer, dart.fn(recognizerFactory => {
-      let t1, t1$, t1$0;
-      if (recognizerFactory == null) dart.nullFailed(L0, 425, 46, "recognizerFactory");
-      let gestureRecognizer = recognizerFactory._constructor();
-      gestureRecognizer.team = this.team;
-      if (long_press.LongPressGestureRecognizer.is(gestureRecognizer)) {
-        t1 = gestureRecognizer;
-        t1.onLongPress == null ? t1.onLongPress = dart.fn(() => {
-        }, VoidTovoid()) : null;
-      } else if (monodrag.DragGestureRecognizer.is(gestureRecognizer)) {
-        t1$ = gestureRecognizer;
-        t1$.onDown == null ? t1$.onDown = dart.fn(_ => {
-          if (_ == null) dart.nullFailed(L0, 434, 41, "_");
-        }, DragDownDetailsTovoid()) : null;
-      } else if (tap.TapGestureRecognizer.is(gestureRecognizer)) {
-        t1$0 = gestureRecognizer;
-        t1$0.onTapDown == null ? t1$0.onTapDown = dart.fn(_ => {
-          if (_ == null) dart.nullFailed(L0, 436, 44, "_");
-        }, TapDownDetailsTovoid()) : null;
-      }
-      return gestureRecognizer;
-    }, FactoryOfOneSequenceGestureRecognizerToOneSequenceGestureRecognizer()))[$toSet]();
-  }).prototype = platform_view._UiKitViewGestureRecognizer.prototype;
-  dart.addTypeTests(platform_view._UiKitViewGestureRecognizer);
-  dart.addTypeCaches(platform_view._UiKitViewGestureRecognizer);
-  dart.setMethodSignature(platform_view._UiKitViewGestureRecognizer, () => ({
-    __proto__: dart.getMethods(platform_view._UiKitViewGestureRecognizer.__proto__),
-    didStopTrackingLastPointer: dart.fnType(dart.void, [core.int]),
-    handleEvent: dart.fnType(dart.void, [events.PointerEvent]),
-    reset: dart.fnType(dart.void, [])
+  (video_player.VideoPlayer.new = function(controller, opts) {
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[controller$] = controller;
+    video_player.VideoPlayer.__proto__.new.call(this, {$creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = video_player.VideoPlayer.prototype;
+  dart.addTypeTests(video_player.VideoPlayer);
+  dart.addTypeCaches(video_player.VideoPlayer);
+  dart.setMethodSignature(video_player.VideoPlayer, () => ({
+    __proto__: dart.getMethods(video_player.VideoPlayer.__proto__),
+    createState: dart.fnType(dart.legacy(video_player._VideoPlayerState), [])
   }));
-  dart.setGetterSignature(platform_view._UiKitViewGestureRecognizer, () => ({
-    __proto__: dart.getGetters(platform_view._UiKitViewGestureRecognizer.__proto__),
-    [_gestureRecognizers]: core.Set$(recognizer.OneSequenceGestureRecognizer),
-    debugDescription: core.String
+  dart.setLibraryUri(video_player.VideoPlayer, L0);
+  dart.setFieldSignature(video_player.VideoPlayer, () => ({
+    __proto__: dart.getFields(video_player.VideoPlayer.__proto__),
+    controller: dart.finalFieldType(dart.legacy(video_player.VideoPlayerController))
   }));
-  dart.setSetterSignature(platform_view._UiKitViewGestureRecognizer, () => ({
-    __proto__: dart.getSetters(platform_view._UiKitViewGestureRecognizer.__proto__),
-    [_gestureRecognizers]: core.Set$(recognizer.OneSequenceGestureRecognizer)
-  }));
-  dart.setLibraryUri(platform_view._UiKitViewGestureRecognizer, L1);
-  dart.setFieldSignature(platform_view._UiKitViewGestureRecognizer, () => ({
-    __proto__: dart.getFields(platform_view._UiKitViewGestureRecognizer.__proto__),
-    gestureRecognizerFactories: dart.finalFieldType(core.Set$(basic_types.Factory$(recognizer.OneSequenceGestureRecognizer))),
-    [___UiKitViewGestureRecognizer__gestureRecognizers]: dart.fieldType(dart.nullable(core.Set$(recognizer.OneSequenceGestureRecognizer))),
-    [___UiKitViewGestureRecognizer__gestureRecognizers_isSet]: dart.fieldType(core.bool),
-    controller: dart.finalFieldType(platform_views.UiKitViewController)
-  }));
-  var ___PlatformViewGestureRecognizer__handlePointerEvent = dart.privateName(platform_view, "_#_PlatformViewGestureRecognizer#_handlePointerEvent");
-  var ___PlatformViewGestureRecognizer__handlePointerEvent_isSet = dart.privateName(platform_view, "_#_PlatformViewGestureRecognizer#_handlePointerEvent#isSet");
-  var ___PlatformViewGestureRecognizer__gestureRecognizers = dart.privateName(platform_view, "_#_PlatformViewGestureRecognizer#_gestureRecognizers");
-  var ___PlatformViewGestureRecognizer__gestureRecognizers_isSet = dart.privateName(platform_view, "_#_PlatformViewGestureRecognizer#_gestureRecognizers#isSet");
-  var _cacheEvent = dart.privateName(platform_view, "_cacheEvent");
-  var _flushPointerCache = dart.privateName(platform_view, "_flushPointerCache");
-  platform_view._PlatformViewGestureRecognizer = class _PlatformViewGestureRecognizer extends recognizer.OneSequenceGestureRecognizer {
-    get [_handlePointerEvent]() {
-      let t2;
-      return dart.test(this[___PlatformViewGestureRecognizer__handlePointerEvent_isSet]) ? (t2 = this[___PlatformViewGestureRecognizer__handlePointerEvent], t2) : dart.throw(new _internal.LateError.fieldNI("_handlePointerEvent"));
+  var _listener = dart.privateName(video_player, "_listener");
+  var C16;
+  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  var C15;
+  video_player._VideoPlayerState = class _VideoPlayerState extends framework.State$(dart.legacy(video_player.VideoPlayer)) {
+    initState() {
+      super.initState();
+      this[_textureId] = this.widget.controller.textureId;
+      this.widget.controller.addListener(this[_listener]);
     }
-    set [_handlePointerEvent](t2) {
-      if (t2 == null) dart.nullFailed(L0, 522, 28, "null");
-      this[___PlatformViewGestureRecognizer__handlePointerEvent_isSet] = true;
-      this[___PlatformViewGestureRecognizer__handlePointerEvent] = t2;
+    didUpdateWidget(oldWidget) {
+      VideoPlayerL().as(oldWidget);
+      super.didUpdateWidget(oldWidget);
+      oldWidget.controller.removeListener(this[_listener]);
+      this[_textureId] = this.widget.controller.textureId;
+      this.widget.controller.addListener(this[_listener]);
     }
-    get [_gestureRecognizers]() {
-      let t3;
-      return dart.test(this[___PlatformViewGestureRecognizer__gestureRecognizers_isSet]) ? (t3 = this[___PlatformViewGestureRecognizer__gestureRecognizers], t3) : dart.throw(new _internal.LateError.fieldNI("_gestureRecognizers"));
+    deactivate() {
+      super.deactivate();
+      this.widget.controller.removeListener(this[_listener]);
     }
-    set [_gestureRecognizers](t3) {
-      if (t3 == null) dart.nullFailed(L0, 538, 42, "null");
-      this[___PlatformViewGestureRecognizer__gestureRecognizers_isSet] = true;
-      this[___PlatformViewGestureRecognizer__gestureRecognizers] = t3;
-    }
-    addAllowedPointer(event) {
-      if (event == null) dart.nullFailed(L0, 541, 43, "event");
-      this.startTrackingPointer(event.pointer, event.transform);
-      for (let recognizer of this[_gestureRecognizers]) {
-        recognizer.addPointer(event);
-      }
-    }
-    get debugDescription() {
-      return "Platform view";
-    }
-    didStopTrackingLastPointer(pointer) {
-      if (pointer == null) dart.nullFailed(L0, 552, 39, "pointer");
-    }
-    handleEvent(event) {
-      let t4;
-      if (event == null) dart.nullFailed(L0, 555, 33, "event");
-      if (!dart.test(this.forwardedPointers.contains(event.pointer))) {
-        this[_cacheEvent](event);
-      } else {
-        t4 = event;
-        this[_handlePointerEvent](t4);
-      }
-      this.stopTrackingIfPointerNoLongerDown(event);
-    }
-    acceptGesture(pointer) {
-      if (pointer == null) dart.nullFailed(L0, 565, 26, "pointer");
-      this[_flushPointerCache](pointer);
-      this.forwardedPointers.add(pointer);
-    }
-    rejectGesture(pointer) {
-      if (pointer == null) dart.nullFailed(L0, 571, 26, "pointer");
-      this.stopTrackingPointer(pointer);
-      this.cachedEvents[$remove](pointer);
-    }
-    [_cacheEvent](event) {
-      if (event == null) dart.nullFailed(L0, 576, 33, "event");
-      if (!dart.test(this.cachedEvents[$containsKey](event.pointer))) {
-        this.cachedEvents[$_set](event.pointer, JSArrayOfPointerEvent().of([]));
-      }
-      dart.nullCheck(this.cachedEvents[$_get](event.pointer))[$add](event);
-    }
-    [_flushPointerCache](pointer) {
-      let t4;
-      if (pointer == null) dart.nullFailed(L0, 583, 31, "pointer");
-      t4 = this.cachedEvents[$remove](pointer);
-      t4 == null ? null : t4[$forEach](this[_handlePointerEvent]);
-    }
-    stopTrackingPointer(pointer) {
-      if (pointer == null) dart.nullFailed(L0, 588, 32, "pointer");
-      super.stopTrackingPointer(pointer);
-      this.forwardedPointers.remove(pointer);
-    }
-    reset() {
-      this.forwardedPointers[$forEach](dart.bind(this, 'stopTrackingPointer', super.stopTrackingPointer));
-      this.forwardedPointers.clear();
-      this.cachedEvents[$keys][$forEach](dart.bind(this, 'stopTrackingPointer', super.stopTrackingPointer));
-      this.cachedEvents[$clear]();
-      this.resolve(arena.GestureDisposition.rejected);
+    build(context) {
+      return this[_textureId] == null ? new container.Container.new({$creationLocationd_0dea112b090073317d4: C15 || CT.C15}) : video_player._videoPlayerPlatform.buildView(this[_textureId]);
     }
   };
-  (platform_view._PlatformViewGestureRecognizer.new = function(handlePointerEvent, gestureRecognizerFactories, opts) {
-    let t2;
-    if (handlePointerEvent == null) dart.nullFailed(L0, 496, 25, "handlePointerEvent");
-    if (gestureRecognizerFactories == null) dart.nullFailed(L0, 497, 10, "gestureRecognizerFactories");
-    let kind = opts && 'kind' in opts ? opts.kind : null;
-    this[___PlatformViewGestureRecognizer__handlePointerEvent] = null;
-    this[___PlatformViewGestureRecognizer__handlePointerEvent_isSet] = false;
-    this.cachedEvents = new (IdentityMapOfint$ListOfPointerEvent()).new();
-    this.forwardedPointers = LinkedHashSetOfint().new();
-    this[___PlatformViewGestureRecognizer__gestureRecognizers] = null;
-    this[___PlatformViewGestureRecognizer__gestureRecognizers_isSet] = false;
-    this.gestureRecognizerFactories = gestureRecognizerFactories;
-    platform_view._PlatformViewGestureRecognizer.__proto__.new.call(this, {kind: kind});
-    this.team = (t2 = new team.GestureArenaTeam.new(), (() => {
-      t2.captain = this;
-      return t2;
-    })());
-    this[_gestureRecognizers] = this.gestureRecognizerFactories[$map](recognizer.OneSequenceGestureRecognizer, dart.fn(recognizerFactory => {
-      let t2, t2$, t2$0;
-      if (recognizerFactory == null) dart.nullFailed(L0, 503, 46, "recognizerFactory");
-      let gestureRecognizer = recognizerFactory._constructor();
-      gestureRecognizer.team = this.team;
-      if (long_press.LongPressGestureRecognizer.is(gestureRecognizer)) {
-        t2 = gestureRecognizer;
-        t2.onLongPress == null ? t2.onLongPress = dart.fn(() => {
-        }, VoidTovoid()) : null;
-      } else if (monodrag.DragGestureRecognizer.is(gestureRecognizer)) {
-        t2$ = gestureRecognizer;
-        t2$.onDown == null ? t2$.onDown = dart.fn(_ => {
-          if (_ == null) dart.nullFailed(L0, 512, 41, "_");
-        }, DragDownDetailsTovoid()) : null;
-      } else if (tap.TapGestureRecognizer.is(gestureRecognizer)) {
-        t2$0 = gestureRecognizer;
-        t2$0.onTapDown == null ? t2$0.onTapDown = dart.fn(_ => {
-          if (_ == null) dart.nullFailed(L0, 514, 44, "_");
-        }, TapDownDetailsTovoid()) : null;
+  (video_player._VideoPlayerState.new = function() {
+    this[_listener] = null;
+    this[_textureId] = null;
+    video_player._VideoPlayerState.__proto__.new.call(this);
+    this[_listener] = dart.fn(() => {
+      let newTextureId = this.widget.controller.textureId;
+      if (newTextureId != this[_textureId]) {
+        this.setState(dart.fn(() => {
+          this[_textureId] = newTextureId;
+        }, VoidToNull()));
       }
-      return gestureRecognizer;
-    }, FactoryOfOneSequenceGestureRecognizerToOneSequenceGestureRecognizer()))[$toSet]();
-    this[_handlePointerEvent] = handlePointerEvent;
-  }).prototype = platform_view._PlatformViewGestureRecognizer.prototype;
-  dart.addTypeTests(platform_view._PlatformViewGestureRecognizer);
-  dart.addTypeCaches(platform_view._PlatformViewGestureRecognizer);
-  dart.setMethodSignature(platform_view._PlatformViewGestureRecognizer, () => ({
-    __proto__: dart.getMethods(platform_view._PlatformViewGestureRecognizer.__proto__),
-    didStopTrackingLastPointer: dart.fnType(dart.void, [core.int]),
-    handleEvent: dart.fnType(dart.void, [events.PointerEvent]),
-    [_cacheEvent]: dart.fnType(dart.void, [events.PointerEvent]),
-    [_flushPointerCache]: dart.fnType(dart.void, [core.int]),
-    reset: dart.fnType(dart.void, [])
+    }, VoidToNull());
+  }).prototype = video_player._VideoPlayerState.prototype;
+  dart.addTypeTests(video_player._VideoPlayerState);
+  dart.addTypeCaches(video_player._VideoPlayerState);
+  dart.setMethodSignature(video_player._VideoPlayerState, () => ({
+    __proto__: dart.getMethods(video_player._VideoPlayerState.__proto__),
+    didUpdateWidget: dart.fnType(dart.void, [dart.legacy(core.Object)]),
+    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
   }));
-  dart.setGetterSignature(platform_view._PlatformViewGestureRecognizer, () => ({
-    __proto__: dart.getGetters(platform_view._PlatformViewGestureRecognizer.__proto__),
-    [_handlePointerEvent]: dart.fnType(async.Future$(dart.void), [events.PointerEvent]),
-    [_gestureRecognizers]: core.Set$(recognizer.OneSequenceGestureRecognizer),
-    debugDescription: core.String
+  dart.setLibraryUri(video_player._VideoPlayerState, L0);
+  dart.setFieldSignature(video_player._VideoPlayerState, () => ({
+    __proto__: dart.getFields(video_player._VideoPlayerState.__proto__),
+    [_listener]: dart.fieldType(dart.legacy(dart.fnType(dart.void, []))),
+    [_textureId]: dart.fieldType(dart.legacy(core.int))
   }));
-  dart.setSetterSignature(platform_view._PlatformViewGestureRecognizer, () => ({
-    __proto__: dart.getSetters(platform_view._PlatformViewGestureRecognizer.__proto__),
-    [_handlePointerEvent]: dart.fnType(async.Future$(dart.void), [events.PointerEvent]),
-    [_gestureRecognizers]: core.Set$(recognizer.OneSequenceGestureRecognizer)
-  }));
-  dart.setLibraryUri(platform_view._PlatformViewGestureRecognizer, L1);
-  dart.setFieldSignature(platform_view._PlatformViewGestureRecognizer, () => ({
-    __proto__: dart.getFields(platform_view._PlatformViewGestureRecognizer.__proto__),
-    [___PlatformViewGestureRecognizer__handlePointerEvent]: dart.fieldType(dart.nullable(dart.fnType(async.Future$(dart.void), [events.PointerEvent]))),
-    [___PlatformViewGestureRecognizer__handlePointerEvent_isSet]: dart.fieldType(core.bool),
-    cachedEvents: dart.finalFieldType(core.Map$(core.int, core.List$(events.PointerEvent))),
-    forwardedPointers: dart.finalFieldType(core.Set$(core.int)),
-    gestureRecognizerFactories: dart.finalFieldType(core.Set$(basic_types.Factory$(recognizer.OneSequenceGestureRecognizer))),
-    [___PlatformViewGestureRecognizer__gestureRecognizers]: dart.fieldType(dart.nullable(core.Set$(recognizer.OneSequenceGestureRecognizer))),
-    [___PlatformViewGestureRecognizer__gestureRecognizers_isSet]: dart.fieldType(core.bool)
-  }));
-  var _controller = dart.privateName(platform_view, "_controller");
-  const RenderBox__PlatformViewGestureMixin$36$ = class RenderBox__PlatformViewGestureMixin extends box.RenderBox {};
-  (RenderBox__PlatformViewGestureMixin$36$.new = function() {
-    platform_view._PlatformViewGestureMixin[dart.mixinNew].call(this);
-    RenderBox__PlatformViewGestureMixin$36$.__proto__.new.call(this);
-  }).prototype = RenderBox__PlatformViewGestureMixin$36$.prototype;
-  dart.applyMixin(RenderBox__PlatformViewGestureMixin$36$, platform_view._PlatformViewGestureMixin);
-  platform_view.PlatformViewRenderBox = class PlatformViewRenderBox extends RenderBox__PlatformViewGestureMixin$36$ {
-    set controller(controller) {
-      if (controller == null) dart.nullFailed(L0, 626, 41, "controller");
-      if (!(controller != null)) dart.assertFailed(null, L0, 627, 12, "controller != null");
-      if (!(controller.viewId != null && dart.notNull(controller.viewId) > -1)) dart.assertFailed(null, L0, 628, 12, "controller.viewId != null && controller.viewId > -1");
-      if (dart.equals(this[_controller], controller)) {
-        return;
-      }
-      let needsSemanticsUpdate = this[_controller].viewId != controller.viewId;
-      this[_controller] = controller;
-      this.markNeedsPaint();
-      if (needsSemanticsUpdate) {
-        this.markNeedsSemanticsUpdate();
-      }
+  var Color_value = dart.privateName(ui, "Color.value");
+  var C17;
+  var C18;
+  var C19;
+  var playedColor$ = dart.privateName(video_player, "VideoProgressColors.playedColor");
+  var bufferedColor$ = dart.privateName(video_player, "VideoProgressColors.bufferedColor");
+  var backgroundColor$ = dart.privateName(video_player, "VideoProgressColors.backgroundColor");
+  video_player.VideoProgressColors = class VideoProgressColors extends core.Object {
+    get playedColor() {
+      return this[playedColor$];
     }
-    updateGestureRecognizers(gestureRecognizers) {
-      if (gestureRecognizers == null) dart.nullFailed(L0, 645, 76, "gestureRecognizers");
-      this[_updateGestureRecognizersWithCallBack](gestureRecognizers, dart.bind(this[_controller], 'dispatchPointerEvent'));
+    set playedColor(value) {
+      super.playedColor = value;
     }
-    get sizedByParent() {
-      return true;
+    get bufferedColor() {
+      return this[bufferedColor$];
     }
-    get alwaysNeedsCompositing() {
-      return true;
+    set bufferedColor(value) {
+      super.bufferedColor = value;
     }
-    get isRepaintBoundary() {
-      return true;
+    get backgroundColor() {
+      return this[backgroundColor$];
     }
-    computeDryLayout(constraints) {
-      if (constraints == null) dart.nullFailed(L0, 661, 40, "constraints");
-      return constraints.biggest;
-    }
-    paint(context, offset) {
-      if (context == null) dart.nullFailed(L0, 666, 30, "context");
-      if (offset == null) dart.nullFailed(L0, 666, 46, "offset");
-      if (!(this[_controller].viewId != null)) dart.assertFailed(null, L0, 667, 12, "_controller.viewId != null");
-      context.addLayer(new layer.PlatformViewLayer.new({rect: offset['&'](this.size), viewId: this[_controller].viewId}));
-    }
-    describeSemanticsConfiguration(config) {
-      if (config == null) dart.nullFailed(L0, 675, 63, "config");
-      super.describeSemanticsConfiguration(config);
-      if (!(this[_controller].viewId != null)) dart.assertFailed(null, L0, 677, 12, "_controller.viewId != null");
-      config.isSemanticBoundary = true;
-      config.platformViewId = this[_controller].viewId;
+    set backgroundColor(value) {
+      super.backgroundColor = value;
     }
   };
-  (platform_view.PlatformViewRenderBox.new = function(opts) {
+  (video_player.VideoProgressColors.new = function(opts) {
+    let playedColor = opts && 'playedColor' in opts ? opts.playedColor : C17 || CT.C17;
+    let bufferedColor = opts && 'bufferedColor' in opts ? opts.bufferedColor : C18 || CT.C18;
+    let backgroundColor = opts && 'backgroundColor' in opts ? opts.backgroundColor : C19 || CT.C19;
+    this[playedColor$] = playedColor;
+    this[bufferedColor$] = bufferedColor;
+    this[backgroundColor$] = backgroundColor;
+    ;
+  }).prototype = video_player.VideoProgressColors.prototype;
+  dart.addTypeTests(video_player.VideoProgressColors);
+  dart.addTypeCaches(video_player.VideoProgressColors);
+  dart.setLibraryUri(video_player.VideoProgressColors, L0);
+  dart.setFieldSignature(video_player.VideoProgressColors, () => ({
+    __proto__: dart.getFields(video_player.VideoProgressColors.__proto__),
+    playedColor: dart.finalFieldType(dart.legacy(ui.Color)),
+    bufferedColor: dart.finalFieldType(dart.legacy(ui.Color)),
+    backgroundColor: dart.finalFieldType(dart.legacy(ui.Color))
+  }));
+  video_player._VideoScrubber = class _VideoScrubber extends framework.StatefulWidget {
+    createState() {
+      return new video_player._VideoScrubberState.new();
+    }
+  };
+  (video_player._VideoScrubber.new = function(opts) {
+    let child = opts && 'child' in opts ? opts.child : null;
     let controller = opts && 'controller' in opts ? opts.controller : null;
-    if (controller == null) dart.nullFailed(L0, 612, 37, "controller");
-    let hitTestBehavior = opts && 'hitTestBehavior' in opts ? opts.hitTestBehavior : null;
-    if (hitTestBehavior == null) dart.nullFailed(L0, 613, 42, "hitTestBehavior");
-    let gestureRecognizers = opts && 'gestureRecognizers' in opts ? opts.gestureRecognizers : null;
-    if (gestureRecognizers == null) dart.nullFailed(L0, 614, 57, "gestureRecognizers");
-    if (!(controller != null && controller.viewId != null && dart.notNull(controller.viewId) > -1)) dart.assertFailed(null, L0, 615, 16, "controller != null && controller.viewId != null && controller.viewId > -1");
-    if (!(hitTestBehavior != null)) dart.assertFailed(null, L0, 616, 16, "hitTestBehavior != null");
-    if (!(gestureRecognizers != null)) dart.assertFailed(null, L0, 617, 16, "gestureRecognizers != null");
-    this[_controller] = controller;
-    platform_view.PlatformViewRenderBox.__proto__.new.call(this);
-    this.hitTestBehavior = hitTestBehavior;
-    this.updateGestureRecognizers(gestureRecognizers);
-  }).prototype = platform_view.PlatformViewRenderBox.prototype;
-  dart.addTypeTests(platform_view.PlatformViewRenderBox);
-  dart.addTypeCaches(platform_view.PlatformViewRenderBox);
-  dart.setMethodSignature(platform_view.PlatformViewRenderBox, () => ({
-    __proto__: dart.getMethods(platform_view.PlatformViewRenderBox.__proto__),
-    updateGestureRecognizers: dart.fnType(dart.void, [core.Set$(basic_types.Factory$(recognizer.OneSequenceGestureRecognizer))])
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this.child = child;
+    this.controller = controller;
+    video_player._VideoScrubber.__proto__.new.call(this, {$creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = video_player._VideoScrubber.prototype;
+  dart.addTypeTests(video_player._VideoScrubber);
+  dart.addTypeCaches(video_player._VideoScrubber);
+  dart.setMethodSignature(video_player._VideoScrubber, () => ({
+    __proto__: dart.getMethods(video_player._VideoScrubber.__proto__),
+    createState: dart.fnType(dart.legacy(video_player._VideoScrubberState), [])
   }));
-  dart.setSetterSignature(platform_view.PlatformViewRenderBox, () => ({
-    __proto__: dart.getSetters(platform_view.PlatformViewRenderBox.__proto__),
-    controller: platform_views.PlatformViewController
+  dart.setLibraryUri(video_player._VideoScrubber, L0);
+  dart.setFieldSignature(video_player._VideoScrubber, () => ({
+    __proto__: dart.getFields(video_player._VideoScrubber.__proto__),
+    child: dart.finalFieldType(dart.legacy(framework.Widget)),
+    controller: dart.finalFieldType(dart.legacy(video_player.VideoPlayerController))
   }));
-  dart.setLibraryUri(platform_view.PlatformViewRenderBox, L1);
-  dart.setFieldSignature(platform_view.PlatformViewRenderBox, () => ({
-    __proto__: dart.getFields(platform_view.PlatformViewRenderBox.__proto__),
-    [_controller]: dart.fieldType(platform_views.PlatformViewController)
-  }));
-  platform_view._factoryTypesSetEquals = function _factoryTypesSetEquals(T, a, b) {
-    if (dart.equals(a, b)) {
-      return true;
+  var _controllerWasPlaying = dart.privateName(video_player, "_controllerWasPlaying");
+  var C22;
+  var C23;
+  var C24;
+  var C25;
+  var C26;
+  var C27;
+  var C21;
+  var C20;
+  video_player._VideoScrubberState = class _VideoScrubberState extends framework.State$(dart.legacy(video_player._VideoScrubber)) {
+    get controller() {
+      return this.widget.controller;
     }
-    if (a == null || b == null) {
-      return false;
+    build(context) {
+      const seekToRelativePosition = globalPosition => {
+        let box = RenderBoxL().as(context.findRenderObject());
+        let tapPos = box.globalToLocal(globalPosition);
+        let relative = dart.notNull(tapPos.dx) / dart.notNull(box.size.width);
+        let position = this.controller.value.duration['*'](relative);
+        this.controller.seekTo(position);
+      };
+      dart.fn(seekToRelativePosition, OffsetLTovoid());
+      return new gesture_detector.GestureDetector.new({behavior: proxy_box.HitTestBehavior.opaque, child: this.widget.child, onHorizontalDragStart: dart.fn(details => {
+          if (!dart.test(this.controller.value.initialized)) {
+            return;
+          }
+          this[_controllerWasPlaying] = this.controller.value.isPlaying;
+          if (dart.test(this[_controllerWasPlaying])) {
+            this.controller.pause();
+          }
+        }, DragStartDetailsLToNull()), onHorizontalDragUpdate: dart.fn(details => {
+          if (!dart.test(this.controller.value.initialized)) {
+            return;
+          }
+          seekToRelativePosition(details.globalPosition);
+        }, DragUpdateDetailsLToNull()), onHorizontalDragEnd: dart.fn(details => {
+          if (dart.test(this[_controllerWasPlaying])) {
+            this.controller.play();
+          }
+        }, DragEndDetailsLToNull()), onTapDown: dart.fn(details => {
+          if (!dart.test(this.controller.value.initialized)) {
+            return;
+          }
+          seekToRelativePosition(details.globalPosition);
+        }, TapDownDetailsLToNull()), $creationLocationd_0dea112b090073317d4: C20 || CT.C20});
     }
-    return collections.setEquals(core.Type, platform_view._factoriesTypeSet(T, a), platform_view._factoriesTypeSet(T, b));
   };
-  platform_view._factoriesTypeSet = function _factoriesTypeSet(T, factories) {
-    if (factories == null) dart.nullFailed(L0, 51, 48, "factories");
-    return factories[$map](core.Type, dart.fn(factory => {
-      if (factory == null) dart.nullFailed(L0, 52, 42, "factory");
-      return factory.type;
-    }, dart.fnType(core.Type, [basic_types.Factory$(T)])))[$toSet]();
+  (video_player._VideoScrubberState.new = function() {
+    this[_controllerWasPlaying] = false;
+    video_player._VideoScrubberState.__proto__.new.call(this);
+    ;
+  }).prototype = video_player._VideoScrubberState.prototype;
+  dart.addTypeTests(video_player._VideoScrubberState);
+  dart.addTypeCaches(video_player._VideoScrubberState);
+  dart.setMethodSignature(video_player._VideoScrubberState, () => ({
+    __proto__: dart.getMethods(video_player._VideoScrubberState.__proto__),
+    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
+  }));
+  dart.setGetterSignature(video_player._VideoScrubberState, () => ({
+    __proto__: dart.getGetters(video_player._VideoScrubberState.__proto__),
+    controller: dart.legacy(video_player.VideoPlayerController)
+  }));
+  dart.setLibraryUri(video_player._VideoScrubberState, L0);
+  dart.setFieldSignature(video_player._VideoScrubberState, () => ({
+    __proto__: dart.getFields(video_player._VideoScrubberState.__proto__),
+    [_controllerWasPlaying]: dart.fieldType(dart.legacy(core.bool))
+  }));
+  var EdgeInsets_bottom = dart.privateName(edge_insets, "EdgeInsets.bottom");
+  var EdgeInsets_right = dart.privateName(edge_insets, "EdgeInsets.right");
+  var EdgeInsets_top = dart.privateName(edge_insets, "EdgeInsets.top");
+  var EdgeInsets_left = dart.privateName(edge_insets, "EdgeInsets.left");
+  var C28;
+  var controller$0 = dart.privateName(video_player, "VideoProgressIndicator.controller");
+  var colors$ = dart.privateName(video_player, "VideoProgressIndicator.colors");
+  var allowScrubbing$ = dart.privateName(video_player, "VideoProgressIndicator.allowScrubbing");
+  var padding$ = dart.privateName(video_player, "VideoProgressIndicator.padding");
+  video_player.VideoProgressIndicator = class VideoProgressIndicator extends framework.StatefulWidget {
+    get controller() {
+      return this[controller$0];
+    }
+    set controller(value) {
+      super.controller = value;
+    }
+    get colors() {
+      return this[colors$];
+    }
+    set colors(value) {
+      super.colors = value;
+    }
+    get allowScrubbing() {
+      return this[allowScrubbing$];
+    }
+    set allowScrubbing(value) {
+      super.allowScrubbing = value;
+    }
+    get padding() {
+      return this[padding$];
+    }
+    set padding(value) {
+      super.padding = value;
+    }
+    createState() {
+      return new video_player._VideoProgressIndicatorState.new();
+    }
   };
-  dart.trackLibraries("packages/flutter/src/rendering/platform_view.dart", {
-    "package:flutter/src/rendering/platform_view.dart": platform_view
+  (video_player.VideoProgressIndicator.new = function(controller, opts) {
+    let t0;
+    let colors = opts && 'colors' in opts ? opts.colors : null;
+    let allowScrubbing = opts && 'allowScrubbing' in opts ? opts.allowScrubbing : null;
+    let padding = opts && 'padding' in opts ? opts.padding : C28 || CT.C28;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[controller$0] = controller;
+    this[allowScrubbing$] = allowScrubbing;
+    this[padding$] = padding;
+    this[colors$] = (t0 = colors, t0 == null ? new video_player.VideoProgressColors.new() : t0);
+    video_player.VideoProgressIndicator.__proto__.new.call(this, {$creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = video_player.VideoProgressIndicator.prototype;
+  dart.addTypeTests(video_player.VideoProgressIndicator);
+  dart.addTypeCaches(video_player.VideoProgressIndicator);
+  dart.setMethodSignature(video_player.VideoProgressIndicator, () => ({
+    __proto__: dart.getMethods(video_player.VideoProgressIndicator.__proto__),
+    createState: dart.fnType(dart.legacy(video_player._VideoProgressIndicatorState), [])
+  }));
+  dart.setLibraryUri(video_player.VideoProgressIndicator, L0);
+  dart.setFieldSignature(video_player.VideoProgressIndicator, () => ({
+    __proto__: dart.getFields(video_player.VideoProgressIndicator.__proto__),
+    controller: dart.finalFieldType(dart.legacy(video_player.VideoPlayerController)),
+    colors: dart.finalFieldType(dart.legacy(video_player.VideoProgressColors)),
+    allowScrubbing: dart.finalFieldType(dart.legacy(core.bool)),
+    padding: dart.finalFieldType(dart.legacy(edge_insets.EdgeInsets))
+  }));
+  var C31;
+  var C32;
+  var C33;
+  var C30;
+  var C29;
+  var C36;
+  var C37;
+  var C38;
+  var C35;
+  var C34;
+  var C41;
+  var C42;
+  var C40;
+  var C39;
+  var C45;
+  var C46;
+  var C47;
+  var C44;
+  var C43;
+  var C50;
+  var C51;
+  var C49;
+  var C48;
+  var C54;
+  var C55;
+  var C53;
+  var C52;
+  video_player._VideoProgressIndicatorState = class _VideoProgressIndicatorState extends framework.State$(dart.legacy(video_player.VideoProgressIndicator)) {
+    get controller() {
+      return this.widget.controller;
+    }
+    get colors() {
+      return this.widget.colors;
+    }
+    initState() {
+      super.initState();
+      this.controller.addListener(this.listener);
+    }
+    deactivate() {
+      this.controller.removeListener(this.listener);
+      super.deactivate();
+    }
+    build(context) {
+      let progressIndicator = null;
+      if (dart.test(this.controller.value.initialized)) {
+        let duration = this.controller.value.duration.inMilliseconds;
+        let position = this.controller.value.position.inMilliseconds;
+        let maxBuffering = 0;
+        for (let range of this.controller.value.buffered) {
+          let end = range.end.inMilliseconds;
+          if (dart.notNull(end) > dart.notNull(maxBuffering)) {
+            maxBuffering = end;
+          }
+        }
+        progressIndicator = new basic.Stack.new({fit: stack.StackFit.passthrough, children: JSArrayOfWidgetL().of([new progress_indicator.LinearProgressIndicator.new({value: dart.notNull(maxBuffering) / dart.notNull(duration), valueColor: new (AlwaysStoppedAnimationOfColorL()).new(this.colors.bufferedColor), backgroundColor: this.colors.backgroundColor, $creationLocationd_0dea112b090073317d4: C29 || CT.C29}), new progress_indicator.LinearProgressIndicator.new({value: dart.notNull(position) / dart.notNull(duration), valueColor: new (AlwaysStoppedAnimationOfColorL()).new(this.colors.playedColor), backgroundColor: colors.Colors.transparent, $creationLocationd_0dea112b090073317d4: C34 || CT.C34})]), $creationLocationd_0dea112b090073317d4: C39 || CT.C39});
+      } else {
+        progressIndicator = new progress_indicator.LinearProgressIndicator.new({value: null, valueColor: new (AlwaysStoppedAnimationOfColorL()).new(this.colors.playedColor), backgroundColor: this.colors.backgroundColor, $creationLocationd_0dea112b090073317d4: C43 || CT.C43});
+      }
+      let paddedProgressIndicator = new basic.Padding.new({padding: this.widget.padding, child: progressIndicator, $creationLocationd_0dea112b090073317d4: C48 || CT.C48});
+      if (dart.test(this.widget.allowScrubbing)) {
+        return new video_player._VideoScrubber.new({child: paddedProgressIndicator, controller: this.controller, $creationLocationd_0dea112b090073317d4: C52 || CT.C52});
+      } else {
+        return paddedProgressIndicator;
+      }
+    }
+  };
+  (video_player._VideoProgressIndicatorState.new = function() {
+    this.listener = null;
+    video_player._VideoProgressIndicatorState.__proto__.new.call(this);
+    this.listener = dart.fn(() => {
+      if (!dart.test(this.mounted)) {
+        return;
+      }
+      this.setState(dart.fn(() => {
+      }, VoidToNull()));
+    }, VoidToNull());
+  }).prototype = video_player._VideoProgressIndicatorState.prototype;
+  dart.addTypeTests(video_player._VideoProgressIndicatorState);
+  dart.addTypeCaches(video_player._VideoProgressIndicatorState);
+  dart.setMethodSignature(video_player._VideoProgressIndicatorState, () => ({
+    __proto__: dart.getMethods(video_player._VideoProgressIndicatorState.__proto__),
+    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
+  }));
+  dart.setGetterSignature(video_player._VideoProgressIndicatorState, () => ({
+    __proto__: dart.getGetters(video_player._VideoProgressIndicatorState.__proto__),
+    controller: dart.legacy(video_player.VideoPlayerController),
+    colors: dart.legacy(video_player.VideoProgressColors)
+  }));
+  dart.setLibraryUri(video_player._VideoProgressIndicatorState, L0);
+  dart.setFieldSignature(video_player._VideoProgressIndicatorState, () => ({
+    __proto__: dart.getFields(video_player._VideoProgressIndicatorState.__proto__),
+    listener: dart.fieldType(dart.legacy(dart.fnType(dart.void, [])))
+  }));
+  var C56;
+  var C59;
+  var C60;
+  var C58;
+  var C57;
+  var C63;
+  var C64;
+  var C62;
+  var C61;
+  var C67;
+  var C68;
+  var C66;
+  var C65;
+  var C71;
+  var C72;
+  var C70;
+  var C69;
+  var C75;
+  var C76;
+  var C74;
+  var C73;
+  var text$ = dart.privateName(video_player, "ClosedCaption.text");
+  var textStyle$ = dart.privateName(video_player, "ClosedCaption.textStyle");
+  video_player.ClosedCaption = class ClosedCaption extends framework.StatelessWidget {
+    get text() {
+      return this[text$];
+    }
+    set text(value) {
+      super.text = value;
+    }
+    get textStyle() {
+      return this[textStyle$];
+    }
+    set textStyle(value) {
+      super.textStyle = value;
+    }
+    build(context) {
+      let t0;
+      let effectiveTextStyle = (t0 = this.textStyle, t0 == null ? text.DefaultTextStyle.of(context).style.copyWith({fontSize: 36.0, color: colors.Colors.white}) : t0);
+      if (this.text == null) {
+        return new basic.SizedBox.shrink({$creationLocationd_0dea112b090073317d4: C56 || CT.C56});
+      }
+      return new basic.Align.new({alignment: alignment.Alignment.bottomCenter, child: new basic.Padding.new({padding: new edge_insets.EdgeInsets.only({bottom: 24.0}), child: new container.DecoratedBox.new({decoration: new box_decoration.BoxDecoration.new({color: new ui.Color.new(3087007744), borderRadius: new border_radius.BorderRadius.circular(2.0)}), child: new basic.Padding.new({padding: new edge_insets.EdgeInsets.symmetric({horizontal: 2.0}), child: new text.Text.new(this.text, {style: effectiveTextStyle, $creationLocationd_0dea112b090073317d4: C57 || CT.C57}), $creationLocationd_0dea112b090073317d4: C61 || CT.C61}), $creationLocationd_0dea112b090073317d4: C65 || CT.C65}), $creationLocationd_0dea112b090073317d4: C69 || CT.C69}), $creationLocationd_0dea112b090073317d4: C73 || CT.C73});
+    }
+  };
+  (video_player.ClosedCaption.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let text = opts && 'text' in opts ? opts.text : null;
+    let textStyle = opts && 'textStyle' in opts ? opts.textStyle : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[text$] = text;
+    this[textStyle$] = textStyle;
+    video_player.ClosedCaption.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = video_player.ClosedCaption.prototype;
+  dart.addTypeTests(video_player.ClosedCaption);
+  dart.addTypeCaches(video_player.ClosedCaption);
+  dart.setMethodSignature(video_player.ClosedCaption, () => ({
+    __proto__: dart.getMethods(video_player.ClosedCaption.__proto__),
+    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
+  }));
+  dart.setLibraryUri(video_player.ClosedCaption, L0);
+  dart.setFieldSignature(video_player.ClosedCaption, () => ({
+    __proto__: dart.getFields(video_player.ClosedCaption.__proto__),
+    text: dart.finalFieldType(dart.legacy(core.String)),
+    textStyle: dart.finalFieldType(dart.legacy(text_style.TextStyle))
+  }));
+  dart.defineLazy(video_player, {
+    /*video_player._videoPlayerPlatform*/get _videoPlayerPlatform() {
+      let t0;
+      return t0 = video_player_platform_interface.VideoPlayerPlatform.instance, (() => {
+        t0.init();
+        return t0;
+      })();
+    }
+  }, true);
+  dart.trackLibraries("packages/video_player/video_player.dart", {
+    "package:video_player/video_player.dart": video_player
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["platform_view.dart"],"names":[],"mappings":"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","file":"../../../../../../../packages/flutter/src/rendering/platform_view.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["video_player.dart"],"names":[],"mappings":"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","file":"../../../../../../../packages/video_player/video_player.dart.lib.js"}');
   // Exports:
   return {
-    src__rendering__platform_view: platform_view
+    video_player: video_player
   };
 }));
 
-//# sourceMappingURL=platform_view.dart.lib.js.map
+//# sourceMappingURL=video_player.dart.lib.js.map

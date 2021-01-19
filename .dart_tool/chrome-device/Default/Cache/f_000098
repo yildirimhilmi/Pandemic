@@ -1,281 +1,430 @@
-define(['dart_sdk'], (function load__packages__flutter__src__gestures__lsq_solver_dart(dart_sdk) {
+define(['dart_sdk', 'packages/flare_flutter/flare_cache_asset.dart', 'packages/flutter/src/scheduler/binding.dart', 'packages/flutter/src/rendering/layer.dart', 'packages/flutter/src/painting/box_fit.dart', 'packages/flare_dart/math/transform_components.dart', 'packages/flare_flutter/flare_cache.dart', 'packages/flare_flutter/flare.dart', 'packages/flutter/src/painting/alignment.dart', 'packages/flare_flutter/asset_provider.dart'], (function load__packages__flare_flutter__flare_render_box_dart(dart_sdk, packages__flare_flutter__flare_cache_asset$46dart, packages__flutter__src__scheduler__binding$46dart, packages__flutter__src__rendering__layer$46dart, packages__flutter__src__painting__box_fit$46dart, packages__flare_dart__math__transform_components$46dart, packages__flare_flutter__flare_cache$46dart, packages__flare_flutter__flare$46dart, packages__flutter__src__painting__alignment$46dart, packages__flare_flutter__asset_provider$46dart) {
   'use strict';
   const core = dart_sdk.core;
-  const _native_typed_data = dart_sdk._native_typed_data;
+  const collection = dart_sdk.collection;
   const math = dart_sdk.math;
-  const _internal = dart_sdk._internal;
+  const async = dart_sdk.async;
+  const ui = dart_sdk.ui;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  var lsq_solver = Object.create(dart.library);
-  var $_get = dartx._get;
-  var $_set = dartx._set;
-  var $length = dartx.length;
+  const flare_cache_asset = packages__flare_flutter__flare_cache_asset$46dart.flare_cache_asset;
+  const binding = packages__flutter__src__scheduler__binding$46dart.src__scheduler__binding;
+  const object = packages__flutter__src__rendering__layer$46dart.src__rendering__object;
+  const box = packages__flutter__src__rendering__layer$46dart.src__rendering__box;
+  const box_fit = packages__flutter__src__painting__box_fit$46dart.src__painting__box_fit;
+  const mat2d = packages__flare_dart__math__transform_components$46dart.math__mat2d;
+  const vec2d = packages__flare_dart__math__transform_components$46dart.math__vec2d;
+  const flare_cache = packages__flare_flutter__flare_cache$46dart.flare_cache;
+  const flare = packages__flare_flutter__flare$46dart.flare;
+  const alignment = packages__flutter__src__painting__alignment$46dart.src__painting__alignment;
+  const asset_provider = packages__flare_flutter__asset_provider$46dart.asset_provider;
+  var flare_render_box = Object.create(dart.library);
+  var $isEmpty = dartx.isEmpty;
+  var FlareCacheAssetL = () => (FlareCacheAssetL = dart.constFn(dart.legacy(flare_cache_asset.FlareCacheAsset)))();
+  var LinkedHashSetOfFlareCacheAssetL = () => (LinkedHashSetOfFlareCacheAssetL = dart.constFn(collection.LinkedHashSet$(FlareCacheAssetL())))();
+  var PipelineOwnerL = () => (PipelineOwnerL = dart.constFn(dart.legacy(object.PipelineOwner)))();
+  var doubleL = () => (doubleL = dart.constFn(dart.legacy(core.double)))();
+  var voidToNull = () => (voidToNull = dart.constFn(dart.fnType(core.Null, [dart.void])))();
+  var FlutterActorL = () => (FlutterActorL = dart.constFn(dart.legacy(flare.FlutterActor)))();
   const CT = Object.create(null);
-  var L1 = "package:flutter/src/gestures/lsq_solver.dart";
-  var L0 = "file:///C:/src/flutter/packages/flutter/lib/src/gestures/lsq_solver.dart";
-  var _offset = dart.privateName(lsq_solver, "_offset");
-  var _length = dart.privateName(lsq_solver, "_length");
-  var _elements = dart.privateName(lsq_solver, "_elements");
-  lsq_solver._Vector = class _Vector extends core.Object {
-    _get(i) {
-      if (i == null) dart.nullFailed(L0, 29, 26, "i");
-      return this[_elements][$_get](dart.notNull(i) + dart.notNull(this[_offset]));
+  var L0 = "package:flare_flutter/flare_render_box.dart";
+  dart.defineLazy(CT, {
+    get C0() {
+      return C0 = dart.const({
+        __proto__: box_fit.BoxFit.prototype,
+        [_name]: "BoxFit.fill",
+        index: 0
+      });
+    },
+    get C1() {
+      return C1 = dart.const({
+        __proto__: box_fit.BoxFit.prototype,
+        [_name]: "BoxFit.contain",
+        index: 1
+      });
+    },
+    get C2() {
+      return C2 = dart.const({
+        __proto__: box_fit.BoxFit.prototype,
+        [_name]: "BoxFit.cover",
+        index: 2
+      });
+    },
+    get C3() {
+      return C3 = dart.const({
+        __proto__: box_fit.BoxFit.prototype,
+        [_name]: "BoxFit.fitHeight",
+        index: 4
+      });
+    },
+    get C4() {
+      return C4 = dart.const({
+        __proto__: box_fit.BoxFit.prototype,
+        [_name]: "BoxFit.fitWidth",
+        index: 3
+      });
+    },
+    get C5() {
+      return C5 = dart.const({
+        __proto__: box_fit.BoxFit.prototype,
+        [_name]: "BoxFit.none",
+        index: 5
+      });
+    },
+    get C6() {
+      return C6 = dart.const({
+        __proto__: box_fit.BoxFit.prototype,
+        [_name]: "BoxFit.scaleDown",
+        index: 6
+      });
     }
-    _set(i, value$) {
-      let value = value$;
-      if (i == null) dart.nullFailed(L0, 30, 25, "i");
-      if (value == null) dart.nullFailed(L0, 30, 35, "value");
-      this[_elements][$_set](dart.notNull(i) + dart.notNull(this[_offset]), value);
-      return value$;
+  }, false);
+  var _fit = dart.privateName(flare_render_box, "_fit");
+  var _alignment = dart.privateName(flare_render_box, "_alignment");
+  var _frameCallbackID = dart.privateName(flare_render_box, "_frameCallbackID");
+  var _lastFrameTime = dart.privateName(flare_render_box, "_lastFrameTime");
+  var _assets = dart.privateName(flare_render_box, "_assets");
+  var _useIntrinsicSize = dart.privateName(flare_render_box, "_useIntrinsicSize");
+  var _intrinsicSize = dart.privateName(flare_render_box, "_intrinsicSize");
+  var _isLoading = dart.privateName(flare_render_box, "_isLoading");
+  var _reloadQueued = dart.privateName(flare_render_box, "_reloadQueued");
+  var _unload = dart.privateName(flare_render_box, "_unload");
+  var _beginFrame = dart.privateName(flare_render_box, "_beginFrame");
+  var _name = dart.privateName(box_fit, "_name");
+  var C0;
+  var C1;
+  var C2;
+  var C3;
+  var C4;
+  var C5;
+  var C6;
+  var _completeLoad = dart.privateName(flare_render_box, "_completeLoad");
+  flare_render_box.FlareRenderBox = class FlareRenderBox extends box.RenderBox {
+    get useIntrinsicSize() {
+      return this[_useIntrinsicSize];
     }
-    ['*'](a) {
-      if (a == null) dart.nullFailed(L0, 34, 29, "a");
-      let result = 0.0;
-      for (let i = 0; i < dart.notNull(this[_length]); i = i + 1)
-        result = result + dart.notNull(this._get(i)) * dart.notNull(a._get(i));
-      return result;
-    }
-    norm() {
-      return math.sqrt(this['*'](this));
-    }
-  };
-  (lsq_solver._Vector.new = function(size) {
-    if (size == null) dart.nullFailed(L0, 13, 15, "size");
-    this[_offset] = 0;
-    this[_length] = size;
-    this[_elements] = _native_typed_data.NativeFloat64List.new(size);
-    ;
-  }).prototype = lsq_solver._Vector.prototype;
-  (lsq_solver._Vector.fromVOL = function(values, offset, length) {
-    if (values == null) dart.nullFailed(L0, 18, 32, "values");
-    if (offset == null) dart.nullFailed(L0, 18, 44, "offset");
-    if (length == null) dart.nullFailed(L0, 18, 56, "length");
-    this[_offset] = offset;
-    this[_length] = length;
-    this[_elements] = values;
-    ;
-  }).prototype = lsq_solver._Vector.prototype;
-  dart.addTypeTests(lsq_solver._Vector);
-  dart.addTypeCaches(lsq_solver._Vector);
-  dart.setMethodSignature(lsq_solver._Vector, () => ({
-    __proto__: dart.getMethods(lsq_solver._Vector.__proto__),
-    _get: dart.fnType(core.double, [core.int]),
-    _set: dart.fnType(dart.void, [core.int, core.double]),
-    '*': dart.fnType(core.double, [lsq_solver._Vector]),
-    norm: dart.fnType(core.double, [])
-  }));
-  dart.setLibraryUri(lsq_solver._Vector, L1);
-  dart.setFieldSignature(lsq_solver._Vector, () => ({
-    __proto__: dart.getFields(lsq_solver._Vector.__proto__),
-    [_offset]: dart.finalFieldType(core.int),
-    [_length]: dart.finalFieldType(core.int),
-    [_elements]: dart.finalFieldType(core.List$(core.double))
-  }));
-  var _columns = dart.privateName(lsq_solver, "_columns");
-  lsq_solver._Matrix = class _Matrix extends core.Object {
-    get(row, col) {
-      if (row == null) dart.nullFailed(L0, 53, 18, "row");
-      if (col == null) dart.nullFailed(L0, 53, 27, "col");
-      return this[_elements][$_get](dart.notNull(row) * dart.notNull(this[_columns]) + dart.notNull(col));
-    }
-    set(row, col, value) {
-      if (row == null) dart.nullFailed(L0, 54, 16, "row");
-      if (col == null) dart.nullFailed(L0, 54, 25, "col");
-      if (value == null) dart.nullFailed(L0, 54, 37, "value");
-      this[_elements][$_set](dart.notNull(row) * dart.notNull(this[_columns]) + dart.notNull(col), value);
-    }
-    getRow(row) {
-      if (row == null) dart.nullFailed(L0, 58, 22, "row");
-      return new lsq_solver._Vector.fromVOL(this[_elements], dart.notNull(row) * dart.notNull(this[_columns]), this[_columns]);
-    }
-  };
-  (lsq_solver._Matrix.new = function(rows, cols) {
-    if (rows == null) dart.nullFailed(L0, 46, 15, "rows");
-    if (cols == null) dart.nullFailed(L0, 46, 25, "cols");
-    this[_columns] = cols;
-    this[_elements] = _native_typed_data.NativeFloat64List.new(dart.notNull(rows) * dart.notNull(cols));
-    ;
-  }).prototype = lsq_solver._Matrix.prototype;
-  dart.addTypeTests(lsq_solver._Matrix);
-  dart.addTypeCaches(lsq_solver._Matrix);
-  dart.setMethodSignature(lsq_solver._Matrix, () => ({
-    __proto__: dart.getMethods(lsq_solver._Matrix.__proto__),
-    get: dart.fnType(core.double, [core.int, core.int]),
-    set: dart.fnType(dart.void, [core.int, core.int, core.double]),
-    getRow: dart.fnType(lsq_solver._Vector, [core.int])
-  }));
-  dart.setLibraryUri(lsq_solver._Matrix, L1);
-  dart.setFieldSignature(lsq_solver._Matrix, () => ({
-    __proto__: dart.getFields(lsq_solver._Matrix.__proto__),
-    [_columns]: dart.finalFieldType(core.int),
-    [_elements]: dart.finalFieldType(core.List$(core.double))
-  }));
-  var __PolynomialFit_confidence = dart.privateName(lsq_solver, "_#PolynomialFit#confidence");
-  var __PolynomialFit_confidence_isSet = dart.privateName(lsq_solver, "_#PolynomialFit#confidence#isSet");
-  var coefficients = dart.privateName(lsq_solver, "PolynomialFit.coefficients");
-  lsq_solver.PolynomialFit = class PolynomialFit extends core.Object {
-    get coefficients() {
-      return this[coefficients];
-    }
-    set coefficients(value) {
-      super.coefficients = value;
-    }
-    get confidence() {
-      let t0;
-      return dart.test(this[__PolynomialFit_confidence_isSet]) ? (t0 = this[__PolynomialFit_confidence], t0) : dart.throw(new _internal.LateError.fieldNI("confidence"));
-    }
-    set confidence(t0) {
-      if (t0 == null) dart.nullFailed(L0, 78, 15, "null");
-      this[__PolynomialFit_confidence_isSet] = true;
-      this[__PolynomialFit_confidence] = t0;
-    }
-  };
-  (lsq_solver.PolynomialFit.new = function(degree) {
-    if (degree == null) dart.nullFailed(L0, 70, 21, "degree");
-    this[__PolynomialFit_confidence] = null;
-    this[__PolynomialFit_confidence_isSet] = false;
-    this[coefficients] = _native_typed_data.NativeFloat64List.new(dart.notNull(degree) + 1);
-    ;
-  }).prototype = lsq_solver.PolynomialFit.prototype;
-  dart.addTypeTests(lsq_solver.PolynomialFit);
-  dart.addTypeCaches(lsq_solver.PolynomialFit);
-  dart.setGetterSignature(lsq_solver.PolynomialFit, () => ({
-    __proto__: dart.getGetters(lsq_solver.PolynomialFit.__proto__),
-    confidence: core.double
-  }));
-  dart.setSetterSignature(lsq_solver.PolynomialFit, () => ({
-    __proto__: dart.getSetters(lsq_solver.PolynomialFit.__proto__),
-    confidence: core.double
-  }));
-  dart.setLibraryUri(lsq_solver.PolynomialFit, L1);
-  dart.setFieldSignature(lsq_solver.PolynomialFit, () => ({
-    __proto__: dart.getFields(lsq_solver.PolynomialFit.__proto__),
-    coefficients: dart.finalFieldType(core.List$(core.double)),
-    [__PolynomialFit_confidence]: dart.fieldType(dart.nullable(core.double)),
-    [__PolynomialFit_confidence_isSet]: dart.fieldType(core.bool)
-  }));
-  var x$ = dart.privateName(lsq_solver, "LeastSquaresSolver.x");
-  var y$ = dart.privateName(lsq_solver, "LeastSquaresSolver.y");
-  var w$ = dart.privateName(lsq_solver, "LeastSquaresSolver.w");
-  lsq_solver.LeastSquaresSolver = class LeastSquaresSolver extends core.Object {
-    get x() {
-      return this[x$];
-    }
-    set x(value) {
-      super.x = value;
-    }
-    get y() {
-      return this[y$];
-    }
-    set y(value) {
-      super.y = value;
-    }
-    get w() {
-      return this[w$];
-    }
-    set w(value) {
-      super.w = value;
-    }
-    solve(degree) {
-      let t2, t1, t2$, t1$;
-      if (degree == null) dart.nullFailed(L0, 102, 28, "degree");
-      if (dart.notNull(degree) > dart.notNull(this.x[$length])) return null;
-      let result = new lsq_solver.PolynomialFit.new(degree);
-      let m = this.x[$length];
-      let n = dart.notNull(degree) + 1;
-      let a = new lsq_solver._Matrix.new(n, m);
-      for (let h = 0; h < dart.notNull(m); h = h + 1) {
-        a.set(0, h, this.w[$_get](h));
-        for (let i = 1; i < n; i = i + 1)
-          a.set(i, h, dart.notNull(a.get(i - 1, h)) * dart.notNull(this.x[$_get](h)));
+    set useIntrinsicSize(value) {
+      if (dart.equals(this[_useIntrinsicSize], value)) {
+        return;
       }
-      let q = new lsq_solver._Matrix.new(n, m);
-      let r = new lsq_solver._Matrix.new(n, n);
-      for (let j = 0; j < n; j = j + 1) {
-        for (let h = 0; h < dart.notNull(m); h = h + 1)
-          q.set(j, h, a.get(j, h));
-        for (let i = 0; i < j; i = i + 1) {
-          let dot = q.getRow(j)['*'](q.getRow(i));
-          for (let h = 0; h < dart.notNull(m); h = h + 1)
-            q.set(j, h, dart.notNull(q.get(j, h)) - dart.notNull(dot) * dart.notNull(q.get(i, h)));
+      this[_useIntrinsicSize] = value;
+      if (this.parent != null) {
+        this.markNeedsLayoutForSizedByParentChange();
+      }
+    }
+    get intrinsicSize() {
+      return this[_intrinsicSize];
+    }
+    set intrinsicSize(value) {
+      if (dart.equals(this[_intrinsicSize], value)) {
+        return;
+      }
+      this[_intrinsicSize] = value;
+      if (this.parent != null) {
+        this.markNeedsLayoutForSizedByParentChange();
+      }
+    }
+    get fit() {
+      return this[_fit];
+    }
+    set fit(value) {
+      if (!dart.equals(value, this[_fit])) {
+        this[_fit] = value;
+        this.markNeedsPaint();
+      }
+    }
+    updatePlayState() {
+      if (dart.test(this.isPlaying) && dart.test(this.attached)) {
+        this.markNeedsPaint();
+      } else {
+        this[_lastFrameTime] = -1;
+        if (this[_frameCallbackID] != null) {
+          binding.SchedulerBinding.instance.cancelFrameCallbackWithId(this[_frameCallbackID]);
         }
-        let norm = q.getRow(j).norm();
-        if (dart.notNull(norm) < 1e-10) {
+      }
+    }
+    get alignment() {
+      return this[_alignment];
+    }
+    set alignment(value) {
+      if (!dart.equals(value, this[_alignment])) {
+        this[_alignment] = value;
+        this.markNeedsPaint();
+      }
+    }
+    get sizedByParent() {
+      return !dart.test(this[_useIntrinsicSize]) || this[_intrinsicSize] == null;
+    }
+    performLayout() {
+      if (!dart.test(this.sizedByParent)) {
+        this.size = this.constraints.constrain(this[_intrinsicSize]);
+      }
+    }
+    hitTestSelf(screenOffset) {
+      return true;
+    }
+    performResize() {
+      this.size = dart.test(this[_useIntrinsicSize]) ? this.constraints.smallest : this.constraints.biggest;
+    }
+    detach() {
+      super.detach();
+      this.dispose();
+    }
+    attach(owner) {
+      PipelineOwnerL().as(owner);
+      super.attach(owner);
+      this.updatePlayState();
+      if (dart.test(this[_assets][$isEmpty])) {
+        this.load();
+      }
+    }
+    dispose() {
+      this.updatePlayState();
+      this[_unload]();
+    }
+    [_beginFrame](timestamp) {
+      this[_frameCallbackID] = null;
+      let t = dart.notNull(timestamp.inMicroseconds) / 1000000;
+      let elapsedSeconds = this[_lastFrameTime] === -1 ? 0.0 : t - dart.notNull(this[_lastFrameTime]);
+      this[_lastFrameTime] = t;
+      this.advance(elapsedSeconds);
+      if (!dart.test(this.isPlaying)) {
+        this[_lastFrameTime] = -1;
+      }
+      this.markNeedsPaint();
+    }
+    prePaint(canvas, offset) {
+    }
+    postPaint(canvas, offset) {
+    }
+    paint(context, offset) {
+      if (dart.test(this.isPlaying)) {
+        if (this[_frameCallbackID] != null) {
+          binding.SchedulerBinding.instance.cancelFrameCallbackWithId(this[_frameCallbackID]);
+        }
+        this[_frameCallbackID] = binding.SchedulerBinding.instance.scheduleFrameCallback(dart.bind(this, _beginFrame));
+      }
+      let canvas = context.canvas;
+      let bounds = this.aabb;
+      if (bounds != null) {
+        let contentWidth = dart.notNull(bounds._get(2)) - dart.notNull(bounds._get(0));
+        let contentHeight = dart.notNull(bounds._get(3)) - dart.notNull(bounds._get(1));
+        let x = -1 * dart.notNull(bounds._get(0)) - contentWidth / 2.0 - dart.notNull(this[_alignment].x) * contentWidth / 2.0;
+        let y = -1 * dart.notNull(bounds._get(1)) - contentHeight / 2.0 - dart.notNull(this[_alignment].y) * contentHeight / 2.0;
+        let scaleX = 1.0;
+        let scaleY = 1.0;
+        canvas.save();
+        this.prePaint(canvas, offset);
+        switch (this[_fit]) {
+          case C0 || CT.C0:
+          {
+            scaleX = dart.notNull(this.size.width) / contentWidth;
+            scaleY = dart.notNull(this.size.height) / contentHeight;
+            break;
+          }
+          case C1 || CT.C1:
+          {
+            let minScale = math.min(doubleL(), dart.notNull(this.size.width) / contentWidth, dart.notNull(this.size.height) / contentHeight);
+            scaleX = scaleY = minScale;
+            break;
+          }
+          case C2 || CT.C2:
+          {
+            let maxScale = math.max(doubleL(), dart.notNull(this.size.width) / contentWidth, dart.notNull(this.size.height) / contentHeight);
+            scaleX = scaleY = maxScale;
+            break;
+          }
+          case C3 || CT.C3:
+          {
+            let minScale = dart.notNull(this.size.height) / contentHeight;
+            scaleX = scaleY = minScale;
+            break;
+          }
+          case C4 || CT.C4:
+          {
+            let minScale = dart.notNull(this.size.width) / contentWidth;
+            scaleX = scaleY = minScale;
+            break;
+          }
+          case C5 || CT.C5:
+          {
+            scaleX = scaleY = 1.0;
+            break;
+          }
+          case C6 || CT.C6:
+          {
+            let minScale = math.min(doubleL(), dart.notNull(this.size.width) / contentWidth, dart.notNull(this.size.height) / contentHeight);
+            scaleX = scaleY = minScale < 1.0 ? minScale : 1.0;
+            break;
+          }
+        }
+        let transform = new mat2d.Mat2D.new();
+        transform._set(4, dart.notNull(offset.dx) + dart.notNull(this.size.width) / 2.0 + dart.notNull(this[_alignment].x) * dart.notNull(this.size.width) / 2.0);
+        transform._set(5, dart.notNull(offset.dy) + dart.notNull(this.size.height) / 2.0 + dart.notNull(this[_alignment].y) * dart.notNull(this.size.height) / 2.0);
+        mat2d.Mat2D.scale(transform, transform, new vec2d.Vec2D.fromValues(scaleX, scaleY));
+        let center = new mat2d.Mat2D.new();
+        center._set(4, x);
+        center._set(5, y);
+        mat2d.Mat2D.multiply(transform, transform, center);
+        canvas.translate(dart.notNull(offset.dx) + dart.notNull(this.size.width) / 2.0 + dart.notNull(this[_alignment].x) * dart.notNull(this.size.width) / 2.0, dart.notNull(offset.dy) + dart.notNull(this.size.height) / 2.0 + dart.notNull(this[_alignment].y) * dart.notNull(this.size.height) / 2.0);
+        canvas.scale(scaleX, scaleY);
+        canvas.translate(x, y);
+        this.paintFlare(canvas, transform);
+        canvas.restore();
+        this.postPaint(canvas, offset);
+      }
+    }
+    get isLoading() {
+      return this[_isLoading];
+    }
+    warmLoad() {
+      return false;
+    }
+    get canLoad() {
+      return this.attached;
+    }
+    coldLoad() {
+      return async.async(dart.void, function* coldLoad() {
+      });
+    }
+    load() {
+      if (!dart.test(this.canLoad)) {
+        return;
+      }
+      if (dart.test(this[_isLoading])) {
+        this[_reloadQueued] = true;
+        return;
+      }
+      this[_isLoading] = true;
+      this[_unload]();
+      if (!dart.test(this.warmLoad())) {
+        this.coldLoad().then(core.Null, dart.fn(_ => {
+          this[_completeLoad]();
+        }, voidToNull()));
+      } else {
+        this[_completeLoad]();
+      }
+    }
+    [_completeLoad]() {
+      this[_isLoading] = false;
+      if (dart.test(this[_reloadQueued])) {
+        this[_reloadQueued] = false;
+        this.load();
+      }
+    }
+    [_unload]() {
+      for (let asset of this[_assets]) {
+        asset.deref();
+      }
+      this[_assets].clear();
+      this.onUnload();
+    }
+    onUnload() {
+    }
+    getWarmFlare(assetProvider) {
+      if (assetProvider == null) {
+        return null;
+      }
+      let asset = flare_cache.getWarmActor(assetProvider);
+      if (!dart.test(this.attached) || asset == null) {
+        return null;
+      }
+      this[_assets].add(asset);
+      asset.ref();
+      return asset.actor;
+    }
+    loadFlare(assetProvider) {
+      return async.async(FlutterActorL(), (function* loadFlare() {
+        if (assetProvider == null) {
           return null;
         }
-        let inverseNorm = 1.0 / dart.notNull(norm);
-        for (let h = 0; h < dart.notNull(m); h = h + 1)
-          q.set(j, h, dart.notNull(q.get(j, h)) * inverseNorm);
-        for (let i = 0; i < n; i = i + 1)
-          r.set(j, i, i < j ? 0.0 : q.getRow(j)['*'](a.getRow(i)));
-      }
-      let wy = new lsq_solver._Vector.new(m);
-      for (let h = 0; h < dart.notNull(m); h = h + 1)
-        wy._set(h, dart.notNull(this.y[$_get](h)) * dart.notNull(this.w[$_get](h)));
-      for (let i = n - 1; i >= 0; i = i - 1) {
-        result.coefficients[$_set](i, q.getRow(i)['*'](wy));
-        for (let j = n - 1; j > i; j = j - 1) {
-          t1 = result.coefficients;
-          t2 = i;
-          t1[$_set](t2, dart.notNull(t1[$_get](t2)) - dart.notNull(r.get(i, j)) * dart.notNull(result.coefficients[$_get](j)));
+        let asset = (yield flare_cache.cachedActor(assetProvider));
+        if (!dart.test(this.attached) || asset == null) {
+          return null;
         }
-        t1$ = result.coefficients;
-        t2$ = i;
-        t1$[$_set](t2$, dart.notNull(t1$[$_get](t2$)) / dart.notNull(r.get(i, i)));
-      }
-      let yMean = 0.0;
-      for (let h = 0; h < dart.notNull(m); h = h + 1)
-        yMean = yMean + dart.notNull(this.y[$_get](h));
-      yMean = yMean / dart.notNull(m);
-      let sumSquaredError = 0.0;
-      let sumSquaredTotal = 0.0;
-      for (let h = 0; h < dart.notNull(m); h = h + 1) {
-        let term = 1.0;
-        let err = dart.notNull(this.y[$_get](h)) - dart.notNull(result.coefficients[$_get](0));
-        for (let i = 1; i < n; i = i + 1) {
-          term = term * dart.notNull(this.x[$_get](h));
-          err = err - term * dart.notNull(result.coefficients[$_get](i));
-        }
-        sumSquaredError = sumSquaredError + dart.notNull(this.w[$_get](h)) * dart.notNull(this.w[$_get](h)) * err * err;
-        let v = dart.notNull(this.y[$_get](h)) - yMean;
-        sumSquaredTotal = sumSquaredTotal + dart.notNull(this.w[$_get](h)) * dart.notNull(this.w[$_get](h)) * v * v;
-      }
-      result.confidence = sumSquaredTotal <= 1e-10 ? 1.0 : 1.0 - sumSquaredError / sumSquaredTotal;
-      return result;
+        this[_assets].add(asset);
+        asset.ref();
+        return asset.actor;
+      }).bind(this));
     }
   };
-  (lsq_solver.LeastSquaresSolver.new = function(x, y, w) {
-    if (x == null) dart.nullFailed(L0, 86, 27, "x");
-    if (y == null) dart.nullFailed(L0, 86, 35, "y");
-    if (w == null) dart.nullFailed(L0, 86, 43, "w");
-    this[x$] = x;
-    this[y$] = y;
-    this[w$] = w;
-    if (!(x[$length] == y[$length])) dart.assertFailed(null, L0, 87, 14, "x.length == y.length");
-    if (!(y[$length] == w[$length])) dart.assertFailed(null, L0, 88, 14, "y.length == w.length");
+  (flare_render_box.FlareRenderBox.new = function() {
+    this[_fit] = null;
+    this[_alignment] = null;
+    this[_frameCallbackID] = null;
+    this[_lastFrameTime] = -1;
+    this[_assets] = LinkedHashSetOfFlareCacheAssetL().new();
+    this[_useIntrinsicSize] = false;
+    this[_intrinsicSize] = null;
+    this[_isLoading] = false;
+    this[_reloadQueued] = false;
+    flare_render_box.FlareRenderBox.__proto__.new.call(this);
     ;
-  }).prototype = lsq_solver.LeastSquaresSolver.prototype;
-  dart.addTypeTests(lsq_solver.LeastSquaresSolver);
-  dart.addTypeCaches(lsq_solver.LeastSquaresSolver);
-  dart.setMethodSignature(lsq_solver.LeastSquaresSolver, () => ({
-    __proto__: dart.getMethods(lsq_solver.LeastSquaresSolver.__proto__),
-    solve: dart.fnType(dart.nullable(lsq_solver.PolynomialFit), [core.int])
+  }).prototype = flare_render_box.FlareRenderBox.prototype;
+  dart.addTypeTests(flare_render_box.FlareRenderBox);
+  dart.addTypeCaches(flare_render_box.FlareRenderBox);
+  dart.setMethodSignature(flare_render_box.FlareRenderBox, () => ({
+    __proto__: dart.getMethods(flare_render_box.FlareRenderBox.__proto__),
+    updatePlayState: dart.fnType(dart.void, []),
+    hitTestSelf: dart.fnType(dart.legacy(core.bool), [dart.legacy(ui.Offset)]),
+    attach: dart.fnType(dart.void, [dart.legacy(core.Object)]),
+    dispose: dart.fnType(dart.void, []),
+    [_beginFrame]: dart.fnType(dart.void, [dart.legacy(core.Duration)]),
+    prePaint: dart.fnType(dart.void, [dart.legacy(ui.Canvas), dart.legacy(ui.Offset)]),
+    postPaint: dart.fnType(dart.void, [dart.legacy(ui.Canvas), dart.legacy(ui.Offset)]),
+    paint: dart.fnType(dart.void, [dart.legacy(object.PaintingContext), dart.legacy(ui.Offset)]),
+    warmLoad: dart.fnType(dart.legacy(core.bool), []),
+    coldLoad: dart.fnType(dart.legacy(async.Future$(dart.void)), []),
+    load: dart.fnType(dart.void, []),
+    [_completeLoad]: dart.fnType(dart.void, []),
+    [_unload]: dart.fnType(dart.void, []),
+    onUnload: dart.fnType(dart.void, []),
+    getWarmFlare: dart.fnType(dart.legacy(flare.FlutterActor), [dart.legacy(asset_provider.AssetProvider)]),
+    loadFlare: dart.fnType(dart.legacy(async.Future$(dart.legacy(flare.FlutterActor))), [dart.legacy(asset_provider.AssetProvider)])
   }));
-  dart.setLibraryUri(lsq_solver.LeastSquaresSolver, L1);
-  dart.setFieldSignature(lsq_solver.LeastSquaresSolver, () => ({
-    __proto__: dart.getFields(lsq_solver.LeastSquaresSolver.__proto__),
-    x: dart.finalFieldType(core.List$(core.double)),
-    y: dart.finalFieldType(core.List$(core.double)),
-    w: dart.finalFieldType(core.List$(core.double))
+  dart.setGetterSignature(flare_render_box.FlareRenderBox, () => ({
+    __proto__: dart.getGetters(flare_render_box.FlareRenderBox.__proto__),
+    useIntrinsicSize: dart.legacy(core.bool),
+    intrinsicSize: dart.legacy(ui.Size),
+    fit: dart.legacy(box_fit.BoxFit),
+    alignment: dart.legacy(alignment.Alignment),
+    sizedByParent: dart.legacy(core.bool),
+    isLoading: dart.legacy(core.bool),
+    canLoad: dart.legacy(core.bool)
   }));
-  dart.trackLibraries("packages/flutter/src/gestures/lsq_solver.dart", {
-    "package:flutter/src/gestures/lsq_solver.dart": lsq_solver
+  dart.setSetterSignature(flare_render_box.FlareRenderBox, () => ({
+    __proto__: dart.getSetters(flare_render_box.FlareRenderBox.__proto__),
+    useIntrinsicSize: dart.legacy(core.bool),
+    intrinsicSize: dart.legacy(ui.Size),
+    fit: dart.legacy(box_fit.BoxFit),
+    alignment: dart.legacy(alignment.Alignment)
+  }));
+  dart.setLibraryUri(flare_render_box.FlareRenderBox, L0);
+  dart.setFieldSignature(flare_render_box.FlareRenderBox, () => ({
+    __proto__: dart.getFields(flare_render_box.FlareRenderBox.__proto__),
+    [_fit]: dart.fieldType(dart.legacy(box_fit.BoxFit)),
+    [_alignment]: dart.fieldType(dart.legacy(alignment.Alignment)),
+    [_frameCallbackID]: dart.fieldType(dart.legacy(core.int)),
+    [_lastFrameTime]: dart.fieldType(dart.legacy(core.double)),
+    [_assets]: dart.finalFieldType(dart.legacy(core.Set$(dart.legacy(flare_cache_asset.FlareCacheAsset)))),
+    [_useIntrinsicSize]: dart.fieldType(dart.legacy(core.bool)),
+    [_intrinsicSize]: dart.fieldType(dart.legacy(ui.Size)),
+    [_isLoading]: dart.fieldType(dart.legacy(core.bool)),
+    [_reloadQueued]: dart.fieldType(dart.legacy(core.bool))
+  }));
+  dart.defineLazy(flare_render_box.FlareRenderBox, {
+    /*flare_render_box.FlareRenderBox._notPlayingFlag*/get _notPlayingFlag() {
+      return -1;
+    }
+  }, true);
+  dart.trackLibraries("packages/flare_flutter/flare_render_box.dart", {
+    "package:flare_flutter/flare_render_box.dart": flare_render_box
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["lsq_solver.dart"],"names":[],"mappings":"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","file":"../../../../../../../packages/flutter/src/gestures/lsq_solver.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["flare_render_box.dart"],"names":[],"mappings":"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","file":"../../../../../../../packages/flare_flutter/flare_render_box.dart.lib.js"}');
   // Exports:
   return {
-    src__gestures__lsq_solver: lsq_solver
+    flare_render_box: flare_render_box
   };
 }));
 
-//# sourceMappingURL=lsq_solver.dart.lib.js.map
+//# sourceMappingURL=flare_render_box.dart.lib.js.map

@@ -1,402 +1,2147 @@
-define(['dart_sdk', 'packages/flare_dart/math/transform_components.dart', 'packages/flare_dart/json_reader.dart'], (function load__packages__flare_dart__path_point_dart(dart_sdk, packages__flare_dart__math__transform_components$46dart, packages__flare_dart__json_reader$46dart) {
+define(['dart_sdk', 'packages/flutter/src/animation/animation_controller.dart', 'packages/supercharged_dart/supercharged_dart.dart', 'packages/flutter/src/foundation/debug.dart', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/scheduler/ticker.dart', 'packages/flutter/src/painting/edge_insets.dart', 'packages/supercharged/supercharged.dart', 'packages/flutter/src/rendering/custom_paint.dart', 'packages/flutter/src/animation/curves.dart', 'packages/flutter/src/animation/listener_helpers.dart', 'packages/pedantic/pedantic.dart'], (function load__packages__simple_animations__simple_animations_dart(dart_sdk, packages__flutter__src__animation__animation_controller$46dart, packages__supercharged_dart__supercharged_dart$46dart, packages__flutter__src__foundation__debug$46dart, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__scheduler__ticker$46dart, packages__flutter__src__painting__edge_insets$46dart, packages__supercharged__supercharged$46dart, packages__flutter__src__rendering__custom_paint$46dart, packages__flutter__src__animation__curves$46dart, packages__flutter__src__animation__listener_helpers$46dart, packages__pedantic__pedantic$46dart) {
   'use strict';
   const core = dart_sdk.core;
-  const _native_typed_data = dart_sdk._native_typed_data;
-  const typed_data = dart_sdk.typed_data;
-  const collection = dart_sdk.collection;
   const _interceptors = dart_sdk._interceptors;
+  const collection = dart_sdk.collection;
+  const ui = dart_sdk.ui;
+  const math = dart_sdk.math;
+  const _js_helper = dart_sdk._js_helper;
+  const async = dart_sdk.async;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const vec2d = packages__flare_dart__math__transform_components$46dart.math__vec2d;
-  const mat2d = packages__flare_dart__math__transform_components$46dart.math__mat2d;
-  const stream_reader = packages__flare_dart__json_reader$46dart.stream_reader;
-  var path_point = Object.create(dart.library);
-  var $toString = dartx.toString;
-  var $_get = dartx._get;
+  const animation_controller = packages__flutter__src__animation__animation_controller$46dart.src__animation__animation_controller;
+  const supercharged_dart = packages__supercharged_dart__supercharged_dart$46dart.supercharged_dart;
+  const assertions = packages__flutter__src__foundation__debug$46dart.src__foundation__assertions;
+  const diagnostics = packages__flutter__src__foundation__debug$46dart.src__foundation__diagnostics;
+  const ticker_provider = packages__flutter__src__widgets__widget_span$46dart.src__widgets__ticker_provider;
+  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
+  const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
+  const container = packages__flutter__src__widgets__widget_span$46dart.src__widgets__container;
+  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
+  const ticker = packages__flutter__src__scheduler__ticker$46dart.src__scheduler__ticker;
+  const edge_insets = packages__flutter__src__painting__edge_insets$46dart.src__painting__edge_insets;
+  const supercharged = packages__supercharged__supercharged$46dart.supercharged;
+  const custom_paint = packages__flutter__src__rendering__custom_paint$46dart.src__rendering__custom_paint;
+  const curves = packages__flutter__src__animation__curves$46dart.src__animation__curves;
+  const tween$ = packages__flutter__src__animation__listener_helpers$46dart.src__animation__tween;
+  const animation = packages__flutter__src__animation__listener_helpers$46dart.src__animation__animation;
+  const pedantic = packages__pedantic__pedantic$46dart.pedantic;
+  var simple_animations = Object.create(dart.library);
+  var $add = dartx.add;
   var $floor = dartx.floor;
-  var PointTypeL = () => (PointTypeL = dart.constFn(dart.legacy(path_point.PointType)))();
-  var CubicPathPointL = () => (CubicPathPointL = dart.constFn(dart.legacy(path_point.CubicPathPoint)))();
+  var $forEach = dartx.forEach;
+  var $length = dartx.length;
+  var $round = dartx.round;
+  var $roundToDouble = dartx.roundToDouble;
+  var $abs = dartx.abs;
+  var $modulo = dartx['%'];
+  var $toString = dartx.toString;
+  var $values = dartx.values;
+  var $map = dartx.map;
+  var $containsKey = dartx.containsKey;
+  var $_set = dartx._set;
+  var $_get = dartx._get;
+  var $last = dartx.last;
+  var $reduce = dartx.reduce;
+  var AnimationControllerL = () => (AnimationControllerL = dart.constFn(dart.legacy(animation_controller.AnimationController)))();
+  var JSArrayOfAnimationControllerL = () => (JSArrayOfAnimationControllerL = dart.constFn(_interceptors.JSArray$(AnimationControllerL())))();
+  var VoidToNull = () => (VoidToNull = dart.constFn(dart.fnType(core.Null, [])))();
+  var VoidTovoid = () => (VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))();
+  var _WidgetTickerL = () => (_WidgetTickerL = dart.constFn(dart.legacy(simple_animations._WidgetTicker)))();
+  var LinkedHashSetOf_WidgetTickerL = () => (LinkedHashSetOf_WidgetTickerL = dart.constFn(collection.LinkedHashSet$(_WidgetTickerL())))();
+  var AnimationControllerLTovoid = () => (AnimationControllerLTovoid = dart.constFn(dart.fnType(dart.void, [AnimationControllerL()])))();
+  var DiagnosticsNodeL = () => (DiagnosticsNodeL = dart.constFn(dart.legacy(diagnostics.DiagnosticsNode)))();
+  var JSArrayOfDiagnosticsNodeL = () => (JSArrayOfDiagnosticsNodeL = dart.constFn(_interceptors.JSArray$(DiagnosticsNodeL())))();
+  var boolL = () => (boolL = dart.constFn(dart.legacy(core.bool)))();
+  var VoidToboolL = () => (VoidToboolL = dart.constFn(dart.fnType(boolL(), [])))();
+  var TickerL = () => (TickerL = dart.constFn(dart.legacy(ticker.Ticker)))();
+  var SetOfTickerL = () => (SetOfTickerL = dart.constFn(core.Set$(TickerL())))();
+  var SetLOfTickerL = () => (SetLOfTickerL = dart.constFn(dart.legacy(SetOfTickerL())))();
+  var DiagnosticsPropertyOfSetLOfTickerL = () => (DiagnosticsPropertyOfSetLOfTickerL = dart.constFn(diagnostics.DiagnosticsProperty$(SetLOfTickerL())))();
+  var doubleL = () => (doubleL = dart.constFn(dart.legacy(core.double)))();
+  var CustomAnimationOfdoubleL = () => (CustomAnimationOfdoubleL = dart.constFn(simple_animations.CustomAnimation$(doubleL())))();
+  var _LocationL = () => (_LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))();
+  var WidgetL = () => (WidgetL = dart.constFn(dart.legacy(framework.Widget)))();
+  var JSArrayOfWidgetL = () => (JSArrayOfWidgetL = dart.constFn(_interceptors.JSArray$(WidgetL())))();
+  var StackL = () => (StackL = dart.constFn(dart.legacy(basic.Stack)))();
+  var BuildContextL = () => (BuildContextL = dart.constFn(dart.legacy(framework.BuildContext)))();
+  var BuildContextLAndWidgetLAnddoubleLToStackL = () => (BuildContextLAndWidgetLAnddoubleLToStackL = dart.constFn(dart.fnType(StackL(), [BuildContextL(), WidgetL(), doubleL()])))();
   var intL = () => (intL = dart.constFn(dart.legacy(core.int)))();
-  var HashMapOfintL$PointTypeL = () => (HashMapOfintL$PointTypeL = dart.constFn(collection.HashMap$(intL(), PointTypeL())))();
-  var JSArrayOfintL = () => (JSArrayOfintL = dart.constFn(_interceptors.JSArray$(intL())))();
-  var JSArrayOfPointTypeL = () => (JSArrayOfPointTypeL = dart.constFn(_interceptors.JSArray$(PointTypeL())))();
+  var intLToNull = () => (intLToNull = dart.constFn(dart.fnType(core.Null, [intL()])))();
+  var CustomPainterL = () => (CustomPainterL = dart.constFn(dart.legacy(custom_paint.CustomPainter)))();
+  var DefaultAnimationPropertiesL = () => (DefaultAnimationPropertiesL = dart.constFn(dart.legacy(simple_animations.DefaultAnimationProperties)))();
+  var _TweenTrackL = () => (_TweenTrackL = dart.constFn(dart.legacy(simple_animations._TweenTrack)))();
+  var DurationL = () => (DurationL = dart.constFn(dart.legacy(core.Duration)))();
+  var _TweenTrackLToDurationL = () => (_TweenTrackLToDurationL = dart.constFn(dart.fnType(DurationL(), [_TweenTrackL()])))();
+  var DurationLAndDurationLTointL = () => (DurationLAndDurationLTointL = dart.constFn(dart.fnType(intL(), [DurationL(), DurationL()])))();
+  var _TweenWithDurationL = () => (_TweenWithDurationL = dart.constFn(dart.legacy(simple_animations._TweenWithDuration)))();
+  var JSArrayOf_TweenWithDurationL = () => (JSArrayOf_TweenWithDurationL = dart.constFn(_interceptors.JSArray$(_TweenWithDurationL())))();
+  var _TweenWithDurationLToDurationL = () => (_TweenWithDurationLToDurationL = dart.constFn(dart.fnType(DurationL(), [_TweenWithDurationL()])))();
+  var DurationLAndDurationLToDurationL = () => (DurationLAndDurationLToDurationL = dart.constFn(dart.fnType(DurationL(), [DurationL(), DurationL()])))();
+  var CustomAnimationControlL = () => (CustomAnimationControlL = dart.constFn(dart.legacy(simple_animations.CustomAnimationControl)))();
+  var FutureOfvoid = () => (FutureOfvoid = dart.constFn(async.Future$(dart.void)))();
+  var TickerFutureL = () => (TickerFutureL = dart.constFn(dart.legacy(ticker.TickerFuture)))();
+  var __ToTickerFutureL = () => (__ToTickerFutureL = dart.constFn(dart.fnType(TickerFutureL(), [], {duration: DurationL()}, {})))();
   const CT = Object.create(null);
-  var L0 = "package:flare_dart/path_point.dart";
+  var L2 = "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/simple_animations-2.4.2/lib/multi_tween/multi_tween.dart";
+  var L0 = "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/simple_animations-2.4.2/lib/anicoto/animation_mixin.dart";
+  var L1 = "package:simple_animations/simple_animations.dart";
+  var L3 = "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/simple_animations-2.4.2/lib/stateless_animation/custom_animation.dart";
   dart.defineLazy(CT, {
     get C0() {
       return C0 = dart.const({
-        __proto__: path_point.PointType.prototype,
-        [_name$]: "PointType.straight",
-        index: 0
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294967295.0
       });
     },
     get C1() {
       return C1 = dart.const({
-        __proto__: path_point.PointType.prototype,
-        [_name$]: "PointType.mirror",
-        index: 1
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278190080.0
       });
     },
     get C2() {
       return C2 = dart.const({
-        __proto__: path_point.PointType.prototype,
-        [_name$]: "PointType.disconnected",
-        index: 2
+        __proto__: ui.BlendMode.prototype,
+        [_name]: "BlendMode.srcOver",
+        index: 3
       });
     },
     get C3() {
       return C3 = dart.const({
-        __proto__: path_point.PointType.prototype,
-        [_name$]: "PointType.asymmetric",
+        __proto__: edge_insets.EdgeInsets.prototype,
+        [EdgeInsets_bottom]: 0.01,
+        [EdgeInsets_right]: 0,
+        [EdgeInsets_top]: 0,
+        [EdgeInsets_left]: 0
+      });
+    },
+    get C6() {
+      return C6 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "color",
+        [_Location_column]: 25,
+        [_Location_line]: 110,
+        [_Location_file]: null
+      });
+    },
+    get C5() {
+      return C5 = dart.constList([C6 || CT.C6], _LocationL());
+    },
+    get C4() {
+      return C4 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C5 || CT.C5,
+        [_Location_name]: null,
+        [_Location_column]: 30,
+        [_Location_line]: 109,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/simple_animations-2.4.2/lib/liquid/plasma/plasma.dart"
+      });
+    },
+    get C9() {
+      return C9 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "foregroundPainter",
+        [_Location_column]: 23,
+        [_Location_line]: 101,
+        [_Location_file]: null
+      });
+    },
+    get C10() {
+      return C10 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 23,
+        [_Location_line]: 109,
+        [_Location_file]: null
+      });
+    },
+    get C8() {
+      return C8 = dart.constList([C9 || CT.C9, C10 || CT.C10], _LocationL());
+    },
+    get C7() {
+      return C7 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C8 || CT.C8,
+        [_Location_name]: null,
+        [_Location_column]: 28,
+        [_Location_line]: 100,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/simple_animations-2.4.2/lib/liquid/plasma/plasma.dart"
+      });
+    },
+    get C13() {
+      return C13 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 21,
+        [_Location_line]: 100,
+        [_Location_file]: null
+      });
+    },
+    get C12() {
+      return C12 = dart.constList([C13 || CT.C13], _LocationL());
+    },
+    get C11() {
+      return C11 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C12 || CT.C12,
+        [_Location_name]: null,
+        [_Location_column]: 30,
+        [_Location_line]: 99,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/simple_animations-2.4.2/lib/liquid/plasma/plasma.dart"
+      });
+    },
+    get C16() {
+      return C16 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 23,
+        [_Location_line]: 116,
+        [_Location_file]: null
+      });
+    },
+    get C15() {
+      return C15 = dart.constList([C16 || CT.C16], _LocationL());
+    },
+    get C14() {
+      return C14 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C15 || CT.C15,
+        [_Location_name]: null,
+        [_Location_column]: 32,
+        [_Location_line]: 115,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/simple_animations-2.4.2/lib/liquid/plasma/plasma.dart"
+      });
+    },
+    get C19() {
+      return C19 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 17,
+        [_Location_line]: 98,
+        [_Location_file]: null
+      });
+    },
+    get C18() {
+      return C18 = dart.constList([C19 || CT.C19], _LocationL());
+    },
+    get C17() {
+      return C17 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C18 || CT.C18,
+        [_Location_name]: null,
+        [_Location_column]: 22,
+        [_Location_line]: 97,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/simple_animations-2.4.2/lib/liquid/plasma/plasma.dart"
+      });
+    },
+    get C22() {
+      return C22 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "control",
+        [_Location_column]: 13,
+        [_Location_line]: 88,
+        [_Location_file]: null
+      });
+    },
+    get C23() {
+      return C23 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "tween",
+        [_Location_column]: 13,
+        [_Location_line]: 91,
+        [_Location_file]: null
+      });
+    },
+    get C24() {
+      return C24 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 13,
+        [_Location_line]: 92,
+        [_Location_file]: null
+      });
+    },
+    get C25() {
+      return C25 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "fps",
+        [_Location_column]: 13,
+        [_Location_line]: 93,
+        [_Location_file]: null
+      });
+    },
+    get C26() {
+      return C26 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "duration",
+        [_Location_column]: 13,
+        [_Location_line]: 94,
+        [_Location_file]: null
+      });
+    },
+    get C27() {
+      return C27 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "builder",
+        [_Location_column]: 13,
+        [_Location_line]: 96,
+        [_Location_file]: null
+      });
+    },
+    get C21() {
+      return C21 = dart.constList([C22 || CT.C22, C23 || CT.C23, C24 || CT.C24, C25 || CT.C25, C26 || CT.C26, C27 || CT.C27], _LocationL());
+    },
+    get C20() {
+      return C20 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C21 || CT.C21,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 87,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/simple_animations-2.4.2/lib/liquid/plasma/plasma.dart"
+      });
+    },
+    get C30() {
+      return C30 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "clipBehavior",
+        [_Location_column]: 9,
+        [_Location_line]: 86,
+        [_Location_file]: null
+      });
+    },
+    get C31() {
+      return C31 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 9,
+        [_Location_line]: 87,
+        [_Location_file]: null
+      });
+    },
+    get C29() {
+      return C29 = dart.constList([C30 || CT.C30, C31 || CT.C31], _LocationL());
+    },
+    get C28() {
+      return C28 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C29 || CT.C29,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 85,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/simple_animations-2.4.2/lib/liquid/plasma/plasma.dart"
+      });
+    },
+    get C34() {
+      return C34 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "padding",
+        [_Location_column]: 7,
+        [_Location_line]: 83,
+        [_Location_file]: null
+      });
+    },
+    get C35() {
+      return C35 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 85,
+        [_Location_file]: null
+      });
+    },
+    get C33() {
+      return C33 = dart.constList([C34 || CT.C34, C35 || CT.C35], _LocationL());
+    },
+    get C32() {
+      return C32 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C33 || CT.C33,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 82,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/simple_animations-2.4.2/lib/liquid/plasma/plasma.dart"
+      });
+    },
+    get C36() {
+      return C36 = dart.const({
+        __proto__: simple_animations.DefaultAnimationProperties.prototype,
+        [_name$]: "DefaultAnimationProperties.width",
+        index: 0
+      });
+    },
+    get C37() {
+      return C37 = dart.const({
+        __proto__: simple_animations.DefaultAnimationProperties.prototype,
+        [_name$]: "DefaultAnimationProperties.height",
+        index: 1
+      });
+    },
+    get C38() {
+      return C38 = dart.const({
+        __proto__: simple_animations.DefaultAnimationProperties.prototype,
+        [_name$]: "DefaultAnimationProperties.offset",
+        index: 2
+      });
+    },
+    get C39() {
+      return C39 = dart.const({
+        __proto__: simple_animations.DefaultAnimationProperties.prototype,
+        [_name$]: "DefaultAnimationProperties.color",
         index: 3
       });
     },
-    get C4() {
-      return C4 = dart.constList([C0 || CT.C0, C1 || CT.C1, C2 || CT.C2, C3 || CT.C3], PointTypeL());
+    get C40() {
+      return C40 = dart.const({
+        __proto__: simple_animations.DefaultAnimationProperties.prototype,
+        [_name$]: "DefaultAnimationProperties.color1",
+        index: 4
+      });
+    },
+    get C41() {
+      return C41 = dart.const({
+        __proto__: simple_animations.DefaultAnimationProperties.prototype,
+        [_name$]: "DefaultAnimationProperties.color2",
+        index: 5
+      });
+    },
+    get C42() {
+      return C42 = dart.const({
+        __proto__: simple_animations.DefaultAnimationProperties.prototype,
+        [_name$]: "DefaultAnimationProperties.color3",
+        index: 6
+      });
+    },
+    get C43() {
+      return C43 = dart.const({
+        __proto__: simple_animations.DefaultAnimationProperties.prototype,
+        [_name$]: "DefaultAnimationProperties.color4",
+        index: 7
+      });
+    },
+    get C44() {
+      return C44 = dart.const({
+        __proto__: simple_animations.DefaultAnimationProperties.prototype,
+        [_name$]: "DefaultAnimationProperties.x",
+        index: 8
+      });
+    },
+    get C45() {
+      return C45 = dart.const({
+        __proto__: simple_animations.DefaultAnimationProperties.prototype,
+        [_name$]: "DefaultAnimationProperties.y",
+        index: 9
+      });
+    },
+    get C46() {
+      return C46 = dart.const({
+        __proto__: simple_animations.DefaultAnimationProperties.prototype,
+        [_name$]: "DefaultAnimationProperties.size",
+        index: 10
+      });
+    },
+    get C47() {
+      return C47 = dart.const({
+        __proto__: simple_animations.DefaultAnimationProperties.prototype,
+        [_name$]: "DefaultAnimationProperties.left",
+        index: 11
+      });
+    },
+    get C48() {
+      return C48 = dart.const({
+        __proto__: simple_animations.DefaultAnimationProperties.prototype,
+        [_name$]: "DefaultAnimationProperties.top",
+        index: 12
+      });
+    },
+    get C49() {
+      return C49 = dart.const({
+        __proto__: simple_animations.DefaultAnimationProperties.prototype,
+        [_name$]: "DefaultAnimationProperties.bottom",
+        index: 13
+      });
+    },
+    get C50() {
+      return C50 = dart.const({
+        __proto__: simple_animations.DefaultAnimationProperties.prototype,
+        [_name$]: "DefaultAnimationProperties.right",
+        index: 14
+      });
+    },
+    get C51() {
+      return C51 = dart.const({
+        __proto__: simple_animations.DefaultAnimationProperties.prototype,
+        [_name$]: "DefaultAnimationProperties.rotation",
+        index: 15
+      });
+    },
+    get C52() {
+      return C52 = dart.const({
+        __proto__: simple_animations.DefaultAnimationProperties.prototype,
+        [_name$]: "DefaultAnimationProperties.scale",
+        index: 16
+      });
+    },
+    get C53() {
+      return C53 = dart.constList([C36 || CT.C36, C37 || CT.C37, C38 || CT.C38, C39 || CT.C39, C40 || CT.C40, C41 || CT.C41, C42 || CT.C42, C43 || CT.C43, C44 || CT.C44, C45 || CT.C45, C46 || CT.C46, C47 || CT.C47, C48 || CT.C48, C49 || CT.C49, C50 || CT.C50, C51 || CT.C51, C52 || CT.C52], DefaultAnimationPropertiesL());
+    },
+    get C54() {
+      return C54 = dart.const({
+        __proto__: core.Duration.prototype,
+        [Duration__duration]: 1000000
+      });
+    },
+    get C55() {
+      return C55 = dart.const({
+        __proto__: curves._Linear.prototype
+      });
+    },
+    get C56() {
+      return C56 = dart.const({
+        __proto__: simple_animations.CustomAnimationControl.prototype,
+        [_name$]: "CustomAnimationControl.STOP",
+        index: 0
+      });
+    },
+    get C57() {
+      return C57 = dart.const({
+        __proto__: simple_animations.CustomAnimationControl.prototype,
+        [_name$]: "CustomAnimationControl.PLAY",
+        index: 1
+      });
+    },
+    get C58() {
+      return C58 = dart.const({
+        __proto__: simple_animations.CustomAnimationControl.prototype,
+        [_name$]: "CustomAnimationControl.PLAY_REVERSE",
+        index: 2
+      });
+    },
+    get C59() {
+      return C59 = dart.const({
+        __proto__: simple_animations.CustomAnimationControl.prototype,
+        [_name$]: "CustomAnimationControl.PLAY_FROM_START",
+        index: 3
+      });
+    },
+    get C60() {
+      return C60 = dart.const({
+        __proto__: simple_animations.CustomAnimationControl.prototype,
+        [_name$]: "CustomAnimationControl.PLAY_REVERSE_FROM_END",
+        index: 4
+      });
+    },
+    get C61() {
+      return C61 = dart.const({
+        __proto__: simple_animations.CustomAnimationControl.prototype,
+        [_name$]: "CustomAnimationControl.LOOP",
+        index: 5
+      });
+    },
+    get C62() {
+      return C62 = dart.const({
+        __proto__: simple_animations.CustomAnimationControl.prototype,
+        [_name$]: "CustomAnimationControl.MIRROR",
+        index: 6
+      });
+    },
+    get C63() {
+      return C63 = dart.constList([C56 || CT.C56, C57 || CT.C57, C58 || CT.C58, C59 || CT.C59, C60 || CT.C60, C61 || CT.C61, C62 || CT.C62], CustomAnimationControlL());
+    },
+    get C64() {
+      return C64 = dart.const({
+        __proto__: core.Duration.prototype,
+        [Duration__duration]: 0
+      });
+    },
+    get C67() {
+      return C67 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "builder",
+        [_Location_column]: 9,
+        [_Location_line]: 49,
+        [_Location_file]: null
+      });
+    },
+    get C68() {
+      return C68 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "control",
+        [_Location_column]: 9,
+        [_Location_line]: 50,
+        [_Location_file]: null
+      });
+    },
+    get C69() {
+      return C69 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "tween",
+        [_Location_column]: 9,
+        [_Location_line]: 51,
+        [_Location_file]: null
+      });
+    },
+    get C70() {
+      return C70 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "duration",
+        [_Location_column]: 9,
+        [_Location_line]: 52,
+        [_Location_file]: null
+      });
+    },
+    get C71() {
+      return C71 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "curve",
+        [_Location_column]: 9,
+        [_Location_line]: 53,
+        [_Location_file]: null
+      });
+    },
+    get C72() {
+      return C72 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 9,
+        [_Location_line]: 54,
+        [_Location_file]: null
+      });
+    },
+    get C73() {
+      return C73 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "fps",
+        [_Location_column]: 9,
+        [_Location_line]: 55,
+        [_Location_file]: null
+      });
+    },
+    get C66() {
+      return C66 = dart.constList([C67 || CT.C67, C68 || CT.C68, C69 || CT.C69, C70 || CT.C70, C71 || CT.C71, C72 || CT.C72, C73 || CT.C73], _LocationL());
+    },
+    get C65() {
+      return C65 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C66 || CT.C66,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 48,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/simple_animations-2.4.2/lib/stateless_animation/loop_animation.dart"
+      });
+    },
+    get C76() {
+      return C76 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "builder",
+        [_Location_column]: 7,
+        [_Location_line]: 50,
+        [_Location_file]: null
+      });
+    },
+    get C77() {
+      return C77 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "control",
+        [_Location_column]: 7,
+        [_Location_line]: 51,
+        [_Location_file]: null
+      });
+    },
+    get C78() {
+      return C78 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "tween",
+        [_Location_column]: 7,
+        [_Location_line]: 52,
+        [_Location_file]: null
+      });
+    },
+    get C79() {
+      return C79 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "duration",
+        [_Location_column]: 7,
+        [_Location_line]: 53,
+        [_Location_file]: null
+      });
+    },
+    get C80() {
+      return C80 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "curve",
+        [_Location_column]: 7,
+        [_Location_line]: 54,
+        [_Location_file]: null
+      });
+    },
+    get C81() {
+      return C81 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 55,
+        [_Location_file]: null
+      });
+    },
+    get C82() {
+      return C82 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "fps",
+        [_Location_column]: 7,
+        [_Location_line]: 56,
+        [_Location_file]: null
+      });
+    },
+    get C75() {
+      return C75 = dart.constList([C76 || CT.C76, C77 || CT.C77, C78 || CT.C78, C79 || CT.C79, C80 || CT.C80, C81 || CT.C81, C82 || CT.C82], _LocationL());
+    },
+    get C74() {
+      return C74 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C75 || CT.C75,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 49,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/simple_animations-2.4.2/lib/stateless_animation/mirror_animation.dart"
+      });
+    },
+    get C85() {
+      return C85 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "builder",
+        [_Location_column]: 7,
+        [_Location_line]: 53,
+        [_Location_file]: null
+      });
+    },
+    get C86() {
+      return C86 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "tween",
+        [_Location_column]: 7,
+        [_Location_line]: 54,
+        [_Location_file]: null
+      });
+    },
+    get C87() {
+      return C87 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "duration",
+        [_Location_column]: 7,
+        [_Location_line]: 55,
+        [_Location_file]: null
+      });
+    },
+    get C88() {
+      return C88 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "delay",
+        [_Location_column]: 7,
+        [_Location_line]: 56,
+        [_Location_file]: null
+      });
+    },
+    get C89() {
+      return C89 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "curve",
+        [_Location_column]: 7,
+        [_Location_line]: 57,
+        [_Location_file]: null
+      });
+    },
+    get C90() {
+      return C90 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 58,
+        [_Location_file]: null
+      });
+    },
+    get C91() {
+      return C91 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "fps",
+        [_Location_column]: 7,
+        [_Location_line]: 59,
+        [_Location_file]: null
+      });
+    },
+    get C84() {
+      return C84 = dart.constList([C85 || CT.C85, C86 || CT.C86, C87 || CT.C87, C88 || CT.C88, C89 || CT.C89, C90 || CT.C90, C91 || CT.C91], _LocationL());
+    },
+    get C83() {
+      return C83 = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C84 || CT.C84,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 52,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/simple_animations-2.4.2/lib/stateless_animation/play_animation.dart"
+      });
     }
   }, false);
-  var _name$ = dart.privateName(path_point, "_name");
+  var _mainControllerInstance = dart.privateName(simple_animations, "_mainControllerInstance");
+  var _controllerInstances = dart.privateName(simple_animations, "_controllerInstances");
+  var _tickers = dart.privateName(simple_animations, "_tickers");
+  var _newAnimationController = dart.privateName(simple_animations, "_newAnimationController");
+  var _instanceController = dart.privateName(simple_animations, "_instanceController");
+  var _addFrameLimitingUpdater = dart.privateName(simple_animations, "_addFrameLimitingUpdater");
+  var _removeTicker = dart.privateName(simple_animations, "_removeTicker");
+  const _is_AnimationMixin_default = Symbol('_is_AnimationMixin_default');
+  simple_animations.AnimationMixin$ = dart.generic(T => {
+    class AnimationMixin extends framework.State$(dart.legacy(T)) {}
+    AnimationMixin[dart.mixinOn] = State => class AnimationMixin extends State {
+      get controller() {
+        this[_mainControllerInstance] == null ? this[_mainControllerInstance] = this[_newAnimationController]() : null;
+        return this[_mainControllerInstance];
+      }
+      createController(opts) {
+        let unbounded = opts && 'unbounded' in opts ? opts.unbounded : false;
+        let fps = opts && 'fps' in opts ? opts.fps : null;
+        let instance = this[_newAnimationController]({unbounded: unbounded, fps: fps});
+        this[_controllerInstances][$add](instance);
+        return instance;
+      }
+      [_newAnimationController](opts) {
+        let unbounded = opts && 'unbounded' in opts ? opts.unbounded : false;
+        let fps = opts && 'fps' in opts ? opts.fps : null;
+        let controller = this[_instanceController]({unbounded: unbounded});
+        if (fps == null) {
+          controller.addListener(dart.fn(() => this.setState(dart.fn(() => {
+          }, VoidToNull())), VoidTovoid()));
+        } else {
+          this[_addFrameLimitingUpdater](controller, fps);
+        }
+        return controller;
+      }
+      [_addFrameLimitingUpdater](controller, fps) {
+        let lastUpdateEmitted = new core.DateTime.new(1970);
+        let frameTimeMs = (1000 / dart.notNull(fps))[$floor]();
+        controller.addListener(dart.fn(() => {
+          let now = new core.DateTime.now();
+          if (dart.test(lastUpdateEmitted.isBefore(now.subtract(supercharged_dart['IntSC|get#milliseconds'](frameTimeMs))))) {
+            lastUpdateEmitted = new core.DateTime.now();
+            this.setState(dart.fn(() => {
+            }, VoidToNull()));
+          }
+        }, VoidToNull()));
+      }
+      [_instanceController](opts) {
+        let unbounded = opts && 'unbounded' in opts ? opts.unbounded : null;
+        if (!dart.test(unbounded)) {
+          return new animation_controller.AnimationController.new({vsync: this, duration: supercharged_dart['IntSC|get#seconds'](1)});
+        } else {
+          return new animation_controller.AnimationController.unbounded({vsync: this, duration: supercharged_dart['IntSC|get#seconds'](1)});
+        }
+      }
+      createTicker(onTick) {
+        this[_tickers] == null ? this[_tickers] = LinkedHashSetOf_WidgetTickerL().new() : null;
+        let result = new simple_animations._WidgetTicker.new(onTick, this, {debugLabel: "created by " + dart.str(this)});
+        this[_tickers].add(result);
+        return result;
+      }
+      [_removeTicker](ticker) {
+        if (!(this[_tickers] != null)) dart.assertFailed(null, L0, 142, 12, "_tickers != null");
+        if (!dart.test(this[_tickers].contains(ticker))) dart.assertFailed(null, L0, 143, 12, "_tickers.contains(ticker)");
+        this[_tickers].remove(ticker);
+      }
+      dispose() {
+        if (this[_mainControllerInstance] != null) {
+          this[_mainControllerInstance].dispose();
+        }
+        this[_controllerInstances][$forEach](dart.fn(instance => instance.dispose(), AnimationControllerLTovoid()));
+        if (!dart.test(dart.fn(() => {
+          if (this[_tickers] != null) {
+            for (let ticker of this[_tickers]) {
+              if (dart.test(ticker.isActive)) {
+                dart.throw(new assertions.FlutterError.fromParts(JSArrayOfDiagnosticsNodeL().of([new assertions.ErrorSummary.new(dart.str(this) + " was disposed with an active Ticker."), new assertions.ErrorDescription.new(dart.str(this.runtimeType) + " created a Ticker via its TickerProviderStateMixin, but at the time " + "dispose() was called on the mixin, that Ticker was still active. All Tickers must " + "be disposed before calling super.dispose()."), new assertions.ErrorHint.new("Tickers used by AnimationControllers " + "should be disposed by calling dispose() on the AnimationController itself. " + "Otherwise, the ticker will leak."), ticker.describeForError("The offending ticker was")])));
+              }
+            }
+          }
+          return true;
+        }, VoidToboolL())())) dart.assertFailed(null, L0, 155, 12, "() {\r\n      if (_tickers != null) {\r\n        // ignore: omit_local_variable_types\r\n        for (Ticker ticker in _tickers) {\r\n          if (ticker.isActive) {\r\n            throw FlutterError.fromParts(<DiagnosticsNode>[\r\n              ErrorSummary('$this was disposed with an active Ticker.'),\r\n              ErrorDescription(\r\n                  '$runtimeType created a Ticker via its TickerProviderStateMixin, but at the time '\r\n                  'dispose() was called on the mixin, that Ticker was still active. All Tickers must '\r\n                  'be disposed before calling super.dispose().'),\r\n              ErrorHint('Tickers used by AnimationControllers '\r\n                  'should be disposed by calling dispose() on the AnimationController itself. '\r\n                  'Otherwise, the ticker will leak.'),\r\n              ticker.describeForError('The offending ticker was'),\r\n            ]);\r\n          }\r\n        }\r\n      }\r\n      return true;\r\n    }()");
+        super.dispose();
+      }
+      didChangeDependencies() {
+        let muted = !dart.test(ticker_provider.TickerMode.of(this.context));
+        if (this[_tickers] != null) {
+          for (let ticker of this[_tickers]) {
+            ticker.muted = muted;
+          }
+        }
+        super.didChangeDependencies();
+      }
+      debugFillProperties(properties) {
+        super.debugFillProperties(properties);
+        properties.add(new (DiagnosticsPropertyOfSetLOfTickerL()).new("tickers", this[_tickers], {description: this[_tickers] != null ? "tracking " + dart.str(this[_tickers][$length]) + " ticker" + (this[_tickers][$length] === 1 ? "" : "s") : null, defaultValue: null}));
+      }
+    };
+    (AnimationMixin[dart.mixinNew] = function() {
+      this[_mainControllerInstance] = null;
+      this[_controllerInstances] = JSArrayOfAnimationControllerL().of([]);
+      this[_tickers] = null;
+    }).prototype = AnimationMixin.prototype;
+    dart.addTypeTests(AnimationMixin);
+    AnimationMixin.prototype[_is_AnimationMixin_default] = true;
+    dart.addTypeCaches(AnimationMixin);
+    AnimationMixin[dart.implements] = () => [ticker.TickerProvider, framework.State$(dart.legacy(T))];
+    dart.setMethodSignature(AnimationMixin, () => ({
+      __proto__: dart.getMethods(AnimationMixin.__proto__),
+      createController: dart.fnType(dart.legacy(animation_controller.AnimationController), [], {fps: dart.legacy(core.int), unbounded: dart.legacy(core.bool)}, {}),
+      [_newAnimationController]: dart.fnType(dart.legacy(animation_controller.AnimationController), [], {fps: dart.legacy(core.int), unbounded: dart.legacy(core.bool)}, {}),
+      [_addFrameLimitingUpdater]: dart.fnType(dart.void, [dart.legacy(animation_controller.AnimationController), dart.legacy(core.int)]),
+      [_instanceController]: dart.fnType(dart.legacy(animation_controller.AnimationController), [], {unbounded: dart.legacy(core.bool)}, {}),
+      createTicker: dart.fnType(dart.legacy(ticker.Ticker), [dart.legacy(dart.fnType(dart.void, [core.Duration]))]),
+      [_removeTicker]: dart.fnType(dart.void, [dart.legacy(simple_animations._WidgetTicker)]),
+      debugFillProperties: dart.fnType(dart.void, [dart.legacy(diagnostics.DiagnosticPropertiesBuilder)])
+    }));
+    dart.setGetterSignature(AnimationMixin, () => ({
+      __proto__: dart.getGetters(AnimationMixin.__proto__),
+      controller: dart.legacy(animation_controller.AnimationController)
+    }));
+    dart.setLibraryUri(AnimationMixin, L1);
+    dart.setFieldSignature(AnimationMixin, () => ({
+      __proto__: dart.getFields(AnimationMixin.__proto__),
+      [_mainControllerInstance]: dart.fieldType(dart.legacy(animation_controller.AnimationController)),
+      [_controllerInstances]: dart.finalFieldType(dart.legacy(core.List$(dart.legacy(animation_controller.AnimationController)))),
+      [_tickers]: dart.fieldType(dart.legacy(core.Set$(dart.legacy(ticker.Ticker))))
+    }));
+    return AnimationMixin;
+  });
+  simple_animations.AnimationMixin = simple_animations.AnimationMixin$();
+  dart.addTypeTests(simple_animations.AnimationMixin, _is_AnimationMixin_default);
+  var _creator$ = dart.privateName(simple_animations, "_creator");
+  simple_animations._WidgetTicker = class _WidgetTicker extends ticker.Ticker {
+    dispose() {
+      this[_creator$][_removeTicker](this);
+      super.dispose();
+    }
+  };
+  (simple_animations._WidgetTicker.new = function(onTick, _creator, opts) {
+    let debugLabel = opts && 'debugLabel' in opts ? opts.debugLabel : null;
+    this[_creator$] = _creator;
+    simple_animations._WidgetTicker.__proto__.new.call(this, onTick, {debugLabel: debugLabel});
+    ;
+  }).prototype = simple_animations._WidgetTicker.prototype;
+  dart.addTypeTests(simple_animations._WidgetTicker);
+  dart.addTypeCaches(simple_animations._WidgetTicker);
+  dart.setLibraryUri(simple_animations._WidgetTicker, L1);
+  dart.setFieldSignature(simple_animations._WidgetTicker, () => ({
+    __proto__: dart.getFields(simple_animations._WidgetTicker.__proto__),
+    [_creator$]: dart.finalFieldType(dart.legacy(simple_animations.AnimationMixin$(dart.legacy(framework.StatefulWidget))))
+  }));
+  var Color_value = dart.privateName(ui, "Color.value");
   var C0;
   var C1;
+  var _name = dart.privateName(ui, "_name");
   var C2;
+  var EdgeInsets_bottom = dart.privateName(edge_insets, "EdgeInsets.bottom");
+  var EdgeInsets_right = dart.privateName(edge_insets, "EdgeInsets.right");
+  var EdgeInsets_top = dart.privateName(edge_insets, "EdgeInsets.top");
+  var EdgeInsets_left = dart.privateName(edge_insets, "EdgeInsets.left");
   var C3;
+  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  var C6;
+  var C5;
   var C4;
-  path_point.PointType = class PointType extends core.Object {
+  var C9;
+  var C10;
+  var C8;
+  var C7;
+  var C13;
+  var C12;
+  var C11;
+  var C16;
+  var C15;
+  var C14;
+  var C19;
+  var C18;
+  var C17;
+  var C22;
+  var C23;
+  var C24;
+  var C25;
+  var C26;
+  var C27;
+  var C21;
+  var C20;
+  var C30;
+  var C31;
+  var C29;
+  var C28;
+  var C34;
+  var C35;
+  var C33;
+  var C32;
+  var particles$ = dart.privateName(simple_animations, "Plasma.particles");
+  var foregroundColor$ = dart.privateName(simple_animations, "Plasma.foregroundColor");
+  var backgroundColor$ = dart.privateName(simple_animations, "Plasma.backgroundColor");
+  var blendMode$ = dart.privateName(simple_animations, "Plasma.blendMode");
+  var size$ = dart.privateName(simple_animations, "Plasma.size");
+  var speed$ = dart.privateName(simple_animations, "Plasma.speed");
+  var fps$ = dart.privateName(simple_animations, "Plasma.fps");
+  var offset$ = dart.privateName(simple_animations, "Plasma.offset");
+  var child$ = dart.privateName(simple_animations, "Plasma.child");
+  simple_animations.Plasma = class Plasma extends framework.StatelessWidget {
+    get particles() {
+      return this[particles$];
+    }
+    set particles(value) {
+      super.particles = value;
+    }
+    get foregroundColor() {
+      return this[foregroundColor$];
+    }
+    set foregroundColor(value) {
+      super.foregroundColor = value;
+    }
+    get backgroundColor() {
+      return this[backgroundColor$];
+    }
+    set backgroundColor(value) {
+      super.backgroundColor = value;
+    }
+    get blendMode() {
+      return this[blendMode$];
+    }
+    set blendMode(value) {
+      super.blendMode = value;
+    }
+    get size() {
+      return this[size$];
+    }
+    set size(value) {
+      super.size = value;
+    }
+    get speed() {
+      return this[speed$];
+    }
+    set speed(value) {
+      super.speed = value;
+    }
+    get fps() {
+      return this[fps$];
+    }
+    set fps(value) {
+      super.fps = value;
+    }
+    get offset() {
+      return this[offset$];
+    }
+    set offset(value) {
+      super.offset = value;
+    }
+    get child() {
+      return this[child$];
+    }
+    set child(value) {
+      super.child = value;
+    }
+    build(context) {
+      return new basic.Padding.new({padding: C3 || CT.C3, child: new basic.ClipRect.new({clipBehavior: ui.Clip.hardEdge, child: new (CustomAnimationOfdoubleL()).new({control: dart.notNull(this.speed) > 0 ? simple_animations.CustomAnimationControl.LOOP : simple_animations.CustomAnimationControl.STOP, tween: supercharged['DoubleSCF|tweenTo'](0.0, 2 * 3.141592653589793), child: this.child, fps: this.fps, duration: dart.notNull(this.speed) > 0 ? supercharged_dart['IntSC|get#milliseconds']((120000.0 / dart.notNull(this.speed))[$round]()) : supercharged_dart['IntSC|get#seconds'](1), builder: dart.fn((context, animatedChild, value) => new basic.Stack.new({children: (() => {
+                let t0 = JSArrayOfWidgetL().of([new basic.Positioned.fill({child: new basic.CustomPaint.new({foregroundPainter: new simple_animations._PlasmaPainter.new({particles: this.particles, value: value, color: this.foregroundColor, circleSize: this.size, blendMode: this.blendMode, offset: this.offset}), child: new container.Container.new({color: this.backgroundColor, $creationLocationd_0dea112b090073317d4: C4 || CT.C4}), $creationLocationd_0dea112b090073317d4: C7 || CT.C7}), $creationLocationd_0dea112b090073317d4: C11 || CT.C11})]);
+                if (animatedChild != null) t0.push(new basic.Positioned.fill({child: animatedChild, $creationLocationd_0dea112b090073317d4: C14 || CT.C14}));
+                return t0;
+              })(), $creationLocationd_0dea112b090073317d4: C17 || CT.C17}), BuildContextLAndWidgetLAnddoubleLToStackL()), $creationLocationd_0dea112b090073317d4: C20 || CT.C20}), $creationLocationd_0dea112b090073317d4: C28 || CT.C28}), $creationLocationd_0dea112b090073317d4: C32 || CT.C32});
+    }
+  };
+  (simple_animations.Plasma.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let particles = opts && 'particles' in opts ? opts.particles : 10;
+    let foregroundColor = opts && 'foregroundColor' in opts ? opts.foregroundColor : C0 || CT.C0;
+    let backgroundColor = opts && 'backgroundColor' in opts ? opts.backgroundColor : C1 || CT.C1;
+    let size = opts && 'size' in opts ? opts.size : 1;
+    let speed = opts && 'speed' in opts ? opts.speed : 1;
+    let offset = opts && 'offset' in opts ? opts.offset : 0;
+    let fps = opts && 'fps' in opts ? opts.fps : null;
+    let blendMode = opts && 'blendMode' in opts ? opts.blendMode : C2 || CT.C2;
+    let child = opts && 'child' in opts ? opts.child : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[particles$] = particles;
+    this[foregroundColor$] = foregroundColor;
+    this[backgroundColor$] = backgroundColor;
+    this[size$] = size;
+    this[speed$] = speed;
+    this[offset$] = offset;
+    this[fps$] = fps;
+    this[blendMode$] = blendMode;
+    this[child$] = child;
+    simple_animations.Plasma.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = simple_animations.Plasma.prototype;
+  dart.addTypeTests(simple_animations.Plasma);
+  dart.addTypeCaches(simple_animations.Plasma);
+  dart.setMethodSignature(simple_animations.Plasma, () => ({
+    __proto__: dart.getMethods(simple_animations.Plasma.__proto__),
+    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
+  }));
+  dart.setLibraryUri(simple_animations.Plasma, L1);
+  dart.setFieldSignature(simple_animations.Plasma, () => ({
+    __proto__: dart.getFields(simple_animations.Plasma.__proto__),
+    particles: dart.finalFieldType(dart.legacy(core.int)),
+    foregroundColor: dart.finalFieldType(dart.legacy(ui.Color)),
+    backgroundColor: dart.finalFieldType(dart.legacy(ui.Color)),
+    blendMode: dart.finalFieldType(dart.legacy(ui.BlendMode)),
+    size: dart.finalFieldType(dart.legacy(core.double)),
+    speed: dart.finalFieldType(dart.legacy(core.double)),
+    fps: dart.finalFieldType(dart.legacy(core.int)),
+    offset: dart.finalFieldType(dart.legacy(core.double)),
+    child: dart.finalFieldType(dart.legacy(framework.Widget))
+  }));
+  simple_animations._PlasmaPainter = class _PlasmaPainter extends custom_paint.CustomPainter {
+    paint(canvas, size) {
+      let t1;
+      let compute = new simple_animations.InternalPlasmaCompute.new({circleSize: this.circleSize, offset: this.offset, canvasSize: size, value: this.value});
+      let paint = (t1 = ui.Paint.new(), (() => {
+        t1.color = this.color;
+        t1.maskFilter = new ui.MaskFilter.blur(ui.BlurStyle.normal, compute.blurRadius());
+        t1.blendMode = this.blendMode;
+        return t1;
+      })());
+      supercharged_dart['IntSC|until'](0, this.particles)[$forEach](dart.fn(n => {
+        canvas.drawCircle(compute.position(n), compute.radius(), paint);
+      }, intLToNull()));
+    }
+    shouldRepaint(oldDelegate) {
+      CustomPainterL().as(oldDelegate);
+      return true;
+    }
+  };
+  (simple_animations._PlasmaPainter.new = function(opts) {
+    let particles = opts && 'particles' in opts ? opts.particles : null;
+    let value = opts && 'value' in opts ? opts.value : null;
+    let color = opts && 'color' in opts ? opts.color : null;
+    let circleSize = opts && 'circleSize' in opts ? opts.circleSize : null;
+    let blendMode = opts && 'blendMode' in opts ? opts.blendMode : null;
+    let offset = opts && 'offset' in opts ? opts.offset : null;
+    this.particles = particles;
+    this.value = value;
+    this.color = color;
+    this.circleSize = circleSize;
+    this.blendMode = blendMode;
+    this.offset = offset;
+    simple_animations._PlasmaPainter.__proto__.new.call(this);
+    ;
+  }).prototype = simple_animations._PlasmaPainter.prototype;
+  dart.addTypeTests(simple_animations._PlasmaPainter);
+  dart.addTypeCaches(simple_animations._PlasmaPainter);
+  dart.setMethodSignature(simple_animations._PlasmaPainter, () => ({
+    __proto__: dart.getMethods(simple_animations._PlasmaPainter.__proto__),
+    paint: dart.fnType(dart.void, [dart.legacy(ui.Canvas), dart.legacy(ui.Size)]),
+    shouldRepaint: dart.fnType(dart.legacy(core.bool), [dart.legacy(core.Object)])
+  }));
+  dart.setLibraryUri(simple_animations._PlasmaPainter, L1);
+  dart.setFieldSignature(simple_animations._PlasmaPainter, () => ({
+    __proto__: dart.getFields(simple_animations._PlasmaPainter.__proto__),
+    particles: dart.finalFieldType(dart.legacy(core.int)),
+    value: dart.finalFieldType(dart.legacy(core.double)),
+    color: dart.finalFieldType(dart.legacy(ui.Color)),
+    circleSize: dart.finalFieldType(dart.legacy(core.double)),
+    blendMode: dart.finalFieldType(dart.legacy(ui.BlendMode)),
+    offset: dart.finalFieldType(dart.legacy(core.double))
+  }));
+  var _radius = dart.privateName(simple_animations, "_radius");
+  var canvasSize$ = dart.privateName(simple_animations, "InternalPlasmaCompute.canvasSize");
+  var circleSize$ = dart.privateName(simple_animations, "InternalPlasmaCompute.circleSize");
+  var offset$0 = dart.privateName(simple_animations, "InternalPlasmaCompute.offset");
+  var value$ = dart.privateName(simple_animations, "InternalPlasmaCompute.value");
+  simple_animations.InternalPlasmaCompute = class InternalPlasmaCompute extends core.Object {
+    get canvasSize() {
+      return this[canvasSize$];
+    }
+    set canvasSize(value) {
+      super.canvasSize = value;
+    }
+    get circleSize() {
+      return this[circleSize$];
+    }
+    set circleSize(value) {
+      super.circleSize = value;
+    }
+    get offset() {
+      return this[offset$0];
+    }
+    set offset(value) {
+      super.offset = value;
+    }
+    get value() {
+      return this[value$];
+    }
+    set value(value) {
+      super.value = value;
+    }
+    position(particleNumber) {
+      let rand = math.sin(particleNumber)[$abs]();
+      let rvalue = (dart.notNull(this.value) + rand * 2 * 3.141592653589793)[$modulo](2 * 3.141592653589793);
+      let x = math.sin(-rand + rvalue + dart.notNull(this.offset)) * dart.notNull(this.canvasSize.width) / 2;
+      let y = math.sin(rand + -2 * rvalue + dart.notNull(this.offset)) * dart.notNull(this.canvasSize.height) / 2;
+      return new ui.Offset.new(dart.notNull(this.canvasSize.width) / 2 + x, dart.notNull(this.canvasSize.height) / 2 + y);
+    }
+    radius() {
+      return this[_radius];
+    }
+    blurRadius() {
+      return (dart.notNull(this[_radius]) * 1.2)[$roundToDouble]();
+    }
+  };
+  (simple_animations.InternalPlasmaCompute.new = function(opts) {
+    let canvasSize = opts && 'canvasSize' in opts ? opts.canvasSize : null;
+    let circleSize = opts && 'circleSize' in opts ? opts.circleSize : null;
+    let offset = opts && 'offset' in opts ? opts.offset : null;
+    let value = opts && 'value' in opts ? opts.value : null;
+    this[_radius] = null;
+    this[canvasSize$] = canvasSize;
+    this[circleSize$] = circleSize;
+    this[offset$0] = offset;
+    this[value$] = value;
+    this[_radius] = (dart.notNull(this.circleSize) * (dart.notNull(this.canvasSize.width) + dart.notNull(this.canvasSize.height)) / 2 / 3)[$roundToDouble]();
+  }).prototype = simple_animations.InternalPlasmaCompute.prototype;
+  dart.addTypeTests(simple_animations.InternalPlasmaCompute);
+  dart.addTypeCaches(simple_animations.InternalPlasmaCompute);
+  dart.setMethodSignature(simple_animations.InternalPlasmaCompute, () => ({
+    __proto__: dart.getMethods(simple_animations.InternalPlasmaCompute.__proto__),
+    position: dart.fnType(dart.legacy(ui.Offset), [dart.legacy(core.int)]),
+    radius: dart.fnType(dart.legacy(core.double), []),
+    blurRadius: dart.fnType(dart.legacy(core.double), [])
+  }));
+  dart.setLibraryUri(simple_animations.InternalPlasmaCompute, L1);
+  dart.setFieldSignature(simple_animations.InternalPlasmaCompute, () => ({
+    __proto__: dart.getFields(simple_animations.InternalPlasmaCompute.__proto__),
+    canvasSize: dart.finalFieldType(dart.legacy(ui.Size)),
+    circleSize: dart.finalFieldType(dart.legacy(core.double)),
+    offset: dart.finalFieldType(dart.legacy(core.double)),
+    value: dart.finalFieldType(dart.legacy(core.double)),
+    [_radius]: dart.fieldType(dart.legacy(core.double))
+  }));
+  var _name$ = dart.privateName(simple_animations, "_name");
+  var C36;
+  var C37;
+  var C38;
+  var C39;
+  var C40;
+  var C41;
+  var C42;
+  var C43;
+  var C44;
+  var C45;
+  var C46;
+  var C47;
+  var C48;
+  var C49;
+  var C50;
+  var C51;
+  var C52;
+  var C53;
+  simple_animations.DefaultAnimationProperties = class DefaultAnimationProperties extends core.Object {
     toString() {
       return this[_name$];
     }
   };
-  (path_point.PointType.new = function(index, _name) {
+  (simple_animations.DefaultAnimationProperties.new = function(index, _name) {
     this.index = index;
     this[_name$] = _name;
     ;
-  }).prototype = path_point.PointType.prototype;
-  dart.addTypeTests(path_point.PointType);
-  dart.addTypeCaches(path_point.PointType);
-  dart.setMethodSignature(path_point.PointType, () => ({
-    __proto__: dart.getMethods(path_point.PointType.__proto__),
+  }).prototype = simple_animations.DefaultAnimationProperties.prototype;
+  dart.addTypeTests(simple_animations.DefaultAnimationProperties);
+  dart.addTypeCaches(simple_animations.DefaultAnimationProperties);
+  dart.setMethodSignature(simple_animations.DefaultAnimationProperties, () => ({
+    __proto__: dart.getMethods(simple_animations.DefaultAnimationProperties.__proto__),
     toString: dart.fnType(dart.legacy(core.String), []),
     [$toString]: dart.fnType(dart.legacy(core.String), [])
   }));
-  dart.setLibraryUri(path_point.PointType, L0);
-  dart.setFieldSignature(path_point.PointType, () => ({
-    __proto__: dart.getFields(path_point.PointType.__proto__),
+  dart.setLibraryUri(simple_animations.DefaultAnimationProperties, L1);
+  dart.setFieldSignature(simple_animations.DefaultAnimationProperties, () => ({
+    __proto__: dart.getFields(simple_animations.DefaultAnimationProperties.__proto__),
     index: dart.finalFieldType(dart.legacy(core.int)),
     [_name$]: dart.finalFieldType(dart.legacy(core.String))
   }));
-  dart.defineExtensionMethods(path_point.PointType, ['toString']);
-  path_point.PointType.straight = C0 || CT.C0;
-  path_point.PointType.mirror = C1 || CT.C1;
-  path_point.PointType.disconnected = C2 || CT.C2;
-  path_point.PointType.asymmetric = C3 || CT.C3;
-  path_point.PointType.values = C4 || CT.C4;
-  var _type = dart.privateName(path_point, "_type");
-  var _translation = dart.privateName(path_point, "_translation");
-  var _weights = dart.privateName(path_point, "_weights");
-  path_point.PathPoint = class PathPoint extends core.Object {
-    get pointType() {
-      return this[_type];
-    }
-    get translation() {
-      return this[_translation];
-    }
-    copy(from) {
-      this[_type] = from[_type];
-      vec2d.Vec2D.copy(this[_translation], from[_translation]);
-      if (from[_weights] != null) {
-        this[_weights] = _native_typed_data.NativeFloat32List.fromList(from[_weights]);
+  dart.defineExtensionMethods(simple_animations.DefaultAnimationProperties, ['toString']);
+  simple_animations.DefaultAnimationProperties.width = C36 || CT.C36;
+  simple_animations.DefaultAnimationProperties.height = C37 || CT.C37;
+  simple_animations.DefaultAnimationProperties.offset = C38 || CT.C38;
+  simple_animations.DefaultAnimationProperties.color = C39 || CT.C39;
+  simple_animations.DefaultAnimationProperties.color1 = C40 || CT.C40;
+  simple_animations.DefaultAnimationProperties.color2 = C41 || CT.C41;
+  simple_animations.DefaultAnimationProperties.color3 = C42 || CT.C42;
+  simple_animations.DefaultAnimationProperties.color4 = C43 || CT.C43;
+  simple_animations.DefaultAnimationProperties.x = C44 || CT.C44;
+  simple_animations.DefaultAnimationProperties.y = C45 || CT.C45;
+  simple_animations.DefaultAnimationProperties.size = C46 || CT.C46;
+  simple_animations.DefaultAnimationProperties.left = C47 || CT.C47;
+  simple_animations.DefaultAnimationProperties.top = C48 || CT.C48;
+  simple_animations.DefaultAnimationProperties.bottom = C49 || CT.C49;
+  simple_animations.DefaultAnimationProperties.right = C50 || CT.C50;
+  simple_animations.DefaultAnimationProperties.rotation = C51 || CT.C51;
+  simple_animations.DefaultAnimationProperties.scale = C52 || CT.C52;
+  simple_animations.DefaultAnimationProperties.values = C53 || CT.C53;
+  var _tracks$ = dart.privateName(simple_animations, "_tracks");
+  var Duration__duration = dart.privateName(core, "Duration._duration");
+  var C54;
+  var C55;
+  var _maxDuration$ = dart.privateName(simple_animations, "_maxDuration");
+  var _computeValue = dart.privateName(simple_animations, "_computeValue");
+  const _is_MultiTweenValues_default = Symbol('_is_MultiTweenValues_default');
+  var time$ = dart.privateName(simple_animations, "MultiTweenValues.time");
+  simple_animations.MultiTweenValues$ = dart.generic(P => {
+    var PL = () => (PL = dart.constFn(dart.legacy(P)))();
+    class MultiTweenValues extends core.Object {
+      get time() {
+        return this[time$];
       }
-    }
-    read(reader, isConnectedToBones) {
-      vec2d.Vec2D.copyFromList(this[_translation], reader.readFloat32Array(2, "translation"));
-      let weightLength = this.readPoint(reader, isConnectedToBones);
-      if (weightLength !== 0) {
-        this[_weights] = reader.readFloat32Array(weightLength, "weights");
+      set time(value) {
+        super.time = value;
       }
-    }
-    transformed(transform) {
-      let result = this.makeInstance();
-      vec2d.Vec2D.transformMat2D(result.translation, result.translation, transform);
-      return result;
-    }
-  };
-  (path_point.PathPoint.new = function(type) {
-    this[_type] = null;
-    this[_translation] = new vec2d.Vec2D.new();
-    this[_weights] = null;
-    this[_type] = type;
-  }).prototype = path_point.PathPoint.prototype;
-  dart.addTypeTests(path_point.PathPoint);
-  dart.addTypeCaches(path_point.PathPoint);
-  dart.setMethodSignature(path_point.PathPoint, () => ({
-    __proto__: dart.getMethods(path_point.PathPoint.__proto__),
-    copy: dart.fnType(dart.void, [dart.legacy(path_point.PathPoint)]),
-    read: dart.fnType(dart.void, [dart.legacy(stream_reader.StreamReader), dart.legacy(core.bool)]),
-    transformed: dart.fnType(dart.legacy(path_point.PathPoint), [dart.legacy(mat2d.Mat2D)])
-  }));
-  dart.setGetterSignature(path_point.PathPoint, () => ({
-    __proto__: dart.getGetters(path_point.PathPoint.__proto__),
-    pointType: dart.legacy(path_point.PointType),
-    translation: dart.legacy(vec2d.Vec2D)
-  }));
-  dart.setLibraryUri(path_point.PathPoint, L0);
-  dart.setFieldSignature(path_point.PathPoint, () => ({
-    __proto__: dart.getFields(path_point.PathPoint.__proto__),
-    [_type]: dart.fieldType(dart.legacy(path_point.PointType)),
-    [_translation]: dart.fieldType(dart.legacy(vec2d.Vec2D)),
-    [_weights]: dart.fieldType(dart.legacy(typed_data.Float32List))
-  }));
-  var radius$ = dart.privateName(path_point, "StraightPathPoint.radius");
-  path_point.StraightPathPoint = class StraightPathPoint extends path_point.PathPoint {
-    get radius() {
-      return this[radius$];
-    }
-    set radius(value) {
-      this[radius$] = value;
-    }
-    makeInstance() {
-      let node = new path_point.StraightPathPoint.new();
-      node.copyStraight(this);
-      return node;
-    }
-    copyStraight(from) {
-      super.copy(from);
-      this.radius = from.radius;
-    }
-    readPoint(reader, isConnectedToBones) {
-      this.radius = reader.readFloat32("radius");
-      if (dart.test(isConnectedToBones)) {
-        return 8;
+      get(T, property) {
+        PL().as(property);
+        if (!dart.test(this[_tracks$][$containsKey](property))) dart.assertFailed("Property '" + dart.str(dart.toString(property)) + "' does not exists.", L2, 135, 12, "_tracks.containsKey(property)");
+        return this[_computeValue](dart.legacy(T), property);
       }
-      return 0;
-    }
-    skin(world, bones) {
-      let t0;
-      let point = (t0 = new path_point.StraightPathPoint.new(), (() => {
-        t0.radius = this.radius;
-        return t0;
-      })());
-      let px = dart.notNull(world._get(0)) * dart.notNull(this.translation._get(0)) + dart.notNull(world._get(2)) * dart.notNull(this.translation._get(1)) + dart.notNull(world._get(4));
-      let py = dart.notNull(world._get(1)) * dart.notNull(this.translation._get(0)) + dart.notNull(world._get(3)) * dart.notNull(this.translation._get(1)) + dart.notNull(world._get(5));
-      let a = 0.0;
-      let b = 0.0;
-      let c = 0.0;
-      let d = 0.0;
-      let e = 0.0;
-      let f = 0.0;
-      for (let i = 0; i < 4; i = i + 1) {
-        let boneIndex = this[_weights][$_get](i)[$floor]();
-        let weight = this[_weights][$_get](i + 4);
-        if (dart.notNull(weight) > 0) {
-          let bb = boneIndex * 6;
-          a = a + dart.notNull(bones[$_get](bb)) * dart.notNull(weight);
-          b = b + dart.notNull(bones[$_get](bb + 1)) * dart.notNull(weight);
-          c = c + dart.notNull(bones[$_get](bb + 2)) * dart.notNull(weight);
-          d = d + dart.notNull(bones[$_get](bb + 3)) * dart.notNull(weight);
-          e = e + dart.notNull(bones[$_get](bb + 4)) * dart.notNull(weight);
-          f = f + dart.notNull(bones[$_get](bb + 5)) * dart.notNull(weight);
+      getOrElse(T, property, defaultValue) {
+        PL().as(property);
+        return dart.test(this[_tracks$][$containsKey](property)) ? this[_computeValue](dart.legacy(T), property) : defaultValue;
+      }
+      [_computeValue](T, property) {
+        let timeWhenTweenStarts = 0.0;
+        let track = this[_tracks$][$_get](property);
+        for (let tweenWithDuration of track.tweensWithDuration) {
+          let tweenDurationInTimeDecimals = supercharged_dart['DurationSC|/'](tweenWithDuration.duration, this[_maxDuration$]);
+          if (dart.notNull(this.time) < timeWhenTweenStarts + dart.notNull(tweenDurationInTimeDecimals)) {
+            let normalizedTime = (dart.notNull(this.time) - timeWhenTweenStarts) / dart.notNull(tweenDurationInTimeDecimals);
+            return dart.legacy(T).as(tweenWithDuration.tween.transform(normalizedTime));
+          }
+          timeWhenTweenStarts = timeWhenTweenStarts + dart.notNull(tweenDurationInTimeDecimals);
         }
+        return dart.legacy(T).as(track.tweensWithDuration[$last].tween.transform(1.0));
       }
-      let pos = point.translation;
-      pos._set(0, a * px + c * py + e);
-      pos._set(1, b * px + d * py + f);
-      return point;
+    }
+    (MultiTweenValues.new = function(_maxDuration, _tracks, time) {
+      this[_maxDuration$] = _maxDuration;
+      this[_tracks$] = _tracks;
+      this[time$] = time;
+      ;
+    }).prototype = MultiTweenValues.prototype;
+    dart.addTypeTests(MultiTweenValues);
+    MultiTweenValues.prototype[_is_MultiTweenValues_default] = true;
+    dart.addTypeCaches(MultiTweenValues);
+    dart.setMethodSignature(MultiTweenValues, () => ({
+      __proto__: dart.getMethods(MultiTweenValues.__proto__),
+      get: dart.gFnType(T => [dart.legacy(T), [dart.legacy(core.Object)]]),
+      getOrElse: dart.gFnType(T => [dart.legacy(T), [dart.legacy(core.Object), dart.legacy(T)]]),
+      [_computeValue]: dart.gFnType(T => [dart.legacy(T), [dart.legacy(P)]])
+    }));
+    dart.setLibraryUri(MultiTweenValues, L1);
+    dart.setFieldSignature(MultiTweenValues, () => ({
+      __proto__: dart.getFields(MultiTweenValues.__proto__),
+      [_maxDuration$]: dart.finalFieldType(dart.legacy(core.Duration)),
+      [_tracks$]: dart.finalFieldType(dart.legacy(core.Map$(dart.legacy(P), dart.legacy(simple_animations._TweenTrack)))),
+      time: dart.finalFieldType(dart.legacy(core.double))
+    }));
+    return MultiTweenValues;
+  });
+  simple_animations.MultiTweenValues = simple_animations.MultiTweenValues$();
+  dart.addTypeTests(simple_animations.MultiTweenValues, _is_MultiTweenValues_default);
+  const _is_MultiTween_default = Symbol('_is_MultiTween_default');
+  simple_animations.MultiTween$ = dart.generic(P => {
+    var PL = () => (PL = dart.constFn(dart.legacy(P)))();
+    var LinkedMapOfPL$_TweenTrackL = () => (LinkedMapOfPL$_TweenTrackL = dart.constFn(_js_helper.LinkedMap$(PL(), _TweenTrackL())))();
+    var MultiTweenValuesOfPL = () => (MultiTweenValuesOfPL = dart.constFn(simple_animations.MultiTweenValues$(PL())))();
+    class MultiTween extends tween$.Animatable$(dart.legacy(simple_animations.MultiTweenValues$(dart.legacy(P)))) {
+      get duration() {
+        let t1;
+        t1 = supercharged_dart['IterableSC|maxBy'](DurationL(), this[_tracks$][$values][$map](DurationL(), dart.fn(track => track.duration, _TweenTrackLToDurationL())), dart.fn((a, b) => a.compareTo(b), DurationLAndDurationLTointL()));
+        return t1 == null ? supercharged_dart['IntSC|get#seconds'](0) : t1;
+      }
+      add(property, tween, duration = C54 || CT.C54, curve = C55 || CT.C55) {
+        PL().as(property);
+        if (!dart.test(this[_tracks$][$containsKey](property))) {
+          this[_tracks$][$_set](property, new simple_animations._TweenTrack.new());
+        }
+        this[_tracks$][$_get](property).add(tween.chain(new tween$.CurveTween.new({curve: curve})), duration);
+      }
+      transform(t) {
+        return new (MultiTweenValuesOfPL()).new(this.duration, this[_tracks$], t);
+      }
+    }
+    (MultiTween.new = function() {
+      this[_tracks$] = new (LinkedMapOfPL$_TweenTrackL()).new();
+      MultiTween.__proto__.new.call(this);
+      ;
+    }).prototype = MultiTween.prototype;
+    dart.addTypeTests(MultiTween);
+    MultiTween.prototype[_is_MultiTween_default] = true;
+    dart.addTypeCaches(MultiTween);
+    dart.setMethodSignature(MultiTween, () => ({
+      __proto__: dart.getMethods(MultiTween.__proto__),
+      add: dart.fnType(dart.void, [dart.legacy(core.Object), dart.legacy(tween$.Animatable)], [dart.legacy(core.Duration), dart.legacy(curves.Curve)]),
+      transform: dart.fnType(dart.legacy(simple_animations.MultiTweenValues$(dart.legacy(P))), [dart.legacy(core.double)])
+    }));
+    dart.setGetterSignature(MultiTween, () => ({
+      __proto__: dart.getGetters(MultiTween.__proto__),
+      duration: dart.legacy(core.Duration)
+    }));
+    dart.setLibraryUri(MultiTween, L1);
+    dart.setFieldSignature(MultiTween, () => ({
+      __proto__: dart.getFields(MultiTween.__proto__),
+      [_tracks$]: dart.finalFieldType(dart.legacy(core.Map$(dart.legacy(P), dart.legacy(simple_animations._TweenTrack))))
+    }));
+    return MultiTween;
+  });
+  simple_animations.MultiTween = simple_animations.MultiTween$();
+  dart.addTypeTests(simple_animations.MultiTween, _is_MultiTween_default);
+  simple_animations._TweenTrack = class _TweenTrack extends core.Object {
+    add(tween, duration) {
+      this.tweensWithDuration[$add](new simple_animations._TweenWithDuration.new(tween, duration));
+    }
+    get duration() {
+      let t1;
+      t1 = this.tweensWithDuration[$map](DurationL(), dart.fn(tweenWithDuration => tweenWithDuration.duration, _TweenWithDurationLToDurationL()))[$reduce](dart.fn((value, duration) => value['+'](duration), DurationLAndDurationLToDurationL()));
+      return t1 == null ? supercharged_dart['IntSC|get#seconds'](0) : t1;
     }
   };
-  (path_point.StraightPathPoint.new = function() {
-    this[radius$] = 0.0;
-    path_point.StraightPathPoint.__proto__.new.call(this, path_point.PointType.straight);
+  (simple_animations._TweenTrack.new = function() {
+    this.tweensWithDuration = JSArrayOf_TweenWithDurationL().of([]);
     ;
-  }).prototype = path_point.StraightPathPoint.prototype;
-  (path_point.StraightPathPoint.fromTranslation = function(translation) {
-    this[radius$] = 0.0;
-    path_point.StraightPathPoint.__proto__.new.call(this, path_point.PointType.straight);
-    this[_translation] = translation;
-  }).prototype = path_point.StraightPathPoint.prototype;
-  (path_point.StraightPathPoint.fromValues = function(translation, radius) {
-    this[radius$] = 0.0;
-    this[radius$] = radius;
-    path_point.StraightPathPoint.__proto__.new.call(this, path_point.PointType.straight);
-    this[_translation] = translation;
-  }).prototype = path_point.StraightPathPoint.prototype;
-  dart.addTypeTests(path_point.StraightPathPoint);
-  dart.addTypeCaches(path_point.StraightPathPoint);
-  dart.setMethodSignature(path_point.StraightPathPoint, () => ({
-    __proto__: dart.getMethods(path_point.StraightPathPoint.__proto__),
-    makeInstance: dart.fnType(dart.legacy(path_point.PathPoint), []),
-    copyStraight: dart.fnType(dart.void, [dart.legacy(path_point.StraightPathPoint)]),
-    readPoint: dart.fnType(dart.legacy(core.int), [dart.legacy(stream_reader.StreamReader), dart.legacy(core.bool)]),
-    skin: dart.fnType(dart.legacy(path_point.PathPoint), [dart.legacy(mat2d.Mat2D), dart.legacy(typed_data.Float32List)])
+  }).prototype = simple_animations._TweenTrack.prototype;
+  dart.addTypeTests(simple_animations._TweenTrack);
+  dart.addTypeCaches(simple_animations._TweenTrack);
+  dart.setMethodSignature(simple_animations._TweenTrack, () => ({
+    __proto__: dart.getMethods(simple_animations._TweenTrack.__proto__),
+    add: dart.fnType(dart.void, [dart.legacy(tween$.Animatable), dart.legacy(core.Duration)])
   }));
-  dart.setLibraryUri(path_point.StraightPathPoint, L0);
-  dart.setFieldSignature(path_point.StraightPathPoint, () => ({
-    __proto__: dart.getFields(path_point.StraightPathPoint.__proto__),
-    radius: dart.fieldType(dart.legacy(core.double))
+  dart.setGetterSignature(simple_animations._TweenTrack, () => ({
+    __proto__: dart.getGetters(simple_animations._TweenTrack.__proto__),
+    duration: dart.legacy(core.Duration)
   }));
-  var _in = dart.privateName(path_point, "_in");
-  var _out = dart.privateName(path_point, "_out");
-  path_point.CubicPathPoint = class CubicPathPoint extends path_point.PathPoint {
-    get inPoint() {
-      return this[_in];
-    }
-    get outPoint() {
-      return this[_out];
-    }
-    makeInstance() {
-      let node = new path_point.CubicPathPoint.new(this[_type]);
-      node.copyCubic(this);
-      return node;
-    }
-    copyCubic(from) {
-      super.copy(from);
-      vec2d.Vec2D.copy(this[_in], from[_in]);
-      vec2d.Vec2D.copy(this[_out], from[_out]);
-    }
-    readPoint(reader, isConnectedToBones) {
-      vec2d.Vec2D.copyFromList(this[_in], reader.readFloat32Array(2, "in"));
-      vec2d.Vec2D.copyFromList(this[_out], reader.readFloat32Array(2, "out"));
-      if (dart.test(isConnectedToBones)) {
-        return 24;
-      }
-      return 0;
-    }
-    transformed(transform) {
-      let result = CubicPathPointL().as(super.transformed(transform));
-      vec2d.Vec2D.transformMat2D(result.inPoint, result.inPoint, transform);
-      vec2d.Vec2D.transformMat2D(result.outPoint, result.outPoint, transform);
-      return result;
-    }
-    skin(world, bones) {
-      let point = new path_point.CubicPathPoint.new(this.pointType);
-      let px = dart.notNull(world._get(0)) * dart.notNull(this.translation._get(0)) + dart.notNull(world._get(2)) * dart.notNull(this.translation._get(1)) + dart.notNull(world._get(4));
-      let py = dart.notNull(world._get(1)) * dart.notNull(this.translation._get(0)) + dart.notNull(world._get(3)) * dart.notNull(this.translation._get(1)) + dart.notNull(world._get(5));
-      {
-        let a = 0.0;
-        let b = 0.0;
-        let c = 0.0;
-        let d = 0.0;
-        let e = 0.0;
-        let f = 0.0;
-        for (let i = 0; i < 4; i = i + 1) {
-          let boneIndex = this[_weights][$_get](i)[$floor]();
-          let weight = this[_weights][$_get](i + 4);
-          if (dart.notNull(weight) > 0) {
-            let bb = boneIndex * 6;
-            a = a + dart.notNull(bones[$_get](bb)) * dart.notNull(weight);
-            b = b + dart.notNull(bones[$_get](bb + 1)) * dart.notNull(weight);
-            c = c + dart.notNull(bones[$_get](bb + 2)) * dart.notNull(weight);
-            d = d + dart.notNull(bones[$_get](bb + 3)) * dart.notNull(weight);
-            e = e + dart.notNull(bones[$_get](bb + 4)) * dart.notNull(weight);
-            f = f + dart.notNull(bones[$_get](bb + 5)) * dart.notNull(weight);
-          }
-        }
-        let pos = point.translation;
-        pos._set(0, a * px + c * py + e);
-        pos._set(1, b * px + d * py + f);
-      }
-      {
-        let a = 0.0;
-        let b = 0.0;
-        let c = 0.0;
-        let d = 0.0;
-        let e = 0.0;
-        let f = 0.0;
-        px = dart.notNull(world._get(0)) * dart.notNull(this[_in]._get(0)) + dart.notNull(world._get(2)) * dart.notNull(this[_in]._get(1)) + dart.notNull(world._get(4));
-        py = dart.notNull(world._get(1)) * dart.notNull(this[_in]._get(0)) + dart.notNull(world._get(3)) * dart.notNull(this[_in]._get(1)) + dart.notNull(world._get(5));
-        for (let i = 8; i < 12; i = i + 1) {
-          let boneIndex = this[_weights][$_get](i)[$floor]();
-          let weight = this[_weights][$_get](i + 4);
-          if (dart.notNull(weight) > 0) {
-            let bb = boneIndex * 6;
-            a = a + dart.notNull(bones[$_get](bb)) * dart.notNull(weight);
-            b = b + dart.notNull(bones[$_get](bb + 1)) * dart.notNull(weight);
-            c = c + dart.notNull(bones[$_get](bb + 2)) * dart.notNull(weight);
-            d = d + dart.notNull(bones[$_get](bb + 3)) * dart.notNull(weight);
-            e = e + dart.notNull(bones[$_get](bb + 4)) * dart.notNull(weight);
-            f = f + dart.notNull(bones[$_get](bb + 5)) * dart.notNull(weight);
-          }
-        }
-        let pos = point.inPoint;
-        pos._set(0, a * px + c * py + e);
-        pos._set(1, b * px + d * py + f);
-      }
-      {
-        let a = 0.0;
-        let b = 0.0;
-        let c = 0.0;
-        let d = 0.0;
-        let e = 0.0;
-        let f = 0.0;
-        px = dart.notNull(world._get(0)) * dart.notNull(this[_out]._get(0)) + dart.notNull(world._get(2)) * dart.notNull(this[_out]._get(1)) + dart.notNull(world._get(4));
-        py = dart.notNull(world._get(1)) * dart.notNull(this[_out]._get(0)) + dart.notNull(world._get(3)) * dart.notNull(this[_out]._get(1)) + dart.notNull(world._get(5));
-        for (let i = 16; i < 20; i = i + 1) {
-          let boneIndex = this[_weights][$_get](i)[$floor]();
-          let weight = this[_weights][$_get](i + 4);
-          if (dart.notNull(weight) > 0) {
-            let bb = boneIndex * 6;
-            a = a + dart.notNull(bones[$_get](bb)) * dart.notNull(weight);
-            b = b + dart.notNull(bones[$_get](bb + 1)) * dart.notNull(weight);
-            c = c + dart.notNull(bones[$_get](bb + 2)) * dart.notNull(weight);
-            d = d + dart.notNull(bones[$_get](bb + 3)) * dart.notNull(weight);
-            e = e + dart.notNull(bones[$_get](bb + 4)) * dart.notNull(weight);
-            f = f + dart.notNull(bones[$_get](bb + 5)) * dart.notNull(weight);
-          }
-        }
-        let pos = point.outPoint;
-        pos._set(0, a * px + c * py + e);
-        pos._set(1, b * px + d * py + f);
-      }
-      return point;
+  dart.setLibraryUri(simple_animations._TweenTrack, L1);
+  dart.setFieldSignature(simple_animations._TweenTrack, () => ({
+    __proto__: dart.getFields(simple_animations._TweenTrack.__proto__),
+    tweensWithDuration: dart.finalFieldType(dart.legacy(core.List$(dart.legacy(simple_animations._TweenWithDuration))))
+  }));
+  simple_animations._TweenWithDuration = class _TweenWithDuration extends core.Object {};
+  (simple_animations._TweenWithDuration.new = function(tween, duration) {
+    this.tween = tween;
+    this.duration = duration;
+    ;
+  }).prototype = simple_animations._TweenWithDuration.prototype;
+  dart.addTypeTests(simple_animations._TweenWithDuration);
+  dart.addTypeCaches(simple_animations._TweenWithDuration);
+  dart.setLibraryUri(simple_animations._TweenWithDuration, L1);
+  dart.setFieldSignature(simple_animations._TweenWithDuration, () => ({
+    __proto__: dart.getFields(simple_animations._TweenWithDuration.__proto__),
+    tween: dart.finalFieldType(dart.legacy(tween$.Animatable)),
+    duration: dart.finalFieldType(dart.legacy(core.Duration))
+  }));
+  var C56;
+  var C57;
+  var C58;
+  var C59;
+  var C60;
+  var C61;
+  var C62;
+  var C63;
+  simple_animations.CustomAnimationControl = class CustomAnimationControl extends core.Object {
+    toString() {
+      return this[_name$];
     }
   };
-  (path_point.CubicPathPoint.new = function(type) {
-    this[_in] = new vec2d.Vec2D.new();
-    this[_out] = new vec2d.Vec2D.new();
-    path_point.CubicPathPoint.__proto__.new.call(this, type);
+  (simple_animations.CustomAnimationControl.new = function(index, _name) {
+    this.index = index;
+    this[_name$] = _name;
     ;
-  }).prototype = path_point.CubicPathPoint.prototype;
-  (path_point.CubicPathPoint.fromValues = function(translation, inPoint, outPoint) {
-    this[_in] = new vec2d.Vec2D.new();
-    this[_out] = new vec2d.Vec2D.new();
-    path_point.CubicPathPoint.__proto__.new.call(this, path_point.PointType.disconnected);
-    this[_translation] = translation;
-    this[_in] = inPoint;
-    this[_out] = outPoint;
-  }).prototype = path_point.CubicPathPoint.prototype;
-  dart.addTypeTests(path_point.CubicPathPoint);
-  dart.addTypeCaches(path_point.CubicPathPoint);
-  dart.setMethodSignature(path_point.CubicPathPoint, () => ({
-    __proto__: dart.getMethods(path_point.CubicPathPoint.__proto__),
-    makeInstance: dart.fnType(dart.legacy(path_point.PathPoint), []),
-    copyCubic: dart.fnType(dart.void, [dart.legacy(path_point.CubicPathPoint)]),
-    readPoint: dart.fnType(dart.legacy(core.int), [dart.legacy(stream_reader.StreamReader), dart.legacy(core.bool)]),
-    skin: dart.fnType(dart.legacy(path_point.PathPoint), [dart.legacy(mat2d.Mat2D), dart.legacy(typed_data.Float32List)])
+  }).prototype = simple_animations.CustomAnimationControl.prototype;
+  dart.addTypeTests(simple_animations.CustomAnimationControl);
+  dart.addTypeCaches(simple_animations.CustomAnimationControl);
+  dart.setMethodSignature(simple_animations.CustomAnimationControl, () => ({
+    __proto__: dart.getMethods(simple_animations.CustomAnimationControl.__proto__),
+    toString: dart.fnType(dart.legacy(core.String), []),
+    [$toString]: dart.fnType(dart.legacy(core.String), [])
   }));
-  dart.setGetterSignature(path_point.CubicPathPoint, () => ({
-    __proto__: dart.getGetters(path_point.CubicPathPoint.__proto__),
-    inPoint: dart.legacy(vec2d.Vec2D),
-    outPoint: dart.legacy(vec2d.Vec2D)
+  dart.setLibraryUri(simple_animations.CustomAnimationControl, L1);
+  dart.setFieldSignature(simple_animations.CustomAnimationControl, () => ({
+    __proto__: dart.getFields(simple_animations.CustomAnimationControl.__proto__),
+    index: dart.finalFieldType(dart.legacy(core.int)),
+    [_name$]: dart.finalFieldType(dart.legacy(core.String))
   }));
-  dart.setLibraryUri(path_point.CubicPathPoint, L0);
-  dart.setFieldSignature(path_point.CubicPathPoint, () => ({
-    __proto__: dart.getFields(path_point.CubicPathPoint.__proto__),
-    [_in]: dart.fieldType(dart.legacy(vec2d.Vec2D)),
-    [_out]: dart.fieldType(dart.legacy(vec2d.Vec2D))
-  }));
-  dart.defineLazy(path_point, {
-    /*path_point.pointTypeLookup*/get pointTypeLookup() {
-      return HashMapOfintL$PointTypeL().fromIterables(JSArrayOfintL().of([0, 1, 2, 3]), JSArrayOfPointTypeL().of([path_point.PointType.straight, path_point.PointType.mirror, path_point.PointType.disconnected, path_point.PointType.asymmetric]));
-    },
-    set pointTypeLookup(_) {}
-  }, true);
-  dart.trackLibraries("packages/flare_dart/path_point.dart", {
-    "package:flare_dart/path_point.dart": path_point
+  dart.defineExtensionMethods(simple_animations.CustomAnimationControl, ['toString']);
+  simple_animations.CustomAnimationControl.STOP = C56 || CT.C56;
+  simple_animations.CustomAnimationControl.PLAY = C57 || CT.C57;
+  simple_animations.CustomAnimationControl.PLAY_REVERSE = C58 || CT.C58;
+  simple_animations.CustomAnimationControl.PLAY_FROM_START = C59 || CT.C59;
+  simple_animations.CustomAnimationControl.PLAY_REVERSE_FROM_END = C60 || CT.C60;
+  simple_animations.CustomAnimationControl.LOOP = C61 || CT.C61;
+  simple_animations.CustomAnimationControl.MIRROR = C62 || CT.C62;
+  simple_animations.CustomAnimationControl.values = C63 || CT.C63;
+  var C64;
+  const _is_CustomAnimation_default = Symbol('_is_CustomAnimation_default');
+  var tween$0 = dart.privateName(simple_animations, "CustomAnimation.tween");
+  var builder$ = dart.privateName(simple_animations, "CustomAnimation.builder");
+  var control$ = dart.privateName(simple_animations, "CustomAnimation.control");
+  var curve$ = dart.privateName(simple_animations, "CustomAnimation.curve");
+  var duration$ = dart.privateName(simple_animations, "CustomAnimation.duration");
+  var delay$ = dart.privateName(simple_animations, "CustomAnimation.delay");
+  var child$0 = dart.privateName(simple_animations, "CustomAnimation.child");
+  var animationStatusListener$ = dart.privateName(simple_animations, "CustomAnimation.animationStatusListener");
+  var startPosition$ = dart.privateName(simple_animations, "CustomAnimation.startPosition");
+  var fps$0 = dart.privateName(simple_animations, "CustomAnimation.fps");
+  simple_animations.CustomAnimation$ = dart.generic(T => {
+    var TL = () => (TL = dart.constFn(dart.legacy(T)))();
+    var _CustomAnimationStateOfTL = () => (_CustomAnimationStateOfTL = dart.constFn(simple_animations._CustomAnimationState$(TL())))();
+    class CustomAnimation extends framework.StatefulWidget {
+      get tween() {
+        return this[tween$0];
+      }
+      set tween(value) {
+        super.tween = value;
+      }
+      get builder() {
+        return this[builder$];
+      }
+      set builder(value) {
+        super.builder = value;
+      }
+      get control() {
+        return this[control$];
+      }
+      set control(value) {
+        super.control = value;
+      }
+      get curve() {
+        return this[curve$];
+      }
+      set curve(value) {
+        super.curve = value;
+      }
+      get duration() {
+        return this[duration$];
+      }
+      set duration(value) {
+        super.duration = value;
+      }
+      get delay() {
+        return this[delay$];
+      }
+      set delay(value) {
+        super.delay = value;
+      }
+      get child() {
+        return this[child$0];
+      }
+      set child(value) {
+        super.child = value;
+      }
+      get animationStatusListener() {
+        return this[animationStatusListener$];
+      }
+      set animationStatusListener(value) {
+        super.animationStatusListener = value;
+      }
+      get startPosition() {
+        return this[startPosition$];
+      }
+      set startPosition(value) {
+        super.startPosition = value;
+      }
+      get fps() {
+        return this[fps$0];
+      }
+      set fps(value) {
+        super.fps = value;
+      }
+      createState() {
+        return new (_CustomAnimationStateOfTL()).new();
+      }
+    }
+    (CustomAnimation.new = function(opts) {
+      let builder = opts && 'builder' in opts ? opts.builder : null;
+      let tween = opts && 'tween' in opts ? opts.tween : null;
+      let control = opts && 'control' in opts ? opts.control : C57 || CT.C57;
+      let curve = opts && 'curve' in opts ? opts.curve : C55 || CT.C55;
+      let duration = opts && 'duration' in opts ? opts.duration : C54 || CT.C54;
+      let delay = opts && 'delay' in opts ? opts.delay : C64 || CT.C64;
+      let startPosition = opts && 'startPosition' in opts ? opts.startPosition : 0;
+      let child = opts && 'child' in opts ? opts.child : null;
+      let animationStatusListener = opts && 'animationStatusListener' in opts ? opts.animationStatusListener : null;
+      let fps = opts && 'fps' in opts ? opts.fps : null;
+      let key = opts && 'key' in opts ? opts.key : null;
+      let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+      this[builder$] = builder;
+      this[tween$0] = tween;
+      this[control$] = control;
+      this[curve$] = curve;
+      this[duration$] = duration;
+      this[delay$] = delay;
+      this[startPosition$] = startPosition;
+      this[child$0] = child;
+      this[animationStatusListener$] = animationStatusListener;
+      this[fps$0] = fps;
+      if (!(tween != null)) dart.assertFailed("Please set property tween. Example:\ntween: Tween(from: 0.0, to: 100.0)", L3, 100, 16, "tween != null");
+      if (!(builder != null)) dart.assertFailed("Please set property builder. Example:\nbuilder: (context, child, value) => Container(width: value))", L3, 102, 16, "builder != null");
+      if (!(dart.notNull(startPosition) >= 0 && dart.notNull(startPosition) <= 1)) dart.assertFailed("The property startPosition must have a value between 0.0 and 1.0.", L3, 104, 16, "startPosition >= 0 && startPosition <= 1");
+      CustomAnimation.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+      ;
+    }).prototype = CustomAnimation.prototype;
+    dart.addTypeTests(CustomAnimation);
+    CustomAnimation.prototype[_is_CustomAnimation_default] = true;
+    dart.addTypeCaches(CustomAnimation);
+    dart.setMethodSignature(CustomAnimation, () => ({
+      __proto__: dart.getMethods(CustomAnimation.__proto__),
+      createState: dart.fnType(dart.legacy(simple_animations._CustomAnimationState$(dart.legacy(T))), [])
+    }));
+    dart.setLibraryUri(CustomAnimation, L1);
+    dart.setFieldSignature(CustomAnimation, () => ({
+      __proto__: dart.getFields(CustomAnimation.__proto__),
+      tween: dart.finalFieldType(dart.legacy(tween$.Animatable$(dart.legacy(T)))),
+      builder: dart.finalFieldType(dart.legacy(dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext), dart.legacy(framework.Widget), dart.legacy(T)]))),
+      control: dart.finalFieldType(dart.legacy(simple_animations.CustomAnimationControl)),
+      curve: dart.finalFieldType(dart.legacy(curves.Curve)),
+      duration: dart.finalFieldType(dart.legacy(core.Duration)),
+      delay: dart.finalFieldType(dart.legacy(core.Duration)),
+      child: dart.finalFieldType(dart.legacy(framework.Widget)),
+      animationStatusListener: dart.finalFieldType(dart.legacy(dart.fnType(dart.void, [animation.AnimationStatus]))),
+      startPosition: dart.finalFieldType(dart.legacy(core.double)),
+      fps: dart.finalFieldType(dart.legacy(core.int))
+    }));
+    return CustomAnimation;
+  });
+  simple_animations.CustomAnimation = simple_animations.CustomAnimation$();
+  dart.addTypeTests(simple_animations.CustomAnimation, _is_CustomAnimation_default);
+  var _animation = dart.privateName(simple_animations, "_animation");
+  var _isDisposed = dart.privateName(simple_animations, "_isDisposed");
+  var _waitForDelay = dart.privateName(simple_animations, "_waitForDelay");
+  var _isControlSetToMirror = dart.privateName(simple_animations, "_isControlSetToMirror");
+  var _buildAnimation = dart.privateName(simple_animations, "_buildAnimation");
+  var _applyControlInstruction = dart.privateName(simple_animations, "_applyControlInstruction");
+  const _is__CustomAnimationState_default = Symbol('_is__CustomAnimationState_default');
+  simple_animations._CustomAnimationState$ = dart.generic(T => {
+    var TL = () => (TL = dart.constFn(dart.legacy(T)))();
+    var CustomAnimationOfTL = () => (CustomAnimationOfTL = dart.constFn(simple_animations.CustomAnimation$(TL())))();
+    var CustomAnimationLOfTL = () => (CustomAnimationLOfTL = dart.constFn(dart.legacy(CustomAnimationOfTL())))();
+    var BuildContextLAndWidgetLAndTLToWidgetL = () => (BuildContextLAndWidgetLAndTLToWidgetL = dart.constFn(dart.fnType(WidgetL(), [BuildContextL(), WidgetL(), TL()])))();
+    var BuildContextLAndWidgetLAndTLToLWidgetL = () => (BuildContextLAndWidgetLAndTLToLWidgetL = dart.constFn(dart.legacy(BuildContextLAndWidgetLAndTLToWidgetL())))();
+    const State_AnimationMixin$36 = class State_AnimationMixin extends framework.State$(dart.legacy(simple_animations.CustomAnimation$(dart.legacy(T)))) {};
+    (State_AnimationMixin$36.new = function() {
+      simple_animations.AnimationMixin$(dart.legacy(simple_animations.CustomAnimation$(dart.legacy(T))))[dart.mixinNew].call(this);
+      State_AnimationMixin$36.__proto__.new.call(this);
+    }).prototype = State_AnimationMixin$36.prototype;
+    dart.applyMixin(State_AnimationMixin$36, simple_animations.AnimationMixin$(dart.legacy(simple_animations.CustomAnimation$(dart.legacy(T)))));
+    class _CustomAnimationState extends State_AnimationMixin$36 {
+      initState() {
+        this.aniController = this.createController({fps: this.widget.fps});
+        this.aniController.value = this.widget.startPosition;
+        this.aniController.duration = this.widget.duration;
+        this[_buildAnimation]();
+        if (this.widget.animationStatusListener != null) {
+          this.aniController.addStatusListener(this.widget.animationStatusListener);
+        }
+        this.asyncInitState();
+        super.initState();
+      }
+      [_buildAnimation]() {
+        this[_animation] = supercharged['AnimatableSCF|animatedBy'](TL(), supercharged['AnimatableSCF|curved'](TL(), this.widget.tween, this.widget.curve), this.aniController);
+      }
+      asyncInitState() {
+        return async.async(dart.void, (function* asyncInitState() {
+          if (this.widget.delay != null) {
+            yield FutureOfvoid().delayed(this.widget.delay);
+          }
+          this[_waitForDelay] = false;
+          this[_applyControlInstruction]();
+        }).bind(this));
+      }
+      didUpdateWidget(oldWidget) {
+        CustomAnimationLOfTL().as(oldWidget);
+        this.aniController.duration = this.widget.duration;
+        this[_buildAnimation]();
+        this[_applyControlInstruction]();
+        super.didUpdateWidget(oldWidget);
+      }
+      [_applyControlInstruction]() {
+        return async.async(dart.void, (function* _applyControlInstruction() {
+          if (dart.test(this[_isDisposed]) || dart.test(this[_waitForDelay])) {
+            return;
+          }
+          if (this.widget.control == simple_animations.CustomAnimationControl.STOP) {
+            this.aniController.stop();
+          }
+          if (this.widget.control == simple_animations.CustomAnimationControl.PLAY) {
+            pedantic.unawaited(simple_animations['AnimationControllerExtension|play'](this.aniController));
+          }
+          if (this.widget.control == simple_animations.CustomAnimationControl.PLAY_REVERSE) {
+            pedantic.unawaited(simple_animations['AnimationControllerExtension|playReverse'](this.aniController));
+          }
+          if (this.widget.control == simple_animations.CustomAnimationControl.PLAY_FROM_START) {
+            pedantic.unawaited(this.aniController.forward({from: 0.0}));
+          }
+          if (this.widget.control == simple_animations.CustomAnimationControl.PLAY_REVERSE_FROM_END) {
+            pedantic.unawaited(this.aniController.reverse({from: 1.0}));
+          }
+          if (this.widget.control == simple_animations.CustomAnimationControl.LOOP) {
+            pedantic.unawaited(simple_animations['AnimationControllerExtension|loop'](this.aniController));
+          }
+          if (this.widget.control == simple_animations.CustomAnimationControl.MIRROR && !dart.test(this[_isControlSetToMirror])) {
+            this[_isControlSetToMirror] = true;
+            pedantic.unawaited(simple_animations['AnimationControllerExtension|mirror'](this.aniController));
+          }
+          if (this.widget.control != simple_animations.CustomAnimationControl.MIRROR) {
+            this[_isControlSetToMirror] = false;
+          }
+        }).bind(this));
+      }
+      build(context) {
+        let t4, t3, t2, t1;
+        t1 = this.widget;
+        t2 = context;
+        t3 = this.widget.child;
+        t4 = this[_animation].value;
+        return BuildContextLAndWidgetLAndTLToLWidgetL().as(t1.builder)(t2, t3, t4);
+      }
+      dispose() {
+        this[_isDisposed] = true;
+        super.dispose();
+      }
+    }
+    (_CustomAnimationState.new = function() {
+      this.aniController = null;
+      this[_animation] = null;
+      this[_isDisposed] = false;
+      this[_waitForDelay] = true;
+      this[_isControlSetToMirror] = false;
+      _CustomAnimationState.__proto__.new.call(this);
+      ;
+    }).prototype = _CustomAnimationState.prototype;
+    dart.addTypeTests(_CustomAnimationState);
+    _CustomAnimationState.prototype[_is__CustomAnimationState_default] = true;
+    dart.addTypeCaches(_CustomAnimationState);
+    dart.setMethodSignature(_CustomAnimationState, () => ({
+      __proto__: dart.getMethods(_CustomAnimationState.__proto__),
+      [_buildAnimation]: dart.fnType(dart.void, []),
+      asyncInitState: dart.fnType(dart.void, []),
+      didUpdateWidget: dart.fnType(dart.void, [dart.legacy(core.Object)]),
+      [_applyControlInstruction]: dart.fnType(dart.void, []),
+      build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
+    }));
+    dart.setLibraryUri(_CustomAnimationState, L1);
+    dart.setFieldSignature(_CustomAnimationState, () => ({
+      __proto__: dart.getFields(_CustomAnimationState.__proto__),
+      aniController: dart.fieldType(dart.legacy(animation_controller.AnimationController)),
+      [_animation]: dart.fieldType(dart.legacy(animation.Animation$(dart.legacy(T)))),
+      [_isDisposed]: dart.fieldType(dart.legacy(core.bool)),
+      [_waitForDelay]: dart.fieldType(dart.legacy(core.bool)),
+      [_isControlSetToMirror]: dart.fieldType(dart.legacy(core.bool))
+    }));
+    return _CustomAnimationState;
+  });
+  simple_animations._CustomAnimationState = simple_animations._CustomAnimationState$();
+  dart.addTypeTests(simple_animations._CustomAnimationState, _is__CustomAnimationState_default);
+  var C67;
+  var C68;
+  var C69;
+  var C70;
+  var C71;
+  var C72;
+  var C73;
+  var C66;
+  var C65;
+  const _is_LoopAnimation_default = Symbol('_is_LoopAnimation_default');
+  var builder$0 = dart.privateName(simple_animations, "LoopAnimation.builder");
+  var child$1 = dart.privateName(simple_animations, "LoopAnimation.child");
+  var duration$0 = dart.privateName(simple_animations, "LoopAnimation.duration");
+  var tween$1 = dart.privateName(simple_animations, "LoopAnimation.tween");
+  var curve$0 = dart.privateName(simple_animations, "LoopAnimation.curve");
+  var fps$1 = dart.privateName(simple_animations, "LoopAnimation.fps");
+  simple_animations.LoopAnimation$ = dart.generic(T => {
+    var TL = () => (TL = dart.constFn(dart.legacy(T)))();
+    var CustomAnimationOfTL = () => (CustomAnimationOfTL = dart.constFn(simple_animations.CustomAnimation$(TL())))();
+    class LoopAnimation extends framework.StatelessWidget {
+      get builder() {
+        return this[builder$0];
+      }
+      set builder(value) {
+        super.builder = value;
+      }
+      get child() {
+        return this[child$1];
+      }
+      set child(value) {
+        super.child = value;
+      }
+      get duration() {
+        return this[duration$0];
+      }
+      set duration(value) {
+        super.duration = value;
+      }
+      get tween() {
+        return this[tween$1];
+      }
+      set tween(value) {
+        super.tween = value;
+      }
+      get curve() {
+        return this[curve$0];
+      }
+      set curve(value) {
+        super.curve = value;
+      }
+      get fps() {
+        return this[fps$1];
+      }
+      set fps(value) {
+        super.fps = value;
+      }
+      build(context) {
+        return new (CustomAnimationOfTL()).new({builder: this.builder, control: simple_animations.CustomAnimationControl.LOOP, tween: this.tween, duration: this.duration, curve: this.curve, child: this.child, fps: this.fps, $creationLocationd_0dea112b090073317d4: C65 || CT.C65});
+      }
+    }
+    (LoopAnimation.new = function(opts) {
+      let builder = opts && 'builder' in opts ? opts.builder : null;
+      let tween = opts && 'tween' in opts ? opts.tween : null;
+      let duration = opts && 'duration' in opts ? opts.duration : C54 || CT.C54;
+      let curve = opts && 'curve' in opts ? opts.curve : C55 || CT.C55;
+      let child = opts && 'child' in opts ? opts.child : null;
+      let fps = opts && 'fps' in opts ? opts.fps : null;
+      let key = opts && 'key' in opts ? opts.key : null;
+      let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+      this[builder$0] = builder;
+      this[tween$1] = tween;
+      this[duration$0] = duration;
+      this[curve$0] = curve;
+      this[child$1] = child;
+      this[fps$1] = fps;
+      LoopAnimation.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+      ;
+    }).prototype = LoopAnimation.prototype;
+    dart.addTypeTests(LoopAnimation);
+    LoopAnimation.prototype[_is_LoopAnimation_default] = true;
+    dart.addTypeCaches(LoopAnimation);
+    dart.setMethodSignature(LoopAnimation, () => ({
+      __proto__: dart.getMethods(LoopAnimation.__proto__),
+      build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
+    }));
+    dart.setLibraryUri(LoopAnimation, L1);
+    dart.setFieldSignature(LoopAnimation, () => ({
+      __proto__: dart.getFields(LoopAnimation.__proto__),
+      builder: dart.finalFieldType(dart.legacy(dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext), dart.legacy(framework.Widget), dart.legacy(T)]))),
+      child: dart.finalFieldType(dart.legacy(framework.Widget)),
+      duration: dart.finalFieldType(dart.legacy(core.Duration)),
+      tween: dart.finalFieldType(dart.legacy(tween$.Animatable$(dart.legacy(T)))),
+      curve: dart.finalFieldType(dart.legacy(curves.Curve)),
+      fps: dart.finalFieldType(dart.legacy(core.int))
+    }));
+    return LoopAnimation;
+  });
+  simple_animations.LoopAnimation = simple_animations.LoopAnimation$();
+  dart.addTypeTests(simple_animations.LoopAnimation, _is_LoopAnimation_default);
+  var C76;
+  var C77;
+  var C78;
+  var C79;
+  var C80;
+  var C81;
+  var C82;
+  var C75;
+  var C74;
+  const _is_MirrorAnimation_default = Symbol('_is_MirrorAnimation_default');
+  var builder$1 = dart.privateName(simple_animations, "MirrorAnimation.builder");
+  var child$2 = dart.privateName(simple_animations, "MirrorAnimation.child");
+  var duration$1 = dart.privateName(simple_animations, "MirrorAnimation.duration");
+  var tween$2 = dart.privateName(simple_animations, "MirrorAnimation.tween");
+  var curve$1 = dart.privateName(simple_animations, "MirrorAnimation.curve");
+  var fps$2 = dart.privateName(simple_animations, "MirrorAnimation.fps");
+  simple_animations.MirrorAnimation$ = dart.generic(T => {
+    var TL = () => (TL = dart.constFn(dart.legacy(T)))();
+    var CustomAnimationOfTL = () => (CustomAnimationOfTL = dart.constFn(simple_animations.CustomAnimation$(TL())))();
+    class MirrorAnimation extends framework.StatelessWidget {
+      get builder() {
+        return this[builder$1];
+      }
+      set builder(value) {
+        super.builder = value;
+      }
+      get child() {
+        return this[child$2];
+      }
+      set child(value) {
+        super.child = value;
+      }
+      get duration() {
+        return this[duration$1];
+      }
+      set duration(value) {
+        super.duration = value;
+      }
+      get tween() {
+        return this[tween$2];
+      }
+      set tween(value) {
+        super.tween = value;
+      }
+      get curve() {
+        return this[curve$1];
+      }
+      set curve(value) {
+        super.curve = value;
+      }
+      get fps() {
+        return this[fps$2];
+      }
+      set fps(value) {
+        super.fps = value;
+      }
+      build(context) {
+        return new (CustomAnimationOfTL()).new({builder: this.builder, control: simple_animations.CustomAnimationControl.MIRROR, tween: this.tween, duration: this.duration, curve: this.curve, child: this.child, fps: this.fps, $creationLocationd_0dea112b090073317d4: C74 || CT.C74});
+      }
+    }
+    (MirrorAnimation.new = function(opts) {
+      let builder = opts && 'builder' in opts ? opts.builder : null;
+      let tween = opts && 'tween' in opts ? opts.tween : null;
+      let duration = opts && 'duration' in opts ? opts.duration : C54 || CT.C54;
+      let curve = opts && 'curve' in opts ? opts.curve : C55 || CT.C55;
+      let child = opts && 'child' in opts ? opts.child : null;
+      let fps = opts && 'fps' in opts ? opts.fps : null;
+      let key = opts && 'key' in opts ? opts.key : null;
+      let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+      this[builder$1] = builder;
+      this[tween$2] = tween;
+      this[duration$1] = duration;
+      this[curve$1] = curve;
+      this[child$2] = child;
+      this[fps$2] = fps;
+      MirrorAnimation.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+      ;
+    }).prototype = MirrorAnimation.prototype;
+    dart.addTypeTests(MirrorAnimation);
+    MirrorAnimation.prototype[_is_MirrorAnimation_default] = true;
+    dart.addTypeCaches(MirrorAnimation);
+    dart.setMethodSignature(MirrorAnimation, () => ({
+      __proto__: dart.getMethods(MirrorAnimation.__proto__),
+      build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
+    }));
+    dart.setLibraryUri(MirrorAnimation, L1);
+    dart.setFieldSignature(MirrorAnimation, () => ({
+      __proto__: dart.getFields(MirrorAnimation.__proto__),
+      builder: dart.finalFieldType(dart.legacy(dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext), dart.legacy(framework.Widget), dart.legacy(T)]))),
+      child: dart.finalFieldType(dart.legacy(framework.Widget)),
+      duration: dart.finalFieldType(dart.legacy(core.Duration)),
+      tween: dart.finalFieldType(dart.legacy(tween$.Animatable$(dart.legacy(T)))),
+      curve: dart.finalFieldType(dart.legacy(curves.Curve)),
+      fps: dart.finalFieldType(dart.legacy(core.int))
+    }));
+    return MirrorAnimation;
+  });
+  simple_animations.MirrorAnimation = simple_animations.MirrorAnimation$();
+  dart.addTypeTests(simple_animations.MirrorAnimation, _is_MirrorAnimation_default);
+  var C85;
+  var C86;
+  var C87;
+  var C88;
+  var C89;
+  var C90;
+  var C91;
+  var C84;
+  var C83;
+  const _is_PlayAnimation_default = Symbol('_is_PlayAnimation_default');
+  var builder$2 = dart.privateName(simple_animations, "PlayAnimation.builder");
+  var child$3 = dart.privateName(simple_animations, "PlayAnimation.child");
+  var duration$2 = dart.privateName(simple_animations, "PlayAnimation.duration");
+  var delay$0 = dart.privateName(simple_animations, "PlayAnimation.delay");
+  var tween$3 = dart.privateName(simple_animations, "PlayAnimation.tween");
+  var curve$2 = dart.privateName(simple_animations, "PlayAnimation.curve");
+  var fps$3 = dart.privateName(simple_animations, "PlayAnimation.fps");
+  simple_animations.PlayAnimation$ = dart.generic(T => {
+    var TL = () => (TL = dart.constFn(dart.legacy(T)))();
+    var CustomAnimationOfTL = () => (CustomAnimationOfTL = dart.constFn(simple_animations.CustomAnimation$(TL())))();
+    class PlayAnimation extends framework.StatelessWidget {
+      get builder() {
+        return this[builder$2];
+      }
+      set builder(value) {
+        super.builder = value;
+      }
+      get child() {
+        return this[child$3];
+      }
+      set child(value) {
+        super.child = value;
+      }
+      get duration() {
+        return this[duration$2];
+      }
+      set duration(value) {
+        super.duration = value;
+      }
+      get delay() {
+        return this[delay$0];
+      }
+      set delay(value) {
+        super.delay = value;
+      }
+      get tween() {
+        return this[tween$3];
+      }
+      set tween(value) {
+        super.tween = value;
+      }
+      get curve() {
+        return this[curve$2];
+      }
+      set curve(value) {
+        super.curve = value;
+      }
+      get fps() {
+        return this[fps$3];
+      }
+      set fps(value) {
+        super.fps = value;
+      }
+      build(context) {
+        return new (CustomAnimationOfTL()).new({builder: this.builder, tween: this.tween, duration: this.duration, delay: this.delay, curve: this.curve, child: this.child, fps: this.fps, $creationLocationd_0dea112b090073317d4: C83 || CT.C83});
+      }
+    }
+    (PlayAnimation.new = function(opts) {
+      let builder = opts && 'builder' in opts ? opts.builder : null;
+      let tween = opts && 'tween' in opts ? opts.tween : null;
+      let duration = opts && 'duration' in opts ? opts.duration : C54 || CT.C54;
+      let delay = opts && 'delay' in opts ? opts.delay : C64 || CT.C64;
+      let curve = opts && 'curve' in opts ? opts.curve : C55 || CT.C55;
+      let child = opts && 'child' in opts ? opts.child : null;
+      let fps = opts && 'fps' in opts ? opts.fps : null;
+      let key = opts && 'key' in opts ? opts.key : null;
+      let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+      this[builder$2] = builder;
+      this[tween$3] = tween;
+      this[duration$2] = duration;
+      this[delay$0] = delay;
+      this[curve$2] = curve;
+      this[child$3] = child;
+      this[fps$3] = fps;
+      PlayAnimation.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+      ;
+    }).prototype = PlayAnimation.prototype;
+    dart.addTypeTests(PlayAnimation);
+    PlayAnimation.prototype[_is_PlayAnimation_default] = true;
+    dart.addTypeCaches(PlayAnimation);
+    dart.setMethodSignature(PlayAnimation, () => ({
+      __proto__: dart.getMethods(PlayAnimation.__proto__),
+      build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
+    }));
+    dart.setLibraryUri(PlayAnimation, L1);
+    dart.setFieldSignature(PlayAnimation, () => ({
+      __proto__: dart.getFields(PlayAnimation.__proto__),
+      builder: dart.finalFieldType(dart.legacy(dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext), dart.legacy(framework.Widget), dart.legacy(T)]))),
+      child: dart.finalFieldType(dart.legacy(framework.Widget)),
+      duration: dart.finalFieldType(dart.legacy(core.Duration)),
+      delay: dart.finalFieldType(dart.legacy(core.Duration)),
+      tween: dart.finalFieldType(dart.legacy(tween$.Animatable$(dart.legacy(T)))),
+      curve: dart.finalFieldType(dart.legacy(curves.Curve)),
+      fps: dart.finalFieldType(dart.legacy(core.int))
+    }));
+    return PlayAnimation;
+  });
+  simple_animations.PlayAnimation = simple_animations.PlayAnimation$();
+  dart.addTypeTests(simple_animations.PlayAnimation, _is_PlayAnimation_default);
+  simple_animations['AnimationControllerExtension|play'] = function AnimationControllerExtension$124play($this, opts) {
+    let t2;
+    let duration = opts && 'duration' in opts ? opts.duration : null;
+    $this.duration = (t2 = duration, t2 == null ? $this.duration : t2);
+    return $this.forward();
+  };
+  simple_animations['AnimationControllerExtension|get#play'] = function AnimationControllerExtension$124get$35play($this) {
+    return dart.fn(opts => {
+      let duration = opts && 'duration' in opts ? opts.duration : null;
+      return simple_animations['AnimationControllerExtension|play']($this, {duration: duration});
+    }, __ToTickerFutureL());
+  };
+  simple_animations['AnimationControllerExtension|playReverse'] = function AnimationControllerExtension$124playReverse($this, opts) {
+    let t4;
+    let duration = opts && 'duration' in opts ? opts.duration : null;
+    $this.duration = (t4 = duration, t4 == null ? $this.duration : t4);
+    return $this.reverse();
+  };
+  simple_animations['AnimationControllerExtension|get#playReverse'] = function AnimationControllerExtension$124get$35playReverse($this) {
+    return dart.fn(opts => {
+      let duration = opts && 'duration' in opts ? opts.duration : null;
+      return simple_animations['AnimationControllerExtension|playReverse']($this, {duration: duration});
+    }, __ToTickerFutureL());
+  };
+  simple_animations['AnimationControllerExtension|loop'] = function AnimationControllerExtension$124loop($this, opts) {
+    let t6;
+    let duration = opts && 'duration' in opts ? opts.duration : null;
+    $this.duration = (t6 = duration, t6 == null ? $this.duration : t6);
+    return $this.repeat();
+  };
+  simple_animations['AnimationControllerExtension|get#loop'] = function AnimationControllerExtension$124get$35loop($this) {
+    return dart.fn(opts => {
+      let duration = opts && 'duration' in opts ? opts.duration : null;
+      return simple_animations['AnimationControllerExtension|loop']($this, {duration: duration});
+    }, __ToTickerFutureL());
+  };
+  simple_animations['AnimationControllerExtension|mirror'] = function AnimationControllerExtension$124mirror($this, opts) {
+    let t8;
+    let duration = opts && 'duration' in opts ? opts.duration : null;
+    $this.duration = (t8 = duration, t8 == null ? $this.duration : t8);
+    return $this.repeat({reverse: true});
+  };
+  simple_animations['AnimationControllerExtension|get#mirror'] = function AnimationControllerExtension$124get$35mirror($this) {
+    return dart.fn(opts => {
+      let duration = opts && 'duration' in opts ? opts.duration : null;
+      return simple_animations['AnimationControllerExtension|mirror']($this, {duration: duration});
+    }, __ToTickerFutureL());
+  };
+  dart.trackLibraries("packages/simple_animations/simple_animations.dart", {
+    "package:simple_animations/simple_animations.dart": simple_animations
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["path_point.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAM4D;;8CAAvD;;;;EAAuD;;;;;;;;;;;;;;;;;;;;;;;;;AAyBxD,YAAO;IACT;;AAGE,YAAO;IACT;SAIoB;AACA,MAAlB,cAAQ,AAAK,IAAD;AAC+B,MAArC,iBAAK,oBAAc,AAAK,IAAD;AAC7B,UAAI,AAAK,IAAD,cAAa;AAC2B,QAA9C,iBAAuB,8CAAS,AAAK,IAAD;;IAExC;SAEuB,QAAa;AACyC,MAArE,yBAAa,oBAAc,AAAO,MAAD,kBAAkB,GAAG;AAExD,yBAAe,eAAU,MAAM,EAAE,kBAAkB;AACvD,UAAI,YAAY,KAAI;AACyC,QAA3D,iBAAW,AAAO,MAAD,kBAAkB,YAAY,EAAE;;IAErD;gBAI4B;AAChB,mBAAS;AACoD,MAAjE,2BAAe,AAAO,MAAD,cAAc,AAAO,MAAD,cAAc,SAAS;AACtE,YAAO,OAAM;IACf;;uCArCoB;IAJV;IACJ,qBAAe;IACT;AAGE,IAAZ,cAAQ,IAAI;EACd;;;;;;;;;;;;;;;;;;;;;;;IAyCO;;;;;;;AAgBa,iBAAO;AACF,MAAvB,AAAK,IAAD,cAAc;AAClB,YAAO,KAAI;IACb;iBAEoC;AAClB,MAAV,WAAK,IAAI;AACK,MAApB,cAAS,AAAK,IAAD;IACf;cAG2B,QAAa;AACD,MAArC,cAAS,AAAO,MAAD,aAAa;AAC5B,oBAAI,kBAAkB;AACpB,cAAO;;AAET,YAAO;IACT;SAGqB,OAAmB;;AACpB,gEAAQ;AAAqB,oBAAS;;;AAEjD,eACM,AAAiB,AAA4B,aAAtD,AAAK,KAAA,MAAC,mBAAK,AAAW,sBAAC,MAAc,aAAT,AAAK,KAAA,MAAC,mBAAK,AAAW,sBAAC,mBAAK,AAAK,KAAA,MAAC;AAC3D,eACM,AAAiB,AAA4B,aAAtD,AAAK,KAAA,MAAC,mBAAK,AAAW,sBAAC,MAAc,aAAT,AAAK,KAAA,MAAC,mBAAK,AAAW,sBAAC,mBAAK,AAAK,KAAA,MAAC;AAE3D,cAAI;AAAK,cAAI;AAAK,cAAI;AAAK,cAAI;AAAK,cAAI;AAAK,cAAI;AAExD,eAAS,IAAI,GAAG,AAAE,CAAD,GAAG,GAAG,IAAA,AAAC,CAAA;AAClB,wBAAY,AAAQ,AAAI,sBAAH,CAAC;AACnB,qBAAS,AAAQ,sBAAC,AAAE,CAAD,GAAG;AAC7B,YAAW,aAAP,MAAM,IAAG;AACP,mBAAK,AAAU,SAAD,GAAG;AAEE,UAAvB,IAAA,AAAE,CAAD,GAAc,aAAV,AAAK,KAAA,QAAC,EAAE,kBAAI,MAAM;AACI,UAA3B,IAAA,AAAE,CAAD,GAAkB,aAAd,AAAK,KAAA,QAAC,AAAG,EAAD,GAAG,mBAAK,MAAM;AACA,UAA3B,IAAA,AAAE,CAAD,GAAkB,aAAd,AAAK,KAAA,QAAC,AAAG,EAAD,GAAG,mBAAK,MAAM;AACA,UAA3B,IAAA,AAAE,CAAD,GAAkB,aAAd,AAAK,KAAA,QAAC,AAAG,EAAD,GAAG,mBAAK,MAAM;AACA,UAA3B,IAAA,AAAE,CAAD,GAAkB,aAAd,AAAK,KAAA,QAAC,AAAG,EAAD,GAAG,mBAAK,MAAM;AACA,UAA3B,IAAA,AAAE,CAAD,GAAkB,aAAd,AAAK,KAAA,QAAC,AAAG,EAAD,GAAG,mBAAK,MAAM;;;AAIzB,gBAAM,AAAM,KAAD;AACW,MAA5B,AAAG,GAAA,MAAC,GAAK,AAAE,AAAK,AAAS,CAAf,GAAG,EAAE,GAAG,AAAE,CAAD,GAAG,EAAE,GAAG,CAAC;AACA,MAA5B,AAAG,GAAA,MAAC,GAAK,AAAE,AAAK,AAAS,CAAf,GAAG,EAAE,GAAG,AAAE,CAAD,GAAG,EAAE,GAAG,CAAC;AAE5B,YAAO,MAAK;IACd;;;IAlEO,gBAAS;AAEM,0DAAgB;;EAAS;2DAEP;IAJjC,gBAAS;AAKV,0DAAgB;AACM,IAA1B,qBAAe,WAAW;EAC5B;sDAEmC,aAAkB;IAT9C,gBAAS;IASqC;AAC/C,0DAAgB;AACM,IAA1B,qBAAe,WAAW;EAC5B;;;;;;;;;;;;;;;;;;;AAgEE,YAAO;IACT;;AAGE,YAAO;IACT;;AAWiB,iBAAO,kCAAe;AACjB,MAApB,AAAK,IAAD,WAAW;AACf,YAAO,KAAI;IACb;cAE8B;AACZ,MAAV,WAAK,IAAI;AACU,MAAnB,iBAAK,WAAK,AAAK,IAAD;AACO,MAArB,iBAAK,YAAM,AAAK,IAAD;IACvB;cAG2B,QAAa;AACmB,MAAnD,yBAAa,WAAK,AAAO,MAAD,kBAAkB,GAAG;AACQ,MAArD,yBAAa,YAAM,AAAO,MAAD,kBAAkB,GAAG;AACpD,oBAAI,kBAAkB;AACpB,cAAO;;AAET,YAAO;IACT;gBAG4B;AACX,mBAAsC,qBAAvB,kBAAY,SAAS;AACY,MAAzD,2BAAe,AAAO,MAAD,UAAU,AAAO,MAAD,UAAU,SAAS;AACG,MAA3D,2BAAe,AAAO,MAAD,WAAW,AAAO,MAAD,WAAW,SAAS;AAChE,YAAO,OAAM;IACf;SAGqB,OAAmB;AACvB,kBAAQ,kCAAe;AAE/B,eACM,AAAiB,AAA4B,aAAtD,AAAK,KAAA,MAAC,mBAAK,AAAW,sBAAC,MAAc,aAAT,AAAK,KAAA,MAAC,mBAAK,AAAW,sBAAC,mBAAK,AAAK,KAAA,MAAC;AAC3D,eACM,AAAiB,AAA4B,aAAtD,AAAK,KAAA,MAAC,mBAAK,AAAW,sBAAC,MAAc,aAAT,AAAK,KAAA,MAAC,mBAAK,AAAW,sBAAC,mBAAK,AAAK,KAAA,MAAC;;AAGzD,gBAAI;AAAK,gBAAI;AAAK,gBAAI;AAAK,gBAAI;AAAK,gBAAI;AAAK,gBAAI;AAExD,iBAAS,IAAI,GAAG,AAAE,CAAD,GAAG,GAAG,IAAA,AAAC,CAAA;AAClB,0BAAY,AAAQ,AAAI,sBAAH,CAAC;AACnB,uBAAS,AAAQ,sBAAC,AAAE,CAAD,GAAG;AAC7B,cAAW,aAAP,MAAM,IAAG;AACP,qBAAK,AAAU,SAAD,GAAG;AAEE,YAAvB,IAAA,AAAE,CAAD,GAAc,aAAV,AAAK,KAAA,QAAC,EAAE,kBAAI,MAAM;AACI,YAA3B,IAAA,AAAE,CAAD,GAAkB,aAAd,AAAK,KAAA,QAAC,AAAG,EAAD,GAAG,mBAAK,MAAM;AACA,YAA3B,IAAA,AAAE,CAAD,GAAkB,aAAd,AAAK,KAAA,QAAC,AAAG,EAAD,GAAG,mBAAK,MAAM;AACA,YAA3B,IAAA,AAAE,CAAD,GAAkB,aAAd,AAAK,KAAA,QAAC,AAAG,EAAD,GAAG,mBAAK,MAAM;AACA,YAA3B,IAAA,AAAE,CAAD,GAAkB,aAAd,AAAK,KAAA,QAAC,AAAG,EAAD,GAAG,mBAAK,MAAM;AACA,YAA3B,IAAA,AAAE,CAAD,GAAkB,aAAd,AAAK,KAAA,QAAC,AAAG,EAAD,GAAG,mBAAK,MAAM;;;AAIzB,kBAAM,AAAM,KAAD;AACW,QAA5B,AAAG,GAAA,MAAC,GAAK,AAAE,AAAK,AAAS,CAAf,GAAG,EAAE,GAAG,AAAE,CAAD,GAAG,EAAE,GAAG,CAAC;AACA,QAA5B,AAAG,GAAA,MAAC,GAAK,AAAE,AAAK,AAAS,CAAf,GAAG,EAAE,GAAG,AAAE,CAAD,GAAG,EAAE,GAAG,CAAC;;;AAIrB,gBAAI;AAAK,gBAAI;AAAK,gBAAI;AAAK,gBAAI;AAAK,gBAAI;AAAK,gBAAI;AACH,QAArD,KAAc,AAAS,AAAoB,aAAtC,AAAK,KAAA,MAAC,mBAAK,AAAG,eAAC,MAAc,aAAT,AAAK,KAAA,MAAC,mBAAK,AAAG,eAAC,mBAAK,AAAK,KAAA,MAAC;AACE,QAArD,KAAc,AAAS,AAAoB,aAAtC,AAAK,KAAA,MAAC,mBAAK,AAAG,eAAC,MAAc,aAAT,AAAK,KAAA,MAAC,mBAAK,AAAG,eAAC,mBAAK,AAAK,KAAA,MAAC;AAEnD,iBAAS,IAAI,GAAG,AAAE,CAAD,GAAG,IAAI,IAAA,AAAC,CAAA;AACnB,0BAAY,AAAQ,AAAI,sBAAH,CAAC;AACnB,uBAAS,AAAQ,sBAAC,AAAE,CAAD,GAAG;AAC7B,cAAW,aAAP,MAAM,IAAG;AACP,qBAAK,AAAU,SAAD,GAAG;AAEE,YAAvB,IAAA,AAAE,CAAD,GAAc,aAAV,AAAK,KAAA,QAAC,EAAE,kBAAI,MAAM;AACI,YAA3B,IAAA,AAAE,CAAD,GAAkB,aAAd,AAAK,KAAA,QAAC,AAAG,EAAD,GAAG,mBAAK,MAAM;AACA,YAA3B,IAAA,AAAE,CAAD,GAAkB,aAAd,AAAK,KAAA,QAAC,AAAG,EAAD,GAAG,mBAAK,MAAM;AACA,YAA3B,IAAA,AAAE,CAAD,GAAkB,aAAd,AAAK,KAAA,QAAC,AAAG,EAAD,GAAG,mBAAK,MAAM;AACA,YAA3B,IAAA,AAAE,CAAD,GAAkB,aAAd,AAAK,KAAA,QAAC,AAAG,EAAD,GAAG,mBAAK,MAAM;AACA,YAA3B,IAAA,AAAE,CAAD,GAAkB,aAAd,AAAK,KAAA,QAAC,AAAG,EAAD,GAAG,mBAAK,MAAM;;;AAIzB,kBAAM,AAAM,KAAD;AACW,QAA5B,AAAG,GAAA,MAAC,GAAK,AAAE,AAAK,AAAS,CAAf,GAAG,EAAE,GAAG,AAAE,CAAD,GAAG,EAAE,GAAG,CAAC;AACA,QAA5B,AAAG,GAAA,MAAC,GAAK,AAAE,AAAK,AAAS,CAAf,GAAG,EAAE,GAAG,AAAE,CAAD,GAAG,EAAE,GAAG,CAAC;;;AAIrB,gBAAI;AAAK,gBAAI;AAAK,gBAAI;AAAK,gBAAI;AAAK,gBAAI;AAAK,gBAAI;AACD,QAAvD,KAAc,AAAU,AAAqB,aAAxC,AAAK,KAAA,MAAC,mBAAK,AAAI,gBAAC,MAAc,aAAT,AAAK,KAAA,MAAC,mBAAK,AAAI,gBAAC,mBAAK,AAAK,KAAA,MAAC;AACE,QAAvD,KAAc,AAAU,AAAqB,aAAxC,AAAK,KAAA,MAAC,mBAAK,AAAI,gBAAC,MAAc,aAAT,AAAK,KAAA,MAAC,mBAAK,AAAI,gBAAC,mBAAK,AAAK,KAAA,MAAC;AAErD,iBAAS,IAAI,IAAI,AAAE,CAAD,GAAG,IAAI,IAAA,AAAC,CAAA;AACpB,0BAAY,AAAQ,AAAI,sBAAH,CAAC;AACnB,uBAAS,AAAQ,sBAAC,AAAE,CAAD,GAAG;AAC7B,cAAW,aAAP,MAAM,IAAG;AACP,qBAAK,AAAU,SAAD,GAAG;AAEE,YAAvB,IAAA,AAAE,CAAD,GAAc,aAAV,AAAK,KAAA,QAAC,EAAE,kBAAI,MAAM;AACI,YAA3B,IAAA,AAAE,CAAD,GAAkB,aAAd,AAAK,KAAA,QAAC,AAAG,EAAD,GAAG,mBAAK,MAAM;AACA,YAA3B,IAAA,AAAE,CAAD,GAAkB,aAAd,AAAK,KAAA,QAAC,AAAG,EAAD,GAAG,mBAAK,MAAM;AACA,YAA3B,IAAA,AAAE,CAAD,GAAkB,aAAd,AAAK,KAAA,QAAC,AAAG,EAAD,GAAG,mBAAK,MAAM;AACA,YAA3B,IAAA,AAAE,CAAD,GAAkB,aAAd,AAAK,KAAA,QAAC,AAAG,EAAD,GAAG,mBAAK,MAAM;AACA,YAA3B,IAAA,AAAE,CAAD,GAAkB,aAAd,AAAK,KAAA,QAAC,AAAG,EAAD,GAAG,mBAAK,MAAM;;;AAIzB,kBAAM,AAAM,KAAD;AACW,QAA5B,AAAG,GAAA,MAAC,GAAK,AAAE,AAAK,AAAS,CAAf,GAAG,EAAE,GAAG,AAAE,CAAD,GAAG,EAAE,GAAG,CAAC;AACA,QAA5B,AAAG,GAAA,MAAC,GAAK,AAAE,AAAK,AAAS,CAAf,GAAG,EAAE,GAAG,AAAE,CAAD,GAAG,EAAE,GAAG,CAAC;;AAG9B,YAAO,MAAK;IACd;;4CAnIyB;IAHnB,YAAM;IACN,aAAO;AAEoB,uDAAM,IAAI;;EAAC;mDAUZ,aAAmB,SAAe;IAb5D,YAAM;IACN,aAAO;AAaP,uDAAgB;AACM,IAA1B,qBAAe,WAAW;AACb,IAAb,YAAM,OAAO;AACE,IAAf,aAAO,QAAQ;EACjB;;;;;;;;;;;;;;;;;;;;;;MArJsB,0BAAe;YACnC,0CAAsC,oBACxC,GACA,GACA,GACA,KACC,0BACS,+BACA,6BACA,mCACA","file":"../../../../../../../packages/flare_dart/path_point.dart.lib.js"}');
+    "package:simple_animations/simple_animations.dart": ["anicoto/animation_controller_extension.dart", "anicoto/animation_mixin.dart", "liquid/plasma/plasma.dart", "multi_tween/default_animation_properties.dart", "multi_tween/multi_tween.dart", "stateless_animation/animated_widget_builder.dart", "stateless_animation/custom_animation.dart", "stateless_animation/loop_animation.dart", "stateless_animation/mirror_animation.dart", "stateless_animation/play_animation.dart"]
+  }, '{"version":3,"sourceRoot":"","sources":["anicoto/animation_mixin.dart","liquid/plasma/plasma.dart","multi_tween/default_animation_properties.dart","multi_tween/multi_tween.dart","stateless_animation/custom_animation.dart","stateless_animation/loop_animation.dart","stateless_animation/mirror_animation.dart","stateless_animation/play_animation.dart","anicoto/animation_controller_extension.dart"],"names":[],"mappings":"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","file":"../../../../../../../packages/simple_animations/simple_animations.dart.lib.js"}');
   // Exports:
   return {
-    path_point: path_point
+    simple_animations: simple_animations
   };
 }));
 
-//# sourceMappingURL=path_point.dart.lib.js.map
+//# sourceMappingURL=simple_animations.dart.lib.js.map

@@ -6,6 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong/latlong.dart' as location;
 import 'package:my_website_project/screenComponents/cardView.dart';
+import '../screenComponents/locations.dart';
+import 'package:percent_indicator/percent_indicator.dart';
+import 'package:square_percent_indicater/square_percent_indicater.dart';
 
 location.LatLng istanbul = new location.LatLng(41.015137, 28.979530);
 location.LatLng istanbul2 = new location.LatLng(41.015137, 28.979530);
@@ -42,7 +45,7 @@ class _MapViewState extends State<MapView> with TickerProviderStateMixin {
         new TileLayerOptions(urlTemplate: url),
         new PolygonLayerOptions(polygons: [
           new Polygon(
-            points: points,
+            points: misir,
             borderStrokeWidth: 20,
             color: Colors.red,
             borderColor: Colors.red,
@@ -51,16 +54,19 @@ class _MapViewState extends State<MapView> with TickerProviderStateMixin {
         MarkerLayerOptions(
           markers: [
             Marker(
-              width: 20.0,
+              width: 50.0,
               height: 20.0,
-              point: istanbul,
+              point: misir[0],
               builder: (ctx) => new Container(
                 child: new GestureDetector(
-                  onTap: () {
-                    animatedMapMove(istanbul2, 15, mapController, this);
-                  },
-                  child: new FlutterLogo(),
-                ),
+                    onTap: () {
+                      animatedMapMove(istanbul2, 15, mapController, this);
+                    },
+                    child: Text(
+                      "Misir",
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    )),
               ),
             ),
           ],

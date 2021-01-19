@@ -1,460 +1,310 @@
-define(['dart_sdk'], (function load__packages__intl__date_symbols_dart(dart_sdk) {
+define(['dart_sdk', 'packages/flutter/src/services/text_input.dart', 'packages/characters/src/characters_impl.dart', 'packages/characters/src/extensions.dart', 'packages/flutter/src/services/text_editing.dart'], (function load__packages__flutter__src__services__text_formatter_dart(dart_sdk, packages__flutter__src__services__text_input$46dart, packages__characters__src__characters_impl$46dart, packages__characters__src__extensions$46dart, packages__flutter__src__services__text_editing$46dart) {
   'use strict';
   const core = dart_sdk.core;
-  const collection = dart_sdk.collection;
-  const _js_helper = dart_sdk._js_helper;
+  const math = dart_sdk.math;
+  const ui = dart_sdk.ui;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  var date_symbols = Object.create(dart.library);
-  var $_get = dartx._get;
-  var $_set = dartx._set;
-  var $toString = dartx.toString;
-  var StringL = () => (StringL = dart.constFn(dart.legacy(core.String)))();
-  var ListOfStringL = () => (ListOfStringL = dart.constFn(core.List$(StringL())))();
-  var ListLOfStringL = () => (ListLOfStringL = dart.constFn(dart.legacy(ListOfStringL())))();
-  var StringLToListLOfStringL = () => (StringLToListLOfStringL = dart.constFn(dart.fnType(ListLOfStringL(), [StringL()])))();
-  var LinkedHashMapOfStringL$StringL = () => (LinkedHashMapOfStringL$StringL = dart.constFn(collection.LinkedHashMap$(StringL(), StringL())))();
-  var intL = () => (intL = dart.constFn(dart.legacy(core.int)))();
-  var ListOfintL = () => (ListOfintL = dart.constFn(core.List$(intL())))();
-  var IdentityMapOfStringL$dynamic = () => (IdentityMapOfStringL$dynamic = dart.constFn(_js_helper.IdentityMap$(StringL(), dart.dynamic)))();
+  const text_input = packages__flutter__src__services__text_input$46dart.src__services__text_input;
+  const characters_impl = packages__characters__src__characters_impl$46dart.src__characters_impl;
+  const extensions = packages__characters__src__extensions$46dart.src__extensions;
+  const text_editing = packages__flutter__src__services__text_editing$46dart.src__services__text_editing;
+  var text_formatter = Object.create(dart.library);
+  var $isNotEmpty = dartx.isNotEmpty;
+  var $splitMapJoin = dartx.splitMapJoin;
+  var $length = dartx.length;
+  var $substring = dartx.substring;
+  var MatchToString = () => (MatchToString = dart.constFn(dart.fnType(core.String, [core.Match])))();
+  var StringToString = () => (StringToString = dart.constFn(dart.fnType(core.String, [core.String])))();
   const CT = Object.create(null);
-  var L0 = "package:intl/date_symbols.dart";
+  var L0 = "file:///C:/src/flutter/packages/flutter/lib/src/services/text_formatter.dart";
+  var L1 = "package:flutter/src/services/text_formatter.dart";
   dart.defineLazy(CT, {
-    get C0() {
-      return C0 = dart.constList(["BC", "AD"], StringL());
-    },
     get C1() {
-      return C1 = dart.constList(["Before Christ", "Anno Domini"], StringL());
+      return C1 = dart.const({
+        __proto__: ui.TextAffinity.prototype,
+        [_name]: "TextAffinity.downstream",
+        index: 1
+      });
     },
-    get C2() {
-      return C2 = dart.constList(["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"], StringL());
-    },
-    get C3() {
-      return C3 = dart.constList(["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"], StringL());
-    },
-    get C4() {
-      return C4 = dart.constList(["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"], StringL());
-    },
-    get C5() {
-      return C5 = dart.constList(["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], StringL());
-    },
-    get C6() {
-      return C6 = dart.constList(["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"], StringL());
-    },
-    get C7() {
-      return C7 = dart.constList(["S", "M", "T", "W", "T", "F", "S"], StringL());
-    },
-    get C8() {
-      return C8 = dart.constList(["Q1", "Q2", "Q3", "Q4"], StringL());
-    },
-    get C9() {
-      return C9 = dart.constList(["1st quarter", "2nd quarter", "3rd quarter", "4th quarter"], StringL());
-    },
-    get C10() {
-      return C10 = dart.constList(["AM", "PM"], StringL());
-    },
-    get C11() {
-      return C11 = dart.constList(["EEEE, MMMM d, y", "MMMM d, y", "MMM d, y", "M/d/yy"], StringL());
-    },
-    get C12() {
-      return C12 = dart.constList(["h:mm:ss a zzzz", "h:mm:ss a z", "h:mm:ss a", "h:mm a"], StringL());
-    },
-    get C13() {
-      return C13 = dart.constList([5, 6], intL());
-    },
-    get C14() {
-      return C14 = dart.constList(["{1} 'at' {0}", "{1} 'at' {0}", "{1}, {0}", "{1}, {0}"], StringL());
-    },
-    get C15() {
-      return C15 = dart.constMap(StringL(), StringL(), ["d", "d", "E", "EEE", "EEEE", "EEEE", "LLL", "LLL", "LLLL", "LLLL", "M", "L", "Md", "M/d", "MEd", "EEE, M/d", "MMM", "LLL", "MMMd", "MMM d", "MMMEd", "EEE, MMM d", "MMMM", "LLLL", "MMMMd", "MMMM d", "MMMMEEEEd", "EEEE, MMMM d", "QQQ", "QQQ", "QQQQ", "QQQQ", "y", "y", "yM", "M/y", "yMd", "M/d/y", "yMEd", "EEE, M/d/y", "yMMM", "MMM y", "yMMMd", "MMM d, y", "yMMMEd", "EEE, MMM d, y", "yMMMM", "MMMM y", "yMMMMd", "MMMM d, y", "yMMMMEEEEd", "EEEE, MMMM d, y", "yQQQ", "QQQ y", "yQQQQ", "QQQQ y", "H", "HH", "Hm", "HH:mm", "Hms", "HH:mm:ss", "j", "h a", "jm", "h:mm a", "jms", "h:mm:ss a", "jmv", "h:mm a v", "jmz", "h:mm a z", "jz", "h a z", "m", "m", "ms", "mm:ss", "s", "s", "v", "v", "z", "z", "zzzz", "zzzz", "ZZZZ", "ZZZZ"]);
+    get C0() {
+      return C0 = dart.const({
+        __proto__: text_editing.TextSelection.prototype,
+        [TextRange_end]: -1,
+        [TextRange_start]: -1,
+        [TextSelection_isDirectional]: false,
+        [TextSelection_affinity]: C1 || CT.C1,
+        [TextSelection_extentOffset]: -1,
+        [TextSelection_baseOffset]: -1
+      });
     }
   }, false);
-  var _serializeToMap = dart.privateName(date_symbols, "_serializeToMap");
-  var NAME$ = dart.privateName(date_symbols, "DateSymbols.NAME");
-  var ERAS$ = dart.privateName(date_symbols, "DateSymbols.ERAS");
-  var ERANAMES$ = dart.privateName(date_symbols, "DateSymbols.ERANAMES");
-  var NARROWMONTHS$ = dart.privateName(date_symbols, "DateSymbols.NARROWMONTHS");
-  var STANDALONENARROWMONTHS$ = dart.privateName(date_symbols, "DateSymbols.STANDALONENARROWMONTHS");
-  var MONTHS$ = dart.privateName(date_symbols, "DateSymbols.MONTHS");
-  var STANDALONEMONTHS$ = dart.privateName(date_symbols, "DateSymbols.STANDALONEMONTHS");
-  var SHORTMONTHS$ = dart.privateName(date_symbols, "DateSymbols.SHORTMONTHS");
-  var STANDALONESHORTMONTHS$ = dart.privateName(date_symbols, "DateSymbols.STANDALONESHORTMONTHS");
-  var WEEKDAYS$ = dart.privateName(date_symbols, "DateSymbols.WEEKDAYS");
-  var STANDALONEWEEKDAYS$ = dart.privateName(date_symbols, "DateSymbols.STANDALONEWEEKDAYS");
-  var SHORTWEEKDAYS$ = dart.privateName(date_symbols, "DateSymbols.SHORTWEEKDAYS");
-  var STANDALONESHORTWEEKDAYS$ = dart.privateName(date_symbols, "DateSymbols.STANDALONESHORTWEEKDAYS");
-  var NARROWWEEKDAYS$ = dart.privateName(date_symbols, "DateSymbols.NARROWWEEKDAYS");
-  var STANDALONENARROWWEEKDAYS$ = dart.privateName(date_symbols, "DateSymbols.STANDALONENARROWWEEKDAYS");
-  var SHORTQUARTERS$ = dart.privateName(date_symbols, "DateSymbols.SHORTQUARTERS");
-  var QUARTERS$ = dart.privateName(date_symbols, "DateSymbols.QUARTERS");
-  var AMPMS$ = dart.privateName(date_symbols, "DateSymbols.AMPMS");
-  var DATEFORMATS$ = dart.privateName(date_symbols, "DateSymbols.DATEFORMATS");
-  var TIMEFORMATS$ = dart.privateName(date_symbols, "DateSymbols.TIMEFORMATS");
-  var DATETIMEFORMATS$ = dart.privateName(date_symbols, "DateSymbols.DATETIMEFORMATS");
-  var AVAILABLEFORMATS$ = dart.privateName(date_symbols, "DateSymbols.AVAILABLEFORMATS");
-  var FIRSTDAYOFWEEK$ = dart.privateName(date_symbols, "DateSymbols.FIRSTDAYOFWEEK");
-  var WEEKENDRANGE$ = dart.privateName(date_symbols, "DateSymbols.WEEKENDRANGE");
-  var FIRSTWEEKCUTOFFDAY$ = dart.privateName(date_symbols, "DateSymbols.FIRSTWEEKCUTOFFDAY");
-  var ZERODIGIT$ = dart.privateName(date_symbols, "DateSymbols.ZERODIGIT");
-  date_symbols.DateSymbols = class DateSymbols extends core.Object {
-    get NAME() {
-      return this[NAME$];
-    }
-    set NAME(value) {
-      this[NAME$] = value;
-    }
-    get ERAS() {
-      return this[ERAS$];
-    }
-    set ERAS(value) {
-      this[ERAS$] = value;
-    }
-    get ERANAMES() {
-      return this[ERANAMES$];
-    }
-    set ERANAMES(value) {
-      this[ERANAMES$] = value;
-    }
-    get NARROWMONTHS() {
-      return this[NARROWMONTHS$];
-    }
-    set NARROWMONTHS(value) {
-      this[NARROWMONTHS$] = value;
-    }
-    get STANDALONENARROWMONTHS() {
-      return this[STANDALONENARROWMONTHS$];
-    }
-    set STANDALONENARROWMONTHS(value) {
-      this[STANDALONENARROWMONTHS$] = value;
-    }
-    get MONTHS() {
-      return this[MONTHS$];
-    }
-    set MONTHS(value) {
-      this[MONTHS$] = value;
-    }
-    get STANDALONEMONTHS() {
-      return this[STANDALONEMONTHS$];
-    }
-    set STANDALONEMONTHS(value) {
-      this[STANDALONEMONTHS$] = value;
-    }
-    get SHORTMONTHS() {
-      return this[SHORTMONTHS$];
-    }
-    set SHORTMONTHS(value) {
-      this[SHORTMONTHS$] = value;
-    }
-    get STANDALONESHORTMONTHS() {
-      return this[STANDALONESHORTMONTHS$];
-    }
-    set STANDALONESHORTMONTHS(value) {
-      this[STANDALONESHORTMONTHS$] = value;
-    }
-    get WEEKDAYS() {
-      return this[WEEKDAYS$];
-    }
-    set WEEKDAYS(value) {
-      this[WEEKDAYS$] = value;
-    }
-    get STANDALONEWEEKDAYS() {
-      return this[STANDALONEWEEKDAYS$];
-    }
-    set STANDALONEWEEKDAYS(value) {
-      this[STANDALONEWEEKDAYS$] = value;
-    }
-    get SHORTWEEKDAYS() {
-      return this[SHORTWEEKDAYS$];
-    }
-    set SHORTWEEKDAYS(value) {
-      this[SHORTWEEKDAYS$] = value;
-    }
-    get STANDALONESHORTWEEKDAYS() {
-      return this[STANDALONESHORTWEEKDAYS$];
-    }
-    set STANDALONESHORTWEEKDAYS(value) {
-      this[STANDALONESHORTWEEKDAYS$] = value;
-    }
-    get NARROWWEEKDAYS() {
-      return this[NARROWWEEKDAYS$];
-    }
-    set NARROWWEEKDAYS(value) {
-      this[NARROWWEEKDAYS$] = value;
-    }
-    get STANDALONENARROWWEEKDAYS() {
-      return this[STANDALONENARROWWEEKDAYS$];
-    }
-    set STANDALONENARROWWEEKDAYS(value) {
-      this[STANDALONENARROWWEEKDAYS$] = value;
-    }
-    get SHORTQUARTERS() {
-      return this[SHORTQUARTERS$];
-    }
-    set SHORTQUARTERS(value) {
-      this[SHORTQUARTERS$] = value;
-    }
-    get QUARTERS() {
-      return this[QUARTERS$];
-    }
-    set QUARTERS(value) {
-      this[QUARTERS$] = value;
-    }
-    get AMPMS() {
-      return this[AMPMS$];
-    }
-    set AMPMS(value) {
-      this[AMPMS$] = value;
-    }
-    get DATEFORMATS() {
-      return this[DATEFORMATS$];
-    }
-    set DATEFORMATS(value) {
-      this[DATEFORMATS$] = value;
-    }
-    get TIMEFORMATS() {
-      return this[TIMEFORMATS$];
-    }
-    set TIMEFORMATS(value) {
-      this[TIMEFORMATS$] = value;
-    }
-    get DATETIMEFORMATS() {
-      return this[DATETIMEFORMATS$];
-    }
-    set DATETIMEFORMATS(value) {
-      this[DATETIMEFORMATS$] = value;
-    }
-    get AVAILABLEFORMATS() {
-      return this[AVAILABLEFORMATS$];
-    }
-    set AVAILABLEFORMATS(value) {
-      this[AVAILABLEFORMATS$] = value;
-    }
-    get FIRSTDAYOFWEEK() {
-      return this[FIRSTDAYOFWEEK$];
-    }
-    set FIRSTDAYOFWEEK(value) {
-      this[FIRSTDAYOFWEEK$] = value;
-    }
-    get WEEKENDRANGE() {
-      return this[WEEKENDRANGE$];
-    }
-    set WEEKENDRANGE(value) {
-      this[WEEKENDRANGE$] = value;
-    }
-    get FIRSTWEEKCUTOFFDAY() {
-      return this[FIRSTWEEKCUTOFFDAY$];
-    }
-    set FIRSTWEEKCUTOFFDAY(value) {
-      this[FIRSTWEEKCUTOFFDAY$] = value;
-    }
-    get ZERODIGIT() {
-      return this[ZERODIGIT$];
-    }
-    set ZERODIGIT(value) {
-      this[ZERODIGIT$] = value;
-    }
-    serializeToMap() {
-      let basicMap = this[_serializeToMap]();
-      if (this.ZERODIGIT != null && this.ZERODIGIT !== "") {
-        basicMap[$_set]("ZERODIGIT", this.ZERODIGIT);
-      }
-      return basicMap;
-    }
-    [_serializeToMap]() {
-      return new (IdentityMapOfStringL$dynamic()).from(["NAME", this.NAME, "ERAS", this.ERAS, "ERANAMES", this.ERANAMES, "NARROWMONTHS", this.NARROWMONTHS, "STANDALONENARROWMONTHS", this.STANDALONENARROWMONTHS, "MONTHS", this.MONTHS, "STANDALONEMONTHS", this.STANDALONEMONTHS, "SHORTMONTHS", this.SHORTMONTHS, "STANDALONESHORTMONTHS", this.STANDALONESHORTMONTHS, "WEEKDAYS", this.WEEKDAYS, "STANDALONEWEEKDAYS", this.STANDALONEWEEKDAYS, "SHORTWEEKDAYS", this.SHORTWEEKDAYS, "STANDALONESHORTWEEKDAYS", this.STANDALONESHORTWEEKDAYS, "NARROWWEEKDAYS", this.NARROWWEEKDAYS, "STANDALONENARROWWEEKDAYS", this.STANDALONENARROWWEEKDAYS, "SHORTQUARTERS", this.SHORTQUARTERS, "QUARTERS", this.QUARTERS, "AMPMS", this.AMPMS, "DATEFORMATS", this.DATEFORMATS, "TIMEFORMATS", this.TIMEFORMATS, "AVAILABLEFORMATS", this.AVAILABLEFORMATS, "FIRSTDAYOFWEEK", this.FIRSTDAYOFWEEK, "WEEKENDRANGE", this.WEEKENDRANGE, "FIRSTWEEKCUTOFFDAY", this.FIRSTWEEKCUTOFFDAY, "DATETIMEFORMATS", this.DATETIMEFORMATS]);
-    }
-    toString() {
-      return this.NAME;
+  text_formatter.TextInputFormatter = class TextInputFormatter extends core.Object {
+    static withFunction(formatFunction) {
+      if (formatFunction == null) dart.nullFailed(L0, 52, 29, "formatFunction");
+      return new text_formatter._SimpleTextInputFormatter.new(formatFunction);
     }
   };
-  (date_symbols.DateSymbols.new = function(opts) {
-    let NAME = opts && 'NAME' in opts ? opts.NAME : null;
-    let ERAS = opts && 'ERAS' in opts ? opts.ERAS : null;
-    let ERANAMES = opts && 'ERANAMES' in opts ? opts.ERANAMES : null;
-    let NARROWMONTHS = opts && 'NARROWMONTHS' in opts ? opts.NARROWMONTHS : null;
-    let STANDALONENARROWMONTHS = opts && 'STANDALONENARROWMONTHS' in opts ? opts.STANDALONENARROWMONTHS : null;
-    let MONTHS = opts && 'MONTHS' in opts ? opts.MONTHS : null;
-    let STANDALONEMONTHS = opts && 'STANDALONEMONTHS' in opts ? opts.STANDALONEMONTHS : null;
-    let SHORTMONTHS = opts && 'SHORTMONTHS' in opts ? opts.SHORTMONTHS : null;
-    let STANDALONESHORTMONTHS = opts && 'STANDALONESHORTMONTHS' in opts ? opts.STANDALONESHORTMONTHS : null;
-    let WEEKDAYS = opts && 'WEEKDAYS' in opts ? opts.WEEKDAYS : null;
-    let STANDALONEWEEKDAYS = opts && 'STANDALONEWEEKDAYS' in opts ? opts.STANDALONEWEEKDAYS : null;
-    let SHORTWEEKDAYS = opts && 'SHORTWEEKDAYS' in opts ? opts.SHORTWEEKDAYS : null;
-    let STANDALONESHORTWEEKDAYS = opts && 'STANDALONESHORTWEEKDAYS' in opts ? opts.STANDALONESHORTWEEKDAYS : null;
-    let NARROWWEEKDAYS = opts && 'NARROWWEEKDAYS' in opts ? opts.NARROWWEEKDAYS : null;
-    let STANDALONENARROWWEEKDAYS = opts && 'STANDALONENARROWWEEKDAYS' in opts ? opts.STANDALONENARROWWEEKDAYS : null;
-    let SHORTQUARTERS = opts && 'SHORTQUARTERS' in opts ? opts.SHORTQUARTERS : null;
-    let QUARTERS = opts && 'QUARTERS' in opts ? opts.QUARTERS : null;
-    let AMPMS = opts && 'AMPMS' in opts ? opts.AMPMS : null;
-    let ZERODIGIT = opts && 'ZERODIGIT' in opts ? opts.ZERODIGIT : null;
-    let DATEFORMATS = opts && 'DATEFORMATS' in opts ? opts.DATEFORMATS : null;
-    let TIMEFORMATS = opts && 'TIMEFORMATS' in opts ? opts.TIMEFORMATS : null;
-    let AVAILABLEFORMATS = opts && 'AVAILABLEFORMATS' in opts ? opts.AVAILABLEFORMATS : null;
-    let FIRSTDAYOFWEEK = opts && 'FIRSTDAYOFWEEK' in opts ? opts.FIRSTDAYOFWEEK : null;
-    let WEEKENDRANGE = opts && 'WEEKENDRANGE' in opts ? opts.WEEKENDRANGE : null;
-    let FIRSTWEEKCUTOFFDAY = opts && 'FIRSTWEEKCUTOFFDAY' in opts ? opts.FIRSTWEEKCUTOFFDAY : null;
-    let DATETIMEFORMATS = opts && 'DATETIMEFORMATS' in opts ? opts.DATETIMEFORMATS : null;
-    this[NAME$] = NAME;
-    this[ERAS$] = ERAS;
-    this[ERANAMES$] = ERANAMES;
-    this[NARROWMONTHS$] = NARROWMONTHS;
-    this[STANDALONENARROWMONTHS$] = STANDALONENARROWMONTHS;
-    this[MONTHS$] = MONTHS;
-    this[STANDALONEMONTHS$] = STANDALONEMONTHS;
-    this[SHORTMONTHS$] = SHORTMONTHS;
-    this[STANDALONESHORTMONTHS$] = STANDALONESHORTMONTHS;
-    this[WEEKDAYS$] = WEEKDAYS;
-    this[STANDALONEWEEKDAYS$] = STANDALONEWEEKDAYS;
-    this[SHORTWEEKDAYS$] = SHORTWEEKDAYS;
-    this[STANDALONESHORTWEEKDAYS$] = STANDALONESHORTWEEKDAYS;
-    this[NARROWWEEKDAYS$] = NARROWWEEKDAYS;
-    this[STANDALONENARROWWEEKDAYS$] = STANDALONENARROWWEEKDAYS;
-    this[SHORTQUARTERS$] = SHORTQUARTERS;
-    this[QUARTERS$] = QUARTERS;
-    this[AMPMS$] = AMPMS;
-    this[ZERODIGIT$] = ZERODIGIT;
-    this[DATEFORMATS$] = DATEFORMATS;
-    this[TIMEFORMATS$] = TIMEFORMATS;
-    this[AVAILABLEFORMATS$] = AVAILABLEFORMATS;
-    this[FIRSTDAYOFWEEK$] = FIRSTDAYOFWEEK;
-    this[WEEKENDRANGE$] = WEEKENDRANGE;
-    this[FIRSTWEEKCUTOFFDAY$] = FIRSTWEEKCUTOFFDAY;
-    this[DATETIMEFORMATS$] = DATETIMEFORMATS;
+  (text_formatter.TextInputFormatter.new = function() {
     ;
-  }).prototype = date_symbols.DateSymbols.prototype;
-  (date_symbols.DateSymbols.deserializeFromMap = function(map) {
-    let t0;
-    this[DATETIMEFORMATS$] = null;
-    this[FIRSTWEEKCUTOFFDAY$] = null;
-    this[WEEKENDRANGE$] = null;
-    this[FIRSTDAYOFWEEK$] = null;
-    this[AVAILABLEFORMATS$] = null;
-    this[TIMEFORMATS$] = null;
-    this[DATEFORMATS$] = null;
-    this[ZERODIGIT$] = null;
-    this[AMPMS$] = null;
-    this[QUARTERS$] = null;
-    this[SHORTQUARTERS$] = null;
-    this[STANDALONENARROWWEEKDAYS$] = null;
-    this[NARROWWEEKDAYS$] = null;
-    this[STANDALONESHORTWEEKDAYS$] = null;
-    this[SHORTWEEKDAYS$] = null;
-    this[STANDALONEWEEKDAYS$] = null;
-    this[WEEKDAYS$] = null;
-    this[STANDALONESHORTMONTHS$] = null;
-    this[SHORTMONTHS$] = null;
-    this[STANDALONEMONTHS$] = null;
-    this[MONTHS$] = null;
-    this[STANDALONENARROWMONTHS$] = null;
-    this[NARROWMONTHS$] = null;
-    this[ERANAMES$] = null;
-    this[ERAS$] = null;
-    this[NAME$] = null;
-    function _getStringList(name) {
-      return ListOfStringL().from(core.Iterable.as(map[$_get](name)));
+  }).prototype = text_formatter.TextInputFormatter.prototype;
+  dart.addTypeTests(text_formatter.TextInputFormatter);
+  dart.addTypeCaches(text_formatter.TextInputFormatter);
+  dart.setLibraryUri(text_formatter.TextInputFormatter, L1);
+  text_formatter._SimpleTextInputFormatter = class _SimpleTextInputFormatter extends text_formatter.TextInputFormatter {
+    formatEditUpdate(oldValue, newValue) {
+      let t1, t0;
+      if (oldValue == null) dart.nullFailed(L0, 74, 22, "oldValue");
+      if (newValue == null) dart.nullFailed(L0, 75, 22, "newValue");
+      t0 = oldValue;
+      t1 = newValue;
+      return this.formatFunction(t0, t1);
     }
-    dart.fn(_getStringList, StringLToListLOfStringL());
-    this.NAME = StringL().as(map[$_get]("NAME"));
-    this.ERAS = _getStringList("ERAS");
-    this.ERANAMES = _getStringList("ERANAMES");
-    this.NARROWMONTHS = _getStringList("NARROWMONTHS");
-    this.STANDALONENARROWMONTHS = _getStringList("STANDALONENARROWMONTHS");
-    this.MONTHS = _getStringList("MONTHS");
-    this.STANDALONEMONTHS = _getStringList("STANDALONEMONTHS");
-    this.SHORTMONTHS = _getStringList("SHORTMONTHS");
-    this.STANDALONESHORTMONTHS = _getStringList("STANDALONESHORTMONTHS");
-    this.WEEKDAYS = _getStringList("WEEKDAYS");
-    this.STANDALONEWEEKDAYS = _getStringList("STANDALONEWEEKDAYS");
-    this.SHORTWEEKDAYS = _getStringList("SHORTWEEKDAYS");
-    this.STANDALONESHORTWEEKDAYS = _getStringList("STANDALONESHORTWEEKDAYS");
-    this.NARROWWEEKDAYS = _getStringList("NARROWWEEKDAYS");
-    this.STANDALONENARROWWEEKDAYS = _getStringList("STANDALONENARROWWEEKDAYS");
-    this.SHORTQUARTERS = _getStringList("SHORTQUARTERS");
-    this.QUARTERS = _getStringList("QUARTERS");
-    this.AMPMS = _getStringList("AMPMS");
-    this.ZERODIGIT = StringL().as(map[$_get]("ZERODIGIT"));
-    this.DATEFORMATS = _getStringList("DATEFORMATS");
-    this.TIMEFORMATS = _getStringList("TIMEFORMATS");
-    this.AVAILABLEFORMATS = LinkedHashMapOfStringL$StringL().from(core.Map.as((t0 = map[$_get]("AVAILABLEFORMATS"), t0 == null ? new _js_helper.LinkedMap.new() : t0)));
-    this.FIRSTDAYOFWEEK = intL().as(map[$_get]("FIRSTDAYOFWEEK"));
-    this.WEEKENDRANGE = ListOfintL().from(core.Iterable.as(map[$_get]("WEEKENDRANGE")));
-    this.FIRSTWEEKCUTOFFDAY = intL().as(map[$_get]("FIRSTWEEKCUTOFFDAY"));
-    this.DATETIMEFORMATS = _getStringList("DATETIMEFORMATS");
-  }).prototype = date_symbols.DateSymbols.prototype;
-  dart.addTypeTests(date_symbols.DateSymbols);
-  dart.addTypeCaches(date_symbols.DateSymbols);
-  dart.setMethodSignature(date_symbols.DateSymbols, () => ({
-    __proto__: dart.getMethods(date_symbols.DateSymbols.__proto__),
-    serializeToMap: dart.fnType(dart.legacy(core.Map$(dart.legacy(core.String), dart.dynamic)), []),
-    [_serializeToMap]: dart.fnType(dart.legacy(core.Map$(dart.legacy(core.String), dart.dynamic)), []),
-    toString: dart.fnType(dart.legacy(core.String), []),
-    [$toString]: dart.fnType(dart.legacy(core.String), [])
+  };
+  (text_formatter._SimpleTextInputFormatter.new = function(formatFunction) {
+    if (formatFunction == null) dart.nullFailed(L0, 67, 34, "formatFunction");
+    this.formatFunction = formatFunction;
+    if (!(formatFunction != null)) dart.assertFailed(null, L0, 68, 14, "formatFunction != null");
+    ;
+  }).prototype = text_formatter._SimpleTextInputFormatter.prototype;
+  dart.addTypeTests(text_formatter._SimpleTextInputFormatter);
+  dart.addTypeCaches(text_formatter._SimpleTextInputFormatter);
+  dart.setMethodSignature(text_formatter._SimpleTextInputFormatter, () => ({
+    __proto__: dart.getMethods(text_formatter._SimpleTextInputFormatter.__proto__),
+    formatEditUpdate: dart.fnType(text_input.TextEditingValue, [text_input.TextEditingValue, text_input.TextEditingValue])
   }));
-  dart.setLibraryUri(date_symbols.DateSymbols, L0);
-  dart.setFieldSignature(date_symbols.DateSymbols, () => ({
-    __proto__: dart.getFields(date_symbols.DateSymbols.__proto__),
-    NAME: dart.fieldType(dart.legacy(core.String)),
-    ERAS: dart.fieldType(dart.legacy(core.List$(dart.legacy(core.String)))),
-    ERANAMES: dart.fieldType(dart.legacy(core.List$(dart.legacy(core.String)))),
-    NARROWMONTHS: dart.fieldType(dart.legacy(core.List$(dart.legacy(core.String)))),
-    STANDALONENARROWMONTHS: dart.fieldType(dart.legacy(core.List$(dart.legacy(core.String)))),
-    MONTHS: dart.fieldType(dart.legacy(core.List$(dart.legacy(core.String)))),
-    STANDALONEMONTHS: dart.fieldType(dart.legacy(core.List$(dart.legacy(core.String)))),
-    SHORTMONTHS: dart.fieldType(dart.legacy(core.List$(dart.legacy(core.String)))),
-    STANDALONESHORTMONTHS: dart.fieldType(dart.legacy(core.List$(dart.legacy(core.String)))),
-    WEEKDAYS: dart.fieldType(dart.legacy(core.List$(dart.legacy(core.String)))),
-    STANDALONEWEEKDAYS: dart.fieldType(dart.legacy(core.List$(dart.legacy(core.String)))),
-    SHORTWEEKDAYS: dart.fieldType(dart.legacy(core.List$(dart.legacy(core.String)))),
-    STANDALONESHORTWEEKDAYS: dart.fieldType(dart.legacy(core.List$(dart.legacy(core.String)))),
-    NARROWWEEKDAYS: dart.fieldType(dart.legacy(core.List$(dart.legacy(core.String)))),
-    STANDALONENARROWWEEKDAYS: dart.fieldType(dart.legacy(core.List$(dart.legacy(core.String)))),
-    SHORTQUARTERS: dart.fieldType(dart.legacy(core.List$(dart.legacy(core.String)))),
-    QUARTERS: dart.fieldType(dart.legacy(core.List$(dart.legacy(core.String)))),
-    AMPMS: dart.fieldType(dart.legacy(core.List$(dart.legacy(core.String)))),
-    DATEFORMATS: dart.fieldType(dart.legacy(core.List$(dart.legacy(core.String)))),
-    TIMEFORMATS: dart.fieldType(dart.legacy(core.List$(dart.legacy(core.String)))),
-    DATETIMEFORMATS: dart.fieldType(dart.legacy(core.List$(dart.legacy(core.String)))),
-    AVAILABLEFORMATS: dart.fieldType(dart.legacy(core.Map$(dart.legacy(core.String), dart.legacy(core.String)))),
-    FIRSTDAYOFWEEK: dart.fieldType(dart.legacy(core.int)),
-    WEEKENDRANGE: dart.fieldType(dart.legacy(core.List$(dart.legacy(core.int)))),
-    FIRSTWEEKCUTOFFDAY: dart.fieldType(dart.legacy(core.int)),
-    ZERODIGIT: dart.fieldType(dart.legacy(core.String))
+  dart.setLibraryUri(text_formatter._SimpleTextInputFormatter, L1);
+  dart.setFieldSignature(text_formatter._SimpleTextInputFormatter, () => ({
+    __proto__: dart.getFields(text_formatter._SimpleTextInputFormatter.__proto__),
+    formatFunction: dart.finalFieldType(dart.fnType(text_input.TextEditingValue, [text_input.TextEditingValue, text_input.TextEditingValue]))
   }));
-  dart.defineExtensionMethods(date_symbols.DateSymbols, ['toString']);
-  var C0;
+  var filterPattern$ = dart.privateName(text_formatter, "FilteringTextInputFormatter.filterPattern");
+  var allow$ = dart.privateName(text_formatter, "FilteringTextInputFormatter.allow");
+  var replacementString$ = dart.privateName(text_formatter, "FilteringTextInputFormatter.replacementString");
+  text_formatter.FilteringTextInputFormatter = class FilteringTextInputFormatter extends text_formatter.TextInputFormatter {
+    get filterPattern() {
+      return this[filterPattern$];
+    }
+    set filterPattern(value) {
+      super.filterPattern = value;
+    }
+    get allow() {
+      return this[allow$];
+    }
+    set allow(value) {
+      super.allow = value;
+    }
+    get replacementString() {
+      return this[replacementString$];
+    }
+    set replacementString(value) {
+      super.replacementString = value;
+    }
+    formatEditUpdate(oldValue, newValue) {
+      if (oldValue == null) dart.nullFailed(L0, 220, 22, "oldValue");
+      if (newValue == null) dart.nullFailed(L0, 221, 22, "newValue");
+      return text_formatter._selectionAwareTextManipulation(newValue, dart.fn(substring => {
+        if (substring == null) dart.nullFailed(L0, 225, 15, "substring");
+        return substring[$splitMapJoin](this.filterPattern, {onMatch: !dart.test(this.allow) ? dart.fn(match => {
+            if (match == null) dart.nullFailed(L0, 228, 36, "match");
+            return this.replacementString;
+          }, MatchToString()) : null, onNonMatch: dart.test(this.allow) ? dart.fn(nonMatch => {
+            if (nonMatch == null) dart.nullFailed(L0, 229, 39, "nonMatch");
+            return nonMatch[$isNotEmpty] ? this.replacementString : "";
+          }, StringToString()) : null});
+      }, StringToString()));
+    }
+  };
+  (text_formatter.FilteringTextInputFormatter.new = function(filterPattern, opts) {
+    if (filterPattern == null) dart.nullFailed(L0, 107, 10, "filterPattern");
+    let allow = opts && 'allow' in opts ? opts.allow : null;
+    if (allow == null) dart.nullFailed(L0, 108, 19, "allow");
+    let replacementString = opts && 'replacementString' in opts ? opts.replacementString : "";
+    if (replacementString == null) dart.nullFailed(L0, 109, 10, "replacementString");
+    this[filterPattern$] = filterPattern;
+    this[allow$] = allow;
+    this[replacementString$] = replacementString;
+    if (!(filterPattern != null)) dart.assertFailed(null, L0, 110, 15, "filterPattern != null");
+    if (!(allow != null)) dart.assertFailed(null, L0, 111, 15, "allow != null");
+    if (!(replacementString != null)) dart.assertFailed(null, L0, 112, 15, "replacementString != null");
+    ;
+  }).prototype = text_formatter.FilteringTextInputFormatter.prototype;
+  (text_formatter.FilteringTextInputFormatter.allow = function(filterPattern, opts) {
+    if (filterPattern == null) dart.nullFailed(L0, 119, 10, "filterPattern");
+    let replacementString = opts && 'replacementString' in opts ? opts.replacementString : "";
+    if (replacementString == null) dart.nullFailed(L0, 120, 10, "replacementString");
+    this[filterPattern$] = filterPattern;
+    this[replacementString$] = replacementString;
+    if (!(filterPattern != null)) dart.assertFailed(null, L0, 121, 15, "filterPattern != null");
+    if (!(replacementString != null)) dart.assertFailed(null, L0, 122, 15, "replacementString != null");
+    this[allow$] = true;
+    ;
+  }).prototype = text_formatter.FilteringTextInputFormatter.prototype;
+  (text_formatter.FilteringTextInputFormatter.deny = function(filterPattern, opts) {
+    if (filterPattern == null) dart.nullFailed(L0, 130, 10, "filterPattern");
+    let replacementString = opts && 'replacementString' in opts ? opts.replacementString : "";
+    if (replacementString == null) dart.nullFailed(L0, 131, 10, "replacementString");
+    this[filterPattern$] = filterPattern;
+    this[replacementString$] = replacementString;
+    if (!(filterPattern != null)) dart.assertFailed(null, L0, 132, 15, "filterPattern != null");
+    if (!(replacementString != null)) dart.assertFailed(null, L0, 133, 15, "replacementString != null");
+    this[allow$] = false;
+    ;
+  }).prototype = text_formatter.FilteringTextInputFormatter.prototype;
+  dart.addTypeTests(text_formatter.FilteringTextInputFormatter);
+  dart.addTypeCaches(text_formatter.FilteringTextInputFormatter);
+  dart.setMethodSignature(text_formatter.FilteringTextInputFormatter, () => ({
+    __proto__: dart.getMethods(text_formatter.FilteringTextInputFormatter.__proto__),
+    formatEditUpdate: dart.fnType(text_input.TextEditingValue, [text_input.TextEditingValue, text_input.TextEditingValue])
+  }));
+  dart.setLibraryUri(text_formatter.FilteringTextInputFormatter, L1);
+  dart.setFieldSignature(text_formatter.FilteringTextInputFormatter, () => ({
+    __proto__: dart.getFields(text_formatter.FilteringTextInputFormatter.__proto__),
+    filterPattern: dart.finalFieldType(core.Pattern),
+    allow: dart.finalFieldType(core.bool),
+    replacementString: dart.finalFieldType(core.String)
+  }));
+  dart.defineLazy(text_formatter.FilteringTextInputFormatter, {
+    /*text_formatter.FilteringTextInputFormatter.singleLineFormatter*/get singleLineFormatter() {
+      return new text_formatter.FilteringTextInputFormatter.deny("\n");
+    },
+    /*text_formatter.FilteringTextInputFormatter.digitsOnly*/get digitsOnly() {
+      return new text_formatter.FilteringTextInputFormatter.allow(core.RegExp.new("[0-9]"));
+    }
+  }, false);
+  text_formatter.BlacklistingTextInputFormatter = class BlacklistingTextInputFormatter extends text_formatter.FilteringTextInputFormatter {
+    get blacklistedPattern() {
+      return this.filterPattern;
+    }
+  };
+  (text_formatter.BlacklistingTextInputFormatter.new = function(blacklistedPattern, opts) {
+    if (blacklistedPattern == null) dart.nullFailed(L0, 254, 13, "blacklistedPattern");
+    let replacementString = opts && 'replacementString' in opts ? opts.replacementString : "";
+    if (replacementString == null) dart.nullFailed(L0, 255, 12, "replacementString");
+    text_formatter.BlacklistingTextInputFormatter.__proto__.deny.call(this, blacklistedPattern, {replacementString: replacementString});
+    ;
+  }).prototype = text_formatter.BlacklistingTextInputFormatter.prototype;
+  dart.addTypeTests(text_formatter.BlacklistingTextInputFormatter);
+  dart.addTypeCaches(text_formatter.BlacklistingTextInputFormatter);
+  dart.setGetterSignature(text_formatter.BlacklistingTextInputFormatter, () => ({
+    __proto__: dart.getGetters(text_formatter.BlacklistingTextInputFormatter.__proto__),
+    blacklistedPattern: core.Pattern
+  }));
+  dart.setLibraryUri(text_formatter.BlacklistingTextInputFormatter, L1);
+  dart.defineLazy(text_formatter.BlacklistingTextInputFormatter, {
+    /*text_formatter.BlacklistingTextInputFormatter.singleLineFormatter*/get singleLineFormatter() {
+      return new text_formatter.BlacklistingTextInputFormatter.new(core.RegExp.new("\\n"));
+    }
+  }, false);
+  text_formatter.WhitelistingTextInputFormatter = class WhitelistingTextInputFormatter extends text_formatter.FilteringTextInputFormatter {
+    get whitelistedPattern() {
+      return this.filterPattern;
+    }
+  };
+  (text_formatter.WhitelistingTextInputFormatter.new = function(whitelistedPattern) {
+    if (whitelistedPattern == null) dart.nullFailed(L0, 285, 42, "whitelistedPattern");
+    if (!(whitelistedPattern != null)) dart.assertFailed(null, L0, 286, 14, "whitelistedPattern != null");
+    text_formatter.WhitelistingTextInputFormatter.__proto__.allow.call(this, whitelistedPattern);
+    ;
+  }).prototype = text_formatter.WhitelistingTextInputFormatter.prototype;
+  dart.addTypeTests(text_formatter.WhitelistingTextInputFormatter);
+  dart.addTypeCaches(text_formatter.WhitelistingTextInputFormatter);
+  dart.setGetterSignature(text_formatter.WhitelistingTextInputFormatter, () => ({
+    __proto__: dart.getGetters(text_formatter.WhitelistingTextInputFormatter.__proto__),
+    whitelistedPattern: core.Pattern
+  }));
+  dart.setLibraryUri(text_formatter.WhitelistingTextInputFormatter, L1);
+  dart.defineLazy(text_formatter.WhitelistingTextInputFormatter, {
+    /*text_formatter.WhitelistingTextInputFormatter.digitsOnly*/get digitsOnly() {
+      return new text_formatter.WhitelistingTextInputFormatter.new(core.RegExp.new("\\d+"));
+    }
+  }, false);
+  var maxLength$ = dart.privateName(text_formatter, "LengthLimitingTextInputFormatter.maxLength");
+  text_formatter.LengthLimitingTextInputFormatter = class LengthLimitingTextInputFormatter extends text_formatter.TextInputFormatter {
+    get maxLength() {
+      return this[maxLength$];
+    }
+    set maxLength(value) {
+      super.maxLength = value;
+    }
+    static truncate(value, maxLength) {
+      if (value == null) dart.nullFailed(L0, 373, 53, "value");
+      if (maxLength == null) dart.nullFailed(L0, 373, 64, "maxLength");
+      let iterator = new characters_impl.StringCharacterRange.new(value.text);
+      if (dart.notNull(extensions['StringCharacters|get#characters'](value.text)[$length]) > dart.notNull(maxLength)) {
+        iterator.expandNext(maxLength);
+      }
+      let truncated = iterator.current;
+      return new text_input.TextEditingValue.new({text: truncated, selection: value.selection.copyWith({baseOffset: math.min(core.int, value.selection.start, truncated.length), extentOffset: math.min(core.int, value.selection.end, truncated.length)}), composing: ui.TextRange.empty});
+    }
+    formatEditUpdate(oldValue, newValue) {
+      if (oldValue == null) dart.nullFailed(L0, 391, 22, "oldValue");
+      if (newValue == null) dart.nullFailed(L0, 392, 22, "newValue");
+      let maxLength = this.maxLength;
+      if (maxLength == null || maxLength === -1 || dart.notNull(extensions['StringCharacters|get#characters'](newValue.text)[$length]) <= dart.notNull(maxLength)) return newValue;
+      if (!(dart.notNull(maxLength) > 0)) dart.assertFailed(null, L0, 399, 12, "maxLength > 0");
+      if (extensions['StringCharacters|get#characters'](oldValue.text)[$length] == maxLength && !dart.test(oldValue.composing.isValid)) {
+        return oldValue;
+      }
+      return dart.test(newValue.composing.isValid) ? newValue : text_formatter.LengthLimitingTextInputFormatter.truncate(newValue, maxLength);
+    }
+  };
+  (text_formatter.LengthLimitingTextInputFormatter.new = function(maxLength) {
+    this[maxLength$] = maxLength;
+    if (!(maxLength == null || maxLength === -1 || dart.notNull(maxLength) > 0)) dart.assertFailed(null, L0, 326, 14, "maxLength == null || maxLength == -1 || maxLength > 0");
+    ;
+  }).prototype = text_formatter.LengthLimitingTextInputFormatter.prototype;
+  dart.addTypeTests(text_formatter.LengthLimitingTextInputFormatter);
+  dart.addTypeCaches(text_formatter.LengthLimitingTextInputFormatter);
+  dart.setMethodSignature(text_formatter.LengthLimitingTextInputFormatter, () => ({
+    __proto__: dart.getMethods(text_formatter.LengthLimitingTextInputFormatter.__proto__),
+    formatEditUpdate: dart.fnType(text_input.TextEditingValue, [text_input.TextEditingValue, text_input.TextEditingValue])
+  }));
+  dart.setLibraryUri(text_formatter.LengthLimitingTextInputFormatter, L1);
+  dart.setFieldSignature(text_formatter.LengthLimitingTextInputFormatter, () => ({
+    __proto__: dart.getFields(text_formatter.LengthLimitingTextInputFormatter.__proto__),
+    maxLength: dart.finalFieldType(dart.nullable(core.int))
+  }));
+  var TextRange_end = dart.privateName(ui, "TextRange.end");
+  var TextRange_start = dart.privateName(ui, "TextRange.start");
+  var TextSelection_isDirectional = dart.privateName(text_editing, "TextSelection.isDirectional");
+  var _name = dart.privateName(ui, "_name");
   var C1;
-  var C2;
-  var C3;
-  var C4;
-  var C5;
-  var C6;
-  var C7;
-  var C8;
-  var C9;
-  var C10;
-  var C11;
-  var C12;
-  var C13;
-  var C14;
-  var C15;
-  dart.defineLazy(date_symbols, {
-    /*date_symbols.en_USSymbols*/get en_USSymbols() {
-      return new date_symbols.DateSymbols.new({NAME: "en_US", ERAS: C0 || CT.C0, ERANAMES: C1 || CT.C1, NARROWMONTHS: C2 || CT.C2, STANDALONENARROWMONTHS: C2 || CT.C2, MONTHS: C3 || CT.C3, STANDALONEMONTHS: C3 || CT.C3, SHORTMONTHS: C4 || CT.C4, STANDALONESHORTMONTHS: C4 || CT.C4, WEEKDAYS: C5 || CT.C5, STANDALONEWEEKDAYS: C5 || CT.C5, SHORTWEEKDAYS: C6 || CT.C6, STANDALONESHORTWEEKDAYS: C6 || CT.C6, NARROWWEEKDAYS: C7 || CT.C7, STANDALONENARROWWEEKDAYS: C7 || CT.C7, SHORTQUARTERS: C8 || CT.C8, QUARTERS: C9 || CT.C9, AMPMS: C10 || CT.C10, DATEFORMATS: C11 || CT.C11, TIMEFORMATS: C12 || CT.C12, FIRSTDAYOFWEEK: 6, WEEKENDRANGE: C13 || CT.C13, FIRSTWEEKCUTOFFDAY: 5, DATETIMEFORMATS: C14 || CT.C14});
-    },
-    set en_USSymbols(_) {},
-    /*date_symbols.en_USPatterns*/get en_USPatterns() {
-      return C15 || CT.C15;
-    },
-    set en_USPatterns(_) {}
-  }, true);
-  dart.trackLibraries("packages/intl/date_symbols.dart", {
-    "package:intl/date_symbols.dart": date_symbols
+  var TextSelection_affinity = dart.privateName(text_editing, "TextSelection.affinity");
+  var TextSelection_extentOffset = dart.privateName(text_editing, "TextSelection.extentOffset");
+  var TextSelection_baseOffset = dart.privateName(text_editing, "TextSelection.baseOffset");
+  var C0;
+  text_formatter._selectionAwareTextManipulation = function _selectionAwareTextManipulation(value, substringManipulation) {
+    let t0;
+    if (value == null) dart.nullFailed(L0, 414, 20, "value");
+    if (substringManipulation == null) dart.nullFailed(L0, 415, 10, "substringManipulation");
+    let selectionStartIndex = value.selection.start;
+    let selectionEndIndex = value.selection.end;
+    let manipulatedText = null;
+    let manipulatedSelection = null;
+    if (dart.notNull(selectionStartIndex) < 0 || dart.notNull(selectionEndIndex) < 0) {
+      manipulatedText = substringManipulation(value.text);
+    } else {
+      let beforeSelection = substringManipulation(value.text[$substring](0, selectionStartIndex));
+      let inSelection = substringManipulation(value.text[$substring](selectionStartIndex, selectionEndIndex));
+      let afterSelection = substringManipulation(value.text[$substring](selectionEndIndex));
+      manipulatedText = dart.notNull(beforeSelection) + dart.notNull(inSelection) + dart.notNull(afterSelection);
+      if (dart.notNull(value.selection.baseOffset) > dart.notNull(value.selection.extentOffset)) {
+        manipulatedSelection = value.selection.copyWith({baseOffset: beforeSelection.length + inSelection.length, extentOffset: beforeSelection.length});
+      } else {
+        manipulatedSelection = value.selection.copyWith({baseOffset: beforeSelection.length, extentOffset: beforeSelection.length + inSelection.length});
+      }
+    }
+    return new text_input.TextEditingValue.new({text: manipulatedText, selection: (t0 = manipulatedSelection, t0 == null ? C0 || CT.C0 : t0), composing: manipulatedText == value.text ? value.composing : ui.TextRange.empty});
+  };
+  dart.trackLibraries("packages/flutter/src/services/text_formatter.dart", {
+    "package:flutter/src/services/text_formatter.dart": text_formatter
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["date_symbols.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAgBS;;;;;;IAIH;;;;;;IAGA;;;;;;IAGA;;;;;;IAIA;;;;;;IAGA;;;;;;IAOA;;;;;;IAGA;;;;;;IAIA;;;;;;IAGA;;;;;;IAMA;;;;;;IAGA;;;;;;IAIA;;;;;;IAGA;;;;;;IAIA;;;;;;IAGA;;;;;;IAGA;;;;;;IAGA;;;;;;IAGA;;;;;;IAGA;;;;;;IAGA;;;;;;IACgB;;;;;;IAIhB;;;;;;IAKM;;;;;;IACN;;;;;;IAEG;;;;;;;AAqED,qBAAW;AACf,UAAI,kBAAa,QAAQ,mBAAa;AACH,QAAjC,AAAQ,QAAA,QAAC,aAAe;;AAE1B,YAAO,SAAQ;IACjB;;AAE0C,wDACpC,QAAQ,WACR,QAAQ,WACR,YAAY,eACZ,gBAAgB,mBAChB,0BAA0B,6BAC1B,UAAU,aACV,oBAAoB,uBACpB,eAAe,kBACf,yBAAyB,4BACzB,YAAY,eACZ,sBAAsB,yBACtB,iBAAiB,oBACjB,2BAA2B,8BAC3B,kBAAkB,qBAClB,4BAA4B,+BAC5B,iBAAiB,oBACjB,YAAY,eACZ,SAAS,YACT,eAAe,kBACf,eAAe,kBACf,oBAAoB,uBACpB,kBAAkB,qBAClB,gBAAgB,mBAChB,sBAAsB,yBACtB,mBAAmB;IACpB;;AAEgB;IAAI;;;QArGf;QACD;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QAKA;QACA;QACA;QACA;QACA;QACA;QACA;IA7BC;IACD;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IAKA;IACA;IACA;IACA;IACA;IACA;IACA;;EAAiB;0DAI2B;;;;;;;;;;;;;;;;;;;;;;;;;;;;AACnD,aAAa,eAAsB;AAAS,mDAAkB,AAAG,GAAA,QAAC,IAAI;;;AACpD,gBAAlB,aAAO,AAAG,GAAA,QAAC;AACkB,IAA7B,YAAO,AAAc,cAAA,CAAC;AACe,IAArC,gBAAW,AAAc,cAAA,CAAC;AACmB,IAA7C,oBAAe,AAAc,cAAA,CAAC;AACmC,IAAjE,8BAAyB,AAAc,cAAA,CAAC;AACP,IAAjC,cAAS,AAAc,cAAA,CAAC;AAC6B,IAArD,wBAAmB,AAAc,cAAA,CAAC;AACS,IAA3C,mBAAc,AAAc,cAAA,CAAC;AACkC,IAA/D,6BAAwB,AAAc,cAAA,CAAC;AACF,IAArC,gBAAW,AAAc,cAAA,CAAC;AAC+B,IAAzD,0BAAqB,AAAc,cAAA,CAAC;AACW,IAA/C,qBAAgB,AAAc,cAAA,CAAC;AACoC,IAAnE,+BAA0B,AAAc,cAAA,CAAC;AACQ,IAAjD,sBAAiB,AAAc,cAAA,CAAC;AACqC,IAArE,gCAA2B,AAAc,cAAA,CAAC;AACK,IAA/C,qBAAgB,AAAc,cAAA,CAAC;AACM,IAArC,gBAAW,AAAc,cAAA,CAAC;AACK,IAA/B,aAAQ,AAAc,cAAA,CAAC;AACK,qBAA5B,aAAY,AAAG,GAAA,QAAC;AAC2B,IAA3C,mBAAc,AAAc,cAAA,CAAC;AACc,IAA3C,mBAAc,AAAc,cAAA,CAAC;AAC6C,IAA1E,wBAAmB,mDAAiD,KAAxB,AAAG,GAAA,QAAC,2BAAD,OAAwB;AACjC,0BAAtC,UAAiB,AAAG,GAAA,QAAC;AAC6B,IAAlD,oBAAe,mCAAe,AAAG,GAAA,QAAC;AACY,8BAA9C,UAAqB,AAAG,GAAA,QAAC;AAC0B,IAAnD,uBAAkB,AAAc,cAAA,CAAC;EACnC;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;MA6CE,yBAAY;YAAG,yCACT,ojBA+HU,oDAEI;;;MAQpB,0BAAa","file":"../../../../../../../packages/intl/date_symbols.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["text_formatter.dart"],"names":[],"mappings":"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","file":"../../../../../../../packages/flutter/src/services/text_formatter.dart.lib.js"}');
   // Exports:
   return {
-    date_symbols: date_symbols
+    src__services__text_formatter: text_formatter
   };
 }));
 
-//# sourceMappingURL=date_symbols.dart.lib.js.map
+//# sourceMappingURL=text_formatter.dart.lib.js.map

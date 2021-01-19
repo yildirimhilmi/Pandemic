@@ -1,341 +1,569 @@
-define(['dart_sdk', 'packages/flutter/src/gestures/debug.dart', 'packages/flutter/src/foundation/print.dart'], (function load__packages__flutter__src__gestures__arena_dart(dart_sdk, packages__flutter__src__gestures__debug$46dart, packages__flutter__src__foundation__print$46dart) {
+define(['dart_sdk', 'packages/flutter/src/foundation/synchronous_future.dart', 'packages/flutter/src/painting/image_stream.dart', 'packages/flutter/src/foundation/debug.dart', 'packages/flutter/src/painting/_network_image_web.dart'], (function load__packages__flutter_image__network_dart(dart_sdk, packages__flutter__src__foundation__synchronous_future$46dart, packages__flutter__src__painting__image_stream$46dart, packages__flutter__src__foundation__debug$46dart, packages__flutter__src__painting___network_image_web$46dart) {
   'use strict';
   const core = dart_sdk.core;
-  const _interceptors = dart_sdk._interceptors;
-  const _js_helper = dart_sdk._js_helper;
   const async = dart_sdk.async;
+  const _js_helper = dart_sdk._js_helper;
+  const ui = dart_sdk.ui;
+  const typed_data = dart_sdk.typed_data;
+  const _http = dart_sdk._http;
+  const _native_typed_data = dart_sdk._native_typed_data;
+  const io = dart_sdk.io;
+  const math = dart_sdk.math;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const debug = packages__flutter__src__gestures__debug$46dart.src__gestures__debug;
-  const print = packages__flutter__src__foundation__print$46dart.src__foundation__print;
-  var arena = Object.create(dart.library);
-  var $add = dartx.add;
-  var $isEmpty = dartx.isEmpty;
-  var $map = dartx.map;
-  var $join = dartx.join;
-  var $putIfAbsent = dartx.putIfAbsent;
-  var $_get = dartx._get;
-  var $remove = dartx.remove;
-  var $isNotEmpty = dartx.isNotEmpty;
-  var $first = dartx.first;
-  var $length = dartx.length;
-  var $contains = dartx.contains;
-  var $containsKey = dartx.containsKey;
+  const synchronous_future = packages__flutter__src__foundation__synchronous_future$46dart.src__foundation__synchronous_future;
+  const image_stream = packages__flutter__src__painting__image_stream$46dart.src__painting__image_stream;
+  const assertions = packages__flutter__src__foundation__debug$46dart.src__foundation__assertions;
+  const diagnostics = packages__flutter__src__foundation__debug$46dart.src__foundation__diagnostics;
+  const image_provider = packages__flutter__src__painting___network_image_web$46dart.src__painting__image_provider;
+  var network = Object.create(dart.library);
+  var $lengthInBytes = dartx.lengthInBytes;
+  var $runtimeType = dartx.runtimeType;
+  var $_equals = dartx._equals;
+  var $hashCode = dartx.hashCode;
   var $toString = dartx.toString;
-  var $padRight = dartx.padRight;
-  var GestureDispositionL = () => (GestureDispositionL = dart.constFn(dart.legacy(arena.GestureDisposition)))();
-  var JSArrayOfGestureArenaMember = () => (JSArrayOfGestureArenaMember = dart.constFn(_interceptors.JSArray$(arena.GestureArenaMember)))();
-  var GestureArenaMemberToString = () => (GestureArenaMemberToString = dart.constFn(dart.fnType(core.String, [arena.GestureArenaMember])))();
-  var IdentityMapOfint$_GestureArena = () => (IdentityMapOfint$_GestureArena = dart.constFn(_js_helper.IdentityMap$(core.int, arena._GestureArena)))();
-  var VoidTo_GestureArena = () => (VoidTo_GestureArena = dart.constFn(dart.fnType(arena._GestureArena, [])))();
-  var VoidTovoid = () => (VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))();
-  var VoidTobool = () => (VoidTobool = dart.constFn(dart.fnType(core.bool, [])))();
+  var $buffer = dartx.buffer;
+  var $length = dartx.length;
+  var $setAll = dartx.setAll;
+  var $setRange = dartx.setRange;
+  var $contains = dartx.contains;
+  var FetchInstructionsL = () => (FetchInstructionsL = dart.constFn(dart.legacy(network.FetchInstructions)))();
+  var FutureOfFetchInstructionsL = () => (FutureOfFetchInstructionsL = dart.constFn(async.Future$(FetchInstructionsL())))();
+  var FutureLOfFetchInstructionsL = () => (FutureLOfFetchInstructionsL = dart.constFn(dart.legacy(FutureOfFetchInstructionsL())))();
+  var UriL = () => (UriL = dart.constFn(dart.legacy(core.Uri)))();
+  var FetchFailureL = () => (FetchFailureL = dart.constFn(dart.legacy(network.FetchFailure)))();
+  var UriLAndFetchFailureLToFutureLOfFetchInstructionsL = () => (UriLAndFetchFailureLToFutureLOfFetchInstructionsL = dart.constFn(dart.fnType(FutureLOfFetchInstructionsL(), [UriL(), FetchFailureL()])))();
+  var NetworkImageWithRetryL = () => (NetworkImageWithRetryL = dart.constFn(dart.legacy(network.NetworkImageWithRetry)))();
+  var SynchronousFutureOfNetworkImageWithRetryL = () => (SynchronousFutureOfNetworkImageWithRetryL = dart.constFn(synchronous_future.SynchronousFuture$(NetworkImageWithRetryL())))();
+  var DiagnosticsNodeL = () => (DiagnosticsNodeL = dart.constFn(dart.legacy(diagnostics.DiagnosticsNode)))();
+  var SyncIterableOfDiagnosticsNodeL = () => (SyncIterableOfDiagnosticsNodeL = dart.constFn(_js_helper.SyncIterable$(DiagnosticsNodeL())))();
+  var IterableOfDiagnosticsNodeL = () => (IterableOfDiagnosticsNodeL = dart.constFn(core.Iterable$(DiagnosticsNodeL())))();
+  var IterableLOfDiagnosticsNodeL = () => (IterableLOfDiagnosticsNodeL = dart.constFn(dart.legacy(IterableOfDiagnosticsNodeL())))();
+  var VoidToIterableLOfDiagnosticsNodeL = () => (VoidToIterableLOfDiagnosticsNodeL = dart.constFn(dart.fnType(IterableLOfDiagnosticsNodeL(), [])))();
+  var boolL = () => (boolL = dart.constFn(dart.legacy(core.bool)))();
+  var VoidToboolL = () => (VoidToboolL = dart.constFn(dart.fnType(boolL(), [])))();
+  var _Uint8ListBuilderL = () => (_Uint8ListBuilderL = dart.constFn(dart.legacy(network._Uint8ListBuilder)))();
+  var intL = () => (intL = dart.constFn(dart.legacy(core.int)))();
+  var ListOfintL = () => (ListOfintL = dart.constFn(core.List$(intL())))();
+  var ListLOfintL = () => (ListLOfintL = dart.constFn(dart.legacy(ListOfintL())))();
+  var _Uint8ListBuilderLAndListLOfintLTo_Uint8ListBuilderL = () => (_Uint8ListBuilderLAndListLOfintLTo_Uint8ListBuilderL = dart.constFn(dart.fnType(_Uint8ListBuilderL(), [_Uint8ListBuilderL(), ListLOfintL()])))();
+  var ImageInfoL = () => (ImageInfoL = dart.constFn(dart.legacy(image_stream.ImageInfo)))();
+  var intLToboolL = () => (intLToboolL = dart.constFn(dart.fnType(boolL(), [intL()])))();
+  var SocketExceptionL = () => (SocketExceptionL = dart.constFn(dart.legacy(io.SocketException)))();
+  var FutureOfvoid = () => (FutureOfvoid = dart.constFn(async.Future$(dart.void)))();
   const CT = Object.create(null);
-  var L1 = "package:flutter/src/gestures/arena.dart";
-  var L0 = "file:///C:/src/flutter/packages/flutter/lib/src/gestures/arena.dart";
+  var L0 = "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_image-3.0.0/lib/network.dart";
+  var L1 = "package:flutter_image/network.dart";
   dart.defineLazy(CT, {
     get C0() {
-      return C0 = dart.const({
-        __proto__: arena.GestureDisposition.prototype,
-        [_name$]: "GestureDisposition.accepted",
-        index: 0
+      return C0 = dart.fn(network.NetworkImageWithRetry.defaultFetchStrategy, UriLAndFetchFailureLToFutureLOfFetchInstructionsL());
+    },
+    get C2() {
+      return C2 = dart.fn(network.FetchStrategyBuilder.defaultTransientHttpStatusCodePredicate, intLToboolL());
+    },
+    get C3() {
+      return C3 = dart.const({
+        __proto__: core.Duration.prototype,
+        [Duration__duration]: 1000000
+      });
+    },
+    get C4() {
+      return C4 = dart.const({
+        __proto__: core.Duration.prototype,
+        [Duration__duration]: 60000000
+      });
+    },
+    get C5() {
+      return C5 = dart.const({
+        __proto__: core.Duration.prototype,
+        [Duration__duration]: 30000000
       });
     },
     get C1() {
       return C1 = dart.const({
-        __proto__: arena.GestureDisposition.prototype,
-        [_name$]: "GestureDisposition.rejected",
-        index: 1
+        __proto__: network.FetchStrategyBuilder.prototype,
+        [FetchStrategyBuilder_transientHttpStatusCodePredicate]: C2 || CT.C2,
+        [FetchStrategyBuilder_exponentialBackoffMultiplier]: 2,
+        [FetchStrategyBuilder_initialPauseBetweenRetries]: C3 || CT.C3,
+        [FetchStrategyBuilder_maxAttempts]: 5,
+        [FetchStrategyBuilder_totalFetchTimeout]: C4 || CT.C4,
+        [FetchStrategyBuilder_timeout]: C5 || CT.C5
       });
     },
-    get C2() {
-      return C2 = dart.constList([C0 || CT.C0, C1 || CT.C1], GestureDispositionL());
+    get C6() {
+      return C6 = dart.constList([0, 408, 500, 502, 503, 504], intL());
     }
   }, false);
-  var _name$ = dart.privateName(arena, "_name");
   var C0;
-  var C1;
+  var _loadWithRetry = dart.privateName(network, "_loadWithRetry");
+  var _debugCheckInstructions = dart.privateName(network, "_debugCheckInstructions");
+  var url$ = dart.privateName(network, "NetworkImageWithRetry.url");
+  var scale$ = dart.privateName(network, "NetworkImageWithRetry.scale");
+  var fetchStrategy$ = dart.privateName(network, "NetworkImageWithRetry.fetchStrategy");
   var C2;
-  arena.GestureDisposition = class GestureDisposition extends core.Object {
-    toString() {
-      return this[_name$];
+  var FetchStrategyBuilder_transientHttpStatusCodePredicate = dart.privateName(network, "FetchStrategyBuilder.transientHttpStatusCodePredicate");
+  var FetchStrategyBuilder_exponentialBackoffMultiplier = dart.privateName(network, "FetchStrategyBuilder.exponentialBackoffMultiplier");
+  var Duration__duration = dart.privateName(core, "Duration._duration");
+  var C3;
+  var FetchStrategyBuilder_initialPauseBetweenRetries = dart.privateName(network, "FetchStrategyBuilder.initialPauseBetweenRetries");
+  var FetchStrategyBuilder_maxAttempts = dart.privateName(network, "FetchStrategyBuilder.maxAttempts");
+  var C4;
+  var FetchStrategyBuilder_totalFetchTimeout = dart.privateName(network, "FetchStrategyBuilder.totalFetchTimeout");
+  var C5;
+  var FetchStrategyBuilder_timeout = dart.privateName(network, "FetchStrategyBuilder.timeout");
+  var C1;
+  network.NetworkImageWithRetry = class NetworkImageWithRetry extends image_provider.ImageProvider {
+    get url() {
+      return this[url$];
     }
-  };
-  (arena.GestureDisposition.new = function(index, _name) {
-    if (index == null) dart.nullFailed(L0, 13, 6, "index");
-    if (_name == null) dart.nullFailed(L0, 13, 6, "_name");
-    this.index = index;
-    this[_name$] = _name;
-    ;
-  }).prototype = arena.GestureDisposition.prototype;
-  dart.addTypeTests(arena.GestureDisposition);
-  dart.addTypeCaches(arena.GestureDisposition);
-  dart.setLibraryUri(arena.GestureDisposition, L1);
-  dart.setFieldSignature(arena.GestureDisposition, () => ({
-    __proto__: dart.getFields(arena.GestureDisposition.__proto__),
-    index: dart.finalFieldType(core.int),
-    [_name$]: dart.finalFieldType(core.String)
-  }));
-  dart.defineExtensionMethods(arena.GestureDisposition, ['toString']);
-  arena.GestureDisposition.accepted = C0 || CT.C0;
-  arena.GestureDisposition.rejected = C1 || CT.C1;
-  arena.GestureDisposition.values = C2 || CT.C2;
-  arena.GestureArenaMember = class GestureArenaMember extends core.Object {};
-  (arena.GestureArenaMember.new = function() {
-    ;
-  }).prototype = arena.GestureArenaMember.prototype;
-  dart.addTypeTests(arena.GestureArenaMember);
-  dart.addTypeCaches(arena.GestureArenaMember);
-  dart.setLibraryUri(arena.GestureArenaMember, L1);
-  var _arena$ = dart.privateName(arena, "_arena");
-  var _pointer$ = dart.privateName(arena, "_pointer");
-  var _member$ = dart.privateName(arena, "_member");
-  var _resolve = dart.privateName(arena, "_resolve");
-  arena.GestureArenaEntry = class GestureArenaEntry extends core.Object {
-    resolve(disposition) {
-      if (disposition == null) dart.nullFailed(L0, 52, 35, "disposition");
-      this[_arena$][_resolve](this[_pointer$], this[_member$], disposition);
+    set url(value) {
+      super.url = value;
     }
-  };
-  (arena.GestureArenaEntry.__ = function(_arena, _pointer, _member) {
-    if (_arena == null) dart.nullFailed(L0, 42, 28, "_arena");
-    if (_pointer == null) dart.nullFailed(L0, 42, 41, "_pointer");
-    if (_member == null) dart.nullFailed(L0, 42, 56, "_member");
-    this[_arena$] = _arena;
-    this[_pointer$] = _pointer;
-    this[_member$] = _member;
-    ;
-  }).prototype = arena.GestureArenaEntry.prototype;
-  dart.addTypeTests(arena.GestureArenaEntry);
-  dart.addTypeCaches(arena.GestureArenaEntry);
-  dart.setMethodSignature(arena.GestureArenaEntry, () => ({
-    __proto__: dart.getMethods(arena.GestureArenaEntry.__proto__),
-    resolve: dart.fnType(dart.void, [arena.GestureDisposition])
-  }));
-  dart.setLibraryUri(arena.GestureArenaEntry, L1);
-  dart.setFieldSignature(arena.GestureArenaEntry, () => ({
-    __proto__: dart.getFields(arena.GestureArenaEntry.__proto__),
-    [_arena$]: dart.finalFieldType(arena.GestureArenaManager),
-    [_pointer$]: dart.finalFieldType(core.int),
-    [_member$]: dart.finalFieldType(arena.GestureArenaMember)
-  }));
-  arena._GestureArena = class _GestureArena extends core.Object {
-    add(member) {
-      if (member == null) dart.nullFailed(L0, 69, 31, "member");
-      if (!dart.test(this.isOpen)) dart.assertFailed(null, L0, 70, 12, "isOpen");
-      this.members[$add](member);
+    get scale() {
+      return this[scale$];
     }
-    toString() {
-      let buffer = new core.StringBuffer.new();
-      if (dart.test(this.members[$isEmpty])) {
-        buffer.write("<empty>");
-      } else {
-        buffer.write(this.members[$map](core.String, dart.fn(member => {
-          if (member == null) dart.nullFailed(L0, 80, 60, "member");
-          if (dart.equals(member, this.eagerWinner)) return dart.str(member) + " (eager winner)";
-          return dart.str(member);
-        }, GestureArenaMemberToString()))[$join](", "));
-      }
-      if (dart.test(this.isOpen)) buffer.write(" [open]");
-      if (dart.test(this.isHeld)) buffer.write(" [held]");
-      if (dart.test(this.hasPendingSweep)) buffer.write(" [hasPendingSweep]");
-      return buffer.toString();
+    set scale(value) {
+      super.scale = value;
     }
-  };
-  (arena._GestureArena.new = function() {
-    this.members = JSArrayOfGestureArenaMember().of([]);
-    this.isOpen = true;
-    this.isHeld = false;
-    this.hasPendingSweep = false;
-    this.eagerWinner = null;
-    ;
-  }).prototype = arena._GestureArena.prototype;
-  dart.addTypeTests(arena._GestureArena);
-  dart.addTypeCaches(arena._GestureArena);
-  dart.setMethodSignature(arena._GestureArena, () => ({
-    __proto__: dart.getMethods(arena._GestureArena.__proto__),
-    add: dart.fnType(dart.void, [arena.GestureArenaMember])
-  }));
-  dart.setLibraryUri(arena._GestureArena, L1);
-  dart.setFieldSignature(arena._GestureArena, () => ({
-    __proto__: dart.getFields(arena._GestureArena.__proto__),
-    members: dart.finalFieldType(core.List$(arena.GestureArenaMember)),
-    isOpen: dart.fieldType(core.bool),
-    isHeld: dart.fieldType(core.bool),
-    hasPendingSweep: dart.fieldType(core.bool),
-    eagerWinner: dart.fieldType(dart.nullable(arena.GestureArenaMember))
-  }));
-  dart.defineExtensionMethods(arena._GestureArena, ['toString']);
-  var _arenas = dart.privateName(arena, "_arenas");
-  var _debugLogDiagnostic = dart.privateName(arena, "_debugLogDiagnostic");
-  var _tryToResolveArena = dart.privateName(arena, "_tryToResolveArena");
-  var _resolveInFavorOf = dart.privateName(arena, "_resolveInFavorOf");
-  var _resolveByDefault = dart.privateName(arena, "_resolveByDefault");
-  arena.GestureArenaManager = class GestureArenaManager extends core.Object {
-    add(pointer, member) {
-      if (pointer == null) dart.nullFailed(L0, 107, 29, "pointer");
-      if (member == null) dart.nullFailed(L0, 107, 57, "member");
-      let state = this[_arenas][$putIfAbsent](pointer, dart.fn(() => {
-        if (!dart.test(this[_debugLogDiagnostic](pointer, "★ Opening new gesture arena."))) dart.assertFailed(null, L0, 109, 14, "_debugLogDiagnostic(pointer, '★ Opening new gesture arena.')");
-        return new arena._GestureArena.new();
-      }, VoidTo_GestureArena()));
-      state.add(member);
-      if (!dart.test(this[_debugLogDiagnostic](pointer, "Adding: " + dart.str(member)))) dart.assertFailed(null, L0, 113, 12, "_debugLogDiagnostic(pointer, 'Adding: $member')");
-      return new arena.GestureArenaEntry.__(this, pointer, member);
+    get fetchStrategy() {
+      return this[fetchStrategy$];
     }
-    close(pointer) {
-      if (pointer == null) dart.nullFailed(L0, 120, 18, "pointer");
-      let state = this[_arenas][$_get](pointer);
-      if (state == null) return;
-      state.isOpen = false;
-      if (!dart.test(this[_debugLogDiagnostic](pointer, "Closing", state))) dart.assertFailed(null, L0, 125, 12, "_debugLogDiagnostic(pointer, 'Closing', state)");
-      this[_tryToResolveArena](pointer, state);
+    set fetchStrategy(value) {
+      super.fetchStrategy = value;
     }
-    sweep(pointer) {
-      if (pointer == null) dart.nullFailed(L0, 142, 18, "pointer");
-      let state = this[_arenas][$_get](pointer);
-      if (state == null) return;
-      if (!!dart.test(state.isOpen)) dart.assertFailed(null, L0, 146, 12, "!state.isOpen");
-      if (dart.test(state.isHeld)) {
-        state.hasPendingSweep = true;
-        if (!dart.test(this[_debugLogDiagnostic](pointer, "Delaying sweep", state))) dart.assertFailed(null, L0, 149, 14, "_debugLogDiagnostic(pointer, 'Delaying sweep', state)");
-        return;
-      }
-      if (!dart.test(this[_debugLogDiagnostic](pointer, "Sweeping", state))) dart.assertFailed(null, L0, 152, 12, "_debugLogDiagnostic(pointer, 'Sweeping', state)");
-      this[_arenas][$remove](pointer);
-      if (dart.test(state.members[$isNotEmpty])) {
-        if (!dart.test(this[_debugLogDiagnostic](pointer, "Winner: " + dart.str(state.members[$first])))) dart.assertFailed(null, L0, 156, 14, "_debugLogDiagnostic(pointer, 'Winner: ${state.members.first}')");
-        state.members[$first].acceptGesture(pointer);
-        for (let i = 1; i < dart.notNull(state.members[$length]); i = i + 1)
-          state.members[$_get](i).rejectGesture(pointer);
-      }
+    static defaultFetchStrategy(uri, failure) {
+      return network.NetworkImageWithRetry._defaultFetchStrategyFunction(uri, failure);
     }
-    hold(pointer) {
-      if (pointer == null) dart.nullFailed(L0, 176, 17, "pointer");
-      let state = this[_arenas][$_get](pointer);
-      if (state == null) return;
-      state.isHeld = true;
-      if (!dart.test(this[_debugLogDiagnostic](pointer, "Holding", state))) dart.assertFailed(null, L0, 181, 12, "_debugLogDiagnostic(pointer, 'Holding', state)");
+    obtainKey(configuration) {
+      return new (SynchronousFutureOfNetworkImageWithRetryL()).new(this);
     }
-    release(pointer) {
-      if (pointer == null) dart.nullFailed(L0, 193, 20, "pointer");
-      let state = this[_arenas][$_get](pointer);
-      if (state == null) return;
-      state.isHeld = false;
-      if (!dart.test(this[_debugLogDiagnostic](pointer, "Releasing", state))) dart.assertFailed(null, L0, 198, 12, "_debugLogDiagnostic(pointer, 'Releasing', state)");
-      if (dart.test(state.hasPendingSweep)) this.sweep(pointer);
+    load(key, decode) {
+      NetworkImageWithRetryL().as(key);
+      return new image_stream.OneFrameImageStreamCompleter.new(this[_loadWithRetry](key, decode), {informationCollector: dart.fn(() => new (SyncIterableOfDiagnosticsNodeL()).new((function*() {
+          yield new assertions.ErrorDescription.new("Image provider: " + dart.str(this));
+          yield new assertions.ErrorDescription.new("Image key: " + dart.str(key));
+        }).bind(this)), VoidToIterableLOfDiagnosticsNodeL())});
     }
-    [_resolve](pointer, member, disposition) {
-      let t0;
-      if (pointer == null) dart.nullFailed(L0, 206, 21, "pointer");
-      if (member == null) dart.nullFailed(L0, 206, 49, "member");
-      if (disposition == null) dart.nullFailed(L0, 206, 76, "disposition");
-      let state = this[_arenas][$_get](pointer);
-      if (state == null) return;
-      if (!dart.test(this[_debugLogDiagnostic](pointer, (dart.equals(disposition, arena.GestureDisposition.accepted) ? "Accepting" : "Rejecting") + ": " + dart.str(member)))) dart.assertFailed(null, L0, 210, 12, "_debugLogDiagnostic(pointer, '${ disposition == GestureDisposition.accepted ? \"Accepting\" : \"Rejecting\" }: $member')");
-      if (!dart.test(state.members[$contains](member))) dart.assertFailed(null, L0, 211, 12, "state.members.contains(member)");
-      if (dart.equals(disposition, arena.GestureDisposition.rejected)) {
-        state.members[$remove](member);
-        member.rejectGesture(pointer);
-        if (!dart.test(state.isOpen)) this[_tryToResolveArena](pointer, state);
-      } else {
-        if (!dart.equals(disposition, arena.GestureDisposition.accepted)) dart.assertFailed(null, L0, 218, 14, "disposition == GestureDisposition.accepted");
-        if (dart.test(state.isOpen)) {
-          t0 = state;
-          t0.eagerWinner == null ? t0.eagerWinner = member : null;
-        } else {
-          if (!dart.test(this[_debugLogDiagnostic](pointer, "Self-declared winner: " + dart.str(member)))) dart.assertFailed(null, L0, 222, 16, "_debugLogDiagnostic(pointer, 'Self-declared winner: $member')");
-          this[_resolveInFavorOf](pointer, state, member);
-        }
-      }
-    }
-    [_tryToResolveArena](pointer, state) {
-      if (pointer == null) dart.nullFailed(L0, 228, 31, "pointer");
-      if (state == null) dart.nullFailed(L0, 228, 54, "state");
-      if (!dart.equals(this[_arenas][$_get](pointer), state)) dart.assertFailed(null, L0, 229, 12, "_arenas[pointer] == state");
-      if (!!dart.test(state.isOpen)) dart.assertFailed(null, L0, 230, 12, "!state.isOpen");
-      if (state.members[$length] === 1) {
-        async.scheduleMicrotask(dart.fn(() => this[_resolveByDefault](pointer, state), VoidTovoid()));
-      } else if (dart.test(state.members[$isEmpty])) {
-        this[_arenas][$remove](pointer);
-        if (!dart.test(this[_debugLogDiagnostic](pointer, "Arena empty."))) dart.assertFailed(null, L0, 235, 14, "_debugLogDiagnostic(pointer, 'Arena empty.')");
-      } else if (state.eagerWinner != null) {
-        if (!dart.test(this[_debugLogDiagnostic](pointer, "Eager winner: " + dart.str(state.eagerWinner)))) dart.assertFailed(null, L0, 237, 14, "_debugLogDiagnostic(pointer, 'Eager winner: ${state.eagerWinner}')");
-        this[_resolveInFavorOf](pointer, state, dart.nullCheck(state.eagerWinner));
-      }
-    }
-    [_resolveByDefault](pointer, state) {
-      if (pointer == null) dart.nullFailed(L0, 242, 30, "pointer");
-      if (state == null) dart.nullFailed(L0, 242, 53, "state");
-      if (!dart.test(this[_arenas][$containsKey](pointer))) return;
-      if (!dart.equals(this[_arenas][$_get](pointer), state)) dart.assertFailed(null, L0, 245, 12, "_arenas[pointer] == state");
-      if (!!dart.test(state.isOpen)) dart.assertFailed(null, L0, 246, 12, "!state.isOpen");
-      let members = state.members;
-      if (!(members[$length] === 1)) dart.assertFailed(null, L0, 248, 12, "members.length == 1");
-      this[_arenas][$remove](pointer);
-      if (!dart.test(this[_debugLogDiagnostic](pointer, "Default winner: " + dart.str(state.members[$first])))) dart.assertFailed(null, L0, 250, 12, "_debugLogDiagnostic(pointer, 'Default winner: ${state.members.first}')");
-      state.members[$first].acceptGesture(pointer);
-    }
-    [_resolveInFavorOf](pointer, state, member) {
-      if (pointer == null) dart.nullFailed(L0, 254, 30, "pointer");
-      if (state == null) dart.nullFailed(L0, 254, 53, "state");
-      if (member == null) dart.nullFailed(L0, 254, 79, "member");
-      if (!dart.equals(state, this[_arenas][$_get](pointer))) dart.assertFailed(null, L0, 255, 12, "state == _arenas[pointer]");
-      if (!(state != null)) dart.assertFailed(null, L0, 256, 12, "state != null");
-      if (!(state.eagerWinner == null || dart.equals(state.eagerWinner, member))) dart.assertFailed(null, L0, 257, 12, "state.eagerWinner == null || state.eagerWinner == member");
-      if (!!dart.test(state.isOpen)) dart.assertFailed(null, L0, 258, 12, "!state.isOpen");
-      this[_arenas][$remove](pointer);
-      for (let rejectedMember of state.members) {
-        if (!dart.equals(rejectedMember, member)) rejectedMember.rejectGesture(pointer);
-      }
-      member.acceptGesture(pointer);
-    }
-    [_debugLogDiagnostic](pointer, message, state = null) {
-      if (pointer == null) dart.nullFailed(L0, 267, 32, "pointer");
-      if (message == null) dart.nullFailed(L0, 267, 48, "message");
+    [_debugCheckInstructions](instructions) {
       if (!dart.test(dart.fn(() => {
-        if (dart.test(debug.debugPrintGestureArenaDiagnostics)) {
-          let count = state != null ? state.members[$length] : null;
-          let s = count !== 1 ? "s" : "";
-          print.debugPrint("Gesture arena " + dart.toString(pointer)[$padRight](4) + " ❙ " + dart.str(message) + (count != null ? " with " + dart.str(count) + " member" + s + "." : ""));
+        if (instructions == null) {
+          if (dart.equals(this.fetchStrategy, C0 || CT.C0)) {
+            dart.throw(new core.StateError.new("The default FetchStrategy returned null FetchInstructions. This\n" + "is likely a bug in " + dart.str(this.runtimeType) + ". Please file a bug at\n" + "https://github.com/flutter/flutter/issues."));
+          } else {
+            dart.throw(new core.StateError.new("The custom FetchStrategy used to fetch " + dart.str(this.url) + " returned null\n" + "FetchInstructions. FetchInstructions must never be null, but\n" + "instead instruct to either make another fetch attempt or give up."));
+          }
         }
         return true;
-      }, VoidTobool())())) dart.assertFailed(null, L0, 268, 12, "() {\r\n      if (debugPrintGestureArenaDiagnostics) {\r\n        final int? count = state != null ? state.members.length : null;\r\n        final String s = count != 1 ? 's' : '';\r\n        debugPrint('Gesture arena ${pointer.toString().padRight(4)} ❙ $message${ count != null ? \" with $count member$s.\" : \"\"}');\r\n      }\r\n      return true;\r\n    }()");
-      return true;
+      }, VoidToboolL())())) dart.assertFailed(null, L0, 84, 12, "() {\n      if (instructions == null) {\n        if (fetchStrategy == defaultFetchStrategy) {\n          throw StateError(\n            'The default FetchStrategy returned null FetchInstructions. This\\n'\n            'is likely a bug in $runtimeType. Please file a bug at\\n'\n            'https://github.com/flutter/flutter/issues.'\n          );\n        } else {\n          throw StateError(\n            'The custom FetchStrategy used to fetch $url returned null\\n'\n            'FetchInstructions. FetchInstructions must never be null, but\\n'\n            'instead instruct to either make another fetch attempt or give up.'\n          );\n        }\n      }\n      return true;\n    }()");
+    }
+    [_loadWithRetry](key, decode) {
+      return async.async(ImageInfoL(), (function* _loadWithRetry() {
+        let t0, t1, t0$, t1$, t2, t1$0;
+        if (!dart.equals(key, this)) dart.assertFailed(null, L0, 105, 12, "key == this");
+        let stopwatch = (t0 = new core.Stopwatch.new(), (() => {
+          t0.start();
+          return t0;
+        })());
+        let resolved = core.Uri.base.resolve(key.url);
+        let instructions = (yield (t0$ = resolved, t1 = null, this.fetchStrategy(t0$, t1)));
+        this[_debugCheckInstructions](instructions);
+        let attemptCount = 0;
+        let lastFailure = null;
+        while (!dart.test(instructions.shouldGiveUp)) {
+          attemptCount = attemptCount + 1;
+          let request = null;
+          try {
+            request = (yield network.NetworkImageWithRetry._client.getUrl(instructions.uri).timeout(instructions.timeout));
+            let response = (yield request.close().timeout(instructions.timeout));
+            if (response == null || response.statusCode !== 200) {
+              dart.throw(new network.FetchFailure.__({totalDuration: stopwatch.elapsed, attemptCount: attemptCount, httpStatusCode: response.statusCode}));
+            }
+            let builder = (yield response.fold(_Uint8ListBuilderL(), new network._Uint8ListBuilder.new(), dart.fn((buffer, bytes) => {
+              let t0;
+              t0 = buffer;
+              return (() => {
+                t0.add(bytes);
+                return t0;
+              })();
+            }, _Uint8ListBuilderLAndListLOfintLTo_Uint8ListBuilderL())).timeout(instructions.timeout));
+            let bytes = builder.data;
+            if (bytes[$lengthInBytes] === 0) return null;
+            let codec = (yield decode(bytes));
+            let image = (yield codec.getNextFrame()).image;
+            if (image == null) return null;
+            return new image_stream.ImageInfo.new({image: image, scale: key.scale});
+          } catch (e) {
+            let error = dart.getThrown(e);
+            t1$ = request;
+            t1$ == null ? null : t1$.close();
+            lastFailure = FetchFailureL().is(error) ? error : new network.FetchFailure.__({totalDuration: stopwatch.elapsed, attemptCount: attemptCount, originalException: error});
+            instructions = (yield (t1$0 = instructions.uri, t2 = lastFailure, this.fetchStrategy(t1$0, t2)));
+            this[_debugCheckInstructions](instructions);
+          }
+        }
+        if (instructions.alternativeImage != null) return instructions.alternativeImage;
+        if (!(lastFailure != null)) dart.assertFailed(null, L0, 165, 12, "lastFailure != null");
+        assertions.FlutterError.onError(new assertions.FlutterErrorDetails.new({exception: lastFailure, library: "package:flutter_image", context: new assertions.ErrorDescription.new(dart.str(this.runtimeType) + " failed to load " + dart.str(instructions.uri))}));
+        return null;
+      }).bind(this));
+    }
+    _equals(other) {
+      if (other == null) return false;
+      if (!dart.equals(dart.runtimeType(other), this.runtimeType)) return false;
+      let typedOther = NetworkImageWithRetryL().as(other);
+      return this.url == typedOther.url && this.scale == typedOther.scale;
+    }
+    get hashCode() {
+      return ui.hashValues(this.url, this.scale);
+    }
+    toString() {
+      return dart.str(this.runtimeType) + "(\"" + dart.str(this.url) + "\", scale: " + dart.str(this.scale) + ")";
     }
   };
-  (arena.GestureArenaManager.new = function() {
-    this[_arenas] = new (IdentityMapOfint$_GestureArena()).new();
+  (network.NetworkImageWithRetry.new = function(url, opts) {
+    let scale = opts && 'scale' in opts ? opts.scale : 1;
+    let fetchStrategy = opts && 'fetchStrategy' in opts ? opts.fetchStrategy : C0 || CT.C0;
+    this[url$] = url;
+    this[scale$] = scale;
+    this[fetchStrategy$] = fetchStrategy;
+    if (!(url != null)) dart.assertFailed(null, L0, 33, 16, "url != null");
+    if (!(scale != null)) dart.assertFailed(null, L0, 34, 16, "scale != null");
+    if (!(fetchStrategy != null)) dart.assertFailed(null, L0, 35, 16, "fetchStrategy != null");
+    network.NetworkImageWithRetry.__proto__.new.call(this);
     ;
-  }).prototype = arena.GestureArenaManager.prototype;
-  dart.addTypeTests(arena.GestureArenaManager);
-  dart.addTypeCaches(arena.GestureArenaManager);
-  dart.setMethodSignature(arena.GestureArenaManager, () => ({
-    __proto__: dart.getMethods(arena.GestureArenaManager.__proto__),
-    add: dart.fnType(arena.GestureArenaEntry, [core.int, arena.GestureArenaMember]),
-    close: dart.fnType(dart.void, [core.int]),
-    sweep: dart.fnType(dart.void, [core.int]),
-    hold: dart.fnType(dart.void, [core.int]),
-    release: dart.fnType(dart.void, [core.int]),
-    [_resolve]: dart.fnType(dart.void, [core.int, arena.GestureArenaMember, arena.GestureDisposition]),
-    [_tryToResolveArena]: dart.fnType(dart.void, [core.int, arena._GestureArena]),
-    [_resolveByDefault]: dart.fnType(dart.void, [core.int, arena._GestureArena]),
-    [_resolveInFavorOf]: dart.fnType(dart.void, [core.int, arena._GestureArena, arena.GestureArenaMember]),
-    [_debugLogDiagnostic]: dart.fnType(core.bool, [core.int, core.String], [dart.nullable(arena._GestureArena)])
+  }).prototype = network.NetworkImageWithRetry.prototype;
+  dart.addTypeTests(network.NetworkImageWithRetry);
+  dart.addTypeCaches(network.NetworkImageWithRetry);
+  dart.setMethodSignature(network.NetworkImageWithRetry, () => ({
+    __proto__: dart.getMethods(network.NetworkImageWithRetry.__proto__),
+    obtainKey: dart.fnType(dart.legacy(async.Future$(dart.legacy(network.NetworkImageWithRetry))), [dart.legacy(image_provider.ImageConfiguration)]),
+    load: dart.fnType(dart.legacy(image_stream.ImageStreamCompleter), [dart.legacy(core.Object), dart.legacy(dart.fnType(async.Future$(ui.Codec), [typed_data.Uint8List], {allowUpscaling: core.bool, cacheHeight: dart.nullable(core.int), cacheWidth: dart.nullable(core.int)}, {}))]),
+    [_debugCheckInstructions]: dart.fnType(dart.void, [dart.legacy(network.FetchInstructions)]),
+    [_loadWithRetry]: dart.fnType(dart.legacy(async.Future$(dart.legacy(image_stream.ImageInfo))), [dart.legacy(network.NetworkImageWithRetry), dart.legacy(dart.fnType(async.Future$(ui.Codec), [typed_data.Uint8List], {allowUpscaling: core.bool, cacheHeight: dart.nullable(core.int), cacheWidth: dart.nullable(core.int)}, {}))]),
+    _equals: dart.fnType(dart.legacy(core.bool), [dart.dynamic]),
+    [$_equals]: dart.fnType(dart.legacy(core.bool), [dart.dynamic]),
+    toString: dart.fnType(dart.legacy(core.String), []),
+    [$toString]: dart.fnType(dart.legacy(core.String), [])
   }));
-  dart.setLibraryUri(arena.GestureArenaManager, L1);
-  dart.setFieldSignature(arena.GestureArenaManager, () => ({
-    __proto__: dart.getFields(arena.GestureArenaManager.__proto__),
-    [_arenas]: dart.finalFieldType(core.Map$(core.int, arena._GestureArena))
+  dart.setGetterSignature(network.NetworkImageWithRetry, () => ({
+    __proto__: dart.getGetters(network.NetworkImageWithRetry.__proto__),
+    hashCode: dart.legacy(core.int),
+    [$hashCode]: dart.legacy(core.int)
   }));
-  dart.trackLibraries("packages/flutter/src/gestures/arena.dart", {
-    "package:flutter/src/gestures/arena.dart": arena
+  dart.setLibraryUri(network.NetworkImageWithRetry, L1);
+  dart.setFieldSignature(network.NetworkImageWithRetry, () => ({
+    __proto__: dart.getFields(network.NetworkImageWithRetry.__proto__),
+    url: dart.finalFieldType(dart.legacy(core.String)),
+    scale: dart.finalFieldType(dart.legacy(core.double)),
+    fetchStrategy: dart.finalFieldType(dart.legacy(dart.fnType(dart.legacy(async.Future$(dart.legacy(network.FetchInstructions))), [dart.legacy(core.Uri), dart.legacy(network.FetchFailure)])))
+  }));
+  dart.defineExtensionMethods(network.NetworkImageWithRetry, ['_equals', 'toString']);
+  dart.defineExtensionAccessors(network.NetworkImageWithRetry, ['hashCode']);
+  dart.defineLazy(network.NetworkImageWithRetry, {
+    /*network.NetworkImageWithRetry._client*/get _client() {
+      return _http.HttpClient.new();
+    },
+    /*network.NetworkImageWithRetry._defaultFetchStrategyFunction*/get _defaultFetchStrategyFunction() {
+      return (C1 || CT.C1).build();
+    }
+  }, true);
+  var shouldGiveUp = dart.privateName(network, "FetchInstructions.shouldGiveUp");
+  var timeout$ = dart.privateName(network, "FetchInstructions.timeout");
+  var uri$ = dart.privateName(network, "FetchInstructions.uri");
+  var alternativeImage$ = dart.privateName(network, "FetchInstructions.alternativeImage");
+  network.FetchInstructions = class FetchInstructions extends core.Object {
+    get shouldGiveUp() {
+      return this[shouldGiveUp];
+    }
+    set shouldGiveUp(value) {
+      super.shouldGiveUp = value;
+    }
+    get timeout() {
+      return this[timeout$];
+    }
+    set timeout(value) {
+      super.timeout = value;
+    }
+    get uri() {
+      return this[uri$];
+    }
+    set uri(value) {
+      super.uri = value;
+    }
+    get alternativeImage() {
+      return this[alternativeImage$];
+    }
+    set alternativeImage(value) {
+      super.alternativeImage = value;
+    }
+    toString() {
+      return dart.str(this.runtimeType) + "(\n" + "  shouldGiveUp: " + dart.str(this.shouldGiveUp) + "\n" + "  timeout: " + dart.str(this.timeout) + "\n" + "  uri: " + dart.str(this.uri) + "\n" + "  alternativeImage?: " + (this.alternativeImage != null ? "yes" : "no") + "\n" + ")";
+    }
+  };
+  (network.FetchInstructions.giveUp = function(opts) {
+    let uri = opts && 'uri' in opts ? opts.uri : null;
+    let alternativeImage = opts && 'alternativeImage' in opts ? opts.alternativeImage : null;
+    this[uri$] = uri;
+    this[alternativeImage$] = alternativeImage;
+    this[shouldGiveUp] = true;
+    this[timeout$] = null;
+    ;
+  }).prototype = network.FetchInstructions.prototype;
+  (network.FetchInstructions.attempt = function(opts) {
+    let uri = opts && 'uri' in opts ? opts.uri : null;
+    let timeout = opts && 'timeout' in opts ? opts.timeout : null;
+    this[uri$] = uri;
+    this[timeout$] = timeout;
+    this[shouldGiveUp] = false;
+    this[alternativeImage$] = null;
+    ;
+  }).prototype = network.FetchInstructions.prototype;
+  dart.addTypeTests(network.FetchInstructions);
+  dart.addTypeCaches(network.FetchInstructions);
+  dart.setMethodSignature(network.FetchInstructions, () => ({
+    __proto__: dart.getMethods(network.FetchInstructions.__proto__),
+    toString: dart.fnType(dart.legacy(core.String), []),
+    [$toString]: dart.fnType(dart.legacy(core.String), [])
+  }));
+  dart.setLibraryUri(network.FetchInstructions, L1);
+  dart.setFieldSignature(network.FetchInstructions, () => ({
+    __proto__: dart.getFields(network.FetchInstructions.__proto__),
+    shouldGiveUp: dart.finalFieldType(dart.legacy(core.bool)),
+    timeout: dart.finalFieldType(dart.legacy(core.Duration)),
+    uri: dart.finalFieldType(dart.legacy(core.Uri)),
+    alternativeImage: dart.finalFieldType(dart.legacy(async.Future$(dart.legacy(image_stream.ImageInfo))))
+  }));
+  dart.defineExtensionMethods(network.FetchInstructions, ['toString']);
+  var totalDuration$ = dart.privateName(network, "FetchFailure.totalDuration");
+  var attemptCount$ = dart.privateName(network, "FetchFailure.attemptCount");
+  var httpStatusCode$ = dart.privateName(network, "FetchFailure.httpStatusCode");
+  var originalException$ = dart.privateName(network, "FetchFailure.originalException");
+  network.FetchFailure = class FetchFailure extends core.Object {
+    get totalDuration() {
+      return this[totalDuration$];
+    }
+    set totalDuration(value) {
+      super.totalDuration = value;
+    }
+    get attemptCount() {
+      return this[attemptCount$];
+    }
+    set attemptCount(value) {
+      super.attemptCount = value;
+    }
+    get httpStatusCode() {
+      return this[httpStatusCode$];
+    }
+    set httpStatusCode(value) {
+      super.httpStatusCode = value;
+    }
+    get originalException() {
+      return this[originalException$];
+    }
+    set originalException(value) {
+      super.originalException = value;
+    }
+    toString() {
+      return dart.str(this.runtimeType) + "(\n" + "  attemptCount: " + dart.str(this.attemptCount) + "\n" + "  httpStatusCode: " + dart.str(this.httpStatusCode) + "\n" + "  totalDuration: " + dart.str(this.totalDuration) + "\n" + "  originalException: " + dart.str(this.originalException) + "\n" + ")";
+    }
+  };
+  (network.FetchFailure.__ = function(opts) {
+    let totalDuration = opts && 'totalDuration' in opts ? opts.totalDuration : null;
+    let attemptCount = opts && 'attemptCount' in opts ? opts.attemptCount : null;
+    let httpStatusCode = opts && 'httpStatusCode' in opts ? opts.httpStatusCode : null;
+    let originalException = opts && 'originalException' in opts ? opts.originalException : null;
+    this[totalDuration$] = totalDuration;
+    this[attemptCount$] = attemptCount;
+    this[httpStatusCode$] = httpStatusCode;
+    this[originalException$] = originalException;
+    if (!(totalDuration != null)) dart.assertFailed(null, L0, 265, 15, "totalDuration != null");
+    if (!(dart.notNull(attemptCount) > 0)) dart.assertFailed(null, L0, 266, 15, "attemptCount > 0");
+    ;
+  }).prototype = network.FetchFailure.prototype;
+  dart.addTypeTests(network.FetchFailure);
+  dart.addTypeCaches(network.FetchFailure);
+  network.FetchFailure[dart.implements] = () => [core.Exception];
+  dart.setMethodSignature(network.FetchFailure, () => ({
+    __proto__: dart.getMethods(network.FetchFailure.__proto__),
+    toString: dart.fnType(dart.legacy(core.String), []),
+    [$toString]: dart.fnType(dart.legacy(core.String), [])
+  }));
+  dart.setLibraryUri(network.FetchFailure, L1);
+  dart.setFieldSignature(network.FetchFailure, () => ({
+    __proto__: dart.getFields(network.FetchFailure.__proto__),
+    totalDuration: dart.finalFieldType(dart.legacy(core.Duration)),
+    attemptCount: dart.finalFieldType(dart.legacy(core.int)),
+    httpStatusCode: dart.finalFieldType(dart.legacy(core.int)),
+    originalException: dart.finalFieldType(dart.dynamic)
+  }));
+  dart.defineExtensionMethods(network.FetchFailure, ['toString']);
+  var _usedLength = dart.privateName(network, "_usedLength");
+  var _buffer = dart.privateName(network, "_buffer");
+  var _ensureCanAdd = dart.privateName(network, "_ensureCanAdd");
+  network._Uint8ListBuilder = class _Uint8ListBuilder extends core.Object {
+    get data() {
+      return typed_data.Uint8List.view(this[_buffer][$buffer], 0, this[_usedLength]);
+    }
+    add(bytes) {
+      this[_ensureCanAdd](bytes[$length]);
+      this[_buffer][$setAll](this[_usedLength], bytes);
+      this[_usedLength] = dart.notNull(this[_usedLength]) + dart.notNull(bytes[$length]);
+    }
+    [_ensureCanAdd](byteCount) {
+      let totalSpaceNeeded = dart.notNull(this[_usedLength]) + dart.notNull(byteCount);
+      let newLength = this[_buffer][$length];
+      while (totalSpaceNeeded > dart.notNull(newLength)) {
+        newLength = dart.notNull(newLength) * 2;
+      }
+      if (newLength != this[_buffer][$length]) {
+        let newBuffer = _native_typed_data.NativeUint8List.new(newLength);
+        newBuffer[$setAll](0, this[_buffer]);
+        newBuffer[$setRange](0, this[_usedLength], this[_buffer]);
+        this[_buffer] = newBuffer;
+      }
+    }
+  };
+  (network._Uint8ListBuilder.new = function() {
+    this[_usedLength] = 0;
+    this[_buffer] = _native_typed_data.NativeUint8List.new(100000);
+    ;
+  }).prototype = network._Uint8ListBuilder.prototype;
+  dart.addTypeTests(network._Uint8ListBuilder);
+  dart.addTypeCaches(network._Uint8ListBuilder);
+  dart.setMethodSignature(network._Uint8ListBuilder, () => ({
+    __proto__: dart.getMethods(network._Uint8ListBuilder.__proto__),
+    add: dart.fnType(dart.void, [dart.legacy(core.List$(dart.legacy(core.int)))]),
+    [_ensureCanAdd]: dart.fnType(dart.void, [dart.legacy(core.int)])
+  }));
+  dart.setGetterSignature(network._Uint8ListBuilder, () => ({
+    __proto__: dart.getGetters(network._Uint8ListBuilder.__proto__),
+    data: dart.legacy(typed_data.Uint8List)
+  }));
+  dart.setLibraryUri(network._Uint8ListBuilder, L1);
+  dart.setFieldSignature(network._Uint8ListBuilder, () => ({
+    __proto__: dart.getFields(network._Uint8ListBuilder.__proto__),
+    [_usedLength]: dart.fieldType(dart.legacy(core.int)),
+    [_buffer]: dart.fieldType(dart.legacy(typed_data.Uint8List))
+  }));
+  dart.defineLazy(network._Uint8ListBuilder, {
+    /*network._Uint8ListBuilder._kInitialSize*/get _kInitialSize() {
+      return 100000;
+    }
+  }, true);
+  var C6;
+  network.FetchStrategyBuilder = class FetchStrategyBuilder extends core.Object {
+    get timeout() {
+      return this[timeout$0];
+    }
+    set timeout(value) {
+      super.timeout = value;
+    }
+    get totalFetchTimeout() {
+      return this[totalFetchTimeout$];
+    }
+    set totalFetchTimeout(value) {
+      super.totalFetchTimeout = value;
+    }
+    get maxAttempts() {
+      return this[maxAttempts$];
+    }
+    set maxAttempts(value) {
+      super.maxAttempts = value;
+    }
+    get initialPauseBetweenRetries() {
+      return this[initialPauseBetweenRetries$];
+    }
+    set initialPauseBetweenRetries(value) {
+      super.initialPauseBetweenRetries = value;
+    }
+    get exponentialBackoffMultiplier() {
+      return this[exponentialBackoffMultiplier$];
+    }
+    set exponentialBackoffMultiplier(value) {
+      super.exponentialBackoffMultiplier = value;
+    }
+    get transientHttpStatusCodePredicate() {
+      return this[transientHttpStatusCodePredicate$];
+    }
+    set transientHttpStatusCodePredicate(value) {
+      super.transientHttpStatusCodePredicate = value;
+    }
+    static defaultTransientHttpStatusCodePredicate(statusCode) {
+      return network.FetchStrategyBuilder.defaultTransientHttpStatusCodes[$contains](statusCode);
+    }
+    build() {
+      return dart.fn((uri, failure) => async.async(FetchInstructionsL(), (function*() {
+        let t1;
+        if (failure == null) {
+          return new network.FetchInstructions.attempt({uri: uri, timeout: this.timeout});
+        }
+        let isRetriableFailure = dart.test((t1 = failure.httpStatusCode, this.transientHttpStatusCodePredicate(t1))) || SocketExceptionL().is(failure.originalException);
+        if (!isRetriableFailure || dart.test(failure.totalDuration['>'](this.totalFetchTimeout)) || dart.notNull(failure.attemptCount) > dart.notNull(this.maxAttempts)) {
+          return new network.FetchInstructions.giveUp({uri: uri});
+        }
+        let pauseBetweenRetries = this.initialPauseBetweenRetries['*'](math.pow(this.exponentialBackoffMultiplier, dart.notNull(failure.attemptCount) - 1));
+        yield FutureOfvoid().delayed(pauseBetweenRetries);
+        return new network.FetchInstructions.attempt({uri: uri, timeout: this.timeout});
+      }).bind(this)), UriLAndFetchFailureLToFutureLOfFetchInstructionsL());
+    }
+  };
+  (network.FetchStrategyBuilder.new = function(opts) {
+    let timeout = opts && 'timeout' in opts ? opts.timeout : C5 || CT.C5;
+    let totalFetchTimeout = opts && 'totalFetchTimeout' in opts ? opts.totalFetchTimeout : C4 || CT.C4;
+    let maxAttempts = opts && 'maxAttempts' in opts ? opts.maxAttempts : 5;
+    let initialPauseBetweenRetries = opts && 'initialPauseBetweenRetries' in opts ? opts.initialPauseBetweenRetries : C3 || CT.C3;
+    let exponentialBackoffMultiplier = opts && 'exponentialBackoffMultiplier' in opts ? opts.exponentialBackoffMultiplier : 2;
+    let transientHttpStatusCodePredicate = opts && 'transientHttpStatusCodePredicate' in opts ? opts.transientHttpStatusCodePredicate : C2 || CT.C2;
+    this[timeout$0] = timeout;
+    this[totalFetchTimeout$] = totalFetchTimeout;
+    this[maxAttempts$] = maxAttempts;
+    this[initialPauseBetweenRetries$] = initialPauseBetweenRetries;
+    this[exponentialBackoffMultiplier$] = exponentialBackoffMultiplier;
+    this[transientHttpStatusCodePredicate$] = transientHttpStatusCodePredicate;
+    if (!(timeout != null)) dart.assertFailed(null, L0, 348, 15, "timeout != null");
+    if (!(totalFetchTimeout != null)) dart.assertFailed(null, L0, 349, 15, "totalFetchTimeout != null");
+    if (!(maxAttempts != null)) dart.assertFailed(null, L0, 350, 15, "maxAttempts != null");
+    if (!(initialPauseBetweenRetries != null)) dart.assertFailed(null, L0, 351, 15, "initialPauseBetweenRetries != null");
+    if (!(exponentialBackoffMultiplier != null)) dart.assertFailed(null, L0, 352, 15, "exponentialBackoffMultiplier != null");
+    if (!(transientHttpStatusCodePredicate != null)) dart.assertFailed(null, L0, 353, 15, "transientHttpStatusCodePredicate != null");
+    ;
+  }).prototype = network.FetchStrategyBuilder.prototype;
+  dart.addTypeTests(network.FetchStrategyBuilder);
+  dart.addTypeCaches(network.FetchStrategyBuilder);
+  const timeout$0 = FetchStrategyBuilder_timeout;
+  const totalFetchTimeout$ = FetchStrategyBuilder_totalFetchTimeout;
+  const maxAttempts$ = FetchStrategyBuilder_maxAttempts;
+  const initialPauseBetweenRetries$ = FetchStrategyBuilder_initialPauseBetweenRetries;
+  const exponentialBackoffMultiplier$ = FetchStrategyBuilder_exponentialBackoffMultiplier;
+  const transientHttpStatusCodePredicate$ = FetchStrategyBuilder_transientHttpStatusCodePredicate;
+  dart.setMethodSignature(network.FetchStrategyBuilder, () => ({
+    __proto__: dart.getMethods(network.FetchStrategyBuilder.__proto__),
+    build: dart.fnType(dart.legacy(dart.fnType(dart.legacy(async.Future$(dart.legacy(network.FetchInstructions))), [dart.legacy(core.Uri), dart.legacy(network.FetchFailure)])), [])
+  }));
+  dart.setLibraryUri(network.FetchStrategyBuilder, L1);
+  dart.setFieldSignature(network.FetchStrategyBuilder, () => ({
+    __proto__: dart.getFields(network.FetchStrategyBuilder.__proto__),
+    timeout: dart.finalFieldType(dart.legacy(core.Duration)),
+    totalFetchTimeout: dart.finalFieldType(dart.legacy(core.Duration)),
+    maxAttempts: dart.finalFieldType(dart.legacy(core.int)),
+    initialPauseBetweenRetries: dart.finalFieldType(dart.legacy(core.Duration)),
+    exponentialBackoffMultiplier: dart.finalFieldType(dart.legacy(core.num)),
+    transientHttpStatusCodePredicate: dart.finalFieldType(dart.legacy(dart.fnType(dart.legacy(core.bool), [dart.legacy(core.int)])))
+  }));
+  dart.defineLazy(network.FetchStrategyBuilder, {
+    /*network.FetchStrategyBuilder.defaultTransientHttpStatusCodes*/get defaultTransientHttpStatusCodes() {
+      return C6 || CT.C6;
+    }
+  }, true);
+  dart.setBaseClass(network.NetworkImageWithRetry, image_provider.ImageProvider$(network.NetworkImageWithRetry));
+  dart.trackLibraries("packages/flutter_image/network.dart", {
+    "package:flutter_image/network.dart": network
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["arena.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAkBA;;;QANK;;;;;EAML;;;;;;;;;;;;;;;;EAgBA;;;;;;;;;;UAiBkC;AACiB,MAA/C,AAAO,wBAAS,iBAAU,gBAAS,WAAW;IAChD;;yCAZyB,QAAa,UAAe;QAA5B;QAAa;QAAe;IAA5B;IAAa;IAAe;;EAAQ;;;;;;;;;;;;;;;;UA2BjC;AAC1B,qBAAO;AACY,MAAnB,AAAQ,mBAAI,MAAM;IACpB;;AAIqB,mBAAS;AAC5B,oBAAI,AAAQ;AACa,QAAvB,AAAO,MAAD,OAAO;;AAMC,QAJd,AAAO,MAAD,OAAO,AAAQ,AAIlB,gCAJ8B;cAAoB;AACnD,cAAW,YAAP,MAAM,EAAI,mBACZ,MAA+B,UAAtB,MAAM;AACjB,gBAAgB,UAAP,MAAM;iDACT;;AAEV,oBAAI,cACF,AAAO,AAAgB,MAAjB,OAAO;AACf,oBAAI,cACF,AAAO,AAAgB,MAAjB,OAAO;AACf,oBAAI,uBACF,AAAO,AAA2B,MAA5B,OAAO;AACf,YAAO,AAAO,OAAD;IACf;;;IAnC+B,eAA8B;IACxD,cAAS;IACT,cAAS;IACT,uBAAkB;IAMH;;EA2BtB;;;;;;;;;;;;;;;;;;;;;;;QAa4B,SAA4B;UAA5B;UAA4B;AAChC,kBAAQ,AAAQ,4BAAY,OAAO,EAAE;AACvD,uBAAO,0BAAoB,OAAO,EAAE;AACpC,cAAO;;AAEQ,MAAjB,AAAM,KAAD,KAAK,MAAM;AAChB,qBAAO,0BAAoB,OAAO,EAAE,AAAiB,sBAAP,MAAM;AACpD,YAAyB,gCAAE,MAAM,OAAO,EAAE,MAAM;IAClD;;UAKe;AACQ,kBAAQ,AAAO,qBAAC,OAAO;AAC5C,UAAI,AAAM,KAAD,IAAI,MACX;AACkB,MAApB,AAAM,KAAD,UAAU;AACf,qBAAO,0BAAoB,OAAO,EAAE,WAAW,KAAK;AAClB,MAAlC,yBAAmB,OAAO,EAAE,KAAK;IACnC;;UAee;AACQ,kBAAQ,AAAO,qBAAC,OAAO;AAC5C,UAAI,AAAM,KAAD,IAAI,MACX;AACF,WAAO,WAAC,AAAM,KAAD;AACb,oBAAI,AAAM,KAAD;AACqB,QAA5B,AAAM,KAAD,mBAAmB;AACxB,uBAAO,0BAAoB,OAAO,EAAE,kBAAkB,KAAK;AAC3D;;AAEF,qBAAO,0BAAoB,OAAO,EAAE,YAAY,KAAK;AAC9B,MAAvB,AAAQ,uBAAO,OAAO;AACtB,oBAAI,AAAM,AAAQ,KAAT;AAEP,uBAAO,0BAAoB,OAAO,EAAE,AAAgC,sBAArB,AAAM,AAAQ,KAAT;AACV,QAA1C,AAAM,AAAQ,AAAM,KAAf,+BAA6B,OAAO;AAEzC,iBAAS,IAAI,GAAG,AAAE,CAAD,gBAAG,AAAM,AAAQ,KAAT,oBAAiB,IAAA,AAAC,CAAA;AACF,UAAvC,AAAM,AAAO,AAAI,KAAZ,gBAAS,CAAC,gBAAgB,OAAO;;IAE5C;;UAcc;AACS,kBAAQ,AAAO,qBAAC,OAAO;AAC5C,UAAI,AAAM,KAAD,IAAI,MACX;AACiB,MAAnB,AAAM,KAAD,UAAU;AACf,qBAAO,0BAAoB,OAAO,EAAE,WAAW,KAAK;IACtD;;UAWiB;AACM,kBAAQ,AAAO,qBAAC,OAAO;AAC5C,UAAI,AAAM,KAAD,IAAI,MACX;AACkB,MAApB,AAAM,KAAD,UAAU;AACf,qBAAO,0BAAoB,OAAO,EAAE,aAAa,KAAK;AACtD,oBAAI,AAAM,KAAD,mBACP,AAAc,WAAR,OAAO;IACjB;eAKkB,SAA4B,QAA2B;;UAAvD;UAA4B;UAA2B;AAClD,kBAAQ,AAAO,qBAAC,OAAO;AAC5C,UAAI,AAAM,KAAD,IAAI,MACX;AACF,qBAAO,0BAAoB,OAAO,EAAwF,CAAtE,YAAZ,WAAW,EAAuB,qCAAW,cAAc,eAAa,gBAAG,MAAM;AACzH,qBAAO,AAAM,AAAQ,KAAT,oBAAkB,MAAM;AACpC,UAAgB,YAAZ,WAAW,EAAuB;AACR,QAA5B,AAAM,AAAQ,KAAT,kBAAgB,MAAM;AACE,QAA7B,AAAO,MAAD,eAAe,OAAO;AAC5B,uBAAK,AAAM,KAAD,UACR,AAAkC,yBAAf,OAAO,EAAE,KAAK;;AAEnC,aAAmB,YAAZ,WAAW,EAAuB;AACzC,sBAAI,AAAM,KAAD;AACqB,eAA5B,KAAK;UAAC,AAAY,kBAAA,OAAZ,iBAAgB,MAAM,GAAV;;AAElB,yBAAO,0BAAoB,OAAO,EAAE,AAA+B,oCAAP,MAAM;AACzB,UAAzC,wBAAkB,OAAO,EAAE,KAAK,EAAE,MAAM;;;IAG9C;yBAE4B,SAAuB;UAAvB;UAAuB;AACjD,WAAwB,YAAjB,AAAO,qBAAC,OAAO,GAAK,KAAK;AAChC,WAAO,WAAC,AAAM,KAAD;AACb,UAAI,AAAM,AAAQ,AAAO,KAAhB,sBAAmB;AACgC,QAA1D,wBAAkB,cAAM,wBAAkB,OAAO,EAAE,KAAK;YACnD,eAAI,AAAM,AAAQ,KAAT;AACS,QAAvB,AAAQ,uBAAO,OAAO;AACtB,uBAAO,0BAAoB,OAAO,EAAE;YAC/B,KAAI,AAAM,KAAD,gBAAgB;AAC9B,uBAAO,0BAAoB,OAAO,EAAE,AAAoC,4BAAnB,AAAM,KAAD;AACL,QAArD,wBAAkB,OAAO,EAAE,KAAK,EAAmB,eAAjB,AAAM,KAAD;;IAE3C;wBAE2B,SAAuB;UAAvB;UAAuB;AAChD,qBAAK,AAAQ,4BAAY,OAAO,IAC9B;AACF,WAAwB,YAAjB,AAAO,qBAAC,OAAO,GAAK,KAAK;AAChC,WAAO,WAAC,AAAM,KAAD;AACkB,oBAAU,AAAM,KAAD;AAC9C,YAAO,AAAQ,AAAO,OAAR,cAAW;AACF,MAAvB,AAAQ,uBAAO,OAAO;AACtB,qBAAO,0BAAoB,OAAO,EAAE,AAAwC,8BAArB,AAAM,AAAQ,KAAT;AAClB,MAA1C,AAAM,AAAQ,AAAM,KAAf,+BAA6B,OAAO;IAC3C;wBAE2B,SAAuB,OAA0B;UAAjD;UAAuB;UAA0B;AAC1E,WAAa,YAAN,KAAK,EAAI,AAAO,qBAAC,OAAO;AAC/B,YAAO,AAAM,KAAD,IAAI;AAChB,YAAO,AAAM,AAAY,AAAQ,KAArB,gBAAgB,QAA0B,YAAlB,AAAM,KAAD,cAAgB,MAAM;AAC/D,WAAO,WAAC,AAAM,KAAD;AACU,MAAvB,AAAQ,uBAAO,OAAO;AACtB,eAA8B,iBAAkB,AAAM,MAAD;AACnD,yBAAI,cAAc,EAAI,MAAM,GAC1B,AAAe,AAAsB,cAAvB,eAAe,OAAO;;AAEX,MAA7B,AAAO,MAAD,eAAe,OAAO;IAC9B;0BAE6B,SAAgB,SAA0B;UAA1C;UAAgB;AAC3C,qBAAO,AAON;AANC,sBAAI;AACS,sBAAQ,AAAM,KAAD,IAAI,OAAO,AAAM,AAAQ,KAAT,oBAAkB;AAC7C,kBAAI,AAAM,KAAD,KAAI,IAAI,MAAM;AACqF,UAAzH,AAAU,iBAAC,AAA6G,mBAApF,AAAW,cAAnB,OAAO,aAAqB,KAAG,iBAAI,OAAO,KAAG,AAAM,KAAD,IAAI,OAAO,AAAyB,oBAAjB,KAAK,gBAAQ,CAAC,SAAK;;AAEtH,cAAO;;AAET,YAAO;IACT;;;IA7K8B,gBAA8B;;EA8K9D","file":"../../../../../../../packages/flutter/src/gestures/arena.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["network.dart"],"names":[],"mappings":"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","file":"../../../../../../../packages/flutter_image/network.dart.lib.js"}');
   // Exports:
   return {
-    src__gestures__arena: arena
+    network: network
   };
 }));
 
-//# sourceMappingURL=arena.dart.lib.js.map
+//# sourceMappingURL=network.dart.lib.js.map

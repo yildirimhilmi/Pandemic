@@ -1,760 +1,391 @@
-define(['dart_sdk', 'packages/quiver/src/core/hash.dart'], (function load__packages__tuple__tuple_dart(dart_sdk, packages__quiver__src__core__hash$46dart) {
+define(['dart_sdk', 'packages/logging/src/level.dart'], (function load__packages__logging__src__logger_dart(dart_sdk, packages__logging__src__level$46dart) {
   'use strict';
   const core = dart_sdk.core;
+  const collection = dart_sdk.collection;
+  const _js_helper = dart_sdk._js_helper;
+  const async = dart_sdk.async;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const hash = packages__quiver__src__core__hash$46dart.src__core__hash;
-  var tuple = Object.create(dart.library);
-  var $length = dartx.length;
-  var $_get = dartx._get;
-  var $hashCode = dartx.hashCode;
+  const level = packages__logging__src__level$46dart.src__level;
+  var logger = Object.create(dart.library);
+  var log_record = Object.create(dart.library);
+  var $_set = dartx._set;
+  var $putIfAbsent = dartx.putIfAbsent;
+  var $startsWith = dartx.startsWith;
+  var $lastIndexOf = dartx.lastIndexOf;
+  var $substring = dartx.substring;
   var $toString = dartx.toString;
-  var $_equals = dartx._equals;
-  var Tuple2L = () => (Tuple2L = dart.constFn(dart.legacy(tuple.Tuple2)))();
-  var Tuple3L = () => (Tuple3L = dart.constFn(dart.legacy(tuple.Tuple3)))();
-  var Tuple4L = () => (Tuple4L = dart.constFn(dart.legacy(tuple.Tuple4)))();
-  var Tuple5L = () => (Tuple5L = dart.constFn(dart.legacy(tuple.Tuple5)))();
-  var Tuple6L = () => (Tuple6L = dart.constFn(dart.legacy(tuple.Tuple6)))();
-  var Tuple7L = () => (Tuple7L = dart.constFn(dart.legacy(tuple.Tuple7)))();
+  var StringL = () => (StringL = dart.constFn(dart.legacy(core.String)))();
+  var LoggerL = () => (LoggerL = dart.constFn(dart.legacy(logger.Logger)))();
+  var UnmodifiableMapViewOfStringL$LoggerL = () => (UnmodifiableMapViewOfStringL$LoggerL = dart.constFn(collection.UnmodifiableMapView$(StringL(), LoggerL())))();
+  var VoidToLoggerL = () => (VoidToLoggerL = dart.constFn(dart.fnType(LoggerL(), [])))();
+  var IdentityMapOfStringL$LoggerL = () => (IdentityMapOfStringL$LoggerL = dart.constFn(_js_helper.IdentityMap$(StringL(), LoggerL())))();
+  var FunctionL = () => (FunctionL = dart.constFn(dart.legacy(core.Function)))();
+  var LogRecordL = () => (LogRecordL = dart.constFn(dart.legacy(log_record.LogRecord)))();
+  var StreamControllerOfLogRecordL = () => (StreamControllerOfLogRecordL = dart.constFn(async.StreamController$(LogRecordL())))();
   const CT = Object.create(null);
-  var L0 = "package:tuple/tuple.dart";
-  const _is_Tuple2_default = Symbol('_is_Tuple2_default');
-  var item1$ = dart.privateName(tuple, "Tuple2.item1");
-  var item2$ = dart.privateName(tuple, "Tuple2.item2");
-  tuple.Tuple2$ = dart.generic((T1, T2) => {
-    var T1L = () => (T1L = dart.constFn(dart.legacy(T1)))();
-    var Tuple2OfT1L$T2L = () => (Tuple2OfT1L$T2L = dart.constFn(tuple.Tuple2$(T1L(), T2L())))();
-    var T2L = () => (T2L = dart.constFn(dart.legacy(T2)))();
-    class Tuple2 extends core.Object {
-      get item1() {
-        return this[item1$];
+  var L0 = "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/logging-0.11.4/lib/src/logger.dart";
+  var L1 = "package:logging/src/logger.dart";
+  var L2 = "package:logging/src/log_record.dart";
+  dart.defineLazy(CT, {
+    get C0() {
+      return C0 = dart.const({
+        __proto__: level.Level.prototype,
+        [Level_value]: 800,
+        [Level_name]: "INFO"
+      });
+    }
+  }, false);
+  var _level = dart.privateName(logger, "_level");
+  var _controller = dart.privateName(logger, "_controller");
+  var _children = dart.privateName(logger, "_children");
+  var _getStream = dart.privateName(logger, "_getStream");
+  var _publish = dart.privateName(logger, "_publish");
+  var name$ = dart.privateName(logger, "Logger.name");
+  var parent$ = dart.privateName(logger, "Logger.parent");
+  var children$ = dart.privateName(logger, "Logger.children");
+  logger.Logger = class Logger extends core.Object {
+    get name() {
+      return this[name$];
+    }
+    set name(value) {
+      super.name = value;
+    }
+    get parent() {
+      return this[parent$];
+    }
+    set parent(value) {
+      super.parent = value;
+    }
+    get children() {
+      return this[children$];
+    }
+    set children(value) {
+      super.children = value;
+    }
+    get fullName() {
+      return this.parent == null || this.parent.name === "" ? this.name : dart.str(this.parent.fullName) + "." + dart.str(this.name);
+    }
+    static new(name) {
+      return logger.Logger._loggers[$putIfAbsent](name, dart.fn(() => logger.Logger._named(name), VoidToLoggerL()));
+    }
+    static detached(name) {
+      return new logger.Logger._internal(name, null, new (IdentityMapOfStringL$LoggerL()).new());
+    }
+    static _named(name) {
+      if (name[$startsWith](".")) {
+        dart.throw(new core.ArgumentError.new("name shouldn't start with a '.'"));
       }
-      set item1(value) {
-        super.item1 = value;
+      let dot = name[$lastIndexOf](".");
+      let parent = null;
+      let thisName = null;
+      if (dot === -1) {
+        if (name !== "") parent = logger.Logger.new("");
+        thisName = name;
+      } else {
+        parent = logger.Logger.new(name[$substring](0, dot));
+        thisName = name[$substring](dot + 1);
       }
-      get item2() {
-        return this[item2$];
+      return new logger.Logger._internal(thisName, parent, new (IdentityMapOfStringL$LoggerL()).new());
+    }
+    get level() {
+      let t0;
+      let effectiveLevel = null;
+      if (this.parent == null) {
+        effectiveLevel = this[_level];
+      } else if (!dart.test(logger.hierarchicalLoggingEnabled)) {
+        effectiveLevel = logger.Logger.root[_level];
+      } else {
+        effectiveLevel = (t0 = this[_level], t0 == null ? this.parent.level : t0);
       }
-      set item2(value) {
-        super.item2 = value;
+      if (!(effectiveLevel != null)) dart.assertFailed(null, L0, 105, 12, "effectiveLevel != null");
+      return effectiveLevel;
+    }
+    set level(value) {
+      if (!dart.test(logger.hierarchicalLoggingEnabled) && this.parent != null) {
+        dart.throw(new core.UnsupportedError.new("Please set \"hierarchicalLoggingEnabled\" to true if you want to " + "change the level on a non-root logger."));
       }
-      static fromList(items) {
-        if (items[$length] !== 2) {
-          dart.throw(new core.ArgumentError.new("items must have length 2"));
+      this[_level] = value;
+    }
+    get onRecord() {
+      return this[_getStream]();
+    }
+    clearListeners() {
+      if (dart.test(logger.hierarchicalLoggingEnabled) || this.parent == null) {
+        if (this[_controller] != null) {
+          this[_controller].close();
+          this[_controller] = null;
         }
-        return new (tuple.Tuple2$(dart.legacy(T1), dart.legacy(T2))).new(dart.legacy(T1).as(items[$_get](0)), dart.legacy(T2).as(items[$_get](1)));
-      }
-      withItem1(v) {
-        T1L().as(v);
-        return new (Tuple2OfT1L$T2L()).new(v, this.item2);
-      }
-      withItem2(v) {
-        T2L().as(v);
-        return new (Tuple2OfT1L$T2L()).new(this.item1, v);
-      }
-      toList(opts) {
-        let growable = opts && 'growable' in opts ? opts.growable : false;
-        return core.List.from([this.item1, this.item2], {growable: growable});
-      }
-      toString() {
-        return "[" + dart.str(this.item1) + ", " + dart.str(this.item2) + "]";
-      }
-      _equals(other) {
-        if (other == null) return false;
-        return Tuple2L().is(other) && dart.equals(other.item1, this.item1) && dart.equals(other.item2, this.item2);
-      }
-      get hashCode() {
-        return hash.hash2(dart.hashCode(this.item1), dart.hashCode(this.item2));
+      } else {
+        logger.Logger.root.clearListeners();
       }
     }
-    (Tuple2.new = function(item1, item2) {
-      this[item1$] = item1;
-      this[item2$] = item2;
-      ;
-    }).prototype = Tuple2.prototype;
-    dart.addTypeTests(Tuple2);
-    Tuple2.prototype[_is_Tuple2_default] = true;
-    dart.addTypeCaches(Tuple2);
-    dart.setMethodSignature(Tuple2, () => ({
-      __proto__: dart.getMethods(Tuple2.__proto__),
-      withItem1: dart.fnType(dart.legacy(tuple.Tuple2$(dart.legacy(T1), dart.legacy(T2))), [dart.legacy(core.Object)]),
-      withItem2: dart.fnType(dart.legacy(tuple.Tuple2$(dart.legacy(T1), dart.legacy(T2))), [dart.legacy(core.Object)]),
-      toList: dart.fnType(dart.legacy(core.List), [], {growable: dart.legacy(core.bool)}, {}),
-      toString: dart.fnType(dart.legacy(core.String), []),
-      [$toString]: dart.fnType(dart.legacy(core.String), []),
-      _equals: dart.fnType(dart.legacy(core.bool), [dart.dynamic]),
-      [$_equals]: dart.fnType(dart.legacy(core.bool), [dart.dynamic])
-    }));
-    dart.setGetterSignature(Tuple2, () => ({
-      __proto__: dart.getGetters(Tuple2.__proto__),
-      hashCode: dart.legacy(core.int),
-      [$hashCode]: dart.legacy(core.int)
-    }));
-    dart.setLibraryUri(Tuple2, L0);
-    dart.setFieldSignature(Tuple2, () => ({
-      __proto__: dart.getFields(Tuple2.__proto__),
-      item1: dart.finalFieldType(dart.legacy(T1)),
-      item2: dart.finalFieldType(dart.legacy(T2))
-    }));
-    dart.defineExtensionMethods(Tuple2, ['toString', '_equals']);
-    dart.defineExtensionAccessors(Tuple2, ['hashCode']);
-    return Tuple2;
-  });
-  tuple.Tuple2 = tuple.Tuple2$();
-  dart.addTypeTests(tuple.Tuple2, _is_Tuple2_default);
-  const _is_Tuple3_default = Symbol('_is_Tuple3_default');
-  var item1$0 = dart.privateName(tuple, "Tuple3.item1");
-  var item2$0 = dart.privateName(tuple, "Tuple3.item2");
-  var item3$ = dart.privateName(tuple, "Tuple3.item3");
-  tuple.Tuple3$ = dart.generic((T1, T2, T3) => {
-    var T1L = () => (T1L = dart.constFn(dart.legacy(T1)))();
-    var Tuple3OfT1L$T2L$T3L = () => (Tuple3OfT1L$T2L$T3L = dart.constFn(tuple.Tuple3$(T1L(), T2L(), T3L())))();
-    var T2L = () => (T2L = dart.constFn(dart.legacy(T2)))();
-    var T3L = () => (T3L = dart.constFn(dart.legacy(T3)))();
-    class Tuple3 extends core.Object {
-      get item1() {
-        return this[item1$0];
-      }
-      set item1(value) {
-        super.item1 = value;
-      }
-      get item2() {
-        return this[item2$0];
-      }
-      set item2(value) {
-        super.item2 = value;
-      }
-      get item3() {
-        return this[item3$];
-      }
-      set item3(value) {
-        super.item3 = value;
-      }
-      static fromList(items) {
-        if (items[$length] !== 3) {
-          dart.throw(new core.ArgumentError.new("items must have length 3"));
+    isLoggable(value) {
+      return value['>='](this.level);
+    }
+    log(logLevel, message, error = null, stackTrace = null, zone = null) {
+      let object = null;
+      if (dart.test(this.isLoggable(logLevel))) {
+        if (FunctionL().is(message)) {
+          message = dart.dcall(message, []);
         }
-        return new (tuple.Tuple3$(dart.legacy(T1), dart.legacy(T2), dart.legacy(T3))).new(dart.legacy(T1).as(items[$_get](0)), dart.legacy(T2).as(items[$_get](1)), dart.legacy(T3).as(items[$_get](2)));
-      }
-      withItem1(v) {
-        T1L().as(v);
-        return new (Tuple3OfT1L$T2L$T3L()).new(v, this.item2, this.item3);
-      }
-      withItem2(v) {
-        T2L().as(v);
-        return new (Tuple3OfT1L$T2L$T3L()).new(this.item1, v, this.item3);
-      }
-      withItem3(v) {
-        T3L().as(v);
-        return new (Tuple3OfT1L$T2L$T3L()).new(this.item1, this.item2, v);
-      }
-      toList(opts) {
-        let growable = opts && 'growable' in opts ? opts.growable : false;
-        return core.List.from([this.item1, this.item2, this.item3], {growable: growable});
-      }
-      toString() {
-        return "[" + dart.str(this.item1) + ", " + dart.str(this.item2) + ", " + dart.str(this.item3) + "]";
-      }
-      _equals(other) {
-        if (other == null) return false;
-        return Tuple3L().is(other) && dart.equals(other.item1, this.item1) && dart.equals(other.item2, this.item2) && dart.equals(other.item3, this.item3);
-      }
-      get hashCode() {
-        return hash.hash3(dart.hashCode(this.item1), dart.hashCode(this.item2), dart.hashCode(this.item3));
+        let msg = null;
+        if (StringL().is(message)) {
+          msg = message;
+        } else {
+          msg = dart.toString(message);
+          object = message;
+        }
+        if (stackTrace == null && dart.test(logLevel['>='](logger.recordStackTraceAtLevel))) {
+          stackTrace = core.StackTrace.current;
+          error == null ? error = "autogenerated stack trace for " + dart.str(logLevel) + " " + dart.str(msg) : null;
+        }
+        zone == null ? zone = async.Zone.current : null;
+        let record = new log_record.LogRecord.new(logLevel, msg, this.fullName, error, stackTrace, zone, object);
+        if (this.parent == null) {
+          this[_publish](record);
+        } else if (!dart.test(logger.hierarchicalLoggingEnabled)) {
+          logger.Logger.root[_publish](record);
+        } else {
+          let target = this;
+          while (target != null) {
+            target[_publish](record);
+            target = target.parent;
+          }
+        }
       }
     }
-    (Tuple3.new = function(item1, item2, item3) {
-      this[item1$0] = item1;
-      this[item2$0] = item2;
-      this[item3$] = item3;
-      ;
-    }).prototype = Tuple3.prototype;
-    dart.addTypeTests(Tuple3);
-    Tuple3.prototype[_is_Tuple3_default] = true;
-    dart.addTypeCaches(Tuple3);
-    dart.setMethodSignature(Tuple3, () => ({
-      __proto__: dart.getMethods(Tuple3.__proto__),
-      withItem1: dart.fnType(dart.legacy(tuple.Tuple3$(dart.legacy(T1), dart.legacy(T2), dart.legacy(T3))), [dart.legacy(core.Object)]),
-      withItem2: dart.fnType(dart.legacy(tuple.Tuple3$(dart.legacy(T1), dart.legacy(T2), dart.legacy(T3))), [dart.legacy(core.Object)]),
-      withItem3: dart.fnType(dart.legacy(tuple.Tuple3$(dart.legacy(T1), dart.legacy(T2), dart.legacy(T3))), [dart.legacy(core.Object)]),
-      toList: dart.fnType(dart.legacy(core.List), [], {growable: dart.legacy(core.bool)}, {}),
-      toString: dart.fnType(dart.legacy(core.String), []),
-      [$toString]: dart.fnType(dart.legacy(core.String), []),
-      _equals: dart.fnType(dart.legacy(core.bool), [dart.dynamic]),
-      [$_equals]: dart.fnType(dart.legacy(core.bool), [dart.dynamic])
-    }));
-    dart.setGetterSignature(Tuple3, () => ({
-      __proto__: dart.getGetters(Tuple3.__proto__),
-      hashCode: dart.legacy(core.int),
-      [$hashCode]: dart.legacy(core.int)
-    }));
-    dart.setLibraryUri(Tuple3, L0);
-    dart.setFieldSignature(Tuple3, () => ({
-      __proto__: dart.getFields(Tuple3.__proto__),
-      item1: dart.finalFieldType(dart.legacy(T1)),
-      item2: dart.finalFieldType(dart.legacy(T2)),
-      item3: dart.finalFieldType(dart.legacy(T3))
-    }));
-    dart.defineExtensionMethods(Tuple3, ['toString', '_equals']);
-    dart.defineExtensionAccessors(Tuple3, ['hashCode']);
-    return Tuple3;
-  });
-  tuple.Tuple3 = tuple.Tuple3$();
-  dart.addTypeTests(tuple.Tuple3, _is_Tuple3_default);
-  const _is_Tuple4_default = Symbol('_is_Tuple4_default');
-  var item1$1 = dart.privateName(tuple, "Tuple4.item1");
-  var item2$1 = dart.privateName(tuple, "Tuple4.item2");
-  var item3$0 = dart.privateName(tuple, "Tuple4.item3");
-  var item4$ = dart.privateName(tuple, "Tuple4.item4");
-  tuple.Tuple4$ = dart.generic((T1, T2, T3, T4) => {
-    var T1L = () => (T1L = dart.constFn(dart.legacy(T1)))();
-    var Tuple4OfT1L$T2L$T3L$T4L = () => (Tuple4OfT1L$T2L$T3L$T4L = dart.constFn(tuple.Tuple4$(T1L(), T2L(), T3L(), T4L())))();
-    var T2L = () => (T2L = dart.constFn(dart.legacy(T2)))();
-    var T3L = () => (T3L = dart.constFn(dart.legacy(T3)))();
-    var T4L = () => (T4L = dart.constFn(dart.legacy(T4)))();
-    class Tuple4 extends core.Object {
-      get item1() {
-        return this[item1$1];
-      }
-      set item1(value) {
-        super.item1 = value;
-      }
-      get item2() {
-        return this[item2$1];
-      }
-      set item2(value) {
-        super.item2 = value;
-      }
-      get item3() {
-        return this[item3$0];
-      }
-      set item3(value) {
-        super.item3 = value;
-      }
-      get item4() {
-        return this[item4$];
-      }
-      set item4(value) {
-        super.item4 = value;
-      }
-      static fromList(items) {
-        if (items[$length] !== 4) {
-          dart.throw(new core.ArgumentError.new("items must have length 4"));
-        }
-        return new (tuple.Tuple4$(dart.legacy(T1), dart.legacy(T2), dart.legacy(T3), dart.legacy(T4))).new(dart.legacy(T1).as(items[$_get](0)), dart.legacy(T2).as(items[$_get](1)), dart.legacy(T3).as(items[$_get](2)), dart.legacy(T4).as(items[$_get](3)));
-      }
-      withItem1(v) {
-        T1L().as(v);
-        return new (Tuple4OfT1L$T2L$T3L$T4L()).new(v, this.item2, this.item3, this.item4);
-      }
-      withItem2(v) {
-        T2L().as(v);
-        return new (Tuple4OfT1L$T2L$T3L$T4L()).new(this.item1, v, this.item3, this.item4);
-      }
-      withItem3(v) {
-        T3L().as(v);
-        return new (Tuple4OfT1L$T2L$T3L$T4L()).new(this.item1, this.item2, v, this.item4);
-      }
-      withItem4(v) {
-        T4L().as(v);
-        return new (Tuple4OfT1L$T2L$T3L$T4L()).new(this.item1, this.item2, this.item3, v);
-      }
-      toList(opts) {
-        let growable = opts && 'growable' in opts ? opts.growable : false;
-        return core.List.from([this.item1, this.item2, this.item3, this.item4], {growable: growable});
-      }
-      toString() {
-        return "[" + dart.str(this.item1) + ", " + dart.str(this.item2) + ", " + dart.str(this.item3) + ", " + dart.str(this.item4) + "]";
-      }
-      _equals(other) {
-        if (other == null) return false;
-        return Tuple4L().is(other) && dart.equals(other.item1, this.item1) && dart.equals(other.item2, this.item2) && dart.equals(other.item3, this.item3) && dart.equals(other.item4, this.item4);
-      }
-      get hashCode() {
-        return hash.hash4(dart.hashCode(this.item1), dart.hashCode(this.item2), dart.hashCode(this.item3), dart.hashCode(this.item4));
+    finest(message, error = null, stackTrace = null) {
+      return this.log(level.Level.FINEST, message, error, stackTrace);
+    }
+    finer(message, error = null, stackTrace = null) {
+      return this.log(level.Level.FINER, message, error, stackTrace);
+    }
+    fine(message, error = null, stackTrace = null) {
+      return this.log(level.Level.FINE, message, error, stackTrace);
+    }
+    config(message, error = null, stackTrace = null) {
+      return this.log(level.Level.CONFIG, message, error, stackTrace);
+    }
+    info(message, error = null, stackTrace = null) {
+      return this.log(level.Level.INFO, message, error, stackTrace);
+    }
+    warning(message, error = null, stackTrace = null) {
+      return this.log(level.Level.WARNING, message, error, stackTrace);
+    }
+    severe(message, error = null, stackTrace = null) {
+      return this.log(level.Level.SEVERE, message, error, stackTrace);
+    }
+    shout(message, error = null, stackTrace = null) {
+      return this.log(level.Level.SHOUT, message, error, stackTrace);
+    }
+    [_getStream]() {
+      if (dart.test(logger.hierarchicalLoggingEnabled) || this.parent == null) {
+        this[_controller] == null ? this[_controller] = StreamControllerOfLogRecordL().broadcast({sync: true}) : null;
+        return this[_controller].stream;
+      } else {
+        return logger.Logger.root[_getStream]();
       }
     }
-    (Tuple4.new = function(item1, item2, item3, item4) {
-      this[item1$1] = item1;
-      this[item2$1] = item2;
-      this[item3$0] = item3;
-      this[item4$] = item4;
-      ;
-    }).prototype = Tuple4.prototype;
-    dart.addTypeTests(Tuple4);
-    Tuple4.prototype[_is_Tuple4_default] = true;
-    dart.addTypeCaches(Tuple4);
-    dart.setMethodSignature(Tuple4, () => ({
-      __proto__: dart.getMethods(Tuple4.__proto__),
-      withItem1: dart.fnType(dart.legacy(tuple.Tuple4$(dart.legacy(T1), dart.legacy(T2), dart.legacy(T3), dart.legacy(T4))), [dart.legacy(core.Object)]),
-      withItem2: dart.fnType(dart.legacy(tuple.Tuple4$(dart.legacy(T1), dart.legacy(T2), dart.legacy(T3), dart.legacy(T4))), [dart.legacy(core.Object)]),
-      withItem3: dart.fnType(dart.legacy(tuple.Tuple4$(dart.legacy(T1), dart.legacy(T2), dart.legacy(T3), dart.legacy(T4))), [dart.legacy(core.Object)]),
-      withItem4: dart.fnType(dart.legacy(tuple.Tuple4$(dart.legacy(T1), dart.legacy(T2), dart.legacy(T3), dart.legacy(T4))), [dart.legacy(core.Object)]),
-      toList: dart.fnType(dart.legacy(core.List), [], {growable: dart.legacy(core.bool)}, {}),
-      toString: dart.fnType(dart.legacy(core.String), []),
-      [$toString]: dart.fnType(dart.legacy(core.String), []),
-      _equals: dart.fnType(dart.legacy(core.bool), [dart.dynamic]),
-      [$_equals]: dart.fnType(dart.legacy(core.bool), [dart.dynamic])
-    }));
-    dart.setGetterSignature(Tuple4, () => ({
-      __proto__: dart.getGetters(Tuple4.__proto__),
-      hashCode: dart.legacy(core.int),
-      [$hashCode]: dart.legacy(core.int)
-    }));
-    dart.setLibraryUri(Tuple4, L0);
-    dart.setFieldSignature(Tuple4, () => ({
-      __proto__: dart.getFields(Tuple4.__proto__),
-      item1: dart.finalFieldType(dart.legacy(T1)),
-      item2: dart.finalFieldType(dart.legacy(T2)),
-      item3: dart.finalFieldType(dart.legacy(T3)),
-      item4: dart.finalFieldType(dart.legacy(T4))
-    }));
-    dart.defineExtensionMethods(Tuple4, ['toString', '_equals']);
-    dart.defineExtensionAccessors(Tuple4, ['hashCode']);
-    return Tuple4;
-  });
-  tuple.Tuple4 = tuple.Tuple4$();
-  dart.addTypeTests(tuple.Tuple4, _is_Tuple4_default);
-  const _is_Tuple5_default = Symbol('_is_Tuple5_default');
-  var item1$2 = dart.privateName(tuple, "Tuple5.item1");
-  var item2$2 = dart.privateName(tuple, "Tuple5.item2");
-  var item3$1 = dart.privateName(tuple, "Tuple5.item3");
-  var item4$0 = dart.privateName(tuple, "Tuple5.item4");
-  var item5$ = dart.privateName(tuple, "Tuple5.item5");
-  tuple.Tuple5$ = dart.generic((T1, T2, T3, T4, T5) => {
-    var T1L = () => (T1L = dart.constFn(dart.legacy(T1)))();
-    var Tuple5OfT1L$T2L$T3L$T4L$T5L = () => (Tuple5OfT1L$T2L$T3L$T4L$T5L = dart.constFn(tuple.Tuple5$(T1L(), T2L(), T3L(), T4L(), T5L())))();
-    var T2L = () => (T2L = dart.constFn(dart.legacy(T2)))();
-    var T3L = () => (T3L = dart.constFn(dart.legacy(T3)))();
-    var T4L = () => (T4L = dart.constFn(dart.legacy(T4)))();
-    var T5L = () => (T5L = dart.constFn(dart.legacy(T5)))();
-    class Tuple5 extends core.Object {
-      get item1() {
-        return this[item1$2];
-      }
-      set item1(value) {
-        super.item1 = value;
-      }
-      get item2() {
-        return this[item2$2];
-      }
-      set item2(value) {
-        super.item2 = value;
-      }
-      get item3() {
-        return this[item3$1];
-      }
-      set item3(value) {
-        super.item3 = value;
-      }
-      get item4() {
-        return this[item4$0];
-      }
-      set item4(value) {
-        super.item4 = value;
-      }
-      get item5() {
-        return this[item5$];
-      }
-      set item5(value) {
-        super.item5 = value;
-      }
-      static fromList(items) {
-        if (items[$length] !== 5) {
-          dart.throw(new core.ArgumentError.new("items must have length 5"));
-        }
-        return new (tuple.Tuple5$(dart.legacy(T1), dart.legacy(T2), dart.legacy(T3), dart.legacy(T4), dart.legacy(T5))).new(dart.legacy(T1).as(items[$_get](0)), dart.legacy(T2).as(items[$_get](1)), dart.legacy(T3).as(items[$_get](2)), dart.legacy(T4).as(items[$_get](3)), dart.legacy(T5).as(items[$_get](4)));
-      }
-      withItem1(v) {
-        T1L().as(v);
-        return new (Tuple5OfT1L$T2L$T3L$T4L$T5L()).new(v, this.item2, this.item3, this.item4, this.item5);
-      }
-      withItem2(v) {
-        T2L().as(v);
-        return new (Tuple5OfT1L$T2L$T3L$T4L$T5L()).new(this.item1, v, this.item3, this.item4, this.item5);
-      }
-      withItem3(v) {
-        T3L().as(v);
-        return new (Tuple5OfT1L$T2L$T3L$T4L$T5L()).new(this.item1, this.item2, v, this.item4, this.item5);
-      }
-      withItem4(v) {
-        T4L().as(v);
-        return new (Tuple5OfT1L$T2L$T3L$T4L$T5L()).new(this.item1, this.item2, this.item3, v, this.item5);
-      }
-      withItem5(v) {
-        T5L().as(v);
-        return new (Tuple5OfT1L$T2L$T3L$T4L$T5L()).new(this.item1, this.item2, this.item3, this.item4, v);
-      }
-      toList(opts) {
-        let growable = opts && 'growable' in opts ? opts.growable : false;
-        return core.List.from([this.item1, this.item2, this.item3, this.item4, this.item5], {growable: growable});
-      }
-      toString() {
-        return "[" + dart.str(this.item1) + ", " + dart.str(this.item2) + ", " + dart.str(this.item3) + ", " + dart.str(this.item4) + ", " + dart.str(this.item5) + "]";
-      }
-      _equals(other) {
-        if (other == null) return false;
-        return Tuple5L().is(other) && dart.equals(other.item1, this.item1) && dart.equals(other.item2, this.item2) && dart.equals(other.item3, this.item3) && dart.equals(other.item4, this.item4) && dart.equals(other.item5, this.item5);
-      }
-      get hashCode() {
-        return hash.hashObjects([dart.hashCode(this.item1), dart.hashCode(this.item2), dart.hashCode(this.item3), dart.hashCode(this.item4), dart.hashCode(this.item5)]);
+    [_publish](record) {
+      if (this[_controller] != null) {
+        this[_controller].add(record);
       }
     }
-    (Tuple5.new = function(item1, item2, item3, item4, item5) {
-      this[item1$2] = item1;
-      this[item2$2] = item2;
-      this[item3$1] = item3;
-      this[item4$0] = item4;
-      this[item5$] = item5;
-      ;
-    }).prototype = Tuple5.prototype;
-    dart.addTypeTests(Tuple5);
-    Tuple5.prototype[_is_Tuple5_default] = true;
-    dart.addTypeCaches(Tuple5);
-    dart.setMethodSignature(Tuple5, () => ({
-      __proto__: dart.getMethods(Tuple5.__proto__),
-      withItem1: dart.fnType(dart.legacy(tuple.Tuple5$(dart.legacy(T1), dart.legacy(T2), dart.legacy(T3), dart.legacy(T4), dart.legacy(T5))), [dart.legacy(core.Object)]),
-      withItem2: dart.fnType(dart.legacy(tuple.Tuple5$(dart.legacy(T1), dart.legacy(T2), dart.legacy(T3), dart.legacy(T4), dart.legacy(T5))), [dart.legacy(core.Object)]),
-      withItem3: dart.fnType(dart.legacy(tuple.Tuple5$(dart.legacy(T1), dart.legacy(T2), dart.legacy(T3), dart.legacy(T4), dart.legacy(T5))), [dart.legacy(core.Object)]),
-      withItem4: dart.fnType(dart.legacy(tuple.Tuple5$(dart.legacy(T1), dart.legacy(T2), dart.legacy(T3), dart.legacy(T4), dart.legacy(T5))), [dart.legacy(core.Object)]),
-      withItem5: dart.fnType(dart.legacy(tuple.Tuple5$(dart.legacy(T1), dart.legacy(T2), dart.legacy(T3), dart.legacy(T4), dart.legacy(T5))), [dart.legacy(core.Object)]),
-      toList: dart.fnType(dart.legacy(core.List), [], {growable: dart.legacy(core.bool)}, {}),
-      toString: dart.fnType(dart.legacy(core.String), []),
-      [$toString]: dart.fnType(dart.legacy(core.String), []),
-      _equals: dart.fnType(dart.legacy(core.bool), [dart.dynamic]),
-      [$_equals]: dart.fnType(dart.legacy(core.bool), [dart.dynamic])
-    }));
-    dart.setGetterSignature(Tuple5, () => ({
-      __proto__: dart.getGetters(Tuple5.__proto__),
-      hashCode: dart.legacy(core.int),
-      [$hashCode]: dart.legacy(core.int)
-    }));
-    dart.setLibraryUri(Tuple5, L0);
-    dart.setFieldSignature(Tuple5, () => ({
-      __proto__: dart.getFields(Tuple5.__proto__),
-      item1: dart.finalFieldType(dart.legacy(T1)),
-      item2: dart.finalFieldType(dart.legacy(T2)),
-      item3: dart.finalFieldType(dart.legacy(T3)),
-      item4: dart.finalFieldType(dart.legacy(T4)),
-      item5: dart.finalFieldType(dart.legacy(T5))
-    }));
-    dart.defineExtensionMethods(Tuple5, ['toString', '_equals']);
-    dart.defineExtensionAccessors(Tuple5, ['hashCode']);
-    return Tuple5;
-  });
-  tuple.Tuple5 = tuple.Tuple5$();
-  dart.addTypeTests(tuple.Tuple5, _is_Tuple5_default);
-  const _is_Tuple6_default = Symbol('_is_Tuple6_default');
-  var item1$3 = dart.privateName(tuple, "Tuple6.item1");
-  var item2$3 = dart.privateName(tuple, "Tuple6.item2");
-  var item3$2 = dart.privateName(tuple, "Tuple6.item3");
-  var item4$1 = dart.privateName(tuple, "Tuple6.item4");
-  var item5$0 = dart.privateName(tuple, "Tuple6.item5");
-  var item6$ = dart.privateName(tuple, "Tuple6.item6");
-  tuple.Tuple6$ = dart.generic((T1, T2, T3, T4, T5, T6) => {
-    var T1L = () => (T1L = dart.constFn(dart.legacy(T1)))();
-    var Tuple6OfT1L$T2L$T3L$T4L$T5L$T6L = () => (Tuple6OfT1L$T2L$T3L$T4L$T5L$T6L = dart.constFn(tuple.Tuple6$(T1L(), T2L(), T3L(), T4L(), T5L(), T6L())))();
-    var T2L = () => (T2L = dart.constFn(dart.legacy(T2)))();
-    var T3L = () => (T3L = dart.constFn(dart.legacy(T3)))();
-    var T4L = () => (T4L = dart.constFn(dart.legacy(T4)))();
-    var T5L = () => (T5L = dart.constFn(dart.legacy(T5)))();
-    var T6L = () => (T6L = dart.constFn(dart.legacy(T6)))();
-    class Tuple6 extends core.Object {
-      get item1() {
-        return this[item1$3];
-      }
-      set item1(value) {
-        super.item1 = value;
-      }
-      get item2() {
-        return this[item2$3];
-      }
-      set item2(value) {
-        super.item2 = value;
-      }
-      get item3() {
-        return this[item3$2];
-      }
-      set item3(value) {
-        super.item3 = value;
-      }
-      get item4() {
-        return this[item4$1];
-      }
-      set item4(value) {
-        super.item4 = value;
-      }
-      get item5() {
-        return this[item5$0];
-      }
-      set item5(value) {
-        super.item5 = value;
-      }
-      get item6() {
-        return this[item6$];
-      }
-      set item6(value) {
-        super.item6 = value;
-      }
-      static fromList(items) {
-        if (items[$length] !== 6) {
-          dart.throw(new core.ArgumentError.new("items must have length 6"));
-        }
-        return new (tuple.Tuple6$(dart.legacy(T1), dart.legacy(T2), dart.legacy(T3), dart.legacy(T4), dart.legacy(T5), dart.legacy(T6))).new(dart.legacy(T1).as(items[$_get](0)), dart.legacy(T2).as(items[$_get](1)), dart.legacy(T3).as(items[$_get](2)), dart.legacy(T4).as(items[$_get](3)), dart.legacy(T5).as(items[$_get](4)), dart.legacy(T6).as(items[$_get](5)));
-      }
-      withItem1(v) {
-        T1L().as(v);
-        return new (Tuple6OfT1L$T2L$T3L$T4L$T5L$T6L()).new(v, this.item2, this.item3, this.item4, this.item5, this.item6);
-      }
-      withItem2(v) {
-        T2L().as(v);
-        return new (Tuple6OfT1L$T2L$T3L$T4L$T5L$T6L()).new(this.item1, v, this.item3, this.item4, this.item5, this.item6);
-      }
-      withItem3(v) {
-        T3L().as(v);
-        return new (Tuple6OfT1L$T2L$T3L$T4L$T5L$T6L()).new(this.item1, this.item2, v, this.item4, this.item5, this.item6);
-      }
-      withItem4(v) {
-        T4L().as(v);
-        return new (Tuple6OfT1L$T2L$T3L$T4L$T5L$T6L()).new(this.item1, this.item2, this.item3, v, this.item5, this.item6);
-      }
-      withItem5(v) {
-        T5L().as(v);
-        return new (Tuple6OfT1L$T2L$T3L$T4L$T5L$T6L()).new(this.item1, this.item2, this.item3, this.item4, v, this.item6);
-      }
-      withItem6(v) {
-        T6L().as(v);
-        return new (Tuple6OfT1L$T2L$T3L$T4L$T5L$T6L()).new(this.item1, this.item2, this.item3, this.item4, this.item5, v);
-      }
-      toList(opts) {
-        let growable = opts && 'growable' in opts ? opts.growable : false;
-        return core.List.from([this.item1, this.item2, this.item3, this.item4, this.item5, this.item6], {growable: growable});
-      }
-      toString() {
-        return "[" + dart.str(this.item1) + ", " + dart.str(this.item2) + ", " + dart.str(this.item3) + ", " + dart.str(this.item4) + ", " + dart.str(this.item5) + ", " + dart.str(this.item6) + "]";
-      }
-      _equals(other) {
-        if (other == null) return false;
-        return Tuple6L().is(other) && dart.equals(other.item1, this.item1) && dart.equals(other.item2, this.item2) && dart.equals(other.item3, this.item3) && dart.equals(other.item4, this.item4) && dart.equals(other.item5, this.item5) && dart.equals(other.item6, this.item6);
-      }
-      get hashCode() {
-        return hash.hashObjects([dart.hashCode(this.item1), dart.hashCode(this.item2), dart.hashCode(this.item3), dart.hashCode(this.item4), dart.hashCode(this.item5), dart.hashCode(this.item6)]);
-      }
+  };
+  (logger.Logger._internal = function(name, parent, children) {
+    this[_level] = null;
+    this[_controller] = null;
+    this[name$] = name;
+    this[parent$] = parent;
+    this[_children] = children;
+    this[children$] = new (UnmodifiableMapViewOfStringL$LoggerL()).new(children);
+    if (this.parent == null) {
+      this[_level] = logger.defaultLevel;
+    } else {
+      this.parent[_children][$_set](this.name, this);
     }
-    (Tuple6.new = function(item1, item2, item3, item4, item5, item6) {
-      this[item1$3] = item1;
-      this[item2$3] = item2;
-      this[item3$2] = item3;
-      this[item4$1] = item4;
-      this[item5$0] = item5;
-      this[item6$] = item6;
-      ;
-    }).prototype = Tuple6.prototype;
-    dart.addTypeTests(Tuple6);
-    Tuple6.prototype[_is_Tuple6_default] = true;
-    dart.addTypeCaches(Tuple6);
-    dart.setMethodSignature(Tuple6, () => ({
-      __proto__: dart.getMethods(Tuple6.__proto__),
-      withItem1: dart.fnType(dart.legacy(tuple.Tuple6$(dart.legacy(T1), dart.legacy(T2), dart.legacy(T3), dart.legacy(T4), dart.legacy(T5), dart.legacy(T6))), [dart.legacy(core.Object)]),
-      withItem2: dart.fnType(dart.legacy(tuple.Tuple6$(dart.legacy(T1), dart.legacy(T2), dart.legacy(T3), dart.legacy(T4), dart.legacy(T5), dart.legacy(T6))), [dart.legacy(core.Object)]),
-      withItem3: dart.fnType(dart.legacy(tuple.Tuple6$(dart.legacy(T1), dart.legacy(T2), dart.legacy(T3), dart.legacy(T4), dart.legacy(T5), dart.legacy(T6))), [dart.legacy(core.Object)]),
-      withItem4: dart.fnType(dart.legacy(tuple.Tuple6$(dart.legacy(T1), dart.legacy(T2), dart.legacy(T3), dart.legacy(T4), dart.legacy(T5), dart.legacy(T6))), [dart.legacy(core.Object)]),
-      withItem5: dart.fnType(dart.legacy(tuple.Tuple6$(dart.legacy(T1), dart.legacy(T2), dart.legacy(T3), dart.legacy(T4), dart.legacy(T5), dart.legacy(T6))), [dart.legacy(core.Object)]),
-      withItem6: dart.fnType(dart.legacy(tuple.Tuple6$(dart.legacy(T1), dart.legacy(T2), dart.legacy(T3), dart.legacy(T4), dart.legacy(T5), dart.legacy(T6))), [dart.legacy(core.Object)]),
-      toList: dart.fnType(dart.legacy(core.List), [], {growable: dart.legacy(core.bool)}, {}),
-      toString: dart.fnType(dart.legacy(core.String), []),
-      [$toString]: dart.fnType(dart.legacy(core.String), []),
-      _equals: dart.fnType(dart.legacy(core.bool), [dart.dynamic]),
-      [$_equals]: dart.fnType(dart.legacy(core.bool), [dart.dynamic])
-    }));
-    dart.setGetterSignature(Tuple6, () => ({
-      __proto__: dart.getGetters(Tuple6.__proto__),
-      hashCode: dart.legacy(core.int),
-      [$hashCode]: dart.legacy(core.int)
-    }));
-    dart.setLibraryUri(Tuple6, L0);
-    dart.setFieldSignature(Tuple6, () => ({
-      __proto__: dart.getFields(Tuple6.__proto__),
-      item1: dart.finalFieldType(dart.legacy(T1)),
-      item2: dart.finalFieldType(dart.legacy(T2)),
-      item3: dart.finalFieldType(dart.legacy(T3)),
-      item4: dart.finalFieldType(dart.legacy(T4)),
-      item5: dart.finalFieldType(dart.legacy(T5)),
-      item6: dart.finalFieldType(dart.legacy(T6))
-    }));
-    dart.defineExtensionMethods(Tuple6, ['toString', '_equals']);
-    dart.defineExtensionAccessors(Tuple6, ['hashCode']);
-    return Tuple6;
-  });
-  tuple.Tuple6 = tuple.Tuple6$();
-  dart.addTypeTests(tuple.Tuple6, _is_Tuple6_default);
-  const _is_Tuple7_default = Symbol('_is_Tuple7_default');
-  var item1$4 = dart.privateName(tuple, "Tuple7.item1");
-  var item2$4 = dart.privateName(tuple, "Tuple7.item2");
-  var item3$3 = dart.privateName(tuple, "Tuple7.item3");
-  var item4$2 = dart.privateName(tuple, "Tuple7.item4");
-  var item5$1 = dart.privateName(tuple, "Tuple7.item5");
-  var item6$0 = dart.privateName(tuple, "Tuple7.item6");
-  var item7$ = dart.privateName(tuple, "Tuple7.item7");
-  tuple.Tuple7$ = dart.generic((T1, T2, T3, T4, T5, T6, T7) => {
-    var T1L = () => (T1L = dart.constFn(dart.legacy(T1)))();
-    var Tuple7OfT1L$T2L$T3L$T4L$T5L$T6L$T7L = () => (Tuple7OfT1L$T2L$T3L$T4L$T5L$T6L$T7L = dart.constFn(tuple.Tuple7$(T1L(), T2L(), T3L(), T4L(), T5L(), T6L(), T7L())))();
-    var T2L = () => (T2L = dart.constFn(dart.legacy(T2)))();
-    var T3L = () => (T3L = dart.constFn(dart.legacy(T3)))();
-    var T4L = () => (T4L = dart.constFn(dart.legacy(T4)))();
-    var T5L = () => (T5L = dart.constFn(dart.legacy(T5)))();
-    var T6L = () => (T6L = dart.constFn(dart.legacy(T6)))();
-    var T7L = () => (T7L = dart.constFn(dart.legacy(T7)))();
-    class Tuple7 extends core.Object {
-      get item1() {
-        return this[item1$4];
-      }
-      set item1(value) {
-        super.item1 = value;
-      }
-      get item2() {
-        return this[item2$4];
-      }
-      set item2(value) {
-        super.item2 = value;
-      }
-      get item3() {
-        return this[item3$3];
-      }
-      set item3(value) {
-        super.item3 = value;
-      }
-      get item4() {
-        return this[item4$2];
-      }
-      set item4(value) {
-        super.item4 = value;
-      }
-      get item5() {
-        return this[item5$1];
-      }
-      set item5(value) {
-        super.item5 = value;
-      }
-      get item6() {
-        return this[item6$0];
-      }
-      set item6(value) {
-        super.item6 = value;
-      }
-      get item7() {
-        return this[item7$];
-      }
-      set item7(value) {
-        super.item7 = value;
-      }
-      static fromList(items) {
-        if (items[$length] !== 7) {
-          dart.throw(new core.ArgumentError.new("items must have length 7"));
-        }
-        return new (tuple.Tuple7$(dart.legacy(T1), dart.legacy(T2), dart.legacy(T3), dart.legacy(T4), dart.legacy(T5), dart.legacy(T6), dart.legacy(T7))).new(dart.legacy(T1).as(items[$_get](0)), dart.legacy(T2).as(items[$_get](1)), dart.legacy(T3).as(items[$_get](2)), dart.legacy(T4).as(items[$_get](3)), dart.legacy(T5).as(items[$_get](4)), dart.legacy(T6).as(items[$_get](5)), dart.legacy(T7).as(items[$_get](6)));
-      }
-      withItem1(v) {
-        T1L().as(v);
-        return new (Tuple7OfT1L$T2L$T3L$T4L$T5L$T6L$T7L()).new(v, this.item2, this.item3, this.item4, this.item5, this.item6, this.item7);
-      }
-      withItem2(v) {
-        T2L().as(v);
-        return new (Tuple7OfT1L$T2L$T3L$T4L$T5L$T6L$T7L()).new(this.item1, v, this.item3, this.item4, this.item5, this.item6, this.item7);
-      }
-      withItem3(v) {
-        T3L().as(v);
-        return new (Tuple7OfT1L$T2L$T3L$T4L$T5L$T6L$T7L()).new(this.item1, this.item2, v, this.item4, this.item5, this.item6, this.item7);
-      }
-      withItem4(v) {
-        T4L().as(v);
-        return new (Tuple7OfT1L$T2L$T3L$T4L$T5L$T6L$T7L()).new(this.item1, this.item2, this.item3, v, this.item5, this.item6, this.item7);
-      }
-      withItem5(v) {
-        T5L().as(v);
-        return new (Tuple7OfT1L$T2L$T3L$T4L$T5L$T6L$T7L()).new(this.item1, this.item2, this.item3, this.item4, v, this.item6, this.item7);
-      }
-      withItem6(v) {
-        T6L().as(v);
-        return new (Tuple7OfT1L$T2L$T3L$T4L$T5L$T6L$T7L()).new(this.item1, this.item2, this.item3, this.item4, this.item5, v, this.item7);
-      }
-      withItem7(v) {
-        T7L().as(v);
-        return new (Tuple7OfT1L$T2L$T3L$T4L$T5L$T6L$T7L()).new(this.item1, this.item2, this.item3, this.item4, this.item5, this.item6, v);
-      }
-      toList(opts) {
-        let growable = opts && 'growable' in opts ? opts.growable : false;
-        return core.List.from([this.item1, this.item2, this.item3, this.item4, this.item5, this.item6, this.item7], {growable: growable});
-      }
-      toString() {
-        return "[" + dart.str(this.item1) + ", " + dart.str(this.item2) + ", " + dart.str(this.item3) + ", " + dart.str(this.item4) + ", " + dart.str(this.item5) + ", " + dart.str(this.item6) + ", " + dart.str(this.item7) + "]";
-      }
-      _equals(other) {
-        if (other == null) return false;
-        return Tuple7L().is(other) && dart.equals(other.item1, this.item1) && dart.equals(other.item2, this.item2) && dart.equals(other.item3, this.item3) && dart.equals(other.item4, this.item4) && dart.equals(other.item5, this.item5) && dart.equals(other.item6, this.item6) && dart.equals(other.item7, this.item7);
-      }
-      get hashCode() {
-        return hash.hashObjects([dart.hashCode(this.item1), dart.hashCode(this.item2), dart.hashCode(this.item3), dart.hashCode(this.item4), dart.hashCode(this.item5), dart.hashCode(this.item6), dart.hashCode(this.item7)]);
-      }
+  }).prototype = logger.Logger.prototype;
+  dart.addTypeTests(logger.Logger);
+  dart.addTypeCaches(logger.Logger);
+  dart.setMethodSignature(logger.Logger, () => ({
+    __proto__: dart.getMethods(logger.Logger.__proto__),
+    clearListeners: dart.fnType(dart.void, []),
+    isLoggable: dart.fnType(dart.legacy(core.bool), [dart.legacy(level.Level)]),
+    log: dart.fnType(dart.void, [dart.legacy(level.Level), dart.dynamic], [dart.legacy(core.Object), dart.legacy(core.StackTrace), dart.legacy(async.Zone)]),
+    finest: dart.fnType(dart.void, [dart.dynamic], [dart.legacy(core.Object), dart.legacy(core.StackTrace)]),
+    finer: dart.fnType(dart.void, [dart.dynamic], [dart.legacy(core.Object), dart.legacy(core.StackTrace)]),
+    fine: dart.fnType(dart.void, [dart.dynamic], [dart.legacy(core.Object), dart.legacy(core.StackTrace)]),
+    config: dart.fnType(dart.void, [dart.dynamic], [dart.legacy(core.Object), dart.legacy(core.StackTrace)]),
+    info: dart.fnType(dart.void, [dart.dynamic], [dart.legacy(core.Object), dart.legacy(core.StackTrace)]),
+    warning: dart.fnType(dart.void, [dart.dynamic], [dart.legacy(core.Object), dart.legacy(core.StackTrace)]),
+    severe: dart.fnType(dart.void, [dart.dynamic], [dart.legacy(core.Object), dart.legacy(core.StackTrace)]),
+    shout: dart.fnType(dart.void, [dart.dynamic], [dart.legacy(core.Object), dart.legacy(core.StackTrace)]),
+    [_getStream]: dart.fnType(dart.legacy(async.Stream$(dart.legacy(log_record.LogRecord))), []),
+    [_publish]: dart.fnType(dart.void, [dart.legacy(log_record.LogRecord)])
+  }));
+  dart.setGetterSignature(logger.Logger, () => ({
+    __proto__: dart.getGetters(logger.Logger.__proto__),
+    fullName: dart.legacy(core.String),
+    level: dart.legacy(level.Level),
+    onRecord: dart.legacy(async.Stream$(dart.legacy(log_record.LogRecord)))
+  }));
+  dart.setSetterSignature(logger.Logger, () => ({
+    __proto__: dart.getSetters(logger.Logger.__proto__),
+    level: dart.legacy(level.Level)
+  }));
+  dart.setLibraryUri(logger.Logger, L1);
+  dart.setFieldSignature(logger.Logger, () => ({
+    __proto__: dart.getFields(logger.Logger.__proto__),
+    name: dart.finalFieldType(dart.legacy(core.String)),
+    parent: dart.finalFieldType(dart.legacy(logger.Logger)),
+    [_level]: dart.fieldType(dart.legacy(level.Level)),
+    [_children]: dart.finalFieldType(dart.legacy(core.Map$(dart.legacy(core.String), dart.legacy(logger.Logger)))),
+    children: dart.finalFieldType(dart.legacy(core.Map$(dart.legacy(core.String), dart.legacy(logger.Logger)))),
+    [_controller]: dart.fieldType(dart.legacy(async.StreamController$(dart.legacy(log_record.LogRecord))))
+  }));
+  dart.defineLazy(logger.Logger, {
+    /*logger.Logger.root*/get root() {
+      return logger.Logger.new("");
+    },
+    /*logger.Logger._loggers*/get _loggers() {
+      return new (IdentityMapOfStringL$LoggerL()).new();
     }
-    (Tuple7.new = function(item1, item2, item3, item4, item5, item6, item7) {
-      this[item1$4] = item1;
-      this[item2$4] = item2;
-      this[item3$3] = item3;
-      this[item4$2] = item4;
-      this[item5$1] = item5;
-      this[item6$0] = item6;
-      this[item7$] = item7;
-      ;
-    }).prototype = Tuple7.prototype;
-    dart.addTypeTests(Tuple7);
-    Tuple7.prototype[_is_Tuple7_default] = true;
-    dart.addTypeCaches(Tuple7);
-    dart.setMethodSignature(Tuple7, () => ({
-      __proto__: dart.getMethods(Tuple7.__proto__),
-      withItem1: dart.fnType(dart.legacy(tuple.Tuple7$(dart.legacy(T1), dart.legacy(T2), dart.legacy(T3), dart.legacy(T4), dart.legacy(T5), dart.legacy(T6), dart.legacy(T7))), [dart.legacy(core.Object)]),
-      withItem2: dart.fnType(dart.legacy(tuple.Tuple7$(dart.legacy(T1), dart.legacy(T2), dart.legacy(T3), dart.legacy(T4), dart.legacy(T5), dart.legacy(T6), dart.legacy(T7))), [dart.legacy(core.Object)]),
-      withItem3: dart.fnType(dart.legacy(tuple.Tuple7$(dart.legacy(T1), dart.legacy(T2), dart.legacy(T3), dart.legacy(T4), dart.legacy(T5), dart.legacy(T6), dart.legacy(T7))), [dart.legacy(core.Object)]),
-      withItem4: dart.fnType(dart.legacy(tuple.Tuple7$(dart.legacy(T1), dart.legacy(T2), dart.legacy(T3), dart.legacy(T4), dart.legacy(T5), dart.legacy(T6), dart.legacy(T7))), [dart.legacy(core.Object)]),
-      withItem5: dart.fnType(dart.legacy(tuple.Tuple7$(dart.legacy(T1), dart.legacy(T2), dart.legacy(T3), dart.legacy(T4), dart.legacy(T5), dart.legacy(T6), dart.legacy(T7))), [dart.legacy(core.Object)]),
-      withItem6: dart.fnType(dart.legacy(tuple.Tuple7$(dart.legacy(T1), dart.legacy(T2), dart.legacy(T3), dart.legacy(T4), dart.legacy(T5), dart.legacy(T6), dart.legacy(T7))), [dart.legacy(core.Object)]),
-      withItem7: dart.fnType(dart.legacy(tuple.Tuple7$(dart.legacy(T1), dart.legacy(T2), dart.legacy(T3), dart.legacy(T4), dart.legacy(T5), dart.legacy(T6), dart.legacy(T7))), [dart.legacy(core.Object)]),
-      toList: dart.fnType(dart.legacy(core.List), [], {growable: dart.legacy(core.bool)}, {}),
-      toString: dart.fnType(dart.legacy(core.String), []),
-      [$toString]: dart.fnType(dart.legacy(core.String), []),
-      _equals: dart.fnType(dart.legacy(core.bool), [dart.dynamic]),
-      [$_equals]: dart.fnType(dart.legacy(core.bool), [dart.dynamic])
-    }));
-    dart.setGetterSignature(Tuple7, () => ({
-      __proto__: dart.getGetters(Tuple7.__proto__),
-      hashCode: dart.legacy(core.int),
-      [$hashCode]: dart.legacy(core.int)
-    }));
-    dart.setLibraryUri(Tuple7, L0);
-    dart.setFieldSignature(Tuple7, () => ({
-      __proto__: dart.getFields(Tuple7.__proto__),
-      item1: dart.finalFieldType(dart.legacy(T1)),
-      item2: dart.finalFieldType(dart.legacy(T2)),
-      item3: dart.finalFieldType(dart.legacy(T3)),
-      item4: dart.finalFieldType(dart.legacy(T4)),
-      item5: dart.finalFieldType(dart.legacy(T5)),
-      item6: dart.finalFieldType(dart.legacy(T6)),
-      item7: dart.finalFieldType(dart.legacy(T7))
-    }));
-    dart.defineExtensionMethods(Tuple7, ['toString', '_equals']);
-    dart.defineExtensionAccessors(Tuple7, ['hashCode']);
-    return Tuple7;
-  });
-  tuple.Tuple7 = tuple.Tuple7$();
-  dart.addTypeTests(tuple.Tuple7, _is_Tuple7_default);
-  dart.trackLibraries("packages/tuple/tuple.dart", {
-    "package:tuple/tuple.dart": tuple
+  }, true);
+  var Level_value = dart.privateName(level, "Level.value");
+  var Level_name = dart.privateName(level, "Level.name");
+  var C0;
+  dart.defineLazy(logger, {
+    /*logger.hierarchicalLoggingEnabled*/get hierarchicalLoggingEnabled() {
+      return false;
+    },
+    set hierarchicalLoggingEnabled(_) {},
+    /*logger.recordStackTraceAtLevel*/get recordStackTraceAtLevel() {
+      return level.Level.OFF;
+    },
+    set recordStackTraceAtLevel(_) {},
+    /*logger.defaultLevel*/get defaultLevel() {
+      return C0 || CT.C0;
+    }
+  }, true);
+  var level$ = dart.privateName(log_record, "LogRecord.level");
+  var message$ = dart.privateName(log_record, "LogRecord.message");
+  var object$ = dart.privateName(log_record, "LogRecord.object");
+  var loggerName$ = dart.privateName(log_record, "LogRecord.loggerName");
+  var time = dart.privateName(log_record, "LogRecord.time");
+  var sequenceNumber = dart.privateName(log_record, "LogRecord.sequenceNumber");
+  var error$ = dart.privateName(log_record, "LogRecord.error");
+  var stackTrace$ = dart.privateName(log_record, "LogRecord.stackTrace");
+  var zone$ = dart.privateName(log_record, "LogRecord.zone");
+  log_record.LogRecord = class LogRecord extends core.Object {
+    get level() {
+      return this[level$];
+    }
+    set level(value) {
+      super.level = value;
+    }
+    get message() {
+      return this[message$];
+    }
+    set message(value) {
+      super.message = value;
+    }
+    get object() {
+      return this[object$];
+    }
+    set object(value) {
+      super.object = value;
+    }
+    get loggerName() {
+      return this[loggerName$];
+    }
+    set loggerName(value) {
+      super.loggerName = value;
+    }
+    get time() {
+      return this[time];
+    }
+    set time(value) {
+      super.time = value;
+    }
+    get sequenceNumber() {
+      return this[sequenceNumber];
+    }
+    set sequenceNumber(value) {
+      super.sequenceNumber = value;
+    }
+    get error() {
+      return this[error$];
+    }
+    set error(value) {
+      super.error = value;
+    }
+    get stackTrace() {
+      return this[stackTrace$];
+    }
+    set stackTrace(value) {
+      super.stackTrace = value;
+    }
+    get zone() {
+      return this[zone$];
+    }
+    set zone(value) {
+      super.zone = value;
+    }
+    toString() {
+      return "[" + dart.str(this.level.name) + "] " + dart.str(this.loggerName) + ": " + dart.str(this.message);
+    }
+  };
+  (log_record.LogRecord.new = function(level, message, loggerName, error = null, stackTrace = null, zone = null, object = null) {
+    let t0;
+    this[level$] = level;
+    this[message$] = message;
+    this[loggerName$] = loggerName;
+    this[error$] = error;
+    this[stackTrace$] = stackTrace;
+    this[zone$] = zone;
+    this[object$] = object;
+    this[time] = new core.DateTime.now();
+    this[sequenceNumber] = (t0 = log_record.LogRecord._nextNumber, log_record.LogRecord._nextNumber = dart.notNull(t0) + 1, t0);
+    ;
+  }).prototype = log_record.LogRecord.prototype;
+  dart.addTypeTests(log_record.LogRecord);
+  dart.addTypeCaches(log_record.LogRecord);
+  dart.setMethodSignature(log_record.LogRecord, () => ({
+    __proto__: dart.getMethods(log_record.LogRecord.__proto__),
+    toString: dart.fnType(dart.legacy(core.String), []),
+    [$toString]: dart.fnType(dart.legacy(core.String), [])
+  }));
+  dart.setLibraryUri(log_record.LogRecord, L2);
+  dart.setFieldSignature(log_record.LogRecord, () => ({
+    __proto__: dart.getFields(log_record.LogRecord.__proto__),
+    level: dart.finalFieldType(dart.legacy(level.Level)),
+    message: dart.finalFieldType(dart.legacy(core.String)),
+    object: dart.finalFieldType(dart.legacy(core.Object)),
+    loggerName: dart.finalFieldType(dart.legacy(core.String)),
+    time: dart.finalFieldType(dart.legacy(core.DateTime)),
+    sequenceNumber: dart.finalFieldType(dart.legacy(core.int)),
+    error: dart.finalFieldType(dart.legacy(core.Object)),
+    stackTrace: dart.finalFieldType(dart.legacy(core.StackTrace)),
+    zone: dart.finalFieldType(dart.legacy(async.Zone))
+  }));
+  dart.defineExtensionMethods(log_record.LogRecord, ['toString']);
+  dart.defineLazy(log_record.LogRecord, {
+    /*log_record.LogRecord._nextNumber*/get _nextNumber() {
+      return 0;
+    },
+    set _nextNumber(_) {}
+  }, true);
+  dart.trackLibraries("packages/logging/src/logger.dart", {
+    "package:logging/src/logger.dart": logger,
+    "package:logging/src/log_record.dart": log_record
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["tuple.dart"],"names":[],"mappings":"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","file":"../../../../../../../packages/tuple/tuple.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["logger.dart","log_record.dart"],"names":[],"mappings":"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","file":"../../../../../../../../packages/logging/src/logger.dart.lib.js"}');
   // Exports:
   return {
-    tuple: tuple
+    src__logger: logger,
+    src__log_record: log_record
   };
 }));
 
-//# sourceMappingURL=tuple.dart.lib.js.map
+//# sourceMappingURL=logger.dart.lib.js.map
