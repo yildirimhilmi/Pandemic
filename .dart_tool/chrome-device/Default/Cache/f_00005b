@@ -1,832 +1,407 @@
-define(['dart_sdk', 'packages/flutter/src/painting/box_fit.dart', 'packages/flutter/src/painting/alignment.dart', 'packages/flare_flutter/provider/asset_flare.dart', 'packages/flutter/src/services/system_channels.dart', 'packages/flare_flutter/provider/memory_flare.dart', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/rendering/layer.dart', 'packages/flare_flutter/asset_provider.dart', 'packages/flare_flutter/flare_controller.dart', 'packages/flare_flutter/flare.dart', 'packages/flare_dart/dependency_sorter.dart', 'packages/flare_dart/math/transform_components.dart', 'packages/flare_flutter/flare_render_box.dart', 'packages/flare_dart/math/aabb.dart'], (function load__packages__flare_flutter__flare_actor_dart(dart_sdk, packages__flutter__src__painting__box_fit$46dart, packages__flutter__src__painting__alignment$46dart, packages__flare_flutter__provider__asset_flare$46dart, packages__flutter__src__services__system_channels$46dart, packages__flare_flutter__provider__memory_flare$46dart, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__rendering__layer$46dart, packages__flare_flutter__asset_provider$46dart, packages__flare_flutter__flare_controller$46dart, packages__flare_flutter__flare$46dart, packages__flare_dart__dependency_sorter$46dart, packages__flare_dart__math__transform_components$46dart, packages__flare_flutter__flare_render_box$46dart, packages__flare_dart__math__aabb$46dart) {
+define(['dart_sdk', 'packages/flutter/src/painting/borders.dart', 'packages/flutter/src/painting/border_radius.dart', 'packages/flutter/src/painting/edge_insets.dart', 'packages/flutter/src/painting/circle_border.dart', 'packages/flutter/src/foundation/object.dart'], (function load__packages__flutter__src__painting__rounded_rectangle_border_dart(dart_sdk, packages__flutter__src__painting__borders$46dart, packages__flutter__src__painting__border_radius$46dart, packages__flutter__src__painting__edge_insets$46dart, packages__flutter__src__painting__circle_border$46dart, packages__flutter__src__foundation__object$46dart) {
   'use strict';
   const core = dart_sdk.core;
   const ui = dart_sdk.ui;
-  const _interceptors = dart_sdk._interceptors;
-  const _native_typed_data = dart_sdk._native_typed_data;
-  const async = dart_sdk.async;
-  const math = dart_sdk.math;
+  const _internal = dart_sdk._internal;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const box_fit = packages__flutter__src__painting__box_fit$46dart.src__painting__box_fit;
-  const alignment = packages__flutter__src__painting__alignment$46dart.src__painting__alignment;
-  const asset_flare = packages__flare_flutter__provider__asset_flare$46dart.provider__asset_flare;
-  const asset_bundle = packages__flutter__src__services__system_channels$46dart.src__services__asset_bundle;
-  const memory_flare = packages__flare_flutter__provider__memory_flare$46dart.provider__memory_flare;
-  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
-  const object = packages__flutter__src__rendering__layer$46dart.src__rendering__object;
-  const asset_provider = packages__flare_flutter__asset_provider$46dart.asset_provider;
-  const flare_controller = packages__flare_flutter__flare_controller$46dart.flare_controller;
-  const flare = packages__flare_flutter__flare$46dart.flare;
-  const actor_animation = packages__flare_dart__dependency_sorter$46dart.animation__actor_animation;
-  const actor_drawable = packages__flare_dart__dependency_sorter$46dart.actor_drawable;
-  const mat2d = packages__flare_dart__math__transform_components$46dart.math__mat2d;
-  const flare_render_box = packages__flare_flutter__flare_render_box$46dart.flare_render_box;
-  const aabb = packages__flare_dart__math__aabb$46dart.math__aabb;
-  var flare_actor = Object.create(dart.library);
-  var $isNotEmpty = dartx.isNotEmpty;
-  var $clear = dartx.clear;
-  var $length = dartx.length;
-  var $_get = dartx._get;
-  var $modulo = dartx['%'];
-  var $add = dartx.add;
-  var $removeRange = dartx.removeRange;
-  var $removeAt = dartx.removeAt;
-  var $remove = dartx.remove;
-  var FlareActorRenderObjectL = () => (FlareActorRenderObjectL = dart.constFn(dart.legacy(flare_actor.FlareActorRenderObject)))();
-  var FlareAnimationLayerL = () => (FlareAnimationLayerL = dart.constFn(dart.legacy(flare_actor.FlareAnimationLayer)))();
-  var JSArrayOfFlareAnimationLayerL = () => (JSArrayOfFlareAnimationLayerL = dart.constFn(_interceptors.JSArray$(FlareAnimationLayerL())))();
-  var doubleL = () => (doubleL = dart.constFn(dart.legacy(core.double)))();
-  var JSArrayOfdoubleL = () => (JSArrayOfdoubleL = dart.constFn(_interceptors.JSArray$(doubleL())))();
-  var ActorDrawableL = () => (ActorDrawableL = dart.constFn(dart.legacy(actor_drawable.ActorDrawable)))();
-  var FlutterActorArtboardL = () => (FlutterActorArtboardL = dart.constFn(dart.legacy(flare.FlutterActorArtboard)))();
+  const borders = packages__flutter__src__painting__borders$46dart.src__painting__borders;
+  const border_radius = packages__flutter__src__painting__border_radius$46dart.src__painting__border_radius;
+  const edge_insets = packages__flutter__src__painting__edge_insets$46dart.src__painting__edge_insets;
+  const circle_border = packages__flutter__src__painting__circle_border$46dart.src__painting__circle_border;
+  const object = packages__flutter__src__foundation__object$46dart.src__foundation__object;
+  var rounded_rectangle_border = Object.create(dart.library);
+  var $runtimeType = dartx.runtimeType;
+  var $toStringAsFixed = dartx.toStringAsFixed;
+  dart._checkModuleNullSafetyMode(false);
   const CT = Object.create(null);
-  var L0 = "package:flare_flutter/flare_actor.dart";
   dart.defineLazy(CT, {
-    get C0() {
-      return C0 = dart.const({
-        __proto__: box_fit.BoxFit.prototype,
-        [_name]: "BoxFit.contain",
-        index: 1
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: borders.BorderStyle.prototype,
+        [_name]: "BorderStyle.none",
+        index: 0
       });
     },
-    get C1() {
-      return C1 = dart.const({
-        __proto__: alignment.Alignment.prototype,
-        [Alignment_y]: 0,
-        [Alignment_x]: 0
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278190080.0
+      });
+    },
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: borders.BorderSide.prototype,
+        [BorderSide_style]: C[1] || CT.C1,
+        [BorderSide_width]: 0,
+        [BorderSide_color]: C[2] || CT.C2
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: ui.Radius.prototype,
+        [Radius_y]: 0,
+        [Radius_x]: 0
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: border_radius.BorderRadius.prototype,
+        [BorderRadius_bottomRight]: C[4] || CT.C4,
+        [BorderRadius_bottomLeft]: C[4] || CT.C4,
+        [BorderRadius_topRight]: C[4] || CT.C4,
+        [BorderRadius_topLeft]: C[4] || CT.C4
+      });
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: borders.BorderStyle.prototype,
+        [_name]: "BorderStyle.solid",
+        index: 1
       });
     }
   }, false);
-  var _name = dart.privateName(box_fit, "_name");
-  var C0;
-  var Alignment_y = dart.privateName(alignment, "Alignment.y");
-  var Alignment_x = dart.privateName(alignment, "Alignment.x");
-  var C1;
-  var filename$ = dart.privateName(flare_actor, "FlareActor.filename");
-  var flareProvider$ = dart.privateName(flare_actor, "FlareActor.flareProvider");
-  var artboard$ = dart.privateName(flare_actor, "FlareActor.artboard");
-  var animation$ = dart.privateName(flare_actor, "FlareActor.animation");
-  var snapToEnd$ = dart.privateName(flare_actor, "FlareActor.snapToEnd");
-  var fit$ = dart.privateName(flare_actor, "FlareActor.fit");
-  var alignment$ = dart.privateName(flare_actor, "FlareActor.alignment");
-  var isPaused$ = dart.privateName(flare_actor, "FlareActor.isPaused");
-  var shouldClip$ = dart.privateName(flare_actor, "FlareActor.shouldClip");
-  var controller$ = dart.privateName(flare_actor, "FlareActor.controller");
-  var callback$ = dart.privateName(flare_actor, "FlareActor.callback");
-  var color$ = dart.privateName(flare_actor, "FlareActor.color");
-  var boundsNode$ = dart.privateName(flare_actor, "FlareActor.boundsNode");
-  var sizeFromArtboard$ = dart.privateName(flare_actor, "FlareActor.sizeFromArtboard");
-  var antialias$ = dart.privateName(flare_actor, "FlareActor.antialias");
-  flare_actor.FlareActor = class FlareActor extends framework.LeafRenderObjectWidget {
-    get filename() {
-      return this[filename$];
+  var C = Array(6).fill(void 0);
+  var I = [
+    "file:///C:/src/flutter/flutter/packages/flutter/lib/src/painting/rounded_rectangle_border.dart",
+    "package:flutter/src/painting/rounded_rectangle_border.dart"
+  ];
+  var borderRadius$ = dart.privateName(rounded_rectangle_border, "RoundedRectangleBorder.borderRadius");
+  var _name = dart.privateName(borders, "_name");
+  var BorderSide_style = dart.privateName(borders, "BorderSide.style");
+  var BorderSide_width = dart.privateName(borders, "BorderSide.width");
+  var Color_value = dart.privateName(ui, "Color.value");
+  var BorderSide_color = dart.privateName(borders, "BorderSide.color");
+  var Radius_y = dart.privateName(ui, "Radius.y");
+  var Radius_x = dart.privateName(ui, "Radius.x");
+  var BorderRadius_bottomRight = dart.privateName(border_radius, "BorderRadius.bottomRight");
+  var BorderRadius_bottomLeft = dart.privateName(border_radius, "BorderRadius.bottomLeft");
+  var BorderRadius_topRight = dart.privateName(border_radius, "BorderRadius.topRight");
+  var BorderRadius_topLeft = dart.privateName(border_radius, "BorderRadius.topLeft");
+  rounded_rectangle_border.RoundedRectangleBorder = class RoundedRectangleBorder extends borders.OutlinedBorder {
+    get borderRadius() {
+      return this[borderRadius$];
     }
-    set filename(value) {
-      super.filename = value;
+    set borderRadius(value) {
+      super.borderRadius = value;
     }
-    get flareProvider() {
-      return this[flareProvider$];
+    get dimensions() {
+      return new edge_insets.EdgeInsets.all(this.side.width);
     }
-    set flareProvider(value) {
-      super.flareProvider = value;
+    scale(t) {
+      if (t == null) dart.nullFailed(I[0], 48, 28, "t");
+      return new rounded_rectangle_border.RoundedRectangleBorder.new({side: this.side.scale(t), borderRadius: this.borderRadius['*'](t)});
     }
-    get artboard() {
-      return this[artboard$];
+    lerpFrom(a, t) {
+      if (t == null) dart.nullFailed(I[0], 56, 48, "t");
+      if (!(t != null)) dart.assertFailed(null, I[0], 57, 12, "t != null");
+      if (rounded_rectangle_border.RoundedRectangleBorder.is(a)) {
+        return new rounded_rectangle_border.RoundedRectangleBorder.new({side: borders.BorderSide.lerp(a.side, this.side, t), borderRadius: dart.nullCheck(border_radius.BorderRadiusGeometry.lerp(a.borderRadius, this.borderRadius, t))});
+      }
+      if (circle_border.CircleBorder.is(a)) {
+        return new rounded_rectangle_border._RoundedRectangleToCircleBorder.new({side: borders.BorderSide.lerp(a.side, this.side, t), borderRadius: this.borderRadius, circleness: 1.0 - dart.notNull(t)});
+      }
+      return super.lerpFrom(a, t);
     }
-    set artboard(value) {
-      super.artboard = value;
+    lerpTo(b, t) {
+      if (t == null) dart.nullFailed(I[0], 75, 46, "t");
+      if (!(t != null)) dart.assertFailed(null, I[0], 76, 12, "t != null");
+      if (rounded_rectangle_border.RoundedRectangleBorder.is(b)) {
+        return new rounded_rectangle_border.RoundedRectangleBorder.new({side: borders.BorderSide.lerp(this.side, b.side, t), borderRadius: dart.nullCheck(border_radius.BorderRadiusGeometry.lerp(this.borderRadius, b.borderRadius, t))});
+      }
+      if (circle_border.CircleBorder.is(b)) {
+        return new rounded_rectangle_border._RoundedRectangleToCircleBorder.new({side: borders.BorderSide.lerp(this.side, b.side, t), borderRadius: this.borderRadius, circleness: t});
+      }
+      return super.lerpTo(b, t);
     }
-    get animation() {
-      return this[animation$];
+    copyWith(opts) {
+      let t0, t0$;
+      let side = opts && 'side' in opts ? opts.side : null;
+      let borderRadius = opts && 'borderRadius' in opts ? opts.borderRadius : null;
+      return new rounded_rectangle_border.RoundedRectangleBorder.new({side: (t0 = side, t0 == null ? this.side : t0), borderRadius: (t0$ = borderRadius, t0$ == null ? this.borderRadius : t0$)});
     }
-    set animation(value) {
-      super.animation = value;
-    }
-    get snapToEnd() {
-      return this[snapToEnd$];
-    }
-    set snapToEnd(value) {
-      super.snapToEnd = value;
-    }
-    get fit() {
-      return this[fit$];
-    }
-    set fit(value) {
-      super.fit = value;
-    }
-    get alignment() {
-      return this[alignment$];
-    }
-    set alignment(value) {
-      super.alignment = value;
-    }
-    get isPaused() {
-      return this[isPaused$];
-    }
-    set isPaused(value) {
-      super.isPaused = value;
-    }
-    get shouldClip() {
-      return this[shouldClip$];
-    }
-    set shouldClip(value) {
-      super.shouldClip = value;
-    }
-    get controller() {
-      return this[controller$];
-    }
-    set controller(value) {
-      super.controller = value;
-    }
-    get callback() {
-      return this[callback$];
-    }
-    set callback(value) {
-      super.callback = value;
-    }
-    get color() {
-      return this[color$];
-    }
-    set color(value) {
-      super.color = value;
-    }
-    get boundsNode() {
-      return this[boundsNode$];
-    }
-    set boundsNode(value) {
-      super.boundsNode = value;
-    }
-    get sizeFromArtboard() {
-      return this[sizeFromArtboard$];
-    }
-    set sizeFromArtboard(value) {
-      super.sizeFromArtboard = value;
-    }
-    get antialias() {
-      return this[antialias$];
-    }
-    set antialias(value) {
-      super.antialias = value;
-    }
-    createRenderObject(context) {
-      let t1, t0;
-      t0 = new flare_actor.FlareActorRenderObject.new();
+    getInnerPath(rect, opts) {
+      let t0;
+      if (rect == null) dart.nullFailed(I[0], 104, 26, "rect");
+      let textDirection = opts && 'textDirection' in opts ? opts.textDirection : null;
+      t0 = ui.Path.new();
       return (() => {
-        t0.assetProvider = (t1 = this.flareProvider, t1 == null ? new asset_flare.AssetFlare.new({bundle: asset_bundle.rootBundle, name: this.filename}) : t1);
-        t0.fit = this.fit;
-        t0.alignment = this.alignment;
-        t0.animationName = this.animation;
-        t0.snapToEnd = this.snapToEnd;
-        t0.isPaused = this.isPaused;
-        t0.controller = this.controller;
-        t0.completed = this.callback;
-        t0.color = this.color;
-        t0.shouldClip = this.shouldClip;
-        t0.boundsNodeName = this.boundsNode;
-        t0.useIntrinsicSize = this.sizeFromArtboard;
-        t0.artboardName = this.artboard;
-        t0.useAntialias = this.antialias;
+        t0.addRRect(this.borderRadius.resolve(textDirection).toRRect(rect).deflate(this.side.width));
         return t0;
       })();
     }
-    updateRenderObject(context, renderObject) {
-      let t1, t0;
-      FlareActorRenderObjectL().as(renderObject);
-      t0 = renderObject;
-      (() => {
-        t0.assetProvider = (t1 = this.flareProvider, t1 == null ? new asset_flare.AssetFlare.new({bundle: asset_bundle.rootBundle, name: this.filename}) : t1);
-        t0.fit = this.fit;
-        t0.alignment = this.alignment;
-        t0.animationName = this.animation;
-        t0.snapToEnd = this.snapToEnd;
-        t0.isPaused = this.isPaused;
-        t0.color = this.color;
-        t0.shouldClip = this.shouldClip;
-        t0.boundsNodeName = this.boundsNode;
-        t0.useIntrinsicSize = this.sizeFromArtboard;
-        t0.artboardName = this.artboard;
-        t0.useAntialias = this.antialias;
+    getOuterPath(rect, opts) {
+      let t0;
+      if (rect == null) dart.nullFailed(I[0], 110, 26, "rect");
+      let textDirection = opts && 'textDirection' in opts ? opts.textDirection : null;
+      t0 = ui.Path.new();
+      return (() => {
+        t0.addRRect(this.borderRadius.resolve(textDirection).toRRect(rect));
         return t0;
       })();
     }
-    didUnmountRenderObject(renderObject) {
-      FlareActorRenderObjectL().as(renderObject);
-      renderObject.dispose();
-    }
-  };
-  (flare_actor.FlareActor.new = function(filename, opts) {
-    let boundsNode = opts && 'boundsNode' in opts ? opts.boundsNode : null;
-    let animation = opts && 'animation' in opts ? opts.animation : null;
-    let fit = opts && 'fit' in opts ? opts.fit : C0 || CT.C0;
-    let alignment = opts && 'alignment' in opts ? opts.alignment : C1 || CT.C1;
-    let isPaused = opts && 'isPaused' in opts ? opts.isPaused : false;
-    let snapToEnd = opts && 'snapToEnd' in opts ? opts.snapToEnd : false;
-    let controller = opts && 'controller' in opts ? opts.controller : null;
-    let callback = opts && 'callback' in opts ? opts.callback : null;
-    let color = opts && 'color' in opts ? opts.color : null;
-    let shouldClip = opts && 'shouldClip' in opts ? opts.shouldClip : true;
-    let sizeFromArtboard = opts && 'sizeFromArtboard' in opts ? opts.sizeFromArtboard : false;
-    let artboard = opts && 'artboard' in opts ? opts.artboard : null;
-    let antialias = opts && 'antialias' in opts ? opts.antialias : true;
-    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
-    this[filename$] = filename;
-    this[boundsNode$] = boundsNode;
-    this[animation$] = animation;
-    this[fit$] = fit;
-    this[alignment$] = alignment;
-    this[isPaused$] = isPaused;
-    this[snapToEnd$] = snapToEnd;
-    this[controller$] = controller;
-    this[callback$] = callback;
-    this[color$] = color;
-    this[shouldClip$] = shouldClip;
-    this[sizeFromArtboard$] = sizeFromArtboard;
-    this[artboard$] = artboard;
-    this[antialias$] = antialias;
-    this[flareProvider$] = null;
-    flare_actor.FlareActor.__proto__.new.call(this, {$creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
-    ;
-  }).prototype = flare_actor.FlareActor.prototype;
-  (flare_actor.FlareActor.bundle = function(name, opts) {
-    let t0;
-    let boundsNode = opts && 'boundsNode' in opts ? opts.boundsNode : null;
-    let animation = opts && 'animation' in opts ? opts.animation : null;
-    let fit = opts && 'fit' in opts ? opts.fit : C0 || CT.C0;
-    let alignment = opts && 'alignment' in opts ? opts.alignment : C1 || CT.C1;
-    let isPaused = opts && 'isPaused' in opts ? opts.isPaused : false;
-    let snapToEnd = opts && 'snapToEnd' in opts ? opts.snapToEnd : false;
-    let controller = opts && 'controller' in opts ? opts.controller : null;
-    let callback = opts && 'callback' in opts ? opts.callback : null;
-    let color = opts && 'color' in opts ? opts.color : null;
-    let shouldClip = opts && 'shouldClip' in opts ? opts.shouldClip : true;
-    let sizeFromArtboard = opts && 'sizeFromArtboard' in opts ? opts.sizeFromArtboard : false;
-    let artboard = opts && 'artboard' in opts ? opts.artboard : null;
-    let antialias = opts && 'antialias' in opts ? opts.antialias : true;
-    let bundle = opts && 'bundle' in opts ? opts.bundle : null;
-    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
-    this[boundsNode$] = boundsNode;
-    this[animation$] = animation;
-    this[fit$] = fit;
-    this[alignment$] = alignment;
-    this[isPaused$] = isPaused;
-    this[snapToEnd$] = snapToEnd;
-    this[controller$] = controller;
-    this[callback$] = callback;
-    this[color$] = color;
-    this[shouldClip$] = shouldClip;
-    this[sizeFromArtboard$] = sizeFromArtboard;
-    this[artboard$] = artboard;
-    this[antialias$] = antialias;
-    this[filename$] = null;
-    this[flareProvider$] = new asset_flare.AssetFlare.new({bundle: (t0 = bundle, t0 == null ? asset_bundle.rootBundle : t0), name: name});
-    flare_actor.FlareActor.__proto__.new.call(this, {$creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
-    ;
-  }).prototype = flare_actor.FlareActor.prototype;
-  (flare_actor.FlareActor.memory = function(bytes, opts) {
-    let boundsNode = opts && 'boundsNode' in opts ? opts.boundsNode : null;
-    let animation = opts && 'animation' in opts ? opts.animation : null;
-    let fit = opts && 'fit' in opts ? opts.fit : C0 || CT.C0;
-    let alignment = opts && 'alignment' in opts ? opts.alignment : C1 || CT.C1;
-    let isPaused = opts && 'isPaused' in opts ? opts.isPaused : false;
-    let snapToEnd = opts && 'snapToEnd' in opts ? opts.snapToEnd : false;
-    let controller = opts && 'controller' in opts ? opts.controller : null;
-    let callback = opts && 'callback' in opts ? opts.callback : null;
-    let color = opts && 'color' in opts ? opts.color : null;
-    let shouldClip = opts && 'shouldClip' in opts ? opts.shouldClip : true;
-    let sizeFromArtboard = opts && 'sizeFromArtboard' in opts ? opts.sizeFromArtboard : false;
-    let artboard = opts && 'artboard' in opts ? opts.artboard : null;
-    let antialias = opts && 'antialias' in opts ? opts.antialias : true;
-    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
-    this[boundsNode$] = boundsNode;
-    this[animation$] = animation;
-    this[fit$] = fit;
-    this[alignment$] = alignment;
-    this[isPaused$] = isPaused;
-    this[snapToEnd$] = snapToEnd;
-    this[controller$] = controller;
-    this[callback$] = callback;
-    this[color$] = color;
-    this[shouldClip$] = shouldClip;
-    this[sizeFromArtboard$] = sizeFromArtboard;
-    this[artboard$] = artboard;
-    this[antialias$] = antialias;
-    this[filename$] = null;
-    this[flareProvider$] = new memory_flare.MemoryFlare.new({bytes: bytes});
-    flare_actor.FlareActor.__proto__.new.call(this, {$creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
-    ;
-  }).prototype = flare_actor.FlareActor.prototype;
-  (flare_actor.FlareActor.asset = function(flareProvider, opts) {
-    let boundsNode = opts && 'boundsNode' in opts ? opts.boundsNode : null;
-    let animation = opts && 'animation' in opts ? opts.animation : null;
-    let fit = opts && 'fit' in opts ? opts.fit : C0 || CT.C0;
-    let alignment = opts && 'alignment' in opts ? opts.alignment : C1 || CT.C1;
-    let isPaused = opts && 'isPaused' in opts ? opts.isPaused : false;
-    let snapToEnd = opts && 'snapToEnd' in opts ? opts.snapToEnd : false;
-    let controller = opts && 'controller' in opts ? opts.controller : null;
-    let callback = opts && 'callback' in opts ? opts.callback : null;
-    let color = opts && 'color' in opts ? opts.color : null;
-    let shouldClip = opts && 'shouldClip' in opts ? opts.shouldClip : true;
-    let sizeFromArtboard = opts && 'sizeFromArtboard' in opts ? opts.sizeFromArtboard : false;
-    let artboard = opts && 'artboard' in opts ? opts.artboard : null;
-    let antialias = opts && 'antialias' in opts ? opts.antialias : true;
-    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
-    this[flareProvider$] = flareProvider;
-    this[boundsNode$] = boundsNode;
-    this[animation$] = animation;
-    this[fit$] = fit;
-    this[alignment$] = alignment;
-    this[isPaused$] = isPaused;
-    this[snapToEnd$] = snapToEnd;
-    this[controller$] = controller;
-    this[callback$] = callback;
-    this[color$] = color;
-    this[shouldClip$] = shouldClip;
-    this[sizeFromArtboard$] = sizeFromArtboard;
-    this[artboard$] = artboard;
-    this[antialias$] = antialias;
-    this[filename$] = null;
-    flare_actor.FlareActor.__proto__.new.call(this, {$creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
-    ;
-  }).prototype = flare_actor.FlareActor.prototype;
-  dart.addTypeTests(flare_actor.FlareActor);
-  dart.addTypeCaches(flare_actor.FlareActor);
-  dart.setMethodSignature(flare_actor.FlareActor, () => ({
-    __proto__: dart.getMethods(flare_actor.FlareActor.__proto__),
-    createRenderObject: dart.fnType(dart.legacy(object.RenderObject), [dart.legacy(framework.BuildContext)]),
-    updateRenderObject: dart.fnType(dart.void, [dart.legacy(framework.BuildContext), dart.legacy(core.Object)]),
-    didUnmountRenderObject: dart.fnType(dart.void, [dart.legacy(core.Object)])
-  }));
-  dart.setLibraryUri(flare_actor.FlareActor, L0);
-  dart.setFieldSignature(flare_actor.FlareActor, () => ({
-    __proto__: dart.getFields(flare_actor.FlareActor.__proto__),
-    filename: dart.finalFieldType(dart.legacy(core.String)),
-    flareProvider: dart.finalFieldType(dart.legacy(asset_provider.AssetProvider)),
-    artboard: dart.finalFieldType(dart.legacy(core.String)),
-    animation: dart.finalFieldType(dart.legacy(core.String)),
-    snapToEnd: dart.finalFieldType(dart.legacy(core.bool)),
-    fit: dart.finalFieldType(dart.legacy(box_fit.BoxFit)),
-    alignment: dart.finalFieldType(dart.legacy(alignment.Alignment)),
-    isPaused: dart.finalFieldType(dart.legacy(core.bool)),
-    shouldClip: dart.finalFieldType(dart.legacy(core.bool)),
-    controller: dart.finalFieldType(dart.legacy(flare_controller.FlareController)),
-    callback: dart.finalFieldType(dart.legacy(dart.fnType(dart.void, [dart.legacy(core.String)]))),
-    color: dart.finalFieldType(dart.legacy(ui.Color)),
-    boundsNode: dart.finalFieldType(dart.legacy(core.String)),
-    sizeFromArtboard: dart.finalFieldType(dart.legacy(core.bool)),
-    antialias: dart.finalFieldType(dart.legacy(core.bool))
-  }));
-  var name = dart.privateName(flare_actor, "FlareAnimationLayer.name");
-  var animation = dart.privateName(flare_actor, "FlareAnimationLayer.animation");
-  var time = dart.privateName(flare_actor, "FlareAnimationLayer.time");
-  var mix = dart.privateName(flare_actor, "FlareAnimationLayer.mix");
-  var mixSeconds = dart.privateName(flare_actor, "FlareAnimationLayer.mixSeconds");
-  flare_actor.FlareAnimationLayer = class FlareAnimationLayer extends core.Object {
-    get name() {
-      return this[name];
-    }
-    set name(value) {
-      this[name] = value;
-    }
-    get animation() {
-      return this[animation];
-    }
-    set animation(value) {
-      this[animation] = value;
-    }
-    get time() {
-      return this[time];
-    }
-    set time(value) {
-      this[time] = value;
-    }
-    get mix() {
-      return this[mix];
-    }
-    set mix(value) {
-      this[mix] = value;
-    }
-    get mixSeconds() {
-      return this[mixSeconds];
-    }
-    set mixSeconds(value) {
-      this[mixSeconds] = value;
-    }
-    apply(artboard) {
-      this.animation.apply(this.time, artboard, this.mix);
-    }
-    get duration() {
-      return this.animation.duration;
-    }
-    get isDone() {
-      return dart.notNull(this.time) >= dart.notNull(this.animation.duration);
-    }
-  };
-  (flare_actor.FlareAnimationLayer.new = function() {
-    this[name] = null;
-    this[animation] = null;
-    this[time] = 0.0;
-    this[mix] = 0.0;
-    this[mixSeconds] = 0.2;
-    ;
-  }).prototype = flare_actor.FlareAnimationLayer.prototype;
-  dart.addTypeTests(flare_actor.FlareAnimationLayer);
-  dart.addTypeCaches(flare_actor.FlareAnimationLayer);
-  dart.setMethodSignature(flare_actor.FlareAnimationLayer, () => ({
-    __proto__: dart.getMethods(flare_actor.FlareAnimationLayer.__proto__),
-    apply: dart.fnType(dart.void, [dart.legacy(flare.FlutterActorArtboard)])
-  }));
-  dart.setGetterSignature(flare_actor.FlareAnimationLayer, () => ({
-    __proto__: dart.getGetters(flare_actor.FlareAnimationLayer.__proto__),
-    duration: dart.legacy(core.double),
-    isDone: dart.legacy(core.bool)
-  }));
-  dart.setLibraryUri(flare_actor.FlareAnimationLayer, L0);
-  dart.setFieldSignature(flare_actor.FlareAnimationLayer, () => ({
-    __proto__: dart.getFields(flare_actor.FlareAnimationLayer.__proto__),
-    name: dart.fieldType(dart.legacy(core.String)),
-    animation: dart.fieldType(dart.legacy(actor_animation.ActorAnimation)),
-    time: dart.fieldType(dart.legacy(core.double)),
-    mix: dart.fieldType(dart.legacy(core.double)),
-    mixSeconds: dart.fieldType(dart.legacy(core.double))
-  }));
-  var _lastControllerViewTransform = dart.privateName(flare_actor, "_lastControllerViewTransform");
-  var _assetProvider = dart.privateName(flare_actor, "_assetProvider");
-  var _artboardName = dart.privateName(flare_actor, "_artboardName");
-  var _animationName = dart.privateName(flare_actor, "_animationName");
-  var _boundsNodeName = dart.privateName(flare_actor, "_boundsNodeName");
-  var _controller = dart.privateName(flare_actor, "_controller");
-  var _completedCallback = dart.privateName(flare_actor, "_completedCallback");
-  var _isPaused = dart.privateName(flare_actor, "_isPaused");
-  var _useAntialias = dart.privateName(flare_actor, "_useAntialias");
-  var _actor = dart.privateName(flare_actor, "_actor");
-  var _animationLayers = dart.privateName(flare_actor, "_animationLayers");
-  var _artboard = dart.privateName(flare_actor, "_artboard");
-  var _setupAABB = dart.privateName(flare_actor, "_setupAABB");
-  var _color = dart.privateName(flare_actor, "_color");
-  var _instanceArtboard = dart.privateName(flare_actor, "_instanceArtboard");
-  var _updateAnimation = dart.privateName(flare_actor, "_updateAnimation");
-  var snapToEnd = dart.privateName(flare_actor, "FlareActorRenderObject.snapToEnd");
-  var shouldClip = dart.privateName(flare_actor, "FlareActorRenderObject.shouldClip");
-  flare_actor.FlareActorRenderObject = class FlareActorRenderObject extends flare_render_box.FlareRenderBox {
-    get snapToEnd() {
-      return this[snapToEnd];
-    }
-    set snapToEnd(value) {
-      this[snapToEnd] = value;
-    }
-    get shouldClip() {
-      return this[shouldClip];
-    }
-    set shouldClip(value) {
-      this[shouldClip] = value;
-    }
-    get artboardName() {
-      return this[_artboardName];
-    }
-    set artboardName(name) {
-      if (this[_artboardName] == name) {
-        return;
-      }
-      this[_artboardName] = name;
-      this[_instanceArtboard]();
-    }
-    get isPaused() {
-      return this[_isPaused];
-    }
-    set isPaused(value) {
-      if (dart.equals(this[_isPaused], value)) {
-        return;
-      }
-      this[_isPaused] = value;
-      this.updatePlayState();
-    }
-    get useAntialias() {
-      return this[_useAntialias];
-    }
-    set useAntialias(value) {
-      if (!dart.equals(value, this[_useAntialias])) {
-        this[_useAntialias] = value;
-        if (this[_artboard] != null) {
-          this[_artboard].antialias = this[_useAntialias];
+    paint(canvas, rect, opts) {
+      let t0;
+      if (canvas == null) dart.nullFailed(I[0], 116, 21, "canvas");
+      if (rect == null) dart.nullFailed(I[0], 116, 34, "rect");
+      let textDirection = opts && 'textDirection' in opts ? opts.textDirection : null;
+      switch (this.side.style) {
+        case C[1] || CT.C1:
+        {
+          break;
         }
-        this.markNeedsPaint();
-      }
-    }
-    get color() {
-      return this[_color];
-    }
-    set color(value) {
-      if (!dart.equals(value, this[_color])) {
-        this[_color] = value;
-        if (this[_artboard] != null) {
-          this[_artboard].overrideColor = value == null ? null : _native_typed_data.NativeFloat32List.fromList(JSArrayOfdoubleL().of([dart.notNull(value.red) / 255.0, dart.notNull(value.green) / 255.0, dart.notNull(value.blue) / 255.0, value.opacity]));
-        }
-        this.markNeedsPaint();
-      }
-    }
-    get boundsNodeName() {
-      return this[_boundsNodeName];
-    }
-    set boundsNodeName(value) {
-      if (this[_boundsNodeName] == value) {
-        return;
-      }
-      this[_boundsNodeName] = value;
-      if (this[_artboard] != null) {
-        let node = this[_artboard].getNode(this[_boundsNodeName]);
-        if (ActorDrawableL().is(node)) {
-          this[_setupAABB] = node.computeAABB();
-        }
-      }
-    }
-    updateBounds() {
-      if (this[_artboard] != null) {
-        let node = null;
-        if (this[_boundsNodeName] != null && ActorDrawableL().is(node = this[_artboard].getNode(this[_boundsNodeName]))) {
-          this[_setupAABB] = ActorDrawableL().as(node).computeAABB();
-        } else {
-          this[_setupAABB] = this[_artboard].artboardAABB();
-        }
-      }
-    }
-    get animationName() {
-      return this[_animationName];
-    }
-    set animationName(value) {
-      if (value != this[_animationName]) {
-        this[_animationName] = value;
-        this[_updateAnimation]();
-      }
-    }
-    get isPlaying() {
-      let t0, t0$, t0$0;
-      return !dart.test(this[_isPaused]) && (dart.test((t0$0 = (t0$ = (t0 = this[_controller], t0 == null ? null : t0.isActive), t0$ == null ? null : t0$.value), t0$0 == null ? false : t0$0)) || dart.test(this[_animationLayers][$isNotEmpty]));
-    }
-    onControllerActiveChange() {
-      this.updatePlayState();
-    }
-    get controller() {
-      return this[_controller];
-    }
-    set controller(c) {
-      let t0, t0$, t0$0, t0$1;
-      if (!dart.equals(this[_controller], c)) {
-        this[_lastControllerViewTransform] = c == null ? null : new mat2d.Mat2D.new();
-        t0$ = (t0 = this[_controller], t0 == null ? null : t0.isActive);
-        t0$ == null ? null : t0$.removeListener(dart.bind(this, 'onControllerActiveChange'));
-        this[_controller] = c;
-        t0$1 = (t0$0 = this[_controller], t0$0 == null ? null : t0$0.isActive);
-        t0$1 == null ? null : t0$1.addListener(dart.bind(this, 'onControllerActiveChange'));
-        if (this[_controller] != null && this[_artboard] != null) {
-          this[_controller].initialize(this[_artboard]);
-        }
-      }
-    }
-    onUnload() {
-      this[_animationLayers][$clear]();
-    }
-    get assetProvider() {
-      return this[_assetProvider];
-    }
-    set assetProvider(value) {
-      if (dart.equals(value, this[_assetProvider])) {
-        return;
-      }
-      this[_assetProvider] = value;
-      if (this[_assetProvider] == null) {
-        this.markNeedsPaint();
-      }
-      this[_animationLayers][$clear]();
-      this.load();
-    }
-    [_instanceArtboard]() {
-      if (this[_actor] == null || this[_actor].artboard == null) {
-        return false;
-      }
-      let artboard = FlutterActorArtboardL().as(this[_actor].getArtboard(this[_artboardName]).makeInstance());
-      artboard.initializeGraphics();
-      this[_artboard] = artboard;
-      this.intrinsicSize = new ui.Size.new(artboard.width, artboard.height);
-      this[_artboard].overrideColor = this[_color] == null ? null : _native_typed_data.NativeFloat32List.fromList(JSArrayOfdoubleL().of([dart.notNull(this[_color].red) / 255.0, dart.notNull(this[_color].green) / 255.0, dart.notNull(this[_color].blue) / 255.0, this[_color].opacity]));
-      this[_artboard].antialias = this[_useAntialias];
-      if (this[_controller] != null) {
-        this[_controller].initialize(this[_artboard]);
-      }
-      this[_animationLayers][$clear]();
-      this[_updateAnimation]({onlyWhenMissing: true});
-      this.advance(0.0);
-      this.updateBounds();
-      this.markNeedsPaint();
-      return true;
-    }
-    get canLoad() {
-      return dart.test(super.canLoad) && this[_assetProvider] != null;
-    }
-    warmLoad() {
-      if (this[_assetProvider] == null) {
-        return false;
-      }
-      this[_actor] = this.getWarmFlare(this[_assetProvider]);
-      return this[_instanceArtboard]();
-    }
-    coldLoad() {
-      return async.async(dart.void, (function* coldLoad() {
-        if (this[_assetProvider] == null) {
-          return;
-        }
-        this[_actor] = (yield this.loadFlare(this[_assetProvider]));
-        this[_instanceArtboard]();
-      }).bind(this));
-    }
-    get completed() {
-      return this[_completedCallback];
-    }
-    set completed(value) {
-      if (!dart.equals(this[_completedCallback], value)) {
-        this[_completedCallback] = value;
-      }
-    }
-    advance(elapsedSeconds) {
-      let t0, t0$, t0$0, t0$1, t0$2, t0$3;
-      if (dart.test(this.isPlaying)) {
-        let lastFullyMixed = -1;
-        let lastMix = 0.0;
-        let completed = JSArrayOfFlareAnimationLayerL().of([]);
-        for (let i = 0; i < dart.notNull(this[_animationLayers][$length]); i = i + 1) {
-          let layer = this[_animationLayers][$_get](i);
-          if (dart.test(this.snapToEnd) && !dart.test(layer.animation.isLooping)) {
-            layer.mix = 1.0;
-            layer.time = layer.duration;
+        case C[5] || CT.C5:
+        {
+          let width = this.side.width;
+          if (width === 0.0) {
+            canvas.drawRRect(this.borderRadius.resolve(textDirection).toRRect(rect), this.side.toPaint());
           } else {
-            t0 = layer;
-            t0.mix = dart.notNull(t0.mix) + dart.notNull(elapsedSeconds);
-            t0$ = layer;
-            t0$.time = dart.notNull(t0$.time) + dart.notNull(elapsedSeconds);
+            let outer = this.borderRadius.resolve(textDirection).toRRect(rect);
+            let inner = outer.deflate(width);
+            let paint = (t0 = ui.Paint.new(), (() => {
+              t0.color = this.side.color;
+              return t0;
+            })());
+            canvas.drawDRRect(outer, inner, paint);
           }
-          lastMix = layer.mixSeconds == null || layer.mixSeconds === 0.0 ? 1.0 : math.min(doubleL(), 1.0, dart.notNull(layer.mix) / dart.notNull(layer.mixSeconds));
-          if (dart.test(layer.animation.isLooping)) {
-            t0$0 = layer;
-            t0$0.time = t0$0.time[$modulo](layer.animation.duration);
-          }
-          layer.animation.apply(layer.time, this[_artboard], lastMix);
-          if (lastMix === 1.0) {
-            lastFullyMixed = i;
-          }
-          if (dart.notNull(layer.time) > dart.notNull(layer.animation.duration)) {
-            completed[$add](layer);
-          }
+          break;
         }
-        if (lastFullyMixed !== -1) {
-          this[_animationLayers][$removeRange](0, lastFullyMixed);
+        default:
+        {
+          dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
         }
-        if (this.animationName == null && this[_animationLayers][$length] === 1 && lastMix === 1.0) {
-          this[_animationLayers][$removeAt](0);
-        }
-        for (let animation of completed) {
-          this[_animationLayers][$remove](animation);
-          if (this[_completedCallback] != null) {
-            t0$1 = animation.name;
-            this[_completedCallback](t0$1);
-          }
-        }
-      }
-      if (this[_artboard] != null && this[_controller] != null && !dart.test(this[_controller].advance(this[_artboard], elapsedSeconds))) {
-        t0$3 = (t0$2 = this[_controller], t0$2 == null ? null : t0$2.isActive);
-        t0$3 == null ? null : t0$3.value = false;
-      }
-      if (this[_artboard] != null) {
-        this[_artboard].advance(elapsedSeconds);
       }
     }
-    get aabb() {
-      return this[_setupAABB];
+    _equals(other) {
+      if (other == null) return false;
+      if (!dart.equals(dart.runtimeType(other), this[$runtimeType])) return false;
+      return rounded_rectangle_border.RoundedRectangleBorder.is(other) && dart.equals(other.side, this.side) && dart.equals(other.borderRadius, this.borderRadius);
     }
-    prePaint(canvas, offset) {
-      if (dart.test(this.shouldClip)) {
-        canvas.clipRect(offset['&'](this.size));
-      }
+    get hashCode() {
+      return ui.hashValues(this.side, this.borderRadius);
     }
-    paintFlare(canvas, viewTransform) {
-      let t0;
-      if (this[_artboard] == null) {
-        return;
-      }
-      if (this.controller != null && !dart.test(mat2d.Mat2D.areEqual(this[_lastControllerViewTransform], viewTransform))) {
-        mat2d.Mat2D.copy(this[_lastControllerViewTransform], viewTransform);
-        t0 = this.controller;
-        t0 == null ? null : t0.setViewTransform(viewTransform);
-      }
-      this[_artboard].draw(canvas);
-    }
-    [_updateAnimation](opts) {
-      let t0;
-      let onlyWhenMissing = opts && 'onlyWhenMissing' in opts ? opts.onlyWhenMissing : false;
-      if (dart.test(onlyWhenMissing) && dart.test(this[_animationLayers][$isNotEmpty])) {
-        return;
-      }
-      if (this[_animationName] != null && this[_artboard] != null) {
-        let animation = this[_artboard].getAnimation(this[_animationName]);
-        if (animation != null) {
-          this[_animationLayers][$add]((t0 = new flare_actor.FlareAnimationLayer.new(), (() => {
-            t0.name = this[_animationName];
-            t0.animation = animation;
-            t0.mix = 1.0;
-            t0.mixSeconds = 0.2;
-            return t0;
-          })()));
-          animation.apply(0.0, this[_artboard], 1.0);
-          this[_artboard].advance(0.0);
-          this.updatePlayState();
-        }
-      }
+    toString() {
+      return dart.str(object.objectRuntimeType(this, "RoundedRectangleBorder")) + "(" + dart.str(this.side) + ", " + dart.str(this.borderRadius) + ")";
     }
   };
-  (flare_actor.FlareActorRenderObject.new = function() {
-    this[_lastControllerViewTransform] = null;
-    this[_assetProvider] = null;
-    this[_artboardName] = null;
-    this[_animationName] = null;
-    this[_boundsNodeName] = null;
-    this[_controller] = null;
-    this[_completedCallback] = null;
-    this[snapToEnd] = false;
-    this[_isPaused] = false;
-    this[_useAntialias] = true;
-    this[_actor] = null;
-    this[_animationLayers] = JSArrayOfFlareAnimationLayerL().of([]);
-    this[shouldClip] = null;
-    this[_artboard] = null;
-    this[_setupAABB] = null;
-    this[_color] = null;
-    flare_actor.FlareActorRenderObject.__proto__.new.call(this);
+  (rounded_rectangle_border.RoundedRectangleBorder.new = function(opts) {
+    let side = opts && 'side' in opts ? opts.side : C[0] || CT.C0;
+    if (side == null) dart.nullFailed(I[0], 33, 16, "side");
+    let borderRadius = opts && 'borderRadius' in opts ? opts.borderRadius : C[3] || CT.C3;
+    if (borderRadius == null) dart.nullFailed(I[0], 34, 10, "borderRadius");
+    this[borderRadius$] = borderRadius;
+    if (!(side != null)) dart.assertFailed(null, I[0], 35, 15, "side != null");
+    if (!(borderRadius != null)) dart.assertFailed(null, I[0], 36, 15, "borderRadius != null");
+    rounded_rectangle_border.RoundedRectangleBorder.__proto__.new.call(this, {side: side});
     ;
-  }).prototype = flare_actor.FlareActorRenderObject.prototype;
-  dart.addTypeTests(flare_actor.FlareActorRenderObject);
-  dart.addTypeCaches(flare_actor.FlareActorRenderObject);
-  dart.setMethodSignature(flare_actor.FlareActorRenderObject, () => ({
-    __proto__: dart.getMethods(flare_actor.FlareActorRenderObject.__proto__),
-    updateBounds: dart.fnType(dart.void, []),
-    onControllerActiveChange: dart.fnType(dart.void, []),
-    [_instanceArtboard]: dart.fnType(dart.legacy(core.bool), []),
-    advance: dart.fnType(dart.void, [dart.legacy(core.double)]),
-    paintFlare: dart.fnType(dart.void, [dart.legacy(ui.Canvas), dart.legacy(mat2d.Mat2D)]),
-    [_updateAnimation]: dart.fnType(dart.void, [], {onlyWhenMissing: dart.legacy(core.bool)}, {})
+  }).prototype = rounded_rectangle_border.RoundedRectangleBorder.prototype;
+  dart.addTypeTests(rounded_rectangle_border.RoundedRectangleBorder);
+  dart.addTypeCaches(rounded_rectangle_border.RoundedRectangleBorder);
+  dart.setMethodSignature(rounded_rectangle_border.RoundedRectangleBorder, () => ({
+    __proto__: dart.getMethods(rounded_rectangle_border.RoundedRectangleBorder.__proto__),
+    scale: dart.fnType(borders.ShapeBorder, [core.double]),
+    copyWith: dart.fnType(rounded_rectangle_border.RoundedRectangleBorder, [], {borderRadius: dart.nullable(border_radius.BorderRadius), side: dart.nullable(borders.BorderSide)}, {}),
+    getInnerPath: dart.fnType(ui.Path, [ui.Rect], {textDirection: dart.nullable(ui.TextDirection)}, {}),
+    getOuterPath: dart.fnType(ui.Path, [ui.Rect], {textDirection: dart.nullable(ui.TextDirection)}, {}),
+    paint: dart.fnType(dart.void, [ui.Canvas, ui.Rect], {textDirection: dart.nullable(ui.TextDirection)}, {})
   }));
-  dart.setGetterSignature(flare_actor.FlareActorRenderObject, () => ({
-    __proto__: dart.getGetters(flare_actor.FlareActorRenderObject.__proto__),
-    artboardName: dart.legacy(core.String),
-    isPaused: dart.legacy(core.bool),
-    useAntialias: dart.legacy(core.bool),
-    color: dart.legacy(ui.Color),
-    boundsNodeName: dart.legacy(core.String),
-    animationName: dart.legacy(core.String),
-    isPlaying: dart.legacy(core.bool),
-    controller: dart.legacy(flare_controller.FlareController),
-    assetProvider: dart.legacy(asset_provider.AssetProvider),
-    completed: dart.legacy(dart.fnType(dart.void, [dart.legacy(core.String)])),
-    aabb: dart.legacy(aabb.AABB)
+  dart.setGetterSignature(rounded_rectangle_border.RoundedRectangleBorder, () => ({
+    __proto__: dart.getGetters(rounded_rectangle_border.RoundedRectangleBorder.__proto__),
+    dimensions: edge_insets.EdgeInsetsGeometry
   }));
-  dart.setSetterSignature(flare_actor.FlareActorRenderObject, () => ({
-    __proto__: dart.getSetters(flare_actor.FlareActorRenderObject.__proto__),
-    artboardName: dart.legacy(core.String),
-    isPaused: dart.legacy(core.bool),
-    useAntialias: dart.legacy(core.bool),
-    color: dart.legacy(ui.Color),
-    boundsNodeName: dart.legacy(core.String),
-    animationName: dart.legacy(core.String),
-    controller: dart.legacy(flare_controller.FlareController),
-    assetProvider: dart.legacy(asset_provider.AssetProvider),
-    completed: dart.legacy(dart.fnType(dart.void, [dart.legacy(core.String)]))
+  dart.setLibraryUri(rounded_rectangle_border.RoundedRectangleBorder, I[1]);
+  dart.setFieldSignature(rounded_rectangle_border.RoundedRectangleBorder, () => ({
+    __proto__: dart.getFields(rounded_rectangle_border.RoundedRectangleBorder.__proto__),
+    borderRadius: dart.finalFieldType(border_radius.BorderRadiusGeometry)
   }));
-  dart.setLibraryUri(flare_actor.FlareActorRenderObject, L0);
-  dart.setFieldSignature(flare_actor.FlareActorRenderObject, () => ({
-    __proto__: dart.getFields(flare_actor.FlareActorRenderObject.__proto__),
-    [_lastControllerViewTransform]: dart.fieldType(dart.legacy(mat2d.Mat2D)),
-    [_assetProvider]: dart.fieldType(dart.legacy(asset_provider.AssetProvider)),
-    [_artboardName]: dart.fieldType(dart.legacy(core.String)),
-    [_animationName]: dart.fieldType(dart.legacy(core.String)),
-    [_boundsNodeName]: dart.fieldType(dart.legacy(core.String)),
-    [_controller]: dart.fieldType(dart.legacy(flare_controller.FlareController)),
-    [_completedCallback]: dart.fieldType(dart.legacy(dart.fnType(dart.void, [dart.legacy(core.String)]))),
-    snapToEnd: dart.fieldType(dart.legacy(core.bool)),
-    [_isPaused]: dart.fieldType(dart.legacy(core.bool)),
-    [_useAntialias]: dart.fieldType(dart.legacy(core.bool)),
-    [_actor]: dart.fieldType(dart.legacy(flare.FlutterActor)),
-    [_animationLayers]: dart.finalFieldType(dart.legacy(core.List$(dart.legacy(flare_actor.FlareAnimationLayer)))),
-    shouldClip: dart.fieldType(dart.legacy(core.bool)),
-    [_artboard]: dart.fieldType(dart.legacy(flare.FlutterActorArtboard)),
-    [_setupAABB]: dart.fieldType(dart.legacy(aabb.AABB)),
-    [_color]: dart.fieldType(dart.legacy(ui.Color))
+  dart.defineExtensionMethods(rounded_rectangle_border.RoundedRectangleBorder, ['_equals', 'toString']);
+  dart.defineExtensionAccessors(rounded_rectangle_border.RoundedRectangleBorder, ['hashCode']);
+  var borderRadius$0 = dart.privateName(rounded_rectangle_border, "_RoundedRectangleToCircleBorder.borderRadius");
+  var circleness$ = dart.privateName(rounded_rectangle_border, "_RoundedRectangleToCircleBorder.circleness");
+  var _adjustRect = dart.privateName(rounded_rectangle_border, "_adjustRect");
+  var _adjustBorderRadius = dart.privateName(rounded_rectangle_border, "_adjustBorderRadius");
+  rounded_rectangle_border._RoundedRectangleToCircleBorder = class _RoundedRectangleToCircleBorder extends borders.OutlinedBorder {
+    get borderRadius() {
+      return this[borderRadius$0];
+    }
+    set borderRadius(value) {
+      super.borderRadius = value;
+    }
+    get circleness() {
+      return this[circleness$];
+    }
+    set circleness(value) {
+      super.circleness = value;
+    }
+    get dimensions() {
+      return new edge_insets.EdgeInsets.all(this.side.width);
+    }
+    scale(t) {
+      if (t == null) dart.nullFailed(I[0], 172, 28, "t");
+      return new rounded_rectangle_border._RoundedRectangleToCircleBorder.new({side: this.side.scale(t), borderRadius: this.borderRadius['*'](t), circleness: t});
+    }
+    lerpFrom(a, t) {
+      if (t == null) dart.nullFailed(I[0], 181, 48, "t");
+      if (!(t != null)) dart.assertFailed(null, I[0], 182, 12, "t != null");
+      if (rounded_rectangle_border.RoundedRectangleBorder.is(a)) {
+        return new rounded_rectangle_border._RoundedRectangleToCircleBorder.new({side: borders.BorderSide.lerp(a.side, this.side, t), borderRadius: dart.nullCheck(border_radius.BorderRadiusGeometry.lerp(a.borderRadius, this.borderRadius, t)), circleness: dart.notNull(this.circleness) * dart.notNull(t)});
+      }
+      if (circle_border.CircleBorder.is(a)) {
+        return new rounded_rectangle_border._RoundedRectangleToCircleBorder.new({side: borders.BorderSide.lerp(a.side, this.side, t), borderRadius: this.borderRadius, circleness: dart.notNull(this.circleness) + (1.0 - dart.notNull(this.circleness)) * (1.0 - dart.notNull(t))});
+      }
+      if (rounded_rectangle_border._RoundedRectangleToCircleBorder.is(a)) {
+        return new rounded_rectangle_border._RoundedRectangleToCircleBorder.new({side: borders.BorderSide.lerp(a.side, this.side, t), borderRadius: dart.nullCheck(border_radius.BorderRadiusGeometry.lerp(a.borderRadius, this.borderRadius, t)), circleness: dart.nullCheck(ui.lerpDouble(a.circleness, this.circleness, t))});
+      }
+      return super.lerpFrom(a, t);
+    }
+    lerpTo(b, t) {
+      if (t == null) dart.nullFailed(I[0], 208, 46, "t");
+      if (rounded_rectangle_border.RoundedRectangleBorder.is(b)) {
+        return new rounded_rectangle_border._RoundedRectangleToCircleBorder.new({side: borders.BorderSide.lerp(this.side, b.side, t), borderRadius: dart.nullCheck(border_radius.BorderRadiusGeometry.lerp(this.borderRadius, b.borderRadius, t)), circleness: dart.notNull(this.circleness) * (1.0 - dart.notNull(t))});
+      }
+      if (circle_border.CircleBorder.is(b)) {
+        return new rounded_rectangle_border._RoundedRectangleToCircleBorder.new({side: borders.BorderSide.lerp(this.side, b.side, t), borderRadius: this.borderRadius, circleness: dart.notNull(this.circleness) + (1.0 - dart.notNull(this.circleness)) * dart.notNull(t)});
+      }
+      if (rounded_rectangle_border._RoundedRectangleToCircleBorder.is(b)) {
+        return new rounded_rectangle_border._RoundedRectangleToCircleBorder.new({side: borders.BorderSide.lerp(this.side, b.side, t), borderRadius: dart.nullCheck(border_radius.BorderRadiusGeometry.lerp(this.borderRadius, b.borderRadius, t)), circleness: dart.nullCheck(ui.lerpDouble(this.circleness, b.circleness, t))});
+      }
+      return super.lerpTo(b, t);
+    }
+    [_adjustRect](rect) {
+      if (rect == null) dart.nullFailed(I[0], 233, 25, "rect");
+      if (this.circleness === 0.0 || rect.width == rect.height) return rect;
+      if (dart.notNull(rect.width) < dart.notNull(rect.height)) {
+        let delta = dart.notNull(this.circleness) * (dart.notNull(rect.height) - dart.notNull(rect.width)) / 2.0;
+        return new ui.Rect.fromLTRB(rect.left, dart.notNull(rect.top) + delta, rect.right, dart.notNull(rect.bottom) - delta);
+      } else {
+        let delta = dart.notNull(this.circleness) * (dart.notNull(rect.width) - dart.notNull(rect.height)) / 2.0;
+        return new ui.Rect.fromLTRB(dart.notNull(rect.left) + delta, rect.top, dart.notNull(rect.right) - delta, rect.bottom);
+      }
+    }
+    [_adjustBorderRadius](rect, textDirection) {
+      if (rect == null) dart.nullFailed(I[0], 255, 42, "rect");
+      let resolvedRadius = this.borderRadius.resolve(textDirection);
+      if (this.circleness === 0.0) return resolvedRadius;
+      return border_radius.BorderRadius.lerp(resolvedRadius, new border_radius.BorderRadius.circular(dart.notNull(rect.shortestSide) / 2.0), this.circleness);
+    }
+    getInnerPath(rect, opts) {
+      let t0;
+      if (rect == null) dart.nullFailed(I[0], 263, 26, "rect");
+      let textDirection = opts && 'textDirection' in opts ? opts.textDirection : null;
+      t0 = ui.Path.new();
+      return (() => {
+        t0.addRRect(dart.nullCheck(this[_adjustBorderRadius](rect, textDirection)).toRRect(this[_adjustRect](rect)).deflate(this.side.width));
+        return t0;
+      })();
+    }
+    getOuterPath(rect, opts) {
+      let t0;
+      if (rect == null) dart.nullFailed(I[0], 269, 26, "rect");
+      let textDirection = opts && 'textDirection' in opts ? opts.textDirection : null;
+      t0 = ui.Path.new();
+      return (() => {
+        t0.addRRect(dart.nullCheck(this[_adjustBorderRadius](rect, textDirection)).toRRect(this[_adjustRect](rect)));
+        return t0;
+      })();
+    }
+    copyWith(opts) {
+      let t0, t0$, t0$0;
+      let side = opts && 'side' in opts ? opts.side : null;
+      let borderRadius = opts && 'borderRadius' in opts ? opts.borderRadius : null;
+      let circleness = opts && 'circleness' in opts ? opts.circleness : null;
+      return new rounded_rectangle_border._RoundedRectangleToCircleBorder.new({side: (t0 = side, t0 == null ? this.side : t0), borderRadius: (t0$ = borderRadius, t0$ == null ? this.borderRadius : t0$), circleness: (t0$0 = circleness, t0$0 == null ? this.circleness : t0$0)});
+    }
+    paint(canvas, rect, opts) {
+      let t0;
+      if (canvas == null) dart.nullFailed(I[0], 284, 21, "canvas");
+      if (rect == null) dart.nullFailed(I[0], 284, 34, "rect");
+      let textDirection = opts && 'textDirection' in opts ? opts.textDirection : null;
+      switch (this.side.style) {
+        case C[1] || CT.C1:
+        {
+          break;
+        }
+        case C[5] || CT.C5:
+        {
+          let width = this.side.width;
+          if (width === 0.0) {
+            canvas.drawRRect(dart.nullCheck(this[_adjustBorderRadius](rect, textDirection)).toRRect(this[_adjustRect](rect)), this.side.toPaint());
+          } else {
+            let outer = dart.nullCheck(this[_adjustBorderRadius](rect, textDirection)).toRRect(this[_adjustRect](rect));
+            let inner = outer.deflate(width);
+            let paint = (t0 = ui.Paint.new(), (() => {
+              t0.color = this.side.color;
+              return t0;
+            })());
+            canvas.drawDRRect(outer, inner, paint);
+          }
+          break;
+        }
+        default:
+        {
+          dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
+        }
+      }
+    }
+    _equals(other) {
+      if (other == null) return false;
+      if (!dart.equals(dart.runtimeType(other), this[$runtimeType])) return false;
+      return rounded_rectangle_border._RoundedRectangleToCircleBorder.is(other) && dart.equals(other.side, this.side) && dart.equals(other.borderRadius, this.borderRadius) && other.circleness == this.circleness;
+    }
+    get hashCode() {
+      return ui.hashValues(this.side, this.borderRadius, this.circleness);
+    }
+    toString() {
+      return "RoundedRectangleBorder(" + dart.str(this.side) + ", " + dart.str(this.borderRadius) + ", " + (dart.notNull(this.circleness) * 100)[$toStringAsFixed](1) + "% of the way to being a CircleBorder)";
+    }
+  };
+  (rounded_rectangle_border._RoundedRectangleToCircleBorder.new = function(opts) {
+    let side = opts && 'side' in opts ? opts.side : C[0] || CT.C0;
+    if (side == null) dart.nullFailed(I[0], 154, 16, "side");
+    let borderRadius = opts && 'borderRadius' in opts ? opts.borderRadius : C[3] || CT.C3;
+    if (borderRadius == null) dart.nullFailed(I[0], 155, 10, "borderRadius");
+    let circleness = opts && 'circleness' in opts ? opts.circleness : null;
+    if (circleness == null) dart.nullFailed(I[0], 156, 19, "circleness");
+    this[borderRadius$0] = borderRadius;
+    this[circleness$] = circleness;
+    if (!(side != null)) dart.assertFailed(null, I[0], 157, 15, "side != null");
+    if (!(borderRadius != null)) dart.assertFailed(null, I[0], 158, 15, "borderRadius != null");
+    if (!(circleness != null)) dart.assertFailed(null, I[0], 159, 15, "circleness != null");
+    rounded_rectangle_border._RoundedRectangleToCircleBorder.__proto__.new.call(this, {side: side});
+    ;
+  }).prototype = rounded_rectangle_border._RoundedRectangleToCircleBorder.prototype;
+  dart.addTypeTests(rounded_rectangle_border._RoundedRectangleToCircleBorder);
+  dart.addTypeCaches(rounded_rectangle_border._RoundedRectangleToCircleBorder);
+  dart.setMethodSignature(rounded_rectangle_border._RoundedRectangleToCircleBorder, () => ({
+    __proto__: dart.getMethods(rounded_rectangle_border._RoundedRectangleToCircleBorder.__proto__),
+    scale: dart.fnType(borders.ShapeBorder, [core.double]),
+    [_adjustRect]: dart.fnType(ui.Rect, [ui.Rect]),
+    [_adjustBorderRadius]: dart.fnType(dart.nullable(border_radius.BorderRadius), [ui.Rect, dart.nullable(ui.TextDirection)]),
+    getInnerPath: dart.fnType(ui.Path, [ui.Rect], {textDirection: dart.nullable(ui.TextDirection)}, {}),
+    getOuterPath: dart.fnType(ui.Path, [ui.Rect], {textDirection: dart.nullable(ui.TextDirection)}, {}),
+    copyWith: dart.fnType(rounded_rectangle_border._RoundedRectangleToCircleBorder, [], {borderRadius: dart.nullable(border_radius.BorderRadius), circleness: dart.nullable(core.double), side: dart.nullable(borders.BorderSide)}, {}),
+    paint: dart.fnType(dart.void, [ui.Canvas, ui.Rect], {textDirection: dart.nullable(ui.TextDirection)}, {})
   }));
-  dart.trackLibraries("packages/flare_flutter/flare_actor.dart", {
-    "package:flare_flutter/flare_actor.dart": flare_actor
+  dart.setGetterSignature(rounded_rectangle_border._RoundedRectangleToCircleBorder, () => ({
+    __proto__: dart.getGetters(rounded_rectangle_border._RoundedRectangleToCircleBorder.__proto__),
+    dimensions: edge_insets.EdgeInsetsGeometry
+  }));
+  dart.setLibraryUri(rounded_rectangle_border._RoundedRectangleToCircleBorder, I[1]);
+  dart.setFieldSignature(rounded_rectangle_border._RoundedRectangleToCircleBorder, () => ({
+    __proto__: dart.getFields(rounded_rectangle_border._RoundedRectangleToCircleBorder.__proto__),
+    borderRadius: dart.finalFieldType(border_radius.BorderRadiusGeometry),
+    circleness: dart.finalFieldType(core.double)
+  }));
+  dart.defineExtensionMethods(rounded_rectangle_border._RoundedRectangleToCircleBorder, ['_equals', 'toString']);
+  dart.defineExtensionAccessors(rounded_rectangle_border._RoundedRectangleToCircleBorder, ['hashCode']);
+  dart.trackLibraries("packages/flutter/src/painting/rounded_rectangle_border.dart", {
+    "package:flutter/src/painting/rounded_rectangle_border.dart": rounded_rectangle_border
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["flare_actor.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IA4Be;;;;;;IAGO;;;;;;IAGP;;;;;;IAGA;;;;;;IAGF;;;;;;IAIE;;;;;;IAIG;;;;;;IAGL;;;;;;IAIA;;;;;;IAIW;;;;;;IAIO;;;;;;IAGjB;;;;;;IAIC;;;;;;IAIF;;;;;;IAGA;;;;;;uBA0EkC;;AAC3C,WAAO;;AACH,4BACgB,+BAAd,OAAiB,wCAAmB,+BAAkB;AACxD,iBAAM;AACN,uBAAY;AACZ,2BAAgB;AAChB,uBAAY;AACZ,sBAAW;AACX,wBAAa;AACb,uBAAY;AACZ,mBAAQ;AACR,wBAAa;AACb,4BAAiB;AACjB,8BAAmB;AACnB,0BAAe;AACf,0BAAe;;;IACrB;uBAIiB,SAA0C;;;AAc7B,WAb5B,YAAY;MAAZ;AACI,4BACgB,+BAAd,OAAiB,wCAAmB,+BAAkB;AACxD,iBAAM;AACN,uBAAY;AACZ,2BAAgB;AAChB,uBAAY;AACZ,sBAAW;AACX,mBAAQ;AACR,wBAAa;AACb,4BAAiB;AACjB,8BAAmB;AACnB,0BAAe;AACf,0BAAe;;;IACrB;;mCAG6D;AACrC,MAAtB,AAAa,YAAD;IACd;;yCAhHO;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;;IAbA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACY,uBAAE;AAff;;EAemB;4CAGhB;;QACF;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACO;;IAbP;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IAEQ,kBAAE;IACG,uBAAE,yCAA0B,KAAP,MAAM,QAAN,OAAU,qCAAkB,IAAI;AAjBzE;;EAiB0E;4CAG9D;QACL;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;;IAZA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACQ,kBAAE;IACG,uBAAE,yCAAmB,KAAK;AAhB9C;;EAgB+C;2CAGxC;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;;IAbA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACO,kBAAE;AAfV;;EAec;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAgDb;;;;;;IACQ;;;;;;IACR;;;;;;IAAY;;;;;;IAAW;;;;;;UACE;AACM,MAApC,AAAU,qBAAM,WAAM,QAAQ,EAAE;IAClC;;AAEuB,YAAA,AAAU;IAAQ;;AACtB,YAAK,cAAL,2BAAQ,AAAU;IAAQ;;;IARtC;IACQ;IACR,aAAO;IAAK,YAAM;IAAK,mBAAa;;EAO7C;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAUO;;;;;;IAmCA;;;;;;;AA9BsB;IAAa;qBAChB;AACtB,UAAI,AAAc,uBAAG,IAAI;AACvB;;AAEkB,MAApB,sBAAgB,IAAI;AACD,MAAnB;IACF;;AAEqB;IAAS;iBACZ;AAChB,UAAc,YAAV,iBAAa,KAAK;AACpB;;AAEe,MAAjB,kBAAY,KAAK;AACA,MAAjB;IACF;;AAEyB;IAAa;qBAChB;AACpB,uBAAI,KAAK,EAAI;AACU,QAArB,sBAAgB,KAAK;AACrB,YAAI,mBAAa;AACoB,UAAnC,AAAU,4BAAY;;AAER,QAAhB;;IAEJ;;AAUmB;IAAM;cACT;AACd,uBAAI,KAAK,EAAI;AACG,QAAd,eAAS,KAAK;AACd,YAAI,mBAAa;AAQP,UAPR,AAAU,gCAAgB,AAAM,KAAD,IAAI,OAC7B,OACY,8CAAS,uBACT,aAAV,AAAM,KAAD,QAAO,OACA,aAAZ,AAAM,KAAD,UAAS,OACH,aAAX,AAAM,KAAD,SAAQ,OACb,AAAM,KAAD;;AAGC,QAAhB;;IAEJ;;AAE6B;IAAe;uBAClB;AACxB,UAAI,AAAgB,yBAAG,KAAK;AAC1B;;AAEqB,MAAvB,wBAAkB,KAAK;AACvB,UAAI,mBAAa;AACL,mBAAO,AAAU,wBAAQ;AACnC,YAAS,oBAAL,IAAI;AACyB,UAA/B,mBAAa,AAAK,IAAD;;;IAGvB;;AAGE,UAAI,mBAAa;AACL;AACV,YAAI,yBAAmB,QACyB,oBAA3C,OAAO,AAAU,wBAAQ;AACsB,UAAlD,mBAAmB,AAAkB,oBAAvB,IAAI;;AAEmB,UAArC,mBAAa,AAAU;;;IAG7B;;AAE4B;IAAc;sBACjB;AACvB,UAAI,KAAK,IAAI;AACW,QAAtB,uBAAiB,KAAK;AACJ,QAAlB;;IAEJ;;;AAMI,YAAW,YAAV,gCAC8B,oDAA7B,OAAa,4BAAb,OAAuB,oBAAvB,OAAgC,4BAAU,AAAiB;IAAW;;AAGzD,MAAjB;IACF;;AAEkC;IAAW;mBACd;;AAC7B,uBAAI,mBAAe,CAAC;AACuC,QAAzD,qCAA+B,AAAE,CAAD,IAAI,OAAO,OAAO;AACa,oDAA/D,OAAa;sBAAb,OAAuB,6BAAe;AACvB,QAAf,oBAAc,CAAC;AAC6C,yDAA5D,OAAa;uBAAb,OAAuB,2BAAY;AACnC,YAAI,qBAAe,QAAQ,mBAAa;AACL,UAAjC,AAAY,6BAAW;;;IAG7B;;AAI0B,MAAxB,AAAiB;IACnB;;AAEmC;IAAc;sBACjB;AAC9B,UAAU,YAAN,KAAK,EAAI;AACX;;AAEoB,MAAtB,uBAAiB,KAAK;AAEtB,UAAI,AAAe,wBAAG;AACJ,QAAhB;;AAGsB,MAAxB,AAAiB;AACX,MAAN;IACF;;AAGE,UAAI,AAAO,gBAAG,QAAQ,AAAO,AAAS,yBAAG;AACvC,cAAO;;AAEY,qBAED,2BAFY,AAC3B,AACA,yBADY;AAEY,MAA7B,AAAS,QAAD;AACY,MAApB,kBAAY,QAAQ;AACiC,MAArD,qBAAgB,gBAAK,AAAS,QAAD,QAAQ,AAAS,QAAD;AAQrC,MAPR,AAAU,gCAAgB,AAAO,gBAAG,OAC9B,OACY,8CAAS,uBACR,aAAX,AAAO,oBAAM,OACA,aAAb,AAAO,sBAAQ,OACH,aAAZ,AAAO,qBAAO,OACd,AAAO;AAEoB,MAAnC,AAAU,4BAAY;AACtB,UAAI,qBAAe;AACgB,QAAjC,AAAY,6BAAW;;AAED,MAAxB,AAAiB;AACsB,MAAvC,yCAAkC;AAGtB,MAAZ,aAAQ;AACM,MAAd;AAEgB,MAAhB;AACA,YAAO;IACT;;AAIE,YAAqB,WAAR,kBAAW,wBAAkB;IAC5C;;AAME,UAAI,AAAe,wBAAG;AACpB,cAAO;;AAE4B,MAArC,eAAS,kBAAa;AACtB,YAAO;IACT;;AAKqB;AACnB,YAAI,AAAe,wBAAG;AACpB;;AAEsC,QAAxC,gBAAS,MAAM,eAAU;AACN,QAAnB;MACF;;;AAEwC;IAAkB;kBACrB;AACnC,uBAAI,0BAAsB,KAAK;AACH,QAA1B,2BAAqB,KAAK;;IAE9B;YAGoB;;AAClB,oBAAI;AACE,6BAAiB,CAAC;AACf,sBAAU;AAES,wBAAY;AAEtC,iBAAS,IAAI,GAAG,AAAE,CAAD,gBAAG,AAAiB,kCAAQ,IAAA,AAAC,CAAA;AACxB,sBAAQ,AAAgB,8BAAC,CAAC;AAE9C,wBAAI,8BAAc,AAAM,AAAU,KAAX;AACN,YAAf,AAAM,KAAD,OAAO;AACe,YAA3B,AAAM,KAAD,QAAQ,AAAM,KAAD;;AAES,iBAA3B,KAAK;YAAC,SAAI,aAAJ,uBAAO,cAAc;AACC,kBAA5B,KAAK;YAAC,WAAK,aAAL,yBAAQ,cAAc;;AAKc,UAF5C,UAAW,AAAM,AAAW,AAAQ,KAApB,eAAe,QAAQ,AAAM,AAAW,KAAZ,gBAAe,MACrD,MACA,oBAAI,KAAe,aAAV,AAAM,KAAD,qBAAO,AAAM,KAAD;AAChC,wBAAI,AAAM,AAAU,KAAX;AAC+B,mBAAtC,KAAK;YAAC,YAAA,AAAK,mBAAG,AAAM,AAAU,KAAX;;AAEgC,UAArD,AAAM,AAAU,KAAX,iBAAiB,AAAM,KAAD,OAAO,iBAAW,OAAO;AACpD,cAAI,AAAQ,OAAD,KAAI;AACK,YAAlB,iBAAiB,CAAC;;AAEpB,cAAe,aAAX,AAAM,KAAD,sBAAQ,AAAM,AAAU,KAAX;AACA,YAApB,AAAU,SAAD,OAAK,KAAK;;;AAIvB,YAAI,cAAc,KAAI,CAAC;AAC0B,UAA/C,AAAiB,qCAAY,GAAG,cAAc;;AAEhD,YAAI,AAAc,sBAAG,QACjB,AAAiB,AAAO,oCAAG,KAC3B,AAAQ,OAAD,KAAI;AAEe,UAA5B,AAAiB,kCAAS;;AAE5B,iBAA+B,YAAa,UAAS;AACjB,UAAlC,AAAiB,gCAAO,SAAS;AACjC,cAAI,4BAAsB;AACU,mBAAf,AAAU,SAAD;YAA5B,AAAkB;;;;AAKxB,UAAI,mBAAa,QACb,qBAAe,mBACd,AAAY,0BAAQ,iBAAW,cAAc;AACZ,yDAApC,OAAa;uBAAb,OAAuB,aAAQ;;AAGjC,UAAI,mBAAa;AACkB,QAAjC,AAAU,wBAAQ,cAAc;;IAEpC;;AAGiB;IAAU;aAGN,QAAe;AAClC,oBAAI;AAC4B,QAA9B,AAAO,MAAD,UAAU,AAAO,MAAD,MAAG;;IAE7B;eAGuB,QAAc;;AACnC,UAAI,AAAU,mBAAG;AACf;;AAEF,UAAI,mBAAc,mBACP,qBAAS,oCAA8B,aAAa;AACN,QAAjD,iBAAK,oCAA8B,aAAa;AACX,aAA3C;4BAAY,oBAAiB,aAAa;;AAGtB,MAAtB,AAAU,qBAAK,MAAM;IACvB;;;UAE4B;AAC1B,oBAAI,eAAe,eAAI,AAAiB;AACtC;;AAEF,UAAI,wBAAkB,QAAQ,mBAAa;AAC1B,wBAAY,AAAU,6BAAa;AAClD,YAAI,SAAS,IAAI;AAKM,UAJrB,AAAiB,8EAAI;AACjB,sBAAO;AACP,2BAAY,SAAS;AACrB,qBAAM;AACN,4BAAa;;;AACmB,UAApC,AAAU,SAAD,OAAO,KAAK,iBAAW;AACV,UAAtB,AAAU,wBAAQ;AACD,UAAjB;;;IAGN;;;IA3TM;IACQ;IACP;IACA;IACA;IACS;IACO;IAClB,kBAAY;IACZ,kBAAY;IACZ,sBAAgB;IACR;IA+BmB,yBAAmB;IAC9C;IAEgB;IAChB;IAEC;;;EA6QR","file":"../../../../../../../packages/flare_flutter/flare_actor.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["rounded_rectangle_border.dart"],"names":[],"mappings":"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","file":"../../../../../../../../packages/flutter/src/painting/rounded_rectangle_border.dart.lib.js"}');
   // Exports:
   return {
-    flare_actor: flare_actor
+    src__painting__rounded_rectangle_border: rounded_rectangle_border
   };
 }));
 
-//# sourceMappingURL=flare_actor.dart.lib.js.map
+//# sourceMappingURL=rounded_rectangle_border.dart.lib.js.map

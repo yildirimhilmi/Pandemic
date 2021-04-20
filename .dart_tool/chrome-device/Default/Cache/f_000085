@@ -1,310 +1,544 @@
-define(['dart_sdk', 'packages/flutter/src/services/text_input.dart', 'packages/characters/src/characters_impl.dart', 'packages/characters/src/extensions.dart', 'packages/flutter/src/services/text_editing.dart'], (function load__packages__flutter__src__services__text_formatter_dart(dart_sdk, packages__flutter__src__services__text_input$46dart, packages__characters__src__characters_impl$46dart, packages__characters__src__extensions$46dart, packages__flutter__src__services__text_editing$46dart) {
+define(['dart_sdk'], (function load__packages__intl__src__plural_rules_dart(dart_sdk) {
   'use strict';
   const core = dart_sdk.core;
   const math = dart_sdk.math;
-  const ui = dart_sdk.ui;
+  const _js_helper = dart_sdk._js_helper;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const text_input = packages__flutter__src__services__text_input$46dart.src__services__text_input;
-  const characters_impl = packages__characters__src__characters_impl$46dart.src__characters_impl;
-  const extensions = packages__characters__src__extensions$46dart.src__extensions;
-  const text_editing = packages__flutter__src__services__text_editing$46dart.src__services__text_editing;
-  var text_formatter = Object.create(dart.library);
-  var $isNotEmpty = dartx.isNotEmpty;
-  var $splitMapJoin = dartx.splitMapJoin;
-  var $length = dartx.length;
-  var $substring = dartx.substring;
-  var MatchToString = () => (MatchToString = dart.constFn(dart.fnType(core.String, [core.Match])))();
-  var StringToString = () => (StringToString = dart.constFn(dart.fnType(core.String, [core.String])))();
+  var plural_rules = Object.create(dart.library);
+  var $toString = dartx.toString;
+  var $round = dartx.round;
+  var $toStringAsFixed = dartx.toStringAsFixed;
+  var $indexOf = dartx.indexOf;
+  var $modulo = dartx['%'];
+  var $floor = dartx.floor;
+  var $containsKey = dartx.containsKey;
+  dart._checkModuleNullSafetyMode(false);
+  var T = Object.create({
+    PluralCaseL: () => (T.PluralCaseL = dart.constFn(dart.legacy(plural_rules.PluralCase)))(),
+    intL: () => (T.intL = dart.constFn(dart.legacy(core.int)))(),
+    VoidToPluralCaseL: () => (T.VoidToPluralCaseL = dart.constFn(dart.fnType(T.PluralCaseL(), [])))()
+  });
   const CT = Object.create(null);
-  var L0 = "file:///C:/src/flutter/packages/flutter/lib/src/services/text_formatter.dart";
-  var L1 = "package:flutter/src/services/text_formatter.dart";
   dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: plural_rules.PluralCase.prototype,
+        [_name$]: "PluralCase.ZERO",
+        index: 0
+      });
+    },
     get C1() {
-      return C1 = dart.const({
-        __proto__: ui.TextAffinity.prototype,
-        [_name]: "TextAffinity.downstream",
+      return C[1] = dart.const({
+        __proto__: plural_rules.PluralCase.prototype,
+        [_name$]: "PluralCase.ONE",
         index: 1
       });
     },
-    get C0() {
-      return C0 = dart.const({
-        __proto__: text_editing.TextSelection.prototype,
-        [TextRange_end]: -1,
-        [TextRange_start]: -1,
-        [TextSelection_isDirectional]: false,
-        [TextSelection_affinity]: C1 || CT.C1,
-        [TextSelection_extentOffset]: -1,
-        [TextSelection_baseOffset]: -1
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: plural_rules.PluralCase.prototype,
+        [_name$]: "PluralCase.TWO",
+        index: 2
       });
-    }
-  }, false);
-  text_formatter.TextInputFormatter = class TextInputFormatter extends core.Object {
-    static withFunction(formatFunction) {
-      if (formatFunction == null) dart.nullFailed(L0, 52, 29, "formatFunction");
-      return new text_formatter._SimpleTextInputFormatter.new(formatFunction);
-    }
-  };
-  (text_formatter.TextInputFormatter.new = function() {
-    ;
-  }).prototype = text_formatter.TextInputFormatter.prototype;
-  dart.addTypeTests(text_formatter.TextInputFormatter);
-  dart.addTypeCaches(text_formatter.TextInputFormatter);
-  dart.setLibraryUri(text_formatter.TextInputFormatter, L1);
-  text_formatter._SimpleTextInputFormatter = class _SimpleTextInputFormatter extends text_formatter.TextInputFormatter {
-    formatEditUpdate(oldValue, newValue) {
-      let t1, t0;
-      if (oldValue == null) dart.nullFailed(L0, 74, 22, "oldValue");
-      if (newValue == null) dart.nullFailed(L0, 75, 22, "newValue");
-      t0 = oldValue;
-      t1 = newValue;
-      return this.formatFunction(t0, t1);
-    }
-  };
-  (text_formatter._SimpleTextInputFormatter.new = function(formatFunction) {
-    if (formatFunction == null) dart.nullFailed(L0, 67, 34, "formatFunction");
-    this.formatFunction = formatFunction;
-    if (!(formatFunction != null)) dart.assertFailed(null, L0, 68, 14, "formatFunction != null");
-    ;
-  }).prototype = text_formatter._SimpleTextInputFormatter.prototype;
-  dart.addTypeTests(text_formatter._SimpleTextInputFormatter);
-  dart.addTypeCaches(text_formatter._SimpleTextInputFormatter);
-  dart.setMethodSignature(text_formatter._SimpleTextInputFormatter, () => ({
-    __proto__: dart.getMethods(text_formatter._SimpleTextInputFormatter.__proto__),
-    formatEditUpdate: dart.fnType(text_input.TextEditingValue, [text_input.TextEditingValue, text_input.TextEditingValue])
-  }));
-  dart.setLibraryUri(text_formatter._SimpleTextInputFormatter, L1);
-  dart.setFieldSignature(text_formatter._SimpleTextInputFormatter, () => ({
-    __proto__: dart.getFields(text_formatter._SimpleTextInputFormatter.__proto__),
-    formatFunction: dart.finalFieldType(dart.fnType(text_input.TextEditingValue, [text_input.TextEditingValue, text_input.TextEditingValue]))
-  }));
-  var filterPattern$ = dart.privateName(text_formatter, "FilteringTextInputFormatter.filterPattern");
-  var allow$ = dart.privateName(text_formatter, "FilteringTextInputFormatter.allow");
-  var replacementString$ = dart.privateName(text_formatter, "FilteringTextInputFormatter.replacementString");
-  text_formatter.FilteringTextInputFormatter = class FilteringTextInputFormatter extends text_formatter.TextInputFormatter {
-    get filterPattern() {
-      return this[filterPattern$];
-    }
-    set filterPattern(value) {
-      super.filterPattern = value;
-    }
-    get allow() {
-      return this[allow$];
-    }
-    set allow(value) {
-      super.allow = value;
-    }
-    get replacementString() {
-      return this[replacementString$];
-    }
-    set replacementString(value) {
-      super.replacementString = value;
-    }
-    formatEditUpdate(oldValue, newValue) {
-      if (oldValue == null) dart.nullFailed(L0, 220, 22, "oldValue");
-      if (newValue == null) dart.nullFailed(L0, 221, 22, "newValue");
-      return text_formatter._selectionAwareTextManipulation(newValue, dart.fn(substring => {
-        if (substring == null) dart.nullFailed(L0, 225, 15, "substring");
-        return substring[$splitMapJoin](this.filterPattern, {onMatch: !dart.test(this.allow) ? dart.fn(match => {
-            if (match == null) dart.nullFailed(L0, 228, 36, "match");
-            return this.replacementString;
-          }, MatchToString()) : null, onNonMatch: dart.test(this.allow) ? dart.fn(nonMatch => {
-            if (nonMatch == null) dart.nullFailed(L0, 229, 39, "nonMatch");
-            return nonMatch[$isNotEmpty] ? this.replacementString : "";
-          }, StringToString()) : null});
-      }, StringToString()));
-    }
-  };
-  (text_formatter.FilteringTextInputFormatter.new = function(filterPattern, opts) {
-    if (filterPattern == null) dart.nullFailed(L0, 107, 10, "filterPattern");
-    let allow = opts && 'allow' in opts ? opts.allow : null;
-    if (allow == null) dart.nullFailed(L0, 108, 19, "allow");
-    let replacementString = opts && 'replacementString' in opts ? opts.replacementString : "";
-    if (replacementString == null) dart.nullFailed(L0, 109, 10, "replacementString");
-    this[filterPattern$] = filterPattern;
-    this[allow$] = allow;
-    this[replacementString$] = replacementString;
-    if (!(filterPattern != null)) dart.assertFailed(null, L0, 110, 15, "filterPattern != null");
-    if (!(allow != null)) dart.assertFailed(null, L0, 111, 15, "allow != null");
-    if (!(replacementString != null)) dart.assertFailed(null, L0, 112, 15, "replacementString != null");
-    ;
-  }).prototype = text_formatter.FilteringTextInputFormatter.prototype;
-  (text_formatter.FilteringTextInputFormatter.allow = function(filterPattern, opts) {
-    if (filterPattern == null) dart.nullFailed(L0, 119, 10, "filterPattern");
-    let replacementString = opts && 'replacementString' in opts ? opts.replacementString : "";
-    if (replacementString == null) dart.nullFailed(L0, 120, 10, "replacementString");
-    this[filterPattern$] = filterPattern;
-    this[replacementString$] = replacementString;
-    if (!(filterPattern != null)) dart.assertFailed(null, L0, 121, 15, "filterPattern != null");
-    if (!(replacementString != null)) dart.assertFailed(null, L0, 122, 15, "replacementString != null");
-    this[allow$] = true;
-    ;
-  }).prototype = text_formatter.FilteringTextInputFormatter.prototype;
-  (text_formatter.FilteringTextInputFormatter.deny = function(filterPattern, opts) {
-    if (filterPattern == null) dart.nullFailed(L0, 130, 10, "filterPattern");
-    let replacementString = opts && 'replacementString' in opts ? opts.replacementString : "";
-    if (replacementString == null) dart.nullFailed(L0, 131, 10, "replacementString");
-    this[filterPattern$] = filterPattern;
-    this[replacementString$] = replacementString;
-    if (!(filterPattern != null)) dart.assertFailed(null, L0, 132, 15, "filterPattern != null");
-    if (!(replacementString != null)) dart.assertFailed(null, L0, 133, 15, "replacementString != null");
-    this[allow$] = false;
-    ;
-  }).prototype = text_formatter.FilteringTextInputFormatter.prototype;
-  dart.addTypeTests(text_formatter.FilteringTextInputFormatter);
-  dart.addTypeCaches(text_formatter.FilteringTextInputFormatter);
-  dart.setMethodSignature(text_formatter.FilteringTextInputFormatter, () => ({
-    __proto__: dart.getMethods(text_formatter.FilteringTextInputFormatter.__proto__),
-    formatEditUpdate: dart.fnType(text_input.TextEditingValue, [text_input.TextEditingValue, text_input.TextEditingValue])
-  }));
-  dart.setLibraryUri(text_formatter.FilteringTextInputFormatter, L1);
-  dart.setFieldSignature(text_formatter.FilteringTextInputFormatter, () => ({
-    __proto__: dart.getFields(text_formatter.FilteringTextInputFormatter.__proto__),
-    filterPattern: dart.finalFieldType(core.Pattern),
-    allow: dart.finalFieldType(core.bool),
-    replacementString: dart.finalFieldType(core.String)
-  }));
-  dart.defineLazy(text_formatter.FilteringTextInputFormatter, {
-    /*text_formatter.FilteringTextInputFormatter.singleLineFormatter*/get singleLineFormatter() {
-      return new text_formatter.FilteringTextInputFormatter.deny("\n");
     },
-    /*text_formatter.FilteringTextInputFormatter.digitsOnly*/get digitsOnly() {
-      return new text_formatter.FilteringTextInputFormatter.allow(core.RegExp.new("[0-9]"));
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: plural_rules.PluralCase.prototype,
+        [_name$]: "PluralCase.FEW",
+        index: 3
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: plural_rules.PluralCase.prototype,
+        [_name$]: "PluralCase.MANY",
+        index: 4
+      });
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: plural_rules.PluralCase.prototype,
+        [_name$]: "PluralCase.OTHER",
+        index: 5
+      });
+    },
+    get C6() {
+      return C[6] = dart.constList([C[0] || CT.C0, C[1] || CT.C1, C[2] || CT.C2, C[3] || CT.C3, C[4] || CT.C4, C[5] || CT.C5], T.PluralCaseL());
+    },
+    get C7() {
+      return C[7] = dart.fn(plural_rules._es_rule, T.VoidToPluralCaseL());
+    },
+    get C8() {
+      return C[8] = dart.fn(plural_rules._hi_rule, T.VoidToPluralCaseL());
+    },
+    get C9() {
+      return C[9] = dart.fn(plural_rules._ar_rule, T.VoidToPluralCaseL());
+    },
+    get C10() {
+      return C[10] = dart.fn(plural_rules._be_rule, T.VoidToPluralCaseL());
+    },
+    get C11() {
+      return C[11] = dart.fn(plural_rules._br_rule, T.VoidToPluralCaseL());
+    },
+    get C12() {
+      return C[12] = dart.fn(plural_rules._sr_rule, T.VoidToPluralCaseL());
+    },
+    get C13() {
+      return C[13] = dart.fn(plural_rules._en_rule, T.VoidToPluralCaseL());
+    },
+    get C14() {
+      return C[14] = dart.fn(plural_rules._cs_rule, T.VoidToPluralCaseL());
+    },
+    get C15() {
+      return C[15] = dart.fn(plural_rules._cy_rule, T.VoidToPluralCaseL());
+    },
+    get C16() {
+      return C[16] = dart.fn(plural_rules._da_rule, T.VoidToPluralCaseL());
+    },
+    get C17() {
+      return C[17] = dart.fn(plural_rules._fil_rule, T.VoidToPluralCaseL());
+    },
+    get C18() {
+      return C[18] = dart.fn(plural_rules._fr_rule, T.VoidToPluralCaseL());
+    },
+    get C19() {
+      return C[19] = dart.fn(plural_rules._ga_rule, T.VoidToPluralCaseL());
+    },
+    get C20() {
+      return C[20] = dart.fn(plural_rules._he_rule, T.VoidToPluralCaseL());
+    },
+    get C21() {
+      return C[21] = dart.fn(plural_rules._default_rule, T.VoidToPluralCaseL());
+    },
+    get C22() {
+      return C[22] = dart.fn(plural_rules._is_rule, T.VoidToPluralCaseL());
+    },
+    get C23() {
+      return C[23] = dart.fn(plural_rules._ak_rule, T.VoidToPluralCaseL());
+    },
+    get C24() {
+      return C[24] = dart.fn(plural_rules._lt_rule, T.VoidToPluralCaseL());
+    },
+    get C25() {
+      return C[25] = dart.fn(plural_rules._lv_rule, T.VoidToPluralCaseL());
+    },
+    get C26() {
+      return C[26] = dart.fn(plural_rules._mk_rule, T.VoidToPluralCaseL());
+    },
+    get C27() {
+      return C[27] = dart.fn(plural_rules._ro_rule, T.VoidToPluralCaseL());
+    },
+    get C28() {
+      return C[28] = dart.fn(plural_rules._mt_rule, T.VoidToPluralCaseL());
+    },
+    get C29() {
+      return C[29] = dart.fn(plural_rules._pl_rule, T.VoidToPluralCaseL());
+    },
+    get C30() {
+      return C[30] = dart.fn(plural_rules._pt_rule, T.VoidToPluralCaseL());
+    },
+    get C31() {
+      return C[31] = dart.fn(plural_rules._pt_PT_rule, T.VoidToPluralCaseL());
+    },
+    get C32() {
+      return C[32] = dart.fn(plural_rules._ru_rule, T.VoidToPluralCaseL());
+    },
+    get C33() {
+      return C[33] = dart.fn(plural_rules._si_rule, T.VoidToPluralCaseL());
+    },
+    get C34() {
+      return C[34] = dart.fn(plural_rules._sl_rule, T.VoidToPluralCaseL());
     }
   }, false);
-  text_formatter.BlacklistingTextInputFormatter = class BlacklistingTextInputFormatter extends text_formatter.FilteringTextInputFormatter {
-    get blacklistedPattern() {
-      return this.filterPattern;
+  var C = Array(35).fill(void 0);
+  var I = ["package:intl/src/plural_rules.dart"];
+  var _name$ = dart.privateName(plural_rules, "_name");
+  plural_rules.PluralCase = class PluralCase extends core.Object {
+    toString() {
+      return this[_name$];
     }
   };
-  (text_formatter.BlacklistingTextInputFormatter.new = function(blacklistedPattern, opts) {
-    if (blacklistedPattern == null) dart.nullFailed(L0, 254, 13, "blacklistedPattern");
-    let replacementString = opts && 'replacementString' in opts ? opts.replacementString : "";
-    if (replacementString == null) dart.nullFailed(L0, 255, 12, "replacementString");
-    text_formatter.BlacklistingTextInputFormatter.__proto__.deny.call(this, blacklistedPattern, {replacementString: replacementString});
+  (plural_rules.PluralCase.new = function(index, _name) {
+    this.index = index;
+    this[_name$] = _name;
     ;
-  }).prototype = text_formatter.BlacklistingTextInputFormatter.prototype;
-  dart.addTypeTests(text_formatter.BlacklistingTextInputFormatter);
-  dart.addTypeCaches(text_formatter.BlacklistingTextInputFormatter);
-  dart.setGetterSignature(text_formatter.BlacklistingTextInputFormatter, () => ({
-    __proto__: dart.getGetters(text_formatter.BlacklistingTextInputFormatter.__proto__),
-    blacklistedPattern: core.Pattern
+  }).prototype = plural_rules.PluralCase.prototype;
+  dart.addTypeTests(plural_rules.PluralCase);
+  dart.addTypeCaches(plural_rules.PluralCase);
+  dart.setMethodSignature(plural_rules.PluralCase, () => ({
+    __proto__: dart.getMethods(plural_rules.PluralCase.__proto__),
+    toString: dart.fnType(dart.legacy(core.String), []),
+    [$toString]: dart.fnType(dart.legacy(core.String), [])
   }));
-  dart.setLibraryUri(text_formatter.BlacklistingTextInputFormatter, L1);
-  dart.defineLazy(text_formatter.BlacklistingTextInputFormatter, {
-    /*text_formatter.BlacklistingTextInputFormatter.singleLineFormatter*/get singleLineFormatter() {
-      return new text_formatter.BlacklistingTextInputFormatter.new(core.RegExp.new("\\n"));
-    }
-  }, false);
-  text_formatter.WhitelistingTextInputFormatter = class WhitelistingTextInputFormatter extends text_formatter.FilteringTextInputFormatter {
-    get whitelistedPattern() {
-      return this.filterPattern;
-    }
+  dart.setLibraryUri(plural_rules.PluralCase, I[0]);
+  dart.setFieldSignature(plural_rules.PluralCase, () => ({
+    __proto__: dart.getFields(plural_rules.PluralCase.__proto__),
+    index: dart.finalFieldType(dart.legacy(core.int)),
+    [_name$]: dart.finalFieldType(dart.legacy(core.String))
+  }));
+  dart.defineExtensionMethods(plural_rules.PluralCase, ['toString']);
+  plural_rules.PluralCase.ZERO = C[0] || CT.C0;
+  plural_rules.PluralCase.ONE = C[1] || CT.C1;
+  plural_rules.PluralCase.TWO = C[2] || CT.C2;
+  plural_rules.PluralCase.FEW = C[3] || CT.C3;
+  plural_rules.PluralCase.MANY = C[4] || CT.C4;
+  plural_rules.PluralCase.OTHER = C[5] || CT.C5;
+  plural_rules.PluralCase.values = C[6] || CT.C6;
+  plural_rules._default_rule = function _default_rule() {
+    return plural_rules.OTHER;
   };
-  (text_formatter.WhitelistingTextInputFormatter.new = function(whitelistedPattern) {
-    if (whitelistedPattern == null) dart.nullFailed(L0, 285, 42, "whitelistedPattern");
-    if (!(whitelistedPattern != null)) dart.assertFailed(null, L0, 286, 14, "whitelistedPattern != null");
-    text_formatter.WhitelistingTextInputFormatter.__proto__.allow.call(this, whitelistedPattern);
-    ;
-  }).prototype = text_formatter.WhitelistingTextInputFormatter.prototype;
-  dart.addTypeTests(text_formatter.WhitelistingTextInputFormatter);
-  dart.addTypeCaches(text_formatter.WhitelistingTextInputFormatter);
-  dart.setGetterSignature(text_formatter.WhitelistingTextInputFormatter, () => ({
-    __proto__: dart.getGetters(text_formatter.WhitelistingTextInputFormatter.__proto__),
-    whitelistedPattern: core.Pattern
-  }));
-  dart.setLibraryUri(text_formatter.WhitelistingTextInputFormatter, L1);
-  dart.defineLazy(text_formatter.WhitelistingTextInputFormatter, {
-    /*text_formatter.WhitelistingTextInputFormatter.digitsOnly*/get digitsOnly() {
-      return new text_formatter.WhitelistingTextInputFormatter.new(core.RegExp.new("\\d+"));
-    }
-  }, false);
-  var maxLength$ = dart.privateName(text_formatter, "LengthLimitingTextInputFormatter.maxLength");
-  text_formatter.LengthLimitingTextInputFormatter = class LengthLimitingTextInputFormatter extends text_formatter.TextInputFormatter {
-    get maxLength() {
-      return this[maxLength$];
-    }
-    set maxLength(value) {
-      super.maxLength = value;
-    }
-    static truncate(value, maxLength) {
-      if (value == null) dart.nullFailed(L0, 373, 53, "value");
-      if (maxLength == null) dart.nullFailed(L0, 373, 64, "maxLength");
-      let iterator = new characters_impl.StringCharacterRange.new(value.text);
-      if (dart.notNull(extensions['StringCharacters|get#characters'](value.text)[$length]) > dart.notNull(maxLength)) {
-        iterator.expandNext(maxLength);
-      }
-      let truncated = iterator.current;
-      return new text_input.TextEditingValue.new({text: truncated, selection: value.selection.copyWith({baseOffset: math.min(core.int, value.selection.start, truncated.length), extentOffset: math.min(core.int, value.selection.end, truncated.length)}), composing: ui.TextRange.empty});
-    }
-    formatEditUpdate(oldValue, newValue) {
-      if (oldValue == null) dart.nullFailed(L0, 391, 22, "oldValue");
-      if (newValue == null) dart.nullFailed(L0, 392, 22, "newValue");
-      let maxLength = this.maxLength;
-      if (maxLength == null || maxLength === -1 || dart.notNull(extensions['StringCharacters|get#characters'](newValue.text)[$length]) <= dart.notNull(maxLength)) return newValue;
-      if (!(dart.notNull(maxLength) > 0)) dart.assertFailed(null, L0, 399, 12, "maxLength > 0");
-      if (extensions['StringCharacters|get#characters'](oldValue.text)[$length] == maxLength && !dart.test(oldValue.composing.isValid)) {
-        return oldValue;
-      }
-      return dart.test(newValue.composing.isValid) ? newValue : text_formatter.LengthLimitingTextInputFormatter.truncate(newValue, maxLength);
-    }
+  plural_rules.startRuleEvaluation = function startRuleEvaluation(howMany, precision = 0) {
+    plural_rules._n = howMany;
+    plural_rules._precision = precision;
+    plural_rules._i = plural_rules._n[$round]();
+    plural_rules._updateVF(plural_rules._n, plural_rules._precision);
+    plural_rules._updateWT(plural_rules._f, plural_rules._v);
   };
-  (text_formatter.LengthLimitingTextInputFormatter.new = function(maxLength) {
-    this[maxLength$] = maxLength;
-    if (!(maxLength == null || maxLength === -1 || dart.notNull(maxLength) > 0)) dart.assertFailed(null, L0, 326, 14, "maxLength == null || maxLength == -1 || maxLength > 0");
-    ;
-  }).prototype = text_formatter.LengthLimitingTextInputFormatter.prototype;
-  dart.addTypeTests(text_formatter.LengthLimitingTextInputFormatter);
-  dart.addTypeCaches(text_formatter.LengthLimitingTextInputFormatter);
-  dart.setMethodSignature(text_formatter.LengthLimitingTextInputFormatter, () => ({
-    __proto__: dart.getMethods(text_formatter.LengthLimitingTextInputFormatter.__proto__),
-    formatEditUpdate: dart.fnType(text_input.TextEditingValue, [text_input.TextEditingValue, text_input.TextEditingValue])
-  }));
-  dart.setLibraryUri(text_formatter.LengthLimitingTextInputFormatter, L1);
-  dart.setFieldSignature(text_formatter.LengthLimitingTextInputFormatter, () => ({
-    __proto__: dart.getFields(text_formatter.LengthLimitingTextInputFormatter.__proto__),
-    maxLength: dart.finalFieldType(dart.nullable(core.int))
-  }));
-  var TextRange_end = dart.privateName(ui, "TextRange.end");
-  var TextRange_start = dart.privateName(ui, "TextRange.start");
-  var TextSelection_isDirectional = dart.privateName(text_editing, "TextSelection.isDirectional");
-  var _name = dart.privateName(ui, "_name");
-  var C1;
-  var TextSelection_affinity = dart.privateName(text_editing, "TextSelection.affinity");
-  var TextSelection_extentOffset = dart.privateName(text_editing, "TextSelection.extentOffset");
-  var TextSelection_baseOffset = dart.privateName(text_editing, "TextSelection.baseOffset");
-  var C0;
-  text_formatter._selectionAwareTextManipulation = function _selectionAwareTextManipulation(value, substringManipulation) {
+  plural_rules._decimals = function _decimals(n, precision) {
+    let str = plural_rules._precision == null ? dart.str(n) : n[$toStringAsFixed](precision);
+    let result = str[$indexOf](".");
+    return result === -1 ? 0 : str.length - result - 1;
+  };
+  plural_rules._updateVF = function _updateVF(n, precision) {
     let t0;
-    if (value == null) dart.nullFailed(L0, 414, 20, "value");
-    if (substringManipulation == null) dart.nullFailed(L0, 415, 10, "substringManipulation");
-    let selectionStartIndex = value.selection.start;
-    let selectionEndIndex = value.selection.end;
-    let manipulatedText = null;
-    let manipulatedSelection = null;
-    if (dart.notNull(selectionStartIndex) < 0 || dart.notNull(selectionEndIndex) < 0) {
-      manipulatedText = substringManipulation(value.text);
-    } else {
-      let beforeSelection = substringManipulation(value.text[$substring](0, selectionStartIndex));
-      let inSelection = substringManipulation(value.text[$substring](selectionStartIndex, selectionEndIndex));
-      let afterSelection = substringManipulation(value.text[$substring](selectionEndIndex));
-      manipulatedText = dart.notNull(beforeSelection) + dart.notNull(inSelection) + dart.notNull(afterSelection);
-      if (dart.notNull(value.selection.baseOffset) > dart.notNull(value.selection.extentOffset)) {
-        manipulatedSelection = value.selection.copyWith({baseOffset: beforeSelection.length + inSelection.length, extentOffset: beforeSelection.length});
-      } else {
-        manipulatedSelection = value.selection.copyWith({baseOffset: beforeSelection.length, extentOffset: beforeSelection.length + inSelection.length});
-      }
-    }
-    return new text_input.TextEditingValue.new({text: manipulatedText, selection: (t0 = manipulatedSelection, t0 == null ? C0 || CT.C0 : t0), composing: manipulatedText == value.text ? value.composing : ui.TextRange.empty});
+    let defaultDigits = 3;
+    plural_rules._v = (t0 = precision, t0 == null ? math.min(T.intL(), plural_rules._decimals(n, precision), defaultDigits) : t0);
+    let base = dart.asNullableInt(math.pow(10, plural_rules._v));
+    plural_rules._f = (dart.notNull(n) * base)[$floor]()[$modulo](base);
   };
-  dart.trackLibraries("packages/flutter/src/services/text_formatter.dart", {
-    "package:flutter/src/services/text_formatter.dart": text_formatter
+  plural_rules._updateWT = function _updateWT(v, f) {
+    if (f === 0) {
+      plural_rules._t = 0;
+      return;
+    }
+    while (f[$modulo](10) === 0) {
+      f = (dart.notNull(f) / 10)[$floor]();
+      v = dart.notNull(v) - 1;
+    }
+    plural_rules._t = f;
+  };
+  plural_rules._fil_rule = function _fil_rule() {
+    if (plural_rules._v === 0 && (plural_rules._i === 1 || plural_rules._i === 2 || plural_rules._i === 3) || plural_rules._v === 0 && plural_rules._i[$modulo](10) !== 4 && plural_rules._i[$modulo](10) !== 6 && plural_rules._i[$modulo](10) !== 9 || plural_rules._v !== 0 && plural_rules._f[$modulo](10) !== 4 && plural_rules._f[$modulo](10) !== 6 && plural_rules._f[$modulo](10) !== 9) {
+      return plural_rules.ONE;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._pt_PT_rule = function _pt_PT_rule() {
+    if (plural_rules._n === 1 && plural_rules._v === 0) {
+      return plural_rules.ONE;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._br_rule = function _br_rule() {
+    if (plural_rules._n[$modulo](10) === 1 && plural_rules._n[$modulo](100) !== 11 && plural_rules._n[$modulo](100) !== 71 && plural_rules._n[$modulo](100) !== 91) {
+      return plural_rules.ONE;
+    }
+    if (plural_rules._n[$modulo](10) === 2 && plural_rules._n[$modulo](100) !== 12 && plural_rules._n[$modulo](100) !== 72 && plural_rules._n[$modulo](100) !== 92) {
+      return plural_rules.TWO;
+    }
+    if ((plural_rules._n[$modulo](10) >= 3 && plural_rules._n[$modulo](10) <= 4 || plural_rules._n[$modulo](10) === 9) && (plural_rules._n[$modulo](100) < 10 || plural_rules._n[$modulo](100) > 19) && (plural_rules._n[$modulo](100) < 70 || plural_rules._n[$modulo](100) > 79) && (plural_rules._n[$modulo](100) < 90 || plural_rules._n[$modulo](100) > 99)) {
+      return plural_rules.FEW;
+    }
+    if (plural_rules._n !== 0 && plural_rules._n[$modulo](1000000) === 0) {
+      return plural_rules.MANY;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._sr_rule = function _sr_rule() {
+    if (plural_rules._v === 0 && plural_rules._i[$modulo](10) === 1 && plural_rules._i[$modulo](100) !== 11 || plural_rules._f[$modulo](10) === 1 && plural_rules._f[$modulo](100) !== 11) {
+      return plural_rules.ONE;
+    }
+    if (plural_rules._v === 0 && plural_rules._i[$modulo](10) >= 2 && plural_rules._i[$modulo](10) <= 4 && (plural_rules._i[$modulo](100) < 12 || plural_rules._i[$modulo](100) > 14) || plural_rules._f[$modulo](10) >= 2 && plural_rules._f[$modulo](10) <= 4 && (plural_rules._f[$modulo](100) < 12 || plural_rules._f[$modulo](100) > 14)) {
+      return plural_rules.FEW;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._ro_rule = function _ro_rule() {
+    if (plural_rules._i === 1 && plural_rules._v === 0) {
+      return plural_rules.ONE;
+    }
+    if (plural_rules._v !== 0 || plural_rules._n === 0 || plural_rules._n !== 1 && plural_rules._n[$modulo](100) >= 1 && plural_rules._n[$modulo](100) <= 19) {
+      return plural_rules.FEW;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._hi_rule = function _hi_rule() {
+    if (plural_rules._i === 0 || plural_rules._n === 1) {
+      return plural_rules.ONE;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._fr_rule = function _fr_rule() {
+    if (plural_rules._i === 0 || plural_rules._i === 1) {
+      return plural_rules.ONE;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._cs_rule = function _cs_rule() {
+    if (plural_rules._i === 1 && plural_rules._v === 0) {
+      return plural_rules.ONE;
+    }
+    if (dart.notNull(plural_rules._i) >= 2 && dart.notNull(plural_rules._i) <= 4 && plural_rules._v === 0) {
+      return plural_rules.FEW;
+    }
+    if (plural_rules._v !== 0) {
+      return plural_rules.MANY;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._pl_rule = function _pl_rule() {
+    if (plural_rules._i === 1 && plural_rules._v === 0) {
+      return plural_rules.ONE;
+    }
+    if (plural_rules._v === 0 && plural_rules._i[$modulo](10) >= 2 && plural_rules._i[$modulo](10) <= 4 && (plural_rules._i[$modulo](100) < 12 || plural_rules._i[$modulo](100) > 14)) {
+      return plural_rules.FEW;
+    }
+    if (plural_rules._v === 0 && plural_rules._i !== 1 && plural_rules._i[$modulo](10) >= 0 && plural_rules._i[$modulo](10) <= 1 || plural_rules._v === 0 && plural_rules._i[$modulo](10) >= 5 && plural_rules._i[$modulo](10) <= 9 || plural_rules._v === 0 && plural_rules._i[$modulo](100) >= 12 && plural_rules._i[$modulo](100) <= 14) {
+      return plural_rules.MANY;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._lv_rule = function _lv_rule() {
+    if (plural_rules._n[$modulo](10) === 0 || plural_rules._n[$modulo](100) >= 11 && plural_rules._n[$modulo](100) <= 19 || plural_rules._v === 2 && plural_rules._f[$modulo](100) >= 11 && plural_rules._f[$modulo](100) <= 19) {
+      return plural_rules.ZERO;
+    }
+    if (plural_rules._n[$modulo](10) === 1 && plural_rules._n[$modulo](100) !== 11 || plural_rules._v === 2 && plural_rules._f[$modulo](10) === 1 && plural_rules._f[$modulo](100) !== 11 || plural_rules._v !== 2 && plural_rules._f[$modulo](10) === 1) {
+      return plural_rules.ONE;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._he_rule = function _he_rule() {
+    if (plural_rules._i === 1 && plural_rules._v === 0) {
+      return plural_rules.ONE;
+    }
+    if (plural_rules._i === 2 && plural_rules._v === 0) {
+      return plural_rules.TWO;
+    }
+    if (plural_rules._v === 0 && (dart.notNull(plural_rules._n) < 0 || dart.notNull(plural_rules._n) > 10) && plural_rules._n[$modulo](10) === 0) {
+      return plural_rules.MANY;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._mt_rule = function _mt_rule() {
+    if (plural_rules._n === 1) {
+      return plural_rules.ONE;
+    }
+    if (plural_rules._n === 0 || plural_rules._n[$modulo](100) >= 2 && plural_rules._n[$modulo](100) <= 10) {
+      return plural_rules.FEW;
+    }
+    if (plural_rules._n[$modulo](100) >= 11 && plural_rules._n[$modulo](100) <= 19) {
+      return plural_rules.MANY;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._si_rule = function _si_rule() {
+    if (plural_rules._n === 0 || plural_rules._n === 1 || plural_rules._i === 0 && plural_rules._f === 1) {
+      return plural_rules.ONE;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._cy_rule = function _cy_rule() {
+    if (plural_rules._n === 0) {
+      return plural_rules.ZERO;
+    }
+    if (plural_rules._n === 1) {
+      return plural_rules.ONE;
+    }
+    if (plural_rules._n === 2) {
+      return plural_rules.TWO;
+    }
+    if (plural_rules._n === 3) {
+      return plural_rules.FEW;
+    }
+    if (plural_rules._n === 6) {
+      return plural_rules.MANY;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._da_rule = function _da_rule() {
+    if (plural_rules._n === 1 || plural_rules._t !== 0 && (plural_rules._i === 0 || plural_rules._i === 1)) {
+      return plural_rules.ONE;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._ru_rule = function _ru_rule() {
+    if (plural_rules._v === 0 && plural_rules._i[$modulo](10) === 1 && plural_rules._i[$modulo](100) !== 11) {
+      return plural_rules.ONE;
+    }
+    if (plural_rules._v === 0 && plural_rules._i[$modulo](10) >= 2 && plural_rules._i[$modulo](10) <= 4 && (plural_rules._i[$modulo](100) < 12 || plural_rules._i[$modulo](100) > 14)) {
+      return plural_rules.FEW;
+    }
+    if (plural_rules._v === 0 && plural_rules._i[$modulo](10) === 0 || plural_rules._v === 0 && plural_rules._i[$modulo](10) >= 5 && plural_rules._i[$modulo](10) <= 9 || plural_rules._v === 0 && plural_rules._i[$modulo](100) >= 11 && plural_rules._i[$modulo](100) <= 14) {
+      return plural_rules.MANY;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._be_rule = function _be_rule() {
+    if (plural_rules._n[$modulo](10) === 1 && plural_rules._n[$modulo](100) !== 11) {
+      return plural_rules.ONE;
+    }
+    if (plural_rules._n[$modulo](10) >= 2 && plural_rules._n[$modulo](10) <= 4 && (plural_rules._n[$modulo](100) < 12 || plural_rules._n[$modulo](100) > 14)) {
+      return plural_rules.FEW;
+    }
+    if (plural_rules._n[$modulo](10) === 0 || plural_rules._n[$modulo](10) >= 5 && plural_rules._n[$modulo](10) <= 9 || plural_rules._n[$modulo](100) >= 11 && plural_rules._n[$modulo](100) <= 14) {
+      return plural_rules.MANY;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._mk_rule = function _mk_rule() {
+    if (plural_rules._v === 0 && plural_rules._i[$modulo](10) === 1 || plural_rules._f[$modulo](10) === 1) {
+      return plural_rules.ONE;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._ga_rule = function _ga_rule() {
+    if (plural_rules._n === 1) {
+      return plural_rules.ONE;
+    }
+    if (plural_rules._n === 2) {
+      return plural_rules.TWO;
+    }
+    if (dart.notNull(plural_rules._n) >= 3 && dart.notNull(plural_rules._n) <= 6) {
+      return plural_rules.FEW;
+    }
+    if (dart.notNull(plural_rules._n) >= 7 && dart.notNull(plural_rules._n) <= 10) {
+      return plural_rules.MANY;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._pt_rule = function _pt_rule() {
+    if (dart.notNull(plural_rules._n) >= 0 && dart.notNull(plural_rules._n) <= 2 && plural_rules._n !== 2) {
+      return plural_rules.ONE;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._es_rule = function _es_rule() {
+    if (plural_rules._n === 1) {
+      return plural_rules.ONE;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._is_rule = function _is_rule() {
+    if (plural_rules._t === 0 && plural_rules._i[$modulo](10) === 1 && plural_rules._i[$modulo](100) !== 11 || plural_rules._t !== 0) {
+      return plural_rules.ONE;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._ar_rule = function _ar_rule() {
+    if (plural_rules._n === 0) {
+      return plural_rules.ZERO;
+    }
+    if (plural_rules._n === 1) {
+      return plural_rules.ONE;
+    }
+    if (plural_rules._n === 2) {
+      return plural_rules.TWO;
+    }
+    if (plural_rules._n[$modulo](100) >= 3 && plural_rules._n[$modulo](100) <= 10) {
+      return plural_rules.FEW;
+    }
+    if (plural_rules._n[$modulo](100) >= 11 && plural_rules._n[$modulo](100) <= 99) {
+      return plural_rules.MANY;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._sl_rule = function _sl_rule() {
+    if (plural_rules._v === 0 && plural_rules._i[$modulo](100) === 1) {
+      return plural_rules.ONE;
+    }
+    if (plural_rules._v === 0 && plural_rules._i[$modulo](100) === 2) {
+      return plural_rules.TWO;
+    }
+    if (plural_rules._v === 0 && plural_rules._i[$modulo](100) >= 3 && plural_rules._i[$modulo](100) <= 4 || plural_rules._v !== 0) {
+      return plural_rules.FEW;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._lt_rule = function _lt_rule() {
+    if (plural_rules._n[$modulo](10) === 1 && (plural_rules._n[$modulo](100) < 11 || plural_rules._n[$modulo](100) > 19)) {
+      return plural_rules.ONE;
+    }
+    if (plural_rules._n[$modulo](10) >= 2 && plural_rules._n[$modulo](10) <= 9 && (plural_rules._n[$modulo](100) < 11 || plural_rules._n[$modulo](100) > 19)) {
+      return plural_rules.FEW;
+    }
+    if (plural_rules._f !== 0) {
+      return plural_rules.MANY;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._en_rule = function _en_rule() {
+    if (plural_rules._i === 1 && plural_rules._v === 0) {
+      return plural_rules.ONE;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._ak_rule = function _ak_rule() {
+    if (dart.notNull(plural_rules._n) >= 0 && dart.notNull(plural_rules._n) <= 1) {
+      return plural_rules.ONE;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules.localeHasPluralRules = function localeHasPluralRules(locale) {
+    return plural_rules.pluralRules[$containsKey](locale);
+  };
+  dart.copyProperties(plural_rules, {
+    get ZERO() {
+      return plural_rules.PluralCase.ZERO;
+    },
+    get ONE() {
+      return plural_rules.PluralCase.ONE;
+    },
+    get TWO() {
+      return plural_rules.PluralCase.TWO;
+    },
+    get FEW() {
+      return plural_rules.PluralCase.FEW;
+    },
+    get MANY() {
+      return plural_rules.PluralCase.MANY;
+    },
+    get OTHER() {
+      return plural_rules.PluralCase.OTHER;
+    }
+  });
+  dart.defineLazy(plural_rules, {
+    /*plural_rules._n*/get _n() {
+      return null;
+    },
+    set _n(_) {},
+    /*plural_rules._i*/get _i() {
+      return null;
+    },
+    set _i(_) {},
+    /*plural_rules._precision*/get _precision() {
+      return null;
+    },
+    set _precision(_) {},
+    /*plural_rules._v*/get _v() {
+      return 0;
+    },
+    set _v(_) {},
+    /*plural_rules._f*/get _f() {
+      return 0;
+    },
+    set _f(_) {},
+    /*plural_rules._t*/get _t() {
+      return 0;
+    },
+    set _t(_) {},
+    /*plural_rules.pluralRules*/get pluralRules() {
+      return new _js_helper.LinkedMap.from(["af", C[7] || CT.C7, "am", C[8] || CT.C8, "ar", C[9] || CT.C9, "az", C[7] || CT.C7, "be", C[10] || CT.C10, "bg", C[7] || CT.C7, "bn", C[8] || CT.C8, "br", C[11] || CT.C11, "bs", C[12] || CT.C12, "ca", C[13] || CT.C13, "chr", C[7] || CT.C7, "cs", C[14] || CT.C14, "cy", C[15] || CT.C15, "da", C[16] || CT.C16, "de", C[13] || CT.C13, "de_AT", C[13] || CT.C13, "de_CH", C[13] || CT.C13, "el", C[7] || CT.C7, "en", C[13] || CT.C13, "en_AU", C[13] || CT.C13, "en_CA", C[13] || CT.C13, "en_GB", C[13] || CT.C13, "en_IE", C[13] || CT.C13, "en_IN", C[13] || CT.C13, "en_SG", C[13] || CT.C13, "en_US", C[13] || CT.C13, "en_ZA", C[13] || CT.C13, "es", C[7] || CT.C7, "es_419", C[7] || CT.C7, "es_ES", C[7] || CT.C7, "es_MX", C[7] || CT.C7, "es_US", C[7] || CT.C7, "et", C[13] || CT.C13, "eu", C[7] || CT.C7, "fa", C[8] || CT.C8, "fi", C[13] || CT.C13, "fil", C[17] || CT.C17, "fr", C[18] || CT.C18, "fr_CA", C[18] || CT.C18, "ga", C[19] || CT.C19, "gl", C[13] || CT.C13, "gsw", C[7] || CT.C7, "gu", C[8] || CT.C8, "haw", C[7] || CT.C7, "he", C[20] || CT.C20, "hi", C[8] || CT.C8, "hr", C[12] || CT.C12, "hu", C[7] || CT.C7, "hy", C[18] || CT.C18, "id", C[21] || CT.C21, "in", C[21] || CT.C21, "is", C[22] || CT.C22, "it", C[13] || CT.C13, "iw", C[20] || CT.C20, "ja", C[21] || CT.C21, "ka", C[7] || CT.C7, "kk", C[7] || CT.C7, "km", C[21] || CT.C21, "kn", C[8] || CT.C8, "ko", C[21] || CT.C21, "ky", C[7] || CT.C7, "ln", C[23] || CT.C23, "lo", C[21] || CT.C21, "lt", C[24] || CT.C24, "lv", C[25] || CT.C25, "mk", C[26] || CT.C26, "ml", C[7] || CT.C7, "mn", C[7] || CT.C7, "mo", C[27] || CT.C27, "mr", C[8] || CT.C8, "ms", C[21] || CT.C21, "mt", C[28] || CT.C28, "my", C[21] || CT.C21, "nb", C[7] || CT.C7, "ne", C[7] || CT.C7, "nl", C[13] || CT.C13, "no", C[7] || CT.C7, "no_NO", C[7] || CT.C7, "or", C[7] || CT.C7, "pa", C[23] || CT.C23, "pl", C[29] || CT.C29, "pt", C[30] || CT.C30, "pt_BR", C[30] || CT.C30, "pt_PT", C[31] || CT.C31, "ro", C[27] || CT.C27, "ru", C[32] || CT.C32, "sh", C[12] || CT.C12, "si", C[33] || CT.C33, "sk", C[14] || CT.C14, "sl", C[34] || CT.C34, "sq", C[7] || CT.C7, "sr", C[12] || CT.C12, "sr_Latn", C[12] || CT.C12, "sv", C[13] || CT.C13, "sw", C[13] || CT.C13, "ta", C[7] || CT.C7, "te", C[7] || CT.C7, "th", C[21] || CT.C21, "tl", C[17] || CT.C17, "tr", C[7] || CT.C7, "uk", C[32] || CT.C32, "ur", C[13] || CT.C13, "uz", C[7] || CT.C7, "vi", C[21] || CT.C21, "zh", C[21] || CT.C21, "zh_CN", C[21] || CT.C21, "zh_HK", C[21] || CT.C21, "zh_TW", C[21] || CT.C21, "zu", C[8] || CT.C8, "default", C[21] || CT.C21]);
+    }
+  }, true);
+  dart.trackLibraries("packages/intl/src/plural_rules.dart", {
+    "package:intl/src/plural_rules.dart": plural_rules
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["text_formatter.dart"],"names":[],"mappings":"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","file":"../../../../../../../packages/flutter/src/services/text_formatter.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["plural_rules.dart"],"names":[],"mappings":"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BAAJ,OAAM;AAC/C,YAAO;;AAET,QAAI,AAAG,AAAK,yBAAH,OAAM,KAAK,AAAG,AAAK,yBAAH,OAAM,MAAM,AAAG,AAAM,yBAAJ,OAAM,MAAM,AAAG,AAAM,yBAAJ,OAAM;AAC/D,YAAO;;AAET,QAAI,oBAAM;AACR,YAAO;;AAET,UAAO;EACT;;AAGE,QAAI,AAAG,oBAAG,KAAK,AAAG,oBAAG;AACnB,YAAO;;AAET,UAAO;EACT;;AAGE,QAAO,aAAH,oBAAM,KAAQ,aAAH,oBAAM;AACnB,YAAO;;AAET,UAAO;EACT;oEAqHiC;AAAW,UAAA,AAAY,wCAAY,MAAM;EAAC;;;AApbpD,YAAW;IAAI;;AAChB,YAAW;IAAG;;AACd,YAAW;IAAG;;AACd,YAAW;IAAG;;AACb,YAAW;IAAI;;AACd,YAAW;IAAK;;;MAjFpC,eAAE;;;;MAGF,eAAE;;;;MACF,uBAAU;;;;MAoDV,eAAE;YAAG;;;MAML,eAAE;YAAG;;;MAGL,eAAE;YAAG;;;MA6UC,wBAAW;YAAG,gCACtB,qBACA,qBACA,qBACA,qBACA,uBACA,qBACA,qBACA,uBACA,uBACA,uBACA,sBACA,uBACA,uBACA,uBACA,uBACA,0BACA,0BACA,qBACA,uBACA,0BACA,0BACA,0BACA,0BACA,0BACA,0BACA,0BACA,0BACA,qBACA,yBACA,wBACA,wBACA,wBACA,uBACA,qBACA,qBACA,uBACA,wBACA,uBACA,0BACA,uBACA,uBACA,sBACA,qBACA,sBACA,uBACA,qBACA,uBACA,qBACA,uBACA,uBACA,uBACA,uBACA,uBACA,uBACA,uBACA,qBACA,qBACA,uBACA,qBACA,uBACA,qBACA,uBACA,uBACA,uBACA,uBACA,uBACA,qBACA,qBACA,uBACA,qBACA,uBACA,uBACA,uBACA,qBACA,qBACA,uBACA,qBACA,wBACA,qBACA,uBACA,uBACA,uBACA,0BACA,0BACA,uBACA,uBACA,uBACA,uBACA,uBACA,uBACA,qBACA,uBACA,4BACA,uBACA,uBACA,qBACA,qBACA,uBACA,uBACA,qBACA,uBACA,uBACA,qBACA,uBACA,uBACA,0BACA,0BACA,0BACA,qBACA","file":"../../../../../../../../../packages/intl/src/plural_rules.dart.lib.js"}');
   // Exports:
   return {
-    src__services__text_formatter: text_formatter
+    src__plural_rules: plural_rules
   };
 }));
 
-//# sourceMappingURL=text_formatter.dart.lib.js.map
+//# sourceMappingURL=plural_rules.dart.lib.js.map

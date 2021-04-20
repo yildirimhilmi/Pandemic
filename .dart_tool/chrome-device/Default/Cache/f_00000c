@@ -37,50 +37,49 @@ define(['dart_sdk', 'packages/google_maps_flutter_platform_interface/src/types/l
   var $_get = dartx._get;
   var $containsKey = dartx.containsKey;
   var $_set = dartx._set;
-  var intL = () => (intL = dart.constFn(dart.legacy(core.int)))();
-  var MethodChannelL = () => (MethodChannelL = dart.constFn(dart.legacy(platform_channel.MethodChannel)))();
-  var IdentityMapOfintL$MethodChannelL = () => (IdentityMapOfintL$MethodChannelL = dart.constFn(_js_helper.IdentityMap$(intL(), MethodChannelL())))();
-  var MapEventL = () => (MapEventL = dart.constFn(dart.legacy(map_event.MapEvent)))();
-  var StreamControllerOfMapEventL = () => (StreamControllerOfMapEventL = dart.constFn(async.StreamController$(MapEventL())))();
-  var FutureL = () => (FutureL = dart.constFn(dart.legacy(async.Future)))();
-  var MethodCallL = () => (MethodCallL = dart.constFn(dart.legacy(message_codec.MethodCall)))();
-  var MethodCallLToFutureL = () => (MethodCallLToFutureL = dart.constFn(dart.fnType(FutureL(), [MethodCallL()])))();
-  var boolL = () => (boolL = dart.constFn(dart.legacy(core.bool)))();
-  var MapEventLToboolL = () => (MapEventLToboolL = dart.constFn(dart.fnType(boolL(), [MapEventL()])))();
-  var CameraMoveStartedEventL = () => (CameraMoveStartedEventL = dart.constFn(dart.legacy(map_event.CameraMoveStartedEvent)))();
-  var CameraMoveEventL = () => (CameraMoveEventL = dart.constFn(dart.legacy(map_event.CameraMoveEvent)))();
-  var CameraIdleEventL = () => (CameraIdleEventL = dart.constFn(dart.legacy(map_event.CameraIdleEvent)))();
-  var MarkerTapEventL = () => (MarkerTapEventL = dart.constFn(dart.legacy(map_event.MarkerTapEvent)))();
-  var InfoWindowTapEventL = () => (InfoWindowTapEventL = dart.constFn(dart.legacy(map_event.InfoWindowTapEvent)))();
-  var MarkerDragEndEventL = () => (MarkerDragEndEventL = dart.constFn(dart.legacy(map_event.MarkerDragEndEvent)))();
-  var PolylineTapEventL = () => (PolylineTapEventL = dart.constFn(dart.legacy(map_event.PolylineTapEvent)))();
-  var PolygonTapEventL = () => (PolygonTapEventL = dart.constFn(dart.legacy(map_event.PolygonTapEvent)))();
-  var CircleTapEventL = () => (CircleTapEventL = dart.constFn(dart.legacy(map_event.CircleTapEvent)))();
-  var MapTapEventL = () => (MapTapEventL = dart.constFn(dart.legacy(map_event.MapTapEvent)))();
-  var MapLongPressEventL = () => (MapLongPressEventL = dart.constFn(dart.legacy(map_event.MapLongPressEvent)))();
-  var StringL = () => (StringL = dart.constFn(dart.legacy(core.String)))();
-  var IdentityMapOfStringL$dynamic = () => (IdentityMapOfStringL$dynamic = dart.constFn(_js_helper.IdentityMap$(StringL(), dart.dynamic)))();
-  var ListL = () => (ListL = dart.constFn(dart.legacy(core.List)))();
-  var LatLngBoundsL = () => (LatLngBoundsL = dart.constFn(dart.legacy(location.LatLngBounds)))();
-  var ScreenCoordinateL = () => (ScreenCoordinateL = dart.constFn(dart.legacy(screen_coordinate.ScreenCoordinate)))();
-  var doubleL = () => (doubleL = dart.constFn(dart.legacy(core.double)))();
-  var LatLngL = () => (LatLngL = dart.constFn(dart.legacy(location.LatLng)))();
-  var IdentityMapOfStringL$StringL = () => (IdentityMapOfStringL$StringL = dart.constFn(_js_helper.IdentityMap$(StringL(), StringL())))();
-  var Uint8ListL = () => (Uint8ListL = dart.constFn(dart.legacy(typed_data.Uint8List)))();
-  var _LocationL = () => (_LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))();
+  dart._checkModuleNullSafetyMode(false);
+  var T = Object.create({
+    intL: () => (T.intL = dart.constFn(dart.legacy(core.int)))(),
+    MethodChannelL: () => (T.MethodChannelL = dart.constFn(dart.legacy(platform_channel.MethodChannel)))(),
+    IdentityMapOfintL$MethodChannelL: () => (T.IdentityMapOfintL$MethodChannelL = dart.constFn(_js_helper.IdentityMap$(T.intL(), T.MethodChannelL())))(),
+    MapEventL: () => (T.MapEventL = dart.constFn(dart.legacy(map_event.MapEvent)))(),
+    StreamControllerOfMapEventL: () => (T.StreamControllerOfMapEventL = dart.constFn(async.StreamController$(T.MapEventL())))(),
+    FutureL: () => (T.FutureL = dart.constFn(dart.legacy(async.Future)))(),
+    MethodCallL: () => (T.MethodCallL = dart.constFn(dart.legacy(message_codec.MethodCall)))(),
+    MethodCallLToFutureL: () => (T.MethodCallLToFutureL = dart.constFn(dart.fnType(T.FutureL(), [T.MethodCallL()])))(),
+    boolL: () => (T.boolL = dart.constFn(dart.legacy(core.bool)))(),
+    MapEventLToboolL: () => (T.MapEventLToboolL = dart.constFn(dart.fnType(T.boolL(), [T.MapEventL()])))(),
+    CameraMoveStartedEventL: () => (T.CameraMoveStartedEventL = dart.constFn(dart.legacy(map_event.CameraMoveStartedEvent)))(),
+    CameraMoveEventL: () => (T.CameraMoveEventL = dart.constFn(dart.legacy(map_event.CameraMoveEvent)))(),
+    CameraIdleEventL: () => (T.CameraIdleEventL = dart.constFn(dart.legacy(map_event.CameraIdleEvent)))(),
+    MarkerTapEventL: () => (T.MarkerTapEventL = dart.constFn(dart.legacy(map_event.MarkerTapEvent)))(),
+    InfoWindowTapEventL: () => (T.InfoWindowTapEventL = dart.constFn(dart.legacy(map_event.InfoWindowTapEvent)))(),
+    MarkerDragEndEventL: () => (T.MarkerDragEndEventL = dart.constFn(dart.legacy(map_event.MarkerDragEndEvent)))(),
+    PolylineTapEventL: () => (T.PolylineTapEventL = dart.constFn(dart.legacy(map_event.PolylineTapEvent)))(),
+    PolygonTapEventL: () => (T.PolygonTapEventL = dart.constFn(dart.legacy(map_event.PolygonTapEvent)))(),
+    CircleTapEventL: () => (T.CircleTapEventL = dart.constFn(dart.legacy(map_event.CircleTapEvent)))(),
+    MapTapEventL: () => (T.MapTapEventL = dart.constFn(dart.legacy(map_event.MapTapEvent)))(),
+    MapLongPressEventL: () => (T.MapLongPressEventL = dart.constFn(dart.legacy(map_event.MapLongPressEvent)))(),
+    StringL: () => (T.StringL = dart.constFn(dart.legacy(core.String)))(),
+    IdentityMapOfStringL$dynamic: () => (T.IdentityMapOfStringL$dynamic = dart.constFn(_js_helper.IdentityMap$(T.StringL(), dart.dynamic)))(),
+    ListL: () => (T.ListL = dart.constFn(dart.legacy(core.List)))(),
+    LatLngBoundsL: () => (T.LatLngBoundsL = dart.constFn(dart.legacy(location.LatLngBounds)))(),
+    ScreenCoordinateL: () => (T.ScreenCoordinateL = dart.constFn(dart.legacy(screen_coordinate.ScreenCoordinate)))(),
+    doubleL: () => (T.doubleL = dart.constFn(dart.legacy(core.double)))(),
+    LatLngL: () => (T.LatLngL = dart.constFn(dart.legacy(location.LatLng)))(),
+    IdentityMapOfStringL$StringL: () => (T.IdentityMapOfStringL$StringL = dart.constFn(_js_helper.IdentityMap$(T.StringL(), T.StringL())))(),
+    Uint8ListL: () => (T.Uint8ListL = dart.constFn(dart.legacy(typed_data.Uint8List)))(),
+    _LocationL: () => (T._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))()
+  });
   const CT = Object.create(null);
-  var L1 = "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/google_maps_flutter_platform_interface-1.0.5/lib/src/method_channel/method_channel_google_maps_flutter.dart";
-  var L0 = "package:google_maps_flutter_platform_interface/src/events/map_event.dart";
-  var L2 = "package:google_maps_flutter_platform_interface/src/platform_interface/google_maps_flutter_platform.dart";
-  var L3 = "package:google_maps_flutter_platform_interface/src/method_channel/method_channel_google_maps_flutter.dart";
   dart.defineLazy(CT, {
     get C0() {
-      return C0 = dart.const({
+      return C[0] = dart.const({
         __proto__: message_codecs.StandardMessageCodec.prototype
       });
     },
     get C3() {
-      return C3 = dart.const({
+      return C[3] = dart.const({
         __proto__: widget_inspector._Location.prototype,
         [_Location_parameterLocations]: null,
         [_Location_name]: "viewType",
@@ -90,7 +89,7 @@ define(['dart_sdk', 'packages/google_maps_flutter_platform_interface/src/types/l
       });
     },
     get C4() {
-      return C4 = dart.const({
+      return C[4] = dart.const({
         __proto__: widget_inspector._Location.prototype,
         [_Location_parameterLocations]: null,
         [_Location_name]: "onPlatformViewCreated",
@@ -100,7 +99,7 @@ define(['dart_sdk', 'packages/google_maps_flutter_platform_interface/src/types/l
       });
     },
     get C5() {
-      return C5 = dart.const({
+      return C[5] = dart.const({
         __proto__: widget_inspector._Location.prototype,
         [_Location_parameterLocations]: null,
         [_Location_name]: "gestureRecognizers",
@@ -110,7 +109,7 @@ define(['dart_sdk', 'packages/google_maps_flutter_platform_interface/src/types/l
       });
     },
     get C6() {
-      return C6 = dart.const({
+      return C[6] = dart.const({
         __proto__: widget_inspector._Location.prototype,
         [_Location_parameterLocations]: null,
         [_Location_name]: "creationParams",
@@ -120,7 +119,7 @@ define(['dart_sdk', 'packages/google_maps_flutter_platform_interface/src/types/l
       });
     },
     get C7() {
-      return C7 = dart.const({
+      return C[7] = dart.const({
         __proto__: widget_inspector._Location.prototype,
         [_Location_parameterLocations]: null,
         [_Location_name]: "creationParamsCodec",
@@ -130,20 +129,20 @@ define(['dart_sdk', 'packages/google_maps_flutter_platform_interface/src/types/l
       });
     },
     get C2() {
-      return C2 = dart.constList([C3 || CT.C3, C4 || CT.C4, C5 || CT.C5, C6 || CT.C6, C7 || CT.C7], _LocationL());
+      return C[2] = dart.constList([C[3] || CT.C3, C[4] || CT.C4, C[5] || CT.C5, C[6] || CT.C6, C[7] || CT.C7], T._LocationL());
     },
     get C1() {
-      return C1 = dart.const({
+      return C[1] = dart.const({
         __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C2 || CT.C2,
+        [_Location_parameterLocations]: C[2] || CT.C2,
         [_Location_name]: null,
         [_Location_column]: 14,
         [_Location_line]: 464,
-        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/google_maps_flutter_platform_interface-1.0.5/lib/src/method_channel/method_channel_google_maps_flutter.dart"
+        [_Location_file]: "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/google_maps_flutter_platform_interface-1.0.5/lib/src/method_channel/method_channel_google_maps_flutter.dart"
       });
     },
     get C10() {
-      return C10 = dart.const({
+      return C[10] = dart.const({
         __proto__: widget_inspector._Location.prototype,
         [_Location_parameterLocations]: null,
         [_Location_name]: "viewType",
@@ -153,7 +152,7 @@ define(['dart_sdk', 'packages/google_maps_flutter_platform_interface/src/types/l
       });
     },
     get C11() {
-      return C11 = dart.const({
+      return C[11] = dart.const({
         __proto__: widget_inspector._Location.prototype,
         [_Location_parameterLocations]: null,
         [_Location_name]: "onPlatformViewCreated",
@@ -163,7 +162,7 @@ define(['dart_sdk', 'packages/google_maps_flutter_platform_interface/src/types/l
       });
     },
     get C12() {
-      return C12 = dart.const({
+      return C[12] = dart.const({
         __proto__: widget_inspector._Location.prototype,
         [_Location_parameterLocations]: null,
         [_Location_name]: "gestureRecognizers",
@@ -173,7 +172,7 @@ define(['dart_sdk', 'packages/google_maps_flutter_platform_interface/src/types/l
       });
     },
     get C13() {
-      return C13 = dart.const({
+      return C[13] = dart.const({
         __proto__: widget_inspector._Location.prototype,
         [_Location_parameterLocations]: null,
         [_Location_name]: "creationParams",
@@ -183,7 +182,7 @@ define(['dart_sdk', 'packages/google_maps_flutter_platform_interface/src/types/l
       });
     },
     get C14() {
-      return C14 = dart.const({
+      return C[14] = dart.const({
         __proto__: widget_inspector._Location.prototype,
         [_Location_parameterLocations]: null,
         [_Location_name]: "creationParamsCodec",
@@ -193,20 +192,20 @@ define(['dart_sdk', 'packages/google_maps_flutter_platform_interface/src/types/l
       });
     },
     get C9() {
-      return C9 = dart.constList([C10 || CT.C10, C11 || CT.C11, C12 || CT.C12, C13 || CT.C13, C14 || CT.C14], _LocationL());
+      return C[9] = dart.constList([C[10] || CT.C10, C[11] || CT.C11, C[12] || CT.C12, C[13] || CT.C13, C[14] || CT.C14], T._LocationL());
     },
     get C8() {
-      return C8 = dart.const({
+      return C[8] = dart.const({
         __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C9 || CT.C9,
+        [_Location_parameterLocations]: C[9] || CT.C9,
         [_Location_name]: null,
         [_Location_column]: 14,
         [_Location_line]: 472,
-        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/google_maps_flutter_platform_interface-1.0.5/lib/src/method_channel/method_channel_google_maps_flutter.dart"
+        [_Location_file]: "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/google_maps_flutter_platform_interface-1.0.5/lib/src/method_channel/method_channel_google_maps_flutter.dart"
       });
     },
     get C17() {
-      return C17 = dart.const({
+      return C[17] = dart.const({
         __proto__: widget_inspector._Location.prototype,
         [_Location_parameterLocations]: null,
         [_Location_name]: "data",
@@ -216,22 +215,29 @@ define(['dart_sdk', 'packages/google_maps_flutter_platform_interface/src/types/l
       });
     },
     get C16() {
-      return C16 = dart.constList([C17 || CT.C17], _LocationL());
+      return C[16] = dart.constList([C[17] || CT.C17], T._LocationL());
     },
     get C15() {
-      return C15 = dart.const({
+      return C[15] = dart.const({
         __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C16 || CT.C16,
+        [_Location_parameterLocations]: C[16] || CT.C16,
         [_Location_name]: null,
         [_Location_column]: 12,
         [_Location_line]: 480,
-        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/google_maps_flutter_platform_interface-1.0.5/lib/src/method_channel/method_channel_google_maps_flutter.dart"
+        [_Location_file]: "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/google_maps_flutter_platform_interface-1.0.5/lib/src/method_channel/method_channel_google_maps_flutter.dart"
       });
     }
   }, false);
-  const _is_MapEvent_default = Symbol('_is_MapEvent_default');
+  var C = Array(18).fill(void 0);
+  var I = [
+    "package:google_maps_flutter_platform_interface/src/events/map_event.dart",
+    "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/google_maps_flutter_platform_interface-1.0.5/lib/src/method_channel/method_channel_google_maps_flutter.dart",
+    "package:google_maps_flutter_platform_interface/src/platform_interface/google_maps_flutter_platform.dart",
+    "package:google_maps_flutter_platform_interface/src/method_channel/method_channel_google_maps_flutter.dart"
+  ];
   var mapId$ = dart.privateName(map_event, "MapEvent.mapId");
   var value$ = dart.privateName(map_event, "MapEvent.value");
+  const _is_MapEvent_default = Symbol('_is_MapEvent_default');
   map_event.MapEvent$ = dart.generic(T => {
     class MapEvent extends core.Object {
       get mapId() {
@@ -255,7 +261,7 @@ define(['dart_sdk', 'packages/google_maps_flutter_platform_interface/src/types/l
     dart.addTypeTests(MapEvent);
     MapEvent.prototype[_is_MapEvent_default] = true;
     dart.addTypeCaches(MapEvent);
-    dart.setLibraryUri(MapEvent, L0);
+    dart.setLibraryUri(MapEvent, I[0]);
     dart.setFieldSignature(MapEvent, () => ({
       __proto__: dart.getFields(MapEvent.__proto__),
       mapId: dart.finalFieldType(dart.legacy(core.int)),
@@ -265,8 +271,8 @@ define(['dart_sdk', 'packages/google_maps_flutter_platform_interface/src/types/l
   });
   map_event.MapEvent = map_event.MapEvent$();
   dart.addTypeTests(map_event.MapEvent, _is_MapEvent_default);
-  const _is__PositionedMapEvent_default = Symbol('_is__PositionedMapEvent_default');
   var position$ = dart.privateName(map_event, "_PositionedMapEvent.position");
+  const _is__PositionedMapEvent_default = Symbol('_is__PositionedMapEvent_default');
   map_event._PositionedMapEvent$ = dart.generic(T => {
     class _PositionedMapEvent extends map_event.MapEvent$(dart.legacy(T)) {
       get position() {
@@ -284,7 +290,7 @@ define(['dart_sdk', 'packages/google_maps_flutter_platform_interface/src/types/l
     dart.addTypeTests(_PositionedMapEvent);
     _PositionedMapEvent.prototype[_is__PositionedMapEvent_default] = true;
     dart.addTypeCaches(_PositionedMapEvent);
-    dart.setLibraryUri(_PositionedMapEvent, L0);
+    dart.setLibraryUri(_PositionedMapEvent, I[0]);
     dart.setFieldSignature(_PositionedMapEvent, () => ({
       __proto__: dart.getFields(_PositionedMapEvent.__proto__),
       position: dart.finalFieldType(dart.legacy(location.LatLng))
@@ -300,7 +306,7 @@ define(['dart_sdk', 'packages/google_maps_flutter_platform_interface/src/types/l
   }).prototype = map_event.CameraMoveStartedEvent.prototype;
   dart.addTypeTests(map_event.CameraMoveStartedEvent);
   dart.addTypeCaches(map_event.CameraMoveStartedEvent);
-  dart.setLibraryUri(map_event.CameraMoveStartedEvent, L0);
+  dart.setLibraryUri(map_event.CameraMoveStartedEvent, I[0]);
   map_event.CameraMoveEvent = class CameraMoveEvent extends map_event.MapEvent$(dart.legacy(camera.CameraPosition)) {};
   (map_event.CameraMoveEvent.new = function(mapId, position) {
     map_event.CameraMoveEvent.__proto__.new.call(this, mapId, position);
@@ -308,7 +314,7 @@ define(['dart_sdk', 'packages/google_maps_flutter_platform_interface/src/types/l
   }).prototype = map_event.CameraMoveEvent.prototype;
   dart.addTypeTests(map_event.CameraMoveEvent);
   dart.addTypeCaches(map_event.CameraMoveEvent);
-  dart.setLibraryUri(map_event.CameraMoveEvent, L0);
+  dart.setLibraryUri(map_event.CameraMoveEvent, I[0]);
   map_event.CameraIdleEvent = class CameraIdleEvent extends map_event.MapEvent$(dart.void) {};
   (map_event.CameraIdleEvent.new = function(mapId) {
     map_event.CameraIdleEvent.__proto__.new.call(this, mapId, null);
@@ -316,7 +322,7 @@ define(['dart_sdk', 'packages/google_maps_flutter_platform_interface/src/types/l
   }).prototype = map_event.CameraIdleEvent.prototype;
   dart.addTypeTests(map_event.CameraIdleEvent);
   dart.addTypeCaches(map_event.CameraIdleEvent);
-  dart.setLibraryUri(map_event.CameraIdleEvent, L0);
+  dart.setLibraryUri(map_event.CameraIdleEvent, I[0]);
   map_event.MarkerTapEvent = class MarkerTapEvent extends map_event.MapEvent$(dart.legacy(marker.MarkerId)) {};
   (map_event.MarkerTapEvent.new = function(mapId, markerId) {
     map_event.MarkerTapEvent.__proto__.new.call(this, mapId, markerId);
@@ -324,7 +330,7 @@ define(['dart_sdk', 'packages/google_maps_flutter_platform_interface/src/types/l
   }).prototype = map_event.MarkerTapEvent.prototype;
   dart.addTypeTests(map_event.MarkerTapEvent);
   dart.addTypeCaches(map_event.MarkerTapEvent);
-  dart.setLibraryUri(map_event.MarkerTapEvent, L0);
+  dart.setLibraryUri(map_event.MarkerTapEvent, I[0]);
   map_event.InfoWindowTapEvent = class InfoWindowTapEvent extends map_event.MapEvent$(dart.legacy(marker.MarkerId)) {};
   (map_event.InfoWindowTapEvent.new = function(mapId, markerId) {
     map_event.InfoWindowTapEvent.__proto__.new.call(this, mapId, markerId);
@@ -332,7 +338,7 @@ define(['dart_sdk', 'packages/google_maps_flutter_platform_interface/src/types/l
   }).prototype = map_event.InfoWindowTapEvent.prototype;
   dart.addTypeTests(map_event.InfoWindowTapEvent);
   dart.addTypeCaches(map_event.InfoWindowTapEvent);
-  dart.setLibraryUri(map_event.InfoWindowTapEvent, L0);
+  dart.setLibraryUri(map_event.InfoWindowTapEvent, I[0]);
   map_event.MarkerDragEndEvent = class MarkerDragEndEvent extends map_event._PositionedMapEvent$(dart.legacy(marker.MarkerId)) {};
   (map_event.MarkerDragEndEvent.new = function(mapId, position, markerId) {
     map_event.MarkerDragEndEvent.__proto__.new.call(this, mapId, position, markerId);
@@ -340,7 +346,7 @@ define(['dart_sdk', 'packages/google_maps_flutter_platform_interface/src/types/l
   }).prototype = map_event.MarkerDragEndEvent.prototype;
   dart.addTypeTests(map_event.MarkerDragEndEvent);
   dart.addTypeCaches(map_event.MarkerDragEndEvent);
-  dart.setLibraryUri(map_event.MarkerDragEndEvent, L0);
+  dart.setLibraryUri(map_event.MarkerDragEndEvent, I[0]);
   map_event.PolylineTapEvent = class PolylineTapEvent extends map_event.MapEvent$(dart.legacy(polyline.PolylineId)) {};
   (map_event.PolylineTapEvent.new = function(mapId, polylineId) {
     map_event.PolylineTapEvent.__proto__.new.call(this, mapId, polylineId);
@@ -348,7 +354,7 @@ define(['dart_sdk', 'packages/google_maps_flutter_platform_interface/src/types/l
   }).prototype = map_event.PolylineTapEvent.prototype;
   dart.addTypeTests(map_event.PolylineTapEvent);
   dart.addTypeCaches(map_event.PolylineTapEvent);
-  dart.setLibraryUri(map_event.PolylineTapEvent, L0);
+  dart.setLibraryUri(map_event.PolylineTapEvent, I[0]);
   map_event.PolygonTapEvent = class PolygonTapEvent extends map_event.MapEvent$(dart.legacy(polygon.PolygonId)) {};
   (map_event.PolygonTapEvent.new = function(mapId, polygonId) {
     map_event.PolygonTapEvent.__proto__.new.call(this, mapId, polygonId);
@@ -356,7 +362,7 @@ define(['dart_sdk', 'packages/google_maps_flutter_platform_interface/src/types/l
   }).prototype = map_event.PolygonTapEvent.prototype;
   dart.addTypeTests(map_event.PolygonTapEvent);
   dart.addTypeCaches(map_event.PolygonTapEvent);
-  dart.setLibraryUri(map_event.PolygonTapEvent, L0);
+  dart.setLibraryUri(map_event.PolygonTapEvent, I[0]);
   map_event.CircleTapEvent = class CircleTapEvent extends map_event.MapEvent$(dart.legacy(circle.CircleId)) {};
   (map_event.CircleTapEvent.new = function(mapId, circleId) {
     map_event.CircleTapEvent.__proto__.new.call(this, mapId, circleId);
@@ -364,7 +370,7 @@ define(['dart_sdk', 'packages/google_maps_flutter_platform_interface/src/types/l
   }).prototype = map_event.CircleTapEvent.prototype;
   dart.addTypeTests(map_event.CircleTapEvent);
   dart.addTypeCaches(map_event.CircleTapEvent);
-  dart.setLibraryUri(map_event.CircleTapEvent, L0);
+  dart.setLibraryUri(map_event.CircleTapEvent, I[0]);
   map_event.MapTapEvent = class MapTapEvent extends map_event._PositionedMapEvent$(dart.void) {};
   (map_event.MapTapEvent.new = function(mapId, position) {
     map_event.MapTapEvent.__proto__.new.call(this, mapId, position, null);
@@ -372,7 +378,7 @@ define(['dart_sdk', 'packages/google_maps_flutter_platform_interface/src/types/l
   }).prototype = map_event.MapTapEvent.prototype;
   dart.addTypeTests(map_event.MapTapEvent);
   dart.addTypeCaches(map_event.MapTapEvent);
-  dart.setLibraryUri(map_event.MapTapEvent, L0);
+  dart.setLibraryUri(map_event.MapTapEvent, I[0]);
   map_event.MapLongPressEvent = class MapLongPressEvent extends map_event._PositionedMapEvent$(dart.void) {};
   (map_event.MapLongPressEvent.new = function(mapId, position) {
     map_event.MapLongPressEvent.__proto__.new.call(this, mapId, position, null);
@@ -380,34 +386,16 @@ define(['dart_sdk', 'packages/google_maps_flutter_platform_interface/src/types/l
   }).prototype = map_event.MapLongPressEvent.prototype;
   dart.addTypeTests(map_event.MapLongPressEvent);
   dart.addTypeCaches(map_event.MapLongPressEvent);
-  dart.setLibraryUri(map_event.MapLongPressEvent, L0);
+  dart.setLibraryUri(map_event.MapLongPressEvent, I[0]);
   var _channels = dart.privateName(method_channel_google_maps_flutter, "_channels");
   var _mapEventStreamController = dart.privateName(method_channel_google_maps_flutter, "_mapEventStreamController");
   var _handleMethodCall = dart.privateName(method_channel_google_maps_flutter, "_handleMethodCall");
   var _events = dart.privateName(method_channel_google_maps_flutter, "_events");
-  var C0;
   var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
   var _Location_name = dart.privateName(widget_inspector, "_Location.name");
   var _Location_column = dart.privateName(widget_inspector, "_Location.column");
   var _Location_line = dart.privateName(widget_inspector, "_Location.line");
   var _Location_file = dart.privateName(widget_inspector, "_Location.file");
-  var C3;
-  var C4;
-  var C5;
-  var C6;
-  var C7;
-  var C2;
-  var C1;
-  var C10;
-  var C11;
-  var C12;
-  var C13;
-  var C14;
-  var C9;
-  var C8;
-  var C17;
-  var C16;
-  var C15;
   google_maps_flutter_platform.GoogleMapsFlutterPlatform = class GoogleMapsFlutterPlatform extends plugin_platform_interface.PlatformInterface {
     static get instance() {
       return google_maps_flutter_platform.GoogleMapsFlutterPlatform._instance;
@@ -574,7 +562,7 @@ define(['dart_sdk', 'packages/google_maps_flutter_platform_interface/src/types/l
     dispose: dart.fnType(dart.void, [], {mapId: dart.legacy(core.int)}, {}),
     buildView: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(core.Map$(dart.legacy(core.String), dart.dynamic)), dart.legacy(core.Set$(dart.legacy(basic_types.Factory$(dart.legacy(recognizer.OneSequenceGestureRecognizer))))), dart.legacy(dart.fnType(dart.void, [core.int]))])
   }));
-  dart.setLibraryUri(google_maps_flutter_platform.GoogleMapsFlutterPlatform, L2);
+  dart.setLibraryUri(google_maps_flutter_platform.GoogleMapsFlutterPlatform, I[2]);
   dart.defineLazy(google_maps_flutter_platform.GoogleMapsFlutterPlatform, {
     /*google_maps_flutter_platform.GoogleMapsFlutterPlatform._token*/get _token() {
       return new core.Object.new();
@@ -592,7 +580,7 @@ define(['dart_sdk', 'packages/google_maps_flutter_platform_interface/src/types/l
       let channel = null;
       if (!dart.test(this[_channels][$containsKey](mapId))) {
         channel = new platform_channel.MethodChannel.new("plugins.flutter.io/google_maps_" + dart.str(mapId));
-        channel.setMethodCallHandler(dart.fn(call => this[_handleMethodCall](call, mapId), MethodCallLToFutureL()));
+        channel.setMethodCallHandler(dart.fn(call => this[_handleMethodCall](call, mapId), T.MethodCallLToFutureL()));
         this[_channels][$_set](mapId, channel);
       }
       return channel.invokeMethod(dart.void, "map#waitForMap");
@@ -601,51 +589,51 @@ define(['dart_sdk', 'packages/google_maps_flutter_platform_interface/src/types/l
       let mapId = opts && 'mapId' in opts ? opts.mapId : null;
     }
     [_events](mapId) {
-      return this[_mapEventStreamController].stream.where(dart.fn(event => event.mapId == mapId, MapEventLToboolL()));
+      return this[_mapEventStreamController].stream.where(dart.fn(event => event.mapId == mapId, T.MapEventLToboolL()));
     }
     onCameraMoveStarted(opts) {
       let mapId = opts && 'mapId' in opts ? opts.mapId : null;
-      return where['Where|whereType'](MapEventL(), CameraMoveStartedEventL(), this[_events](mapId));
+      return where['Where|whereType'](T.MapEventL(), T.CameraMoveStartedEventL(), this[_events](mapId));
     }
     onCameraMove(opts) {
       let mapId = opts && 'mapId' in opts ? opts.mapId : null;
-      return where['Where|whereType'](MapEventL(), CameraMoveEventL(), this[_events](mapId));
+      return where['Where|whereType'](T.MapEventL(), T.CameraMoveEventL(), this[_events](mapId));
     }
     onCameraIdle(opts) {
       let mapId = opts && 'mapId' in opts ? opts.mapId : null;
-      return where['Where|whereType'](MapEventL(), CameraIdleEventL(), this[_events](mapId));
+      return where['Where|whereType'](T.MapEventL(), T.CameraIdleEventL(), this[_events](mapId));
     }
     onMarkerTap(opts) {
       let mapId = opts && 'mapId' in opts ? opts.mapId : null;
-      return where['Where|whereType'](MapEventL(), MarkerTapEventL(), this[_events](mapId));
+      return where['Where|whereType'](T.MapEventL(), T.MarkerTapEventL(), this[_events](mapId));
     }
     onInfoWindowTap(opts) {
       let mapId = opts && 'mapId' in opts ? opts.mapId : null;
-      return where['Where|whereType'](MapEventL(), InfoWindowTapEventL(), this[_events](mapId));
+      return where['Where|whereType'](T.MapEventL(), T.InfoWindowTapEventL(), this[_events](mapId));
     }
     onMarkerDragEnd(opts) {
       let mapId = opts && 'mapId' in opts ? opts.mapId : null;
-      return where['Where|whereType'](MapEventL(), MarkerDragEndEventL(), this[_events](mapId));
+      return where['Where|whereType'](T.MapEventL(), T.MarkerDragEndEventL(), this[_events](mapId));
     }
     onPolylineTap(opts) {
       let mapId = opts && 'mapId' in opts ? opts.mapId : null;
-      return where['Where|whereType'](MapEventL(), PolylineTapEventL(), this[_events](mapId));
+      return where['Where|whereType'](T.MapEventL(), T.PolylineTapEventL(), this[_events](mapId));
     }
     onPolygonTap(opts) {
       let mapId = opts && 'mapId' in opts ? opts.mapId : null;
-      return where['Where|whereType'](MapEventL(), PolygonTapEventL(), this[_events](mapId));
+      return where['Where|whereType'](T.MapEventL(), T.PolygonTapEventL(), this[_events](mapId));
     }
     onCircleTap(opts) {
       let mapId = opts && 'mapId' in opts ? opts.mapId : null;
-      return where['Where|whereType'](MapEventL(), CircleTapEventL(), this[_events](mapId));
+      return where['Where|whereType'](T.MapEventL(), T.CircleTapEventL(), this[_events](mapId));
     }
     onTap(opts) {
       let mapId = opts && 'mapId' in opts ? opts.mapId : null;
-      return where['Where|whereType'](MapEventL(), MapTapEventL(), this[_events](mapId));
+      return where['Where|whereType'](T.MapEventL(), T.MapTapEventL(), this[_events](mapId));
     }
     onLongPress(opts) {
       let mapId = opts && 'mapId' in opts ? opts.mapId : null;
-      return where['Where|whereType'](MapEventL(), MapLongPressEventL(), this[_events](mapId));
+      return where['Where|whereType'](T.MapEventL(), T.MapLongPressEventL(), this[_events](mapId));
     }
     [_handleMethodCall](call, mapId) {
       return async.async(dart.dynamic, (function* _handleMethodCall() {
@@ -667,32 +655,32 @@ define(['dart_sdk', 'packages/google_maps_flutter_platform_interface/src/types/l
           }
           case "marker#onTap":
           {
-            this[_mapEventStreamController].add(new map_event.MarkerTapEvent.new(mapId, new marker.MarkerId.new(StringL().as(dart.dsend(call.arguments, '_get', ["markerId"])))));
+            this[_mapEventStreamController].add(new map_event.MarkerTapEvent.new(mapId, new marker.MarkerId.new(T.StringL().as(dart.dsend(call.arguments, '_get', ["markerId"])))));
             break;
           }
           case "marker#onDragEnd":
           {
-            this[_mapEventStreamController].add(new map_event.MarkerDragEndEvent.new(mapId, location.LatLng.fromJson(dart.dsend(call.arguments, '_get', ["position"])), new marker.MarkerId.new(StringL().as(dart.dsend(call.arguments, '_get', ["markerId"])))));
+            this[_mapEventStreamController].add(new map_event.MarkerDragEndEvent.new(mapId, location.LatLng.fromJson(dart.dsend(call.arguments, '_get', ["position"])), new marker.MarkerId.new(T.StringL().as(dart.dsend(call.arguments, '_get', ["markerId"])))));
             break;
           }
           case "infoWindow#onTap":
           {
-            this[_mapEventStreamController].add(new map_event.InfoWindowTapEvent.new(mapId, new marker.MarkerId.new(StringL().as(dart.dsend(call.arguments, '_get', ["markerId"])))));
+            this[_mapEventStreamController].add(new map_event.InfoWindowTapEvent.new(mapId, new marker.MarkerId.new(T.StringL().as(dart.dsend(call.arguments, '_get', ["markerId"])))));
             break;
           }
           case "polyline#onTap":
           {
-            this[_mapEventStreamController].add(new map_event.PolylineTapEvent.new(mapId, new polyline.PolylineId.new(StringL().as(dart.dsend(call.arguments, '_get', ["polylineId"])))));
+            this[_mapEventStreamController].add(new map_event.PolylineTapEvent.new(mapId, new polyline.PolylineId.new(T.StringL().as(dart.dsend(call.arguments, '_get', ["polylineId"])))));
             break;
           }
           case "polygon#onTap":
           {
-            this[_mapEventStreamController].add(new map_event.PolygonTapEvent.new(mapId, new polygon.PolygonId.new(StringL().as(dart.dsend(call.arguments, '_get', ["polygonId"])))));
+            this[_mapEventStreamController].add(new map_event.PolygonTapEvent.new(mapId, new polygon.PolygonId.new(T.StringL().as(dart.dsend(call.arguments, '_get', ["polygonId"])))));
             break;
           }
           case "circle#onTap":
           {
-            this[_mapEventStreamController].add(new map_event.CircleTapEvent.new(mapId, new circle.CircleId.new(StringL().as(dart.dsend(call.arguments, '_get', ["circleId"])))));
+            this[_mapEventStreamController].add(new map_event.CircleTapEvent.new(mapId, new circle.CircleId.new(T.StringL().as(dart.dsend(call.arguments, '_get', ["circleId"])))));
             break;
           }
           case "map#onTap":
@@ -714,51 +702,51 @@ define(['dart_sdk', 'packages/google_maps_flutter_platform_interface/src/types/l
     }
     updateMapOptions(optionsUpdate, opts) {
       let mapId = opts && 'mapId' in opts ? opts.mapId : null;
-      if (!(optionsUpdate != null)) dart.assertFailed(null, L1, 203, 12, "optionsUpdate != null");
-      return this.channel(mapId).invokeMethod(dart.void, "map#update", new (IdentityMapOfStringL$dynamic()).from(["options", optionsUpdate]));
+      if (!(optionsUpdate != null)) dart.assertFailed(null, I[1], 203, 12, "optionsUpdate != null");
+      return this.channel(mapId).invokeMethod(dart.void, "map#update", new (T.IdentityMapOfStringL$dynamic()).from(["options", optionsUpdate]));
     }
     updateMarkers(markerUpdates, opts) {
       let mapId = opts && 'mapId' in opts ? opts.mapId : null;
-      if (!(markerUpdates != null)) dart.assertFailed(null, L1, 223, 12, "markerUpdates != null");
+      if (!(markerUpdates != null)) dart.assertFailed(null, I[1], 223, 12, "markerUpdates != null");
       return this.channel(mapId).invokeMethod(dart.void, "markers#update", markerUpdates.toJson());
     }
     updatePolygons(polygonUpdates, opts) {
       let mapId = opts && 'mapId' in opts ? opts.mapId : null;
-      if (!(polygonUpdates != null)) dart.assertFailed(null, L1, 241, 12, "polygonUpdates != null");
+      if (!(polygonUpdates != null)) dart.assertFailed(null, I[1], 241, 12, "polygonUpdates != null");
       return this.channel(mapId).invokeMethod(dart.void, "polygons#update", polygonUpdates.toJson());
     }
     updatePolylines(polylineUpdates, opts) {
       let mapId = opts && 'mapId' in opts ? opts.mapId : null;
-      if (!(polylineUpdates != null)) dart.assertFailed(null, L1, 259, 12, "polylineUpdates != null");
+      if (!(polylineUpdates != null)) dart.assertFailed(null, I[1], 259, 12, "polylineUpdates != null");
       return this.channel(mapId).invokeMethod(dart.void, "polylines#update", polylineUpdates.toJson());
     }
     updateCircles(circleUpdates, opts) {
       let mapId = opts && 'mapId' in opts ? opts.mapId : null;
-      if (!(circleUpdates != null)) dart.assertFailed(null, L1, 277, 12, "circleUpdates != null");
+      if (!(circleUpdates != null)) dart.assertFailed(null, I[1], 277, 12, "circleUpdates != null");
       return this.channel(mapId).invokeMethod(dart.void, "circles#update", circleUpdates.toJson());
     }
     animateCamera(cameraUpdate, opts) {
       let mapId = opts && 'mapId' in opts ? opts.mapId : null;
-      return this.channel(mapId).invokeMethod(dart.void, "camera#animate", new (IdentityMapOfStringL$dynamic()).from(["cameraUpdate", cameraUpdate.toJson()]));
+      return this.channel(mapId).invokeMethod(dart.void, "camera#animate", new (T.IdentityMapOfStringL$dynamic()).from(["cameraUpdate", cameraUpdate.toJson()]));
     }
     moveCamera(cameraUpdate, opts) {
       let mapId = opts && 'mapId' in opts ? opts.mapId : null;
-      return this.channel(mapId).invokeMethod(dart.void, "camera#move", new (IdentityMapOfStringL$dynamic()).from(["cameraUpdate", cameraUpdate.toJson()]));
+      return this.channel(mapId).invokeMethod(dart.void, "camera#move", new (T.IdentityMapOfStringL$dynamic()).from(["cameraUpdate", cameraUpdate.toJson()]));
     }
     setMapStyle(mapStyle, opts) {
       let mapId = opts && 'mapId' in opts ? opts.mapId : null;
       return async.async(dart.void, (function* setMapStyle() {
-        let successAndError = (yield this.channel(mapId).invokeMethod(ListL(), "map#setStyle", mapStyle));
-        let success = boolL().as(successAndError[$_get](0));
+        let successAndError = (yield this.channel(mapId).invokeMethod(T.ListL(), "map#setStyle", mapStyle));
+        let success = T.boolL().as(successAndError[$_get](0));
         if (!dart.test(success)) {
-          dart.throw(new ui.MapStyleException.new(StringL().as(successAndError[$_get](1))));
+          dart.throw(new ui.MapStyleException.new(T.StringL().as(successAndError[$_get](1))));
         }
       }).bind(this));
     }
     getVisibleRegion(opts) {
       let mapId = opts && 'mapId' in opts ? opts.mapId : null;
-      return async.async(LatLngBoundsL(), (function* getVisibleRegion() {
-        let latLngBounds = (yield this.channel(mapId).invokeMapMethod(StringL(), dart.dynamic, "map#getVisibleRegion"));
+      return async.async(T.LatLngBoundsL(), (function* getVisibleRegion() {
+        let latLngBounds = (yield this.channel(mapId).invokeMapMethod(T.StringL(), dart.dynamic, "map#getVisibleRegion"));
         let southwest = location.LatLng.fromJson(latLngBounds[$_get]("southwest"));
         let northeast = location.LatLng.fromJson(latLngBounds[$_get]("northeast"));
         return new location.LatLngBounds.new({northeast: northeast, southwest: southwest});
@@ -766,53 +754,53 @@ define(['dart_sdk', 'packages/google_maps_flutter_platform_interface/src/types/l
     }
     getScreenCoordinate(latLng, opts) {
       let mapId = opts && 'mapId' in opts ? opts.mapId : null;
-      return async.async(ScreenCoordinateL(), (function* getScreenCoordinate() {
-        let point = (yield this.channel(mapId).invokeMapMethod(StringL(), intL(), "map#getScreenCoordinate", latLng.toJson()));
+      return async.async(T.ScreenCoordinateL(), (function* getScreenCoordinate() {
+        let point = (yield this.channel(mapId).invokeMapMethod(T.StringL(), T.intL(), "map#getScreenCoordinate", latLng.toJson()));
         return new screen_coordinate.ScreenCoordinate.new({x: point[$_get]("x"), y: point[$_get]("y")});
       }).bind(this));
     }
     getLatLng(screenCoordinate, opts) {
       let mapId = opts && 'mapId' in opts ? opts.mapId : null;
-      return async.async(LatLngL(), (function* getLatLng() {
-        let latLng = (yield this.channel(mapId).invokeMethod(ListL(), "map#getLatLng", screenCoordinate.toJson()));
-        return new location.LatLng.new(doubleL().as(latLng[$_get](0)), doubleL().as(latLng[$_get](1)));
+      return async.async(T.LatLngL(), (function* getLatLng() {
+        let latLng = (yield this.channel(mapId).invokeMethod(T.ListL(), "map#getLatLng", screenCoordinate.toJson()));
+        return new location.LatLng.new(T.doubleL().as(latLng[$_get](0)), T.doubleL().as(latLng[$_get](1)));
       }).bind(this));
     }
     showMarkerInfoWindow(markerId, opts) {
       let mapId = opts && 'mapId' in opts ? opts.mapId : null;
-      if (!(markerId != null)) dart.assertFailed(null, L1, 397, 12, "markerId != null");
-      return this.channel(mapId).invokeMethod(dart.void, "markers#showInfoWindow", new (IdentityMapOfStringL$StringL()).from(["markerId", markerId.value]));
+      if (!(markerId != null)) dart.assertFailed(null, I[1], 397, 12, "markerId != null");
+      return this.channel(mapId).invokeMethod(dart.void, "markers#showInfoWindow", new (T.IdentityMapOfStringL$StringL()).from(["markerId", markerId.value]));
     }
     hideMarkerInfoWindow(markerId, opts) {
       let mapId = opts && 'mapId' in opts ? opts.mapId : null;
-      if (!(markerId != null)) dart.assertFailed(null, L1, 415, 12, "markerId != null");
-      return this.channel(mapId).invokeMethod(dart.void, "markers#hideInfoWindow", new (IdentityMapOfStringL$StringL()).from(["markerId", markerId.value]));
+      if (!(markerId != null)) dart.assertFailed(null, I[1], 415, 12, "markerId != null");
+      return this.channel(mapId).invokeMethod(dart.void, "markers#hideInfoWindow", new (T.IdentityMapOfStringL$StringL()).from(["markerId", markerId.value]));
     }
     isMarkerInfoWindowShown(markerId, opts) {
       let mapId = opts && 'mapId' in opts ? opts.mapId : null;
-      if (!(markerId != null)) dart.assertFailed(null, L1, 433, 12, "markerId != null");
-      return this.channel(mapId).invokeMethod(boolL(), "markers#isInfoWindowShown", new (IdentityMapOfStringL$StringL()).from(["markerId", markerId.value]));
+      if (!(markerId != null)) dart.assertFailed(null, I[1], 433, 12, "markerId != null");
+      return this.channel(mapId).invokeMethod(T.boolL(), "markers#isInfoWindowShown", new (T.IdentityMapOfStringL$StringL()).from(["markerId", markerId.value]));
     }
     getZoomLevel(opts) {
       let mapId = opts && 'mapId' in opts ? opts.mapId : null;
-      return this.channel(mapId).invokeMethod(doubleL(), "map#getZoomLevel");
+      return this.channel(mapId).invokeMethod(T.doubleL(), "map#getZoomLevel");
     }
     takeSnapshot(opts) {
       let mapId = opts && 'mapId' in opts ? opts.mapId : null;
-      return this.channel(mapId).invokeMethod(Uint8ListL(), "map#takeSnapshot");
+      return this.channel(mapId).invokeMethod(T.Uint8ListL(), "map#takeSnapshot");
     }
     buildView(creationParams, gestureRecognizers, onPlatformViewCreated) {
       if (dart.equals(platform.defaultTargetPlatform, platform.TargetPlatform.android)) {
-        return new platform_view.AndroidView.new({viewType: "plugins.flutter.io/google_maps", onPlatformViewCreated: onPlatformViewCreated, gestureRecognizers: gestureRecognizers, creationParams: creationParams, creationParamsCodec: C0 || CT.C0, $creationLocationd_0dea112b090073317d4: C1 || CT.C1});
+        return new platform_view.AndroidView.new({viewType: "plugins.flutter.io/google_maps", onPlatformViewCreated: onPlatformViewCreated, gestureRecognizers: gestureRecognizers, creationParams: creationParams, creationParamsCodec: C[0] || CT.C0, $creationLocationd_0dea112b090073317d4: C[1] || CT.C1});
       } else if (dart.equals(platform.defaultTargetPlatform, platform.TargetPlatform.iOS)) {
-        return new platform_view.UiKitView.new({viewType: "plugins.flutter.io/google_maps", onPlatformViewCreated: onPlatformViewCreated, gestureRecognizers: gestureRecognizers, creationParams: creationParams, creationParamsCodec: C0 || CT.C0, $creationLocationd_0dea112b090073317d4: C8 || CT.C8});
+        return new platform_view.UiKitView.new({viewType: "plugins.flutter.io/google_maps", onPlatformViewCreated: onPlatformViewCreated, gestureRecognizers: gestureRecognizers, creationParams: creationParams, creationParamsCodec: C[0] || CT.C0, $creationLocationd_0dea112b090073317d4: C[8] || CT.C8});
       }
-      return new text.Text.new(dart.str(platform.defaultTargetPlatform) + " is not yet supported by the maps plugin", {$creationLocationd_0dea112b090073317d4: C15 || CT.C15});
+      return new text.Text.new(dart.str(platform.defaultTargetPlatform) + " is not yet supported by the maps plugin", {$creationLocationd_0dea112b090073317d4: C[15] || CT.C15});
     }
   };
   (method_channel_google_maps_flutter.MethodChannelGoogleMapsFlutter.new = function() {
-    this[_channels] = new (IdentityMapOfintL$MethodChannelL()).new();
-    this[_mapEventStreamController] = StreamControllerOfMapEventL().broadcast();
+    this[_channels] = new (T.IdentityMapOfintL$MethodChannelL()).new();
+    this[_mapEventStreamController] = T.StreamControllerOfMapEventL().broadcast();
     method_channel_google_maps_flutter.MethodChannelGoogleMapsFlutter.__proto__.new.call(this);
     ;
   }).prototype = method_channel_google_maps_flutter.MethodChannelGoogleMapsFlutter.prototype;
@@ -824,7 +812,7 @@ define(['dart_sdk', 'packages/google_maps_flutter_platform_interface/src/types/l
     [_events]: dart.fnType(dart.legacy(async.Stream$(dart.legacy(map_event.MapEvent))), [dart.legacy(core.int)]),
     [_handleMethodCall]: dart.fnType(dart.legacy(async.Future), [dart.legacy(message_codec.MethodCall), dart.legacy(core.int)])
   }));
-  dart.setLibraryUri(method_channel_google_maps_flutter.MethodChannelGoogleMapsFlutter, L3);
+  dart.setLibraryUri(method_channel_google_maps_flutter.MethodChannelGoogleMapsFlutter, I[3]);
   dart.setFieldSignature(method_channel_google_maps_flutter.MethodChannelGoogleMapsFlutter, () => ({
     __proto__: dart.getFields(method_channel_google_maps_flutter.MethodChannelGoogleMapsFlutter.__proto__),
     [_channels]: dart.finalFieldType(dart.legacy(core.Map$(dart.legacy(core.int), dart.legacy(platform_channel.MethodChannel)))),
@@ -836,7 +824,7 @@ define(['dart_sdk', 'packages/google_maps_flutter_platform_interface/src/types/l
     "package:google_maps_flutter_platform_interface/src/platform_interface/google_maps_flutter_platform.dart": google_maps_flutter_platform,
     "package:google_maps_flutter_platform_interface/google_maps_flutter_platform_interface.dart": google_maps_flutter_platform_interface
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["map_event.dart","../platform_interface/google_maps_flutter_platform.dart","../method_channel/method_channel_google_maps_flutter.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../packages/google_maps_flutter_platform_interface/src/events/map_event.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["map_event.dart","../platform_interface/google_maps_flutter_platform.dart","../method_channel/method_channel_google_maps_flutter.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../packages/google_maps_flutter_platform_interface/src/events/map_event.dart.lib.js"}');
   // Exports:
   return {
     src__events__map_event: map_event,

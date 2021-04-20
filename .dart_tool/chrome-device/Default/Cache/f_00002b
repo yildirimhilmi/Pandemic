@@ -1,785 +1,973 @@
-define(['dart_sdk', 'packages/flutter/src/animation/listener_helpers.dart', 'packages/flutter/src/foundation/debug.dart', 'packages/flutter/src/animation/curves.dart', 'packages/flutter/src/semantics/binding.dart', 'packages/flutter/src/scheduler/ticker.dart', 'packages/flutter/src/physics/spring_simulation.dart', 'packages/flutter/src/physics/simulation.dart', 'packages/flutter/src/physics/tolerance.dart'], (function load__packages__flutter__src__animation__animation_controller_dart(dart_sdk, packages__flutter__src__animation__listener_helpers$46dart, packages__flutter__src__foundation__debug$46dart, packages__flutter__src__animation__curves$46dart, packages__flutter__src__semantics__binding$46dart, packages__flutter__src__scheduler__ticker$46dart, packages__flutter__src__physics__spring_simulation$46dart, packages__flutter__src__physics__simulation$46dart, packages__flutter__src__physics__tolerance$46dart) {
+define(['dart_sdk', 'packages/flutter/src/rendering/layer.dart', 'packages/flutter/src/gestures/recognizer.dart', 'packages/flutter/src/gestures/hit_test.dart', 'packages/flutter/src/gestures/events.dart', 'packages/flutter/src/foundation/basic_types.dart', 'packages/flutter/src/services/platform_views.dart', 'packages/flutter/src/gestures/binding.dart', 'packages/flutter/src/gestures/team.dart', 'packages/flutter/src/gestures/long_press.dart', 'packages/flutter/src/gestures/monodrag.dart', 'packages/flutter/src/gestures/drag_details.dart', 'packages/flutter/src/gestures/tap.dart', 'packages/flutter/src/gestures/arena.dart', 'packages/flutter/src/foundation/collections.dart'], (function load__packages__flutter__src__rendering__platform_view_dart(dart_sdk, packages__flutter__src__rendering__layer$46dart, packages__flutter__src__gestures__recognizer$46dart, packages__flutter__src__gestures__hit_test$46dart, packages__flutter__src__gestures__events$46dart, packages__flutter__src__foundation__basic_types$46dart, packages__flutter__src__services__platform_views$46dart, packages__flutter__src__gestures__binding$46dart, packages__flutter__src__gestures__team$46dart, packages__flutter__src__gestures__long_press$46dart, packages__flutter__src__gestures__monodrag$46dart, packages__flutter__src__gestures__drag_details$46dart, packages__flutter__src__gestures__tap$46dart, packages__flutter__src__gestures__arena$46dart, packages__flutter__src__foundation__collections$46dart) {
   'use strict';
   const core = dart_sdk.core;
-  const _internal = dart_sdk._internal;
-  const _interceptors = dart_sdk._interceptors;
   const ui = dart_sdk.ui;
+  const _internal = dart_sdk._internal;
+  const async = dart_sdk.async;
+  const _js_helper = dart_sdk._js_helper;
+  const collection = dart_sdk.collection;
+  const _interceptors = dart_sdk._interceptors;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const animation = packages__flutter__src__animation__listener_helpers$46dart.src__animation__animation;
-  const listener_helpers = packages__flutter__src__animation__listener_helpers$46dart.src__animation__listener_helpers;
-  const assertions = packages__flutter__src__foundation__debug$46dart.src__foundation__assertions;
-  const diagnostics = packages__flutter__src__foundation__debug$46dart.src__foundation__diagnostics;
-  const curves = packages__flutter__src__animation__curves$46dart.src__animation__curves;
-  const binding = packages__flutter__src__semantics__binding$46dart.src__semantics__binding;
-  const ticker = packages__flutter__src__scheduler__ticker$46dart.src__scheduler__ticker;
-  const spring_simulation = packages__flutter__src__physics__spring_simulation$46dart.src__physics__spring_simulation;
-  const simulation = packages__flutter__src__physics__simulation$46dart.src__physics__simulation;
-  const tolerance = packages__flutter__src__physics__tolerance$46dart.src__physics__tolerance;
-  var animation_controller = Object.create(dart.library);
-  var $toDouble = dartx.toDouble;
-  var $clamp = dartx.clamp;
-  var $isFinite = dartx.isFinite;
-  var $abs = dartx.abs;
-  var $runtimeType = dartx.runtimeType;
-  var $toStringAsFixed = dartx.toStringAsFixed;
-  var $modulo = dartx['%'];
-  var $isOdd = dartx.isOdd;
-  var $truncate = dartx.truncate;
-  var _AnimationDirectionL = () => (_AnimationDirectionL = dart.constFn(dart.legacy(animation_controller._AnimationDirection)))();
-  var AnimationBehaviorL = () => (AnimationBehaviorL = dart.constFn(dart.legacy(animation_controller.AnimationBehavior)))();
-  var VoidTobool = () => (VoidTobool = dart.constFn(dart.fnType(core.bool, [])))();
-  var DiagnosticsPropertyOfAnimationController = () => (DiagnosticsPropertyOfAnimationController = dart.constFn(diagnostics.DiagnosticsProperty$(animation_controller.AnimationController)))();
-  var JSArrayOfDiagnosticsNode = () => (JSArrayOfDiagnosticsNode = dart.constFn(_interceptors.JSArray$(diagnostics.DiagnosticsNode)))();
+  const layer = packages__flutter__src__rendering__layer$46dart.src__rendering__layer;
+  const box = packages__flutter__src__rendering__layer$46dart.src__rendering__box;
+  const mouse_cursor = packages__flutter__src__rendering__layer$46dart.src__rendering__mouse_cursor;
+  const mouse_tracking = packages__flutter__src__rendering__layer$46dart.src__rendering__mouse_tracking;
+  const object = packages__flutter__src__rendering__layer$46dart.src__rendering__object;
+  const recognizer = packages__flutter__src__gestures__recognizer$46dart.src__gestures__recognizer;
+  const hit_test = packages__flutter__src__gestures__hit_test$46dart.src__gestures__hit_test;
+  const events = packages__flutter__src__gestures__events$46dart.src__gestures__events;
+  const basic_types = packages__flutter__src__foundation__basic_types$46dart.src__foundation__basic_types;
+  const platform_views = packages__flutter__src__services__platform_views$46dart.src__services__platform_views;
+  const binding = packages__flutter__src__gestures__binding$46dart.src__gestures__binding;
+  const team = packages__flutter__src__gestures__team$46dart.src__gestures__team;
+  const long_press = packages__flutter__src__gestures__long_press$46dart.src__gestures__long_press;
+  const monodrag = packages__flutter__src__gestures__monodrag$46dart.src__gestures__monodrag;
+  const drag_details = packages__flutter__src__gestures__drag_details$46dart.src__gestures__drag_details;
+  const tap = packages__flutter__src__gestures__tap$46dart.src__gestures__tap;
+  const arena = packages__flutter__src__gestures__arena$46dart.src__gestures__arena;
+  const collections = packages__flutter__src__foundation__collections$46dart.src__foundation__collections;
+  var platform_view = Object.create(dart.library);
+  var $length = dartx.length;
+  var $map = dartx.map;
+  var $toSet = dartx.toSet;
+  var $remove = dartx.remove;
+  var $containsKey = dartx.containsKey;
+  var $_set = dartx._set;
+  var $_get = dartx._get;
+  var $add = dartx.add;
+  var $forEach = dartx.forEach;
+  var $keys = dartx.keys;
+  var $clear = dartx.clear;
+  dart._checkModuleNullSafetyMode(false);
+  var T = Object.create({
+    PlatformViewHitTestBehaviorL: () => (T.PlatformViewHitTestBehaviorL = dart.constFn(dart.legacy(platform_view.PlatformViewHitTestBehavior)))(),
+    _PlatformViewStateL: () => (T._PlatformViewStateL = dart.constFn(dart.legacy(platform_view._PlatformViewState)))(),
+    OffsetToOffset: () => (T.OffsetToOffset = dart.constFn(dart.fnType(ui.Offset, [ui.Offset])))(),
+    VoidTovoid: () => (T.VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))(),
+    DragDownDetailsTovoid: () => (T.DragDownDetailsTovoid = dart.constFn(dart.fnType(dart.void, [drag_details.DragDownDetails])))(),
+    TapDownDetailsTovoid: () => (T.TapDownDetailsTovoid = dart.constFn(dart.fnType(dart.void, [tap.TapDownDetails])))(),
+    FactoryOfOneSequenceGestureRecognizer: () => (T.FactoryOfOneSequenceGestureRecognizer = dart.constFn(basic_types.Factory$(recognizer.OneSequenceGestureRecognizer)))(),
+    FactoryOfOneSequenceGestureRecognizerToOneSequenceGestureRecognizer: () => (T.FactoryOfOneSequenceGestureRecognizerToOneSequenceGestureRecognizer = dart.constFn(dart.fnType(recognizer.OneSequenceGestureRecognizer, [T.FactoryOfOneSequenceGestureRecognizer()])))(),
+    ListOfPointerEvent: () => (T.ListOfPointerEvent = dart.constFn(core.List$(events.PointerEvent)))(),
+    IdentityMapOfint$ListOfPointerEvent: () => (T.IdentityMapOfint$ListOfPointerEvent = dart.constFn(_js_helper.IdentityMap$(core.int, T.ListOfPointerEvent())))(),
+    LinkedHashSetOfint: () => (T.LinkedHashSetOfint = dart.constFn(collection.LinkedHashSet$(core.int)))(),
+    JSArrayOfPointerEvent: () => (T.JSArrayOfPointerEvent = dart.constFn(_interceptors.JSArray$(events.PointerEvent)))()
+  });
   const CT = Object.create(null);
-  var L0 = "file:///C:/src/flutter/packages/flutter/lib/src/animation/animation_controller.dart";
-  var L1 = "package:flutter/src/animation/animation_controller.dart";
   dart.defineLazy(CT, {
     get C0() {
-      return C0 = dart.const({
-        __proto__: animation_controller._AnimationDirection.prototype,
-        [_name$]: "_AnimationDirection.forward",
+      return C[0] = dart.const({
+        __proto__: platform_view.PlatformViewHitTestBehavior.prototype,
+        [_name$]: "PlatformViewHitTestBehavior.opaque",
         index: 0
       });
     },
     get C1() {
-      return C1 = dart.const({
-        __proto__: animation_controller._AnimationDirection.prototype,
-        [_name$]: "_AnimationDirection.reverse",
+      return C[1] = dart.const({
+        __proto__: platform_view.PlatformViewHitTestBehavior.prototype,
+        [_name$]: "PlatformViewHitTestBehavior.translucent",
         index: 1
       });
     },
     get C2() {
-      return C2 = dart.constList([C0 || CT.C0, C1 || CT.C1], _AnimationDirectionL());
+      return C[2] = dart.const({
+        __proto__: platform_view.PlatformViewHitTestBehavior.prototype,
+        [_name$]: "PlatformViewHitTestBehavior.transparent",
+        index: 2
+      });
     },
     get C3() {
-      return C3 = dart.const({
-        __proto__: animation_controller.AnimationBehavior.prototype,
-        [_name$]: "AnimationBehavior.normal",
+      return C[3] = dart.constList([C[0] || CT.C0, C[1] || CT.C1, C[2] || CT.C2], T.PlatformViewHitTestBehaviorL());
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: platform_view._PlatformViewState.prototype,
+        [_name$]: "_PlatformViewState.uninitialized",
         index: 0
       });
     },
-    get C4() {
-      return C4 = dart.const({
-        __proto__: animation_controller.AnimationBehavior.prototype,
-        [_name$]: "AnimationBehavior.preserve",
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: platform_view._PlatformViewState.prototype,
+        [_name$]: "_PlatformViewState.resizing",
         index: 1
       });
     },
-    get C5() {
-      return C5 = dart.constList([C3 || CT.C3, C4 || CT.C4], AnimationBehaviorL());
-    },
     get C6() {
-      return C6 = dart.const({
-        __proto__: curves._Linear.prototype
+      return C[6] = dart.const({
+        __proto__: platform_view._PlatformViewState.prototype,
+        [_name$]: "_PlatformViewState.ready",
+        index: 2
       });
     },
     get C7() {
-      return C7 = dart.const({
-        __proto__: tolerance.Tolerance.prototype,
-        [Tolerance_velocity]: 1 / 0,
-        [Tolerance_time]: 0.001,
-        [Tolerance_distance]: 0.01
+      return C[7] = dart.constList([C[4] || CT.C4, C[5] || CT.C5, C[6] || CT.C6], T._PlatformViewStateL());
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: ui.Clip.prototype,
+        [_name]: "Clip.hardEdge",
+        index: 1
       });
     }
   }, false);
-  var _name$ = dart.privateName(animation_controller, "_name");
-  var C0;
-  var C1;
-  var C2;
-  animation_controller._AnimationDirection = class _AnimationDirection extends core.Object {
+  var C = Array(9).fill(void 0);
+  var I = [
+    "file:///C:/src/flutter/flutter/packages/flutter/lib/src/rendering/platform_view.dart",
+    "package:flutter/src/rendering/platform_view.dart"
+  ];
+  var _name$ = dart.privateName(platform_view, "_name");
+  platform_view.PlatformViewHitTestBehavior = class PlatformViewHitTestBehavior extends core.Object {
     toString() {
       return this[_name$];
     }
   };
-  (animation_controller._AnimationDirection.new = function(index, _name) {
-    if (index == null) dart.nullFailed(L0, 25, 6, "index");
-    if (_name == null) dart.nullFailed(L0, 25, 6, "_name");
+  (platform_view.PlatformViewHitTestBehavior.new = function(index, _name) {
+    if (index == null) dart.nullFailed(I[0], 20, 6, "index");
+    if (_name == null) dart.nullFailed(I[0], 20, 6, "_name");
     this.index = index;
     this[_name$] = _name;
     ;
-  }).prototype = animation_controller._AnimationDirection.prototype;
-  dart.addTypeTests(animation_controller._AnimationDirection);
-  dart.addTypeCaches(animation_controller._AnimationDirection);
-  dart.setLibraryUri(animation_controller._AnimationDirection, L1);
-  dart.setFieldSignature(animation_controller._AnimationDirection, () => ({
-    __proto__: dart.getFields(animation_controller._AnimationDirection.__proto__),
+  }).prototype = platform_view.PlatformViewHitTestBehavior.prototype;
+  dart.addTypeTests(platform_view.PlatformViewHitTestBehavior);
+  dart.addTypeCaches(platform_view.PlatformViewHitTestBehavior);
+  dart.setLibraryUri(platform_view.PlatformViewHitTestBehavior, I[1]);
+  dart.setFieldSignature(platform_view.PlatformViewHitTestBehavior, () => ({
+    __proto__: dart.getFields(platform_view.PlatformViewHitTestBehavior.__proto__),
     index: dart.finalFieldType(core.int),
     [_name$]: dart.finalFieldType(core.String)
   }));
-  dart.defineExtensionMethods(animation_controller._AnimationDirection, ['toString']);
-  animation_controller._AnimationDirection.forward = C0 || CT.C0;
-  animation_controller._AnimationDirection.reverse = C1 || CT.C1;
-  animation_controller._AnimationDirection.values = C2 || CT.C2;
-  var C3;
-  var C4;
-  var C5;
-  animation_controller.AnimationBehavior = class AnimationBehavior extends core.Object {
+  dart.defineExtensionMethods(platform_view.PlatformViewHitTestBehavior, ['toString']);
+  platform_view.PlatformViewHitTestBehavior.opaque = C[0] || CT.C0;
+  platform_view.PlatformViewHitTestBehavior.translucent = C[1] || CT.C1;
+  platform_view.PlatformViewHitTestBehavior.transparent = C[2] || CT.C2;
+  platform_view.PlatformViewHitTestBehavior.values = C[3] || CT.C3;
+  platform_view._PlatformViewState = class _PlatformViewState extends core.Object {
     toString() {
       return this[_name$];
     }
   };
-  (animation_controller.AnimationBehavior.new = function(index, _name) {
-    if (index == null) dart.nullFailed(L0, 56, 6, "index");
-    if (_name == null) dart.nullFailed(L0, 56, 6, "_name");
+  (platform_view._PlatformViewState.new = function(index, _name) {
+    if (index == null) dart.nullFailed(I[0], 35, 6, "index");
+    if (_name == null) dart.nullFailed(I[0], 35, 6, "_name");
     this.index = index;
     this[_name$] = _name;
     ;
-  }).prototype = animation_controller.AnimationBehavior.prototype;
-  dart.addTypeTests(animation_controller.AnimationBehavior);
-  dart.addTypeCaches(animation_controller.AnimationBehavior);
-  dart.setLibraryUri(animation_controller.AnimationBehavior, L1);
-  dart.setFieldSignature(animation_controller.AnimationBehavior, () => ({
-    __proto__: dart.getFields(animation_controller.AnimationBehavior.__proto__),
+  }).prototype = platform_view._PlatformViewState.prototype;
+  dart.addTypeTests(platform_view._PlatformViewState);
+  dart.addTypeCaches(platform_view._PlatformViewState);
+  dart.setLibraryUri(platform_view._PlatformViewState, I[1]);
+  dart.setFieldSignature(platform_view._PlatformViewState, () => ({
+    __proto__: dart.getFields(platform_view._PlatformViewState.__proto__),
     index: dart.finalFieldType(core.int),
     [_name$]: dart.finalFieldType(core.String)
   }));
-  dart.defineExtensionMethods(animation_controller.AnimationBehavior, ['toString']);
-  animation_controller.AnimationBehavior.normal = C3 || CT.C3;
-  animation_controller.AnimationBehavior.preserve = C4 || CT.C4;
-  animation_controller.AnimationBehavior.values = C5 || CT.C5;
-  var _ticker = dart.privateName(animation_controller, "_ticker");
-  var _simulation = dart.privateName(animation_controller, "_simulation");
-  var __AnimationController__value = dart.privateName(animation_controller, "_#AnimationController#_value");
-  var __AnimationController__value_isSet = dart.privateName(animation_controller, "_#AnimationController#_value#isSet");
-  var _lastElapsedDuration = dart.privateName(animation_controller, "_lastElapsedDuration");
-  var __AnimationController__status = dart.privateName(animation_controller, "_#AnimationController#_status");
-  var __AnimationController__status_isSet = dart.privateName(animation_controller, "_#AnimationController#_status#isSet");
-  var _lastReportedStatus = dart.privateName(animation_controller, "_lastReportedStatus");
-  var _direction = dart.privateName(animation_controller, "_direction");
-  var _tick = dart.privateName(animation_controller, "_tick");
-  var _internalSetValue = dart.privateName(animation_controller, "_internalSetValue");
-  var _value = dart.privateName(animation_controller, "_value");
-  var _checkStatusChanged = dart.privateName(animation_controller, "_checkStatusChanged");
-  var _status = dart.privateName(animation_controller, "_status");
-  var _animateToInternal = dart.privateName(animation_controller, "_animateToInternal");
-  var C6;
-  var _startSimulation = dart.privateName(animation_controller, "_startSimulation");
-  var _directionSetter = dart.privateName(animation_controller, "_directionSetter");
-  var lowerBound$ = dart.privateName(animation_controller, "AnimationController.lowerBound");
-  var upperBound$ = dart.privateName(animation_controller, "AnimationController.upperBound");
-  var debugLabel$ = dart.privateName(animation_controller, "AnimationController.debugLabel");
-  var animationBehavior$ = dart.privateName(animation_controller, "AnimationController.animationBehavior");
-  var duration$ = dart.privateName(animation_controller, "AnimationController.duration");
-  var reverseDuration$ = dart.privateName(animation_controller, "AnimationController.reverseDuration");
-  const Animation_AnimationEagerListenerMixin$36 = class Animation_AnimationEagerListenerMixin extends animation.Animation$(core.double) {};
-  (Animation_AnimationEagerListenerMixin$36.new = function() {
-    Animation_AnimationEagerListenerMixin$36.__proto__.new.call(this);
-  }).prototype = Animation_AnimationEagerListenerMixin$36.prototype;
-  dart.applyMixin(Animation_AnimationEagerListenerMixin$36, listener_helpers.AnimationEagerListenerMixin);
-  const Animation_AnimationLocalListenersMixin$36 = class Animation_AnimationLocalListenersMixin extends Animation_AnimationEagerListenerMixin$36 {};
-  (Animation_AnimationLocalListenersMixin$36.new = function() {
-    listener_helpers.AnimationLocalListenersMixin[dart.mixinNew].call(this);
-    Animation_AnimationLocalListenersMixin$36.__proto__.new.call(this);
-  }).prototype = Animation_AnimationLocalListenersMixin$36.prototype;
-  dart.applyMixin(Animation_AnimationLocalListenersMixin$36, listener_helpers.AnimationLocalListenersMixin);
-  const Animation_AnimationLocalStatusListenersMixin$36 = class Animation_AnimationLocalStatusListenersMixin extends Animation_AnimationLocalListenersMixin$36 {};
-  (Animation_AnimationLocalStatusListenersMixin$36.new = function() {
-    listener_helpers.AnimationLocalStatusListenersMixin[dart.mixinNew].call(this);
-    Animation_AnimationLocalStatusListenersMixin$36.__proto__.new.call(this);
-  }).prototype = Animation_AnimationLocalStatusListenersMixin$36.prototype;
-  dart.applyMixin(Animation_AnimationLocalStatusListenersMixin$36, listener_helpers.AnimationLocalStatusListenersMixin);
-  animation_controller.AnimationController = class AnimationController extends Animation_AnimationLocalStatusListenersMixin$36 {
-    get lowerBound() {
-      return this[lowerBound$];
+  dart.defineExtensionMethods(platform_view._PlatformViewState, ['toString']);
+  platform_view._PlatformViewState.uninitialized = C[4] || CT.C4;
+  platform_view._PlatformViewState.resizing = C[5] || CT.C5;
+  platform_view._PlatformViewState.ready = C[6] || CT.C6;
+  platform_view._PlatformViewState.values = C[7] || CT.C7;
+  var _name = dart.privateName(ui, "_name");
+  var _state = dart.privateName(platform_view, "_state");
+  var _clipBehavior = dart.privateName(platform_view, "_clipBehavior");
+  var __RenderAndroidView__currentAndroidViewSize = dart.privateName(platform_view, "_#RenderAndroidView#_currentAndroidViewSize");
+  var __RenderAndroidView__currentAndroidViewSize_isSet = dart.privateName(platform_view, "_#RenderAndroidView#_currentAndroidViewSize#isSet");
+  var _clipRectLayer = dart.privateName(platform_view, "_clipRectLayer");
+  var _viewController = dart.privateName(platform_view, "_viewController");
+  var _onPlatformViewCreated = dart.privateName(platform_view, "_onPlatformViewCreated");
+  var _sizePlatformView = dart.privateName(platform_view, "_sizePlatformView");
+  var _updateGestureRecognizersWithCallBack = dart.privateName(platform_view, "_updateGestureRecognizersWithCallBack");
+  var _currentAndroidViewSize = dart.privateName(platform_view, "_currentAndroidViewSize");
+  var _paintTexture = dart.privateName(platform_view, "_paintTexture");
+  var _hitTestBehavior = dart.privateName(platform_view, "_hitTestBehavior");
+  var _handlePointerEvent = dart.privateName(platform_view, "_handlePointerEvent");
+  var _gestureRecognizer = dart.privateName(platform_view, "_gestureRecognizer");
+  platform_view._PlatformViewGestureMixin = class _PlatformViewGestureMixin extends box.RenderBox {};
+  platform_view._PlatformViewGestureMixin[dart.mixinOn] = RenderBox => class _PlatformViewGestureMixin extends RenderBox {
+    set hitTestBehavior(value) {
+      if (value == null) dart.nullFailed(I[0], 688, 51, "value");
+      if (!dart.equals(value, this[_hitTestBehavior])) {
+        this[_hitTestBehavior] = value;
+        if (this.owner != null) this.markNeedsPaint();
+      }
     }
-    set lowerBound(value) {
-      super.lowerBound = value;
+    [_updateGestureRecognizersWithCallBack](gestureRecognizers, handlePointerEvent) {
+      let t1, t1$;
+      if (gestureRecognizers == null) dart.nullFailed(I[0], 703, 89, "gestureRecognizers");
+      if (handlePointerEvent == null) dart.nullFailed(I[0], 703, 129, "handlePointerEvent");
+      if (!(gestureRecognizers != null)) dart.assertFailed(null, I[0], 704, 12, "gestureRecognizers != null");
+      if (!(platform_view._factoriesTypeSet(recognizer.OneSequenceGestureRecognizer, gestureRecognizers)[$length] == gestureRecognizers[$length])) dart.assertFailed("There were multiple gesture recognizer factories for the same type, there must only be a single " + "gesture recognizer factory for each gesture recognizer type.", I[0], 706, 5, "_factoriesTypeSet(gestureRecognizers).length == gestureRecognizers.length");
+      if (dart.test(platform_view._factoryTypesSetEquals(recognizer.OneSequenceGestureRecognizer, gestureRecognizers, (t1 = this[_gestureRecognizer], t1 == null ? null : t1.gestureRecognizerFactories)))) {
+        return;
+      }
+      t1$ = this[_gestureRecognizer];
+      t1$ == null ? null : t1$.dispose();
+      this[_gestureRecognizer] = new platform_view._PlatformViewGestureRecognizer.new(handlePointerEvent, gestureRecognizers);
+      this[_handlePointerEvent] = handlePointerEvent;
     }
-    get upperBound() {
-      return this[upperBound$];
+    hitTest(result, opts) {
+      if (result == null) dart.nullFailed(I[0], 720, 33, "result");
+      let position = opts && 'position' in opts ? opts.position : null;
+      if (position == null) dart.nullFailed(I[0], 720, 59, "position");
+      if (dart.equals(this[_hitTestBehavior], platform_view.PlatformViewHitTestBehavior.transparent) || !dart.test(this.size.contains(position))) {
+        return false;
+      }
+      result.add(new box.BoxHitTestEntry.new(this, position));
+      return dart.equals(this[_hitTestBehavior], platform_view.PlatformViewHitTestBehavior.opaque);
     }
-    set upperBound(value) {
-      super.upperBound = value;
+    hitTestSelf(position) {
+      if (position == null) dart.nullFailed(I[0], 729, 27, "position");
+      return !dart.equals(this[_hitTestBehavior], platform_view.PlatformViewHitTestBehavior.transparent);
     }
-    get debugLabel() {
-      return this[debugLabel$];
+    get onEnter() {
+      return null;
     }
-    set debugLabel(value) {
-      super.debugLabel = value;
+    get onExit() {
+      return null;
     }
-    get animationBehavior() {
-      return this[animationBehavior$];
+    get cursor() {
+      return mouse_cursor.MouseCursor.uncontrolled;
     }
-    set animationBehavior(value) {
-      super.animationBehavior = value;
+    get validForMouseTracker() {
+      return true;
     }
-    get duration() {
-      return this[duration$];
+    handleEvent(event, entry) {
+      let t1;
+      if (event == null) dart.nullFailed(I[0], 744, 33, "event");
+      hit_test.HitTestEntry.as(entry);
+      if (entry == null) dart.nullFailed(I[0], 744, 53, "entry");
+      if (events.PointerDownEvent.is(event)) {
+        dart.nullCheck(this[_gestureRecognizer]).addPointer(event);
+      }
+      if (events.PointerHoverEvent.is(event)) {
+        t1 = this[_handlePointerEvent];
+        t1 == null ? null : t1(event);
+      }
     }
-    set duration(value) {
-      this[duration$] = value;
+    detach() {
+      dart.nullCheck(this[_gestureRecognizer]).reset();
+      super.detach();
     }
-    get reverseDuration() {
-      return this[reverseDuration$];
+  };
+  (platform_view._PlatformViewGestureMixin[dart.mixinNew] = function() {
+    this[_hitTestBehavior] = null;
+    this[_handlePointerEvent] = null;
+    this[_gestureRecognizer] = null;
+  }).prototype = platform_view._PlatformViewGestureMixin.prototype;
+  dart.addTypeTests(platform_view._PlatformViewGestureMixin);
+  dart.addTypeCaches(platform_view._PlatformViewGestureMixin);
+  platform_view._PlatformViewGestureMixin[dart.implements] = () => [mouse_tracking.MouseTrackerAnnotation, box.RenderBox];
+  dart.setMethodSignature(platform_view._PlatformViewGestureMixin, () => ({
+    __proto__: dart.getMethods(platform_view._PlatformViewGestureMixin.__proto__),
+    [_updateGestureRecognizersWithCallBack]: dart.fnType(dart.void, [core.Set$(basic_types.Factory$(recognizer.OneSequenceGestureRecognizer)), dart.fnType(async.Future$(dart.void), [events.PointerEvent])])
+  }));
+  dart.setGetterSignature(platform_view._PlatformViewGestureMixin, () => ({
+    __proto__: dart.getGetters(platform_view._PlatformViewGestureMixin.__proto__),
+    onEnter: dart.nullable(dart.fnType(dart.void, [events.PointerEnterEvent])),
+    onExit: dart.nullable(dart.fnType(dart.void, [events.PointerExitEvent])),
+    cursor: mouse_cursor.MouseCursor,
+    validForMouseTracker: core.bool
+  }));
+  dart.setSetterSignature(platform_view._PlatformViewGestureMixin, () => ({
+    __proto__: dart.getSetters(platform_view._PlatformViewGestureMixin.__proto__),
+    hitTestBehavior: platform_view.PlatformViewHitTestBehavior
+  }));
+  dart.setLibraryUri(platform_view._PlatformViewGestureMixin, I[1]);
+  dart.setFieldSignature(platform_view._PlatformViewGestureMixin, () => ({
+    __proto__: dart.getFields(platform_view._PlatformViewGestureMixin.__proto__),
+    [_hitTestBehavior]: dart.fieldType(dart.nullable(platform_view.PlatformViewHitTestBehavior)),
+    [_handlePointerEvent]: dart.fieldType(dart.nullable(dart.fnType(async.Future$(dart.void), [events.PointerEvent]))),
+    [_gestureRecognizer]: dart.fieldType(dart.nullable(platform_view._PlatformViewGestureRecognizer))
+  }));
+  const RenderBox__PlatformViewGestureMixin$36 = class RenderBox__PlatformViewGestureMixin extends box.RenderBox {};
+  (RenderBox__PlatformViewGestureMixin$36.new = function() {
+    platform_view._PlatformViewGestureMixin[dart.mixinNew].call(this);
+    RenderBox__PlatformViewGestureMixin$36.__proto__.new.call(this);
+  }).prototype = RenderBox__PlatformViewGestureMixin$36.prototype;
+  dart.applyMixin(RenderBox__PlatformViewGestureMixin$36, platform_view._PlatformViewGestureMixin);
+  platform_view.RenderAndroidView = class RenderAndroidView extends RenderBox__PlatformViewGestureMixin$36 {
+    get viewcontroller() {
+      return this[_viewController];
     }
-    set reverseDuration(value) {
-      this[reverseDuration$] = value;
+    set viewController(viewController) {
+      if (viewController == null) dart.nullFailed(I[0], 107, 44, "viewController");
+      if (!(this[_viewController] != null)) dart.assertFailed(null, I[0], 108, 12, "_viewController != null");
+      if (!(viewController != null)) dart.assertFailed(null, I[0], 109, 12, "viewController != null");
+      if (dart.equals(this[_viewController], viewController)) return;
+      this[_viewController].removeOnPlatformViewCreatedListener(dart.bind(this, _onPlatformViewCreated));
+      this[_viewController] = viewController;
+      this[_sizePlatformView]();
+      if (dart.test(this[_viewController].isCreated)) {
+        this.markNeedsSemanticsUpdate();
+      }
+      this[_viewController].addOnPlatformViewCreatedListener(dart.bind(this, _onPlatformViewCreated));
     }
-    get view() {
-      return this;
+    get clipBehavior() {
+      return this[_clipBehavior];
     }
-    resync(vsync) {
-      if (vsync == null) dart.nullFailed(L0, 322, 30, "vsync");
-      let oldTicker = dart.nullCheck(this[_ticker]);
-      this[_ticker] = vsync.createTicker(dart.bind(this, _tick));
-      dart.nullCheck(this[_ticker]).absorbTicker(oldTicker);
+    set clipBehavior(value) {
+      if (value == null) dart.nullFailed(I[0], 126, 25, "value");
+      if (!(value != null)) dart.assertFailed(null, I[0], 127, 12, "value != null");
+      if (!dart.equals(value, this[_clipBehavior])) {
+        this[_clipBehavior] = value;
+        this.markNeedsPaint();
+        this.markNeedsSemanticsUpdate();
+      }
     }
-    get value() {
-      return this[_value];
+    [_onPlatformViewCreated](id) {
+      if (id == null) dart.nullFailed(I[0], 135, 35, "id");
+      this.markNeedsSemanticsUpdate();
     }
-    get [_value]() {
+    updateGestureRecognizers(gestureRecognizers) {
+      if (gestureRecognizers == null) dart.nullFailed(I[0], 155, 76, "gestureRecognizers");
+      this[_updateGestureRecognizersWithCallBack](gestureRecognizers, dart.bind(this[_viewController], 'dispatchPointerEvent'));
+    }
+    get sizedByParent() {
+      return true;
+    }
+    get alwaysNeedsCompositing() {
+      return true;
+    }
+    get isRepaintBoundary() {
+      return true;
+    }
+    computeDryLayout(constraints) {
+      if (constraints == null) dart.nullFailed(I[0], 169, 40, "constraints");
+      return constraints.biggest;
+    }
+    performResize() {
+      super.performResize();
+      this[_sizePlatformView]();
+    }
+    get [_currentAndroidViewSize]() {
       let t0;
-      return dart.test(this[__AnimationController__value_isSet]) ? (t0 = this[__AnimationController__value], t0) : dart.throw(new _internal.LateError.fieldNI("_value"));
+      return dart.test(this[__RenderAndroidView__currentAndroidViewSize_isSet]) ? (t0 = this[__RenderAndroidView__currentAndroidViewSize], t0) : dart.throw(new _internal.LateError.fieldNI("_currentAndroidViewSize"));
     }
-    set [_value](t0) {
-      if (t0 == null) dart.nullFailed(L0, 340, 15, "null");
-      this[__AnimationController__value_isSet] = true;
-      this[__AnimationController__value] = t0;
+    set [_currentAndroidViewSize](t0) {
+      if (t0 == null) dart.nullFailed(I[0], 179, 13, "null");
+      this[__RenderAndroidView__currentAndroidViewSize_isSet] = true;
+      this[__RenderAndroidView__currentAndroidViewSize] = t0;
     }
-    set value(newValue) {
-      if (newValue == null) dart.nullFailed(L0, 362, 20, "newValue");
-      if (!(newValue != null)) dart.assertFailed(null, L0, 363, 12, "newValue != null");
-      this.stop();
-      this[_internalSetValue](newValue);
-      this.notifyListeners();
-      this[_checkStatusChanged]();
+    [_sizePlatformView]() {
+      return async.async(dart.void, (function* _sizePlatformView() {
+        if (dart.equals(this[_state], platform_view._PlatformViewState.resizing) || dart.test(this.size.isEmpty)) {
+          return;
+        }
+        this[_state] = platform_view._PlatformViewState.resizing;
+        this.markNeedsPaint();
+        let targetSize = null;
+        do {
+          targetSize = this.size;
+          yield this[_viewController].setSize(targetSize);
+          this[_currentAndroidViewSize] = targetSize;
+        } while (!dart.equals(this.size, targetSize));
+        this[_state] = platform_view._PlatformViewState.ready;
+        this.markNeedsPaint();
+      }).bind(this));
+    }
+    paint(context, offset) {
+      if (context == null) dart.nullFailed(I[0], 207, 30, "context");
+      if (offset == null) dart.nullFailed(I[0], 207, 46, "offset");
+      if (this[_viewController].textureId == null) return;
+      if ((dart.notNull(this.size.width) < dart.notNull(this[_currentAndroidViewSize].width) || dart.notNull(this.size.height) < dart.notNull(this[_currentAndroidViewSize].height)) && !dart.equals(this.clipBehavior, ui.Clip.none)) {
+        this[_clipRectLayer] = context.pushClipRect(true, offset, offset['&'](this.size), dart.bind(this, _paintTexture), {clipBehavior: this.clipBehavior, oldLayer: this[_clipRectLayer]});
+        return;
+      }
+      this[_clipRectLayer] = null;
+      this[_paintTexture](context, offset);
+    }
+    [_paintTexture](context, offset) {
+      if (context == null) dart.nullFailed(I[0], 224, 38, "context");
+      if (offset == null) dart.nullFailed(I[0], 224, 54, "offset");
+      context.addLayer(new layer.TextureLayer.new({rect: offset['&'](this[_currentAndroidViewSize]), textureId: dart.nullCheck(this[_viewController].textureId), freeze: dart.equals(this[_state], platform_view._PlatformViewState.resizing)}));
+    }
+    describeSemanticsConfiguration(config) {
+      if (config == null) dart.nullFailed(I[0], 242, 63, "config");
+      super.describeSemanticsConfiguration(config);
+      config.isSemanticBoundary = true;
+      if (dart.test(this[_viewController].isCreated)) {
+        config.platformViewId = this[_viewController].viewId;
+      }
+    }
+  };
+  (platform_view.RenderAndroidView.new = function(opts) {
+    let viewController = opts && 'viewController' in opts ? opts.viewController : null;
+    if (viewController == null) dart.nullFailed(I[0], 83, 36, "viewController");
+    let hitTestBehavior = opts && 'hitTestBehavior' in opts ? opts.hitTestBehavior : null;
+    if (hitTestBehavior == null) dart.nullFailed(I[0], 84, 42, "hitTestBehavior");
+    let gestureRecognizers = opts && 'gestureRecognizers' in opts ? opts.gestureRecognizers : null;
+    if (gestureRecognizers == null) dart.nullFailed(I[0], 85, 57, "gestureRecognizers");
+    let clipBehavior = opts && 'clipBehavior' in opts ? opts.clipBehavior : C[8] || CT.C8;
+    if (clipBehavior == null) dart.nullFailed(I[0], 86, 10, "clipBehavior");
+    this[_state] = platform_view._PlatformViewState.uninitialized;
+    this[_clipBehavior] = ui.Clip.hardEdge;
+    this[__RenderAndroidView__currentAndroidViewSize] = null;
+    this[__RenderAndroidView__currentAndroidViewSize_isSet] = false;
+    this[_clipRectLayer] = null;
+    if (!(viewController != null)) dart.assertFailed(null, I[0], 87, 15, "viewController != null");
+    if (!(hitTestBehavior != null)) dart.assertFailed(null, I[0], 88, 15, "hitTestBehavior != null");
+    if (!(gestureRecognizers != null)) dart.assertFailed(null, I[0], 89, 15, "gestureRecognizers != null");
+    if (!(clipBehavior != null)) dart.assertFailed(null, I[0], 90, 15, "clipBehavior != null");
+    this[_viewController] = viewController;
+    this[_clipBehavior] = clipBehavior;
+    platform_view.RenderAndroidView.__proto__.new.call(this);
+    this[_viewController].pointTransformer = dart.fn(offset => {
+      if (offset == null) dart.nullFailed(I[0], 93, 48, "offset");
+      return this.globalToLocal(offset);
+    }, T.OffsetToOffset());
+    this.updateGestureRecognizers(gestureRecognizers);
+    this[_viewController].addOnPlatformViewCreatedListener(dart.bind(this, _onPlatformViewCreated));
+    this.hitTestBehavior = hitTestBehavior;
+  }).prototype = platform_view.RenderAndroidView.prototype;
+  dart.addTypeTests(platform_view.RenderAndroidView);
+  dart.addTypeCaches(platform_view.RenderAndroidView);
+  dart.setMethodSignature(platform_view.RenderAndroidView, () => ({
+    __proto__: dart.getMethods(platform_view.RenderAndroidView.__proto__),
+    [_onPlatformViewCreated]: dart.fnType(dart.void, [core.int]),
+    updateGestureRecognizers: dart.fnType(dart.void, [core.Set$(basic_types.Factory$(recognizer.OneSequenceGestureRecognizer))]),
+    [_sizePlatformView]: dart.fnType(async.Future$(dart.void), []),
+    [_paintTexture]: dart.fnType(dart.void, [object.PaintingContext, ui.Offset])
+  }));
+  dart.setGetterSignature(platform_view.RenderAndroidView, () => ({
+    __proto__: dart.getGetters(platform_view.RenderAndroidView.__proto__),
+    viewcontroller: platform_views.AndroidViewController,
+    clipBehavior: ui.Clip,
+    [_currentAndroidViewSize]: ui.Size
+  }));
+  dart.setSetterSignature(platform_view.RenderAndroidView, () => ({
+    __proto__: dart.getSetters(platform_view.RenderAndroidView.__proto__),
+    viewController: platform_views.AndroidViewController,
+    clipBehavior: ui.Clip,
+    [_currentAndroidViewSize]: ui.Size
+  }));
+  dart.setLibraryUri(platform_view.RenderAndroidView, I[1]);
+  dart.setFieldSignature(platform_view.RenderAndroidView, () => ({
+    __proto__: dart.getFields(platform_view.RenderAndroidView.__proto__),
+    [_state]: dart.fieldType(platform_view._PlatformViewState),
+    [_viewController]: dart.fieldType(platform_views.AndroidViewController),
+    [_clipBehavior]: dart.fieldType(ui.Clip),
+    [__RenderAndroidView__currentAndroidViewSize]: dart.fieldType(dart.nullable(ui.Size)),
+    [__RenderAndroidView__currentAndroidViewSize_isSet]: dart.fieldType(core.bool),
+    [_clipRectLayer]: dart.fieldType(dart.nullable(layer.ClipRectLayer))
+  }));
+  var hitTestBehavior$ = dart.privateName(platform_view, "RenderUiKitView.hitTestBehavior");
+  var _lastPointerDownEvent = dart.privateName(platform_view, "_lastPointerDownEvent");
+  var _handleGlobalPointerEvent = dart.privateName(platform_view, "_handleGlobalPointerEvent");
+  platform_view.RenderUiKitView = class RenderUiKitView extends box.RenderBox {
+    get hitTestBehavior() {
+      return this[hitTestBehavior$];
+    }
+    set hitTestBehavior(value) {
+      this[hitTestBehavior$] = value;
+    }
+    get viewController() {
+      return this[_viewController];
+    }
+    set viewController(viewController) {
+      if (viewController == null) dart.nullFailed(I[0], 297, 42, "viewController");
+      if (!(viewController != null)) dart.assertFailed(null, I[0], 298, 12, "viewController != null");
+      let needsSemanticsUpdate = this[_viewController].id != viewController.id;
+      this[_viewController] = viewController;
+      this.markNeedsPaint();
+      if (needsSemanticsUpdate) {
+        this.markNeedsSemanticsUpdate();
+      }
+    }
+    updateGestureRecognizers(gestureRecognizers) {
+      let t1, t1$;
+      if (gestureRecognizers == null) dart.nullFailed(I[0], 313, 76, "gestureRecognizers");
+      if (!(gestureRecognizers != null)) dart.assertFailed(null, I[0], 314, 12, "gestureRecognizers != null");
+      if (!(platform_view._factoriesTypeSet(recognizer.OneSequenceGestureRecognizer, gestureRecognizers)[$length] == gestureRecognizers[$length])) dart.assertFailed("There were multiple gesture recognizer factories for the same type, there must only be a single " + "gesture recognizer factory for each gesture recognizer type.", I[0], 316, 5, "_factoriesTypeSet(gestureRecognizers).length == gestureRecognizers.length");
+      if (dart.test(platform_view._factoryTypesSetEquals(recognizer.OneSequenceGestureRecognizer, gestureRecognizers, (t1 = this[_gestureRecognizer], t1 == null ? null : t1.gestureRecognizerFactories)))) {
+        return;
+      }
+      t1$ = this[_gestureRecognizer];
+      t1$ == null ? null : t1$.dispose();
+      this[_gestureRecognizer] = new platform_view._UiKitViewGestureRecognizer.new(this.viewController, gestureRecognizers);
+    }
+    get sizedByParent() {
+      return true;
+    }
+    get alwaysNeedsCompositing() {
+      return true;
+    }
+    get isRepaintBoundary() {
+      return true;
+    }
+    computeDryLayout(constraints) {
+      if (constraints == null) dart.nullFailed(I[0], 340, 40, "constraints");
+      return constraints.biggest;
+    }
+    paint(context, offset) {
+      if (context == null) dart.nullFailed(I[0], 345, 30, "context");
+      if (offset == null) dart.nullFailed(I[0], 345, 46, "offset");
+      context.addLayer(new layer.PlatformViewLayer.new({rect: offset['&'](this.size), viewId: this[_viewController].id}));
+    }
+    hitTest(result, opts) {
+      if (result == null) dart.nullFailed(I[0], 353, 33, "result");
+      let position = opts && 'position' in opts ? opts.position : null;
+      if (dart.equals(this.hitTestBehavior, platform_view.PlatformViewHitTestBehavior.transparent) || !dart.test(this.size.contains(dart.nullCheck(position)))) return false;
+      result.add(new box.BoxHitTestEntry.new(this, position));
+      return dart.equals(this.hitTestBehavior, platform_view.PlatformViewHitTestBehavior.opaque);
+    }
+    hitTestSelf(position) {
+      if (position == null) dart.nullFailed(I[0], 361, 27, "position");
+      return !dart.equals(this.hitTestBehavior, platform_view.PlatformViewHitTestBehavior.transparent);
+    }
+    handleEvent(event, entry) {
+      let t1;
+      if (event == null) dart.nullFailed(I[0], 364, 33, "event");
+      hit_test.HitTestEntry.as(entry);
+      if (entry == null) dart.nullFailed(I[0], 364, 53, "entry");
+      if (!events.PointerDownEvent.is(event)) {
+        return;
+      }
+      dart.nullCheck(this[_gestureRecognizer]).addPointer(event);
+      this[_lastPointerDownEvent] = (t1 = event.original, t1 == null ? event : t1);
+    }
+    [_handleGlobalPointerEvent](event) {
+      let t1;
+      if (event == null) dart.nullFailed(I[0], 373, 47, "event");
+      if (!events.PointerDownEvent.is(event)) {
+        return;
+      }
+      if (!dart.test(ui.Offset.zero['&'](this.size).contains(this.globalToLocal(event.position)))) {
+        return;
+      }
+      if (!dart.equals((t1 = event.original, t1 == null ? event : t1), this[_lastPointerDownEvent])) {
+        this[_viewController].rejectGesture();
+      }
+      this[_lastPointerDownEvent] = null;
+    }
+    describeSemanticsConfiguration(config) {
+      if (config == null) dart.nullFailed(I[0], 391, 63, "config");
+      super.describeSemanticsConfiguration(config);
+      config.isSemanticBoundary = true;
+      config.platformViewId = this[_viewController].id;
+    }
+    attach(owner) {
+      object.PipelineOwner.as(owner);
+      if (owner == null) dart.nullFailed(I[0], 398, 29, "owner");
+      super.attach(owner);
+      dart.nullCheck(binding.GestureBinding.instance).pointerRouter.addGlobalRoute(dart.bind(this, _handleGlobalPointerEvent));
+    }
+    detach() {
+      dart.nullCheck(binding.GestureBinding.instance).pointerRouter.removeGlobalRoute(dart.bind(this, _handleGlobalPointerEvent));
+      dart.nullCheck(this[_gestureRecognizer]).reset();
+      super.detach();
+    }
+  };
+  (platform_view.RenderUiKitView.new = function(opts) {
+    let viewController = opts && 'viewController' in opts ? opts.viewController : null;
+    if (viewController == null) dart.nullFailed(I[0], 280, 34, "viewController");
+    let hitTestBehavior = opts && 'hitTestBehavior' in opts ? opts.hitTestBehavior : null;
+    if (hitTestBehavior == null) dart.nullFailed(I[0], 281, 19, "hitTestBehavior");
+    let gestureRecognizers = opts && 'gestureRecognizers' in opts ? opts.gestureRecognizers : null;
+    if (gestureRecognizers == null) dart.nullFailed(I[0], 282, 57, "gestureRecognizers");
+    this[_gestureRecognizer] = null;
+    this[_lastPointerDownEvent] = null;
+    this[hitTestBehavior$] = hitTestBehavior;
+    if (!(viewController != null)) dart.assertFailed(null, I[0], 283, 15, "viewController != null");
+    if (!(hitTestBehavior != null)) dart.assertFailed(null, I[0], 284, 15, "hitTestBehavior != null");
+    if (!(gestureRecognizers != null)) dart.assertFailed(null, I[0], 285, 15, "gestureRecognizers != null");
+    this[_viewController] = viewController;
+    platform_view.RenderUiKitView.__proto__.new.call(this);
+    this.updateGestureRecognizers(gestureRecognizers);
+  }).prototype = platform_view.RenderUiKitView.prototype;
+  dart.addTypeTests(platform_view.RenderUiKitView);
+  dart.addTypeCaches(platform_view.RenderUiKitView);
+  dart.setMethodSignature(platform_view.RenderUiKitView, () => ({
+    __proto__: dart.getMethods(platform_view.RenderUiKitView.__proto__),
+    updateGestureRecognizers: dart.fnType(dart.void, [core.Set$(basic_types.Factory$(recognizer.OneSequenceGestureRecognizer))]),
+    hitTest: dart.fnType(core.bool, [box.BoxHitTestResult], {position: dart.nullable(ui.Offset)}, {}),
+    [_handleGlobalPointerEvent]: dart.fnType(dart.void, [events.PointerEvent])
+  }));
+  dart.setGetterSignature(platform_view.RenderUiKitView, () => ({
+    __proto__: dart.getGetters(platform_view.RenderUiKitView.__proto__),
+    viewController: platform_views.UiKitViewController
+  }));
+  dart.setSetterSignature(platform_view.RenderUiKitView, () => ({
+    __proto__: dart.getSetters(platform_view.RenderUiKitView.__proto__),
+    viewController: platform_views.UiKitViewController
+  }));
+  dart.setLibraryUri(platform_view.RenderUiKitView, I[1]);
+  dart.setFieldSignature(platform_view.RenderUiKitView, () => ({
+    __proto__: dart.getFields(platform_view.RenderUiKitView.__proto__),
+    [_viewController]: dart.fieldType(platform_views.UiKitViewController),
+    hitTestBehavior: dart.fieldType(platform_view.PlatformViewHitTestBehavior),
+    [_gestureRecognizer]: dart.fieldType(dart.nullable(platform_view._UiKitViewGestureRecognizer)),
+    [_lastPointerDownEvent]: dart.fieldType(dart.nullable(events.PointerEvent))
+  }));
+  var ___UiKitViewGestureRecognizer__gestureRecognizers = dart.privateName(platform_view, "_#_UiKitViewGestureRecognizer#_gestureRecognizers");
+  var ___UiKitViewGestureRecognizer__gestureRecognizers_isSet = dart.privateName(platform_view, "_#_UiKitViewGestureRecognizer#_gestureRecognizers#isSet");
+  var _gestureRecognizers = dart.privateName(platform_view, "_gestureRecognizers");
+  platform_view._UiKitViewGestureRecognizer = class _UiKitViewGestureRecognizer extends recognizer.OneSequenceGestureRecognizer {
+    get [_gestureRecognizers]() {
+      let t1;
+      return dart.test(this[___UiKitViewGestureRecognizer__gestureRecognizers_isSet]) ? (t1 = this[___UiKitViewGestureRecognizer__gestureRecognizers], t1) : dart.throw(new _internal.LateError.fieldNI("_gestureRecognizers"));
+    }
+    set [_gestureRecognizers](t1) {
+      if (t1 == null) dart.nullFailed(I[0], 448, 42, "null");
+      this[___UiKitViewGestureRecognizer__gestureRecognizers_isSet] = true;
+      this[___UiKitViewGestureRecognizer__gestureRecognizers] = t1;
+    }
+    addAllowedPointer(event) {
+      if (event == null) dart.nullFailed(I[0], 453, 43, "event");
+      this.startTrackingPointer(event.pointer, event.transform);
+      for (let recognizer of this[_gestureRecognizers]) {
+        recognizer.addPointer(event);
+      }
+    }
+    get debugDescription() {
+      return "UIKit view";
+    }
+    didStopTrackingLastPointer(pointer) {
+      if (pointer == null) dart.nullFailed(I[0], 464, 39, "pointer");
+    }
+    handleEvent(event) {
+      if (event == null) dart.nullFailed(I[0], 467, 33, "event");
+      this.stopTrackingIfPointerNoLongerDown(event);
+    }
+    acceptGesture(pointer) {
+      if (pointer == null) dart.nullFailed(I[0], 472, 26, "pointer");
+      this.controller.acceptGesture();
+    }
+    rejectGesture(pointer) {
+      if (pointer == null) dart.nullFailed(I[0], 477, 26, "pointer");
+      this.controller.rejectGesture();
     }
     reset() {
-      this.value = this.lowerBound;
-    }
-    get velocity() {
-      if (!dart.test(this.isAnimating)) return 0.0;
-      return dart.nullCheck(this[_simulation]).dx(dart.nullCheck(this.lastElapsedDuration).inMicroseconds[$toDouble]() / 1000000);
-    }
-    [_internalSetValue](newValue) {
-      if (newValue == null) dart.nullFailed(L0, 398, 33, "newValue");
-      this[_value] = newValue[$clamp](this.lowerBound, this.upperBound);
-      if (this[_value] == this.lowerBound) {
-        this[_status] = animation.AnimationStatus.dismissed;
-      } else if (this[_value] == this.upperBound) {
-        this[_status] = animation.AnimationStatus.completed;
-      } else {
-        this[_status] = dart.equals(this[_direction], animation_controller._AnimationDirection.forward) ? animation.AnimationStatus.forward : animation.AnimationStatus.reverse;
-      }
-    }
-    get lastElapsedDuration() {
-      return this[_lastElapsedDuration];
-    }
-    get isAnimating() {
-      return this[_ticker] != null && dart.test(dart.nullCheck(this[_ticker]).isActive);
-    }
-    get status() {
-      return this[_status];
-    }
-    get [_status]() {
-      let t1;
-      return dart.test(this[__AnimationController__status_isSet]) ? (t1 = this[__AnimationController__status], t1) : dart.throw(new _internal.LateError.fieldNI("_status"));
-    }
-    set [_status](t1) {
-      if (t1 == null) dart.nullFailed(L0, 430, 24, "null");
-      this[__AnimationController__status_isSet] = true;
-      this[__AnimationController__status] = t1;
-    }
-    forward(opts) {
-      let from = opts && 'from' in opts ? opts.from : null;
-      if (!dart.test(dart.fn(() => {
-        if (this.duration == null) {
-          dart.throw(assertions.FlutterError.new("AnimationController.forward() called with no default duration.\n" + "The \"duration\" property should be set, either in the constructor or later, before " + "calling the forward() function."));
-        }
-        return true;
-      }, VoidTobool())())) dart.assertFailed(null, L0, 444, 12, "() {\r\n      if (duration == null) {\r\n        throw FlutterError(\r\n          'AnimationController.forward() called with no default duration.\\n'\r\n          'The \"duration\" property should be set, either in the constructor or later, before '\r\n          'calling the forward() function.'\r\n        );\r\n      }\r\n      return true;\r\n    }()");
-      if (!(this[_ticker] != null)) dart.assertFailed("AnimationController.forward() called after AnimationController.dispose()\n" + "AnimationController methods should not be used after calling dispose.", L0, 455, 7, "_ticker != null");
-      this[_direction] = animation_controller._AnimationDirection.forward;
-      if (from != null) this.value = from;
-      return this[_animateToInternal](this.upperBound);
-    }
-    reverse(opts) {
-      let from = opts && 'from' in opts ? opts.from : null;
-      if (!dart.test(dart.fn(() => {
-        if (this.duration == null && this.reverseDuration == null) {
-          dart.throw(assertions.FlutterError.new("AnimationController.reverse() called with no default duration or reverseDuration.\n" + "The \"duration\" or \"reverseDuration\" property should be set, either in the constructor or later, before " + "calling the reverse() function."));
-        }
-        return true;
-      }, VoidTobool())())) dart.assertFailed(null, L0, 477, 12, "() {\r\n      if (duration == null && reverseDuration == null) {\r\n        throw FlutterError(\r\n          'AnimationController.reverse() called with no default duration or reverseDuration.\\n'\r\n          'The \"duration\" or \"reverseDuration\" property should be set, either in the constructor or later, before '\r\n          'calling the reverse() function.'\r\n        );\r\n      }\r\n      return true;\r\n    }()");
-      if (!(this[_ticker] != null)) dart.assertFailed("AnimationController.reverse() called after AnimationController.dispose()\n" + "AnimationController methods should not be used after calling dispose.", L0, 488, 7, "_ticker != null");
-      this[_direction] = animation_controller._AnimationDirection.reverse;
-      if (from != null) this.value = from;
-      return this[_animateToInternal](this.lowerBound);
-    }
-    animateTo(target, opts) {
-      if (target == null) dart.nullFailed(L0, 510, 33, "target");
-      let duration = opts && 'duration' in opts ? opts.duration : null;
-      let curve = opts && 'curve' in opts ? opts.curve : C6 || CT.C6;
-      if (curve == null) dart.nullFailed(L0, 510, 69, "curve");
-      if (!dart.test(dart.fn(() => {
-        if (this.duration == null && duration == null) {
-          dart.throw(assertions.FlutterError.new("AnimationController.animateTo() called with no explicit duration and no default duration.\n" + "Either the \"duration\" argument to the animateTo() method should be provided, or the " + "\"duration\" property should be set, either in the constructor or later, before " + "calling the animateTo() function."));
-        }
-        return true;
-      }, VoidTobool())())) dart.assertFailed(null, L0, 511, 12, "() {\r\n      if (this.duration == null && duration == null) {\r\n        throw FlutterError(\r\n          'AnimationController.animateTo() called with no explicit duration and no default duration.\\n'\r\n          'Either the \"duration\" argument to the animateTo() method should be provided, or the '\r\n          '\"duration\" property should be set, either in the constructor or later, before '\r\n          'calling the animateTo() function.'\r\n        );\r\n      }\r\n      return true;\r\n    }()");
-      if (!(this[_ticker] != null)) dart.assertFailed("AnimationController.animateTo() called after AnimationController.dispose()\n" + "AnimationController methods should not be used after calling dispose.", L0, 523, 7, "_ticker != null");
-      this[_direction] = animation_controller._AnimationDirection.forward;
-      return this[_animateToInternal](target, {duration: duration, curve: curve});
-    }
-    animateBack(target, opts) {
-      if (target == null) dart.nullFailed(L0, 543, 35, "target");
-      let duration = opts && 'duration' in opts ? opts.duration : null;
-      let curve = opts && 'curve' in opts ? opts.curve : C6 || CT.C6;
-      if (curve == null) dart.nullFailed(L0, 543, 71, "curve");
-      if (!dart.test(dart.fn(() => {
-        if (this.duration == null && this.reverseDuration == null && duration == null) {
-          dart.throw(assertions.FlutterError.new("AnimationController.animateBack() called with no explicit duration and no default duration or reverseDuration.\n" + "Either the \"duration\" argument to the animateBack() method should be provided, or the " + "\"duration\" or \"reverseDuration\" property should be set, either in the constructor or later, before " + "calling the animateBack() function."));
-        }
-        return true;
-      }, VoidTobool())())) dart.assertFailed(null, L0, 544, 12, "() {\r\n      if (this.duration == null && reverseDuration == null && duration == null) {\r\n        throw FlutterError(\r\n          'AnimationController.animateBack() called with no explicit duration and no default duration or reverseDuration.\\n'\r\n          'Either the \"duration\" argument to the animateBack() method should be provided, or the '\r\n          '\"duration\" or \"reverseDuration\" property should be set, either in the constructor or later, before '\r\n          'calling the animateBack() function.'\r\n        );\r\n      }\r\n      return true;\r\n    }()");
-      if (!(this[_ticker] != null)) dart.assertFailed("AnimationController.animateBack() called after AnimationController.dispose()\n" + "AnimationController methods should not be used after calling dispose.", L0, 556, 7, "_ticker != null");
-      this[_direction] = animation_controller._AnimationDirection.reverse;
-      return this[_animateToInternal](target, {duration: duration, curve: curve});
-    }
-    [_animateToInternal](target, opts) {
-      if (target == null) dart.nullFailed(L0, 564, 42, "target");
-      let duration = opts && 'duration' in opts ? opts.duration : null;
-      let curve = opts && 'curve' in opts ? opts.curve : C6 || CT.C6;
-      if (curve == null) dart.nullFailed(L0, 564, 78, "curve");
-      let scale = 1.0;
-      if (dart.test(dart.nullCheck(binding.SemanticsBinding.instance).disableAnimations)) {
-        switch (this.animationBehavior) {
-          case C3 || CT.C3:
-          {
-            scale = 0.05;
-            break;
-          }
-          case C4 || CT.C4:
-          {
-            break;
-          }
-          default:
-          {
-            dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
-          }
-        }
-      }
-      let simulationDuration = duration;
-      if (simulationDuration == null) {
-        if (!!(this.duration == null && dart.equals(this[_direction], animation_controller._AnimationDirection.forward))) dart.assertFailed(null, L0, 580, 14, "!(this.duration == null && _direction == _AnimationDirection.forward)");
-        if (!!(this.duration == null && dart.equals(this[_direction], animation_controller._AnimationDirection.reverse) && this.reverseDuration == null)) dart.assertFailed(null, L0, 581, 14, "!(this.duration == null && _direction == _AnimationDirection.reverse && reverseDuration == null)");
-        let range = dart.notNull(this.upperBound) - dart.notNull(this.lowerBound);
-        let remainingFraction = range[$isFinite] ? (dart.notNull(target) - dart.notNull(this[_value]))[$abs]() / range : 1.0;
-        let directionDuration = dart.equals(this[_direction], animation_controller._AnimationDirection.reverse) && this.reverseDuration != null ? dart.nullCheck(this.reverseDuration) : dart.nullCheck(this.duration);
-        simulationDuration = directionDuration['*'](remainingFraction);
-      } else if (target == this.value) {
-        simulationDuration = core.Duration.zero;
-      }
-      this.stop();
-      if (dart.equals(simulationDuration, core.Duration.zero)) {
-        if (this.value != target) {
-          this[_value] = target[$clamp](this.lowerBound, this.upperBound);
-          this.notifyListeners();
-        }
-        this[_status] = dart.equals(this[_direction], animation_controller._AnimationDirection.forward) ? animation.AnimationStatus.completed : animation.AnimationStatus.dismissed;
-        this[_checkStatusChanged]();
-        return new ticker.TickerFuture.complete();
-      }
-      if (!dart.test(simulationDuration['>'](core.Duration.zero))) dart.assertFailed(null, L0, 605, 12, "simulationDuration > Duration.zero");
-      if (!!dart.test(this.isAnimating)) dart.assertFailed(null, L0, 606, 12, "!isAnimating");
-      return this[_startSimulation](new animation_controller._InterpolationSimulation.new(this[_value], target, simulationDuration, curve, scale));
-    }
-    repeat(opts) {
-      let min = opts && 'min' in opts ? opts.min : null;
-      let max = opts && 'max' in opts ? opts.max : null;
-      let reverse = opts && 'reverse' in opts ? opts.reverse : false;
-      if (reverse == null) dart.nullFailed(L0, 631, 56, "reverse");
-      let period = opts && 'period' in opts ? opts.period : null;
-      min == null ? min = this.lowerBound : null;
-      max == null ? max = this.upperBound : null;
-      period == null ? period = this.duration : null;
-      if (!dart.test(dart.fn(() => {
-        if (period == null) {
-          dart.throw(assertions.FlutterError.new("AnimationController.repeat() called without an explicit period and with no default Duration.\n" + "Either the \"period\" argument to the repeat() method should be provided, or the " + "\"duration\" property should be set, either in the constructor or later, before " + "calling the repeat() function."));
-        }
-        return true;
-      }, VoidTobool())())) dart.assertFailed(null, L0, 635, 12, "() {\r\n      if (period == null) {\r\n        throw FlutterError(\r\n          'AnimationController.repeat() called without an explicit period and with no default Duration.\\n'\r\n          'Either the \"period\" argument to the repeat() method should be provided, or the '\r\n          '\"duration\" property should be set, either in the constructor or later, before '\r\n          'calling the repeat() function.'\r\n        );\r\n      }\r\n      return true;\r\n    }()");
-      if (!(dart.notNull(max) >= dart.notNull(min))) dart.assertFailed(null, L0, 646, 12, "max >= min");
-      if (!(dart.notNull(max) <= dart.notNull(this.upperBound) && dart.notNull(min) >= dart.notNull(this.lowerBound))) dart.assertFailed(null, L0, 647, 12, "max <= upperBound && min >= lowerBound");
-      if (!(reverse != null)) dart.assertFailed(null, L0, 648, 12, "reverse != null");
-      this.stop();
-      return this[_startSimulation](new animation_controller._RepeatingSimulation.new(this[_value], min, max, reverse, dart.nullCheck(period), dart.bind(this, _directionSetter)));
-    }
-    [_directionSetter](direction) {
-      if (direction == null) dart.nullFailed(L0, 653, 45, "direction");
-      this[_direction] = direction;
-      this[_status] = dart.equals(this[_direction], animation_controller._AnimationDirection.forward) ? animation.AnimationStatus.forward : animation.AnimationStatus.reverse;
-      this[_checkStatusChanged]();
-    }
-    fling(opts) {
-      let t2, t2$;
-      let velocity = opts && 'velocity' in opts ? opts.velocity : 1;
-      if (velocity == null) dart.nullFailed(L0, 680, 31, "velocity");
-      let springDescription = opts && 'springDescription' in opts ? opts.springDescription : null;
-      let animationBehavior = opts && 'animationBehavior' in opts ? opts.animationBehavior : null;
-      springDescription == null ? springDescription = animation_controller._kFlingSpringDescription : null;
-      this[_direction] = dart.notNull(velocity) < 0.0 ? animation_controller._AnimationDirection.reverse : animation_controller._AnimationDirection.forward;
-      let target = dart.notNull(velocity) < 0.0 ? dart.notNull(this.lowerBound) - dart.notNull(animation_controller._kFlingTolerance.distance) : dart.notNull(this.upperBound) + dart.notNull(animation_controller._kFlingTolerance.distance);
-      let scale = 1.0;
-      let behavior = (t2 = animationBehavior, t2 == null ? this.animationBehavior : t2);
-      if (dart.test(dart.nullCheck(binding.SemanticsBinding.instance).disableAnimations)) {
-        switch (behavior) {
-          case C3 || CT.C3:
-          {
-            scale = 200.0;
-            break;
-          }
-          case C4 || CT.C4:
-          {
-            break;
-          }
-          default:
-          {
-            dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
-          }
-        }
-      }
-      let simulation = (t2$ = new spring_simulation.SpringSimulation.new(springDescription, this.value, target, dart.notNull(velocity) * scale), (() => {
-        t2$.tolerance = animation_controller._kFlingTolerance;
-        return t2$;
-      })());
-      if (!!dart.equals(simulation.type, spring_simulation.SpringType.underDamped)) dart.assertFailed("The resulting spring simulation is of type SpringType.underDamped.\n" + "This can lead to unexpected look of the animation, please adjust the springDescription parameter", L0, 701, 7, "simulation.type != SpringType.underDamped");
-      this.stop();
-      return this[_startSimulation](simulation);
-    }
-    animateWith(simulation) {
-      if (simulation == null) dart.nullFailed(L0, 723, 39, "simulation");
-      if (!(this[_ticker] != null)) dart.assertFailed("AnimationController.animateWith() called after AnimationController.dispose()\n" + "AnimationController methods should not be used after calling dispose.", L0, 725, 7, "_ticker != null");
-      this.stop();
-      this[_direction] = animation_controller._AnimationDirection.forward;
-      return this[_startSimulation](simulation);
-    }
-    [_startSimulation](simulation) {
-      if (simulation == null) dart.nullFailed(L0, 734, 44, "simulation");
-      if (!(simulation != null)) dart.assertFailed(null, L0, 735, 12, "simulation != null");
-      if (!!dart.test(this.isAnimating)) dart.assertFailed(null, L0, 736, 12, "!isAnimating");
-      this[_simulation] = simulation;
-      this[_lastElapsedDuration] = core.Duration.zero;
-      this[_value] = simulation.x(0.0)[$clamp](this.lowerBound, this.upperBound);
-      let result = dart.nullCheck(this[_ticker]).start();
-      this[_status] = dart.equals(this[_direction], animation_controller._AnimationDirection.forward) ? animation.AnimationStatus.forward : animation.AnimationStatus.reverse;
-      this[_checkStatusChanged]();
-      return result;
-    }
-    stop(opts) {
-      let canceled = opts && 'canceled' in opts ? opts.canceled : true;
-      if (canceled == null) dart.nullFailed(L0, 765, 20, "canceled");
-      if (!(this[_ticker] != null)) dart.assertFailed("AnimationController.stop() called after AnimationController.dispose()\n" + "AnimationController methods should not be used after calling dispose.", L0, 767, 7, "_ticker != null");
-      this[_simulation] = null;
-      this[_lastElapsedDuration] = null;
-      dart.nullCheck(this[_ticker]).stop({canceled: canceled});
-    }
-    dispose() {
-      if (!dart.test(dart.fn(() => {
-        if (this[_ticker] == null) {
-          dart.throw(new assertions.FlutterError.fromParts(JSArrayOfDiagnosticsNode().of([new assertions.ErrorSummary.new("AnimationController.dispose() called more than once."), new assertions.ErrorDescription.new("A given " + dart.str(this[$runtimeType]) + " cannot be disposed more than once.\n"), new (DiagnosticsPropertyOfAnimationController()).new("The following " + dart.str(this[$runtimeType]) + " object was disposed multiple times", this, {style: diagnostics.DiagnosticsTreeStyle.errorProperty})])));
-        }
-        return true;
-      }, VoidTobool())())) dart.assertFailed(null, L0, 784, 12, "() {\r\n      if (_ticker == null) {\r\n        throw FlutterError.fromParts(<DiagnosticsNode>[\r\n          ErrorSummary('AnimationController.dispose() called more than once.'),\r\n          ErrorDescription('A given $runtimeType cannot be disposed more than once.\\n'),\r\n          DiagnosticsProperty<AnimationController>(\r\n            'The following $runtimeType object was disposed multiple times',\r\n            this,\r\n            style: DiagnosticsTreeStyle.errorProperty,\r\n          ),\r\n        ]);\r\n      }\r\n      return true;\r\n    }()");
-      dart.nullCheck(this[_ticker]).dispose();
-      this[_ticker] = null;
-      super.dispose();
-    }
-    [_checkStatusChanged]() {
-      let newStatus = this.status;
-      if (!dart.equals(this[_lastReportedStatus], newStatus)) {
-        this[_lastReportedStatus] = newStatus;
-        this.notifyStatusListeners(newStatus);
-      }
-    }
-    [_tick](elapsed) {
-      if (elapsed == null) dart.nullFailed(L0, 812, 23, "elapsed");
-      this[_lastElapsedDuration] = elapsed;
-      let elapsedInSeconds = elapsed.inMicroseconds[$toDouble]() / 1000000;
-      if (!(elapsedInSeconds >= 0.0)) dart.assertFailed(null, L0, 815, 12, "elapsedInSeconds >= 0.0");
-      this[_value] = dart.nullCheck(this[_simulation]).x(elapsedInSeconds)[$clamp](this.lowerBound, this.upperBound);
-      if (dart.test(dart.nullCheck(this[_simulation]).isDone(elapsedInSeconds))) {
-        this[_status] = dart.equals(this[_direction], animation_controller._AnimationDirection.forward) ? animation.AnimationStatus.completed : animation.AnimationStatus.dismissed;
-        this.stop({canceled: false});
-      }
-      this.notifyListeners();
-      this[_checkStatusChanged]();
-    }
-    toStringDetails() {
-      let paused = dart.test(this.isAnimating) ? "" : "; paused";
-      let ticker = this[_ticker] == null ? "; DISPOSED" : dart.test(dart.nullCheck(this[_ticker]).muted) ? "; silenced" : "";
-      let label = this.debugLabel == null ? "" : "; for " + dart.str(this.debugLabel);
-      let more = dart.str(super.toStringDetails()) + " " + this.value[$toStringAsFixed](3);
-      return more + paused + ticker + label;
+      this.resolve(arena.GestureDisposition.rejected);
     }
   };
-  (animation_controller.AnimationController.new = function(opts) {
-    let t0;
-    let value = opts && 'value' in opts ? opts.value : null;
-    let duration = opts && 'duration' in opts ? opts.duration : null;
-    let reverseDuration = opts && 'reverseDuration' in opts ? opts.reverseDuration : null;
-    let debugLabel = opts && 'debugLabel' in opts ? opts.debugLabel : null;
-    let lowerBound = opts && 'lowerBound' in opts ? opts.lowerBound : 0;
-    if (lowerBound == null) dart.nullFailed(L0, 238, 10, "lowerBound");
-    let upperBound = opts && 'upperBound' in opts ? opts.upperBound : 1;
-    if (upperBound == null) dart.nullFailed(L0, 239, 10, "upperBound");
-    let animationBehavior = opts && 'animationBehavior' in opts ? opts.animationBehavior : C3 || CT.C3;
-    if (animationBehavior == null) dart.nullFailed(L0, 240, 10, "animationBehavior");
-    let vsync = opts && 'vsync' in opts ? opts.vsync : null;
-    if (vsync == null) dart.nullFailed(L0, 241, 29, "vsync");
-    this[_ticker] = null;
-    this[_simulation] = null;
-    this[__AnimationController__value] = null;
-    this[__AnimationController__value_isSet] = false;
-    this[_lastElapsedDuration] = null;
-    this[__AnimationController__status] = null;
-    this[__AnimationController__status_isSet] = false;
-    this[_lastReportedStatus] = animation.AnimationStatus.dismissed;
-    this[duration$] = duration;
-    this[reverseDuration$] = reverseDuration;
-    this[debugLabel$] = debugLabel;
-    this[lowerBound$] = lowerBound;
-    this[upperBound$] = upperBound;
-    this[animationBehavior$] = animationBehavior;
-    if (!(lowerBound != null)) dart.assertFailed(null, L0, 242, 15, "lowerBound != null");
-    if (!(upperBound != null)) dart.assertFailed(null, L0, 243, 15, "upperBound != null");
-    if (!(dart.notNull(upperBound) >= dart.notNull(lowerBound))) dart.assertFailed(null, L0, 244, 15, "upperBound >= lowerBound");
-    if (!(vsync != null)) dart.assertFailed(null, L0, 245, 15, "vsync != null");
-    this[_direction] = animation_controller._AnimationDirection.forward;
-    animation_controller.AnimationController.__proto__.new.call(this);
-    this[_ticker] = vsync.createTicker(dart.bind(this, _tick));
-    this[_internalSetValue]((t0 = value, t0 == null ? this.lowerBound : t0));
-  }).prototype = animation_controller.AnimationController.prototype;
-  (animation_controller.AnimationController.unbounded = function(opts) {
-    let value = opts && 'value' in opts ? opts.value : 0;
-    if (value == null) dart.nullFailed(L0, 269, 12, "value");
-    let duration = opts && 'duration' in opts ? opts.duration : null;
-    let reverseDuration = opts && 'reverseDuration' in opts ? opts.reverseDuration : null;
-    let debugLabel = opts && 'debugLabel' in opts ? opts.debugLabel : null;
-    let vsync = opts && 'vsync' in opts ? opts.vsync : null;
-    if (vsync == null) dart.nullFailed(L0, 273, 29, "vsync");
-    let animationBehavior = opts && 'animationBehavior' in opts ? opts.animationBehavior : C4 || CT.C4;
-    if (animationBehavior == null) dart.nullFailed(L0, 274, 10, "animationBehavior");
-    this[_ticker] = null;
-    this[_simulation] = null;
-    this[__AnimationController__value] = null;
-    this[__AnimationController__value_isSet] = false;
-    this[_lastElapsedDuration] = null;
-    this[__AnimationController__status] = null;
-    this[__AnimationController__status_isSet] = false;
-    this[_lastReportedStatus] = animation.AnimationStatus.dismissed;
-    this[duration$] = duration;
-    this[reverseDuration$] = reverseDuration;
-    this[debugLabel$] = debugLabel;
-    this[animationBehavior$] = animationBehavior;
-    if (!(value != null)) dart.assertFailed(null, L0, 275, 15, "value != null");
-    if (!(vsync != null)) dart.assertFailed(null, L0, 276, 15, "vsync != null");
-    this[lowerBound$] = -1 / 0;
-    this[upperBound$] = 1 / 0;
-    this[_direction] = animation_controller._AnimationDirection.forward;
-    animation_controller.AnimationController.__proto__.new.call(this);
-    this[_ticker] = vsync.createTicker(dart.bind(this, _tick));
-    this[_internalSetValue](value);
-  }).prototype = animation_controller.AnimationController.prototype;
-  dart.addTypeTests(animation_controller.AnimationController);
-  dart.addTypeCaches(animation_controller.AnimationController);
-  dart.setMethodSignature(animation_controller.AnimationController, () => ({
-    __proto__: dart.getMethods(animation_controller.AnimationController.__proto__),
-    resync: dart.fnType(dart.void, [ticker.TickerProvider]),
-    reset: dart.fnType(dart.void, []),
-    [_internalSetValue]: dart.fnType(dart.void, [core.double]),
-    forward: dart.fnType(ticker.TickerFuture, [], {from: dart.nullable(core.double)}, {}),
-    reverse: dart.fnType(ticker.TickerFuture, [], {from: dart.nullable(core.double)}, {}),
-    animateTo: dart.fnType(ticker.TickerFuture, [core.double], {curve: curves.Curve, duration: dart.nullable(core.Duration)}, {}),
-    animateBack: dart.fnType(ticker.TickerFuture, [core.double], {curve: curves.Curve, duration: dart.nullable(core.Duration)}, {}),
-    [_animateToInternal]: dart.fnType(ticker.TickerFuture, [core.double], {curve: curves.Curve, duration: dart.nullable(core.Duration)}, {}),
-    repeat: dart.fnType(ticker.TickerFuture, [], {max: dart.nullable(core.double), min: dart.nullable(core.double), period: dart.nullable(core.Duration), reverse: core.bool}, {}),
-    [_directionSetter]: dart.fnType(dart.void, [animation_controller._AnimationDirection]),
-    fling: dart.fnType(ticker.TickerFuture, [], {animationBehavior: dart.nullable(animation_controller.AnimationBehavior), springDescription: dart.nullable(spring_simulation.SpringDescription), velocity: core.double}, {}),
-    animateWith: dart.fnType(ticker.TickerFuture, [simulation.Simulation]),
-    [_startSimulation]: dart.fnType(ticker.TickerFuture, [simulation.Simulation]),
-    stop: dart.fnType(dart.void, [], {canceled: core.bool}, {}),
-    [_checkStatusChanged]: dart.fnType(dart.void, []),
-    [_tick]: dart.fnType(dart.void, [core.Duration])
+  (platform_view._UiKitViewGestureRecognizer.new = function(controller, gestureRecognizerFactories, opts) {
+    let t1;
+    if (controller == null) dart.nullFailed(I[0], 418, 10, "controller");
+    if (gestureRecognizerFactories == null) dart.nullFailed(I[0], 419, 10, "gestureRecognizerFactories");
+    let kind = opts && 'kind' in opts ? opts.kind : null;
+    this[___UiKitViewGestureRecognizer__gestureRecognizers] = null;
+    this[___UiKitViewGestureRecognizer__gestureRecognizers_isSet] = false;
+    this.controller = controller;
+    this.gestureRecognizerFactories = gestureRecognizerFactories;
+    platform_view._UiKitViewGestureRecognizer.__proto__.new.call(this, {kind: kind});
+    this.team = (t1 = new team.GestureArenaTeam.new(), (() => {
+      t1.captain = this;
+      return t1;
+    })());
+    this[_gestureRecognizers] = this.gestureRecognizerFactories[$map](recognizer.OneSequenceGestureRecognizer, dart.fn(recognizerFactory => {
+      let t1, t1$, t1$0;
+      if (recognizerFactory == null) dart.nullFailed(I[0], 425, 46, "recognizerFactory");
+      let gestureRecognizer = recognizerFactory._constructor();
+      gestureRecognizer.team = this.team;
+      if (long_press.LongPressGestureRecognizer.is(gestureRecognizer)) {
+        t1 = gestureRecognizer;
+        t1.onLongPress == null ? t1.onLongPress = dart.fn(() => {
+        }, T.VoidTovoid()) : null;
+      } else if (monodrag.DragGestureRecognizer.is(gestureRecognizer)) {
+        t1$ = gestureRecognizer;
+        t1$.onDown == null ? t1$.onDown = dart.fn(_ => {
+          if (_ == null) dart.nullFailed(I[0], 434, 41, "_");
+        }, T.DragDownDetailsTovoid()) : null;
+      } else if (tap.TapGestureRecognizer.is(gestureRecognizer)) {
+        t1$0 = gestureRecognizer;
+        t1$0.onTapDown == null ? t1$0.onTapDown = dart.fn(_ => {
+          if (_ == null) dart.nullFailed(I[0], 436, 44, "_");
+        }, T.TapDownDetailsTovoid()) : null;
+      }
+      return gestureRecognizer;
+    }, T.FactoryOfOneSequenceGestureRecognizerToOneSequenceGestureRecognizer()))[$toSet]();
+  }).prototype = platform_view._UiKitViewGestureRecognizer.prototype;
+  dart.addTypeTests(platform_view._UiKitViewGestureRecognizer);
+  dart.addTypeCaches(platform_view._UiKitViewGestureRecognizer);
+  dart.setMethodSignature(platform_view._UiKitViewGestureRecognizer, () => ({
+    __proto__: dart.getMethods(platform_view._UiKitViewGestureRecognizer.__proto__),
+    didStopTrackingLastPointer: dart.fnType(dart.void, [core.int]),
+    handleEvent: dart.fnType(dart.void, [events.PointerEvent]),
+    reset: dart.fnType(dart.void, [])
   }));
-  dart.setGetterSignature(animation_controller.AnimationController, () => ({
-    __proto__: dart.getGetters(animation_controller.AnimationController.__proto__),
-    view: animation.Animation$(core.double),
-    value: core.double,
-    [_value]: core.double,
-    velocity: core.double,
-    lastElapsedDuration: dart.nullable(core.Duration),
-    isAnimating: core.bool,
-    status: animation.AnimationStatus,
-    [_status]: animation.AnimationStatus
+  dart.setGetterSignature(platform_view._UiKitViewGestureRecognizer, () => ({
+    __proto__: dart.getGetters(platform_view._UiKitViewGestureRecognizer.__proto__),
+    [_gestureRecognizers]: core.Set$(recognizer.OneSequenceGestureRecognizer),
+    debugDescription: core.String
   }));
-  dart.setSetterSignature(animation_controller.AnimationController, () => ({
-    __proto__: dart.getSetters(animation_controller.AnimationController.__proto__),
-    [_value]: core.double,
-    value: core.double,
-    [_status]: animation.AnimationStatus
+  dart.setSetterSignature(platform_view._UiKitViewGestureRecognizer, () => ({
+    __proto__: dart.getSetters(platform_view._UiKitViewGestureRecognizer.__proto__),
+    [_gestureRecognizers]: core.Set$(recognizer.OneSequenceGestureRecognizer)
   }));
-  dart.setLibraryUri(animation_controller.AnimationController, L1);
-  dart.setFieldSignature(animation_controller.AnimationController, () => ({
-    __proto__: dart.getFields(animation_controller.AnimationController.__proto__),
-    lowerBound: dart.finalFieldType(core.double),
-    upperBound: dart.finalFieldType(core.double),
-    debugLabel: dart.finalFieldType(dart.nullable(core.String)),
-    animationBehavior: dart.finalFieldType(animation_controller.AnimationBehavior),
-    duration: dart.fieldType(dart.nullable(core.Duration)),
-    reverseDuration: dart.fieldType(dart.nullable(core.Duration)),
-    [_ticker]: dart.fieldType(dart.nullable(ticker.Ticker)),
-    [_simulation]: dart.fieldType(dart.nullable(simulation.Simulation)),
-    [__AnimationController__value]: dart.fieldType(dart.nullable(core.double)),
-    [__AnimationController__value_isSet]: dart.fieldType(core.bool),
-    [_lastElapsedDuration]: dart.fieldType(dart.nullable(core.Duration)),
-    [_direction]: dart.fieldType(animation_controller._AnimationDirection),
-    [__AnimationController__status]: dart.fieldType(dart.nullable(animation.AnimationStatus)),
-    [__AnimationController__status_isSet]: dart.fieldType(core.bool),
-    [_lastReportedStatus]: dart.fieldType(animation.AnimationStatus)
+  dart.setLibraryUri(platform_view._UiKitViewGestureRecognizer, I[1]);
+  dart.setFieldSignature(platform_view._UiKitViewGestureRecognizer, () => ({
+    __proto__: dart.getFields(platform_view._UiKitViewGestureRecognizer.__proto__),
+    gestureRecognizerFactories: dart.finalFieldType(core.Set$(basic_types.Factory$(recognizer.OneSequenceGestureRecognizer))),
+    [___UiKitViewGestureRecognizer__gestureRecognizers]: dart.fieldType(dart.nullable(core.Set$(recognizer.OneSequenceGestureRecognizer))),
+    [___UiKitViewGestureRecognizer__gestureRecognizers_isSet]: dart.fieldType(core.bool),
+    controller: dart.finalFieldType(platform_views.UiKitViewController)
   }));
-  var _begin$ = dart.privateName(animation_controller, "_begin");
-  var _end$ = dart.privateName(animation_controller, "_end");
-  var _curve$ = dart.privateName(animation_controller, "_curve");
-  var _durationInSeconds = dart.privateName(animation_controller, "_durationInSeconds");
-  animation_controller._InterpolationSimulation = class _InterpolationSimulation extends simulation.Simulation {
-    x(timeInSeconds) {
-      if (timeInSeconds == null) dart.nullFailed(L0, 850, 19, "timeInSeconds");
-      let t = (dart.notNull(timeInSeconds) / dart.notNull(this[_durationInSeconds]))[$clamp](0.0, 1.0);
-      if (t === 0.0)
-        return this[_begin$];
-      else if (t === 1.0)
-        return this[_end$];
-      else
-        return dart.notNull(this[_begin$]) + (dart.notNull(this[_end$]) - dart.notNull(this[_begin$])) * dart.notNull(this[_curve$].transform(t));
+  var ___PlatformViewGestureRecognizer__handlePointerEvent = dart.privateName(platform_view, "_#_PlatformViewGestureRecognizer#_handlePointerEvent");
+  var ___PlatformViewGestureRecognizer__handlePointerEvent_isSet = dart.privateName(platform_view, "_#_PlatformViewGestureRecognizer#_handlePointerEvent#isSet");
+  var ___PlatformViewGestureRecognizer__gestureRecognizers = dart.privateName(platform_view, "_#_PlatformViewGestureRecognizer#_gestureRecognizers");
+  var ___PlatformViewGestureRecognizer__gestureRecognizers_isSet = dart.privateName(platform_view, "_#_PlatformViewGestureRecognizer#_gestureRecognizers#isSet");
+  var _cacheEvent = dart.privateName(platform_view, "_cacheEvent");
+  var _flushPointerCache = dart.privateName(platform_view, "_flushPointerCache");
+  platform_view._PlatformViewGestureRecognizer = class _PlatformViewGestureRecognizer extends recognizer.OneSequenceGestureRecognizer {
+    get [_handlePointerEvent]() {
+      let t2;
+      return dart.test(this[___PlatformViewGestureRecognizer__handlePointerEvent_isSet]) ? (t2 = this[___PlatformViewGestureRecognizer__handlePointerEvent], t2) : dart.throw(new _internal.LateError.fieldNI("_handlePointerEvent"));
     }
-    dx(timeInSeconds) {
-      if (timeInSeconds == null) dart.nullFailed(L0, 861, 20, "timeInSeconds");
-      let epsilon = this.tolerance.time;
-      return (dart.notNull(this.x(dart.notNull(timeInSeconds) + dart.notNull(epsilon))) - dart.notNull(this.x(dart.notNull(timeInSeconds) - dart.notNull(epsilon)))) / (2 * dart.notNull(epsilon));
+    set [_handlePointerEvent](t2) {
+      if (t2 == null) dart.nullFailed(I[0], 522, 28, "null");
+      this[___PlatformViewGestureRecognizer__handlePointerEvent_isSet] = true;
+      this[___PlatformViewGestureRecognizer__handlePointerEvent] = t2;
     }
-    isDone(timeInSeconds) {
-      if (timeInSeconds == null) dart.nullFailed(L0, 867, 22, "timeInSeconds");
-      return dart.notNull(timeInSeconds) > dart.notNull(this[_durationInSeconds]);
+    get [_gestureRecognizers]() {
+      let t3;
+      return dart.test(this[___PlatformViewGestureRecognizer__gestureRecognizers_isSet]) ? (t3 = this[___PlatformViewGestureRecognizer__gestureRecognizers], t3) : dart.throw(new _internal.LateError.fieldNI("_gestureRecognizers"));
     }
-  };
-  (animation_controller._InterpolationSimulation.new = function(_begin, _end, duration, _curve, scale) {
-    if (_begin == null) dart.nullFailed(L0, 838, 33, "_begin");
-    if (_end == null) dart.nullFailed(L0, 838, 46, "_end");
-    if (duration == null) dart.nullFailed(L0, 838, 61, "duration");
-    if (_curve == null) dart.nullFailed(L0, 838, 76, "_curve");
-    if (scale == null) dart.nullFailed(L0, 838, 91, "scale");
-    this[_begin$] = _begin;
-    this[_end$] = _end;
-    this[_curve$] = _curve;
-    if (!(_begin != null)) dart.assertFailed(null, L0, 839, 14, "_begin != null");
-    if (!(_end != null)) dart.assertFailed(null, L0, 840, 14, "_end != null");
-    if (!(duration != null && dart.notNull(duration.inMicroseconds) > 0)) dart.assertFailed(null, L0, 841, 14, "duration != null && duration.inMicroseconds > 0");
-    this[_durationInSeconds] = dart.notNull(duration.inMicroseconds) * dart.notNull(scale) / 1000000;
-    animation_controller._InterpolationSimulation.__proto__.new.call(this);
-    ;
-  }).prototype = animation_controller._InterpolationSimulation.prototype;
-  dart.addTypeTests(animation_controller._InterpolationSimulation);
-  dart.addTypeCaches(animation_controller._InterpolationSimulation);
-  dart.setMethodSignature(animation_controller._InterpolationSimulation, () => ({
-    __proto__: dart.getMethods(animation_controller._InterpolationSimulation.__proto__),
-    x: dart.fnType(core.double, [core.double]),
-    dx: dart.fnType(core.double, [core.double]),
-    isDone: dart.fnType(core.bool, [core.double])
-  }));
-  dart.setLibraryUri(animation_controller._InterpolationSimulation, L1);
-  dart.setFieldSignature(animation_controller._InterpolationSimulation, () => ({
-    __proto__: dart.getFields(animation_controller._InterpolationSimulation.__proto__),
-    [_durationInSeconds]: dart.finalFieldType(core.double),
-    [_begin$]: dart.finalFieldType(core.double),
-    [_end$]: dart.finalFieldType(core.double),
-    [_curve$]: dart.finalFieldType(curves.Curve)
-  }));
-  var _periodInSeconds = dart.privateName(animation_controller, "_periodInSeconds");
-  var _initialT = dart.privateName(animation_controller, "_initialT");
-  animation_controller._RepeatingSimulation = class _RepeatingSimulation extends simulation.Simulation {
-    x(timeInSeconds) {
-      let t2, t2$;
-      if (timeInSeconds == null) dart.nullFailed(L0, 889, 19, "timeInSeconds");
-      if (!(dart.notNull(timeInSeconds) >= 0.0)) dart.assertFailed(null, L0, 890, 12, "timeInSeconds >= 0.0");
-      let totalTimeInSeconds = dart.notNull(timeInSeconds) + dart.notNull(this[_initialT]);
-      let t = (totalTimeInSeconds / dart.notNull(this[_periodInSeconds]))[$modulo](1.0);
-      let _isPlayingReverse = (totalTimeInSeconds / dart.notNull(this[_periodInSeconds]))[$truncate]()[$isOdd];
-      if (dart.test(this.reverse) && _isPlayingReverse) {
-        t2 = animation_controller._AnimationDirection.reverse;
-        this.directionSetter(t2);
-        return dart.nullCheck(ui.lerpDouble(this.max, this.min, t));
-      } else {
-        t2$ = animation_controller._AnimationDirection.forward;
-        this.directionSetter(t2$);
-        return dart.nullCheck(ui.lerpDouble(this.min, this.max, t));
+    set [_gestureRecognizers](t3) {
+      if (t3 == null) dart.nullFailed(I[0], 538, 42, "null");
+      this[___PlatformViewGestureRecognizer__gestureRecognizers_isSet] = true;
+      this[___PlatformViewGestureRecognizer__gestureRecognizers] = t3;
+    }
+    addAllowedPointer(event) {
+      if (event == null) dart.nullFailed(I[0], 541, 43, "event");
+      this.startTrackingPointer(event.pointer, event.transform);
+      for (let recognizer of this[_gestureRecognizers]) {
+        recognizer.addPointer(event);
       }
     }
-    dx(timeInSeconds) {
-      if (timeInSeconds == null) dart.nullFailed(L0, 906, 20, "timeInSeconds");
-      return (dart.notNull(this.max) - dart.notNull(this.min)) / dart.notNull(this[_periodInSeconds]);
+    get debugDescription() {
+      return "Platform view";
     }
-    isDone(timeInSeconds) {
-      if (timeInSeconds == null) dart.nullFailed(L0, 909, 22, "timeInSeconds");
+    didStopTrackingLastPointer(pointer) {
+      if (pointer == null) dart.nullFailed(I[0], 552, 39, "pointer");
+    }
+    handleEvent(event) {
+      let t4;
+      if (event == null) dart.nullFailed(I[0], 555, 33, "event");
+      if (!dart.test(this.forwardedPointers.contains(event.pointer))) {
+        this[_cacheEvent](event);
+      } else {
+        t4 = event;
+        this[_handlePointerEvent](t4);
+      }
+      this.stopTrackingIfPointerNoLongerDown(event);
+    }
+    acceptGesture(pointer) {
+      if (pointer == null) dart.nullFailed(I[0], 565, 26, "pointer");
+      this[_flushPointerCache](pointer);
+      this.forwardedPointers.add(pointer);
+    }
+    rejectGesture(pointer) {
+      if (pointer == null) dart.nullFailed(I[0], 571, 26, "pointer");
+      this.stopTrackingPointer(pointer);
+      this.cachedEvents[$remove](pointer);
+    }
+    [_cacheEvent](event) {
+      if (event == null) dart.nullFailed(I[0], 576, 33, "event");
+      if (!dart.test(this.cachedEvents[$containsKey](event.pointer))) {
+        this.cachedEvents[$_set](event.pointer, T.JSArrayOfPointerEvent().of([]));
+      }
+      dart.nullCheck(this.cachedEvents[$_get](event.pointer))[$add](event);
+    }
+    [_flushPointerCache](pointer) {
+      let t4;
+      if (pointer == null) dart.nullFailed(I[0], 583, 31, "pointer");
+      t4 = this.cachedEvents[$remove](pointer);
+      t4 == null ? null : t4[$forEach](this[_handlePointerEvent]);
+    }
+    stopTrackingPointer(pointer) {
+      if (pointer == null) dart.nullFailed(I[0], 588, 32, "pointer");
+      super.stopTrackingPointer(pointer);
+      this.forwardedPointers.remove(pointer);
+    }
+    reset() {
+      this.forwardedPointers[$forEach](dart.bind(this, 'stopTrackingPointer', super.stopTrackingPointer));
+      this.forwardedPointers.clear();
+      this.cachedEvents[$keys][$forEach](dart.bind(this, 'stopTrackingPointer', super.stopTrackingPointer));
+      this.cachedEvents[$clear]();
+      this.resolve(arena.GestureDisposition.rejected);
+    }
+  };
+  (platform_view._PlatformViewGestureRecognizer.new = function(handlePointerEvent, gestureRecognizerFactories, opts) {
+    let t2;
+    if (handlePointerEvent == null) dart.nullFailed(I[0], 496, 25, "handlePointerEvent");
+    if (gestureRecognizerFactories == null) dart.nullFailed(I[0], 497, 10, "gestureRecognizerFactories");
+    let kind = opts && 'kind' in opts ? opts.kind : null;
+    this[___PlatformViewGestureRecognizer__handlePointerEvent] = null;
+    this[___PlatformViewGestureRecognizer__handlePointerEvent_isSet] = false;
+    this.cachedEvents = new (T.IdentityMapOfint$ListOfPointerEvent()).new();
+    this.forwardedPointers = T.LinkedHashSetOfint().new();
+    this[___PlatformViewGestureRecognizer__gestureRecognizers] = null;
+    this[___PlatformViewGestureRecognizer__gestureRecognizers_isSet] = false;
+    this.gestureRecognizerFactories = gestureRecognizerFactories;
+    platform_view._PlatformViewGestureRecognizer.__proto__.new.call(this, {kind: kind});
+    this.team = (t2 = new team.GestureArenaTeam.new(), (() => {
+      t2.captain = this;
+      return t2;
+    })());
+    this[_gestureRecognizers] = this.gestureRecognizerFactories[$map](recognizer.OneSequenceGestureRecognizer, dart.fn(recognizerFactory => {
+      let t2, t2$, t2$0;
+      if (recognizerFactory == null) dart.nullFailed(I[0], 503, 46, "recognizerFactory");
+      let gestureRecognizer = recognizerFactory._constructor();
+      gestureRecognizer.team = this.team;
+      if (long_press.LongPressGestureRecognizer.is(gestureRecognizer)) {
+        t2 = gestureRecognizer;
+        t2.onLongPress == null ? t2.onLongPress = dart.fn(() => {
+        }, T.VoidTovoid()) : null;
+      } else if (monodrag.DragGestureRecognizer.is(gestureRecognizer)) {
+        t2$ = gestureRecognizer;
+        t2$.onDown == null ? t2$.onDown = dart.fn(_ => {
+          if (_ == null) dart.nullFailed(I[0], 512, 41, "_");
+        }, T.DragDownDetailsTovoid()) : null;
+      } else if (tap.TapGestureRecognizer.is(gestureRecognizer)) {
+        t2$0 = gestureRecognizer;
+        t2$0.onTapDown == null ? t2$0.onTapDown = dart.fn(_ => {
+          if (_ == null) dart.nullFailed(I[0], 514, 44, "_");
+        }, T.TapDownDetailsTovoid()) : null;
+      }
+      return gestureRecognizer;
+    }, T.FactoryOfOneSequenceGestureRecognizerToOneSequenceGestureRecognizer()))[$toSet]();
+    this[_handlePointerEvent] = handlePointerEvent;
+  }).prototype = platform_view._PlatformViewGestureRecognizer.prototype;
+  dart.addTypeTests(platform_view._PlatformViewGestureRecognizer);
+  dart.addTypeCaches(platform_view._PlatformViewGestureRecognizer);
+  dart.setMethodSignature(platform_view._PlatformViewGestureRecognizer, () => ({
+    __proto__: dart.getMethods(platform_view._PlatformViewGestureRecognizer.__proto__),
+    didStopTrackingLastPointer: dart.fnType(dart.void, [core.int]),
+    handleEvent: dart.fnType(dart.void, [events.PointerEvent]),
+    [_cacheEvent]: dart.fnType(dart.void, [events.PointerEvent]),
+    [_flushPointerCache]: dart.fnType(dart.void, [core.int]),
+    reset: dart.fnType(dart.void, [])
+  }));
+  dart.setGetterSignature(platform_view._PlatformViewGestureRecognizer, () => ({
+    __proto__: dart.getGetters(platform_view._PlatformViewGestureRecognizer.__proto__),
+    [_handlePointerEvent]: dart.fnType(async.Future$(dart.void), [events.PointerEvent]),
+    [_gestureRecognizers]: core.Set$(recognizer.OneSequenceGestureRecognizer),
+    debugDescription: core.String
+  }));
+  dart.setSetterSignature(platform_view._PlatformViewGestureRecognizer, () => ({
+    __proto__: dart.getSetters(platform_view._PlatformViewGestureRecognizer.__proto__),
+    [_handlePointerEvent]: dart.fnType(async.Future$(dart.void), [events.PointerEvent]),
+    [_gestureRecognizers]: core.Set$(recognizer.OneSequenceGestureRecognizer)
+  }));
+  dart.setLibraryUri(platform_view._PlatformViewGestureRecognizer, I[1]);
+  dart.setFieldSignature(platform_view._PlatformViewGestureRecognizer, () => ({
+    __proto__: dart.getFields(platform_view._PlatformViewGestureRecognizer.__proto__),
+    [___PlatformViewGestureRecognizer__handlePointerEvent]: dart.fieldType(dart.nullable(dart.fnType(async.Future$(dart.void), [events.PointerEvent]))),
+    [___PlatformViewGestureRecognizer__handlePointerEvent_isSet]: dart.fieldType(core.bool),
+    cachedEvents: dart.finalFieldType(core.Map$(core.int, core.List$(events.PointerEvent))),
+    forwardedPointers: dart.finalFieldType(core.Set$(core.int)),
+    gestureRecognizerFactories: dart.finalFieldType(core.Set$(basic_types.Factory$(recognizer.OneSequenceGestureRecognizer))),
+    [___PlatformViewGestureRecognizer__gestureRecognizers]: dart.fieldType(dart.nullable(core.Set$(recognizer.OneSequenceGestureRecognizer))),
+    [___PlatformViewGestureRecognizer__gestureRecognizers_isSet]: dart.fieldType(core.bool)
+  }));
+  var _controller = dart.privateName(platform_view, "_controller");
+  const RenderBox__PlatformViewGestureMixin$36$ = class RenderBox__PlatformViewGestureMixin extends box.RenderBox {};
+  (RenderBox__PlatformViewGestureMixin$36$.new = function() {
+    platform_view._PlatformViewGestureMixin[dart.mixinNew].call(this);
+    RenderBox__PlatformViewGestureMixin$36$.__proto__.new.call(this);
+  }).prototype = RenderBox__PlatformViewGestureMixin$36$.prototype;
+  dart.applyMixin(RenderBox__PlatformViewGestureMixin$36$, platform_view._PlatformViewGestureMixin);
+  platform_view.PlatformViewRenderBox = class PlatformViewRenderBox extends RenderBox__PlatformViewGestureMixin$36$ {
+    set controller(controller) {
+      if (controller == null) dart.nullFailed(I[0], 626, 41, "controller");
+      if (!(controller != null)) dart.assertFailed(null, I[0], 627, 12, "controller != null");
+      if (!(controller.viewId != null && dart.notNull(controller.viewId) > -1)) dart.assertFailed(null, I[0], 628, 12, "controller.viewId != null && controller.viewId > -1");
+      if (dart.equals(this[_controller], controller)) {
+        return;
+      }
+      let needsSemanticsUpdate = this[_controller].viewId != controller.viewId;
+      this[_controller] = controller;
+      this.markNeedsPaint();
+      if (needsSemanticsUpdate) {
+        this.markNeedsSemanticsUpdate();
+      }
+    }
+    updateGestureRecognizers(gestureRecognizers) {
+      if (gestureRecognizers == null) dart.nullFailed(I[0], 645, 76, "gestureRecognizers");
+      this[_updateGestureRecognizersWithCallBack](gestureRecognizers, dart.bind(this[_controller], 'dispatchPointerEvent'));
+    }
+    get sizedByParent() {
+      return true;
+    }
+    get alwaysNeedsCompositing() {
+      return true;
+    }
+    get isRepaintBoundary() {
+      return true;
+    }
+    computeDryLayout(constraints) {
+      if (constraints == null) dart.nullFailed(I[0], 661, 40, "constraints");
+      return constraints.biggest;
+    }
+    paint(context, offset) {
+      if (context == null) dart.nullFailed(I[0], 666, 30, "context");
+      if (offset == null) dart.nullFailed(I[0], 666, 46, "offset");
+      if (!(this[_controller].viewId != null)) dart.assertFailed(null, I[0], 667, 12, "_controller.viewId != null");
+      context.addLayer(new layer.PlatformViewLayer.new({rect: offset['&'](this.size), viewId: this[_controller].viewId}));
+    }
+    describeSemanticsConfiguration(config) {
+      if (config == null) dart.nullFailed(I[0], 675, 63, "config");
+      super.describeSemanticsConfiguration(config);
+      if (!(this[_controller].viewId != null)) dart.assertFailed(null, I[0], 677, 12, "_controller.viewId != null");
+      config.isSemanticBoundary = true;
+      config.platformViewId = this[_controller].viewId;
+    }
+  };
+  (platform_view.PlatformViewRenderBox.new = function(opts) {
+    let controller = opts && 'controller' in opts ? opts.controller : null;
+    if (controller == null) dart.nullFailed(I[0], 612, 37, "controller");
+    let hitTestBehavior = opts && 'hitTestBehavior' in opts ? opts.hitTestBehavior : null;
+    if (hitTestBehavior == null) dart.nullFailed(I[0], 613, 42, "hitTestBehavior");
+    let gestureRecognizers = opts && 'gestureRecognizers' in opts ? opts.gestureRecognizers : null;
+    if (gestureRecognizers == null) dart.nullFailed(I[0], 614, 57, "gestureRecognizers");
+    if (!(controller != null && controller.viewId != null && dart.notNull(controller.viewId) > -1)) dart.assertFailed(null, I[0], 615, 16, "controller != null && controller.viewId != null && controller.viewId > -1");
+    if (!(hitTestBehavior != null)) dart.assertFailed(null, I[0], 616, 16, "hitTestBehavior != null");
+    if (!(gestureRecognizers != null)) dart.assertFailed(null, I[0], 617, 16, "gestureRecognizers != null");
+    this[_controller] = controller;
+    platform_view.PlatformViewRenderBox.__proto__.new.call(this);
+    this.hitTestBehavior = hitTestBehavior;
+    this.updateGestureRecognizers(gestureRecognizers);
+  }).prototype = platform_view.PlatformViewRenderBox.prototype;
+  dart.addTypeTests(platform_view.PlatformViewRenderBox);
+  dart.addTypeCaches(platform_view.PlatformViewRenderBox);
+  dart.setMethodSignature(platform_view.PlatformViewRenderBox, () => ({
+    __proto__: dart.getMethods(platform_view.PlatformViewRenderBox.__proto__),
+    updateGestureRecognizers: dart.fnType(dart.void, [core.Set$(basic_types.Factory$(recognizer.OneSequenceGestureRecognizer))])
+  }));
+  dart.setSetterSignature(platform_view.PlatformViewRenderBox, () => ({
+    __proto__: dart.getSetters(platform_view.PlatformViewRenderBox.__proto__),
+    controller: platform_views.PlatformViewController
+  }));
+  dart.setLibraryUri(platform_view.PlatformViewRenderBox, I[1]);
+  dart.setFieldSignature(platform_view.PlatformViewRenderBox, () => ({
+    __proto__: dart.getFields(platform_view.PlatformViewRenderBox.__proto__),
+    [_controller]: dart.fieldType(platform_views.PlatformViewController)
+  }));
+  platform_view._factoryTypesSetEquals = function _factoryTypesSetEquals(T, a, b) {
+    if (dart.equals(a, b)) {
+      return true;
+    }
+    if (a == null || b == null) {
       return false;
     }
+    return collections.setEquals(core.Type, platform_view._factoriesTypeSet(T, a), platform_view._factoriesTypeSet(T, b));
   };
-  (animation_controller._RepeatingSimulation.new = function(initialValue, min, max, reverse, period, directionSetter) {
-    if (initialValue == null) dart.nullFailed(L0, 873, 31, "initialValue");
-    if (min == null) dart.nullFailed(L0, 873, 50, "min");
-    if (max == null) dart.nullFailed(L0, 873, 60, "max");
-    if (reverse == null) dart.nullFailed(L0, 873, 70, "reverse");
-    if (period == null) dart.nullFailed(L0, 873, 88, "period");
-    if (directionSetter == null) dart.nullFailed(L0, 873, 101, "directionSetter");
-    this.min = min;
-    this.max = max;
-    this.reverse = reverse;
-    this.directionSetter = directionSetter;
-    this[_periodInSeconds] = dart.notNull(period.inMicroseconds) / 1000000;
-    this[_initialT] = max == min ? 0.0 : dart.notNull(initialValue) / (dart.notNull(max) - dart.notNull(min)) * (dart.notNull(period.inMicroseconds) / 1000000);
-    animation_controller._RepeatingSimulation.__proto__.new.call(this);
-    if (!(dart.notNull(this[_periodInSeconds]) > 0.0)) dart.assertFailed(null, L0, 876, 12, "_periodInSeconds > 0.0");
-    if (!(dart.notNull(this[_initialT]) >= 0.0)) dart.assertFailed(null, L0, 877, 12, "_initialT >= 0.0");
-  }).prototype = animation_controller._RepeatingSimulation.prototype;
-  dart.addTypeTests(animation_controller._RepeatingSimulation);
-  dart.addTypeCaches(animation_controller._RepeatingSimulation);
-  dart.setMethodSignature(animation_controller._RepeatingSimulation, () => ({
-    __proto__: dart.getMethods(animation_controller._RepeatingSimulation.__proto__),
-    x: dart.fnType(core.double, [core.double]),
-    dx: dart.fnType(core.double, [core.double]),
-    isDone: dart.fnType(core.bool, [core.double])
-  }));
-  dart.setLibraryUri(animation_controller._RepeatingSimulation, L1);
-  dart.setFieldSignature(animation_controller._RepeatingSimulation, () => ({
-    __proto__: dart.getFields(animation_controller._RepeatingSimulation.__proto__),
-    min: dart.finalFieldType(core.double),
-    max: dart.finalFieldType(core.double),
-    reverse: dart.finalFieldType(core.bool),
-    directionSetter: dart.finalFieldType(dart.fnType(dart.void, [animation_controller._AnimationDirection])),
-    [_periodInSeconds]: dart.finalFieldType(core.double),
-    [_initialT]: dart.finalFieldType(core.double)
-  }));
-  var Tolerance_velocity = dart.privateName(tolerance, "Tolerance.velocity");
-  var Tolerance_time = dart.privateName(tolerance, "Tolerance.time");
-  var Tolerance_distance = dart.privateName(tolerance, "Tolerance.distance");
-  var C7;
-  dart.defineLazy(animation_controller, {
-    /*animation_controller._kFlingSpringDescription*/get _kFlingSpringDescription() {
-      return new spring_simulation.SpringDescription.withDampingRatio({mass: 1.0, stiffness: 500.0, ratio: 1.0});
-    },
-    /*animation_controller._kFlingTolerance*/get _kFlingTolerance() {
-      return C7 || CT.C7;
-    }
-  }, false);
-  dart.trackLibraries("packages/flutter/src/animation/animation_controller.dart", {
-    "package:flutter/src/animation/animation_controller.dart": animation_controller
+  platform_view._factoriesTypeSet = function _factoriesTypeSet(T, factories) {
+    if (factories == null) dart.nullFailed(I[0], 51, 48, "factories");
+    return factories[$map](core.Type, dart.fn(factory => {
+      if (factory == null) dart.nullFailed(I[0], 52, 42, "factory");
+      return factory.type;
+    }, dart.fnType(core.Type, [basic_types.Factory$(T)])))[$toSet]();
+  };
+  dart.trackLibraries("packages/flutter/src/rendering/platform_view.dart", {
+    "package:flutter/src/rendering/platform_view.dart": platform_view
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["animation_controller.dart"],"names":[],"mappings":"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","file":"../../../../../../../packages/flutter/src/animation/animation_controller.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["platform_view.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAgCA;;;QAbK;;;;;EAaL;;;;;;;;;;;;;;;;;IAMA;;;QAJK;;;;;EAIL;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;UAyoBkD;AAC9C,uBAAI,KAAK,EAAI;AACa,QAAxB,yBAAmB,KAAK;AACxB,YAAI,cAAS,MACX,AAAgB;;IAEtB;4CASsF,oBAAwC;;UAAxC;UAAwC;AAC5H,YAAO,AAAmB,kBAAD,IAAI;AAC7B,YACA,AAAsC,AAAO,yEAA3B,kBAAkB,cAAY,AAAmB,kBAAD,8BAAO,AACzE,qGACI;AACJ,oBAAI,8EAAuB,kBAAkB,+CAAE,OAAoB;AACjE;;AAE2B,YAA7B;2BAAoB;AACuE,MAA3F,2BAAqB,qDAA+B,kBAAkB,EAAE,kBAAkB;AAClD,MAAxC,4BAAsB,kBAAkB;IAC1C;;UAK8B;UAA0B;;AACtD,UAAqB,YAAjB,wBAAgD,qEAAgB,AAAK,mBAAS,QAAQ;AACxF,cAAO;;AAEkC,MAA3C,AAAO,MAAD,KAAK,4BAAgB,MAAM,QAAQ;AACzC,YAAwB,aAAjB,wBAAgD;IACzD;;UAGwB;AAAa,YAAiB,cAAjB,wBAAgD;IAAW;;AAGtD;IAAI;;AAGN;IAAI;;AAGlB,YAAY;IAAY;;AAGjB;IAAI;gBAGP,OAAoB;;UAApB;+BAAoB;;AAChD,UAAU,2BAAN,KAAK;AAC8B,QAAnB,AAAE,eAApB,qCAA+B,KAAK;;AAEtC,UAAU,4BAAN,KAAK;AACyB,aAAhC;4BAAqB,GAAK,KAAK;;IAEnC;;AAI6B,MAAT,AAAE,eAApB;AACc,MAAR;IACR;;;IA9D6B;IAER;IAoBW;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAvmBY;IAAe;;UAKlB;AACvC,YAAO,AAAgB,yBAAG;AAC1B,YAAO,AAAe,cAAD,IAAI;AACzB,UAAoB,YAAhB,uBAAmB,cAAc,GACnC;AACyE,MAA3E,AAAgB,oEAAoC;AACpB,MAAhC,wBAAkB,cAAc;AACb,MAAnB;AACA,oBAAI,AAAgB;AACQ,QAA1B;;AAEsE,MAAxE,AAAgB,iEAAiC;IACnD;;AAKyB;IAAa;;UAEhB;AACpB,YAAO,AAAM,KAAD,IAAI;AAChB,uBAAI,KAAK,EAAI;AACU,QAArB,sBAAgB,KAAK;AACL,QAAhB;AAC0B,QAA1B;;IAEJ;;UAEgC;AACJ,MAA1B;IACF;;UAkByE;AACwB,MAA/F,4CAAsC,kBAAkB,EAAkB,UAAhB;IAC5D;;AAG0B;IAAI;;AAGK;IAAI;;AAGT;IAAI;;UAGG;AACnC,YAAO,AAAY,YAAD;IACpB;;AAIuB,MAAf;AACa,MAAnB;IACF;;;AAEU;IAAuB;;;AAAvB;;IAAuB;;AAEH;AAI5B,YAAW,YAAP,cAA6B,wDAAY,AAAK;AAChD;;AAGkC,QAApC,eAA4B;AACZ,QAAhB;AAEK;AACL;AACmB,UAAjB,aAAa;AAC4B,UAAzC,MAAM,AAAgB,8BAAQ,UAAU;AACJ,UAApC,gCAA0B,UAAU;8BAI7B,WAAQ,UAAU;AAEM,QAAjC,eAA4B;AACZ,QAAhB;MACF;;UAG2B,SAAgB;UAAhB;UAAgB;AACzC,UAAI,AAAgB,AAAU,mCAAG,MAC/B;AAIF,WAAgB,aAAX,AAAK,gCAAQ,AAAwB,wCAAqB,aAAZ,AAAK,iCAAS,AAAwB,uDAAW,mBAAqB;AAE1F,QAD7B,uBAAiB,AAAQ,OAAD,cAAc,MAAM,MAAM,EAAE,AAAO,MAAD,MAAG,sBAAM,qCAA6B,6BAClF;AACd;;AAEmB,MAArB,uBAAiB;AACa,MAA9B,oBAAc,OAAO,EAAE,MAAM;IAC/B;oBAImC,SAAgB;UAAhB;UAAgB;AAc/C,MAJF,AAAQ,OAAD,UAAU,kCACT,AAAO,MAAD,MAAG,2CACqB,eAAzB,AAAgB,0CACZ,YAAP,cAA6B;IAEzC;;UAG4D;AACd,MAAtC,qCAA+B,MAAM;AAEX,MAAhC,AAAO,MAAD,sBAAsB;AAE5B,oBAAI,AAAgB;AAC4B,QAA9C,AAAO,MAAD,kBAAkB,AAAgB;;IAE5C;;;QAvKiC;;QACM;;QACe;;QAC/C;;IAaY,eAA4B;IA0B1C,sBAAqB;wDAsDhB;;IA2CK;UAvIH,AAAe,cAAD,IAAI;UAClB,AAAgB,eAAD,IAAI;UACnB,AAAmB,kBAAD,IAAI;UACtB,AAAa,YAAD,IAAI;IACP,wBAAE,cAAc;IAClB,sBAAE,YAAY;AAVjC;AAW6E,IAA3E,AAAgB,yCAAmB;UAAQ;AAAW,gCAAc,MAAM;;AAC9B,IAA5C,8BAAyB,kBAAkB;AAC6B,IAAxE,AAAgB,iEAAiC;AACX,IAAjC,uBAAkB,eAAe;EACxC;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAqN4B;;;;;;;AAfc;IAAe;;UAElB;AACrC,YAAO,AAAe,cAAD,IAAI;AACd,iCAAuB,AAAgB,AAAG,4BAAG,AAAe,cAAD;AACtC,MAAhC,wBAAkB,cAAc;AAChB,MAAhB;AACA,UAAI,oBAAoB;AACI,QAA1B;;IAEJ;6BAQyE;;;AACvE,YAAO,AAAmB,kBAAD,IAAI;AAC7B,YACA,AAAsC,AAAO,yEAA3B,kBAAkB,cAAY,AAAmB,kBAAD,8BAAO,AACzE,qGACI;AACJ,oBAAI,8EAAuB,kBAAkB,+CAAE,OAAoB;AACjE;;AAE2B,YAA7B;2BAAoB;AACgE,MAApF,2BAAqB,kDAA4B,qBAAgB,kBAAkB;IACrF;;AAG0B;IAAI;;AAGK;IAAI;;AAGT;IAAI;;UAOG;AACnC,YAAO,AAAY,YAAD;IACpB;UAG2B,SAAgB;UAAhB;UAAgB;AAIvC,MAHF,AAAQ,OAAD,UAAU,uCACT,AAAO,MAAD,MAAG,oBACP,AAAgB;IAE5B;;UAG8B;UAAkB;AAC9C,UAAoB,YAAhB,sBAA+C,qEAAgB,AAAK,mBAAiB,eAAR,QAAQ,KACvF,MAAO;AACkC,MAA3C,AAAO,MAAD,KAAK,4BAAgB,MAAM,QAAQ;AACzC,YAAuB,aAAhB,sBAA+C;IACxD;;UAGwB;AAAa,YAAgB,cAAhB,sBAA+C;IAAW;gBAGjE,OAAoB;;UAApB;+BAAoB;;AAChD,WAAU,2BAAN,KAAK;AACP;;AAEmC,MAAnB,AAAE,eAApB,qCAA+B,KAAK;AACW,MAA/C,+BAAuC,KAAf,AAAM,KAAD,iBAAC,OAAY,KAAK;IACjD;gCAG4C;;;AAC1C,WAAU,2BAAN,KAAK;AACP;;AAEF,qBAAa,AAAK,AAAQ,oBAAN,oBAAe,mBAAc,AAAM,KAAD;AACpD;;AAEF,wBAAoB,KAAf,AAAM,KAAD,iBAAC,OAAY,KAAK,QAAK;AAKA,QAA/B,AAAgB;;AAEU,MAA5B,8BAAwB;IAC1B;;UAG4D;AACd,MAAtC,qCAA+B,MAAM;AACX,MAAhC,AAAO,MAAD,sBAAsB;AACc,MAA1C,AAAO,MAAD,kBAAkB,AAAgB;IAC1C;;8BAG0B;;AACL,MAAb,aAAO,KAAK;AAC8D,MAAzD,AAAE,AAAc,eAAxB,wEAAuC;IACxD;;AAIqF,MAA5D,AAAE,AAAc,eAAxB,2EAA0C;AAC9B,MAAT,AAAE,eAApB;AACc,MAAR;IACR;;;QAhI+B;;QACf;;QACsC;;IAqDzB;IAEf;IAxDE;UAEJ,AAAe,cAAD,IAAI;UAClB,AAAgB,eAAD,IAAI;UACnB,AAAmB,kBAAD,IAAI;IACb,wBAAE,cAAc;AAPrC;AAQ8C,IAA5C,8BAAyB,kBAAkB;EAC7C;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAgKuC;IAAmB;;;AAAnB;;IAAmB;;UAKlB;AACc,MAApD,0BAAqB,AAAM,KAAD,UAAU,AAAM,KAAD;AACzC,eAAwC,aAAc;AACxB,QAA5B,AAAW,UAAD,YAAY,KAAK;;IAE/B;;AAG+B;IAAY;;UAGP;IAAW;;UAGjB;AACY,MAAxC,uCAAkC,KAAK;IACzC;;UAGuB;AACK,MAA1B,AAAW;IACb;;UAGuB;AACK,MAA1B,AAAW;IACb;;AAGsC,MAApC,aAA2B;IAC7B;;4DAjEO,YACA;;QADA;QACA;QACc;8DA4BkB;;IA9BhC;IACA;AAEF,8EAAY,IAAI;AAED,IADlB,mDAAO;AACH,mBAAU;;;AAiBL,IAhBT,4BAAsB,AAA2B,AAgB/C,+EAfA,QAAuC;;;AACF,8BAAoB,AAA6B,iBAAZ;AAC3C,MAA7B,AAAkB,iBAAD,QAAQ;AAIzB,UAAsB,yCAAlB,iBAAiB;AACmB,aAAtC,iBAAiB;QAAC,AAAY,kBAAA,OAAZ,iBAAgB;6BAAJ;YACzB,KAAsB,kCAAlB,iBAAiB;AACQ,cAAlC,iBAAiB;QAAC,AAAO,cAAA,OAAP,aAAW;cAAC;wCAAL;YACpB,KAAsB,4BAAlB,iBAAiB;AACW,eAArC,iBAAiB;QAAC,AAAU,kBAAA,OAAV,iBAAc;cAAC;uCAAL;;AAE9B,YAAO,kBAAiB;;EAG9B;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAiFyB;IAAmB;;;AAAnB;;IAAmB;;;AAgBL;IAAmB;;;AAAnB;;IAAmB;;UAGlB;AACc,MAApD,0BAAqB,AAAM,KAAD,UAAU,AAAM,KAAD;AACzC,eAAwC,aAAc;AACxB,QAA5B,AAAW,UAAD,YAAY,KAAK;;IAE/B;;AAG+B;IAAe;;UAGV;IAAW;gBAGjB;;;AAC5B,qBAAK,AAAkB,gCAAS,AAAM,KAAD;AACjB,QAAlB,kBAAY,KAAK;;AAES,aAAN,KAAK;QAAzB,AAAmB;;AAEmB,MAAxC,uCAAkC,KAAK;IACzC;;UAGuB;AACM,MAA3B,yBAAmB,OAAO;AACI,MAA9B,AAAkB,2BAAI,OAAO;IAC/B;;UAGuB;AACO,MAA5B,yBAAoB,OAAO;AACC,MAA5B,AAAa,2BAAO,OAAO;IAC7B;;UAE8B;AAC5B,qBAAK,AAAa,gCAAY,AAAM,KAAD;AACc,QAA/C,AAAY,yBAAC,AAAM,KAAD,UAA2B;;AAER,MAAZ,AAAE,eAA7B,AAAY,yBAAC,AAAM,KAAD,iBAAe,KAAK;IACxC;yBAE4B;;;AACgC,WAA1D,AAAa,2BAAO,OAAO;mBAAd,OAAiB,aAAQ;IACxC;;UAG6B;AACO,MAA5B,0BAAoB,OAAO;AACA,MAAjC,AAAkB,8BAAO,OAAO;IAClC;;AAGsD,MAApD,AAAkB,iCAAc;AACP,MAAzB,AAAkB;AACkC,MAApD,AAAa,AAAK,mCAAc;AACZ,MAApB,AAAa;AACuB,MAApC,aAA2B;IAC7B;;+DAvGsB,oBACf;;QADe;QACf;QACc;iEAwBI;;IAMU,oBAAwC;IAI5D,yBAAyB;iEAMD;;IAzChC;AAEF,iFAAY,IAAI;AAED,IADlB,mDAAO;AACH,mBAAU;;;AAiBL,IAhBT,4BAAsB,AAA2B,AAgB/C,+EAfA,QAAuC;;;AACF,8BAAoB,AAA6B,iBAAZ;AAC3C,MAA7B,AAAkB,iBAAD,QAAQ;AAIzB,UAAsB,yCAAlB,iBAAiB;AACmB,aAAtC,iBAAiB;QAAC,AAAY,kBAAA,OAAZ,iBAAgB;6BAAJ;YACzB,KAAsB,kCAAlB,iBAAiB;AACQ,cAAlC,iBAAiB;QAAC,AAAO,cAAA,OAAP,aAAW;cAAC;wCAAL;YACpB,KAAsB,4BAAlB,iBAAiB;AACW,eAArC,iBAAiB;QAAC,AAAU,kBAAA,OAAV,iBAAc;cAAC;uCAAL;;AAE9B,YAAO,kBAAiB;;AAGY,IAAxC,4BAAsB,kBAAkB;EAC1C;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;UA0GsC;AACpC,YAAO,AAAW,UAAD,IAAI;AACrB,YAAO,AAAW,AAAe,UAAhB,WAAW,QAA0B,aAAlB,AAAW,UAAD,WAAU,CAAC;AAEzD,UAAiB,YAAZ,mBAAe,UAAU;AAC5B;;AAES,iCAAuB,AAAY,AAAO,4BAAG,AAAW,UAAD;AAC1C,MAAxB,oBAAc,UAAU;AACR,MAAhB;AACA,UAAI,oBAAoB;AACI,QAA1B;;IAEJ;;UAMyE;AACoB,MAA3F,4CAAsC,kBAAkB,EAAc,UAAZ;IAC5D;;AAK0B;IAAI;;AAGK;IAAI;;AAGT;IAAI;;UAGG;AACnC,YAAO,AAAY,YAAD;IACpB;UAG2B,SAAgB;UAAhB;UAAgB;AACzC,YAAO,AAAY,AAAO,4BAAG;AAI3B,MAHF,AAAQ,OAAD,UAAU,uCACT,AAAO,MAAD,MAAG,oBACP,AAAY;IAExB;;UAG4D;AACd,MAAtC,qCAA+B,MAAM;AAC3C,YAAO,AAAY,AAAO,4BAAG;AACG,MAAhC,AAAO,MAAD,sBAAsB;AACc,MAA1C,AAAO,MAAD,kBAAkB,AAAY;IACtC;;;QApEkC;;QACK;;QACe;;UACzC,AAAgD,UAAtC,IAAI,QAAQ,AAAW,UAAD,WAAW,QAA0B,aAAlB,AAAW,UAAD,WAAU,CAAC;UACxE,AAAgB,eAAD,IAAI;UACnB,AAAmB,kBAAD,IAAI;IACjB,oBAAE,UAAU;AAP9B;AAQwC,IAAjC,uBAAkB,eAAe;AACM,IAA5C,8BAAyB,kBAAkB;EAC7C;;;;;;;;;;;;;;;;4EApkB8C,GAAoB;AAClE,QAAM,YAAF,CAAC,EAAI,CAAC;AACR,YAAO;;AAET,QAAI,AAAE,CAAD,IAAI,QAAS,AAAE,CAAD,IAAI;AACrB,YAAO;;AAET,UAAO,kCAAU,mCAAkB,CAAC,GAAG,mCAAkB,CAAC;EAC5D;;QAE+C;AAC7C,UAAO,AAAU,AAAgD,UAAjD,kBAAW;UAAY;AAAY,YAAA,AAAQ,QAAD;;EAC5D","file":"../../../../../../../../packages/flutter/src/rendering/platform_view.dart.lib.js"}');
   // Exports:
   return {
-    src__animation__animation_controller: animation_controller
+    src__rendering__platform_view: platform_view
   };
 }));
 
-//# sourceMappingURL=animation_controller.dart.lib.js.map
+//# sourceMappingURL=platform_view.dart.lib.js.map

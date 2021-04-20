@@ -29,9 +29,11 @@ define(['dart_sdk', 'packages/typed_data/src/typed_buffer.dart'], (function load
   var $asInt32List = dartx.asInt32List;
   var $asInt64List = dartx.asInt64List;
   var $asFloat64List = dartx.asFloat64List;
-  const CT = Object.create(null);
-  var L1 = "package:flutter/src/foundation/serialization.dart";
-  var L0 = "file:///C:/src/flutter/packages/flutter/lib/src/foundation/serialization.dart";
+  dart._checkModuleNullSafetyMode(false);
+  var I = [
+    "file:///C:/src/flutter/flutter/packages/flutter/lib/src/foundation/serialization.dart",
+    "package:flutter/src/foundation/serialization.dart"
+  ];
   var __WriteBuffer__eightBytesAsList = dart.privateName(serialization, "_#WriteBuffer#_eightBytesAsList");
   var __WriteBuffer__eightBytesAsList_isSet = dart.privateName(serialization, "_#WriteBuffer#_eightBytesAsList#isSet");
   var _buffer = dart.privateName(serialization, "_buffer");
@@ -44,71 +46,71 @@ define(['dart_sdk', 'packages/typed_data/src/typed_buffer.dart'], (function load
       return dart.test(this[__WriteBuffer__eightBytesAsList_isSet]) ? (t0 = this[__WriteBuffer__eightBytesAsList], t0) : dart.throw(new _internal.LateError.fieldNI("_eightBytesAsList"));
     }
     set [_eightBytesAsList](t0) {
-      if (t0 == null) dart.nullFailed(L0, 25, 18, "null");
+      if (t0 == null) dart.nullFailed(I[0], 25, 18, "null");
       this[__WriteBuffer__eightBytesAsList_isSet] = true;
       this[__WriteBuffer__eightBytesAsList] = t0;
     }
     putUint8(byte) {
-      if (byte == null) dart.nullFailed(L0, 28, 21, "byte");
+      if (byte == null) dart.nullFailed(I[0], 28, 21, "byte");
       dart.nullCheck(this[_buffer]).add(byte);
     }
     putUint16(value, opts) {
       let t1;
-      if (value == null) dart.nullFailed(L0, 33, 22, "value");
+      if (value == null) dart.nullFailed(I[0], 33, 22, "value");
       let endian = opts && 'endian' in opts ? opts.endian : null;
       this[_eightBytes][$setUint16](0, value, (t1 = endian, t1 == null ? typed_data.Endian.host : t1));
       dart.nullCheck(this[_buffer]).addAll(this[_eightBytesAsList], 0, 2);
     }
     putUint32(value, opts) {
       let t1;
-      if (value == null) dart.nullFailed(L0, 39, 22, "value");
+      if (value == null) dart.nullFailed(I[0], 39, 22, "value");
       let endian = opts && 'endian' in opts ? opts.endian : null;
       this[_eightBytes][$setUint32](0, value, (t1 = endian, t1 == null ? typed_data.Endian.host : t1));
       dart.nullCheck(this[_buffer]).addAll(this[_eightBytesAsList], 0, 4);
     }
     putInt32(value, opts) {
       let t1;
-      if (value == null) dart.nullFailed(L0, 45, 21, "value");
+      if (value == null) dart.nullFailed(I[0], 45, 21, "value");
       let endian = opts && 'endian' in opts ? opts.endian : null;
       this[_eightBytes][$setInt32](0, value, (t1 = endian, t1 == null ? typed_data.Endian.host : t1));
       dart.nullCheck(this[_buffer]).addAll(this[_eightBytesAsList], 0, 4);
     }
     putInt64(value, opts) {
       let t1;
-      if (value == null) dart.nullFailed(L0, 51, 21, "value");
+      if (value == null) dart.nullFailed(I[0], 51, 21, "value");
       let endian = opts && 'endian' in opts ? opts.endian : null;
       this[_eightBytes][$setInt64](0, value, (t1 = endian, t1 == null ? typed_data.Endian.host : t1));
       dart.nullCheck(this[_buffer]).addAll(this[_eightBytesAsList], 0, 8);
     }
     putFloat64(value, opts) {
       let t1;
-      if (value == null) dart.nullFailed(L0, 57, 26, "value");
+      if (value == null) dart.nullFailed(I[0], 57, 26, "value");
       let endian = opts && 'endian' in opts ? opts.endian : null;
       this[_alignTo](8);
       this[_eightBytes][$setFloat64](0, value, (t1 = endian, t1 == null ? typed_data.Endian.host : t1));
       dart.nullCheck(this[_buffer]).addAll(this[_eightBytesAsList]);
     }
     putUint8List(list) {
-      if (list == null) dart.nullFailed(L0, 64, 31, "list");
+      if (list == null) dart.nullFailed(I[0], 64, 31, "list");
       dart.nullCheck(this[_buffer]).addAll(list);
     }
     putInt32List(list) {
-      if (list == null) dart.nullFailed(L0, 69, 31, "list");
+      if (list == null) dart.nullFailed(I[0], 69, 31, "list");
       this[_alignTo](4);
       dart.nullCheck(this[_buffer]).addAll(list[$buffer][$asUint8List](list[$offsetInBytes], 4 * dart.notNull(list[$length])));
     }
     putInt64List(list) {
-      if (list == null) dart.nullFailed(L0, 75, 31, "list");
+      if (list == null) dart.nullFailed(I[0], 75, 31, "list");
       this[_alignTo](8);
       dart.nullCheck(this[_buffer]).addAll(list[$buffer][$asUint8List](list[$offsetInBytes], 8 * dart.notNull(list[$length])));
     }
     putFloat64List(list) {
-      if (list == null) dart.nullFailed(L0, 81, 35, "list");
+      if (list == null) dart.nullFailed(I[0], 81, 35, "list");
       this[_alignTo](8);
       dart.nullCheck(this[_buffer]).addAll(list[$buffer][$asUint8List](list[$offsetInBytes], 8 * dart.notNull(list[$length])));
     }
     [_alignTo](alignment) {
-      if (alignment == null) dart.nullFailed(L0, 86, 21, "alignment");
+      if (alignment == null) dart.nullFailed(I[0], 86, 21, "alignment");
       let mod = dart.nullCheck(this[_buffer]).length[$modulo](alignment);
       if (mod !== 0) {
         for (let i = 0; i < dart.notNull(alignment) - mod; i = i + 1)
@@ -153,7 +155,7 @@ define(['dart_sdk', 'packages/typed_data/src/typed_buffer.dart'], (function load
     __proto__: dart.getSetters(serialization.WriteBuffer.__proto__),
     [_eightBytesAsList]: typed_data.Uint8List
   }));
-  dart.setLibraryUri(serialization.WriteBuffer, L1);
+  dart.setLibraryUri(serialization.WriteBuffer, I[1]);
   dart.setFieldSignature(serialization.WriteBuffer, () => ({
     __proto__: dart.getFields(serialization.WriteBuffer.__proto__),
     [_buffer]: dart.fieldType(dart.nullable(typed_buffer.Uint8Buffer)),
@@ -161,8 +163,8 @@ define(['dart_sdk', 'packages/typed_data/src/typed_buffer.dart'], (function load
     [__WriteBuffer__eightBytesAsList]: dart.fieldType(dart.nullable(typed_data.Uint8List)),
     [__WriteBuffer__eightBytesAsList_isSet]: dart.fieldType(core.bool)
   }));
-  var _position = dart.privateName(serialization, "_position");
   var data$ = dart.privateName(serialization, "ReadBuffer.data");
+  var _position = dart.privateName(serialization, "_position");
   serialization.ReadBuffer = class ReadBuffer extends core.Object {
     get data() {
       return this[data$];
@@ -214,43 +216,43 @@ define(['dart_sdk', 'packages/typed_data/src/typed_buffer.dart'], (function load
       return value;
     }
     getUint8List(length) {
-      if (length == null) dart.nullFailed(L0, 161, 30, "length");
+      if (length == null) dart.nullFailed(I[0], 161, 30, "length");
       let list = this.data[$buffer][$asUint8List](dart.notNull(this.data[$offsetInBytes]) + dart.notNull(this[_position]), length);
       this[_position] = dart.notNull(this[_position]) + dart.notNull(length);
       return list;
     }
     getInt32List(length) {
-      if (length == null) dart.nullFailed(L0, 168, 30, "length");
+      if (length == null) dart.nullFailed(I[0], 168, 30, "length");
       this[_alignTo](4);
       let list = this.data[$buffer][$asInt32List](dart.notNull(this.data[$offsetInBytes]) + dart.notNull(this[_position]), length);
       this[_position] = dart.notNull(this[_position]) + 4 * dart.notNull(length);
       return list;
     }
     getInt64List(length) {
-      if (length == null) dart.nullFailed(L0, 176, 30, "length");
+      if (length == null) dart.nullFailed(I[0], 176, 30, "length");
       this[_alignTo](8);
       let list = this.data[$buffer][$asInt64List](dart.notNull(this.data[$offsetInBytes]) + dart.notNull(this[_position]), length);
       this[_position] = dart.notNull(this[_position]) + 8 * dart.notNull(length);
       return list;
     }
     getFloat64List(length) {
-      if (length == null) dart.nullFailed(L0, 184, 34, "length");
+      if (length == null) dart.nullFailed(I[0], 184, 34, "length");
       this[_alignTo](8);
       let list = this.data[$buffer][$asFloat64List](dart.notNull(this.data[$offsetInBytes]) + dart.notNull(this[_position]), length);
       this[_position] = dart.notNull(this[_position]) + 8 * dart.notNull(length);
       return list;
     }
     [_alignTo](alignment) {
-      if (alignment == null) dart.nullFailed(L0, 191, 21, "alignment");
+      if (alignment == null) dart.nullFailed(I[0], 191, 21, "alignment");
       let mod = this[_position][$modulo](alignment);
       if (mod !== 0) this[_position] = dart.notNull(this[_position]) + (dart.notNull(alignment) - mod);
     }
   };
   (serialization.ReadBuffer.new = function(data) {
-    if (data == null) dart.nullFailed(L0, 107, 19, "data");
+    if (data == null) dart.nullFailed(I[0], 107, 19, "data");
     this[_position] = 0;
     this[data$] = data;
-    if (!(data != null)) dart.assertFailed(null, L0, 108, 14, "data != null");
+    if (!(data != null)) dart.assertFailed(null, I[0], 108, 14, "data != null");
     ;
   }).prototype = serialization.ReadBuffer.prototype;
   dart.addTypeTests(serialization.ReadBuffer);
@@ -273,7 +275,7 @@ define(['dart_sdk', 'packages/typed_data/src/typed_buffer.dart'], (function load
     __proto__: dart.getGetters(serialization.ReadBuffer.__proto__),
     hasRemaining: core.bool
   }));
-  dart.setLibraryUri(serialization.ReadBuffer, L1);
+  dart.setLibraryUri(serialization.ReadBuffer, I[1]);
   dart.setFieldSignature(serialization.ReadBuffer, () => ({
     __proto__: dart.getFields(serialization.ReadBuffer.__proto__),
     data: dart.finalFieldType(typed_data.ByteData),
@@ -282,7 +284,7 @@ define(['dart_sdk', 'packages/typed_data/src/typed_buffer.dart'], (function load
   dart.trackLibraries("packages/flutter/src/foundation/serialization.dart", {
     "package:flutter/src/foundation/serialization.dart": serialization
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["serialization.dart"],"names":[],"mappings":"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","file":"../../../../../../../packages/flutter/src/foundation/serialization.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["serialization.dart"],"names":[],"mappings":"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","file":"../../../../../../../../packages/flutter/src/foundation/serialization.dart.lib.js"}');
   // Exports:
   return {
     src__foundation__serialization: serialization

@@ -1,569 +1,462 @@
-define(['dart_sdk', 'packages/flutter/src/foundation/synchronous_future.dart', 'packages/flutter/src/painting/image_stream.dart', 'packages/flutter/src/foundation/debug.dart', 'packages/flutter/src/painting/_network_image_web.dart'], (function load__packages__flutter_image__network_dart(dart_sdk, packages__flutter__src__foundation__synchronous_future$46dart, packages__flutter__src__painting__image_stream$46dart, packages__flutter__src__foundation__debug$46dart, packages__flutter__src__painting___network_image_web$46dart) {
+define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/rendering/proxy_box.dart', 'packages/flutter/src/gestures/tap.dart'], (function load__packages__positioned_tap_detector__positioned_tap_detector_dart(dart_sdk, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__rendering__proxy_box$46dart, packages__flutter__src__gestures__tap$46dart) {
   'use strict';
   const core = dart_sdk.core;
   const async = dart_sdk.async;
-  const _js_helper = dart_sdk._js_helper;
-  const ui = dart_sdk.ui;
-  const typed_data = dart_sdk.typed_data;
-  const _http = dart_sdk._http;
-  const _native_typed_data = dart_sdk._native_typed_data;
-  const io = dart_sdk.io;
   const math = dart_sdk.math;
+  const ui = dart_sdk.ui;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const synchronous_future = packages__flutter__src__foundation__synchronous_future$46dart.src__foundation__synchronous_future;
-  const image_stream = packages__flutter__src__painting__image_stream$46dart.src__painting__image_stream;
-  const assertions = packages__flutter__src__foundation__debug$46dart.src__foundation__assertions;
-  const diagnostics = packages__flutter__src__foundation__debug$46dart.src__foundation__diagnostics;
-  const image_provider = packages__flutter__src__painting___network_image_web$46dart.src__painting__image_provider;
-  var network = Object.create(dart.library);
-  var $lengthInBytes = dartx.lengthInBytes;
-  var $runtimeType = dartx.runtimeType;
+  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
+  const gesture_detector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__gesture_detector;
+  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
+  const proxy_box = packages__flutter__src__rendering__proxy_box$46dart.src__rendering__proxy_box;
+  const tap = packages__flutter__src__gestures__tap$46dart.src__gestures__tap;
+  var positioned_tap_detector = Object.create(dart.library);
   var $_equals = dartx._equals;
   var $hashCode = dartx.hashCode;
-  var $toString = dartx.toString;
-  var $buffer = dartx.buffer;
-  var $length = dartx.length;
-  var $setAll = dartx.setAll;
-  var $setRange = dartx.setRange;
-  var $contains = dartx.contains;
-  var FetchInstructionsL = () => (FetchInstructionsL = dart.constFn(dart.legacy(network.FetchInstructions)))();
-  var FutureOfFetchInstructionsL = () => (FutureOfFetchInstructionsL = dart.constFn(async.Future$(FetchInstructionsL())))();
-  var FutureLOfFetchInstructionsL = () => (FutureLOfFetchInstructionsL = dart.constFn(dart.legacy(FutureOfFetchInstructionsL())))();
-  var UriL = () => (UriL = dart.constFn(dart.legacy(core.Uri)))();
-  var FetchFailureL = () => (FetchFailureL = dart.constFn(dart.legacy(network.FetchFailure)))();
-  var UriLAndFetchFailureLToFutureLOfFetchInstructionsL = () => (UriLAndFetchFailureLToFutureLOfFetchInstructionsL = dart.constFn(dart.fnType(FutureLOfFetchInstructionsL(), [UriL(), FetchFailureL()])))();
-  var NetworkImageWithRetryL = () => (NetworkImageWithRetryL = dart.constFn(dart.legacy(network.NetworkImageWithRetry)))();
-  var SynchronousFutureOfNetworkImageWithRetryL = () => (SynchronousFutureOfNetworkImageWithRetryL = dart.constFn(synchronous_future.SynchronousFuture$(NetworkImageWithRetryL())))();
-  var DiagnosticsNodeL = () => (DiagnosticsNodeL = dart.constFn(dart.legacy(diagnostics.DiagnosticsNode)))();
-  var SyncIterableOfDiagnosticsNodeL = () => (SyncIterableOfDiagnosticsNodeL = dart.constFn(_js_helper.SyncIterable$(DiagnosticsNodeL())))();
-  var IterableOfDiagnosticsNodeL = () => (IterableOfDiagnosticsNodeL = dart.constFn(core.Iterable$(DiagnosticsNodeL())))();
-  var IterableLOfDiagnosticsNodeL = () => (IterableLOfDiagnosticsNodeL = dart.constFn(dart.legacy(IterableOfDiagnosticsNodeL())))();
-  var VoidToIterableLOfDiagnosticsNodeL = () => (VoidToIterableLOfDiagnosticsNodeL = dart.constFn(dart.fnType(IterableLOfDiagnosticsNodeL(), [])))();
-  var boolL = () => (boolL = dart.constFn(dart.legacy(core.bool)))();
-  var VoidToboolL = () => (VoidToboolL = dart.constFn(dart.fnType(boolL(), [])))();
-  var _Uint8ListBuilderL = () => (_Uint8ListBuilderL = dart.constFn(dart.legacy(network._Uint8ListBuilder)))();
-  var intL = () => (intL = dart.constFn(dart.legacy(core.int)))();
-  var ListOfintL = () => (ListOfintL = dart.constFn(core.List$(intL())))();
-  var ListLOfintL = () => (ListLOfintL = dart.constFn(dart.legacy(ListOfintL())))();
-  var _Uint8ListBuilderLAndListLOfintLTo_Uint8ListBuilderL = () => (_Uint8ListBuilderLAndListLOfintLTo_Uint8ListBuilderL = dart.constFn(dart.fnType(_Uint8ListBuilderL(), [_Uint8ListBuilderL(), ListLOfintL()])))();
-  var ImageInfoL = () => (ImageInfoL = dart.constFn(dart.legacy(image_stream.ImageInfo)))();
-  var intLToboolL = () => (intLToboolL = dart.constFn(dart.fnType(boolL(), [intL()])))();
-  var SocketExceptionL = () => (SocketExceptionL = dart.constFn(dart.legacy(io.SocketException)))();
-  var FutureOfvoid = () => (FutureOfvoid = dart.constFn(async.Future$(dart.void)))();
+  dart._checkModuleNullSafetyMode(false);
+  var T = Object.create({
+    TapDownDetailsL: () => (T.TapDownDetailsL = dart.constFn(dart.legacy(tap.TapDownDetails)))(),
+    StreamControllerOfTapDownDetailsL: () => (T.StreamControllerOfTapDownDetailsL = dart.constFn(async.StreamController$(T.TapDownDetailsL())))(),
+    TimeoutExceptionL: () => (T.TimeoutExceptionL = dart.constFn(dart.legacy(async.TimeoutException)))(),
+    boolL: () => (T.boolL = dart.constFn(dart.legacy(core.bool)))(),
+    dynamicToboolL: () => (T.dynamicToboolL = dart.constFn(dart.fnType(T.boolL(), [dart.dynamic])))(),
+    PositionedTapDetectorL: () => (T.PositionedTapDetectorL = dart.constFn(dart.legacy(positioned_tap_detector.PositionedTapDetector)))(),
+    _LocationL: () => (T._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))(),
+    TapPositionL: () => (T.TapPositionL = dart.constFn(dart.legacy(positioned_tap_detector.TapPosition)))()
+  });
   const CT = Object.create(null);
-  var L0 = "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_image-3.0.0/lib/network.dart";
-  var L1 = "package:flutter_image/network.dart";
   dart.defineLazy(CT, {
     get C0() {
-      return C0 = dart.fn(network.NetworkImageWithRetry.defaultFetchStrategy, UriLAndFetchFailureLToFutureLOfFetchInstructionsL());
-    },
-    get C2() {
-      return C2 = dart.fn(network.FetchStrategyBuilder.defaultTransientHttpStatusCodePredicate, intLToboolL());
+      return C[0] = dart.const({
+        __proto__: core.Duration.prototype,
+        [Duration__duration]: 250000
+      });
     },
     get C3() {
-      return C3 = dart.const({
-        __proto__: core.Duration.prototype,
-        [Duration__duration]: 1000000
+      return C[3] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 152,
+        [_Location_file]: null
       });
     },
     get C4() {
-      return C4 = dart.const({
-        __proto__: core.Duration.prototype,
-        [Duration__duration]: 60000000
+      return C[4] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "behavior",
+        [_Location_column]: 7,
+        [_Location_line]: 153,
+        [_Location_file]: null
       });
     },
     get C5() {
-      return C5 = dart.const({
-        __proto__: core.Duration.prototype,
-        [Duration__duration]: 30000000
-      });
-    },
-    get C1() {
-      return C1 = dart.const({
-        __proto__: network.FetchStrategyBuilder.prototype,
-        [FetchStrategyBuilder_transientHttpStatusCodePredicate]: C2 || CT.C2,
-        [FetchStrategyBuilder_exponentialBackoffMultiplier]: 2,
-        [FetchStrategyBuilder_initialPauseBetweenRetries]: C3 || CT.C3,
-        [FetchStrategyBuilder_maxAttempts]: 5,
-        [FetchStrategyBuilder_totalFetchTimeout]: C4 || CT.C4,
-        [FetchStrategyBuilder_timeout]: C5 || CT.C5
+      return C[5] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onTap",
+        [_Location_column]: 7,
+        [_Location_line]: 157,
+        [_Location_file]: null
       });
     },
     get C6() {
-      return C6 = dart.constList([0, 408, 500, 502, 503, 504], intL());
+      return C[6] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onLongPress",
+        [_Location_column]: 7,
+        [_Location_line]: 158,
+        [_Location_file]: null
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onTapDown",
+        [_Location_column]: 7,
+        [_Location_line]: 159,
+        [_Location_file]: null
+      });
+    },
+    get C2() {
+      return C[2] = dart.constList([C[3] || CT.C3, C[4] || CT.C4, C[5] || CT.C5, C[6] || CT.C6, C[7] || CT.C7], T._LocationL());
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[2] || CT.C2,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 151,
+        [_Location_file]: "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/positioned_tap_detector-1.0.3/lib/positioned_tap_detector.dart"
+      });
     }
   }, false);
-  var C0;
-  var _loadWithRetry = dart.privateName(network, "_loadWithRetry");
-  var _debugCheckInstructions = dart.privateName(network, "_debugCheckInstructions");
-  var url$ = dart.privateName(network, "NetworkImageWithRetry.url");
-  var scale$ = dart.privateName(network, "NetworkImageWithRetry.scale");
-  var fetchStrategy$ = dart.privateName(network, "NetworkImageWithRetry.fetchStrategy");
-  var C2;
-  var FetchStrategyBuilder_transientHttpStatusCodePredicate = dart.privateName(network, "FetchStrategyBuilder.transientHttpStatusCodePredicate");
-  var FetchStrategyBuilder_exponentialBackoffMultiplier = dart.privateName(network, "FetchStrategyBuilder.exponentialBackoffMultiplier");
+  var C = Array(8).fill(void 0);
+  var I = ["package:positioned_tap_detector/positioned_tap_detector.dart"];
+  var child$ = dart.privateName(positioned_tap_detector, "PositionedTapDetector.child");
+  var behavior$ = dart.privateName(positioned_tap_detector, "PositionedTapDetector.behavior");
+  var onTap$ = dart.privateName(positioned_tap_detector, "PositionedTapDetector.onTap");
+  var onDoubleTap$ = dart.privateName(positioned_tap_detector, "PositionedTapDetector.onDoubleTap");
+  var onLongPress$ = dart.privateName(positioned_tap_detector, "PositionedTapDetector.onLongPress");
+  var doubleTapDelay$ = dart.privateName(positioned_tap_detector, "PositionedTapDetector.doubleTapDelay");
+  var controller$ = dart.privateName(positioned_tap_detector, "PositionedTapDetector.controller");
   var Duration__duration = dart.privateName(core, "Duration._duration");
-  var C3;
-  var FetchStrategyBuilder_initialPauseBetweenRetries = dart.privateName(network, "FetchStrategyBuilder.initialPauseBetweenRetries");
-  var FetchStrategyBuilder_maxAttempts = dart.privateName(network, "FetchStrategyBuilder.maxAttempts");
-  var C4;
-  var FetchStrategyBuilder_totalFetchTimeout = dart.privateName(network, "FetchStrategyBuilder.totalFetchTimeout");
-  var C5;
-  var FetchStrategyBuilder_timeout = dart.privateName(network, "FetchStrategyBuilder.timeout");
-  var C1;
-  network.NetworkImageWithRetry = class NetworkImageWithRetry extends image_provider.ImageProvider {
-    get url() {
-      return this[url$];
+  positioned_tap_detector.PositionedTapDetector = class PositionedTapDetector extends framework.StatefulWidget {
+    get child() {
+      return this[child$];
     }
-    set url(value) {
-      super.url = value;
+    set child(value) {
+      super.child = value;
     }
-    get scale() {
-      return this[scale$];
+    get behavior() {
+      return this[behavior$];
     }
-    set scale(value) {
-      super.scale = value;
+    set behavior(value) {
+      super.behavior = value;
     }
-    get fetchStrategy() {
-      return this[fetchStrategy$];
+    get onTap() {
+      return this[onTap$];
     }
-    set fetchStrategy(value) {
-      super.fetchStrategy = value;
+    set onTap(value) {
+      super.onTap = value;
     }
-    static defaultFetchStrategy(uri, failure) {
-      return network.NetworkImageWithRetry._defaultFetchStrategyFunction(uri, failure);
+    get onDoubleTap() {
+      return this[onDoubleTap$];
     }
-    obtainKey(configuration) {
-      return new (SynchronousFutureOfNetworkImageWithRetryL()).new(this);
+    set onDoubleTap(value) {
+      super.onDoubleTap = value;
     }
-    load(key, decode) {
-      NetworkImageWithRetryL().as(key);
-      return new image_stream.OneFrameImageStreamCompleter.new(this[_loadWithRetry](key, decode), {informationCollector: dart.fn(() => new (SyncIterableOfDiagnosticsNodeL()).new((function*() {
-          yield new assertions.ErrorDescription.new("Image provider: " + dart.str(this));
-          yield new assertions.ErrorDescription.new("Image key: " + dart.str(key));
-        }).bind(this)), VoidToIterableLOfDiagnosticsNodeL())});
+    get onLongPress() {
+      return this[onLongPress$];
     }
-    [_debugCheckInstructions](instructions) {
-      if (!dart.test(dart.fn(() => {
-        if (instructions == null) {
-          if (dart.equals(this.fetchStrategy, C0 || CT.C0)) {
-            dart.throw(new core.StateError.new("The default FetchStrategy returned null FetchInstructions. This\n" + "is likely a bug in " + dart.str(this.runtimeType) + ". Please file a bug at\n" + "https://github.com/flutter/flutter/issues."));
-          } else {
-            dart.throw(new core.StateError.new("The custom FetchStrategy used to fetch " + dart.str(this.url) + " returned null\n" + "FetchInstructions. FetchInstructions must never be null, but\n" + "instead instruct to either make another fetch attempt or give up."));
-          }
+    set onLongPress(value) {
+      super.onLongPress = value;
+    }
+    get doubleTapDelay() {
+      return this[doubleTapDelay$];
+    }
+    set doubleTapDelay(value) {
+      super.doubleTapDelay = value;
+    }
+    get controller() {
+      return this[controller$];
+    }
+    set controller(value) {
+      super.controller = value;
+    }
+    createState() {
+      return new positioned_tap_detector._TapPositionDetectorState.new();
+    }
+  };
+  (positioned_tap_detector.PositionedTapDetector.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let child = opts && 'child' in opts ? opts.child : null;
+    let onTap = opts && 'onTap' in opts ? opts.onTap : null;
+    let onDoubleTap = opts && 'onDoubleTap' in opts ? opts.onDoubleTap : null;
+    let onLongPress = opts && 'onLongPress' in opts ? opts.onLongPress : null;
+    let doubleTapDelay = opts && 'doubleTapDelay' in opts ? opts.doubleTapDelay : C[0] || CT.C0;
+    let behavior = opts && 'behavior' in opts ? opts.behavior : null;
+    let controller = opts && 'controller' in opts ? opts.controller : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[child$] = child;
+    this[onTap$] = onTap;
+    this[onDoubleTap$] = onDoubleTap;
+    this[onLongPress$] = onLongPress;
+    this[doubleTapDelay$] = doubleTapDelay;
+    this[behavior$] = behavior;
+    this[controller$] = controller;
+    positioned_tap_detector.PositionedTapDetector.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = positioned_tap_detector.PositionedTapDetector.prototype;
+  dart.addTypeTests(positioned_tap_detector.PositionedTapDetector);
+  dart.addTypeCaches(positioned_tap_detector.PositionedTapDetector);
+  dart.setMethodSignature(positioned_tap_detector.PositionedTapDetector, () => ({
+    __proto__: dart.getMethods(positioned_tap_detector.PositionedTapDetector.__proto__),
+    createState: dart.fnType(dart.legacy(positioned_tap_detector._TapPositionDetectorState), [])
+  }));
+  dart.setLibraryUri(positioned_tap_detector.PositionedTapDetector, I[0]);
+  dart.setFieldSignature(positioned_tap_detector.PositionedTapDetector, () => ({
+    __proto__: dart.getFields(positioned_tap_detector.PositionedTapDetector.__proto__),
+    child: dart.finalFieldType(dart.legacy(framework.Widget)),
+    behavior: dart.finalFieldType(dart.legacy(proxy_box.HitTestBehavior)),
+    onTap: dart.finalFieldType(dart.legacy(dart.fnType(dart.dynamic, [dart.legacy(positioned_tap_detector.TapPosition)]))),
+    onDoubleTap: dart.finalFieldType(dart.legacy(dart.fnType(dart.dynamic, [dart.legacy(positioned_tap_detector.TapPosition)]))),
+    onLongPress: dart.finalFieldType(dart.legacy(dart.fnType(dart.dynamic, [dart.legacy(positioned_tap_detector.TapPosition)]))),
+    doubleTapDelay: dart.finalFieldType(dart.legacy(core.Duration)),
+    controller: dart.finalFieldType(dart.legacy(positioned_tap_detector.PositionedTapController))
+  }));
+  dart.defineLazy(positioned_tap_detector.PositionedTapDetector, {
+    /*positioned_tap_detector.PositionedTapDetector._DEFAULT_DELAY*/get _DEFAULT_DELAY() {
+      return C[0] || CT.C0;
+    },
+    /*positioned_tap_detector.PositionedTapDetector._DOUBLE_TAP_MAX_OFFSET*/get _DOUBLE_TAP_MAX_OFFSET() {
+      return 48;
+    }
+  }, true);
+  var _controller = dart.privateName(positioned_tap_detector, "_controller");
+  var _tapController = dart.privateName(positioned_tap_detector, "_tapController");
+  var _pendingTap = dart.privateName(positioned_tap_detector, "_pendingTap");
+  var _firstTap = dart.privateName(positioned_tap_detector, "_firstTap");
+  var _stream = dart.privateName(positioned_tap_detector, "_stream");
+  var _sink = dart.privateName(positioned_tap_detector, "_sink");
+  var _updateController = dart.privateName(positioned_tap_detector, "_updateController");
+  var _onTimeout = dart.privateName(positioned_tap_detector, "_onTimeout");
+  var _onTapConfirmed = dart.privateName(positioned_tap_detector, "_onTapConfirmed");
+  var _state = dart.privateName(positioned_tap_detector, "_state");
+  var _postCallback = dart.privateName(positioned_tap_detector, "_postCallback");
+  var _handleSecondTap = dart.privateName(positioned_tap_detector, "_handleSecondTap");
+  var _isDoubleTap = dart.privateName(positioned_tap_detector, "_isDoubleTap");
+  var _onTapDownEvent = dart.privateName(positioned_tap_detector, "_onTapDownEvent");
+  var _onTapEvent = dart.privateName(positioned_tap_detector, "_onTapEvent");
+  var _onLongPressEvent = dart.privateName(positioned_tap_detector, "_onLongPressEvent");
+  var _getTapPositions = dart.privateName(positioned_tap_detector, "_getTapPositions");
+  var _getWidgetTopLeft = dart.privateName(positioned_tap_detector, "_getWidgetTopLeft");
+  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  positioned_tap_detector._TapPositionDetectorState = class _TapPositionDetectorState extends framework.State$(dart.legacy(positioned_tap_detector.PositionedTapDetector)) {
+    get [_stream]() {
+      return this[_controller].stream;
+    }
+    get [_sink]() {
+      return this[_controller].sink;
+    }
+    initState() {
+      this[_updateController]();
+      this[_stream].timeout(this.widget.doubleTapDelay).handleError(dart.bind(this, _onTimeout), {test: dart.fn(e => T.TimeoutExceptionL().is(e), T.dynamicToboolL())}).listen(dart.bind(this, _onTapConfirmed));
+      super.initState();
+    }
+    didUpdateWidget(oldWidget) {
+      T.PositionedTapDetectorL().as(oldWidget);
+      super.didUpdateWidget(oldWidget);
+      if (!dart.equals(this.widget.controller, oldWidget.controller)) {
+        this[_updateController]();
+      }
+    }
+    [_updateController]() {
+      let t0;
+      t0 = this[_tapController];
+      t0 == null ? null : t0[_state] = null;
+      if (this.widget.controller != null) {
+        this.widget.controller[_state] = this;
+        this[_tapController] = this.widget.controller;
+      }
+    }
+    [_onTimeout](error) {
+      if (this[_firstTap] != null && this[_pendingTap] == null) {
+        this[_postCallback](this[_firstTap], this.widget.onTap);
+      }
+    }
+    [_onTapConfirmed](details) {
+      if (this[_firstTap] == null) {
+        this[_firstTap] = details;
+      } else {
+        this[_handleSecondTap](details);
+      }
+    }
+    [_handleSecondTap](secondTap) {
+      if (dart.test(this[_isDoubleTap](this[_firstTap], secondTap))) {
+        this[_postCallback](secondTap, this.widget.onDoubleTap);
+      } else {
+        this[_postCallback](this[_firstTap], this.widget.onTap);
+        this[_postCallback](secondTap, this.widget.onTap);
+      }
+    }
+    [_isDoubleTap](d1, d2) {
+      let dx = dart.notNull(d1.globalPosition.dx) - dart.notNull(d2.globalPosition.dx);
+      let dy = dart.notNull(d1.globalPosition.dy) - dart.notNull(d2.globalPosition.dy);
+      return math.sqrt(dx * dx + dy * dy) <= 48;
+    }
+    [_onTapDownEvent](details) {
+      this[_pendingTap] = details;
+    }
+    [_onTapEvent]() {
+      if (this.widget.onDoubleTap == null) {
+        this[_postCallback](this[_pendingTap], this.widget.onTap);
+      } else {
+        this[_sink].add(this[_pendingTap]);
+      }
+      this[_pendingTap] = null;
+    }
+    [_onLongPressEvent]() {
+      if (this[_firstTap] == null) {
+        this[_postCallback](this[_pendingTap], this.widget.onLongPress);
+      } else {
+        this[_sink].add(this[_pendingTap]);
+        this[_pendingTap] = null;
+      }
+    }
+    [_postCallback](details, callback) {
+      return async.async(dart.void, (function* _postCallback() {
+        this[_firstTap] = null;
+        if (callback != null) {
+          callback(this[_getTapPositions](details));
         }
-        return true;
-      }, VoidToboolL())())) dart.assertFailed(null, L0, 84, 12, "() {\n      if (instructions == null) {\n        if (fetchStrategy == defaultFetchStrategy) {\n          throw StateError(\n            'The default FetchStrategy returned null FetchInstructions. This\\n'\n            'is likely a bug in $runtimeType. Please file a bug at\\n'\n            'https://github.com/flutter/flutter/issues.'\n          );\n        } else {\n          throw StateError(\n            'The custom FetchStrategy used to fetch $url returned null\\n'\n            'FetchInstructions. FetchInstructions must never be null, but\\n'\n            'instead instruct to either make another fetch attempt or give up.'\n          );\n        }\n      }\n      return true;\n    }()");
-    }
-    [_loadWithRetry](key, decode) {
-      return async.async(ImageInfoL(), (function* _loadWithRetry() {
-        let t0, t1, t0$, t1$, t2, t1$0;
-        if (!dart.equals(key, this)) dart.assertFailed(null, L0, 105, 12, "key == this");
-        let stopwatch = (t0 = new core.Stopwatch.new(), (() => {
-          t0.start();
-          return t0;
-        })());
-        let resolved = core.Uri.base.resolve(key.url);
-        let instructions = (yield (t0$ = resolved, t1 = null, this.fetchStrategy(t0$, t1)));
-        this[_debugCheckInstructions](instructions);
-        let attemptCount = 0;
-        let lastFailure = null;
-        while (!dart.test(instructions.shouldGiveUp)) {
-          attemptCount = attemptCount + 1;
-          let request = null;
-          try {
-            request = (yield network.NetworkImageWithRetry._client.getUrl(instructions.uri).timeout(instructions.timeout));
-            let response = (yield request.close().timeout(instructions.timeout));
-            if (response == null || response.statusCode !== 200) {
-              dart.throw(new network.FetchFailure.__({totalDuration: stopwatch.elapsed, attemptCount: attemptCount, httpStatusCode: response.statusCode}));
-            }
-            let builder = (yield response.fold(_Uint8ListBuilderL(), new network._Uint8ListBuilder.new(), dart.fn((buffer, bytes) => {
-              let t0;
-              t0 = buffer;
-              return (() => {
-                t0.add(bytes);
-                return t0;
-              })();
-            }, _Uint8ListBuilderLAndListLOfintLTo_Uint8ListBuilderL())).timeout(instructions.timeout));
-            let bytes = builder.data;
-            if (bytes[$lengthInBytes] === 0) return null;
-            let codec = (yield decode(bytes));
-            let image = (yield codec.getNextFrame()).image;
-            if (image == null) return null;
-            return new image_stream.ImageInfo.new({image: image, scale: key.scale});
-          } catch (e) {
-            let error = dart.getThrown(e);
-            t1$ = request;
-            t1$ == null ? null : t1$.close();
-            lastFailure = FetchFailureL().is(error) ? error : new network.FetchFailure.__({totalDuration: stopwatch.elapsed, attemptCount: attemptCount, originalException: error});
-            instructions = (yield (t1$0 = instructions.uri, t2 = lastFailure, this.fetchStrategy(t1$0, t2)));
-            this[_debugCheckInstructions](instructions);
-          }
-        }
-        if (instructions.alternativeImage != null) return instructions.alternativeImage;
-        if (!(lastFailure != null)) dart.assertFailed(null, L0, 165, 12, "lastFailure != null");
-        assertions.FlutterError.onError(new assertions.FlutterErrorDetails.new({exception: lastFailure, library: "package:flutter_image", context: new assertions.ErrorDescription.new(dart.str(this.runtimeType) + " failed to load " + dart.str(instructions.uri))}));
-        return null;
       }).bind(this));
+    }
+    [_getTapPositions](details) {
+      let topLeft = this[_getWidgetTopLeft]();
+      let global = details.globalPosition;
+      let relative = topLeft != null ? global['-'](topLeft) : null;
+      return new positioned_tap_detector.TapPosition.new(global, relative);
+    }
+    [_getWidgetTopLeft]() {
+      let t0, t0$, t0$0;
+      let translation = (t0$0 = (t0$ = (t0 = this.context, t0 == null ? null : t0.findRenderObject()), t0$ == null ? null : t0$.getTransformTo(null)), t0$0 == null ? null : t0$0.getTranslation());
+      return translation != null ? new ui.Offset.new(translation.x, translation.y) : null;
+    }
+    dispose() {
+      let t0;
+      this[_controller].close();
+      t0 = this[_tapController];
+      t0 == null ? null : t0[_state] = null;
+      super.dispose();
+    }
+    build(context) {
+      let t0;
+      if (this.widget.controller != null) return this.widget.child;
+      return new gesture_detector.GestureDetector.new({child: this.widget.child, behavior: (t0 = this.widget.behavior, t0 == null ? this.widget.child == null ? proxy_box.HitTestBehavior.translucent : proxy_box.HitTestBehavior.deferToChild : t0), onTap: dart.bind(this, _onTapEvent), onLongPress: dart.bind(this, _onLongPressEvent), onTapDown: dart.bind(this, _onTapDownEvent), $creationLocationd_0dea112b090073317d4: C[1] || CT.C1});
+    }
+  };
+  (positioned_tap_detector._TapPositionDetectorState.new = function() {
+    this[_controller] = T.StreamControllerOfTapDownDetailsL().new();
+    this[_tapController] = null;
+    this[_pendingTap] = null;
+    this[_firstTap] = null;
+    positioned_tap_detector._TapPositionDetectorState.__proto__.new.call(this);
+    ;
+  }).prototype = positioned_tap_detector._TapPositionDetectorState.prototype;
+  dart.addTypeTests(positioned_tap_detector._TapPositionDetectorState);
+  dart.addTypeCaches(positioned_tap_detector._TapPositionDetectorState);
+  dart.setMethodSignature(positioned_tap_detector._TapPositionDetectorState, () => ({
+    __proto__: dart.getMethods(positioned_tap_detector._TapPositionDetectorState.__proto__),
+    didUpdateWidget: dart.fnType(dart.void, [dart.legacy(core.Object)]),
+    [_updateController]: dart.fnType(dart.void, []),
+    [_onTimeout]: dart.fnType(dart.void, [dart.dynamic]),
+    [_onTapConfirmed]: dart.fnType(dart.void, [dart.legacy(tap.TapDownDetails)]),
+    [_handleSecondTap]: dart.fnType(dart.void, [dart.legacy(tap.TapDownDetails)]),
+    [_isDoubleTap]: dart.fnType(dart.legacy(core.bool), [dart.legacy(tap.TapDownDetails), dart.legacy(tap.TapDownDetails)]),
+    [_onTapDownEvent]: dart.fnType(dart.void, [dart.legacy(tap.TapDownDetails)]),
+    [_onTapEvent]: dart.fnType(dart.void, []),
+    [_onLongPressEvent]: dart.fnType(dart.void, []),
+    [_postCallback]: dart.fnType(dart.void, [dart.legacy(tap.TapDownDetails), dart.legacy(dart.fnType(dart.dynamic, [dart.legacy(positioned_tap_detector.TapPosition)]))]),
+    [_getTapPositions]: dart.fnType(dart.legacy(positioned_tap_detector.TapPosition), [dart.legacy(tap.TapDownDetails)]),
+    [_getWidgetTopLeft]: dart.fnType(dart.legacy(ui.Offset), []),
+    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
+  }));
+  dart.setGetterSignature(positioned_tap_detector._TapPositionDetectorState, () => ({
+    __proto__: dart.getGetters(positioned_tap_detector._TapPositionDetectorState.__proto__),
+    [_stream]: dart.legacy(async.Stream$(dart.legacy(tap.TapDownDetails))),
+    [_sink]: dart.legacy(core.Sink$(dart.legacy(tap.TapDownDetails)))
+  }));
+  dart.setLibraryUri(positioned_tap_detector._TapPositionDetectorState, I[0]);
+  dart.setFieldSignature(positioned_tap_detector._TapPositionDetectorState, () => ({
+    __proto__: dart.getFields(positioned_tap_detector._TapPositionDetectorState.__proto__),
+    [_controller]: dart.fieldType(dart.legacy(async.StreamController$(dart.legacy(tap.TapDownDetails)))),
+    [_tapController]: dart.fieldType(dart.legacy(positioned_tap_detector.PositionedTapController)),
+    [_pendingTap]: dart.fieldType(dart.legacy(tap.TapDownDetails)),
+    [_firstTap]: dart.fieldType(dart.legacy(tap.TapDownDetails))
+  }));
+  var global$ = dart.privateName(positioned_tap_detector, "TapPosition.global");
+  var relative$ = dart.privateName(positioned_tap_detector, "TapPosition.relative");
+  positioned_tap_detector.TapPosition = class TapPosition extends core.Object {
+    get global() {
+      return this[global$];
+    }
+    set global(value) {
+      this[global$] = value;
+    }
+    get relative() {
+      return this[relative$];
+    }
+    set relative(value) {
+      this[relative$] = value;
     }
     _equals(other) {
       if (other == null) return false;
-      if (!dart.equals(dart.runtimeType(other), this.runtimeType)) return false;
-      let typedOther = NetworkImageWithRetryL().as(other);
-      return this.url == typedOther.url && this.scale == typedOther.scale;
+      if (!T.TapPositionL().is(other)) return false;
+      let typedOther = T.TapPositionL().as(other);
+      return dart.equals(this.global, typedOther.global) && dart.equals(this.relative, dart.dload(other, 'relative'));
     }
     get hashCode() {
-      return ui.hashValues(this.url, this.scale);
-    }
-    toString() {
-      return dart.str(this.runtimeType) + "(\"" + dart.str(this.url) + "\", scale: " + dart.str(this.scale) + ")";
+      return ui.hashValues(this.global, this.relative);
     }
   };
-  (network.NetworkImageWithRetry.new = function(url, opts) {
-    let scale = opts && 'scale' in opts ? opts.scale : 1;
-    let fetchStrategy = opts && 'fetchStrategy' in opts ? opts.fetchStrategy : C0 || CT.C0;
-    this[url$] = url;
-    this[scale$] = scale;
-    this[fetchStrategy$] = fetchStrategy;
-    if (!(url != null)) dart.assertFailed(null, L0, 33, 16, "url != null");
-    if (!(scale != null)) dart.assertFailed(null, L0, 34, 16, "scale != null");
-    if (!(fetchStrategy != null)) dart.assertFailed(null, L0, 35, 16, "fetchStrategy != null");
-    network.NetworkImageWithRetry.__proto__.new.call(this);
+  (positioned_tap_detector.TapPosition.new = function(global, relative) {
+    this[global$] = global;
+    this[relative$] = relative;
     ;
-  }).prototype = network.NetworkImageWithRetry.prototype;
-  dart.addTypeTests(network.NetworkImageWithRetry);
-  dart.addTypeCaches(network.NetworkImageWithRetry);
-  dart.setMethodSignature(network.NetworkImageWithRetry, () => ({
-    __proto__: dart.getMethods(network.NetworkImageWithRetry.__proto__),
-    obtainKey: dart.fnType(dart.legacy(async.Future$(dart.legacy(network.NetworkImageWithRetry))), [dart.legacy(image_provider.ImageConfiguration)]),
-    load: dart.fnType(dart.legacy(image_stream.ImageStreamCompleter), [dart.legacy(core.Object), dart.legacy(dart.fnType(async.Future$(ui.Codec), [typed_data.Uint8List], {allowUpscaling: core.bool, cacheHeight: dart.nullable(core.int), cacheWidth: dart.nullable(core.int)}, {}))]),
-    [_debugCheckInstructions]: dart.fnType(dart.void, [dart.legacy(network.FetchInstructions)]),
-    [_loadWithRetry]: dart.fnType(dart.legacy(async.Future$(dart.legacy(image_stream.ImageInfo))), [dart.legacy(network.NetworkImageWithRetry), dart.legacy(dart.fnType(async.Future$(ui.Codec), [typed_data.Uint8List], {allowUpscaling: core.bool, cacheHeight: dart.nullable(core.int), cacheWidth: dart.nullable(core.int)}, {}))]),
+  }).prototype = positioned_tap_detector.TapPosition.prototype;
+  dart.addTypeTests(positioned_tap_detector.TapPosition);
+  dart.addTypeCaches(positioned_tap_detector.TapPosition);
+  dart.setMethodSignature(positioned_tap_detector.TapPosition, () => ({
+    __proto__: dart.getMethods(positioned_tap_detector.TapPosition.__proto__),
     _equals: dart.fnType(dart.legacy(core.bool), [dart.dynamic]),
-    [$_equals]: dart.fnType(dart.legacy(core.bool), [dart.dynamic]),
-    toString: dart.fnType(dart.legacy(core.String), []),
-    [$toString]: dart.fnType(dart.legacy(core.String), [])
+    [$_equals]: dart.fnType(dart.legacy(core.bool), [dart.dynamic])
   }));
-  dart.setGetterSignature(network.NetworkImageWithRetry, () => ({
-    __proto__: dart.getGetters(network.NetworkImageWithRetry.__proto__),
+  dart.setGetterSignature(positioned_tap_detector.TapPosition, () => ({
+    __proto__: dart.getGetters(positioned_tap_detector.TapPosition.__proto__),
     hashCode: dart.legacy(core.int),
     [$hashCode]: dart.legacy(core.int)
   }));
-  dart.setLibraryUri(network.NetworkImageWithRetry, L1);
-  dart.setFieldSignature(network.NetworkImageWithRetry, () => ({
-    __proto__: dart.getFields(network.NetworkImageWithRetry.__proto__),
-    url: dart.finalFieldType(dart.legacy(core.String)),
-    scale: dart.finalFieldType(dart.legacy(core.double)),
-    fetchStrategy: dart.finalFieldType(dart.legacy(dart.fnType(dart.legacy(async.Future$(dart.legacy(network.FetchInstructions))), [dart.legacy(core.Uri), dart.legacy(network.FetchFailure)])))
+  dart.setLibraryUri(positioned_tap_detector.TapPosition, I[0]);
+  dart.setFieldSignature(positioned_tap_detector.TapPosition, () => ({
+    __proto__: dart.getFields(positioned_tap_detector.TapPosition.__proto__),
+    global: dart.fieldType(dart.legacy(ui.Offset)),
+    relative: dart.fieldType(dart.legacy(ui.Offset))
   }));
-  dart.defineExtensionMethods(network.NetworkImageWithRetry, ['_equals', 'toString']);
-  dart.defineExtensionAccessors(network.NetworkImageWithRetry, ['hashCode']);
-  dart.defineLazy(network.NetworkImageWithRetry, {
-    /*network.NetworkImageWithRetry._client*/get _client() {
-      return _http.HttpClient.new();
-    },
-    /*network.NetworkImageWithRetry._defaultFetchStrategyFunction*/get _defaultFetchStrategyFunction() {
-      return (C1 || CT.C1).build();
+  dart.defineExtensionMethods(positioned_tap_detector.TapPosition, ['_equals']);
+  dart.defineExtensionAccessors(positioned_tap_detector.TapPosition, ['hashCode']);
+  positioned_tap_detector.PositionedTapController = class PositionedTapController extends core.Object {
+    onTap() {
+      let t0;
+      t0 = this[_state];
+      return t0 == null ? null : t0[_onTapEvent]();
     }
-  }, true);
-  var shouldGiveUp = dart.privateName(network, "FetchInstructions.shouldGiveUp");
-  var timeout$ = dart.privateName(network, "FetchInstructions.timeout");
-  var uri$ = dart.privateName(network, "FetchInstructions.uri");
-  var alternativeImage$ = dart.privateName(network, "FetchInstructions.alternativeImage");
-  network.FetchInstructions = class FetchInstructions extends core.Object {
-    get shouldGiveUp() {
-      return this[shouldGiveUp];
+    onLongPress() {
+      let t0;
+      t0 = this[_state];
+      return t0 == null ? null : t0[_onLongPressEvent]();
     }
-    set shouldGiveUp(value) {
-      super.shouldGiveUp = value;
-    }
-    get timeout() {
-      return this[timeout$];
-    }
-    set timeout(value) {
-      super.timeout = value;
-    }
-    get uri() {
-      return this[uri$];
-    }
-    set uri(value) {
-      super.uri = value;
-    }
-    get alternativeImage() {
-      return this[alternativeImage$];
-    }
-    set alternativeImage(value) {
-      super.alternativeImage = value;
-    }
-    toString() {
-      return dart.str(this.runtimeType) + "(\n" + "  shouldGiveUp: " + dart.str(this.shouldGiveUp) + "\n" + "  timeout: " + dart.str(this.timeout) + "\n" + "  uri: " + dart.str(this.uri) + "\n" + "  alternativeImage?: " + (this.alternativeImage != null ? "yes" : "no") + "\n" + ")";
+    onTapDown(details) {
+      let t0;
+      t0 = this[_state];
+      return t0 == null ? null : t0[_onTapDownEvent](details);
     }
   };
-  (network.FetchInstructions.giveUp = function(opts) {
-    let uri = opts && 'uri' in opts ? opts.uri : null;
-    let alternativeImage = opts && 'alternativeImage' in opts ? opts.alternativeImage : null;
-    this[uri$] = uri;
-    this[alternativeImage$] = alternativeImage;
-    this[shouldGiveUp] = true;
-    this[timeout$] = null;
+  (positioned_tap_detector.PositionedTapController.new = function() {
+    this[_state] = null;
     ;
-  }).prototype = network.FetchInstructions.prototype;
-  (network.FetchInstructions.attempt = function(opts) {
-    let uri = opts && 'uri' in opts ? opts.uri : null;
-    let timeout = opts && 'timeout' in opts ? opts.timeout : null;
-    this[uri$] = uri;
-    this[timeout$] = timeout;
-    this[shouldGiveUp] = false;
-    this[alternativeImage$] = null;
-    ;
-  }).prototype = network.FetchInstructions.prototype;
-  dart.addTypeTests(network.FetchInstructions);
-  dart.addTypeCaches(network.FetchInstructions);
-  dart.setMethodSignature(network.FetchInstructions, () => ({
-    __proto__: dart.getMethods(network.FetchInstructions.__proto__),
-    toString: dart.fnType(dart.legacy(core.String), []),
-    [$toString]: dart.fnType(dart.legacy(core.String), [])
+  }).prototype = positioned_tap_detector.PositionedTapController.prototype;
+  dart.addTypeTests(positioned_tap_detector.PositionedTapController);
+  dart.addTypeCaches(positioned_tap_detector.PositionedTapController);
+  dart.setMethodSignature(positioned_tap_detector.PositionedTapController, () => ({
+    __proto__: dart.getMethods(positioned_tap_detector.PositionedTapController.__proto__),
+    onTap: dart.fnType(dart.void, []),
+    onLongPress: dart.fnType(dart.void, []),
+    onTapDown: dart.fnType(dart.void, [dart.legacy(tap.TapDownDetails)])
   }));
-  dart.setLibraryUri(network.FetchInstructions, L1);
-  dart.setFieldSignature(network.FetchInstructions, () => ({
-    __proto__: dart.getFields(network.FetchInstructions.__proto__),
-    shouldGiveUp: dart.finalFieldType(dart.legacy(core.bool)),
-    timeout: dart.finalFieldType(dart.legacy(core.Duration)),
-    uri: dart.finalFieldType(dart.legacy(core.Uri)),
-    alternativeImage: dart.finalFieldType(dart.legacy(async.Future$(dart.legacy(image_stream.ImageInfo))))
+  dart.setLibraryUri(positioned_tap_detector.PositionedTapController, I[0]);
+  dart.setFieldSignature(positioned_tap_detector.PositionedTapController, () => ({
+    __proto__: dart.getFields(positioned_tap_detector.PositionedTapController.__proto__),
+    [_state]: dart.fieldType(dart.legacy(positioned_tap_detector._TapPositionDetectorState))
   }));
-  dart.defineExtensionMethods(network.FetchInstructions, ['toString']);
-  var totalDuration$ = dart.privateName(network, "FetchFailure.totalDuration");
-  var attemptCount$ = dart.privateName(network, "FetchFailure.attemptCount");
-  var httpStatusCode$ = dart.privateName(network, "FetchFailure.httpStatusCode");
-  var originalException$ = dart.privateName(network, "FetchFailure.originalException");
-  network.FetchFailure = class FetchFailure extends core.Object {
-    get totalDuration() {
-      return this[totalDuration$];
-    }
-    set totalDuration(value) {
-      super.totalDuration = value;
-    }
-    get attemptCount() {
-      return this[attemptCount$];
-    }
-    set attemptCount(value) {
-      super.attemptCount = value;
-    }
-    get httpStatusCode() {
-      return this[httpStatusCode$];
-    }
-    set httpStatusCode(value) {
-      super.httpStatusCode = value;
-    }
-    get originalException() {
-      return this[originalException$];
-    }
-    set originalException(value) {
-      super.originalException = value;
-    }
-    toString() {
-      return dart.str(this.runtimeType) + "(\n" + "  attemptCount: " + dart.str(this.attemptCount) + "\n" + "  httpStatusCode: " + dart.str(this.httpStatusCode) + "\n" + "  totalDuration: " + dart.str(this.totalDuration) + "\n" + "  originalException: " + dart.str(this.originalException) + "\n" + ")";
-    }
-  };
-  (network.FetchFailure.__ = function(opts) {
-    let totalDuration = opts && 'totalDuration' in opts ? opts.totalDuration : null;
-    let attemptCount = opts && 'attemptCount' in opts ? opts.attemptCount : null;
-    let httpStatusCode = opts && 'httpStatusCode' in opts ? opts.httpStatusCode : null;
-    let originalException = opts && 'originalException' in opts ? opts.originalException : null;
-    this[totalDuration$] = totalDuration;
-    this[attemptCount$] = attemptCount;
-    this[httpStatusCode$] = httpStatusCode;
-    this[originalException$] = originalException;
-    if (!(totalDuration != null)) dart.assertFailed(null, L0, 265, 15, "totalDuration != null");
-    if (!(dart.notNull(attemptCount) > 0)) dart.assertFailed(null, L0, 266, 15, "attemptCount > 0");
-    ;
-  }).prototype = network.FetchFailure.prototype;
-  dart.addTypeTests(network.FetchFailure);
-  dart.addTypeCaches(network.FetchFailure);
-  network.FetchFailure[dart.implements] = () => [core.Exception];
-  dart.setMethodSignature(network.FetchFailure, () => ({
-    __proto__: dart.getMethods(network.FetchFailure.__proto__),
-    toString: dart.fnType(dart.legacy(core.String), []),
-    [$toString]: dart.fnType(dart.legacy(core.String), [])
-  }));
-  dart.setLibraryUri(network.FetchFailure, L1);
-  dart.setFieldSignature(network.FetchFailure, () => ({
-    __proto__: dart.getFields(network.FetchFailure.__proto__),
-    totalDuration: dart.finalFieldType(dart.legacy(core.Duration)),
-    attemptCount: dart.finalFieldType(dart.legacy(core.int)),
-    httpStatusCode: dart.finalFieldType(dart.legacy(core.int)),
-    originalException: dart.finalFieldType(dart.dynamic)
-  }));
-  dart.defineExtensionMethods(network.FetchFailure, ['toString']);
-  var _usedLength = dart.privateName(network, "_usedLength");
-  var _buffer = dart.privateName(network, "_buffer");
-  var _ensureCanAdd = dart.privateName(network, "_ensureCanAdd");
-  network._Uint8ListBuilder = class _Uint8ListBuilder extends core.Object {
-    get data() {
-      return typed_data.Uint8List.view(this[_buffer][$buffer], 0, this[_usedLength]);
-    }
-    add(bytes) {
-      this[_ensureCanAdd](bytes[$length]);
-      this[_buffer][$setAll](this[_usedLength], bytes);
-      this[_usedLength] = dart.notNull(this[_usedLength]) + dart.notNull(bytes[$length]);
-    }
-    [_ensureCanAdd](byteCount) {
-      let totalSpaceNeeded = dart.notNull(this[_usedLength]) + dart.notNull(byteCount);
-      let newLength = this[_buffer][$length];
-      while (totalSpaceNeeded > dart.notNull(newLength)) {
-        newLength = dart.notNull(newLength) * 2;
-      }
-      if (newLength != this[_buffer][$length]) {
-        let newBuffer = _native_typed_data.NativeUint8List.new(newLength);
-        newBuffer[$setAll](0, this[_buffer]);
-        newBuffer[$setRange](0, this[_usedLength], this[_buffer]);
-        this[_buffer] = newBuffer;
-      }
-    }
-  };
-  (network._Uint8ListBuilder.new = function() {
-    this[_usedLength] = 0;
-    this[_buffer] = _native_typed_data.NativeUint8List.new(100000);
-    ;
-  }).prototype = network._Uint8ListBuilder.prototype;
-  dart.addTypeTests(network._Uint8ListBuilder);
-  dart.addTypeCaches(network._Uint8ListBuilder);
-  dart.setMethodSignature(network._Uint8ListBuilder, () => ({
-    __proto__: dart.getMethods(network._Uint8ListBuilder.__proto__),
-    add: dart.fnType(dart.void, [dart.legacy(core.List$(dart.legacy(core.int)))]),
-    [_ensureCanAdd]: dart.fnType(dart.void, [dart.legacy(core.int)])
-  }));
-  dart.setGetterSignature(network._Uint8ListBuilder, () => ({
-    __proto__: dart.getGetters(network._Uint8ListBuilder.__proto__),
-    data: dart.legacy(typed_data.Uint8List)
-  }));
-  dart.setLibraryUri(network._Uint8ListBuilder, L1);
-  dart.setFieldSignature(network._Uint8ListBuilder, () => ({
-    __proto__: dart.getFields(network._Uint8ListBuilder.__proto__),
-    [_usedLength]: dart.fieldType(dart.legacy(core.int)),
-    [_buffer]: dart.fieldType(dart.legacy(typed_data.Uint8List))
-  }));
-  dart.defineLazy(network._Uint8ListBuilder, {
-    /*network._Uint8ListBuilder._kInitialSize*/get _kInitialSize() {
-      return 100000;
-    }
-  }, true);
-  var C6;
-  network.FetchStrategyBuilder = class FetchStrategyBuilder extends core.Object {
-    get timeout() {
-      return this[timeout$0];
-    }
-    set timeout(value) {
-      super.timeout = value;
-    }
-    get totalFetchTimeout() {
-      return this[totalFetchTimeout$];
-    }
-    set totalFetchTimeout(value) {
-      super.totalFetchTimeout = value;
-    }
-    get maxAttempts() {
-      return this[maxAttempts$];
-    }
-    set maxAttempts(value) {
-      super.maxAttempts = value;
-    }
-    get initialPauseBetweenRetries() {
-      return this[initialPauseBetweenRetries$];
-    }
-    set initialPauseBetweenRetries(value) {
-      super.initialPauseBetweenRetries = value;
-    }
-    get exponentialBackoffMultiplier() {
-      return this[exponentialBackoffMultiplier$];
-    }
-    set exponentialBackoffMultiplier(value) {
-      super.exponentialBackoffMultiplier = value;
-    }
-    get transientHttpStatusCodePredicate() {
-      return this[transientHttpStatusCodePredicate$];
-    }
-    set transientHttpStatusCodePredicate(value) {
-      super.transientHttpStatusCodePredicate = value;
-    }
-    static defaultTransientHttpStatusCodePredicate(statusCode) {
-      return network.FetchStrategyBuilder.defaultTransientHttpStatusCodes[$contains](statusCode);
-    }
-    build() {
-      return dart.fn((uri, failure) => async.async(FetchInstructionsL(), (function*() {
-        let t1;
-        if (failure == null) {
-          return new network.FetchInstructions.attempt({uri: uri, timeout: this.timeout});
-        }
-        let isRetriableFailure = dart.test((t1 = failure.httpStatusCode, this.transientHttpStatusCodePredicate(t1))) || SocketExceptionL().is(failure.originalException);
-        if (!isRetriableFailure || dart.test(failure.totalDuration['>'](this.totalFetchTimeout)) || dart.notNull(failure.attemptCount) > dart.notNull(this.maxAttempts)) {
-          return new network.FetchInstructions.giveUp({uri: uri});
-        }
-        let pauseBetweenRetries = this.initialPauseBetweenRetries['*'](math.pow(this.exponentialBackoffMultiplier, dart.notNull(failure.attemptCount) - 1));
-        yield FutureOfvoid().delayed(pauseBetweenRetries);
-        return new network.FetchInstructions.attempt({uri: uri, timeout: this.timeout});
-      }).bind(this)), UriLAndFetchFailureLToFutureLOfFetchInstructionsL());
-    }
-  };
-  (network.FetchStrategyBuilder.new = function(opts) {
-    let timeout = opts && 'timeout' in opts ? opts.timeout : C5 || CT.C5;
-    let totalFetchTimeout = opts && 'totalFetchTimeout' in opts ? opts.totalFetchTimeout : C4 || CT.C4;
-    let maxAttempts = opts && 'maxAttempts' in opts ? opts.maxAttempts : 5;
-    let initialPauseBetweenRetries = opts && 'initialPauseBetweenRetries' in opts ? opts.initialPauseBetweenRetries : C3 || CT.C3;
-    let exponentialBackoffMultiplier = opts && 'exponentialBackoffMultiplier' in opts ? opts.exponentialBackoffMultiplier : 2;
-    let transientHttpStatusCodePredicate = opts && 'transientHttpStatusCodePredicate' in opts ? opts.transientHttpStatusCodePredicate : C2 || CT.C2;
-    this[timeout$0] = timeout;
-    this[totalFetchTimeout$] = totalFetchTimeout;
-    this[maxAttempts$] = maxAttempts;
-    this[initialPauseBetweenRetries$] = initialPauseBetweenRetries;
-    this[exponentialBackoffMultiplier$] = exponentialBackoffMultiplier;
-    this[transientHttpStatusCodePredicate$] = transientHttpStatusCodePredicate;
-    if (!(timeout != null)) dart.assertFailed(null, L0, 348, 15, "timeout != null");
-    if (!(totalFetchTimeout != null)) dart.assertFailed(null, L0, 349, 15, "totalFetchTimeout != null");
-    if (!(maxAttempts != null)) dart.assertFailed(null, L0, 350, 15, "maxAttempts != null");
-    if (!(initialPauseBetweenRetries != null)) dart.assertFailed(null, L0, 351, 15, "initialPauseBetweenRetries != null");
-    if (!(exponentialBackoffMultiplier != null)) dart.assertFailed(null, L0, 352, 15, "exponentialBackoffMultiplier != null");
-    if (!(transientHttpStatusCodePredicate != null)) dart.assertFailed(null, L0, 353, 15, "transientHttpStatusCodePredicate != null");
-    ;
-  }).prototype = network.FetchStrategyBuilder.prototype;
-  dart.addTypeTests(network.FetchStrategyBuilder);
-  dart.addTypeCaches(network.FetchStrategyBuilder);
-  const timeout$0 = FetchStrategyBuilder_timeout;
-  const totalFetchTimeout$ = FetchStrategyBuilder_totalFetchTimeout;
-  const maxAttempts$ = FetchStrategyBuilder_maxAttempts;
-  const initialPauseBetweenRetries$ = FetchStrategyBuilder_initialPauseBetweenRetries;
-  const exponentialBackoffMultiplier$ = FetchStrategyBuilder_exponentialBackoffMultiplier;
-  const transientHttpStatusCodePredicate$ = FetchStrategyBuilder_transientHttpStatusCodePredicate;
-  dart.setMethodSignature(network.FetchStrategyBuilder, () => ({
-    __proto__: dart.getMethods(network.FetchStrategyBuilder.__proto__),
-    build: dart.fnType(dart.legacy(dart.fnType(dart.legacy(async.Future$(dart.legacy(network.FetchInstructions))), [dart.legacy(core.Uri), dart.legacy(network.FetchFailure)])), [])
-  }));
-  dart.setLibraryUri(network.FetchStrategyBuilder, L1);
-  dart.setFieldSignature(network.FetchStrategyBuilder, () => ({
-    __proto__: dart.getFields(network.FetchStrategyBuilder.__proto__),
-    timeout: dart.finalFieldType(dart.legacy(core.Duration)),
-    totalFetchTimeout: dart.finalFieldType(dart.legacy(core.Duration)),
-    maxAttempts: dart.finalFieldType(dart.legacy(core.int)),
-    initialPauseBetweenRetries: dart.finalFieldType(dart.legacy(core.Duration)),
-    exponentialBackoffMultiplier: dart.finalFieldType(dart.legacy(core.num)),
-    transientHttpStatusCodePredicate: dart.finalFieldType(dart.legacy(dart.fnType(dart.legacy(core.bool), [dart.legacy(core.int)])))
-  }));
-  dart.defineLazy(network.FetchStrategyBuilder, {
-    /*network.FetchStrategyBuilder.defaultTransientHttpStatusCodes*/get defaultTransientHttpStatusCodes() {
-      return C6 || CT.C6;
-    }
-  }, true);
-  dart.setBaseClass(network.NetworkImageWithRetry, image_provider.ImageProvider$(network.NetworkImageWithRetry));
-  dart.trackLibraries("packages/flutter_image/network.dart", {
-    "package:flutter_image/network.dart": network
+  dart.trackLibraries("packages/positioned_tap_detector/positioned_tap_detector.dart", {
+    "package:positioned_tap_detector/positioned_tap_detector.dart": positioned_tap_detector
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["network.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAwCe;;;;;;IAGA;;;;;;IASO;;;;;;gCAUsC,KAAkB;AAC1E,YAAO,AAA6B,6DAAC,GAAG,EAAE,OAAO;IACnD;cAG2D;AACzD,YAAO,uDAAyC;IAClD;SAGgD,KAAqB;kCAArB;AAC9C,YAAO,mDACH,qBAAe,GAAG,EAAE,MAAM,0BACJ;AACpB,gBAAM,oCAAiB,AAAuB,8BAAL;AACzC,gBAAM,oCAAiB,AAAiB,yBAAJ,GAAG;QAE7C;IACF;8BAE+C;AAC7C,qBAAO,AAiBN;AAhBC,YAAI,AAAa,YAAD,IAAI;AAClB,cAAkB,YAAd;AAKD,YAJD,WAAM,wBAAU,AACd,sEACA,iCAAqB,oBAAW,6BAChC;;AAOD,YAJD,WAAM,wBAAU,AACd,qDAAyC,YAAG,qBAC5C,mEACA;;;AAIN,cAAO;;IAEX;qBAEuD,KAAqB;AAA5C;;AAC9B,aAAW,YAAJ,GAAG,EAAI;AAEE,wDAAY;AAAa;;;AAC/B,uBAAe,AAAK,sBAAQ,AAAI,GAAD;AACvB,4BAAe,aAAoB,QAAQ,OAAE,MAAxB,AAAa;AACf,QAArC,8BAAwB,YAAY;AAChC,2BAAe;AACN;AAEb,0BAAQ,AAAa,YAAD;AACD,UAAjB,eAAA,AAAa,YAAD,GAAI;AACK;AACrB;AACgF,YAA9E,WAAU,MAAM,AAAQ,AAAyB,6CAAlB,AAAa,YAAD,cAAc,AAAa,YAAD;AACzC,4BAAW,MAAM,AAAQ,AAAQ,OAAT,iBAAiB,AAAa,YAAD;AAEjF,gBAAI,AAAS,QAAD,IAAI,QAAQ,AAAS,QAAD,gBAAe;AAK5C,cAJD,WAAmB,4CACF,AAAU,SAAD,wBACV,YAAY,kBACV,AAAS,QAAD;;AAIJ,2BAAU,MAAM,AAAS,AAG/C,QAH8C,4BAC9C,qCACI,SAAmB,QAAkB;;AAAU,yBAAM;oBAAN;AAAQ,uBAAI,KAAK;;;gFAC5D,AAAa,YAAD;AAEN,wBAAQ,AAAQ,OAAD;AAE/B,gBAAI,AAAM,AAAc,KAAf,qBAAkB,GACzB,MAAO;AAEM,yBAAQ,MAAM,AAAM,MAAA,CAAC,KAAK;AAC1B,wBAAqC,CAA5B,MAAM,AAAM,KAAD;AACnC,gBAAI,AAAM,KAAD,IAAI,MACX,MAAO;AAET,kBAAO,wCACE,KAAK,SACL,AAAI,GAAD;;gBAEL;AACS,kBAAhB,OAAO;0BAAP,OAAS;AAOF,YANP,cAAoB,mBAAN,KAAK,IACb,KAAK,GACQ,4CACI,AAAU,SAAD,wBACV,YAAY,qBACP,KAAK;AAEiC,YAAjE,gBAAe,cAAoB,AAAa,YAAD,WAAM,WAAW,EAA3C,AAAa;AACG,YAArC,8BAAwB,YAAY;;;AAIxC,YAAI,AAAa,YAAD,qBAAqB,MACnC,MAAO,AAAa,aAAD;AAErB,cAAO,AAAY,WAAD,IAAI;AAMpB,QAJW,AAAO,gCAAC,mDACR,WAAW,WACb,kCACA,oCAAkE,SAA/C,oBAAW,8BAAkB,AAAa,YAAD;AAGvE,cAAO;MACT;;;UAGyB;AACvB,uBAAU,iBAAN,KAAK,GAAgB,mBACvB,MAAO;AACmB,mDAAa,KAAK;AAC9C,YAAO,AAAI,AACP,aADU,AAAW,UAAD,QACjB,AAAM,cAAG,AAAW,UAAD;IAC5B;;AAGoB,2BAAW,UAAK;IAAM;;AAGrB,YAAqC,UAAnC,oBAAW,iBAAG,YAAG,yBAAW,cAAK;IAAE;;gDA7JzB;QAAY;QAAkB;IAA9B;IAAY;IAAkB;UAClD,AAAI,GAAD,IAAI;UACP,AAAM,KAAD,IAAI;UACT,AAAc,aAAD,IAAI;AAHxB;;EAG6B;;;;;;;;;;;;;;;;;;;;;;;;;;;;;MAGR,qCAAO;YAAM;;MAsBb,2DAA6B;YAAgC;;;;;;;;IA+K7E;;;;;;IAGI;;;;;;IAGL;;;;;;IAGc;;;;;;;AAItB,sBAAS,oBAAW,QAClB,8BAAkB,qBAAY,OAC9B,yBAAa,gBAAO,OACpB,qBAAS,YAAG,OACZ,2BAAwB,AAAiB,yBAAG,OAAO,QAAQ,QAAK,OAChE;IACJ;;;QArCiB;QACV;IADU;IACV;IAEY,qBAAE;IACP,iBAAE;;EAAI;;QAKH;QACA;IADA;IACA;IACC,qBAAE;IACE,0BAAE;;EAAI;;;;;;;;;;;;;;;;;;;;;;IAwCb;;;;;;IAOL;;;;;;IAGA;;;;;;IAGI;;;;;;;AAIZ,sBAAS,oBAAW,QAChB,8BAAkB,qBAAY,OAC9B,gCAAoB,uBAAc,OAClC,+BAAmB,sBAAa,OAChC,mCAAuB,0BAAiB,OACxC;IACN;;;QA/BiB;QACA;QACV;QACA;IAHU;IACA;IACV;IACA;UACK,AAAc,aAAD,IAAI;UACJ,aAAb,YAAY,IAAG;;EAAE;;;;;;;;;;;;;;;;;;;;;;;AAoCP,YAAU,2BAAK,AAAQ,wBAAQ,GAAG;IAAY;QAEjD;AACU,MAA3B,oBAAc,AAAM,KAAD;AACe,MAAlC,AAAQ,uBAAO,mBAAa,KAAK;AACN,MAA3B,oBAAY,aAAZ,kCAAe,AAAM,KAAD;IACtB;oBAEuB;AACX,6BAA+B,aAAZ,kCAAc,SAAS;AAEhD,sBAAY,AAAQ;AACxB,aAAO,AAAiB,gBAAD,gBAAG,SAAS;AACnB,QAAd,YAAU,aAAV,SAAS,IAAI;;AAGf,UAAI,SAAS,IAAI,AAAQ;AACP,wBAAY,uCAAU,SAAS;AACnB,QAA5B,AAAU,SAAD,UAAQ,GAAG;AACuB,QAA3C,AAAU,SAAD,YAAU,GAAG,mBAAa;AAChB,QAAnB,gBAAU,SAAS;;IAEvB;;;IAzBI,oBAAc;IACR,gBAAU;;EAyBtB;;;;;;;;;;;;;;;;;;;MA5BmB,uCAAa;;;;;;IAwEf;;;;;;IAIA;;;;;;IAGL;;;;;;IAGK;;;;;;IAIL;;;;;;IAI6B;;;;;;mDAIiB;AACtD,YAAO,AAAgC,yEAAS,UAAU;IAC5D;;AAKE,YAAO,UAAK,KAAkB;;AAC5B,YAAI,AAAQ,OAAD,IAAI;AAEb,gBAAyB,6CAClB,GAAG,WACC;;AAIF,iCAA8E,gBAAxB,AAAQ,OAAD,iBAAxC,AAAgC,+CAClC,sBAA1B,AAAQ,OAAD;AAGX,aAAK,kBAAkB,cACnB,AAAQ,AAAc,OAAf,oBAAiB,4BACH,aAArB,AAAQ,OAAD,8BAAgB;AACzB,gBAAyB,4CAAY,GAAG;;AAI3B,kCAAsB,AAA2B,qCAAE,SAAS,mCAAmD,aAArB,AAAQ,OAAD,iBAAgB;AACjF,QAA/C,MAAM,uBAAqB,mBAAmB;AAG9C,cAAyB,6CAClB,GAAG,WACC;MAEZ;IACH;;;QArFO;QACA;QACA;QACA;QACA;QACA;IALA;IACA;IACA;IACA;IACA;IACA;UACK,AAAQ,OAAD,IAAI;UACX,AAAkB,iBAAD,IAAI;UACrB,AAAY,WAAD,IAAI;UACf,AAA2B,0BAAD,IAAI;UAC9B,AAA6B,4BAAD,IAAI;UAChC,AAAiC,gCAAD,IAAI;;EAAK;;;;;;;;;;;;;;;;;;;;;;;;MAM9B,4DAA+B","file":"../../../../../../../packages/flutter_image/network.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["positioned_tap_detector.dart"],"names":[],"mappings":"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","file":"../../../../../../../../packages/positioned_tap_detector/positioned_tap_detector.dart.lib.js"}');
   // Exports:
   return {
-    network: network
+    positioned_tap_detector: positioned_tap_detector
   };
 }));
 
-//# sourceMappingURL=network.dart.lib.js.map
+//# sourceMappingURL=positioned_tap_detector.dart.lib.js.map

@@ -1,724 +1,396 @@
-define(['dart_sdk', 'packages/flutter/src/foundation/object.dart'], (function load__packages__flutter__src__painting__alignment_dart(dart_sdk, packages__flutter__src__foundation__object$46dart) {
+define(['dart_sdk', 'packages/logging/src/level.dart'], (function load__packages__logging__src__logger_dart(dart_sdk, packages__logging__src__level$46dart) {
   'use strict';
   const core = dart_sdk.core;
-  const ui = dart_sdk.ui;
-  const _internal = dart_sdk._internal;
+  const collection = dart_sdk.collection;
+  const _js_helper = dart_sdk._js_helper;
+  const async = dart_sdk.async;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const object = packages__flutter__src__foundation__object$46dart.src__foundation__object;
-  var alignment = Object.create(dart.library);
-  var $truncate = dartx.truncate;
-  var $toDouble = dartx.toDouble;
-  var $modulo = dartx['%'];
-  var $toStringAsFixed = dartx.toStringAsFixed;
-  var $runtimeType = dartx.runtimeType;
+  const level = packages__logging__src__level$46dart.src__level;
+  var logger = Object.create(dart.library);
+  var log_record = Object.create(dart.library);
+  var $_set = dartx._set;
+  var $putIfAbsent = dartx.putIfAbsent;
+  var $startsWith = dartx.startsWith;
+  var $lastIndexOf = dartx.lastIndexOf;
+  var $substring = dartx.substring;
+  var $toString = dartx.toString;
+  dart._checkModuleNullSafetyMode(false);
+  var T = Object.create({
+    StringL: () => (T.StringL = dart.constFn(dart.legacy(core.String)))(),
+    LoggerL: () => (T.LoggerL = dart.constFn(dart.legacy(logger.Logger)))(),
+    UnmodifiableMapViewOfStringL$LoggerL: () => (T.UnmodifiableMapViewOfStringL$LoggerL = dart.constFn(collection.UnmodifiableMapView$(T.StringL(), T.LoggerL())))(),
+    VoidToLoggerL: () => (T.VoidToLoggerL = dart.constFn(dart.fnType(T.LoggerL(), [])))(),
+    IdentityMapOfStringL$LoggerL: () => (T.IdentityMapOfStringL$LoggerL = dart.constFn(_js_helper.IdentityMap$(T.StringL(), T.LoggerL())))(),
+    FunctionL: () => (T.FunctionL = dart.constFn(dart.legacy(core.Function)))(),
+    LogRecordL: () => (T.LogRecordL = dart.constFn(dart.legacy(log_record.LogRecord)))(),
+    StreamControllerOfLogRecordL: () => (T.StreamControllerOfLogRecordL = dart.constFn(async.StreamController$(T.LogRecordL())))()
+  });
   const CT = Object.create(null);
-  var L0 = "file:///C:/src/flutter/packages/flutter/lib/src/painting/alignment.dart";
-  var L1 = "package:flutter/src/painting/alignment.dart";
   dart.defineLazy(CT, {
     get C0() {
-      return C0 = dart.const({
-        __proto__: alignment.Alignment.prototype,
-        [y$]: -1,
-        [x$]: -1
-      });
-    },
-    get C1() {
-      return C1 = dart.const({
-        __proto__: alignment.Alignment.prototype,
-        [y$]: -1,
-        [x$]: 0
-      });
-    },
-    get C2() {
-      return C2 = dart.const({
-        __proto__: alignment.Alignment.prototype,
-        [y$]: -1,
-        [x$]: 1
-      });
-    },
-    get C3() {
-      return C3 = dart.const({
-        __proto__: alignment.Alignment.prototype,
-        [y$]: 0,
-        [x$]: -1
-      });
-    },
-    get C4() {
-      return C4 = dart.const({
-        __proto__: alignment.Alignment.prototype,
-        [y$]: 0,
-        [x$]: 0
-      });
-    },
-    get C5() {
-      return C5 = dart.const({
-        __proto__: alignment.Alignment.prototype,
-        [y$]: 0,
-        [x$]: 1
-      });
-    },
-    get C6() {
-      return C6 = dart.const({
-        __proto__: alignment.Alignment.prototype,
-        [y$]: 1,
-        [x$]: -1
-      });
-    },
-    get C7() {
-      return C7 = dart.const({
-        __proto__: alignment.Alignment.prototype,
-        [y$]: 1,
-        [x$]: 0
-      });
-    },
-    get C8() {
-      return C8 = dart.const({
-        __proto__: alignment.Alignment.prototype,
-        [y$]: 1,
-        [x$]: 1
-      });
-    },
-    get C9() {
-      return C9 = dart.const({
-        __proto__: ui.TextDirection.prototype,
-        [_name]: "TextDirection.rtl",
-        index: 0
-      });
-    },
-    get C10() {
-      return C10 = dart.const({
-        __proto__: ui.TextDirection.prototype,
-        [_name]: "TextDirection.ltr",
-        index: 1
-      });
-    },
-    get C11() {
-      return C11 = dart.const({
-        __proto__: alignment.AlignmentDirectional.prototype,
-        [y$0]: -1,
-        [start$]: -1
-      });
-    },
-    get C12() {
-      return C12 = dart.const({
-        __proto__: alignment.AlignmentDirectional.prototype,
-        [y$0]: -1,
-        [start$]: 0
-      });
-    },
-    get C13() {
-      return C13 = dart.const({
-        __proto__: alignment.AlignmentDirectional.prototype,
-        [y$0]: -1,
-        [start$]: 1
-      });
-    },
-    get C14() {
-      return C14 = dart.const({
-        __proto__: alignment.AlignmentDirectional.prototype,
-        [y$0]: 0,
-        [start$]: -1
-      });
-    },
-    get C15() {
-      return C15 = dart.const({
-        __proto__: alignment.AlignmentDirectional.prototype,
-        [y$0]: 0,
-        [start$]: 0
-      });
-    },
-    get C16() {
-      return C16 = dart.const({
-        __proto__: alignment.AlignmentDirectional.prototype,
-        [y$0]: 0,
-        [start$]: 1
-      });
-    },
-    get C17() {
-      return C17 = dart.const({
-        __proto__: alignment.AlignmentDirectional.prototype,
-        [y$0]: 1,
-        [start$]: -1
-      });
-    },
-    get C18() {
-      return C18 = dart.const({
-        __proto__: alignment.AlignmentDirectional.prototype,
-        [y$0]: 1,
-        [start$]: 0
-      });
-    },
-    get C19() {
-      return C19 = dart.const({
-        __proto__: alignment.AlignmentDirectional.prototype,
-        [y$0]: 1,
-        [start$]: 1
-      });
-    },
-    get C20() {
-      return C20 = dart.const({
-        __proto__: alignment.TextAlignVertical.prototype,
-        [y$1]: -1
-      });
-    },
-    get C21() {
-      return C21 = dart.const({
-        __proto__: alignment.TextAlignVertical.prototype,
-        [y$1]: 0
-      });
-    },
-    get C22() {
-      return C22 = dart.const({
-        __proto__: alignment.TextAlignVertical.prototype,
-        [y$1]: 1
+      return C[0] = dart.const({
+        __proto__: level.Level.prototype,
+        [Level_value]: 800,
+        [Level_name]: "INFO"
       });
     }
   }, false);
-  var _x = dart.privateName(alignment, "_x");
-  var _start = dart.privateName(alignment, "_start");
-  var _y = dart.privateName(alignment, "_y");
-  alignment.AlignmentGeometry = class AlignmentGeometry extends core.Object {
-    add(other) {
-      if (other == null) dart.nullFailed(L0, 43, 43, "other");
-      return new alignment._MixedAlignment.new(dart.notNull(this[_x]) + dart.notNull(other[_x]), dart.notNull(this[_start]) + dart.notNull(other[_start]), dart.notNull(this[_y]) + dart.notNull(other[_y]));
+  var C = [void 0];
+  var I = [
+    "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/logging-0.11.4/lib/src/logger.dart",
+    "package:logging/src/logger.dart",
+    "package:logging/src/log_record.dart"
+  ];
+  var name$ = dart.privateName(logger, "Logger.name");
+  var parent$ = dart.privateName(logger, "Logger.parent");
+  var children$ = dart.privateName(logger, "Logger.children");
+  var _level = dart.privateName(logger, "_level");
+  var _controller = dart.privateName(logger, "_controller");
+  var _children = dart.privateName(logger, "_children");
+  var _getStream = dart.privateName(logger, "_getStream");
+  var _publish = dart.privateName(logger, "_publish");
+  logger.Logger = class Logger extends core.Object {
+    get name() {
+      return this[name$];
     }
-    static lerp(a, b, t) {
-      if (t == null) dart.nullFailed(L0, 90, 85, "t");
-      if (!(t != null)) dart.assertFailed(null, L0, 91, 12, "t != null");
-      if (a == null && b == null) return null;
-      if (a == null) return dart.nullCheck(b)['*'](t);
-      if (b == null) return a['*'](1.0 - dart.notNull(t));
-      if (alignment.Alignment.is(a) && alignment.Alignment.is(b)) return alignment.Alignment.lerp(a, b, t);
-      if (alignment.AlignmentDirectional.is(a) && alignment.AlignmentDirectional.is(b)) return alignment.AlignmentDirectional.lerp(a, b, t);
-      return new alignment._MixedAlignment.new(dart.nullCheck(ui.lerpDouble(a[_x], b[_x], t)), dart.nullCheck(ui.lerpDouble(a[_start], b[_start], t)), dart.nullCheck(ui.lerpDouble(a[_y], b[_y], t)));
+    set name(value) {
+      super.name = value;
     }
-    toString() {
-      if (this[_start] === 0.0) return alignment.Alignment._stringify(this[_x], this[_y]);
-      if (this[_x] === 0.0) return alignment.AlignmentDirectional._stringify(this[_start], this[_y]);
-      return dart.notNull(alignment.Alignment._stringify(this[_x], this[_y])) + " + " + dart.notNull(alignment.AlignmentDirectional._stringify(this[_start], 0.0));
+    get parent() {
+      return this[parent$];
     }
-    _equals(other) {
-      if (other == null) return false;
-      return alignment.AlignmentGeometry.is(other) && other[_x] == this[_x] && other[_start] == this[_start] && other[_y] == this[_y];
+    set parent(value) {
+      super.parent = value;
     }
-    get hashCode() {
-      return ui.hashValues(this[_x], this[_start], this[_y]);
+    get children() {
+      return this[children$];
     }
-  };
-  (alignment.AlignmentGeometry.new = function() {
-    ;
-  }).prototype = alignment.AlignmentGeometry.prototype;
-  dart.addTypeTests(alignment.AlignmentGeometry);
-  dart.addTypeCaches(alignment.AlignmentGeometry);
-  dart.setMethodSignature(alignment.AlignmentGeometry, () => ({
-    __proto__: dart.getMethods(alignment.AlignmentGeometry.__proto__),
-    add: dart.fnType(alignment.AlignmentGeometry, [alignment.AlignmentGeometry])
-  }));
-  dart.setLibraryUri(alignment.AlignmentGeometry, L1);
-  dart.defineExtensionMethods(alignment.AlignmentGeometry, ['toString', '_equals']);
-  dart.defineExtensionAccessors(alignment.AlignmentGeometry, ['hashCode']);
-  var x$ = dart.privateName(alignment, "Alignment.x");
-  var y$ = dart.privateName(alignment, "Alignment.y");
-  var C0;
-  var C1;
-  var C2;
-  var C3;
-  var C4;
-  var C5;
-  var C6;
-  var C7;
-  var C8;
-  alignment.Alignment = class Alignment extends alignment.AlignmentGeometry {
-    get x() {
-      return this[x$];
+    set children(value) {
+      super.children = value;
     }
-    set x(value) {
-      super.x = value;
+    get fullName() {
+      return this.parent == null || this.parent.name === "" ? this.name : dart.str(this.parent.fullName) + "." + dart.str(this.name);
     }
-    get y() {
-      return this[y$];
+    static new(name) {
+      return logger.Logger._loggers[$putIfAbsent](name, dart.fn(() => logger.Logger._named(name), T.VoidToLoggerL()));
     }
-    set y(value) {
-      super.y = value;
+    static detached(name) {
+      return new logger.Logger._internal(name, null, new (T.IdentityMapOfStringL$LoggerL()).new());
     }
-    get [_x]() {
-      return this.x;
+    static _named(name) {
+      if (name[$startsWith](".")) {
+        dart.throw(new core.ArgumentError.new("name shouldn't start with a '.'"));
+      }
+      let dot = name[$lastIndexOf](".");
+      let parent = null;
+      let thisName = null;
+      if (dot === -1) {
+        if (name !== "") parent = logger.Logger.new("");
+        thisName = name;
+      } else {
+        parent = logger.Logger.new(name[$substring](0, dot));
+        thisName = name[$substring](dot + 1);
+      }
+      return new logger.Logger._internal(thisName, parent, new (T.IdentityMapOfStringL$LoggerL()).new());
     }
-    get [_start]() {
-      return 0.0;
+    get level() {
+      let t0;
+      let effectiveLevel = null;
+      if (this.parent == null) {
+        effectiveLevel = this[_level];
+      } else if (!dart.test(logger.hierarchicalLoggingEnabled)) {
+        effectiveLevel = logger.Logger.root[_level];
+      } else {
+        effectiveLevel = (t0 = this[_level], t0 == null ? this.parent.level : t0);
+      }
+      if (!(effectiveLevel != null)) dart.assertFailed(null, I[0], 105, 12, "effectiveLevel != null");
+      return effectiveLevel;
     }
-    get [_y]() {
-      return this.y;
+    set level(value) {
+      if (!dart.test(logger.hierarchicalLoggingEnabled) && this.parent != null) {
+        dart.throw(new core.UnsupportedError.new("Please set \"hierarchicalLoggingEnabled\" to true if you want to " + "change the level on a non-root logger."));
+      }
+      this[_level] = value;
     }
-    add(other) {
-      if (other == null) dart.nullFailed(L0, 243, 43, "other");
-      if (alignment.Alignment.is(other)) return this['+'](other);
-      return super.add(other);
+    get onRecord() {
+      return this[_getStream]();
     }
-    ['-'](other) {
-      if (other == null) dart.nullFailed(L0, 250, 34, "other");
-      return new alignment.Alignment.new(dart.notNull(this.x) - dart.notNull(other.x), dart.notNull(this.y) - dart.notNull(other.y));
-    }
-    ['+'](other) {
-      if (other == null) dart.nullFailed(L0, 255, 34, "other");
-      return new alignment.Alignment.new(dart.notNull(this.x) + dart.notNull(other.x), dart.notNull(this.y) + dart.notNull(other.y));
-    }
-    _negate() {
-      return new alignment.Alignment.new(-dart.notNull(this.x), -dart.notNull(this.y));
-    }
-    ['*'](other) {
-      if (other == null) dart.nullFailed(L0, 267, 31, "other");
-      return new alignment.Alignment.new(dart.notNull(this.x) * dart.notNull(other), dart.notNull(this.y) * dart.notNull(other));
-    }
-    ['/'](other) {
-      if (other == null) dart.nullFailed(L0, 273, 31, "other");
-      return new alignment.Alignment.new(dart.notNull(this.x) / dart.notNull(other), dart.notNull(this.y) / dart.notNull(other));
-    }
-    ['~/'](other) {
-      if (other == null) dart.nullFailed(L0, 279, 32, "other");
-      return new alignment.Alignment.new((dart.notNull(this.x) / dart.notNull(other))[$truncate]()[$toDouble](), (dart.notNull(this.y) / dart.notNull(other))[$truncate]()[$toDouble]());
-    }
-    ['%'](other) {
-      if (other == null) dart.nullFailed(L0, 285, 31, "other");
-      return new alignment.Alignment.new(this.x[$modulo](other), this.y[$modulo](other));
-    }
-    alongOffset(other) {
-      if (other == null) dart.nullFailed(L0, 290, 29, "other");
-      let centerX = dart.notNull(other.dx) / 2.0;
-      let centerY = dart.notNull(other.dy) / 2.0;
-      return new ui.Offset.new(centerX + dart.notNull(this.x) * centerX, centerY + dart.notNull(this.y) * centerY);
-    }
-    alongSize(other) {
-      if (other == null) dart.nullFailed(L0, 297, 25, "other");
-      let centerX = dart.notNull(other.width) / 2.0;
-      let centerY = dart.notNull(other.height) / 2.0;
-      return new ui.Offset.new(centerX + dart.notNull(this.x) * centerX, centerY + dart.notNull(this.y) * centerY);
-    }
-    withinRect(rect) {
-      if (rect == null) dart.nullFailed(L0, 304, 26, "rect");
-      let halfWidth = dart.notNull(rect.width) / 2.0;
-      let halfHeight = dart.notNull(rect.height) / 2.0;
-      return new ui.Offset.new(dart.notNull(rect.left) + halfWidth + dart.notNull(this.x) * halfWidth, dart.notNull(rect.top) + halfHeight + dart.notNull(this.y) * halfHeight);
-    }
-    inscribe(size, rect) {
-      if (size == null) dart.nullFailed(L0, 319, 22, "size");
-      if (rect == null) dart.nullFailed(L0, 319, 33, "rect");
-      let halfWidthDelta = (dart.notNull(rect.width) - dart.notNull(size.width)) / 2.0;
-      let halfHeightDelta = (dart.notNull(rect.height) - dart.notNull(size.height)) / 2.0;
-      return new ui.Rect.fromLTWH(dart.notNull(rect.left) + halfWidthDelta + dart.notNull(this.x) * halfWidthDelta, dart.notNull(rect.top) + halfHeightDelta + dart.notNull(this.y) * halfHeightDelta, size.width, size.height);
-    }
-    static lerp(a, b, t) {
-      if (t == null) dart.nullFailed(L0, 335, 61, "t");
-      if (!(t != null)) dart.assertFailed(null, L0, 336, 12, "t != null");
-      if (a == null && b == null) return null;
-      if (a == null) return new alignment.Alignment.new(dart.nullCheck(ui.lerpDouble(0.0, dart.nullCheck(b).x, t)), dart.nullCheck(ui.lerpDouble(0.0, b.y, t)));
-      if (b == null) return new alignment.Alignment.new(dart.nullCheck(ui.lerpDouble(a.x, 0.0, t)), dart.nullCheck(ui.lerpDouble(a.y, 0.0, t)));
-      return new alignment.Alignment.new(dart.nullCheck(ui.lerpDouble(a.x, b.x, t)), dart.nullCheck(ui.lerpDouble(a.y, b.y, t)));
-    }
-    resolve(direction) {
-      return this;
-    }
-    static _stringify(x, y) {
-      if (x == null) dart.nullFailed(L0, 349, 35, "x");
-      if (y == null) dart.nullFailed(L0, 349, 45, "y");
-      if (x === -1.0 && y === -1.0) return "Alignment.topLeft";
-      if (x === 0.0 && y === -1.0) return "Alignment.topCenter";
-      if (x === 1.0 && y === -1.0) return "Alignment.topRight";
-      if (x === -1.0 && y === 0.0) return "Alignment.centerLeft";
-      if (x === 0.0 && y === 0.0) return "Alignment.center";
-      if (x === 1.0 && y === 0.0) return "Alignment.centerRight";
-      if (x === -1.0 && y === 1.0) return "Alignment.bottomLeft";
-      if (x === 0.0 && y === 1.0) return "Alignment.bottomCenter";
-      if (x === 1.0 && y === 1.0) return "Alignment.bottomRight";
-      return "Alignment(" + x[$toStringAsFixed](1) + ", " + y[$toStringAsFixed](1) + ")";
-    }
-    toString() {
-      return alignment.Alignment._stringify(this.x, this.y);
-    }
-  };
-  (alignment.Alignment.new = function(x, y) {
-    if (x == null) dart.nullFailed(L0, 185, 24, "x");
-    if (y == null) dart.nullFailed(L0, 185, 32, "y");
-    this[x$] = x;
-    this[y$] = y;
-    if (!(x != null)) dart.assertFailed(null, L0, 186, 14, "x != null");
-    if (!(y != null)) dart.assertFailed(null, L0, 187, 14, "y != null");
-    alignment.Alignment.__proto__.new.call(this);
-    ;
-  }).prototype = alignment.Alignment.prototype;
-  dart.addTypeTests(alignment.Alignment);
-  dart.addTypeCaches(alignment.Alignment);
-  dart.setMethodSignature(alignment.Alignment, () => ({
-    __proto__: dart.getMethods(alignment.Alignment.__proto__),
-    '-': dart.fnType(alignment.Alignment, [alignment.Alignment]),
-    '+': dart.fnType(alignment.Alignment, [alignment.Alignment]),
-    _negate: dart.fnType(alignment.Alignment, []),
-    '*': dart.fnType(alignment.Alignment, [core.double]),
-    '/': dart.fnType(alignment.Alignment, [core.double]),
-    '~/': dart.fnType(alignment.Alignment, [core.double]),
-    '%': dart.fnType(alignment.Alignment, [core.double]),
-    alongOffset: dart.fnType(ui.Offset, [ui.Offset]),
-    alongSize: dart.fnType(ui.Offset, [ui.Size]),
-    withinRect: dart.fnType(ui.Offset, [ui.Rect]),
-    inscribe: dart.fnType(ui.Rect, [ui.Size, ui.Rect]),
-    resolve: dart.fnType(alignment.Alignment, [dart.nullable(ui.TextDirection)])
-  }));
-  dart.setGetterSignature(alignment.Alignment, () => ({
-    __proto__: dart.getGetters(alignment.Alignment.__proto__),
-    [_x]: core.double,
-    [_start]: core.double,
-    [_y]: core.double
-  }));
-  dart.setLibraryUri(alignment.Alignment, L1);
-  dart.setFieldSignature(alignment.Alignment, () => ({
-    __proto__: dart.getFields(alignment.Alignment.__proto__),
-    x: dart.finalFieldType(core.double),
-    y: dart.finalFieldType(core.double)
-  }));
-  dart.defineExtensionMethods(alignment.Alignment, ['toString']);
-  dart.defineLazy(alignment.Alignment, {
-    /*alignment.Alignment.topLeft*/get topLeft() {
-      return C0 || CT.C0;
-    },
-    /*alignment.Alignment.topCenter*/get topCenter() {
-      return C1 || CT.C1;
-    },
-    /*alignment.Alignment.topRight*/get topRight() {
-      return C2 || CT.C2;
-    },
-    /*alignment.Alignment.centerLeft*/get centerLeft() {
-      return C3 || CT.C3;
-    },
-    /*alignment.Alignment.center*/get center() {
-      return C4 || CT.C4;
-    },
-    /*alignment.Alignment.centerRight*/get centerRight() {
-      return C5 || CT.C5;
-    },
-    /*alignment.Alignment.bottomLeft*/get bottomLeft() {
-      return C6 || CT.C6;
-    },
-    /*alignment.Alignment.bottomCenter*/get bottomCenter() {
-      return C7 || CT.C7;
-    },
-    /*alignment.Alignment.bottomRight*/get bottomRight() {
-      return C8 || CT.C8;
-    }
-  }, false);
-  var _name = dart.privateName(ui, "_name");
-  var C9;
-  var C10;
-  var start$ = dart.privateName(alignment, "AlignmentDirectional.start");
-  var y$0 = dart.privateName(alignment, "AlignmentDirectional.y");
-  var C11;
-  var C12;
-  var C13;
-  var C14;
-  var C15;
-  var C16;
-  var C17;
-  var C18;
-  var C19;
-  alignment.AlignmentDirectional = class AlignmentDirectional extends alignment.AlignmentGeometry {
-    get start() {
-      return this[start$];
-    }
-    set start(value) {
-      super.start = value;
-    }
-    get y() {
-      return this[y$0];
-    }
-    set y(value) {
-      super.y = value;
-    }
-    get [_x]() {
-      return 0.0;
-    }
-    get [_start]() {
-      return this.start;
-    }
-    get [_y]() {
-      return this.y;
-    }
-    add(other) {
-      if (other == null) dart.nullFailed(L0, 465, 43, "other");
-      if (alignment.AlignmentDirectional.is(other)) return this['+'](other);
-      return super.add(other);
-    }
-    ['-'](other) {
-      if (other == null) dart.nullFailed(L0, 472, 56, "other");
-      return new alignment.AlignmentDirectional.new(dart.notNull(this.start) - dart.notNull(other.start), dart.notNull(this.y) - dart.notNull(other.y));
-    }
-    ['+'](other) {
-      if (other == null) dart.nullFailed(L0, 477, 56, "other");
-      return new alignment.AlignmentDirectional.new(dart.notNull(this.start) + dart.notNull(other.start), dart.notNull(this.y) + dart.notNull(other.y));
-    }
-    _negate() {
-      return new alignment.AlignmentDirectional.new(-dart.notNull(this.start), -dart.notNull(this.y));
-    }
-    ['*'](other) {
-      if (other == null) dart.nullFailed(L0, 489, 42, "other");
-      return new alignment.AlignmentDirectional.new(dart.notNull(this.start) * dart.notNull(other), dart.notNull(this.y) * dart.notNull(other));
-    }
-    ['/'](other) {
-      if (other == null) dart.nullFailed(L0, 495, 42, "other");
-      return new alignment.AlignmentDirectional.new(dart.notNull(this.start) / dart.notNull(other), dart.notNull(this.y) / dart.notNull(other));
-    }
-    ['~/'](other) {
-      if (other == null) dart.nullFailed(L0, 501, 43, "other");
-      return new alignment.AlignmentDirectional.new((dart.notNull(this.start) / dart.notNull(other))[$truncate]()[$toDouble](), (dart.notNull(this.y) / dart.notNull(other))[$truncate]()[$toDouble]());
-    }
-    ['%'](other) {
-      if (other == null) dart.nullFailed(L0, 507, 42, "other");
-      return new alignment.AlignmentDirectional.new(this.start[$modulo](other), this.y[$modulo](other));
-    }
-    static lerp(a, b, t) {
-      if (t == null) dart.nullFailed(L0, 516, 94, "t");
-      if (!(t != null)) dart.assertFailed(null, L0, 517, 12, "t != null");
-      if (a == null && b == null) return null;
-      if (a == null) return new alignment.AlignmentDirectional.new(dart.nullCheck(ui.lerpDouble(0.0, dart.nullCheck(b).start, t)), dart.nullCheck(ui.lerpDouble(0.0, b.y, t)));
-      if (b == null) return new alignment.AlignmentDirectional.new(dart.nullCheck(ui.lerpDouble(a.start, 0.0, t)), dart.nullCheck(ui.lerpDouble(a.y, 0.0, t)));
-      return new alignment.AlignmentDirectional.new(dart.nullCheck(ui.lerpDouble(a.start, b.start, t)), dart.nullCheck(ui.lerpDouble(a.y, b.y, t)));
-    }
-    resolve(direction) {
-      if (!(direction != null)) dart.assertFailed("Cannot resolve " + dart.str(this[$runtimeType]) + " without a TextDirection.", L0, 529, 12, "direction != null");
-      switch (dart.nullCheck(direction)) {
-        case C9 || CT.C9:
-        {
-          return new alignment.Alignment.new(-dart.notNull(this.start), this.y);
+    clearListeners() {
+      if (dart.test(logger.hierarchicalLoggingEnabled) || this.parent == null) {
+        if (this[_controller] != null) {
+          this[_controller].close();
+          this[_controller] = null;
         }
-        case C10 || CT.C10:
-        {
-          return new alignment.Alignment.new(this.start, this.y);
+      } else {
+        logger.Logger.root.clearListeners();
+      }
+    }
+    isLoggable(value) {
+      return value['>='](this.level);
+    }
+    log(logLevel, message, error = null, stackTrace = null, zone = null) {
+      let object = null;
+      if (dart.test(this.isLoggable(logLevel))) {
+        if (T.FunctionL().is(message)) {
+          message = dart.dcall(message, []);
         }
-        default:
-        {
-          dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
+        let msg = null;
+        if (T.StringL().is(message)) {
+          msg = message;
+        } else {
+          msg = dart.toString(message);
+          object = message;
+        }
+        if (stackTrace == null && dart.test(logLevel['>='](logger.recordStackTraceAtLevel))) {
+          stackTrace = core.StackTrace.current;
+          error == null ? error = "autogenerated stack trace for " + dart.str(logLevel) + " " + dart.str(msg) : null;
+        }
+        zone == null ? zone = async.Zone.current : null;
+        let record = new log_record.LogRecord.new(logLevel, msg, this.fullName, error, stackTrace, zone, object);
+        if (this.parent == null) {
+          this[_publish](record);
+        } else if (!dart.test(logger.hierarchicalLoggingEnabled)) {
+          logger.Logger.root[_publish](record);
+        } else {
+          let target = this;
+          while (target != null) {
+            target[_publish](record);
+            target = target.parent;
+          }
         }
       }
     }
-    static _stringify(start, y) {
-      if (start == null) dart.nullFailed(L0, 538, 35, "start");
-      if (y == null) dart.nullFailed(L0, 538, 49, "y");
-      if (start === -1.0 && y === -1.0) return "AlignmentDirectional.topStart";
-      if (start === 0.0 && y === -1.0) return "AlignmentDirectional.topCenter";
-      if (start === 1.0 && y === -1.0) return "AlignmentDirectional.topEnd";
-      if (start === -1.0 && y === 0.0) return "AlignmentDirectional.centerStart";
-      if (start === 0.0 && y === 0.0) return "AlignmentDirectional.center";
-      if (start === 1.0 && y === 0.0) return "AlignmentDirectional.centerEnd";
-      if (start === -1.0 && y === 1.0) return "AlignmentDirectional.bottomStart";
-      if (start === 0.0 && y === 1.0) return "AlignmentDirectional.bottomCenter";
-      if (start === 1.0 && y === 1.0) return "AlignmentDirectional.bottomEnd";
-      return "AlignmentDirectional(" + start[$toStringAsFixed](1) + ", " + y[$toStringAsFixed](1) + ")";
+    finest(message, error = null, stackTrace = null) {
+      return this.log(level.Level.FINEST, message, error, stackTrace);
     }
-    toString() {
-      return alignment.AlignmentDirectional._stringify(this.start, this.y);
+    finer(message, error = null, stackTrace = null) {
+      return this.log(level.Level.FINER, message, error, stackTrace);
     }
-  };
-  (alignment.AlignmentDirectional.new = function(start, y) {
-    if (start == null) dart.nullFailed(L0, 391, 35, "start");
-    if (y == null) dart.nullFailed(L0, 391, 47, "y");
-    this[start$] = start;
-    this[y$0] = y;
-    if (!(start != null)) dart.assertFailed(null, L0, 392, 14, "start != null");
-    if (!(y != null)) dart.assertFailed(null, L0, 393, 14, "y != null");
-    alignment.AlignmentDirectional.__proto__.new.call(this);
-    ;
-  }).prototype = alignment.AlignmentDirectional.prototype;
-  dart.addTypeTests(alignment.AlignmentDirectional);
-  dart.addTypeCaches(alignment.AlignmentDirectional);
-  dart.setMethodSignature(alignment.AlignmentDirectional, () => ({
-    __proto__: dart.getMethods(alignment.AlignmentDirectional.__proto__),
-    '-': dart.fnType(alignment.AlignmentDirectional, [alignment.AlignmentDirectional]),
-    '+': dart.fnType(alignment.AlignmentDirectional, [alignment.AlignmentDirectional]),
-    _negate: dart.fnType(alignment.AlignmentDirectional, []),
-    '*': dart.fnType(alignment.AlignmentDirectional, [core.double]),
-    '/': dart.fnType(alignment.AlignmentDirectional, [core.double]),
-    '~/': dart.fnType(alignment.AlignmentDirectional, [core.double]),
-    '%': dart.fnType(alignment.AlignmentDirectional, [core.double]),
-    resolve: dart.fnType(alignment.Alignment, [dart.nullable(ui.TextDirection)])
-  }));
-  dart.setGetterSignature(alignment.AlignmentDirectional, () => ({
-    __proto__: dart.getGetters(alignment.AlignmentDirectional.__proto__),
-    [_x]: core.double,
-    [_start]: core.double,
-    [_y]: core.double
-  }));
-  dart.setLibraryUri(alignment.AlignmentDirectional, L1);
-  dart.setFieldSignature(alignment.AlignmentDirectional, () => ({
-    __proto__: dart.getFields(alignment.AlignmentDirectional.__proto__),
-    start: dart.finalFieldType(core.double),
-    y: dart.finalFieldType(core.double)
-  }));
-  dart.defineExtensionMethods(alignment.AlignmentDirectional, ['toString']);
-  dart.defineLazy(alignment.AlignmentDirectional, {
-    /*alignment.AlignmentDirectional.topStart*/get topStart() {
-      return C11 || CT.C11;
-    },
-    /*alignment.AlignmentDirectional.topCenter*/get topCenter() {
-      return C12 || CT.C12;
-    },
-    /*alignment.AlignmentDirectional.topEnd*/get topEnd() {
-      return C13 || CT.C13;
-    },
-    /*alignment.AlignmentDirectional.centerStart*/get centerStart() {
-      return C14 || CT.C14;
-    },
-    /*alignment.AlignmentDirectional.center*/get center() {
-      return C15 || CT.C15;
-    },
-    /*alignment.AlignmentDirectional.centerEnd*/get centerEnd() {
-      return C16 || CT.C16;
-    },
-    /*alignment.AlignmentDirectional.bottomStart*/get bottomStart() {
-      return C17 || CT.C17;
-    },
-    /*alignment.AlignmentDirectional.bottomCenter*/get bottomCenter() {
-      return C18 || CT.C18;
-    },
-    /*alignment.AlignmentDirectional.bottomEnd*/get bottomEnd() {
-      return C19 || CT.C19;
+    fine(message, error = null, stackTrace = null) {
+      return this.log(level.Level.FINE, message, error, stackTrace);
     }
-  }, false);
-  var _x$ = dart.privateName(alignment, "_MixedAlignment._x");
-  var _start$ = dart.privateName(alignment, "_MixedAlignment._start");
-  var _y$ = dart.privateName(alignment, "_MixedAlignment._y");
-  alignment._MixedAlignment = class _MixedAlignment extends alignment.AlignmentGeometry {
-    get [_x]() {
-      return this[_x$];
+    config(message, error = null, stackTrace = null) {
+      return this.log(level.Level.CONFIG, message, error, stackTrace);
     }
-    set [_x](value) {
-      super[_x] = value;
+    info(message, error = null, stackTrace = null) {
+      return this.log(level.Level.INFO, message, error, stackTrace);
     }
-    get [_start]() {
-      return this[_start$];
+    warning(message, error = null, stackTrace = null) {
+      return this.log(level.Level.WARNING, message, error, stackTrace);
     }
-    set [_start](value) {
-      super[_start] = value;
+    severe(message, error = null, stackTrace = null) {
+      return this.log(level.Level.SEVERE, message, error, stackTrace);
     }
-    get [_y]() {
-      return this[_y$];
+    shout(message, error = null, stackTrace = null) {
+      return this.log(level.Level.SHOUT, message, error, stackTrace);
     }
-    set [_y](value) {
-      super[_y] = value;
+    [_getStream]() {
+      if (dart.test(logger.hierarchicalLoggingEnabled) || this.parent == null) {
+        this[_controller] == null ? this[_controller] = T.StreamControllerOfLogRecordL().broadcast({sync: true}) : null;
+        return this[_controller].stream;
+      } else {
+        return logger.Logger.root[_getStream]();
+      }
     }
-    _negate() {
-      return new alignment._MixedAlignment.new(-dart.notNull(this[_x]), -dart.notNull(this[_start]), -dart.notNull(this[_y]));
-    }
-    ['*'](other) {
-      if (other == null) dart.nullFailed(L0, 587, 37, "other");
-      return new alignment._MixedAlignment.new(dart.notNull(this[_x]) * dart.notNull(other), dart.notNull(this[_start]) * dart.notNull(other), dart.notNull(this[_y]) * dart.notNull(other));
-    }
-    ['/'](other) {
-      if (other == null) dart.nullFailed(L0, 596, 37, "other");
-      return new alignment._MixedAlignment.new(dart.notNull(this[_x]) / dart.notNull(other), dart.notNull(this[_start]) / dart.notNull(other), dart.notNull(this[_y]) / dart.notNull(other));
-    }
-    ['~/'](other) {
-      if (other == null) dart.nullFailed(L0, 605, 38, "other");
-      return new alignment._MixedAlignment.new((dart.notNull(this[_x]) / dart.notNull(other))[$truncate]()[$toDouble](), (dart.notNull(this[_start]) / dart.notNull(other))[$truncate]()[$toDouble](), (dart.notNull(this[_y]) / dart.notNull(other))[$truncate]()[$toDouble]());
-    }
-    ['%'](other) {
-      if (other == null) dart.nullFailed(L0, 614, 37, "other");
-      return new alignment._MixedAlignment.new(this[_x][$modulo](other), this[_start][$modulo](other), this[_y][$modulo](other));
-    }
-    resolve(direction) {
-      if (!(direction != null)) dart.assertFailed("Cannot resolve " + dart.str(this[$runtimeType]) + " without a TextDirection.", L0, 624, 12, "direction != null");
-      switch (dart.nullCheck(direction)) {
-        case C9 || CT.C9:
-        {
-          return new alignment.Alignment.new(dart.notNull(this[_x]) - dart.notNull(this[_start]), this[_y]);
-        }
-        case C10 || CT.C10:
-        {
-          return new alignment.Alignment.new(dart.notNull(this[_x]) + dart.notNull(this[_start]), this[_y]);
-        }
-        default:
-        {
-          dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
-        }
+    [_publish](record) {
+      if (this[_controller] != null) {
+        this[_controller].add(record);
       }
     }
   };
-  (alignment._MixedAlignment.new = function(_x, _start, _y) {
-    if (_x == null) dart.nullFailed(L0, 566, 30, "_x");
-    if (_start == null) dart.nullFailed(L0, 566, 39, "_start");
-    if (_y == null) dart.nullFailed(L0, 566, 52, "_y");
-    this[_x$] = _x;
-    this[_start$] = _start;
-    this[_y$] = _y;
-    alignment._MixedAlignment.__proto__.new.call(this);
-    ;
-  }).prototype = alignment._MixedAlignment.prototype;
-  dart.addTypeTests(alignment._MixedAlignment);
-  dart.addTypeCaches(alignment._MixedAlignment);
-  dart.setMethodSignature(alignment._MixedAlignment, () => ({
-    __proto__: dart.getMethods(alignment._MixedAlignment.__proto__),
-    _negate: dart.fnType(alignment._MixedAlignment, []),
-    '*': dart.fnType(alignment._MixedAlignment, [core.double]),
-    '/': dart.fnType(alignment._MixedAlignment, [core.double]),
-    '~/': dart.fnType(alignment._MixedAlignment, [core.double]),
-    '%': dart.fnType(alignment._MixedAlignment, [core.double]),
-    resolve: dart.fnType(alignment.Alignment, [dart.nullable(ui.TextDirection)])
-  }));
-  dart.setLibraryUri(alignment._MixedAlignment, L1);
-  dart.setFieldSignature(alignment._MixedAlignment, () => ({
-    __proto__: dart.getFields(alignment._MixedAlignment.__proto__),
-    [_x]: dart.finalFieldType(core.double),
-    [_start]: dart.finalFieldType(core.double),
-    [_y]: dart.finalFieldType(core.double)
-  }));
-  var y$1 = dart.privateName(alignment, "TextAlignVertical.y");
-  var C20;
-  var C21;
-  var C22;
-  alignment.TextAlignVertical = class TextAlignVertical extends core.Object {
-    get y() {
-      return this[y$1];
+  (logger.Logger._internal = function(name, parent, children) {
+    this[_level] = null;
+    this[_controller] = null;
+    this[name$] = name;
+    this[parent$] = parent;
+    this[_children] = children;
+    this[children$] = new (T.UnmodifiableMapViewOfStringL$LoggerL()).new(children);
+    if (this.parent == null) {
+      this[_level] = logger.defaultLevel;
+    } else {
+      this.parent[_children][$_set](this.name, this);
     }
-    set y(value) {
-      super.y = value;
+  }).prototype = logger.Logger.prototype;
+  dart.addTypeTests(logger.Logger);
+  dart.addTypeCaches(logger.Logger);
+  dart.setMethodSignature(logger.Logger, () => ({
+    __proto__: dart.getMethods(logger.Logger.__proto__),
+    clearListeners: dart.fnType(dart.void, []),
+    isLoggable: dart.fnType(dart.legacy(core.bool), [dart.legacy(level.Level)]),
+    log: dart.fnType(dart.void, [dart.legacy(level.Level), dart.dynamic], [dart.legacy(core.Object), dart.legacy(core.StackTrace), dart.legacy(async.Zone)]),
+    finest: dart.fnType(dart.void, [dart.dynamic], [dart.legacy(core.Object), dart.legacy(core.StackTrace)]),
+    finer: dart.fnType(dart.void, [dart.dynamic], [dart.legacy(core.Object), dart.legacy(core.StackTrace)]),
+    fine: dart.fnType(dart.void, [dart.dynamic], [dart.legacy(core.Object), dart.legacy(core.StackTrace)]),
+    config: dart.fnType(dart.void, [dart.dynamic], [dart.legacy(core.Object), dart.legacy(core.StackTrace)]),
+    info: dart.fnType(dart.void, [dart.dynamic], [dart.legacy(core.Object), dart.legacy(core.StackTrace)]),
+    warning: dart.fnType(dart.void, [dart.dynamic], [dart.legacy(core.Object), dart.legacy(core.StackTrace)]),
+    severe: dart.fnType(dart.void, [dart.dynamic], [dart.legacy(core.Object), dart.legacy(core.StackTrace)]),
+    shout: dart.fnType(dart.void, [dart.dynamic], [dart.legacy(core.Object), dart.legacy(core.StackTrace)]),
+    [_getStream]: dart.fnType(dart.legacy(async.Stream$(dart.legacy(log_record.LogRecord))), []),
+    [_publish]: dart.fnType(dart.void, [dart.legacy(log_record.LogRecord)])
+  }));
+  dart.setGetterSignature(logger.Logger, () => ({
+    __proto__: dart.getGetters(logger.Logger.__proto__),
+    fullName: dart.legacy(core.String),
+    level: dart.legacy(level.Level),
+    onRecord: dart.legacy(async.Stream$(dart.legacy(log_record.LogRecord)))
+  }));
+  dart.setSetterSignature(logger.Logger, () => ({
+    __proto__: dart.getSetters(logger.Logger.__proto__),
+    level: dart.legacy(level.Level)
+  }));
+  dart.setLibraryUri(logger.Logger, I[1]);
+  dart.setFieldSignature(logger.Logger, () => ({
+    __proto__: dart.getFields(logger.Logger.__proto__),
+    name: dart.finalFieldType(dart.legacy(core.String)),
+    parent: dart.finalFieldType(dart.legacy(logger.Logger)),
+    [_level]: dart.fieldType(dart.legacy(level.Level)),
+    [_children]: dart.finalFieldType(dart.legacy(core.Map$(dart.legacy(core.String), dart.legacy(logger.Logger)))),
+    children: dart.finalFieldType(dart.legacy(core.Map$(dart.legacy(core.String), dart.legacy(logger.Logger)))),
+    [_controller]: dart.fieldType(dart.legacy(async.StreamController$(dart.legacy(log_record.LogRecord))))
+  }));
+  dart.defineLazy(logger.Logger, {
+    /*logger.Logger.root*/get root() {
+      return logger.Logger.new("");
+    },
+    /*logger.Logger._loggers*/get _loggers() {
+      return new (T.IdentityMapOfStringL$LoggerL()).new();
+    }
+  }, true);
+  var Level_value = dart.privateName(level, "Level.value");
+  var Level_name = dart.privateName(level, "Level.name");
+  dart.defineLazy(logger, {
+    /*logger.hierarchicalLoggingEnabled*/get hierarchicalLoggingEnabled() {
+      return false;
+    },
+    set hierarchicalLoggingEnabled(_) {},
+    /*logger.recordStackTraceAtLevel*/get recordStackTraceAtLevel() {
+      return level.Level.OFF;
+    },
+    set recordStackTraceAtLevel(_) {},
+    /*logger.defaultLevel*/get defaultLevel() {
+      return C[0] || CT.C0;
+    }
+  }, true);
+  var level$ = dart.privateName(log_record, "LogRecord.level");
+  var message$ = dart.privateName(log_record, "LogRecord.message");
+  var object$ = dart.privateName(log_record, "LogRecord.object");
+  var loggerName$ = dart.privateName(log_record, "LogRecord.loggerName");
+  var time = dart.privateName(log_record, "LogRecord.time");
+  var sequenceNumber = dart.privateName(log_record, "LogRecord.sequenceNumber");
+  var error$ = dart.privateName(log_record, "LogRecord.error");
+  var stackTrace$ = dart.privateName(log_record, "LogRecord.stackTrace");
+  var zone$ = dart.privateName(log_record, "LogRecord.zone");
+  log_record.LogRecord = class LogRecord extends core.Object {
+    get level() {
+      return this[level$];
+    }
+    set level(value) {
+      super.level = value;
+    }
+    get message() {
+      return this[message$];
+    }
+    set message(value) {
+      super.message = value;
+    }
+    get object() {
+      return this[object$];
+    }
+    set object(value) {
+      super.object = value;
+    }
+    get loggerName() {
+      return this[loggerName$];
+    }
+    set loggerName(value) {
+      super.loggerName = value;
+    }
+    get time() {
+      return this[time];
+    }
+    set time(value) {
+      super.time = value;
+    }
+    get sequenceNumber() {
+      return this[sequenceNumber];
+    }
+    set sequenceNumber(value) {
+      super.sequenceNumber = value;
+    }
+    get error() {
+      return this[error$];
+    }
+    set error(value) {
+      super.error = value;
+    }
+    get stackTrace() {
+      return this[stackTrace$];
+    }
+    set stackTrace(value) {
+      super.stackTrace = value;
+    }
+    get zone() {
+      return this[zone$];
+    }
+    set zone(value) {
+      super.zone = value;
     }
     toString() {
-      return dart.str(object.objectRuntimeType(this, "TextAlignVertical")) + "(y: " + dart.str(this.y) + ")";
+      return "[" + dart.str(this.level.name) + "] " + dart.str(this.loggerName) + ": " + dart.str(this.message);
     }
   };
-  (alignment.TextAlignVertical.new = function(opts) {
-    let y = opts && 'y' in opts ? opts.y : null;
-    if (y == null) dart.nullFailed(L0, 652, 19, "y");
-    this[y$1] = y;
-    if (!(y != null)) dart.assertFailed(null, L0, 653, 15, "y != null");
-    if (!(dart.notNull(y) >= -1.0 && dart.notNull(y) <= 1.0)) dart.assertFailed(null, L0, 654, 15, "y >= -1.0 && y <= 1.0");
+  (log_record.LogRecord.new = function(level, message, loggerName, error = null, stackTrace = null, zone = null, object = null) {
+    let t0;
+    this[level$] = level;
+    this[message$] = message;
+    this[loggerName$] = loggerName;
+    this[error$] = error;
+    this[stackTrace$] = stackTrace;
+    this[zone$] = zone;
+    this[object$] = object;
+    this[time] = new core.DateTime.now();
+    this[sequenceNumber] = (t0 = log_record.LogRecord._nextNumber, log_record.LogRecord._nextNumber = dart.notNull(t0) + 1, t0);
     ;
-  }).prototype = alignment.TextAlignVertical.prototype;
-  dart.addTypeTests(alignment.TextAlignVertical);
-  dart.addTypeCaches(alignment.TextAlignVertical);
-  dart.setLibraryUri(alignment.TextAlignVertical, L1);
-  dart.setFieldSignature(alignment.TextAlignVertical, () => ({
-    __proto__: dart.getFields(alignment.TextAlignVertical.__proto__),
-    y: dart.finalFieldType(core.double)
+  }).prototype = log_record.LogRecord.prototype;
+  dart.addTypeTests(log_record.LogRecord);
+  dart.addTypeCaches(log_record.LogRecord);
+  dart.setMethodSignature(log_record.LogRecord, () => ({
+    __proto__: dart.getMethods(log_record.LogRecord.__proto__),
+    toString: dart.fnType(dart.legacy(core.String), []),
+    [$toString]: dart.fnType(dart.legacy(core.String), [])
   }));
-  dart.defineExtensionMethods(alignment.TextAlignVertical, ['toString']);
-  dart.defineLazy(alignment.TextAlignVertical, {
-    /*alignment.TextAlignVertical.top*/get top() {
-      return C20 || CT.C20;
+  dart.setLibraryUri(log_record.LogRecord, I[2]);
+  dart.setFieldSignature(log_record.LogRecord, () => ({
+    __proto__: dart.getFields(log_record.LogRecord.__proto__),
+    level: dart.finalFieldType(dart.legacy(level.Level)),
+    message: dart.finalFieldType(dart.legacy(core.String)),
+    object: dart.finalFieldType(dart.legacy(core.Object)),
+    loggerName: dart.finalFieldType(dart.legacy(core.String)),
+    time: dart.finalFieldType(dart.legacy(core.DateTime)),
+    sequenceNumber: dart.finalFieldType(dart.legacy(core.int)),
+    error: dart.finalFieldType(dart.legacy(core.Object)),
+    stackTrace: dart.finalFieldType(dart.legacy(core.StackTrace)),
+    zone: dart.finalFieldType(dart.legacy(async.Zone))
+  }));
+  dart.defineExtensionMethods(log_record.LogRecord, ['toString']);
+  dart.defineLazy(log_record.LogRecord, {
+    /*log_record.LogRecord._nextNumber*/get _nextNumber() {
+      return 0;
     },
-    /*alignment.TextAlignVertical.center*/get center() {
-      return C21 || CT.C21;
-    },
-    /*alignment.TextAlignVertical.bottom*/get bottom() {
-      return C22 || CT.C22;
-    }
-  }, false);
-  dart.trackLibraries("packages/flutter/src/painting/alignment.dart", {
-    "package:flutter/src/painting/alignment.dart": alignment
+    set _nextNumber(_) {}
+  }, true);
+  dart.trackLibraries("packages/logging/src/logger.dart", {
+    "package:logging/src/logger.dart": logger,
+    "package:logging/src/log_record.dart": log_record
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["alignment.dart"],"names":[],"mappings":"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","file":"../../../../../../../packages/flutter/src/painting/alignment.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["logger.dart","log_record.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../packages/logging/src/logger.dart.lib.js"}');
   // Exports:
   return {
-    src__painting__alignment: alignment
+    src__logger: logger,
+    src__log_record: log_record
   };
 }));
 
-//# sourceMappingURL=alignment.dart.lib.js.map
+//# sourceMappingURL=logger.dart.lib.js.map

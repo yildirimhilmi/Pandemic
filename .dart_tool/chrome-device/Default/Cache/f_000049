@@ -1,329 +1,733 @@
-define(['dart_sdk', 'packages/flutter/src/rendering/layer.dart', 'packages/flutter/src/foundation/debug.dart', 'packages/flutter/src/foundation/object.dart', 'packages/flutter/src/foundation/change_notifier.dart'], (function load__packages__flutter__src__rendering__custom_layout_dart(dart_sdk, packages__flutter__src__rendering__layer$46dart, packages__flutter__src__foundation__debug$46dart, packages__flutter__src__foundation__object$46dart, packages__flutter__src__foundation__change_notifier$46dart) {
+define(['dart_sdk', 'packages/flutter_map/src/core/point.dart', 'packages/flutter_map/src/core/bounds.dart', 'packages/latlong/latlong.dart', 'packages/tuple/tuple.dart', 'packages/proj4dart/src/classes/projection_tuple.dart', 'packages/proj4dart/src/classes/point.dart'], (function load__packages__flutter_map__src__geo__crs__crs_dart(dart_sdk, packages__flutter_map__src__core__point$46dart, packages__flutter_map__src__core__bounds$46dart, packages__latlong__latlong$46dart, packages__tuple__tuple$46dart, packages__proj4dart__src__classes__projection_tuple$46dart, packages__proj4dart__src__classes__point$46dart) {
   'use strict';
   const core = dart_sdk.core;
-  const _interceptors = dart_sdk._interceptors;
-  const collection = dart_sdk.collection;
-  const _js_helper = dart_sdk._js_helper;
-  const ui = dart_sdk.ui;
+  const math = dart_sdk.math;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const box = packages__flutter__src__rendering__layer$46dart.src__rendering__box;
-  const object = packages__flutter__src__rendering__layer$46dart.src__rendering__object;
-  const assertions = packages__flutter__src__foundation__debug$46dart.src__foundation__assertions;
-  const diagnostics = packages__flutter__src__foundation__debug$46dart.src__foundation__diagnostics;
-  const object$ = packages__flutter__src__foundation__object$46dart.src__foundation__object;
-  const change_notifier = packages__flutter__src__foundation__change_notifier$46dart.src__foundation__change_notifier;
-  var custom_layout = Object.create(dart.library);
-  var $_get = dartx._get;
-  var $_set = dartx._set;
+  const point = packages__flutter_map__src__core__point$46dart.src__core__point;
+  const bounds = packages__flutter_map__src__core__bounds$46dart.src__core__bounds;
+  const latlong = packages__latlong__latlong$46dart.latlong;
+  const tuple = packages__tuple__tuple$46dart.tuple;
+  const projection = packages__proj4dart__src__classes__projection_tuple$46dart.src__classes__projection;
+  const point$ = packages__proj4dart__src__classes__point$46dart.src__classes__point;
+  var crs = Object.create(dart.library);
+  var $toDouble = dartx.toDouble;
   var $isNotEmpty = dartx.isNotEmpty;
-  var $length = dartx.length;
   var $map = dartx.map;
   var $toList = dartx.toList;
-  var $runtimeType = dartx.runtimeType;
-  var $isFinite = dartx.isFinite;
-  var DiagnosticsPropertyOfAssertionError = () => (DiagnosticsPropertyOfAssertionError = dart.constFn(diagnostics.DiagnosticsProperty$(core.AssertionError)))();
-  var JSArrayOfDiagnosticsNode = () => (JSArrayOfDiagnosticsNode = dart.constFn(_interceptors.JSArray$(diagnostics.DiagnosticsNode)))();
-  var VoidTobool = () => (VoidTobool = dart.constFn(dart.fnType(core.bool, [])))();
-  var DiagnosticsPropertyOfRenderBox = () => (DiagnosticsPropertyOfRenderBox = dart.constFn(diagnostics.DiagnosticsProperty$(box.RenderBox)))();
-  var LinkedHashSetOfRenderBox = () => (LinkedHashSetOfRenderBox = dart.constFn(collection.LinkedHashSet$(box.RenderBox)))();
-  var LinkedMapOfObject$RenderBox = () => (LinkedMapOfObject$RenderBox = dart.constFn(_js_helper.LinkedMap$(core.Object, box.RenderBox)))();
+  var $isEmpty = dartx.isEmpty;
+  var $length = dartx.length;
+  var $_get = dartx._get;
+  var $floor = dartx.floor;
+  var $indexOf = dartx.indexOf;
+  var $round = dartx.round;
+  var $compareTo = dartx.compareTo;
+  dart._checkModuleNullSafetyMode(false);
+  var T = Object.create({
+    numL: () => (T.numL = dart.constFn(dart.legacy(core.num)))(),
+    CustomPointOfnumL: () => (T.CustomPointOfnumL = dart.constFn(point.CustomPoint$(T.numL())))(),
+    BoundsOfnumL: () => (T.BoundsOfnumL = dart.constFn(bounds.Bounds$(T.numL())))(),
+    doubleL: () => (T.doubleL = dart.constFn(dart.legacy(core.double)))(),
+    Tuple2OfdoubleL$doubleL: () => (T.Tuple2OfdoubleL$doubleL = dart.constFn(tuple.Tuple2$(T.doubleL(), T.doubleL())))(),
+    doubleLTodoubleL: () => (T.doubleLTodoubleL = dart.constFn(dart.fnType(T.doubleL(), [T.doubleL()])))(),
+    TransformationL: () => (T.TransformationL = dart.constFn(dart.legacy(crs.Transformation)))(),
+    CustomPointLOfnumL: () => (T.CustomPointLOfnumL = dart.constFn(dart.legacy(T.CustomPointOfnumL())))(),
+    CustomPointLOfnumLToTransformationL: () => (T.CustomPointLOfnumLToTransformationL = dart.constFn(dart.fnType(T.TransformationL(), [T.CustomPointLOfnumL()])))(),
+    BoundsOfdoubleL: () => (T.BoundsOfdoubleL = dart.constFn(bounds.Bounds$(T.doubleL())))(),
+    CustomPointOfdoubleL: () => (T.CustomPointOfdoubleL = dart.constFn(point.CustomPoint$(T.doubleL())))()
+  });
   const CT = Object.create(null);
-  var L0 = "package:flutter/src/rendering/custom_layout.dart";
-  var L1 = "file:///C:/src/flutter/packages/flutter/lib/src/rendering/custom_layout.dart";
-  var id = dart.privateName(custom_layout, "MultiChildLayoutParentData.id");
-  custom_layout.MultiChildLayoutParentData = class MultiChildLayoutParentData extends box.ContainerBoxParentData$(box.RenderBox) {
-    get id() {
-      return this[id];
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: crs._LonLat.prototype
+      });
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: T.Tuple2OfdoubleL$doubleL().prototype,
+        [Tuple2_item2]: 180,
+        [Tuple2_item1]: -180
+      });
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: crs.SphericalMercator.prototype
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: crs.Transformation.prototype,
+        [Transformation_d]: 0.5,
+        [Transformation_c]: -2.495320233665337e-8,
+        [Transformation_b]: 0.5,
+        [Transformation_a]: 2.495320233665337e-8
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: crs.Transformation.prototype,
+        [Transformation_d]: 0.5,
+        [Transformation_c]: -0.005555555555555556,
+        [Transformation_b]: 0.5,
+        [Transformation_a]: 0.005555555555555556
+      });
     }
-    set id(value) {
-      this[id] = value;
-    }
-    toString() {
-      return dart.str(super.toString()) + "; id=" + dart.str(this.id);
-    }
-  };
-  (custom_layout.MultiChildLayoutParentData.new = function() {
-    this[id] = null;
-    custom_layout.MultiChildLayoutParentData.__proto__.new.call(this);
-    ;
-  }).prototype = custom_layout.MultiChildLayoutParentData.prototype;
-  dart.addTypeTests(custom_layout.MultiChildLayoutParentData);
-  dart.addTypeCaches(custom_layout.MultiChildLayoutParentData);
-  dart.setLibraryUri(custom_layout.MultiChildLayoutParentData, L0);
-  dart.setFieldSignature(custom_layout.MultiChildLayoutParentData, () => ({
-    __proto__: dart.getFields(custom_layout.MultiChildLayoutParentData.__proto__),
-    id: dart.fieldType(dart.nullable(core.Object))
-  }));
-  dart.defineExtensionMethods(custom_layout.MultiChildLayoutParentData, ['toString']);
-  var _idToChild = dart.privateName(custom_layout, "_idToChild");
-  var _debugChildrenNeedingLayout = dart.privateName(custom_layout, "_debugChildrenNeedingLayout");
-  var _relayout = dart.privateName(custom_layout, "_relayout");
-  var _debugDescribeChild = dart.privateName(custom_layout, "_debugDescribeChild");
-  var _callPerformLayout = dart.privateName(custom_layout, "_callPerformLayout");
-  custom_layout.MultiChildLayoutDelegate = class MultiChildLayoutDelegate extends core.Object {
-    hasChild(childId) {
-      if (childId == null) dart.nullFailed(L1, 133, 24, "childId");
-      return dart.nullCheck(this[_idToChild])[$_get](childId) != null;
-    }
-    layoutChild(childId, constraints) {
-      if (childId == null) dart.nullFailed(L1, 141, 27, "childId");
-      if (constraints == null) dart.nullFailed(L1, 141, 51, "constraints");
-      let child = dart.nullCheck(this[_idToChild])[$_get](childId);
-      if (!dart.test(dart.fn(() => {
-        if (child == null) {
-          dart.throw(assertions.FlutterError.new("The " + dart.str(this) + " custom multichild layout delegate tried to lay out a non-existent child.\n" + "There is no child with the id \"" + dart.str(childId) + "\"."));
-        }
-        if (!dart.test(dart.nullCheck(this[_debugChildrenNeedingLayout]).remove(child))) {
-          dart.throw(assertions.FlutterError.new("The " + dart.str(this) + " custom multichild layout delegate tried to lay out the child with id \"" + dart.str(childId) + "\" more than once.\n" + "Each child must be laid out exactly once."));
-        }
-        try {
-          if (!dart.test(constraints.debugAssertIsValid({isAppliedConstraint: true}))) dart.assertFailed(null, L1, 157, 16, "constraints.debugAssertIsValid(isAppliedConstraint: true)");
-        } catch (e) {
-          let exception = dart.getThrown(e);
-          if (core.AssertionError.is(exception)) {
-            dart.throw(new assertions.FlutterError.fromParts(JSArrayOfDiagnosticsNode().of([new assertions.ErrorSummary.new("The " + dart.str(this) + " custom multichild layout delegate provided invalid box constraints for the child with id \"" + dart.str(childId) + "\"."), new (DiagnosticsPropertyOfAssertionError()).new("Exception", exception, {showName: false}), new assertions.ErrorDescription.new("The minimum width and height must be greater than or equal to zero.\n" + "The maximum width must be greater than or equal to the minimum width.\n" + "The maximum height must be greater than or equal to the minimum height.")])));
-          } else
-            throw e;
-        }
-        return true;
-      }, VoidTobool())())) dart.assertFailed(null, L1, 143, 12, "() {\r\n      if (child == null) {\r\n        throw FlutterError(\r\n          'The $this custom multichild layout delegate tried to lay out a non-existent child.\\n'\r\n          'There is no child with the id \"$childId\".'\r\n        );\r\n      }\r\n      if (!_debugChildrenNeedingLayout!.remove(child)) {\r\n        throw FlutterError(\r\n          'The $this custom multichild layout delegate tried to lay out the child with id \"$childId\" more than once.\\n'\r\n          'Each child must be laid out exactly once.'\r\n        );\r\n      }\r\n      try {\r\n        assert(constraints.debugAssertIsValid(isAppliedConstraint: true));\r\n      } on AssertionError catch (exception) {\r\n        throw FlutterError.fromParts(<DiagnosticsNode>[\r\n          ErrorSummary('The $this custom multichild layout delegate provided invalid box constraints for the child with id \"$childId\".'),\r\n          DiagnosticsProperty<AssertionError>('Exception', exception, showName: false),\r\n          ErrorDescription(\r\n            'The minimum width and height must be greater than or equal to zero.\\n'\r\n            'The maximum width must be greater than or equal to the minimum width.\\n'\r\n            'The maximum height must be greater than or equal to the minimum height.'\r\n          )\r\n        ]);\r\n      }\r\n      return true;\r\n    }()");
-      dart.nullCheck(child).layout(constraints, {parentUsesSize: true});
-      return child.size;
-    }
-    positionChild(childId, offset) {
-      if (childId == null) dart.nullFailed(L1, 181, 29, "childId");
-      if (offset == null) dart.nullFailed(L1, 181, 45, "offset");
-      let child = dart.nullCheck(this[_idToChild])[$_get](childId);
-      if (!dart.test(dart.fn(() => {
-        if (child == null) {
-          dart.throw(assertions.FlutterError.new("The " + dart.str(this) + " custom multichild layout delegate tried to position out a non-existent child:\n" + "There is no child with the id \"" + dart.str(childId) + "\"."));
-        }
-        if (offset == null) {
-          dart.throw(assertions.FlutterError.new("The " + dart.str(this) + " custom multichild layout delegate provided a null position for the child with id \"" + dart.str(childId) + "\"."));
-        }
-        return true;
-      }, VoidTobool())())) dart.assertFailed(null, L1, 183, 12, "() {\r\n      if (child == null) {\r\n        throw FlutterError(\r\n          'The $this custom multichild layout delegate tried to position out a non-existent child:\\n'\r\n          'There is no child with the id \"$childId\".'\r\n        );\r\n      }\r\n      // `offset` has a non-nullable return type, but might be null when\r\n      // running with weak checking, so we need to null check it anyway (and\r\n      // ignore the warning that the null-handling logic is dead code).\r\n      if (offset == null) { // ignore: dead_code\r\n        throw FlutterError(\r\n          'The $this custom multichild layout delegate provided a null position for the child with id \"$childId\".'\r\n        );\r\n      }\r\n      return true;\r\n    }()");
-      let childParentData = custom_layout.MultiChildLayoutParentData.as(dart.nullCheck(dart.nullCheck(child).parentData));
-      childParentData.offset = offset;
-    }
-    [_debugDescribeChild](child) {
-      if (child == null) dart.nullFailed(L1, 204, 49, "child");
-      let childParentData = custom_layout.MultiChildLayoutParentData.as(dart.nullCheck(child.parentData));
-      return new (DiagnosticsPropertyOfRenderBox()).new(dart.str(childParentData.id), child);
-    }
-    [_callPerformLayout](size, firstChild) {
-      if (size == null) dart.nullFailed(L1, 209, 32, "size");
-      let previousIdToChild = this[_idToChild];
-      let debugPreviousChildrenNeedingLayout = null;
-      if (!dart.test(dart.fn(() => {
-        debugPreviousChildrenNeedingLayout = this[_debugChildrenNeedingLayout];
-        this[_debugChildrenNeedingLayout] = LinkedHashSetOfRenderBox().new();
-        return true;
-      }, VoidTobool())())) dart.assertFailed(null, L1, 216, 12, "() {\r\n      debugPreviousChildrenNeedingLayout = _debugChildrenNeedingLayout;\r\n      _debugChildrenNeedingLayout = <RenderBox>{};\r\n      return true;\r\n    }()");
+  }, false);
+  var C = Array(5).fill(void 0);
+  var I = [
+    "package:flutter_map/src/geo/crs/crs.dart",
+    "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_map-0.10.1+1/lib/src/geo/crs/crs.dart"
+  ];
+  crs.Crs = class Crs extends core.Object {
+    latLngToPoint(latlng, zoom) {
       try {
-        this[_idToChild] = new (LinkedMapOfObject$RenderBox()).new();
-        let child = firstChild;
-        while (child != null) {
-          let childParentData = custom_layout.MultiChildLayoutParentData.as(dart.nullCheck(child.parentData));
-          if (!dart.test(dart.fn(() => {
-            if (childParentData.id == null) {
-              dart.throw(new assertions.FlutterError.fromParts(JSArrayOfDiagnosticsNode().of([new assertions.ErrorSummary.new("Every child of a RenderCustomMultiChildLayoutBox must have an ID in its parent data."), dart.nullCheck(child).describeForError("The following child has no ID")])));
-            }
-            return true;
-          }, VoidTobool())())) dart.assertFailed(null, L1, 227, 16, "() {\r\n          if (childParentData.id == null) {\r\n            throw FlutterError.fromParts(<DiagnosticsNode>[\r\n              ErrorSummary('Every child of a RenderCustomMultiChildLayoutBox must have an ID in its parent data.'),\r\n              child!.describeForError('The following child has no ID'),\r\n            ]);\r\n          }\r\n          return true;\r\n        }()");
-          dart.nullCheck(this[_idToChild])[$_set](dart.nullCheck(childParentData.id), child);
-          if (!dart.test(dart.fn(() => {
-            dart.nullCheck(this[_debugChildrenNeedingLayout]).add(dart.nullCheck(child));
-            return true;
-          }, VoidTobool())())) dart.assertFailed(null, L1, 237, 16, "() {\r\n          _debugChildrenNeedingLayout!.add(child!);\r\n          return true;\r\n        }()");
-          child = childParentData.nextSibling;
-        }
-        this.performLayout(size);
-        if (!dart.test(dart.fn(() => {
-          if (dart.test(dart.nullCheck(this[_debugChildrenNeedingLayout])[$isNotEmpty])) {
-            dart.throw(new assertions.FlutterError.fromParts(JSArrayOfDiagnosticsNode().of([new assertions.ErrorSummary.new("Each child must be laid out exactly once."), new diagnostics.DiagnosticsBlock.new({name: "The " + dart.str(this) + " custom multichild layout delegate forgot " + "to lay out the following " + (dart.notNull(dart.nullCheck(this[_debugChildrenNeedingLayout])[$length]) > 1 ? "children" : "child"), properties: dart.nullCheck(this[_debugChildrenNeedingLayout])[$map](diagnostics.DiagnosticsNode, dart.bind(this, _debugDescribeChild))[$toList](), style: diagnostics.DiagnosticsTreeStyle.whitespace})])));
-          }
-          return true;
-        }, VoidTobool())())) dart.assertFailed(null, L1, 244, 14, "() {\r\n        if (_debugChildrenNeedingLayout!.isNotEmpty) {\r\n          throw FlutterError.fromParts(<DiagnosticsNode>[\r\n          ErrorSummary('Each child must be laid out exactly once.'),\r\n            DiagnosticsBlock(\r\n              name:\r\n                'The $this custom multichild layout delegate forgot '\r\n                'to lay out the following '\r\n                '${_debugChildrenNeedingLayout!.length > 1 ? 'children' : 'child'}',\r\n              properties: _debugChildrenNeedingLayout!.map<DiagnosticsNode>(_debugDescribeChild).toList(),\r\n              style: DiagnosticsTreeStyle.whitespace,\r\n            ),\r\n          ]);\r\n        }\r\n        return true;\r\n      }()");
-      } finally {
-        this[_idToChild] = previousIdToChild;
-        if (!dart.test(dart.fn(() => {
-          this[_debugChildrenNeedingLayout] = debugPreviousChildrenNeedingLayout;
-          return true;
-        }, VoidTobool())())) dart.assertFailed(null, L1, 262, 14, "() {\r\n        _debugChildrenNeedingLayout = debugPreviousChildrenNeedingLayout;\r\n        return true;\r\n      }()");
+        let projectedPoint = this.projection.project(latlng);
+        let scale = this.scale(zoom);
+        return this.transformation.transform(projectedPoint, scale[$toDouble]());
+      } catch (e$) {
+        let e = dart.getThrown(e$);
+        return new (T.CustomPointOfnumL()).new(0.0, 0.0);
       }
     }
-    getSize(constraints) {
-      if (constraints == null) dart.nullFailed(L1, 278, 31, "constraints");
-      return constraints.biggest;
+    pointToLatLng(point, zoom) {
+      let scale = this.scale(zoom);
+      let untransformedPoint = this.transformation.untransform(point, scale[$toDouble]());
+      try {
+        return this.projection.unproject(untransformedPoint);
+      } catch (e$) {
+        let e = dart.getThrown(e$);
+        return null;
+      }
     }
-    toString() {
-      return object$.objectRuntimeType(this, "MultiChildLayoutDelegate");
+    scale(zoom) {
+      return 256 * math.pow(2, zoom);
+    }
+    zoom(scale) {
+      return math.log(dart.notNull(scale) / 256) / 0.6931471805599453;
+    }
+    getProjectedBounds(zoom) {
+      if (dart.test(this.infinite)) return null;
+      let b = this.projection.bounds;
+      let s = this.scale(zoom);
+      let min = this.transformation.transform(b.min, s[$toDouble]());
+      let max = this.transformation.transform(b.max, s[$toDouble]());
+      return T.BoundsOfnumL().new(min, max);
     }
   };
-  (custom_layout.MultiChildLayoutDelegate.new = function(opts) {
-    let relayout = opts && 'relayout' in opts ? opts.relayout : null;
-    this[_idToChild] = null;
-    this[_debugChildrenNeedingLayout] = null;
-    this[_relayout] = relayout;
+  (crs.Crs.new = function() {
     ;
-  }).prototype = custom_layout.MultiChildLayoutDelegate.prototype;
-  dart.addTypeTests(custom_layout.MultiChildLayoutDelegate);
-  dart.addTypeCaches(custom_layout.MultiChildLayoutDelegate);
-  dart.setMethodSignature(custom_layout.MultiChildLayoutDelegate, () => ({
-    __proto__: dart.getMethods(custom_layout.MultiChildLayoutDelegate.__proto__),
-    hasChild: dart.fnType(core.bool, [core.Object]),
-    layoutChild: dart.fnType(ui.Size, [core.Object, box.BoxConstraints]),
-    positionChild: dart.fnType(dart.void, [core.Object, ui.Offset]),
-    [_debugDescribeChild]: dart.fnType(diagnostics.DiagnosticsNode, [box.RenderBox]),
-    [_callPerformLayout]: dart.fnType(dart.void, [ui.Size, dart.nullable(box.RenderBox)]),
-    getSize: dart.fnType(ui.Size, [box.BoxConstraints])
+  }).prototype = crs.Crs.prototype;
+  dart.addTypeTests(crs.Crs);
+  dart.addTypeCaches(crs.Crs);
+  dart.setMethodSignature(crs.Crs, () => ({
+    __proto__: dart.getMethods(crs.Crs.__proto__),
+    latLngToPoint: dart.fnType(dart.legacy(point.CustomPoint$(dart.legacy(core.num))), [dart.legacy(latlong.LatLng), dart.legacy(core.double)]),
+    pointToLatLng: dart.fnType(dart.legacy(latlong.LatLng), [dart.legacy(point.CustomPoint$(dart.legacy(core.num))), dart.legacy(core.double)]),
+    scale: dart.fnType(dart.legacy(core.num), [dart.legacy(core.double)]),
+    zoom: dart.fnType(dart.legacy(core.num), [dart.legacy(core.double)]),
+    getProjectedBounds: dart.fnType(dart.legacy(bounds.Bounds$(dart.legacy(core.num))), [dart.legacy(core.double)])
   }));
-  dart.setLibraryUri(custom_layout.MultiChildLayoutDelegate, L0);
-  dart.setFieldSignature(custom_layout.MultiChildLayoutDelegate, () => ({
-    __proto__: dart.getFields(custom_layout.MultiChildLayoutDelegate.__proto__),
-    [_relayout]: dart.finalFieldType(dart.nullable(change_notifier.Listenable)),
-    [_idToChild]: dart.fieldType(dart.nullable(core.Map$(core.Object, box.RenderBox))),
-    [_debugChildrenNeedingLayout]: dart.fieldType(dart.nullable(core.Set$(box.RenderBox)))
-  }));
-  dart.defineExtensionMethods(custom_layout.MultiChildLayoutDelegate, ['toString']);
-  var _delegate = dart.privateName(custom_layout, "_delegate");
-  var _getSize = dart.privateName(custom_layout, "_getSize");
-  const RenderBox_ContainerRenderObjectMixin$36 = class RenderBox_ContainerRenderObjectMixin extends box.RenderBox {};
-  (RenderBox_ContainerRenderObjectMixin$36.new = function() {
-    object.ContainerRenderObjectMixin$(box.RenderBox, custom_layout.MultiChildLayoutParentData)[dart.mixinNew].call(this);
-    RenderBox_ContainerRenderObjectMixin$36.__proto__.new.call(this);
-  }).prototype = RenderBox_ContainerRenderObjectMixin$36.prototype;
-  dart.applyMixin(RenderBox_ContainerRenderObjectMixin$36, object.ContainerRenderObjectMixin$(box.RenderBox, custom_layout.MultiChildLayoutParentData));
-  const RenderBox_RenderBoxContainerDefaultsMixin$36 = class RenderBox_RenderBoxContainerDefaultsMixin extends RenderBox_ContainerRenderObjectMixin$36 {};
-  (RenderBox_RenderBoxContainerDefaultsMixin$36.new = function() {
-    RenderBox_RenderBoxContainerDefaultsMixin$36.__proto__.new.call(this);
-  }).prototype = RenderBox_RenderBoxContainerDefaultsMixin$36.prototype;
-  dart.applyMixin(RenderBox_RenderBoxContainerDefaultsMixin$36, box.RenderBoxContainerDefaultsMixin$(box.RenderBox, custom_layout.MultiChildLayoutParentData));
-  custom_layout.RenderCustomMultiChildLayoutBox = class RenderCustomMultiChildLayoutBox extends RenderBox_RenderBoxContainerDefaultsMixin$36 {
-    setupParentData(child) {
-      box.RenderBox.as(child);
-      if (child == null) dart.nullFailed(L1, 324, 34, "child");
-      if (!custom_layout.MultiChildLayoutParentData.is(child.parentData)) child.parentData = new custom_layout.MultiChildLayoutParentData.new();
+  dart.setLibraryUri(crs.Crs, I[0]);
+  var code = dart.privateName(crs, "CrsSimple.code");
+  var projection$ = dart.privateName(crs, "CrsSimple.projection");
+  var transformation = dart.privateName(crs, "CrsSimple.transformation");
+  crs.CrsSimple = class CrsSimple extends crs.Crs {
+    get code() {
+      return this[code];
     }
-    get delegate() {
-      return this[_delegate];
+    set code(value) {
+      super.code = value;
     }
-    set delegate(newDelegate) {
-      let t1, t1$;
-      if (newDelegate == null) dart.nullFailed(L1, 332, 41, "newDelegate");
-      if (!(newDelegate != null)) dart.assertFailed(null, L1, 333, 12, "newDelegate != null");
-      if (dart.equals(this[_delegate], newDelegate)) return;
-      let oldDelegate = this[_delegate];
-      if (!dart.equals(dart.runtimeType(newDelegate), dart.runtimeType(oldDelegate)) || dart.test(newDelegate.shouldRelayout(oldDelegate))) this.markNeedsLayout();
-      this[_delegate] = newDelegate;
-      if (dart.test(this.attached)) {
-        t1 = oldDelegate[_relayout];
-        t1 == null ? null : t1.removeListener(dart.bind(this, 'markNeedsLayout'));
-        t1$ = newDelegate[_relayout];
-        t1$ == null ? null : t1$.addListener(dart.bind(this, 'markNeedsLayout'));
-      }
+    get projection() {
+      return this[projection$];
     }
-    attach(owner) {
-      let t1;
-      object.PipelineOwner.as(owner);
-      if (owner == null) dart.nullFailed(L1, 347, 29, "owner");
-      super.attach(owner);
-      t1 = this[_delegate][_relayout];
-      t1 == null ? null : t1.addListener(dart.bind(this, 'markNeedsLayout'));
+    set projection(value) {
+      super.projection = value;
     }
-    detach() {
-      let t1;
-      t1 = this[_delegate][_relayout];
-      t1 == null ? null : t1.removeListener(dart.bind(this, 'markNeedsLayout'));
-      super.detach();
+    get transformation() {
+      return this[transformation];
     }
-    [_getSize](constraints) {
-      if (constraints == null) dart.nullFailed(L1, 358, 32, "constraints");
-      if (!dart.test(constraints.debugAssertIsValid())) dart.assertFailed(null, L1, 359, 12, "constraints.debugAssertIsValid()");
-      return constraints.constrain(this[_delegate].getSize(constraints));
+    set transformation(value) {
+      super.transformation = value;
     }
-    computeMinIntrinsicWidth(height) {
-      if (height == null) dart.nullFailed(L1, 368, 42, "height");
-      let width = this[_getSize](new box.BoxConstraints.tightForFinite({height: height})).width;
-      if (width[$isFinite]) return width;
-      return 0.0;
+    get infinite() {
+      return false;
     }
-    computeMaxIntrinsicWidth(height) {
-      if (height == null) dart.nullFailed(L1, 376, 42, "height");
-      let width = this[_getSize](new box.BoxConstraints.tightForFinite({height: height})).width;
-      if (width[$isFinite]) return width;
-      return 0.0;
+    get wrapLat() {
+      return null;
     }
-    computeMinIntrinsicHeight(width) {
-      if (width == null) dart.nullFailed(L1, 384, 43, "width");
-      let height = this[_getSize](new box.BoxConstraints.tightForFinite({width: width})).height;
-      if (height[$isFinite]) return height;
-      return 0.0;
-    }
-    computeMaxIntrinsicHeight(width) {
-      if (width == null) dart.nullFailed(L1, 392, 43, "width");
-      let height = this[_getSize](new box.BoxConstraints.tightForFinite({width: width})).height;
-      if (height[$isFinite]) return height;
-      return 0.0;
-    }
-    computeDryLayout(constraints) {
-      if (constraints == null) dart.nullFailed(L1, 400, 40, "constraints");
-      return this[_getSize](constraints);
-    }
-    performLayout() {
-      this.size = this[_getSize](this.constraints);
-      this.delegate[_callPerformLayout](this.size, this.firstChild);
-    }
-    paint(context, offset) {
-      if (context == null) dart.nullFailed(L1, 411, 30, "context");
-      if (offset == null) dart.nullFailed(L1, 411, 46, "offset");
-      this.defaultPaint(context, offset);
-    }
-    hitTestChildren(result, opts) {
-      if (result == null) dart.nullFailed(L1, 416, 41, "result");
-      let position = opts && 'position' in opts ? opts.position : null;
-      if (position == null) dart.nullFailed(L1, 416, 67, "position");
-      return this.defaultHitTestChildren(result, {position: position});
+    get wrapLng() {
+      return null;
     }
   };
-  (custom_layout.RenderCustomMultiChildLayoutBox.new = function(opts) {
-    let children = opts && 'children' in opts ? opts.children : null;
-    let delegate = opts && 'delegate' in opts ? opts.delegate : null;
-    if (delegate == null) dart.nullFailed(L1, 317, 39, "delegate");
-    if (!(delegate != null)) dart.assertFailed(null, L1, 318, 15, "delegate != null");
-    this[_delegate] = delegate;
-    custom_layout.RenderCustomMultiChildLayoutBox.__proto__.new.call(this);
-    this.addAll(children);
-  }).prototype = custom_layout.RenderCustomMultiChildLayoutBox.prototype;
-  dart.addTypeTests(custom_layout.RenderCustomMultiChildLayoutBox);
-  dart.addTypeCaches(custom_layout.RenderCustomMultiChildLayoutBox);
-  dart.setMethodSignature(custom_layout.RenderCustomMultiChildLayoutBox, () => ({
-    __proto__: dart.getMethods(custom_layout.RenderCustomMultiChildLayoutBox.__proto__),
-    [_getSize]: dart.fnType(ui.Size, [box.BoxConstraints])
+  (crs.CrsSimple.new = function() {
+    this[code] = "CRS.SIMPLE";
+    this[projection$] = C[0] || CT.C0;
+    this[transformation] = new crs.Transformation.new(1, 0, -1, 0);
+    crs.CrsSimple.__proto__.new.call(this);
+    ;
+  }).prototype = crs.CrsSimple.prototype;
+  dart.addTypeTests(crs.CrsSimple);
+  dart.addTypeCaches(crs.CrsSimple);
+  dart.setGetterSignature(crs.CrsSimple, () => ({
+    __proto__: dart.getGetters(crs.CrsSimple.__proto__),
+    infinite: dart.legacy(core.bool),
+    wrapLat: dart.legacy(tuple.Tuple2$(dart.legacy(core.double), dart.legacy(core.double))),
+    wrapLng: dart.legacy(tuple.Tuple2$(dart.legacy(core.double), dart.legacy(core.double)))
   }));
-  dart.setGetterSignature(custom_layout.RenderCustomMultiChildLayoutBox, () => ({
-    __proto__: dart.getGetters(custom_layout.RenderCustomMultiChildLayoutBox.__proto__),
-    delegate: custom_layout.MultiChildLayoutDelegate
+  dart.setLibraryUri(crs.CrsSimple, I[0]);
+  dart.setFieldSignature(crs.CrsSimple, () => ({
+    __proto__: dart.getFields(crs.CrsSimple.__proto__),
+    code: dart.finalFieldType(dart.legacy(core.String)),
+    projection: dart.finalFieldType(dart.legacy(crs.Projection)),
+    transformation: dart.finalFieldType(dart.legacy(crs.Transformation))
   }));
-  dart.setSetterSignature(custom_layout.RenderCustomMultiChildLayoutBox, () => ({
-    __proto__: dart.getSetters(custom_layout.RenderCustomMultiChildLayoutBox.__proto__),
-    delegate: custom_layout.MultiChildLayoutDelegate
+  var wrapLng = dart.privateName(crs, "Earth.wrapLng");
+  var wrapLat = dart.privateName(crs, "Earth.wrapLat");
+  var Tuple2_item2 = dart.privateName(tuple, "Tuple2.item2");
+  var Tuple2_item1 = dart.privateName(tuple, "Tuple2.item1");
+  crs.Earth = class Earth extends crs.Crs {
+    get wrapLng() {
+      return this[wrapLng];
+    }
+    set wrapLng(value) {
+      super.wrapLng = value;
+    }
+    get wrapLat() {
+      return this[wrapLat];
+    }
+    set wrapLat(value) {
+      super.wrapLat = value;
+    }
+    get infinite() {
+      return false;
+    }
+  };
+  (crs.Earth.new = function() {
+    this[wrapLng] = C[1] || CT.C1;
+    this[wrapLat] = null;
+    crs.Earth.__proto__.new.call(this);
+    ;
+  }).prototype = crs.Earth.prototype;
+  dart.addTypeTests(crs.Earth);
+  dart.addTypeCaches(crs.Earth);
+  dart.setGetterSignature(crs.Earth, () => ({
+    __proto__: dart.getGetters(crs.Earth.__proto__),
+    infinite: dart.legacy(core.bool)
   }));
-  dart.setLibraryUri(custom_layout.RenderCustomMultiChildLayoutBox, L0);
-  dart.setFieldSignature(custom_layout.RenderCustomMultiChildLayoutBox, () => ({
-    __proto__: dart.getFields(custom_layout.RenderCustomMultiChildLayoutBox.__proto__),
-    [_delegate]: dart.fieldType(custom_layout.MultiChildLayoutDelegate)
+  dart.setLibraryUri(crs.Earth, I[0]);
+  dart.setFieldSignature(crs.Earth, () => ({
+    __proto__: dart.getFields(crs.Earth.__proto__),
+    wrapLng: dart.finalFieldType(dart.legacy(tuple.Tuple2$(dart.legacy(core.double), dart.legacy(core.double)))),
+    wrapLat: dart.finalFieldType(dart.legacy(tuple.Tuple2$(dart.legacy(core.double), dart.legacy(core.double))))
   }));
-  dart.trackLibraries("packages/flutter/src/rendering/custom_layout.dart", {
-    "package:flutter/src/rendering/custom_layout.dart": custom_layout
+  var code$ = dart.privateName(crs, "Epsg3857.code");
+  var projection$0 = dart.privateName(crs, "Epsg3857.projection");
+  var transformation$ = dart.privateName(crs, "Epsg3857.transformation");
+  var Transformation_d = dart.privateName(crs, "Transformation.d");
+  var Transformation_c = dart.privateName(crs, "Transformation.c");
+  var Transformation_b = dart.privateName(crs, "Transformation.b");
+  var Transformation_a = dart.privateName(crs, "Transformation.a");
+  crs.Epsg3857 = class Epsg3857 extends crs.Earth {
+    get code() {
+      return this[code$];
+    }
+    set code(value) {
+      super.code = value;
+    }
+    get projection() {
+      return this[projection$0];
+    }
+    set projection(value) {
+      super.projection = value;
+    }
+    get transformation() {
+      return this[transformation$];
+    }
+    set transformation(value) {
+      super.transformation = value;
+    }
+  };
+  (crs.Epsg3857.new = function() {
+    this[code$] = "EPSG:3857";
+    this[projection$0] = C[2] || CT.C2;
+    this[transformation$] = C[3] || CT.C3;
+    crs.Epsg3857.__proto__.new.call(this);
+    ;
+  }).prototype = crs.Epsg3857.prototype;
+  dart.addTypeTests(crs.Epsg3857);
+  dart.addTypeCaches(crs.Epsg3857);
+  dart.setLibraryUri(crs.Epsg3857, I[0]);
+  dart.setFieldSignature(crs.Epsg3857, () => ({
+    __proto__: dart.getFields(crs.Epsg3857.__proto__),
+    code: dart.finalFieldType(dart.legacy(core.String)),
+    projection: dart.finalFieldType(dart.legacy(crs.Projection)),
+    transformation: dart.finalFieldType(dart.legacy(crs.Transformation))
+  }));
+  dart.defineLazy(crs.Epsg3857, {
+    /*crs.Epsg3857._scale*/get _scale() {
+      return 2.495320233665337e-8;
+    }
+  }, true);
+  var code$0 = dart.privateName(crs, "Epsg4326.code");
+  var projection$1 = dart.privateName(crs, "Epsg4326.projection");
+  var transformation$0 = dart.privateName(crs, "Epsg4326.transformation");
+  crs.Epsg4326 = class Epsg4326 extends crs.Earth {
+    get code() {
+      return this[code$0];
+    }
+    set code(value) {
+      super.code = value;
+    }
+    get projection() {
+      return this[projection$1];
+    }
+    set projection(value) {
+      super.projection = value;
+    }
+    get transformation() {
+      return this[transformation$0];
+    }
+    set transformation(value) {
+      super.transformation = value;
+    }
+  };
+  (crs.Epsg4326.new = function() {
+    this[code$0] = "EPSG:4326";
+    this[projection$1] = C[0] || CT.C0;
+    this[transformation$0] = C[4] || CT.C4;
+    crs.Epsg4326.__proto__.new.call(this);
+    ;
+  }).prototype = crs.Epsg4326.prototype;
+  dart.addTypeTests(crs.Epsg4326);
+  dart.addTypeCaches(crs.Epsg4326);
+  dart.setLibraryUri(crs.Epsg4326, I[0]);
+  dart.setFieldSignature(crs.Epsg4326, () => ({
+    __proto__: dart.getFields(crs.Epsg4326.__proto__),
+    code: dart.finalFieldType(dart.legacy(core.String)),
+    projection: dart.finalFieldType(dart.legacy(crs.Projection)),
+    transformation: dart.finalFieldType(dart.legacy(crs.Transformation))
+  }));
+  var code$1 = dart.privateName(crs, "Proj4Crs.code");
+  var projection$2 = dart.privateName(crs, "Proj4Crs.projection");
+  var transformation$1 = dart.privateName(crs, "Proj4Crs.transformation");
+  var infinite$ = dart.privateName(crs, "Proj4Crs.infinite");
+  var wrapLat$ = dart.privateName(crs, "Proj4Crs.wrapLat");
+  var wrapLng$ = dart.privateName(crs, "Proj4Crs.wrapLng");
+  var _transformations = dart.privateName(crs, "_transformations");
+  var _scales = dart.privateName(crs, "_scales");
+  var _getTransformationByZoom = dart.privateName(crs, "_getTransformationByZoom");
+  var _closestElement = dart.privateName(crs, "_closestElement");
+  crs.Proj4Crs = class Proj4Crs extends crs.Crs {
+    get code() {
+      return this[code$1];
+    }
+    set code(value) {
+      super.code = value;
+    }
+    get projection() {
+      return this[projection$2];
+    }
+    set projection(value) {
+      super.projection = value;
+    }
+    get transformation() {
+      return this[transformation$1];
+    }
+    set transformation(value) {
+      super.transformation = value;
+    }
+    get infinite() {
+      return this[infinite$];
+    }
+    set infinite(value) {
+      super.infinite = value;
+    }
+    get wrapLat() {
+      return this[wrapLat$];
+    }
+    set wrapLat(value) {
+      super.wrapLat = value;
+    }
+    get wrapLng() {
+      return this[wrapLng$];
+    }
+    set wrapLng(value) {
+      super.wrapLng = value;
+    }
+    static fromFactory(opts) {
+      let code = opts && 'code' in opts ? opts.code : null;
+      let proj4Projection = opts && 'proj4Projection' in opts ? opts.proj4Projection : null;
+      let transformation = opts && 'transformation' in opts ? opts.transformation : null;
+      let origins = opts && 'origins' in opts ? opts.origins : null;
+      let bounds = opts && 'bounds' in opts ? opts.bounds : null;
+      let scales = opts && 'scales' in opts ? opts.scales : null;
+      let resolutions = opts && 'resolutions' in opts ? opts.resolutions : null;
+      let projection = new crs._Proj4Projection.new({proj4Projection: proj4Projection, bounds: bounds});
+      let transformations = null;
+      let infinite = null == bounds;
+      let finalScales = null;
+      if (null != scales && dart.test(scales[$isNotEmpty])) {
+        finalScales = scales;
+      } else if (null != resolutions && dart.test(resolutions[$isNotEmpty])) {
+        finalScales = resolutions[$map](T.doubleL(), dart.fn(r => 1 / dart.notNull(r), T.doubleLTodoubleL()))[$toList]({growable: false});
+      } else {
+        dart.throw(core.Exception.new("Please provide scales or resolutions to determine scales"));
+      }
+      if (null == origins || dart.test(origins[$isEmpty])) {
+        transformation == null ? transformation = new crs.Transformation.new(1, 0, -1, 0) : null;
+      } else {
+        if (origins[$length] === 1) {
+          let origin = origins[$_get](0);
+          transformation = new crs.Transformation.new(1, -dart.notNull(origin.x), -1, origin.y);
+        } else {
+          transformations = origins[$map](T.TransformationL(), dart.fn(p => new crs.Transformation.new(1, -dart.notNull(p.x), -1, p.y), T.CustomPointLOfnumLToTransformationL()))[$toList]();
+          transformation = null;
+        }
+      }
+      return new crs.Proj4Crs.__({code: code, projection: projection, transformation: transformation, infinite: infinite, transformations: transformations, scales: finalScales});
+    }
+    latLngToPoint(latlng, zoom) {
+      try {
+        let projectedPoint = this.projection.project(latlng);
+        let scale = this.scale(zoom);
+        let transformation = this[_getTransformationByZoom](zoom);
+        return transformation.transform(projectedPoint, scale[$toDouble]());
+      } catch (e$) {
+        let e = dart.getThrown(e$);
+        return new (T.CustomPointOfnumL()).new(0.0, 0.0);
+      }
+    }
+    pointToLatLng(point, zoom) {
+      let scale = this.scale(zoom);
+      let transformation = this[_getTransformationByZoom](zoom);
+      let untransformedPoint = transformation.untransform(point, scale[$toDouble]());
+      try {
+        return this.projection.unproject(untransformedPoint);
+      } catch (e$) {
+        let e = dart.getThrown(e$);
+        return null;
+      }
+    }
+    getProjectedBounds(zoom) {
+      if (dart.test(this.infinite)) return null;
+      let b = this.projection.bounds;
+      let s = this.scale(zoom);
+      let transformation = this[_getTransformationByZoom](zoom);
+      let min = transformation.transform(b.min, s[$toDouble]());
+      let max = transformation.transform(b.max, s[$toDouble]());
+      return T.BoundsOfnumL().new(min, max);
+    }
+    scale(zoom) {
+      let iZoom = zoom[$floor]();
+      if (zoom === iZoom) {
+        return this[_scales][$_get](iZoom);
+      } else {
+        let baseScale = this[_scales][$_get](iZoom);
+        let nextScale = this[_scales][$_get](iZoom + 1);
+        let scaleDiff = dart.notNull(nextScale) - dart.notNull(baseScale);
+        let zDiff = dart.notNull(zoom) - iZoom;
+        return dart.notNull(baseScale) + scaleDiff * zDiff;
+      }
+    }
+    zoom(scale) {
+      let downScale = this[_closestElement](this[_scales], scale);
+      let downZoom = this[_scales][$indexOf](downScale);
+      if (scale == downScale) {
+        return downZoom;
+      }
+      if (downScale == null) {
+        return -1 / 0;
+      }
+      let nextZoom = dart.notNull(downZoom) + 1;
+      let nextScale = this[_scales][$_get](nextZoom);
+      if (nextScale == null) {
+        return 1 / 0;
+      }
+      let scaleDiff = dart.notNull(nextScale) - dart.notNull(downScale);
+      return (dart.notNull(scale) - dart.notNull(downScale)) / scaleDiff + dart.notNull(downZoom);
+    }
+    [_closestElement](array, element) {
+      let low = null;
+      for (let i = dart.notNull(array[$length]) - 1; i >= 0; i = i - 1) {
+        let curr = array[$_get](i);
+        if (dart.notNull(curr) <= dart.notNull(element) && (null == low || dart.notNull(low) < dart.notNull(curr))) {
+          low = curr;
+        }
+      }
+      return low;
+    }
+    [_getTransformationByZoom](zoom) {
+      if (null == this[_transformations]) {
+        return this.transformation;
+      }
+      let iZoom = zoom[$round]();
+      let lastIdx = dart.notNull(this[_transformations][$length]) - 1;
+      return this[_transformations][$_get](iZoom > lastIdx ? lastIdx : iZoom);
+    }
+  };
+  (crs.Proj4Crs.__ = function(opts) {
+    let code = opts && 'code' in opts ? opts.code : null;
+    let projection = opts && 'projection' in opts ? opts.projection : null;
+    let transformation = opts && 'transformation' in opts ? opts.transformation : null;
+    let infinite = opts && 'infinite' in opts ? opts.infinite : null;
+    let transformations = opts && 'transformations' in opts ? opts.transformations : null;
+    let scales = opts && 'scales' in opts ? opts.scales : null;
+    this[wrapLat$] = null;
+    this[wrapLng$] = null;
+    this[code$1] = code;
+    this[projection$2] = projection;
+    this[transformation$1] = transformation;
+    this[infinite$] = infinite;
+    if (!(null != code)) dart.assertFailed(null, I[1], 186, 16, "null != code");
+    if (!(null != projection)) dart.assertFailed(null, I[1], 187, 16, "null != projection");
+    if (!(null != transformation || null != transformations)) dart.assertFailed(null, I[1], 188, 16, "null != transformation || null != transformations");
+    if (!(null != infinite)) dart.assertFailed(null, I[1], 189, 16, "null != infinite");
+    if (!(null != scales)) dart.assertFailed(null, I[1], 190, 16, "null != scales");
+    this[_transformations] = transformations;
+    this[_scales] = scales;
+    crs.Proj4Crs.__proto__.new.call(this);
+    ;
+  }).prototype = crs.Proj4Crs.prototype;
+  dart.addTypeTests(crs.Proj4Crs);
+  dart.addTypeCaches(crs.Proj4Crs);
+  dart.setMethodSignature(crs.Proj4Crs, () => ({
+    __proto__: dart.getMethods(crs.Proj4Crs.__proto__),
+    [_closestElement]: dart.fnType(dart.legacy(core.double), [dart.legacy(core.List$(dart.legacy(core.double))), dart.legacy(core.double)]),
+    [_getTransformationByZoom]: dart.fnType(dart.legacy(crs.Transformation), [dart.legacy(core.double)])
+  }));
+  dart.setLibraryUri(crs.Proj4Crs, I[0]);
+  dart.setFieldSignature(crs.Proj4Crs, () => ({
+    __proto__: dart.getFields(crs.Proj4Crs.__proto__),
+    code: dart.finalFieldType(dart.legacy(core.String)),
+    projection: dart.finalFieldType(dart.legacy(crs.Projection)),
+    transformation: dart.finalFieldType(dart.legacy(crs.Transformation)),
+    infinite: dart.finalFieldType(dart.legacy(core.bool)),
+    wrapLat: dart.finalFieldType(dart.legacy(tuple.Tuple2$(dart.legacy(core.double), dart.legacy(core.double)))),
+    wrapLng: dart.finalFieldType(dart.legacy(tuple.Tuple2$(dart.legacy(core.double), dart.legacy(core.double)))),
+    [_transformations]: dart.finalFieldType(dart.legacy(core.List$(dart.legacy(crs.Transformation)))),
+    [_scales]: dart.finalFieldType(dart.legacy(core.List$(dart.legacy(core.double))))
+  }));
+  var _inclusive = dart.privateName(crs, "_inclusive");
+  crs.Projection = class Projection extends core.Object {
+    [_inclusive](start, end, value) {
+      if (value[$compareTo](core.num.as(start)) < 0) return T.doubleL().as(start);
+      if (value[$compareTo](core.num.as(end)) > 0) return T.doubleL().as(end);
+      return value;
+    }
+    inclusiveLat(value) {
+      return this[_inclusive](-90.0, 90.0, value);
+    }
+    inclusiveLng(value) {
+      if (value[$compareTo](-180) < 0) return -180.0;
+      if (value[$compareTo](180) > 0) return 180.0;
+      return value;
+    }
+  };
+  (crs.Projection.new = function() {
+    ;
+  }).prototype = crs.Projection.prototype;
+  dart.addTypeTests(crs.Projection);
+  dart.addTypeCaches(crs.Projection);
+  dart.setMethodSignature(crs.Projection, () => ({
+    __proto__: dart.getMethods(crs.Projection.__proto__),
+    [_inclusive]: dart.fnType(dart.legacy(core.double), [dart.legacy(core.Comparable), dart.legacy(core.Comparable), dart.legacy(core.double)]),
+    inclusiveLat: dart.fnType(dart.legacy(core.double), [dart.legacy(core.double)]),
+    inclusiveLng: dart.fnType(dart.legacy(core.double), [dart.legacy(core.double)])
+  }));
+  dart.setLibraryUri(crs.Projection, I[0]);
+  crs._LonLat = class _LonLat extends crs.Projection {
+    get bounds() {
+      return crs._LonLat._bounds;
+    }
+    project(latlng) {
+      return new (T.CustomPointOfnumL()).new(latlng.longitude, latlng.latitude);
+    }
+    unproject(point) {
+      return new latlong.LatLng.new(this.inclusiveLat(point.y), this.inclusiveLng(point.x));
+    }
+  };
+  (crs._LonLat.new = function() {
+    crs._LonLat.__proto__.new.call(this);
+    ;
+  }).prototype = crs._LonLat.prototype;
+  dart.addTypeTests(crs._LonLat);
+  dart.addTypeCaches(crs._LonLat);
+  dart.setMethodSignature(crs._LonLat, () => ({
+    __proto__: dart.getMethods(crs._LonLat.__proto__),
+    project: dart.fnType(dart.legacy(point.CustomPoint$(dart.legacy(core.num))), [dart.legacy(latlong.LatLng)]),
+    unproject: dart.fnType(dart.legacy(latlong.LatLng), [dart.legacy(point.CustomPoint$(dart.legacy(core.num)))])
+  }));
+  dart.setGetterSignature(crs._LonLat, () => ({
+    __proto__: dart.getGetters(crs._LonLat.__proto__),
+    bounds: dart.legacy(bounds.Bounds$(dart.legacy(core.double)))
+  }));
+  dart.setLibraryUri(crs._LonLat, I[0]);
+  dart.defineLazy(crs._LonLat, {
+    /*crs._LonLat._bounds*/get _bounds() {
+      return T.BoundsOfdoubleL().new(new (T.CustomPointOfdoubleL()).new(-180.0, -90.0), new (T.CustomPointOfdoubleL()).new(180.0, 90.0));
+    }
+  }, true);
+  crs.SphericalMercator = class SphericalMercator extends crs.Projection {
+    get bounds() {
+      return crs.SphericalMercator._bounds;
+    }
+    project(latlng) {
+      let d = 3.141592653589793 / 180;
+      let max = 85.0511287798;
+      let lat = math.max(T.doubleL(), math.min(T.doubleL(), max, latlng.latitude), -max);
+      let sin = math.sin(lat * d);
+      return new (T.CustomPointOfnumL()).new(6378137 * dart.notNull(latlng.longitude) * d, 6378137 * math.log((1 + sin) / (1 - sin)) / 2);
+    }
+    unproject(point) {
+      let d = 180 / 3.141592653589793;
+      return new latlong.LatLng.new(this.inclusiveLat((2 * math.atan(math.exp(dart.notNull(point.y) / 6378137)) - 3.141592653589793 / 2) * d), this.inclusiveLng(dart.notNull(point.x) * d / 6378137));
+    }
+  };
+  (crs.SphericalMercator.new = function() {
+    crs.SphericalMercator.__proto__.new.call(this);
+    ;
+  }).prototype = crs.SphericalMercator.prototype;
+  dart.addTypeTests(crs.SphericalMercator);
+  dart.addTypeCaches(crs.SphericalMercator);
+  dart.setMethodSignature(crs.SphericalMercator, () => ({
+    __proto__: dart.getMethods(crs.SphericalMercator.__proto__),
+    project: dart.fnType(dart.legacy(point.CustomPoint$(dart.legacy(core.num))), [dart.legacy(latlong.LatLng)]),
+    unproject: dart.fnType(dart.legacy(latlong.LatLng), [dart.legacy(point.CustomPoint$(dart.legacy(core.num)))])
+  }));
+  dart.setGetterSignature(crs.SphericalMercator, () => ({
+    __proto__: dart.getGetters(crs.SphericalMercator.__proto__),
+    bounds: dart.legacy(bounds.Bounds$(dart.legacy(core.double)))
+  }));
+  dart.setLibraryUri(crs.SphericalMercator, I[0]);
+  dart.defineLazy(crs.SphericalMercator, {
+    /*crs.SphericalMercator.r*/get r() {
+      return 6378137;
+    },
+    /*crs.SphericalMercator.maxLatitude*/get maxLatitude() {
+      return 85.0511287798;
+    },
+    /*crs.SphericalMercator._boundsD*/get _boundsD() {
+      return 20037508.342789244;
+    },
+    /*crs.SphericalMercator._bounds*/get _bounds() {
+      return T.BoundsOfdoubleL().new(new (T.CustomPointOfdoubleL()).new(-20037508.342789244, -20037508.342789244), new (T.CustomPointOfdoubleL()).new(20037508.342789244, 20037508.342789244));
+    }
+  }, true);
+  var bounds$ = dart.privateName(crs, "_Proj4Projection.bounds");
+  crs._Proj4Projection = class _Proj4Projection extends crs.Projection {
+    get bounds() {
+      return this[bounds$];
+    }
+    set bounds(value) {
+      super.bounds = value;
+    }
+    project(latlng) {
+      let point = this.epsg4326.transform(this.proj4Projection, new point$.Point.new({x: latlng.longitude, y: latlng.latitude}));
+      return new (T.CustomPointOfnumL()).new(point.x, point.y);
+    }
+    unproject(point) {
+      let point2 = this.proj4Projection.transform(this.epsg4326, new point$.Point.new({x: point.x, y: point.y}));
+      return new latlong.LatLng.new(this.inclusiveLat(point2.y), this.inclusiveLng(point2.x));
+    }
+  };
+  (crs._Proj4Projection.new = function(opts) {
+    let proj4Projection = opts && 'proj4Projection' in opts ? opts.proj4Projection : null;
+    let bounds = opts && 'bounds' in opts ? opts.bounds : null;
+    this.proj4Projection = proj4Projection;
+    this[bounds$] = bounds;
+    if (!(null != proj4Projection)) dart.assertFailed(null, I[1], 447, 16, "null != proj4Projection");
+    this.epsg4326 = projection.Projection.WGS84;
+    crs._Proj4Projection.__proto__.new.call(this);
+    ;
+  }).prototype = crs._Proj4Projection.prototype;
+  dart.addTypeTests(crs._Proj4Projection);
+  dart.addTypeCaches(crs._Proj4Projection);
+  dart.setMethodSignature(crs._Proj4Projection, () => ({
+    __proto__: dart.getMethods(crs._Proj4Projection.__proto__),
+    project: dart.fnType(dart.legacy(point.CustomPoint$(dart.legacy(core.num))), [dart.legacy(latlong.LatLng)]),
+    unproject: dart.fnType(dart.legacy(latlong.LatLng), [dart.legacy(point.CustomPoint$(dart.legacy(core.num)))])
+  }));
+  dart.setLibraryUri(crs._Proj4Projection, I[0]);
+  dart.setFieldSignature(crs._Proj4Projection, () => ({
+    __proto__: dart.getFields(crs._Proj4Projection.__proto__),
+    epsg4326: dart.finalFieldType(dart.legacy(projection.Projection)),
+    proj4Projection: dart.finalFieldType(dart.legacy(projection.Projection)),
+    bounds: dart.finalFieldType(dart.legacy(bounds.Bounds$(dart.legacy(core.double))))
+  }));
+  const a$ = Transformation_a;
+  const b$ = Transformation_b;
+  const c$ = Transformation_c;
+  const d$ = Transformation_d;
+  crs.Transformation = class Transformation extends core.Object {
+    get a() {
+      return this[a$];
+    }
+    set a(value) {
+      super.a = value;
+    }
+    get b() {
+      return this[b$];
+    }
+    set b(value) {
+      super.b = value;
+    }
+    get c() {
+      return this[c$];
+    }
+    set c(value) {
+      super.c = value;
+    }
+    get d() {
+      return this[d$];
+    }
+    set d(value) {
+      super.d = value;
+    }
+    transform(point, scale) {
+      scale == null ? scale = 1.0 : null;
+      let x = dart.notNull(scale) * (dart.notNull(this.a) * dart.notNull(point.x) + dart.notNull(this.b));
+      let y = dart.notNull(scale) * (dart.notNull(this.c) * dart.notNull(point.y) + dart.notNull(this.d));
+      return new (T.CustomPointOfnumL()).new(x, y);
+    }
+    untransform(point, scale) {
+      scale == null ? scale = 1.0 : null;
+      let x = (dart.notNull(point.x) / dart.notNull(scale) - dart.notNull(this.b)) / dart.notNull(this.a);
+      let y = (dart.notNull(point.y) / dart.notNull(scale) - dart.notNull(this.d)) / dart.notNull(this.c);
+      return new (T.CustomPointOfnumL()).new(x, y);
+    }
+  };
+  (crs.Transformation.new = function(a, b, c, d) {
+    this[a$] = a;
+    this[b$] = b;
+    this[c$] = c;
+    this[d$] = d;
+    ;
+  }).prototype = crs.Transformation.prototype;
+  dart.addTypeTests(crs.Transformation);
+  dart.addTypeCaches(crs.Transformation);
+  dart.setMethodSignature(crs.Transformation, () => ({
+    __proto__: dart.getMethods(crs.Transformation.__proto__),
+    transform: dart.fnType(dart.legacy(point.CustomPoint$(dart.legacy(core.num))), [dart.legacy(point.CustomPoint$(dart.legacy(core.num))), dart.legacy(core.double)]),
+    untransform: dart.fnType(dart.legacy(point.CustomPoint$(dart.legacy(core.num))), [dart.legacy(point.CustomPoint$(dart.legacy(core.num))), dart.legacy(core.double)])
+  }));
+  dart.setLibraryUri(crs.Transformation, I[0]);
+  dart.setFieldSignature(crs.Transformation, () => ({
+    __proto__: dart.getFields(crs.Transformation.__proto__),
+    a: dart.finalFieldType(dart.legacy(core.num)),
+    b: dart.finalFieldType(dart.legacy(core.num)),
+    c: dart.finalFieldType(dart.legacy(core.num)),
+    d: dart.finalFieldType(dart.legacy(core.num))
+  }));
+  dart.trackLibraries("packages/flutter_map/src/geo/crs/crs.dart", {
+    "package:flutter_map/src/geo/crs/crs.dart": crs
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["custom_layout.dart"],"names":[],"mappings":"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","file":"../../../../../../../packages/flutter/src/rendering/custom_layout.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["crs.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../../packages/flutter_map/src/geo/crs/crs.dart.lib.js"}');
   // Exports:
   return {
-    src__rendering__custom_layout: custom_layout
+    src__geo__crs__crs: crs
   };
 }));
 
-//# sourceMappingURL=custom_layout.dart.lib.js.map
+//# sourceMappingURL=crs.dart.lib.js.map

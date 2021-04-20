@@ -1,747 +1,1219 @@
-define(['dart_sdk', 'packages/flutter/src/painting/borders.dart', 'packages/flutter/src/foundation/debug.dart', 'packages/flutter/src/painting/edge_insets.dart', 'packages/flutter/src/foundation/object.dart', 'packages/flutter/src/painting/border_radius.dart'], (function load__packages__flutter__src__painting__box_border_dart(dart_sdk, packages__flutter__src__painting__borders$46dart, packages__flutter__src__foundation__debug$46dart, packages__flutter__src__painting__edge_insets$46dart, packages__flutter__src__foundation__object$46dart, packages__flutter__src__painting__border_radius$46dart) {
+define(['dart_sdk', 'packages/flutter/src/animation/curves.dart', 'packages/flutter/src/material/colors.dart', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/painting/gradient.dart', 'packages/flutter/src/animation/animation_controller.dart', 'packages/flutter/src/animation/listener_helpers.dart', 'packages/flutter/src/material/icon_button.dart', 'packages/flutter/src/rendering/flex.dart', 'packages/flutter/src/rendering/custom_paint.dart'], (function load__packages__percent_indicator__circular_percent_indicator_dart(dart_sdk, packages__flutter__src__animation__curves$46dart, packages__flutter__src__material__colors$46dart, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__painting__gradient$46dart, packages__flutter__src__animation__animation_controller$46dart, packages__flutter__src__animation__listener_helpers$46dart, packages__flutter__src__material__icon_button$46dart, packages__flutter__src__rendering__flex$46dart, packages__flutter__src__rendering__custom_paint$46dart) {
   'use strict';
   const core = dart_sdk.core;
-  const _interceptors = dart_sdk._interceptors;
   const ui = dart_sdk.ui;
-  const _internal = dart_sdk._internal;
+  const _interceptors = dart_sdk._interceptors;
+  const math = dart_sdk.math;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const borders = packages__flutter__src__painting__borders$46dart.src__painting__borders;
-  const assertions = packages__flutter__src__foundation__debug$46dart.src__foundation__assertions;
-  const diagnostics = packages__flutter__src__foundation__debug$46dart.src__foundation__diagnostics;
-  const edge_insets = packages__flutter__src__painting__edge_insets$46dart.src__painting__edge_insets;
-  const object = packages__flutter__src__foundation__object$46dart.src__foundation__object;
-  const border_radius = packages__flutter__src__painting__border_radius$46dart.src__painting__border_radius;
-  var box_border = Object.create(dart.library);
-  var $runtimeType = dartx.runtimeType;
-  var $join = dartx.join;
-  var BoxShapeL = () => (BoxShapeL = dart.constFn(dart.legacy(box_border.BoxShape)))();
-  var BorderN = () => (BorderN = dart.constFn(dart.nullable(box_border.Border)))();
-  var BorderDirectionalN = () => (BorderDirectionalN = dart.constFn(dart.nullable(box_border.BorderDirectional)))();
-  var JSArrayOfDiagnosticsNode = () => (JSArrayOfDiagnosticsNode = dart.constFn(_interceptors.JSArray$(diagnostics.DiagnosticsNode)))();
-  var VoidTobool = () => (VoidTobool = dart.constFn(dart.fnType(core.bool, [])))();
-  var JSArrayOfString = () => (JSArrayOfString = dart.constFn(_interceptors.JSArray$(core.String)))();
+  const curves = packages__flutter__src__animation__curves$46dart.src__animation__curves;
+  const colors = packages__flutter__src__material__colors$46dart.src__material__colors;
+  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
+  const container = packages__flutter__src__widgets__widget_span$46dart.src__widgets__container;
+  const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
+  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
+  const ticker_provider = packages__flutter__src__widgets__widget_span$46dart.src__widgets__ticker_provider;
+  const automatic_keep_alive = packages__flutter__src__widgets__widget_span$46dart.src__widgets__automatic_keep_alive;
+  const gradient = packages__flutter__src__painting__gradient$46dart.src__painting__gradient;
+  const animation_controller = packages__flutter__src__animation__animation_controller$46dart.src__animation__animation_controller;
+  const tween = packages__flutter__src__animation__listener_helpers$46dart.src__animation__tween;
+  const animations = packages__flutter__src__animation__listener_helpers$46dart.src__animation__animations;
+  const animation = packages__flutter__src__animation__listener_helpers$46dart.src__animation__animation;
+  const material = packages__flutter__src__material__icon_button$46dart.src__material__material;
+  const flex = packages__flutter__src__rendering__flex$46dart.src__rendering__flex;
+  const custom_paint = packages__flutter__src__rendering__custom_paint$46dart.src__rendering__custom_paint;
+  var circular_percent_indicator = Object.create(dart.library);
+  var $toString = dartx.toString;
+  var $add = dartx.add;
+  var $reversed = dartx.reversed;
+  var $toList = dartx.toList;
+  dart._checkModuleNullSafetyMode(false);
+  var T = Object.create({
+    CircularStrokeCapL: () => (T.CircularStrokeCapL = dart.constFn(dart.legacy(circular_percent_indicator.CircularStrokeCap)))(),
+    ArcTypeL: () => (T.ArcTypeL = dart.constFn(dart.legacy(circular_percent_indicator.ArcType)))(),
+    doubleL: () => (T.doubleL = dart.constFn(dart.legacy(core.double)))(),
+    TweenOfdoubleL: () => (T.TweenOfdoubleL = dart.constFn(tween.Tween$(T.doubleL())))(),
+    VoidToNull: () => (T.VoidToNull = dart.constFn(dart.fnType(core.Null, [])))(),
+    AnimationStatusL: () => (T.AnimationStatusL = dart.constFn(dart.legacy(animation.AnimationStatus)))(),
+    AnimationStatusLToNull: () => (T.AnimationStatusLToNull = dart.constFn(dart.fnType(core.Null, [T.AnimationStatusL()])))(),
+    CircularPercentIndicatorL: () => (T.CircularPercentIndicatorL = dart.constFn(dart.legacy(circular_percent_indicator.CircularPercentIndicator)))(),
+    WidgetL: () => (T.WidgetL = dart.constFn(dart.legacy(framework.Widget)))(),
+    JSArrayOfWidgetL: () => (T.JSArrayOfWidgetL = dart.constFn(_interceptors.JSArray$(T.WidgetL())))(),
+    _LocationL: () => (T._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))(),
+    CustomPainterL: () => (T.CustomPainterL = dart.constFn(dart.legacy(custom_paint.CustomPainter)))()
+  });
   const CT = Object.create(null);
-  var L0 = "file:///C:/src/flutter/packages/flutter/lib/src/painting/box_border.dart";
-  var L1 = "package:flutter/src/painting/box_border.dart";
   dart.defineLazy(CT, {
     get C0() {
-      return C0 = dart.const({
-        __proto__: box_border.BoxShape.prototype,
-        [_name$]: "BoxShape.rectangle",
+      return C[0] = dart.const({
+        __proto__: circular_percent_indicator.CircularStrokeCap.prototype,
+        [_name$]: "CircularStrokeCap.butt",
         index: 0
       });
     },
     get C1() {
-      return C1 = dart.const({
-        __proto__: box_border.BoxShape.prototype,
-        [_name$]: "BoxShape.circle",
+      return C[1] = dart.const({
+        __proto__: circular_percent_indicator.CircularStrokeCap.prototype,
+        [_name$]: "CircularStrokeCap.round",
         index: 1
       });
     },
     get C2() {
-      return C2 = dart.constList([C0 || CT.C0, C1 || CT.C1], BoxShapeL());
+      return C[2] = dart.const({
+        __proto__: circular_percent_indicator.CircularStrokeCap.prototype,
+        [_name$]: "CircularStrokeCap.square",
+        index: 2
+      });
+    },
+    get C3() {
+      return C[3] = dart.constList([C[0] || CT.C0, C[1] || CT.C1, C[2] || CT.C2], T.CircularStrokeCapL());
     },
     get C4() {
-      return C4 = dart.const({
-        __proto__: borders.BorderStyle.prototype,
-        [_name]: "BorderStyle.none",
+      return C[4] = dart.const({
+        __proto__: circular_percent_indicator.ArcType.prototype,
+        [_name$]: "ArcType.HALF",
         index: 0
       });
     },
     get C5() {
-      return C5 = dart.const({
-        __proto__: ui.Color.prototype,
-        [Color_value]: 4278190080.0
-      });
-    },
-    get C3() {
-      return C3 = dart.const({
-        __proto__: borders.BorderSide.prototype,
-        [BorderSide_style]: C4 || CT.C4,
-        [BorderSide_width]: 0,
-        [BorderSide_color]: C5 || CT.C5
+      return C[5] = dart.const({
+        __proto__: circular_percent_indicator.ArcType.prototype,
+        [_name$]: "ArcType.FULL",
+        index: 1
       });
     },
     get C6() {
-      return C6 = dart.const({
-        __proto__: borders.BorderStyle.prototype,
-        [_name]: "BorderStyle.solid",
-        index: 1
-      });
+      return C[6] = dart.constList([C[4] || CT.C4, C[5] || CT.C5], T.ArcTypeL());
     },
     get C7() {
-      return C7 = dart.const({
-        __proto__: ui.TextDirection.prototype,
-        [_name$0]: "TextDirection.rtl",
-        index: 0
+      return C[7] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 0
       });
     },
     get C8() {
-      return C8 = dart.const({
-        __proto__: ui.TextDirection.prototype,
-        [_name$0]: "TextDirection.ltr",
-        index: 1
+      return C[8] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4290299851.0
+      });
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: curves._Linear.prototype
+      });
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 28,
+        [_Location_line]: 256,
+        [_Location_file]: null
+      });
+    },
+    get C11() {
+      return C[11] = dart.constList([C[12] || CT.C12], T._LocationL());
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[11] || CT.C11,
+        [_Location_name]: null,
+        [_Location_column]: 21,
+        [_Location_line]: 256,
+        [_Location_file]: "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/percent_indicator-2.1.9/lib/circular_percent_indicator.dart"
+      });
+    },
+    get C14() {
+      return C[14] = dart.constList([], T._LocationL());
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[14] || CT.C14,
+        [_Location_name]: null,
+        [_Location_column]: 21,
+        [_Location_line]: 257,
+        [_Location_file]: "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/percent_indicator-2.1.9/lib/circular_percent_indicator.dart"
+      });
+    },
+    get C17() {
+      return C[17] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "painter",
+        [_Location_column]: 15,
+        [_Location_line]: 237,
+        [_Location_file]: null
+      });
+    },
+    get C18() {
+      return C[18] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 15,
+        [_Location_line]: 255,
+        [_Location_file]: null
+      });
+    },
+    get C16() {
+      return C[16] = dart.constList([C[17] || CT.C17, C[18] || CT.C18], T._LocationL());
+    },
+    get C15() {
+      return C[15] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[16] || CT.C16,
+        [_Location_name]: null,
+        [_Location_column]: 13,
+        [_Location_line]: 236,
+        [_Location_file]: "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/percent_indicator-2.1.9/lib/circular_percent_indicator.dart"
+      });
+    },
+    get C21() {
+      return C[21] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "offset",
+        [_Location_column]: 23,
+        [_Location_line]: 270,
+        [_Location_file]: null
+      });
+    },
+    get C22() {
+      return C[22] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 23,
+        [_Location_line]: 276,
+        [_Location_file]: null
+      });
+    },
+    get C20() {
+      return C[20] = dart.constList([C[21] || CT.C21, C[22] || CT.C22], T._LocationL());
+    },
+    get C19() {
+      return C[19] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[20] || CT.C20,
+        [_Location_name]: null,
+        [_Location_column]: 38,
+        [_Location_line]: 269,
+        [_Location_file]: "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/percent_indicator-2.1.9/lib/circular_percent_indicator.dart"
+      });
+    },
+    get C25() {
+      return C[25] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "angle",
+        [_Location_column]: 21,
+        [_Location_line]: 268,
+        [_Location_file]: null
+      });
+    },
+    get C26() {
+      return C[26] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 21,
+        [_Location_line]: 269,
+        [_Location_file]: null
+      });
+    },
+    get C24() {
+      return C[24] = dart.constList([C[25] || CT.C25, C[26] || CT.C26], T._LocationL());
+    },
+    get C23() {
+      return C[23] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[24] || CT.C24,
+        [_Location_name]: null,
+        [_Location_column]: 36,
+        [_Location_line]: 267,
+        [_Location_file]: "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/percent_indicator-2.1.9/lib/circular_percent_indicator.dart"
+      });
+    },
+    get C29() {
+      return C[29] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "angle",
+        [_Location_column]: 19,
+        [_Location_line]: 262,
+        [_Location_file]: null
+      });
+    },
+    get C30() {
+      return C[30] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 19,
+        [_Location_line]: 267,
+        [_Location_file]: null
+      });
+    },
+    get C28() {
+      return C[28] = dart.constList([C[29] || CT.C29, C[30] || CT.C30], T._LocationL());
+    },
+    get C27() {
+      return C[27] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[28] || CT.C28,
+        [_Location_name]: null,
+        [_Location_column]: 34,
+        [_Location_line]: 261,
+        [_Location_file]: "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/percent_indicator-2.1.9/lib/circular_percent_indicator.dart"
+      });
+    },
+    get C33() {
+      return C[33] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 17,
+        [_Location_line]: 261,
+        [_Location_file]: null
+      });
+    },
+    get C32() {
+      return C[32] = dart.constList([C[33] || CT.C33], T._LocationL());
+    },
+    get C31() {
+      return C[31] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[32] || CT.C32,
+        [_Location_name]: null,
+        [_Location_column]: 26,
+        [_Location_line]: 260,
+        [_Location_file]: "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/percent_indicator-2.1.9/lib/circular_percent_indicator.dart"
+      });
+    },
+    get C36() {
+      return C[36] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 11,
+        [_Location_line]: 235,
+        [_Location_file]: null
+      });
+    },
+    get C35() {
+      return C[35] = dart.constList([C[36] || CT.C36], T._LocationL());
+    },
+    get C34() {
+      return C[34] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[35] || CT.C35,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 234,
+        [_Location_file]: "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/percent_indicator-2.1.9/lib/circular_percent_indicator.dart"
+      });
+    },
+    get C39() {
+      return C[39] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 9,
+        [_Location_line]: 232,
+        [_Location_file]: null
+      });
+    },
+    get C40() {
+      return C[40] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "width",
+        [_Location_column]: 9,
+        [_Location_line]: 233,
+        [_Location_file]: null
+      });
+    },
+    get C41() {
+      return C[41] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 9,
+        [_Location_line]: 234,
+        [_Location_file]: null
+      });
+    },
+    get C38() {
+      return C[38] = dart.constList([C[39] || CT.C39, C[40] || CT.C40, C[41] || CT.C41], T._LocationL());
+    },
+    get C37() {
+      return C[37] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[38] || CT.C38,
+        [_Location_name]: null,
+        [_Location_column]: 7,
+        [_Location_line]: 231,
+        [_Location_file]: "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/percent_indicator-2.1.9/lib/circular_percent_indicator.dart"
+      });
+    },
+    get C44() {
+      return C[44] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "mainAxisAlignment",
+        [_Location_column]: 11,
+        [_Location_line]: 294,
+        [_Location_file]: null
+      });
+    },
+    get C45() {
+      return C[45] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "mainAxisSize",
+        [_Location_column]: 11,
+        [_Location_line]: 295,
+        [_Location_file]: null
+      });
+    },
+    get C46() {
+      return C[46] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 11,
+        [_Location_line]: 296,
+        [_Location_file]: null
+      });
+    },
+    get C43() {
+      return C[43] = dart.constList([C[44] || CT.C44, C[45] || CT.C45, C[46] || CT.C46], T._LocationL());
+    },
+    get C42() {
+      return C[42] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[43] || CT.C43,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 293,
+        [_Location_file]: "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/percent_indicator-2.1.9/lib/circular_percent_indicator.dart"
+      });
+    },
+    get C49() {
+      return C[49] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 9,
+        [_Location_line]: 293,
+        [_Location_file]: null
+      });
+    },
+    get C48() {
+      return C[48] = dart.constList([C[49] || CT.C49], T._LocationL());
+    },
+    get C47() {
+      return C[47] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[48] || CT.C48,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 292,
+        [_Location_file]: "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/percent_indicator-2.1.9/lib/circular_percent_indicator.dart"
+      });
+    },
+    get C52() {
+      return C[52] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "color",
+        [_Location_column]: 7,
+        [_Location_line]: 291,
+        [_Location_file]: null
+      });
+    },
+    get C53() {
+      return C[53] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 292,
+        [_Location_file]: null
+      });
+    },
+    get C51() {
+      return C[51] = dart.constList([C[52] || CT.C52, C[53] || CT.C53], T._LocationL());
+    },
+    get C50() {
+      return C[50] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[51] || CT.C51,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 290,
+        [_Location_file]: "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/percent_indicator-2.1.9/lib/circular_percent_indicator.dart"
       });
     }
   }, false);
-  var _name$ = dart.privateName(box_border, "_name");
-  var C0;
-  var C1;
-  var C2;
-  box_border.BoxShape = class BoxShape extends core.Object {
+  var C = Array(54).fill(void 0);
+  var I = [
+    "package:percent_indicator/circular_percent_indicator.dart",
+    "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/percent_indicator-2.1.9/lib/circular_percent_indicator.dart"
+  ];
+  var _name$ = dart.privateName(circular_percent_indicator, "_name");
+  circular_percent_indicator.CircularStrokeCap = class CircularStrokeCap extends core.Object {
     toString() {
       return this[_name$];
     }
   };
-  (box_border.BoxShape.new = function(index, _name) {
-    if (index == null) dart.nullFailed(L0, 22, 6, "index");
-    if (_name == null) dart.nullFailed(L0, 22, 6, "_name");
+  (circular_percent_indicator.CircularStrokeCap.new = function(index, _name) {
     this.index = index;
     this[_name$] = _name;
     ;
-  }).prototype = box_border.BoxShape.prototype;
-  dart.addTypeTests(box_border.BoxShape);
-  dart.addTypeCaches(box_border.BoxShape);
-  dart.setLibraryUri(box_border.BoxShape, L1);
-  dart.setFieldSignature(box_border.BoxShape, () => ({
-    __proto__: dart.getFields(box_border.BoxShape.__proto__),
-    index: dart.finalFieldType(core.int),
-    [_name$]: dart.finalFieldType(core.String)
+  }).prototype = circular_percent_indicator.CircularStrokeCap.prototype;
+  dart.addTypeTests(circular_percent_indicator.CircularStrokeCap);
+  dart.addTypeCaches(circular_percent_indicator.CircularStrokeCap);
+  dart.setMethodSignature(circular_percent_indicator.CircularStrokeCap, () => ({
+    __proto__: dart.getMethods(circular_percent_indicator.CircularStrokeCap.__proto__),
+    toString: dart.fnType(dart.legacy(core.String), []),
+    [$toString]: dart.fnType(dart.legacy(core.String), [])
   }));
-  dart.defineExtensionMethods(box_border.BoxShape, ['toString']);
-  box_border.BoxShape.rectangle = C0 || CT.C0;
-  box_border.BoxShape.circle = C1 || CT.C1;
-  box_border.BoxShape.values = C2 || CT.C2;
-  box_border.BoxBorder = class BoxBorder extends borders.ShapeBorder {
-    add(other, opts) {
-      if (other == null) dart.nullFailed(L0, 87, 30, "other");
-      let reversed = opts && 'reversed' in opts ? opts.reversed : false;
-      if (reversed == null) dart.nullFailed(L0, 87, 44, "reversed");
-      return null;
-    }
-    static lerp(a, b, t) {
-      if (t == null) dart.nullFailed(L0, 106, 61, "t");
-      if (!(t != null)) dart.assertFailed(null, L0, 107, 12, "t != null");
-      if (BorderN().is(a) && BorderN().is(b)) return box_border.Border.lerp(a, b, t);
-      if (BorderDirectionalN().is(a) && BorderDirectionalN().is(b)) return box_border.BorderDirectional.lerp(a, b, t);
-      if (box_border.Border.is(b) && box_border.BorderDirectional.is(a)) {
-        let c = b;
-        b = a;
-        a = c;
-        t = 1.0 - dart.notNull(t);
-      }
-      if (box_border.Border.is(a) && box_border.BorderDirectional.is(b)) {
-        if (dart.equals(b.start, borders.BorderSide.none) && dart.equals(b.end, borders.BorderSide.none)) {
-          return new box_border.Border.new({top: borders.BorderSide.lerp(a.top, b.top, t), right: borders.BorderSide.lerp(a.right, borders.BorderSide.none, t), bottom: borders.BorderSide.lerp(a.bottom, b.bottom, t), left: borders.BorderSide.lerp(a.left, borders.BorderSide.none, t)});
-        }
-        if (dart.equals(a.left, borders.BorderSide.none) && dart.equals(a.right, borders.BorderSide.none)) {
-          return new box_border.BorderDirectional.new({top: borders.BorderSide.lerp(a.top, b.top, t), start: borders.BorderSide.lerp(borders.BorderSide.none, b.start, t), end: borders.BorderSide.lerp(borders.BorderSide.none, b.end, t), bottom: borders.BorderSide.lerp(a.bottom, b.bottom, t)});
-        }
-        if (dart.notNull(t) < 0.5) {
-          return new box_border.Border.new({top: borders.BorderSide.lerp(a.top, b.top, t), right: borders.BorderSide.lerp(a.right, borders.BorderSide.none, dart.notNull(t) * 2.0), bottom: borders.BorderSide.lerp(a.bottom, b.bottom, t), left: borders.BorderSide.lerp(a.left, borders.BorderSide.none, dart.notNull(t) * 2.0)});
-        }
-        return new box_border.BorderDirectional.new({top: borders.BorderSide.lerp(a.top, b.top, t), start: borders.BorderSide.lerp(borders.BorderSide.none, b.start, (dart.notNull(t) - 0.5) * 2.0), end: borders.BorderSide.lerp(borders.BorderSide.none, b.end, (dart.notNull(t) - 0.5) * 2.0), bottom: borders.BorderSide.lerp(a.bottom, b.bottom, t)});
-      }
-      dart.throw(new assertions.FlutterError.fromParts(JSArrayOfDiagnosticsNode().of([new assertions.ErrorSummary.new("BoxBorder.lerp can only interpolate Border and BorderDirectional classes."), new assertions.ErrorDescription.new("BoxBorder.lerp() was called with two objects of type " + dart.str(dart.runtimeType(a)) + " and " + dart.str(dart.runtimeType(b)) + ":\n" + "  " + dart.str(a) + "\n" + "  " + dart.str(b) + "\n" + "However, only Border and BorderDirectional classes are supported by this method."), new assertions.ErrorHint.new("For a more general interpolation method, consider using ShapeBorder.lerp instead.")])));
-    }
-    getInnerPath(rect, opts) {
-      let t0;
-      if (rect == null) dart.nullFailed(L0, 169, 26, "rect");
-      let textDirection = opts && 'textDirection' in opts ? opts.textDirection : null;
-      if (!(textDirection != null)) dart.assertFailed("The textDirection argument to " + dart.str(this[$runtimeType]) + ".getInnerPath must not be null.", L0, 170, 12, "textDirection != null");
-      t0 = ui.Path.new();
-      return (() => {
-        t0.addRect(this.dimensions.resolve(textDirection).deflateRect(rect));
-        return t0;
-      })();
-    }
-    getOuterPath(rect, opts) {
-      let t0;
-      if (rect == null) dart.nullFailed(L0, 176, 26, "rect");
-      let textDirection = opts && 'textDirection' in opts ? opts.textDirection : null;
-      if (!(textDirection != null)) dart.assertFailed("The textDirection argument to " + dart.str(this[$runtimeType]) + ".getOuterPath must not be null.", L0, 177, 12, "textDirection != null");
-      t0 = ui.Path.new();
-      return (() => {
-        t0.addRect(rect);
-        return t0;
-      })();
-    }
-    static _paintUniformBorderWithRadius(canvas, rect, side, borderRadius) {
-      let t0, t0$;
-      if (canvas == null) dart.nullFailed(L0, 210, 52, "canvas");
-      if (rect == null) dart.nullFailed(L0, 210, 65, "rect");
-      if (side == null) dart.nullFailed(L0, 210, 82, "side");
-      if (borderRadius == null) dart.nullFailed(L0, 210, 101, "borderRadius");
-      if (!!dart.equals(side.style, borders.BorderStyle.none)) dart.assertFailed(null, L0, 211, 12, "side.style != BorderStyle.none");
-      let paint = (t0 = ui.Paint.new(), (() => {
-        t0.color = side.color;
-        return t0;
-      })());
-      let outer = borderRadius.toRRect(rect);
-      let width = side.width;
-      if (width === 0.0) {
-        t0$ = paint;
-        (() => {
-          t0$.style = ui.PaintingStyle.stroke;
-          t0$.strokeWidth = 0.0;
-          return t0$;
-        })();
-        canvas.drawRRect(outer, paint);
-      } else {
-        let inner = outer.deflate(width);
-        canvas.drawDRRect(outer, inner, paint);
-      }
-    }
-    static _paintUniformBorderWithCircle(canvas, rect, side) {
-      if (canvas == null) dart.nullFailed(L0, 227, 52, "canvas");
-      if (rect == null) dart.nullFailed(L0, 227, 65, "rect");
-      if (side == null) dart.nullFailed(L0, 227, 82, "side");
-      if (!!dart.equals(side.style, borders.BorderStyle.none)) dart.assertFailed(null, L0, 228, 12, "side.style != BorderStyle.none");
-      let width = side.width;
-      let paint = side.toPaint();
-      let radius = (dart.notNull(rect.shortestSide) - dart.notNull(width)) / 2.0;
-      canvas.drawCircle(rect.center, radius, paint);
-    }
-    static _paintUniformBorderWithRectangle(canvas, rect, side) {
-      if (canvas == null) dart.nullFailed(L0, 235, 55, "canvas");
-      if (rect == null) dart.nullFailed(L0, 235, 68, "rect");
-      if (side == null) dart.nullFailed(L0, 235, 85, "side");
-      if (!!dart.equals(side.style, borders.BorderStyle.none)) dart.assertFailed(null, L0, 236, 12, "side.style != BorderStyle.none");
-      let width = side.width;
-      let paint = side.toPaint();
-      canvas.drawRect(rect.deflate(dart.notNull(width) / 2.0), paint);
-    }
-  };
-  (box_border.BoxBorder.new = function() {
-    box_border.BoxBorder.__proto__.new.call(this);
-    ;
-  }).prototype = box_border.BoxBorder.prototype;
-  dart.addTypeTests(box_border.BoxBorder);
-  dart.addTypeCaches(box_border.BoxBorder);
-  dart.setMethodSignature(box_border.BoxBorder, () => ({
-    __proto__: dart.getMethods(box_border.BoxBorder.__proto__),
-    add: dart.fnType(dart.nullable(box_border.BoxBorder), [borders.ShapeBorder], {reversed: core.bool}, {}),
-    getInnerPath: dart.fnType(ui.Path, [ui.Rect], {textDirection: dart.nullable(ui.TextDirection)}, {}),
-    getOuterPath: dart.fnType(ui.Path, [ui.Rect], {textDirection: dart.nullable(ui.TextDirection)}, {})
+  dart.setLibraryUri(circular_percent_indicator.CircularStrokeCap, I[0]);
+  dart.setFieldSignature(circular_percent_indicator.CircularStrokeCap, () => ({
+    __proto__: dart.getFields(circular_percent_indicator.CircularStrokeCap.__proto__),
+    index: dart.finalFieldType(dart.legacy(core.int)),
+    [_name$]: dart.finalFieldType(dart.legacy(core.String))
   }));
-  dart.setLibraryUri(box_border.BoxBorder, L1);
-  var _name = dart.privateName(borders, "_name");
-  var C4;
-  var BorderSide_style = dart.privateName(borders, "BorderSide.style");
-  var BorderSide_width = dart.privateName(borders, "BorderSide.width");
-  var Color_value = dart.privateName(ui, "Color.value");
-  var C5;
-  var BorderSide_color = dart.privateName(borders, "BorderSide.color");
-  var C3;
-  var C6;
-  var _colorIsUniform = dart.privateName(box_border, "_colorIsUniform");
-  var _widthIsUniform = dart.privateName(box_border, "_widthIsUniform");
-  var _styleIsUniform = dart.privateName(box_border, "_styleIsUniform");
-  var top$ = dart.privateName(box_border, "Border.top");
-  var right$ = dart.privateName(box_border, "Border.right");
-  var bottom$ = dart.privateName(box_border, "Border.bottom");
-  var left$ = dart.privateName(box_border, "Border.left");
-  box_border.Border = class Border extends box_border.BoxBorder {
-    get top() {
-      return this[top$];
-    }
-    set top(value) {
-      super.top = value;
-    }
-    get right() {
-      return this[right$];
-    }
-    set right(value) {
-      super.right = value;
-    }
-    get bottom() {
-      return this[bottom$];
-    }
-    set bottom(value) {
-      super.bottom = value;
-    }
-    get left() {
-      return this[left$];
-    }
-    set left(value) {
-      super.left = value;
-    }
-    static all(opts) {
-      let color = opts && 'color' in opts ? opts.color : C5 || CT.C5;
-      if (color == null) dart.nullFailed(L0, 350, 11, "color");
-      let width = opts && 'width' in opts ? opts.width : 1;
-      if (width == null) dart.nullFailed(L0, 351, 12, "width");
-      let style = opts && 'style' in opts ? opts.style : C6 || CT.C6;
-      if (style == null) dart.nullFailed(L0, 352, 17, "style");
-      let side = new borders.BorderSide.new({color: color, width: width, style: style});
-      return new box_border.Border.fromBorderSide(side);
-    }
-    static merge(a, b) {
-      if (a == null) dart.nullFailed(L0, 365, 30, "a");
-      if (b == null) dart.nullFailed(L0, 365, 40, "b");
-      if (!(a != null)) dart.assertFailed(null, L0, 366, 12, "a != null");
-      if (!(b != null)) dart.assertFailed(null, L0, 367, 12, "b != null");
-      if (!dart.test(borders.BorderSide.canMerge(a.top, b.top))) dart.assertFailed(null, L0, 368, 12, "BorderSide.canMerge(a.top, b.top)");
-      if (!dart.test(borders.BorderSide.canMerge(a.right, b.right))) dart.assertFailed(null, L0, 369, 12, "BorderSide.canMerge(a.right, b.right)");
-      if (!dart.test(borders.BorderSide.canMerge(a.bottom, b.bottom))) dart.assertFailed(null, L0, 370, 12, "BorderSide.canMerge(a.bottom, b.bottom)");
-      if (!dart.test(borders.BorderSide.canMerge(a.left, b.left))) dart.assertFailed(null, L0, 371, 12, "BorderSide.canMerge(a.left, b.left)");
-      return new box_border.Border.new({top: borders.BorderSide.merge(a.top, b.top), right: borders.BorderSide.merge(a.right, b.right), bottom: borders.BorderSide.merge(a.bottom, b.bottom), left: borders.BorderSide.merge(a.left, b.left)});
-    }
-    get dimensions() {
-      return new edge_insets.EdgeInsets.fromLTRB(this.left.width, this.top.width, this.right.width, this.bottom.width);
-    }
-    get isUniform() {
-      return dart.test(this[_colorIsUniform]) && dart.test(this[_widthIsUniform]) && dart.test(this[_styleIsUniform]);
-    }
-    get [_colorIsUniform]() {
-      let topColor = this.top.color;
-      return dart.equals(this.right.color, topColor) && dart.equals(this.bottom.color, topColor) && dart.equals(this.left.color, topColor);
-    }
-    get [_widthIsUniform]() {
-      let topWidth = this.top.width;
-      return this.right.width == topWidth && this.bottom.width == topWidth && this.left.width == topWidth;
-    }
-    get [_styleIsUniform]() {
-      let topStyle = this.top.style;
-      return dart.equals(this.right.style, topStyle) && dart.equals(this.bottom.style, topStyle) && dart.equals(this.left.style, topStyle);
-    }
-    add(other, opts) {
-      if (other == null) dart.nullFailed(L0, 416, 27, "other");
-      let reversed = opts && 'reversed' in opts ? opts.reversed : false;
-      if (reversed == null) dart.nullFailed(L0, 416, 41, "reversed");
-      if (box_border.Border.is(other) && dart.test(borders.BorderSide.canMerge(this.top, other.top)) && dart.test(borders.BorderSide.canMerge(this.right, other.right)) && dart.test(borders.BorderSide.canMerge(this.bottom, other.bottom)) && dart.test(borders.BorderSide.canMerge(this.left, other.left))) {
-        return box_border.Border.merge(this, other);
-      }
-      return null;
-    }
-    scale(t) {
-      if (t == null) dart.nullFailed(L0, 428, 23, "t");
-      return new box_border.Border.new({top: this.top.scale(t), right: this.right.scale(t), bottom: this.bottom.scale(t), left: this.left.scale(t)});
-    }
-    lerpFrom(a, t) {
-      if (t == null) dart.nullFailed(L0, 438, 48, "t");
-      if (box_border.Border.is(a)) return box_border.Border.lerp(a, this, t);
-      return super.lerpFrom(a, t);
-    }
-    lerpTo(b, t) {
-      if (t == null) dart.nullFailed(L0, 445, 46, "t");
-      if (box_border.Border.is(b)) return box_border.Border.lerp(this, b, t);
-      return super.lerpTo(b, t);
-    }
-    static lerp(a, b, t) {
-      if (t == null) dart.nullFailed(L0, 457, 52, "t");
-      if (!(t != null)) dart.assertFailed(null, L0, 458, 12, "t != null");
-      if (a == null && b == null) return null;
-      if (a == null) return dart.nullCheck(b).scale(t);
-      if (b == null) return a.scale(1.0 - dart.notNull(t));
-      return new box_border.Border.new({top: borders.BorderSide.lerp(a.top, b.top, t), right: borders.BorderSide.lerp(a.right, b.right, t), bottom: borders.BorderSide.lerp(a.bottom, b.bottom, t), left: borders.BorderSide.lerp(a.left, b.left, t)});
-    }
-    paint(canvas, rect, opts) {
-      if (canvas == null) dart.nullFailed(L0, 494, 12, "canvas");
-      if (rect == null) dart.nullFailed(L0, 495, 10, "rect");
-      let textDirection = opts && 'textDirection' in opts ? opts.textDirection : null;
-      let shape = opts && 'shape' in opts ? opts.shape : C0 || CT.C0;
-      if (shape == null) dart.nullFailed(L0, 497, 14, "shape");
-      let borderRadius = opts && 'borderRadius' in opts ? opts.borderRadius : null;
-      if (dart.test(this.isUniform)) {
-        switch (this.top.style) {
-          case C4 || CT.C4:
-          {
-            return;
-          }
-          case C6 || CT.C6:
-          {
-            switch (shape) {
-              case C1 || CT.C1:
-              {
-                if (!(borderRadius == null)) dart.assertFailed("A borderRadius can only be given for rectangular boxes.", L0, 507, 22, "borderRadius == null");
-                box_border.BoxBorder._paintUniformBorderWithCircle(canvas, rect, this.top);
-                break;
-              }
-              case C0 || CT.C0:
-              {
-                if (borderRadius != null) {
-                  box_border.BoxBorder._paintUniformBorderWithRadius(canvas, rect, this.top, borderRadius);
-                  return;
-                }
-                box_border.BoxBorder._paintUniformBorderWithRectangle(canvas, rect, this.top);
-                break;
-              }
-              default:
-              {
-                dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
-              }
-            }
-            return;
-          }
-          default:
-          {
-            dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
-          }
-        }
-      }
-      if (!dart.test(dart.fn(() => {
-        if (borderRadius != null) {
-          dart.throw(new assertions.FlutterError.fromParts((() => {
-            let t0 = JSArrayOfDiagnosticsNode().of([new assertions.ErrorSummary.new("A borderRadius can only be given for a uniform Border."), new assertions.ErrorDescription.new("The following is not uniform:")]);
-            if (!dart.test(this[_colorIsUniform])) t0.push(new assertions.ErrorDescription.new("BorderSide.color"));
-            if (!dart.test(this[_widthIsUniform])) t0.push(new assertions.ErrorDescription.new("BorderSide.width"));
-            if (!dart.test(this[_styleIsUniform])) t0.push(new assertions.ErrorDescription.new("BorderSide.style"));
-            return t0;
-          })()));
-        }
-        return true;
-      }, VoidTobool())())) dart.assertFailed(null, L0, 522, 12, "() {\r\n      if (borderRadius != null) {\r\n        throw FlutterError.fromParts(<DiagnosticsNode>[\r\n          ErrorSummary('A borderRadius can only be given for a uniform Border.'),\r\n          ErrorDescription('The following is not uniform:'),\r\n          if (!_colorIsUniform) ErrorDescription('BorderSide.color'),\r\n          if (!_widthIsUniform) ErrorDescription('BorderSide.width'),\r\n          if (!_styleIsUniform) ErrorDescription('BorderSide.style'),\r\n        ]);\r\n      }\r\n      return true;\r\n    }()");
-      if (!dart.test(dart.fn(() => {
-        if (!dart.equals(shape, box_border.BoxShape.rectangle)) {
-          dart.throw(new assertions.FlutterError.fromParts((() => {
-            let t1 = JSArrayOfDiagnosticsNode().of([new assertions.ErrorSummary.new("A Border can only be drawn as a circle if it is uniform"), new assertions.ErrorDescription.new("The following is not uniform:")]);
-            if (!dart.test(this[_colorIsUniform])) t1.push(new assertions.ErrorDescription.new("BorderSide.color"));
-            if (!dart.test(this[_widthIsUniform])) t1.push(new assertions.ErrorDescription.new("BorderSide.width"));
-            if (!dart.test(this[_styleIsUniform])) t1.push(new assertions.ErrorDescription.new("BorderSide.style"));
-            return t1;
-          })()));
-        }
-        return true;
-      }, VoidTobool())())) dart.assertFailed(null, L0, 534, 12, "() {\r\n      if (shape != BoxShape.rectangle) {\r\n        throw FlutterError.fromParts(<DiagnosticsNode>[\r\n          ErrorSummary('A Border can only be drawn as a circle if it is uniform'),\r\n          ErrorDescription('The following is not uniform:'),\r\n          if (!_colorIsUniform) ErrorDescription('BorderSide.color'),\r\n          if (!_widthIsUniform) ErrorDescription('BorderSide.width'),\r\n          if (!_styleIsUniform) ErrorDescription('BorderSide.style'),\r\n        ]);\r\n      }\r\n      return true;\r\n    }()");
-      borders.paintBorder(canvas, rect, {top: this.top, right: this.right, bottom: this.bottom, left: this.left});
-    }
-    _equals(other) {
-      if (other == null) return false;
-      if (this === other) return true;
-      if (!dart.equals(dart.runtimeType(other), this[$runtimeType])) return false;
-      return box_border.Border.is(other) && dart.equals(other.top, this.top) && dart.equals(other.right, this.right) && dart.equals(other.bottom, this.bottom) && dart.equals(other.left, this.left);
-    }
-    get hashCode() {
-      return ui.hashValues(this.top, this.right, this.bottom, this.left);
-    }
+  dart.defineExtensionMethods(circular_percent_indicator.CircularStrokeCap, ['toString']);
+  circular_percent_indicator.CircularStrokeCap.butt = C[0] || CT.C0;
+  circular_percent_indicator.CircularStrokeCap.round = C[1] || CT.C1;
+  circular_percent_indicator.CircularStrokeCap.square = C[2] || CT.C2;
+  circular_percent_indicator.CircularStrokeCap.values = C[3] || CT.C3;
+  circular_percent_indicator.ArcType = class ArcType extends core.Object {
     toString() {
-      if (dart.test(this.isUniform)) return dart.str(object.objectRuntimeType(this, "Border")) + ".all(" + dart.str(this.top) + ")";
-      let $arguments = (() => {
-        let t2 = JSArrayOfString().of([]);
-        if (!dart.equals(this.top, borders.BorderSide.none)) t2.push("top: " + dart.str(this.top));
-        if (!dart.equals(this.right, borders.BorderSide.none)) t2.push("right: " + dart.str(this.right));
-        if (!dart.equals(this.bottom, borders.BorderSide.none)) t2.push("bottom: " + dart.str(this.bottom));
-        if (!dart.equals(this.left, borders.BorderSide.none)) t2.push("left: " + dart.str(this.left));
-        return t2;
-      })();
-      return dart.str(object.objectRuntimeType(this, "Border")) + "(" + dart.str($arguments[$join](", ")) + ")";
+      return this[_name$];
     }
   };
-  (box_border.Border.new = function(opts) {
-    let top = opts && 'top' in opts ? opts.top : C3 || CT.C3;
-    if (top == null) dart.nullFailed(L0, 311, 10, "top");
-    let right = opts && 'right' in opts ? opts.right : C3 || CT.C3;
-    if (right == null) dart.nullFailed(L0, 312, 10, "right");
-    let bottom = opts && 'bottom' in opts ? opts.bottom : C3 || CT.C3;
-    if (bottom == null) dart.nullFailed(L0, 313, 10, "bottom");
-    let left = opts && 'left' in opts ? opts.left : C3 || CT.C3;
-    if (left == null) dart.nullFailed(L0, 314, 10, "left");
-    this[top$] = top;
-    this[right$] = right;
-    this[bottom$] = bottom;
-    this[left$] = left;
-    if (!(top != null)) dart.assertFailed(null, L0, 315, 15, "top != null");
-    if (!(right != null)) dart.assertFailed(null, L0, 316, 15, "right != null");
-    if (!(bottom != null)) dart.assertFailed(null, L0, 317, 15, "bottom != null");
-    if (!(left != null)) dart.assertFailed(null, L0, 318, 15, "left != null");
-    box_border.Border.__proto__.new.call(this);
+  (circular_percent_indicator.ArcType.new = function(index, _name) {
+    this.index = index;
+    this[_name$] = _name;
     ;
-  }).prototype = box_border.Border.prototype;
-  (box_border.Border.fromBorderSide = function(side) {
-    if (side == null) dart.nullFailed(L0, 323, 42, "side");
-    if (!(side != null)) dart.assertFailed(null, L0, 324, 16, "side != null");
-    this[top$] = side;
-    this[right$] = side;
-    this[bottom$] = side;
-    this[left$] = side;
-    box_border.Border.__proto__.new.call(this);
+  }).prototype = circular_percent_indicator.ArcType.prototype;
+  dart.addTypeTests(circular_percent_indicator.ArcType);
+  dart.addTypeCaches(circular_percent_indicator.ArcType);
+  dart.setMethodSignature(circular_percent_indicator.ArcType, () => ({
+    __proto__: dart.getMethods(circular_percent_indicator.ArcType.__proto__),
+    toString: dart.fnType(dart.legacy(core.String), []),
+    [$toString]: dart.fnType(dart.legacy(core.String), [])
+  }));
+  dart.setLibraryUri(circular_percent_indicator.ArcType, I[0]);
+  dart.setFieldSignature(circular_percent_indicator.ArcType, () => ({
+    __proto__: dart.getFields(circular_percent_indicator.ArcType.__proto__),
+    index: dart.finalFieldType(dart.legacy(core.int)),
+    [_name$]: dart.finalFieldType(dart.legacy(core.String))
+  }));
+  dart.defineExtensionMethods(circular_percent_indicator.ArcType, ['toString']);
+  circular_percent_indicator.ArcType.HALF = C[4] || CT.C4;
+  circular_percent_indicator.ArcType.FULL = C[5] || CT.C5;
+  circular_percent_indicator.ArcType.values = C[6] || CT.C6;
+  var percent$ = dart.privateName(circular_percent_indicator, "CircularPercentIndicator.percent");
+  var radius$ = dart.privateName(circular_percent_indicator, "CircularPercentIndicator.radius");
+  var lineWidth$ = dart.privateName(circular_percent_indicator, "CircularPercentIndicator.lineWidth");
+  var backgroundWidth$ = dart.privateName(circular_percent_indicator, "CircularPercentIndicator.backgroundWidth");
+  var fillColor$ = dart.privateName(circular_percent_indicator, "CircularPercentIndicator.fillColor");
+  var backgroundColor$ = dart.privateName(circular_percent_indicator, "CircularPercentIndicator.backgroundColor");
+  var animation$ = dart.privateName(circular_percent_indicator, "CircularPercentIndicator.animation");
+  var animationDuration$ = dart.privateName(circular_percent_indicator, "CircularPercentIndicator.animationDuration");
+  var header$ = dart.privateName(circular_percent_indicator, "CircularPercentIndicator.header");
+  var footer$ = dart.privateName(circular_percent_indicator, "CircularPercentIndicator.footer");
+  var center$ = dart.privateName(circular_percent_indicator, "CircularPercentIndicator.center");
+  var linearGradient$ = dart.privateName(circular_percent_indicator, "CircularPercentIndicator.linearGradient");
+  var circularStrokeCap$ = dart.privateName(circular_percent_indicator, "CircularPercentIndicator.circularStrokeCap");
+  var startAngle$ = dart.privateName(circular_percent_indicator, "CircularPercentIndicator.startAngle");
+  var animateFromLastPercent$ = dart.privateName(circular_percent_indicator, "CircularPercentIndicator.animateFromLastPercent");
+  var addAutomaticKeepAlive$ = dart.privateName(circular_percent_indicator, "CircularPercentIndicator.addAutomaticKeepAlive");
+  var arcType$ = dart.privateName(circular_percent_indicator, "CircularPercentIndicator.arcType");
+  var arcBackgroundColor$ = dart.privateName(circular_percent_indicator, "CircularPercentIndicator.arcBackgroundColor");
+  var reverse$ = dart.privateName(circular_percent_indicator, "CircularPercentIndicator.reverse");
+  var maskFilter$ = dart.privateName(circular_percent_indicator, "CircularPercentIndicator.maskFilter");
+  var curve$ = dart.privateName(circular_percent_indicator, "CircularPercentIndicator.curve");
+  var restartAnimation$ = dart.privateName(circular_percent_indicator, "CircularPercentIndicator.restartAnimation");
+  var onAnimationEnd$ = dart.privateName(circular_percent_indicator, "CircularPercentIndicator.onAnimationEnd");
+  var widgetIndicator$ = dart.privateName(circular_percent_indicator, "CircularPercentIndicator.widgetIndicator");
+  var rotateLinearGradient$ = dart.privateName(circular_percent_indicator, "CircularPercentIndicator.rotateLinearGradient");
+  var Color_value = dart.privateName(ui, "Color.value");
+  var _progressColor = dart.privateName(circular_percent_indicator, "_progressColor");
+  circular_percent_indicator.CircularPercentIndicator = class CircularPercentIndicator extends framework.StatefulWidget {
+    get percent() {
+      return this[percent$];
+    }
+    set percent(value) {
+      super.percent = value;
+    }
+    get radius() {
+      return this[radius$];
+    }
+    set radius(value) {
+      super.radius = value;
+    }
+    get lineWidth() {
+      return this[lineWidth$];
+    }
+    set lineWidth(value) {
+      super.lineWidth = value;
+    }
+    get backgroundWidth() {
+      return this[backgroundWidth$];
+    }
+    set backgroundWidth(value) {
+      super.backgroundWidth = value;
+    }
+    get fillColor() {
+      return this[fillColor$];
+    }
+    set fillColor(value) {
+      super.fillColor = value;
+    }
+    get backgroundColor() {
+      return this[backgroundColor$];
+    }
+    set backgroundColor(value) {
+      super.backgroundColor = value;
+    }
+    get animation() {
+      return this[animation$];
+    }
+    set animation(value) {
+      super.animation = value;
+    }
+    get animationDuration() {
+      return this[animationDuration$];
+    }
+    set animationDuration(value) {
+      super.animationDuration = value;
+    }
+    get header() {
+      return this[header$];
+    }
+    set header(value) {
+      super.header = value;
+    }
+    get footer() {
+      return this[footer$];
+    }
+    set footer(value) {
+      super.footer = value;
+    }
+    get center() {
+      return this[center$];
+    }
+    set center(value) {
+      super.center = value;
+    }
+    get linearGradient() {
+      return this[linearGradient$];
+    }
+    set linearGradient(value) {
+      super.linearGradient = value;
+    }
+    get circularStrokeCap() {
+      return this[circularStrokeCap$];
+    }
+    set circularStrokeCap(value) {
+      super.circularStrokeCap = value;
+    }
+    get startAngle() {
+      return this[startAngle$];
+    }
+    set startAngle(value) {
+      super.startAngle = value;
+    }
+    get animateFromLastPercent() {
+      return this[animateFromLastPercent$];
+    }
+    set animateFromLastPercent(value) {
+      super.animateFromLastPercent = value;
+    }
+    get addAutomaticKeepAlive() {
+      return this[addAutomaticKeepAlive$];
+    }
+    set addAutomaticKeepAlive(value) {
+      super.addAutomaticKeepAlive = value;
+    }
+    get arcType() {
+      return this[arcType$];
+    }
+    set arcType(value) {
+      super.arcType = value;
+    }
+    get arcBackgroundColor() {
+      return this[arcBackgroundColor$];
+    }
+    set arcBackgroundColor(value) {
+      super.arcBackgroundColor = value;
+    }
+    get reverse() {
+      return this[reverse$];
+    }
+    set reverse(value) {
+      super.reverse = value;
+    }
+    get maskFilter() {
+      return this[maskFilter$];
+    }
+    set maskFilter(value) {
+      super.maskFilter = value;
+    }
+    get curve() {
+      return this[curve$];
+    }
+    set curve(value) {
+      super.curve = value;
+    }
+    get restartAnimation() {
+      return this[restartAnimation$];
+    }
+    set restartAnimation(value) {
+      super.restartAnimation = value;
+    }
+    get onAnimationEnd() {
+      return this[onAnimationEnd$];
+    }
+    set onAnimationEnd(value) {
+      super.onAnimationEnd = value;
+    }
+    get widgetIndicator() {
+      return this[widgetIndicator$];
+    }
+    set widgetIndicator(value) {
+      super.widgetIndicator = value;
+    }
+    get rotateLinearGradient() {
+      return this[rotateLinearGradient$];
+    }
+    set rotateLinearGradient(value) {
+      super.rotateLinearGradient = value;
+    }
+    get progressColor() {
+      return this[_progressColor];
+    }
+    createState() {
+      return new circular_percent_indicator._CircularPercentIndicatorState.new();
+    }
+  };
+  (circular_percent_indicator.CircularPercentIndicator.new = function(opts) {
+    let t0;
+    let key = opts && 'key' in opts ? opts.key : null;
+    let percent = opts && 'percent' in opts ? opts.percent : 0;
+    let lineWidth = opts && 'lineWidth' in opts ? opts.lineWidth : 5;
+    let startAngle = opts && 'startAngle' in opts ? opts.startAngle : 0;
+    let radius = opts && 'radius' in opts ? opts.radius : null;
+    let fillColor = opts && 'fillColor' in opts ? opts.fillColor : C[7] || CT.C7;
+    let backgroundColor = opts && 'backgroundColor' in opts ? opts.backgroundColor : C[8] || CT.C8;
+    let progressColor = opts && 'progressColor' in opts ? opts.progressColor : null;
+    let backgroundWidth = opts && 'backgroundWidth' in opts ? opts.backgroundWidth : -1;
+    let linearGradient = opts && 'linearGradient' in opts ? opts.linearGradient : null;
+    let animation = opts && 'animation' in opts ? opts.animation : false;
+    let animationDuration = opts && 'animationDuration' in opts ? opts.animationDuration : 500;
+    let header = opts && 'header' in opts ? opts.header : null;
+    let footer = opts && 'footer' in opts ? opts.footer : null;
+    let center = opts && 'center' in opts ? opts.center : null;
+    let addAutomaticKeepAlive = opts && 'addAutomaticKeepAlive' in opts ? opts.addAutomaticKeepAlive : true;
+    let circularStrokeCap = opts && 'circularStrokeCap' in opts ? opts.circularStrokeCap : null;
+    let arcBackgroundColor = opts && 'arcBackgroundColor' in opts ? opts.arcBackgroundColor : null;
+    let arcType = opts && 'arcType' in opts ? opts.arcType : null;
+    let animateFromLastPercent = opts && 'animateFromLastPercent' in opts ? opts.animateFromLastPercent : false;
+    let reverse = opts && 'reverse' in opts ? opts.reverse : false;
+    let curve = opts && 'curve' in opts ? opts.curve : C[9] || CT.C9;
+    let maskFilter = opts && 'maskFilter' in opts ? opts.maskFilter : null;
+    let restartAnimation = opts && 'restartAnimation' in opts ? opts.restartAnimation : false;
+    let onAnimationEnd = opts && 'onAnimationEnd' in opts ? opts.onAnimationEnd : null;
+    let widgetIndicator = opts && 'widgetIndicator' in opts ? opts.widgetIndicator : null;
+    let rotateLinearGradient = opts && 'rotateLinearGradient' in opts ? opts.rotateLinearGradient : false;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[_progressColor] = null;
+    this[percent$] = percent;
+    this[lineWidth$] = lineWidth;
+    this[startAngle$] = startAngle;
+    this[radius$] = radius;
+    this[fillColor$] = fillColor;
+    this[backgroundColor$] = backgroundColor;
+    this[backgroundWidth$] = backgroundWidth;
+    this[linearGradient$] = linearGradient;
+    this[animation$] = animation;
+    this[animationDuration$] = animationDuration;
+    this[header$] = header;
+    this[footer$] = footer;
+    this[center$] = center;
+    this[addAutomaticKeepAlive$] = addAutomaticKeepAlive;
+    this[circularStrokeCap$] = circularStrokeCap;
+    this[arcBackgroundColor$] = arcBackgroundColor;
+    this[arcType$] = arcType;
+    this[animateFromLastPercent$] = animateFromLastPercent;
+    this[reverse$] = reverse;
+    this[curve$] = curve;
+    this[maskFilter$] = maskFilter;
+    this[restartAnimation$] = restartAnimation;
+    this[onAnimationEnd$] = onAnimationEnd;
+    this[widgetIndicator$] = widgetIndicator;
+    this[rotateLinearGradient$] = rotateLinearGradient;
+    circular_percent_indicator.CircularPercentIndicator.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    if (this.linearGradient != null && progressColor != null) {
+      dart.throw(new core.ArgumentError.new("Cannot provide both linearGradient and progressColor"));
+    }
+    this[_progressColor] = (t0 = progressColor, t0 == null ? colors.Colors.red : t0);
+    if (!(dart.notNull(this.startAngle) >= 0.0)) dart.assertFailed(null, I[1], 128, 12, "startAngle >= 0.0");
+    if (!(this.curve != null)) dart.assertFailed(null, I[1], 129, 12, "curve != null");
+    if (dart.notNull(this.percent) < 0.0 || dart.notNull(this.percent) > 1.0) {
+      dart.throw(core.Exception.new("Percent value must be a double between 0.0 and 1.0"));
+    }
+    if (this.arcType == null && this.arcBackgroundColor != null) {
+      dart.throw(new core.ArgumentError.new("arcType is required when you arcBackgroundColor"));
+    }
+  }).prototype = circular_percent_indicator.CircularPercentIndicator.prototype;
+  dart.addTypeTests(circular_percent_indicator.CircularPercentIndicator);
+  dart.addTypeCaches(circular_percent_indicator.CircularPercentIndicator);
+  dart.setMethodSignature(circular_percent_indicator.CircularPercentIndicator, () => ({
+    __proto__: dart.getMethods(circular_percent_indicator.CircularPercentIndicator.__proto__),
+    createState: dart.fnType(dart.legacy(circular_percent_indicator._CircularPercentIndicatorState), [])
+  }));
+  dart.setGetterSignature(circular_percent_indicator.CircularPercentIndicator, () => ({
+    __proto__: dart.getGetters(circular_percent_indicator.CircularPercentIndicator.__proto__),
+    progressColor: dart.legacy(ui.Color)
+  }));
+  dart.setLibraryUri(circular_percent_indicator.CircularPercentIndicator, I[0]);
+  dart.setFieldSignature(circular_percent_indicator.CircularPercentIndicator, () => ({
+    __proto__: dart.getFields(circular_percent_indicator.CircularPercentIndicator.__proto__),
+    percent: dart.finalFieldType(dart.legacy(core.double)),
+    radius: dart.finalFieldType(dart.legacy(core.double)),
+    lineWidth: dart.finalFieldType(dart.legacy(core.double)),
+    backgroundWidth: dart.finalFieldType(dart.legacy(core.double)),
+    fillColor: dart.finalFieldType(dart.legacy(ui.Color)),
+    backgroundColor: dart.finalFieldType(dart.legacy(ui.Color)),
+    [_progressColor]: dart.fieldType(dart.legacy(ui.Color)),
+    animation: dart.finalFieldType(dart.legacy(core.bool)),
+    animationDuration: dart.finalFieldType(dart.legacy(core.int)),
+    header: dart.finalFieldType(dart.legacy(framework.Widget)),
+    footer: dart.finalFieldType(dart.legacy(framework.Widget)),
+    center: dart.finalFieldType(dart.legacy(framework.Widget)),
+    linearGradient: dart.finalFieldType(dart.legacy(gradient.LinearGradient)),
+    circularStrokeCap: dart.finalFieldType(dart.legacy(circular_percent_indicator.CircularStrokeCap)),
+    startAngle: dart.finalFieldType(dart.legacy(core.double)),
+    animateFromLastPercent: dart.finalFieldType(dart.legacy(core.bool)),
+    addAutomaticKeepAlive: dart.finalFieldType(dart.legacy(core.bool)),
+    arcType: dart.finalFieldType(dart.legacy(circular_percent_indicator.ArcType)),
+    arcBackgroundColor: dart.finalFieldType(dart.legacy(ui.Color)),
+    reverse: dart.finalFieldType(dart.legacy(core.bool)),
+    maskFilter: dart.finalFieldType(dart.legacy(ui.MaskFilter)),
+    curve: dart.finalFieldType(dart.legacy(curves.Curve)),
+    restartAnimation: dart.finalFieldType(dart.legacy(core.bool)),
+    onAnimationEnd: dart.finalFieldType(dart.legacy(dart.fnType(dart.void, []))),
+    widgetIndicator: dart.finalFieldType(dart.legacy(framework.Widget)),
+    rotateLinearGradient: dart.finalFieldType(dart.legacy(core.bool))
+  }));
+  var _animationController = dart.privateName(circular_percent_indicator, "_animationController");
+  var _animation = dart.privateName(circular_percent_indicator, "_animation");
+  var _percent = dart.privateName(circular_percent_indicator, "_percent");
+  var _updateProgress = dart.privateName(circular_percent_indicator, "_updateProgress");
+  var _checkIfNeedCancelAnimation = dart.privateName(circular_percent_indicator, "_checkIfNeedCancelAnimation");
+  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  const State_SingleTickerProviderStateMixin$36 = class State_SingleTickerProviderStateMixin extends framework.State$(dart.legacy(circular_percent_indicator.CircularPercentIndicator)) {};
+  (State_SingleTickerProviderStateMixin$36.new = function() {
+    ticker_provider.SingleTickerProviderStateMixin$(dart.legacy(circular_percent_indicator.CircularPercentIndicator))[dart.mixinNew].call(this);
+    State_SingleTickerProviderStateMixin$36.__proto__.new.call(this);
+  }).prototype = State_SingleTickerProviderStateMixin$36.prototype;
+  dart.applyMixin(State_SingleTickerProviderStateMixin$36, ticker_provider.SingleTickerProviderStateMixin$(dart.legacy(circular_percent_indicator.CircularPercentIndicator)));
+  const State_AutomaticKeepAliveClientMixin$36 = class State_AutomaticKeepAliveClientMixin extends State_SingleTickerProviderStateMixin$36 {};
+  (State_AutomaticKeepAliveClientMixin$36.new = function() {
+    automatic_keep_alive.AutomaticKeepAliveClientMixin$(dart.legacy(circular_percent_indicator.CircularPercentIndicator))[dart.mixinNew].call(this);
+    State_AutomaticKeepAliveClientMixin$36.__proto__.new.call(this);
+  }).prototype = State_AutomaticKeepAliveClientMixin$36.prototype;
+  dart.applyMixin(State_AutomaticKeepAliveClientMixin$36, automatic_keep_alive.AutomaticKeepAliveClientMixin$(dart.legacy(circular_percent_indicator.CircularPercentIndicator)));
+  circular_percent_indicator._CircularPercentIndicatorState = class _CircularPercentIndicatorState extends State_AutomaticKeepAliveClientMixin$36 {
+    dispose() {
+      if (this[_animationController] != null) {
+        this[_animationController].dispose();
+      }
+      super.dispose();
+    }
+    initState() {
+      let t0;
+      if (dart.test(this.widget.animation)) {
+        this[_animationController] = new animation_controller.AnimationController.new({vsync: this, duration: new core.Duration.new({milliseconds: this.widget.animationDuration})});
+        this[_animation] = (t0 = new (T.TweenOfdoubleL()).new({begin: 0.0, end: this.widget.percent}).animate(new animations.CurvedAnimation.new({parent: this[_animationController], curve: this.widget.curve})), (() => {
+          t0.addListener(dart.fn(() => {
+            this.setState(dart.fn(() => {
+              this[_percent] = T.doubleL().as(this[_animation].value);
+            }, T.VoidToNull()));
+            if (dart.test(this.widget.restartAnimation) && this[_percent] === 1.0) {
+              this[_animationController].repeat({min: 0.0, max: 1.0});
+            }
+          }, T.VoidToNull()));
+          return t0;
+        })());
+        this[_animationController].addStatusListener(dart.fn(status => {
+          if (this.widget.onAnimationEnd != null && dart.equals(status, animation.AnimationStatus.completed)) {
+            this.widget.onAnimationEnd();
+          }
+        }, T.AnimationStatusLToNull()));
+        this[_animationController].forward();
+      } else {
+        this[_updateProgress]();
+      }
+      super.initState();
+    }
+    [_checkIfNeedCancelAnimation](oldWidget) {
+      if (dart.test(oldWidget.animation) && !dart.test(this.widget.animation) && this[_animationController] != null) {
+        this[_animationController].stop();
+      }
+    }
+    didUpdateWidget(oldWidget) {
+      T.CircularPercentIndicatorL().as(oldWidget);
+      super.didUpdateWidget(oldWidget);
+      if (oldWidget.percent != this.widget.percent || oldWidget.startAngle != this.widget.startAngle) {
+        if (this[_animationController] != null) {
+          this[_animationController].duration = new core.Duration.new({milliseconds: this.widget.animationDuration});
+          this[_animation] = new (T.TweenOfdoubleL()).new({begin: dart.test(this.widget.animateFromLastPercent) ? oldWidget.percent : 0.0, end: this.widget.percent}).animate(new animations.CurvedAnimation.new({parent: this[_animationController], curve: this.widget.curve}));
+          this[_animationController].forward({from: 0.0});
+        } else {
+          this[_updateProgress]();
+        }
+      }
+      this[_checkIfNeedCancelAnimation](oldWidget);
+    }
+    [_updateProgress]() {
+      this.setState(dart.fn(() => {
+        this[_percent] = this.widget.percent;
+      }, T.VoidToNull()));
+    }
+    build(context) {
+      super.build(context);
+      let items = T.JSArrayOfWidgetL().of([]);
+      if (this.widget.header != null) {
+        items[$add](this.widget.header);
+      }
+      items[$add](new container.Container.new({height: dart.notNull(this.widget.radius) + dart.notNull(this.widget.lineWidth), width: this.widget.radius, child: new basic.Stack.new({children: (() => {
+            let t0 = T.JSArrayOfWidgetL().of([new basic.CustomPaint.new({painter: new circular_percent_indicator.CirclePainter.new({progress: dart.notNull(this[_percent]) * 360, progressColor: this.widget.progressColor, backgroundColor: this.widget.backgroundColor, startAngle: this.widget.startAngle, circularStrokeCap: this.widget.circularStrokeCap, radius: dart.notNull(this.widget.radius) / 2 - dart.notNull(this.widget.lineWidth) / 2, lineWidth: this.widget.lineWidth, backgroundWidth: dart.notNull(this.widget.backgroundWidth) >= 0.0 ? this.widget.backgroundWidth : this.widget.lineWidth, arcBackgroundColor: this.widget.arcBackgroundColor, arcType: this.widget.arcType, reverse: this.widget.reverse, linearGradient: this.widget.linearGradient, maskFilter: this.widget.maskFilter, rotateLinearGradient: this.widget.rotateLinearGradient}), child: this.widget.center != null ? new basic.Center.new({child: this.widget.center, $creationLocationd_0dea112b090073317d4: C[10] || CT.C10}) : new container.Container.new({$creationLocationd_0dea112b090073317d4: C[13] || CT.C13}), $creationLocationd_0dea112b090073317d4: C[15] || CT.C15})]);
+            if (this.widget.widgetIndicator != null && dart.test(this.widget.animation)) t0.push(new basic.Positioned.fill({child: new basic.Transform.rotate({angle: dart.nullCast(circular_percent_indicator.radians(this.widget.circularStrokeCap != circular_percent_indicator.CircularStrokeCap.butt && dart.test(this.widget.reverse) ? -15 : 0), core.double), child: new basic.Transform.rotate({angle: dart.nullCast(circular_percent_indicator.radians((dart.test(this.widget.reverse) ? -360 : 360) * dart.notNull(this[_percent])), core.double), child: new basic.Transform.translate({offset: new ui.Offset.new(this.widget.circularStrokeCap != circular_percent_indicator.CircularStrokeCap.butt ? dart.notNull(this.widget.lineWidth) / 2 : 0.0, -dart.notNull(this.widget.radius) / 2 + dart.notNull(this.widget.lineWidth) / 2), child: this.widget.widgetIndicator, $creationLocationd_0dea112b090073317d4: C[19] || CT.C19}), $creationLocationd_0dea112b090073317d4: C[23] || CT.C23}), $creationLocationd_0dea112b090073317d4: C[27] || CT.C27}), $creationLocationd_0dea112b090073317d4: C[31] || CT.C31}));
+            return t0;
+          })(), $creationLocationd_0dea112b090073317d4: C[34] || CT.C34}), $creationLocationd_0dea112b090073317d4: C[37] || CT.C37}));
+      if (this.widget.footer != null) {
+        items[$add](this.widget.footer);
+      }
+      return new material.Material.new({color: this.widget.fillColor, child: new container.Container.new({child: new basic.Column.new({mainAxisAlignment: flex.MainAxisAlignment.center, mainAxisSize: flex.MainAxisSize.min, children: items, $creationLocationd_0dea112b090073317d4: C[42] || CT.C42}), $creationLocationd_0dea112b090073317d4: C[47] || CT.C47}), $creationLocationd_0dea112b090073317d4: C[50] || CT.C50});
+    }
+    get wantKeepAlive() {
+      return this.widget.addAutomaticKeepAlive;
+    }
+  };
+  (circular_percent_indicator._CircularPercentIndicatorState.new = function() {
+    this[_animationController] = null;
+    this[_animation] = null;
+    this[_percent] = 0.0;
+    circular_percent_indicator._CircularPercentIndicatorState.__proto__.new.call(this);
     ;
-  }).prototype = box_border.Border.prototype;
-  (box_border.Border.symmetric = function(opts) {
-    let vertical = opts && 'vertical' in opts ? opts.vertical : C3 || CT.C3;
-    if (vertical == null) dart.nullFailed(L0, 337, 16, "vertical");
-    let horizontal = opts && 'horizontal' in opts ? opts.horizontal : C3 || CT.C3;
-    if (horizontal == null) dart.nullFailed(L0, 338, 16, "horizontal");
-    if (!(vertical != null)) dart.assertFailed(null, L0, 339, 15, "vertical != null");
-    if (!(horizontal != null)) dart.assertFailed(null, L0, 340, 15, "horizontal != null");
-    this[left$] = vertical;
-    this[top$] = horizontal;
-    this[right$] = vertical;
-    this[bottom$] = horizontal;
-    box_border.Border.__proto__.new.call(this);
-    ;
-  }).prototype = box_border.Border.prototype;
-  dart.addTypeTests(box_border.Border);
-  dart.addTypeCaches(box_border.Border);
-  dart.setMethodSignature(box_border.Border, () => ({
-    __proto__: dart.getMethods(box_border.Border.__proto__),
-    add: dart.fnType(dart.nullable(box_border.Border), [borders.ShapeBorder], {reversed: core.bool}, {}),
-    scale: dart.fnType(box_border.Border, [core.double]),
-    paint: dart.fnType(dart.void, [ui.Canvas, ui.Rect], {borderRadius: dart.nullable(border_radius.BorderRadius), shape: box_border.BoxShape, textDirection: dart.nullable(ui.TextDirection)}, {})
+  }).prototype = circular_percent_indicator._CircularPercentIndicatorState.prototype;
+  dart.addTypeTests(circular_percent_indicator._CircularPercentIndicatorState);
+  dart.addTypeCaches(circular_percent_indicator._CircularPercentIndicatorState);
+  dart.setMethodSignature(circular_percent_indicator._CircularPercentIndicatorState, () => ({
+    __proto__: dart.getMethods(circular_percent_indicator._CircularPercentIndicatorState.__proto__),
+    [_checkIfNeedCancelAnimation]: dart.fnType(dart.void, [dart.legacy(circular_percent_indicator.CircularPercentIndicator)]),
+    didUpdateWidget: dart.fnType(dart.void, [dart.legacy(core.Object)]),
+    [_updateProgress]: dart.fnType(dart.dynamic, []),
+    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
   }));
-  dart.setGetterSignature(box_border.Border, () => ({
-    __proto__: dart.getGetters(box_border.Border.__proto__),
-    dimensions: edge_insets.EdgeInsetsGeometry,
-    isUniform: core.bool,
-    [_colorIsUniform]: core.bool,
-    [_widthIsUniform]: core.bool,
-    [_styleIsUniform]: core.bool
+  dart.setGetterSignature(circular_percent_indicator._CircularPercentIndicatorState, () => ({
+    __proto__: dart.getGetters(circular_percent_indicator._CircularPercentIndicatorState.__proto__),
+    wantKeepAlive: dart.legacy(core.bool)
   }));
-  dart.setLibraryUri(box_border.Border, L1);
-  dart.setFieldSignature(box_border.Border, () => ({
-    __proto__: dart.getFields(box_border.Border.__proto__),
-    top: dart.finalFieldType(borders.BorderSide),
-    right: dart.finalFieldType(borders.BorderSide),
-    bottom: dart.finalFieldType(borders.BorderSide),
-    left: dart.finalFieldType(borders.BorderSide)
+  dart.setLibraryUri(circular_percent_indicator._CircularPercentIndicatorState, I[0]);
+  dart.setFieldSignature(circular_percent_indicator._CircularPercentIndicatorState, () => ({
+    __proto__: dart.getFields(circular_percent_indicator._CircularPercentIndicatorState.__proto__),
+    [_animationController]: dart.fieldType(dart.legacy(animation_controller.AnimationController)),
+    [_animation]: dart.fieldType(dart.legacy(animation.Animation)),
+    [_percent]: dart.fieldType(dart.legacy(core.double))
   }));
-  dart.defineExtensionMethods(box_border.Border, ['_equals', 'toString']);
-  dart.defineExtensionAccessors(box_border.Border, ['hashCode']);
-  var _name$0 = dart.privateName(ui, "_name");
-  var C7;
-  var C8;
-  var top$0 = dart.privateName(box_border, "BorderDirectional.top");
-  var start$ = dart.privateName(box_border, "BorderDirectional.start");
-  var end$ = dart.privateName(box_border, "BorderDirectional.end");
-  var bottom$0 = dart.privateName(box_border, "BorderDirectional.bottom");
-  box_border.BorderDirectional = class BorderDirectional extends box_border.BoxBorder {
-    get top() {
-      return this[top$0];
+  var lineWidth$0 = dart.privateName(circular_percent_indicator, "CirclePainter.lineWidth");
+  var backgroundWidth$0 = dart.privateName(circular_percent_indicator, "CirclePainter.backgroundWidth");
+  var progress$ = dart.privateName(circular_percent_indicator, "CirclePainter.progress");
+  var radius$0 = dart.privateName(circular_percent_indicator, "CirclePainter.radius");
+  var progressColor$ = dart.privateName(circular_percent_indicator, "CirclePainter.progressColor");
+  var backgroundColor$0 = dart.privateName(circular_percent_indicator, "CirclePainter.backgroundColor");
+  var circularStrokeCap$0 = dart.privateName(circular_percent_indicator, "CirclePainter.circularStrokeCap");
+  var startAngle$0 = dart.privateName(circular_percent_indicator, "CirclePainter.startAngle");
+  var linearGradient$0 = dart.privateName(circular_percent_indicator, "CirclePainter.linearGradient");
+  var arcBackgroundColor$0 = dart.privateName(circular_percent_indicator, "CirclePainter.arcBackgroundColor");
+  var arcType$0 = dart.privateName(circular_percent_indicator, "CirclePainter.arcType");
+  var reverse$0 = dart.privateName(circular_percent_indicator, "CirclePainter.reverse");
+  var maskFilter$0 = dart.privateName(circular_percent_indicator, "CirclePainter.maskFilter");
+  var rotateLinearGradient$0 = dart.privateName(circular_percent_indicator, "CirclePainter.rotateLinearGradient");
+  var _paintBackground = dart.privateName(circular_percent_indicator, "_paintBackground");
+  var _paintLine = dart.privateName(circular_percent_indicator, "_paintLine");
+  var _paintBackgroundStartAngle = dart.privateName(circular_percent_indicator, "_paintBackgroundStartAngle");
+  circular_percent_indicator.CirclePainter = class CirclePainter extends custom_paint.CustomPainter {
+    get lineWidth() {
+      return this[lineWidth$0];
     }
-    set top(value) {
-      super.top = value;
+    set lineWidth(value) {
+      super.lineWidth = value;
     }
-    get start() {
-      return this[start$];
+    get backgroundWidth() {
+      return this[backgroundWidth$0];
     }
-    set start(value) {
-      super.start = value;
+    set backgroundWidth(value) {
+      super.backgroundWidth = value;
     }
-    get end() {
-      return this[end$];
+    get progress() {
+      return this[progress$];
     }
-    set end(value) {
-      super.end = value;
+    set progress(value) {
+      super.progress = value;
     }
-    get bottom() {
-      return this[bottom$0];
+    get radius() {
+      return this[radius$0];
     }
-    set bottom(value) {
-      super.bottom = value;
+    set radius(value) {
+      super.radius = value;
     }
-    static merge(a, b) {
-      if (a == null) dart.nullFailed(L0, 626, 52, "a");
-      if (b == null) dart.nullFailed(L0, 626, 73, "b");
-      if (!(a != null)) dart.assertFailed(null, L0, 627, 12, "a != null");
-      if (!(b != null)) dart.assertFailed(null, L0, 628, 12, "b != null");
-      if (!dart.test(borders.BorderSide.canMerge(a.top, b.top))) dart.assertFailed(null, L0, 629, 12, "BorderSide.canMerge(a.top, b.top)");
-      if (!dart.test(borders.BorderSide.canMerge(a.start, b.start))) dart.assertFailed(null, L0, 630, 12, "BorderSide.canMerge(a.start, b.start)");
-      if (!dart.test(borders.BorderSide.canMerge(a.end, b.end))) dart.assertFailed(null, L0, 631, 12, "BorderSide.canMerge(a.end, b.end)");
-      if (!dart.test(borders.BorderSide.canMerge(a.bottom, b.bottom))) dart.assertFailed(null, L0, 632, 12, "BorderSide.canMerge(a.bottom, b.bottom)");
-      return new box_border.BorderDirectional.new({top: borders.BorderSide.merge(a.top, b.top), start: borders.BorderSide.merge(a.start, b.start), end: borders.BorderSide.merge(a.end, b.end), bottom: borders.BorderSide.merge(a.bottom, b.bottom)});
+    get progressColor() {
+      return this[progressColor$];
     }
-    get dimensions() {
-      return new edge_insets.EdgeInsetsDirectional.fromSTEB(this.start.width, this.top.width, this.end.width, this.bottom.width);
+    set progressColor(value) {
+      super.progressColor = value;
     }
-    get isUniform() {
-      let topColor = this.top.color;
-      if (!dart.equals(this.start.color, topColor) || !dart.equals(this.end.color, topColor) || !dart.equals(this.bottom.color, topColor)) return false;
-      let topWidth = this.top.width;
-      if (this.start.width != topWidth || this.end.width != topWidth || this.bottom.width != topWidth) return false;
-      let topStyle = this.top.style;
-      if (!dart.equals(this.start.style, topStyle) || !dart.equals(this.end.style, topStyle) || !dart.equals(this.bottom.style, topStyle)) return false;
+    get backgroundColor() {
+      return this[backgroundColor$0];
+    }
+    set backgroundColor(value) {
+      super.backgroundColor = value;
+    }
+    get circularStrokeCap() {
+      return this[circularStrokeCap$0];
+    }
+    set circularStrokeCap(value) {
+      super.circularStrokeCap = value;
+    }
+    get startAngle() {
+      return this[startAngle$0];
+    }
+    set startAngle(value) {
+      super.startAngle = value;
+    }
+    get linearGradient() {
+      return this[linearGradient$0];
+    }
+    set linearGradient(value) {
+      super.linearGradient = value;
+    }
+    get arcBackgroundColor() {
+      return this[arcBackgroundColor$0];
+    }
+    set arcBackgroundColor(value) {
+      super.arcBackgroundColor = value;
+    }
+    get arcType() {
+      return this[arcType$0];
+    }
+    set arcType(value) {
+      super.arcType = value;
+    }
+    get reverse() {
+      return this[reverse$0];
+    }
+    set reverse(value) {
+      super.reverse = value;
+    }
+    get maskFilter() {
+      return this[maskFilter$0];
+    }
+    set maskFilter(value) {
+      super.maskFilter = value;
+    }
+    get rotateLinearGradient() {
+      return this[rotateLinearGradient$0];
+    }
+    set rotateLinearGradient(value) {
+      super.rotateLinearGradient = value;
+    }
+    paint(canvas, size) {
+      let center = new ui.Offset.new(dart.notNull(size.width) / 2, dart.notNull(size.height) / 2);
+      let fixedStartAngle = this.startAngle;
+      let rectForArc = new ui.Rect.fromCircle({center: center, radius: this.radius});
+      let startAngleFixedMargin = 1.0;
+      if (this.arcType != null) {
+        if (this.arcType == circular_percent_indicator.ArcType.FULL) {
+          fixedStartAngle = 220.0;
+          startAngleFixedMargin = 172 / dart.notNull(fixedStartAngle);
+        } else {
+          fixedStartAngle = 270.0;
+          startAngleFixedMargin = 135 / dart.notNull(fixedStartAngle);
+        }
+      }
+      if (this.arcType == circular_percent_indicator.ArcType.HALF) {
+        canvas.drawArc(rectForArc, dart.nullCast(circular_percent_indicator.radians(-90.0 + dart.notNull(fixedStartAngle)), core.double), dart.nullCast(circular_percent_indicator.radians(360 * startAngleFixedMargin), core.double), false, this[_paintBackground]);
+      } else {
+        canvas.drawCircle(center, this.radius, this[_paintBackground]);
+      }
+      if (this.maskFilter != null) {
+        this[_paintLine].maskFilter = this.maskFilter;
+      }
+      if (this.linearGradient != null) {
+        if (dart.test(this.rotateLinearGradient) && dart.notNull(this.progress) > 0) {
+          let correction = 0.0;
+          if (dart.equals(this[_paintLine].strokeCap, ui.StrokeCap.round) || dart.equals(this[_paintLine].strokeCap, ui.StrokeCap.square)) {
+            if (dart.test(this.reverse)) {
+              correction = math.atan(dart.notNull(this[_paintLine].strokeWidth) / 2 / dart.notNull(this.radius));
+            } else {
+              correction = math.atan(dart.notNull(this[_paintLine].strokeWidth) / 2 / dart.notNull(this.radius));
+            }
+          }
+          this[_paintLine].shader = new gradient.SweepGradient.new({transform: dart.test(this.reverse) ? new gradient.GradientRotation.new(dart.nullCast(dart.notNull(circular_percent_indicator.radians(-90 - dart.notNull(this.progress) + dart.notNull(this.startAngle))) - correction, core.double)) : new gradient.GradientRotation.new(dart.nullCast(dart.notNull(circular_percent_indicator.radians(-90.0 + dart.notNull(this.startAngle))) - correction, core.double)), startAngle: dart.nullCast(circular_percent_indicator.radians(0), core.double), endAngle: dart.nullCast(circular_percent_indicator.radians(this.progress), core.double), tileMode: ui.TileMode.clamp, colors: dart.test(this.reverse) ? this.linearGradient.colors[$reversed][$toList]() : this.linearGradient.colors}).createShader(new ui.Rect.fromCircle({center: center, radius: this.radius}));
+        } else if (!dart.test(this.rotateLinearGradient)) {
+          this[_paintLine].shader = this.linearGradient.createShader(new ui.Rect.fromCircle({center: center, radius: this.radius}));
+        }
+      }
+      fixedStartAngle = this.startAngle;
+      startAngleFixedMargin = 1.0;
+      if (this.arcType != null) {
+        if (this.arcType == circular_percent_indicator.ArcType.FULL) {
+          fixedStartAngle = 220.0;
+          startAngleFixedMargin = 172 / dart.notNull(fixedStartAngle);
+        } else {
+          fixedStartAngle = 270.0;
+          startAngleFixedMargin = 135 / dart.notNull(fixedStartAngle);
+        }
+      }
+      if (this.arcBackgroundColor != null) {
+        canvas.drawArc(new ui.Rect.fromCircle({center: center, radius: this.radius}), dart.nullCast(circular_percent_indicator.radians(-90.0 + dart.notNull(fixedStartAngle)), core.double), dart.nullCast(circular_percent_indicator.radians(360 * startAngleFixedMargin), core.double), false, this[_paintBackgroundStartAngle]);
+      }
+      if (dart.test(this.reverse)) {
+        let start = circular_percent_indicator.radians(360 * startAngleFixedMargin - 90.0 + dart.notNull(fixedStartAngle));
+        let end = circular_percent_indicator.radians(-dart.notNull(this.progress) * startAngleFixedMargin);
+        canvas.drawArc(new ui.Rect.fromCircle({center: center, radius: this.radius}), dart.nullCast(start, core.double), dart.nullCast(end, core.double), false, this[_paintLine]);
+      } else {
+        let start = circular_percent_indicator.radians(-90.0 + dart.notNull(fixedStartAngle));
+        let end = circular_percent_indicator.radians(dart.notNull(this.progress) * startAngleFixedMargin);
+        canvas.drawArc(new ui.Rect.fromCircle({center: center, radius: this.radius}), dart.nullCast(start, core.double), dart.nullCast(end, core.double), false, this[_paintLine]);
+      }
+    }
+    shouldRepaint(oldDelegate) {
+      T.CustomPainterL().as(oldDelegate);
       return true;
     }
-    add(other, opts) {
-      if (other == null) dart.nullFailed(L0, 696, 30, "other");
-      let reversed = opts && 'reversed' in opts ? opts.reversed : false;
-      if (reversed == null) dart.nullFailed(L0, 696, 44, "reversed");
-      if (box_border.BorderDirectional.is(other)) {
-        let typedOther = other;
-        if (dart.test(borders.BorderSide.canMerge(this.top, typedOther.top)) && dart.test(borders.BorderSide.canMerge(this.start, typedOther.start)) && dart.test(borders.BorderSide.canMerge(this.end, typedOther.end)) && dart.test(borders.BorderSide.canMerge(this.bottom, typedOther.bottom))) {
-          return box_border.BorderDirectional.merge(this, typedOther);
-        }
-        return null;
-      }
-      if (box_border.Border.is(other)) {
-        let typedOther = other;
-        if (!dart.test(borders.BorderSide.canMerge(typedOther.top, this.top)) || !dart.test(borders.BorderSide.canMerge(typedOther.bottom, this.bottom))) return null;
-        if (!dart.equals(this.start, borders.BorderSide.none) || !dart.equals(this.end, borders.BorderSide.none)) {
-          if (!dart.equals(typedOther.left, borders.BorderSide.none) || !dart.equals(typedOther.right, borders.BorderSide.none)) return null;
-          if (!dart.equals(typedOther.left, borders.BorderSide.none)) dart.assertFailed(null, L0, 717, 16, "typedOther.left == BorderSide.none");
-          if (!dart.equals(typedOther.right, borders.BorderSide.none)) dart.assertFailed(null, L0, 718, 16, "typedOther.right == BorderSide.none");
-          return new box_border.BorderDirectional.new({top: borders.BorderSide.merge(typedOther.top, this.top), start: this.start, end: this.end, bottom: borders.BorderSide.merge(typedOther.bottom, this.bottom)});
-        }
-        if (!dart.equals(this.start, borders.BorderSide.none)) dart.assertFailed(null, L0, 726, 14, "start == BorderSide.none");
-        if (!dart.equals(this.end, borders.BorderSide.none)) dart.assertFailed(null, L0, 727, 14, "end == BorderSide.none");
-        return new box_border.Border.new({top: borders.BorderSide.merge(typedOther.top, this.top), right: typedOther.right, bottom: borders.BorderSide.merge(typedOther.bottom, this.bottom), left: typedOther.left});
-      }
-      return null;
-    }
-    scale(t) {
-      if (t == null) dart.nullFailed(L0, 739, 34, "t");
-      return new box_border.BorderDirectional.new({top: this.top.scale(t), start: this.start.scale(t), end: this.end.scale(t), bottom: this.bottom.scale(t)});
-    }
-    lerpFrom(a, t) {
-      if (t == null) dart.nullFailed(L0, 749, 48, "t");
-      if (box_border.BorderDirectional.is(a)) return box_border.BorderDirectional.lerp(a, this, t);
-      return super.lerpFrom(a, t);
-    }
-    lerpTo(b, t) {
-      if (t == null) dart.nullFailed(L0, 756, 46, "t");
-      if (box_border.BorderDirectional.is(b)) return box_border.BorderDirectional.lerp(this, b, t);
-      return super.lerpTo(b, t);
-    }
-    static lerp(a, b, t) {
-      if (t == null) dart.nullFailed(L0, 768, 85, "t");
-      if (!(t != null)) dart.assertFailed(null, L0, 769, 12, "t != null");
-      if (a == null && b == null) return null;
-      if (a == null) return dart.nullCheck(b).scale(t);
-      if (b == null) return a.scale(1.0 - dart.notNull(t));
-      return new box_border.BorderDirectional.new({top: borders.BorderSide.lerp(a.top, b.top, t), end: borders.BorderSide.lerp(a.end, b.end, t), bottom: borders.BorderSide.lerp(a.bottom, b.bottom, t), start: borders.BorderSide.lerp(a.start, b.start, t)});
-    }
-    paint(canvas, rect, opts) {
-      if (canvas == null) dart.nullFailed(L0, 808, 12, "canvas");
-      if (rect == null) dart.nullFailed(L0, 809, 10, "rect");
-      let textDirection = opts && 'textDirection' in opts ? opts.textDirection : null;
-      let shape = opts && 'shape' in opts ? opts.shape : C0 || CT.C0;
-      if (shape == null) dart.nullFailed(L0, 811, 14, "shape");
-      let borderRadius = opts && 'borderRadius' in opts ? opts.borderRadius : null;
-      if (dart.test(this.isUniform)) {
-        switch (this.top.style) {
-          case C4 || CT.C4:
-          {
-            return;
-          }
-          case C6 || CT.C6:
-          {
-            switch (shape) {
-              case C1 || CT.C1:
-              {
-                if (!(borderRadius == null)) dart.assertFailed("A borderRadius can only be given for rectangular boxes.", L0, 821, 22, "borderRadius == null");
-                box_border.BoxBorder._paintUniformBorderWithCircle(canvas, rect, this.top);
-                break;
-              }
-              case C0 || CT.C0:
-              {
-                if (borderRadius != null) {
-                  box_border.BoxBorder._paintUniformBorderWithRadius(canvas, rect, this.top, borderRadius);
-                  return;
-                }
-                box_border.BoxBorder._paintUniformBorderWithRectangle(canvas, rect, this.top);
-                break;
-              }
-              default:
-              {
-                dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
-              }
-            }
-            return;
-          }
-          default:
-          {
-            dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
-          }
-        }
-      }
-      if (!(borderRadius == null)) dart.assertFailed("A borderRadius can only be given for uniform borders.", L0, 836, 12, "borderRadius == null");
-      if (!dart.equals(shape, box_border.BoxShape.rectangle)) dart.assertFailed("A border can only be drawn as a circle if it is uniform.", L0, 837, 12, "shape == BoxShape.rectangle");
-      let left = null;
-      let right = null;
-      if (!(textDirection != null)) dart.assertFailed("Non-uniform BorderDirectional objects require a TextDirection when painting.", L0, 840, 12, "textDirection != null");
-      switch (dart.nullCheck(textDirection)) {
-        case C7 || CT.C7:
-        {
-          left = this.end;
-          right = this.start;
-          break;
-        }
-        case C8 || CT.C8:
-        {
-          left = this.start;
-          right = this.end;
-          break;
-        }
-        default:
-        {
-          dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
-        }
-      }
-      borders.paintBorder(canvas, rect, {top: this.top, left: left, bottom: this.bottom, right: right});
-    }
-    _equals(other) {
-      if (other == null) return false;
-      if (this === other) return true;
-      if (!dart.equals(dart.runtimeType(other), this[$runtimeType])) return false;
-      return box_border.BorderDirectional.is(other) && dart.equals(other.top, this.top) && dart.equals(other.start, this.start) && dart.equals(other.end, this.end) && dart.equals(other.bottom, this.bottom);
-    }
-    get hashCode() {
-      return ui.hashValues(this.top, this.start, this.end, this.bottom);
-    }
-    toString() {
-      let $arguments = (() => {
-        let t3 = JSArrayOfString().of([]);
-        if (!dart.equals(this.top, borders.BorderSide.none)) t3.push("top: " + dart.str(this.top));
-        if (!dart.equals(this.start, borders.BorderSide.none)) t3.push("start: " + dart.str(this.start));
-        if (!dart.equals(this.end, borders.BorderSide.none)) t3.push("end: " + dart.str(this.end));
-        if (!dart.equals(this.bottom, borders.BorderSide.none)) t3.push("bottom: " + dart.str(this.bottom));
-        return t3;
-      })();
-      return dart.str(object.objectRuntimeType(this, "BorderDirectional")) + "(" + dart.str($arguments[$join](", ")) + ")";
-    }
   };
-  (box_border.BorderDirectional.new = function(opts) {
-    let top = opts && 'top' in opts ? opts.top : C3 || CT.C3;
-    if (top == null) dart.nullFailed(L0, 610, 10, "top");
-    let start = opts && 'start' in opts ? opts.start : C3 || CT.C3;
-    if (start == null) dart.nullFailed(L0, 611, 10, "start");
-    let end = opts && 'end' in opts ? opts.end : C3 || CT.C3;
-    if (end == null) dart.nullFailed(L0, 612, 10, "end");
-    let bottom = opts && 'bottom' in opts ? opts.bottom : C3 || CT.C3;
-    if (bottom == null) dart.nullFailed(L0, 613, 10, "bottom");
-    this[top$0] = top;
-    this[start$] = start;
-    this[end$] = end;
-    this[bottom$0] = bottom;
-    if (!(top != null)) dart.assertFailed(null, L0, 614, 15, "top != null");
-    if (!(start != null)) dart.assertFailed(null, L0, 615, 15, "start != null");
-    if (!(end != null)) dart.assertFailed(null, L0, 616, 15, "end != null");
-    if (!(bottom != null)) dart.assertFailed(null, L0, 617, 15, "bottom != null");
-    box_border.BorderDirectional.__proto__.new.call(this);
-    ;
-  }).prototype = box_border.BorderDirectional.prototype;
-  dart.addTypeTests(box_border.BorderDirectional);
-  dart.addTypeCaches(box_border.BorderDirectional);
-  dart.setMethodSignature(box_border.BorderDirectional, () => ({
-    __proto__: dart.getMethods(box_border.BorderDirectional.__proto__),
-    scale: dart.fnType(box_border.BorderDirectional, [core.double]),
-    paint: dart.fnType(dart.void, [ui.Canvas, ui.Rect], {borderRadius: dart.nullable(border_radius.BorderRadius), shape: box_border.BoxShape, textDirection: dart.nullable(ui.TextDirection)}, {})
+  (circular_percent_indicator.CirclePainter.new = function(opts) {
+    let lineWidth = opts && 'lineWidth' in opts ? opts.lineWidth : null;
+    let backgroundWidth = opts && 'backgroundWidth' in opts ? opts.backgroundWidth : null;
+    let progress = opts && 'progress' in opts ? opts.progress : null;
+    let radius = opts && 'radius' in opts ? opts.radius : null;
+    let progressColor = opts && 'progressColor' in opts ? opts.progressColor : null;
+    let backgroundColor = opts && 'backgroundColor' in opts ? opts.backgroundColor : null;
+    let startAngle = opts && 'startAngle' in opts ? opts.startAngle : 0;
+    let circularStrokeCap = opts && 'circularStrokeCap' in opts ? opts.circularStrokeCap : C[1] || CT.C1;
+    let linearGradient = opts && 'linearGradient' in opts ? opts.linearGradient : null;
+    let reverse = opts && 'reverse' in opts ? opts.reverse : null;
+    let arcBackgroundColor = opts && 'arcBackgroundColor' in opts ? opts.arcBackgroundColor : null;
+    let arcType = opts && 'arcType' in opts ? opts.arcType : null;
+    let maskFilter = opts && 'maskFilter' in opts ? opts.maskFilter : null;
+    let rotateLinearGradient = opts && 'rotateLinearGradient' in opts ? opts.rotateLinearGradient : null;
+    this[_paintBackground] = ui.Paint.new();
+    this[_paintLine] = ui.Paint.new();
+    this[_paintBackgroundStartAngle] = ui.Paint.new();
+    this[lineWidth$0] = lineWidth;
+    this[backgroundWidth$0] = backgroundWidth;
+    this[progress$] = progress;
+    this[radius$0] = radius;
+    this[progressColor$] = progressColor;
+    this[backgroundColor$0] = backgroundColor;
+    this[startAngle$0] = startAngle;
+    this[circularStrokeCap$0] = circularStrokeCap;
+    this[linearGradient$0] = linearGradient;
+    this[reverse$0] = reverse;
+    this[arcBackgroundColor$0] = arcBackgroundColor;
+    this[arcType$0] = arcType;
+    this[maskFilter$0] = maskFilter;
+    this[rotateLinearGradient$0] = rotateLinearGradient;
+    circular_percent_indicator.CirclePainter.__proto__.new.call(this);
+    this[_paintBackground].color = this.backgroundColor;
+    this[_paintBackground].style = ui.PaintingStyle.stroke;
+    this[_paintBackground].strokeWidth = this.backgroundWidth;
+    if (this.circularStrokeCap == circular_percent_indicator.CircularStrokeCap.round) {
+      this[_paintBackground].strokeCap = ui.StrokeCap.round;
+    } else if (this.circularStrokeCap == circular_percent_indicator.CircularStrokeCap.butt) {
+      this[_paintBackground].strokeCap = ui.StrokeCap.butt;
+    } else {
+      this[_paintBackground].strokeCap = ui.StrokeCap.square;
+    }
+    if (this.arcBackgroundColor != null) {
+      this[_paintBackgroundStartAngle].color = this.arcBackgroundColor;
+      this[_paintBackgroundStartAngle].style = ui.PaintingStyle.stroke;
+      this[_paintBackgroundStartAngle].strokeWidth = this.lineWidth;
+      if (this.circularStrokeCap == circular_percent_indicator.CircularStrokeCap.round) {
+        this[_paintBackgroundStartAngle].strokeCap = ui.StrokeCap.round;
+      } else if (this.circularStrokeCap == circular_percent_indicator.CircularStrokeCap.butt) {
+        this[_paintBackgroundStartAngle].strokeCap = ui.StrokeCap.butt;
+      } else {
+        this[_paintBackgroundStartAngle].strokeCap = ui.StrokeCap.square;
+      }
+    }
+    this[_paintLine].color = this.progressColor;
+    this[_paintLine].style = ui.PaintingStyle.stroke;
+    this[_paintLine].strokeWidth = this.lineWidth;
+    if (this.circularStrokeCap == circular_percent_indicator.CircularStrokeCap.round) {
+      this[_paintLine].strokeCap = ui.StrokeCap.round;
+    } else if (this.circularStrokeCap == circular_percent_indicator.CircularStrokeCap.butt) {
+      this[_paintLine].strokeCap = ui.StrokeCap.butt;
+    } else {
+      this[_paintLine].strokeCap = ui.StrokeCap.square;
+    }
+  }).prototype = circular_percent_indicator.CirclePainter.prototype;
+  dart.addTypeTests(circular_percent_indicator.CirclePainter);
+  dart.addTypeCaches(circular_percent_indicator.CirclePainter);
+  dart.setMethodSignature(circular_percent_indicator.CirclePainter, () => ({
+    __proto__: dart.getMethods(circular_percent_indicator.CirclePainter.__proto__),
+    paint: dart.fnType(dart.void, [dart.legacy(ui.Canvas), dart.legacy(ui.Size)]),
+    shouldRepaint: dart.fnType(dart.legacy(core.bool), [dart.legacy(core.Object)])
   }));
-  dart.setGetterSignature(box_border.BorderDirectional, () => ({
-    __proto__: dart.getGetters(box_border.BorderDirectional.__proto__),
-    dimensions: edge_insets.EdgeInsetsGeometry,
-    isUniform: core.bool
+  dart.setLibraryUri(circular_percent_indicator.CirclePainter, I[0]);
+  dart.setFieldSignature(circular_percent_indicator.CirclePainter, () => ({
+    __proto__: dart.getFields(circular_percent_indicator.CirclePainter.__proto__),
+    [_paintBackground]: dart.finalFieldType(dart.legacy(ui.Paint)),
+    [_paintLine]: dart.finalFieldType(dart.legacy(ui.Paint)),
+    [_paintBackgroundStartAngle]: dart.finalFieldType(dart.legacy(ui.Paint)),
+    lineWidth: dart.finalFieldType(dart.legacy(core.double)),
+    backgroundWidth: dart.finalFieldType(dart.legacy(core.double)),
+    progress: dart.finalFieldType(dart.legacy(core.double)),
+    radius: dart.finalFieldType(dart.legacy(core.double)),
+    progressColor: dart.finalFieldType(dart.legacy(ui.Color)),
+    backgroundColor: dart.finalFieldType(dart.legacy(ui.Color)),
+    circularStrokeCap: dart.finalFieldType(dart.legacy(circular_percent_indicator.CircularStrokeCap)),
+    startAngle: dart.finalFieldType(dart.legacy(core.double)),
+    linearGradient: dart.finalFieldType(dart.legacy(gradient.LinearGradient)),
+    arcBackgroundColor: dart.finalFieldType(dart.legacy(ui.Color)),
+    arcType: dart.finalFieldType(dart.legacy(circular_percent_indicator.ArcType)),
+    reverse: dart.finalFieldType(dart.legacy(core.bool)),
+    maskFilter: dart.finalFieldType(dart.legacy(ui.MaskFilter)),
+    rotateLinearGradient: dart.finalFieldType(dart.legacy(core.bool))
   }));
-  dart.setLibraryUri(box_border.BorderDirectional, L1);
-  dart.setFieldSignature(box_border.BorderDirectional, () => ({
-    __proto__: dart.getFields(box_border.BorderDirectional.__proto__),
-    top: dart.finalFieldType(borders.BorderSide),
-    start: dart.finalFieldType(borders.BorderSide),
-    end: dart.finalFieldType(borders.BorderSide),
-    bottom: dart.finalFieldType(borders.BorderSide)
-  }));
-  dart.defineExtensionMethods(box_border.BorderDirectional, ['_equals', 'toString']);
-  dart.defineExtensionAccessors(box_border.BorderDirectional, ['hashCode']);
-  dart.trackLibraries("packages/flutter/src/painting/box_border.dart", {
-    "package:flutter/src/painting/box_border.dart": box_border
+  circular_percent_indicator.radians = function radians(deg) {
+    return dart.notNull(deg) * (3.141592653589793 / 180.0);
+  };
+  dart.trackLibraries("packages/percent_indicator/circular_percent_indicator.dart", {
+    "package:percent_indicator/circular_percent_indicator.dart": circular_percent_indicator
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["box_border.dart"],"names":[],"mappings":"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","file":"../../../../../../../packages/flutter/src/painting/box_border.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["circular_percent_indicator.dart"],"names":[],"mappings":"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","file":"../../../../../../../../packages/percent_indicator/circular_percent_indicator.dart.lib.js"}');
   // Exports:
   return {
-    src__painting__box_border: box_border
+    circular_percent_indicator: circular_percent_indicator
   };
 }));
 
-//# sourceMappingURL=box_border.dart.lib.js.map
+//# sourceMappingURL=circular_percent_indicator.dart.lib.js.map

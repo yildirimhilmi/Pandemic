@@ -14,7 +14,7 @@
 *.ipr
 *.iws
 .idea/
-.dart_tool/
+.dart_tool\chrome-device
 # The .vscode folder contains launch configuration and tasks you configure in
 # VS Code which you may wish to be included in version control, so this line
 # is commented out by default.
@@ -53,3 +53,5 @@ lib/generated_plugin_registrant.dart
 .packages
 .dart_tool/package_config_subset
 lib/generated_plugin_registrant.dart
+.dart_tool/chrome-device/Default/Cache/data_0
+.flutter-plugins-dependencies
