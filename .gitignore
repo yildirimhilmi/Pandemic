@@ -47,3 +47,9 @@ app.*.map.json
 build/4f2a58af27abc49ecf55570043bbf938.cache.dill.track.dill
 build/flutter_assets/NOTICES
 lib/generated_plugin_registrant.dart
+.dart_tool/package_config.json
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.dart_tool/package_config_subset
+lib/generated_plugin_registrant.dart
