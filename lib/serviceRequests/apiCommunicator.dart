@@ -1,5 +1,8 @@
 import 'dart:io';
 import 'package:http/http.dart' as http;
+import 'package:my_website_project/serviceRequests/jsonobjects/Camera.dart';
+import 'package:my_website_project/serviceRequests/jsonobjects/Locations.dart';
+import 'package:my_website_project/serviceRequests/jsonobjects/faceImage.dart';
 import 'dart:convert';
 import 'dart:async';
 import 'exceptions.dart';
@@ -19,6 +22,96 @@ class ApiBaseHelper {
     }
     print('api get recieved!');
     return responseJson;
+  }
+
+  Future<dynamic> getCameraWitId(int id) async {
+    String url = _baseUrl + "/$id";
+    print('Api Get, url $url');
+    Camera cameraResult;
+    var responseJson;
+    try {
+      final response = await http.get(Uri.parse(_baseUrl + url));
+      responseJson = _returnResponse(response);
+      cameraResult = Camera.fromMap(responseJson);
+    } on SocketException {
+      print('No net');
+      throw FetchDataException('No Internet connection');
+    }
+    print('api get recieved!');
+
+    return cameraResult;
+  }
+
+  Future<dynamic> getLocationWitId(int id) async {
+    String url = _baseUrl + "/$id";
+    print('Api Get, url $url');
+    Location locationResult;
+    var responseJson;
+    try {
+      final response = await http.get(Uri.parse(_baseUrl + url));
+      responseJson = _returnResponse(response);
+      locationResult = Location.fromMap(responseJson);
+    } on SocketException {
+      print('No net');
+      throw FetchDataException('No Internet connection');
+    }
+    print('api get recieved!');
+
+    return locationResult;
+  }
+
+  Future<dynamic> getFaceWithId(int id) async {
+    String url = _baseUrl + "/$id";
+    print('Api Get, url $url');
+    FaceImage faceImageResult;
+    var responseJson;
+    try {
+      final response = await http.get(Uri.parse(_baseUrl + url));
+      responseJson = _returnResponse(response);
+      faceImageResult = FaceImage.fromMap(responseJson);
+    } on SocketException {
+      print('No net');
+      throw FetchDataException('No Internet connection');
+    }
+    print('api get recieved!');
+
+    return faceImageResult;
+  }
+
+  Future<dynamic> getLocationWithCountry(String country) async {
+    String url = _baseUrl + "/location/$country";
+    print('Api Get, url $url');
+    Location locationResult;
+    var responseJson;
+    try {
+      final response = await http.get(Uri.parse(_baseUrl + url));
+      responseJson = _returnResponse(response);
+      locationResult = Location.fromMap(responseJson);
+    } on SocketException {
+      print('No net');
+      throw FetchDataException('No Internet connection');
+    }
+    print('api get recieved!');
+
+    return locationResult;
+  }
+
+  Future<dynamic> getLocationWithCity(String city) async {
+    String url = _baseUrl + "/location/$city";
+    print('Api Get, url $url');
+    Location locationResult;
+    var responseJson;
+    try {
+      final response = await http.get(Uri.parse(_baseUrl + url));
+      responseJson = _returnResponse(response);
+      locationResult = Location.fromMap(responseJson);
+    } on SocketException {
+      print('No net');
+      throw FetchDataException('No Internet connection');
+    }
+    print('api get recieved!');
+
+    return locationResult;
   }
 
   dynamic _returnResponse(http.Response response) {
