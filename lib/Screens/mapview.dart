@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong/latlong.dart' as location;
 import 'package:my_website_project/screenComponents/cardView.dart';
+import 'package:my_website_project/serviceRequests/apiCommunicator.dart';
 import '../screenComponents/locations.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:square_percent_indicater/square_percent_indicater.dart';
@@ -26,15 +27,19 @@ class MapView extends StatefulWidget {
 class _MapViewState extends State<MapView> with TickerProviderStateMixin {
   var points = <location.LatLng>[istanbul, istanbul2, istanbul3, istanbul4];
   MapController mapController;
+  var result;
   @override
   void initState() {
     super.initState();
     // TODO: implement initState
     mapController = globalMapController;
+    var api = ApiBaseHelper();
+    result = api.get("http://localhost:50986/");
   }
 
   @override
   Widget build(BuildContext context) {
+    print(result);
     return FlutterMap(
       mapController: mapController,
       options: new MapOptions(

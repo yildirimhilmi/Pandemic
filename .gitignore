@@ -55,3 +55,8 @@ lib/generated_plugin_registrant.dart
 lib/generated_plugin_registrant.dart
 .dart_tool/chrome-device/Default/Cache/data_0
 .flutter-plugins-dependencies
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.dart_tool/package_config_subset
+.dart_tool/package_config.json
