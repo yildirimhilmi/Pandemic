@@ -114,6 +114,45 @@ class ApiBaseHelper {
     return locationResult;
   }
 
+  Future<dynamic> getAllCameras() async {
+    String url = _baseUrl + "/camera/allcameras";
+    print('Api Get, url $url');
+    List<Camera> allCameras;
+    var responseJson;
+    try {
+      final response = await http.get(Uri.parse(_baseUrl + url));
+      responseJson = _returnResponse(response);
+      allCameras =
+          responseJson.map((tagJson) => Camera.fromMap(responseJson)).toList();
+    } on SocketException {
+      print('No net');
+      throw FetchDataException('No Internet connection');
+    }
+    print('api get recieved!');
+
+    return allCameras;
+  }
+
+  Future<dynamic> getAllLocations() async {
+    String url = _baseUrl + "/locdata";
+    print('Api Get, url $url');
+    List<Location> allLocations;
+    var responseJson;
+    try {
+      final response = await http.get(Uri.parse(_baseUrl + url));
+      responseJson = _returnResponse(response);
+      allLocations = responseJson
+          .map((tagJson) => Location.fromMap(responseJson))
+          .toList();
+    } on SocketException {
+      print('No net');
+      throw FetchDataException('No Internet connection');
+    }
+    print('api get recieved!');
+
+    return allLocations;
+  }
+
   dynamic _returnResponse(http.Response response) {
     switch (response.statusCode) {
       case 200:
