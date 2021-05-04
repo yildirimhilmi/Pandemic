@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:my_website_project/serviceRequests/jsonobjects/Camera.dart';
+import 'package:my_website_project/serviceRequests/jsonobjects/LocationRiskLevel.dart';
 import 'package:my_website_project/serviceRequests/jsonobjects/Locations.dart';
 import 'package:my_website_project/serviceRequests/jsonobjects/faceImage.dart';
 import 'dart:convert';
@@ -151,6 +152,26 @@ class ApiBaseHelper {
     print('api get recieved!');
 
     return allLocations;
+  }
+
+  Future<dynamic> getRiskLevel(DateTime begin, DateTime end, int loc_id) async {
+    String url = _baseUrl + "/$loc_id" + "/$begin" + "/$end";
+    print('Api Get, url $url');
+    List<LocationRiskLevel> locationRiskLevel;
+    var responseJson;
+    try {
+      final response = await http.get(Uri.parse(_baseUrl + url));
+      responseJson = _returnResponse(response);
+      locationRiskLevel = responseJson
+          .map((tagJson) => LocationRiskLevel.fromMap(responseJson))
+          .toList();
+    } on SocketException {
+      print('No net');
+      throw FetchDataException('No Internet connection');
+    }
+    print('api get recieved!');
+
+    return locationRiskLevel;
   }
 
   dynamic _returnResponse(http.Response response) {
