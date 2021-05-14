@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:ffi';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
 
@@ -9,8 +8,8 @@ class Location {
   final String country;
   final String city;
   final String street;
-  final Float latitude;
-  final Float longitude;
+  final double latitude;
+  final double longitude;
 
   Location(this.id, this.country, this.city, this.street, this.latitude,
       this.longitude);

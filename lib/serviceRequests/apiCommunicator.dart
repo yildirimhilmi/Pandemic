@@ -10,7 +10,7 @@ import 'exceptions.dart';
 
 class ApiBaseHelper {
   final String _baseUrl =
-      "http://localhost:55221"; // PATH TO LOCAL WİLL CAME HERE
+      "http://localhost:51789"; // PATH TO LOCAL WİLL CAME HERE
   Future<dynamic> get(String url) async {
     print('Api Get, url $url');
     var responseJson;
@@ -121,7 +121,7 @@ class ApiBaseHelper {
     List<Camera> allCameras;
     var responseJson;
     try {
-      final response = await http.get(Uri.parse(_baseUrl + url));
+      final response = await http.get(Uri.parse(url));
       responseJson = _returnResponse(response);
       allCameras =
           responseJson.map((tagJson) => Camera.fromMap(responseJson)).toList();

@@ -9,7 +9,7 @@
     },
     {
       "name": "async",
-      "rootUri": "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/async-2.5.0",
+      "rootUri": "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/async-2.6.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -482,7 +482,7 @@
       "languageVersion": "2.0"
     }
   ],
-  "generated": "2021-04-30T17:48:27.927914Z",
+  "generated": "2021-05-14T16:57:53.962153Z",
   "generator": "pub",
-  "generatorVersion": "2.14.0-18.0.dev"
+  "generatorVersion": "2.14.0-48.0.dev"
 }

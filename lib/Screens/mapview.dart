@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:html';
 
 import 'package:awesome_dialog/awesome_dialog.dart';
@@ -34,12 +35,13 @@ class _MapViewState extends State<MapView> with TickerProviderStateMixin {
     // TODO: implement initState
     mapController = globalMapController;
     var api = ApiBaseHelper();
-    result = api.get("http://localhost:50986/");
+    result = api.getAllCameras();
+    print(result);
+    log('asdaasdasdasdsdas');
   }
 
   @override
   Widget build(BuildContext context) {
-    print(result);
     return FlutterMap(
       mapController: mapController,
       options: new MapOptions(

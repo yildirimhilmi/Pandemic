@@ -60,3 +60,8 @@ lib/generated_plugin_registrant.dart
 .packages
 .dart_tool/package_config_subset
 .dart_tool/package_config.json
+pubspec.lock
+.flutter-plugins
+.dart_tool/package_config_subset
+.vscode/launch.json
+.dart_tool/version
