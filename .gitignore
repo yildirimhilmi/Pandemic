@@ -65,3 +65,4 @@ pubspec.lock
 .dart_tool/package_config_subset
 .vscode/launch.json
 .dart_tool/version
+.flutter-plugins-dependencies

@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:my_website_project/serviceRequests/jsonobjects/Camera.dart';
@@ -10,7 +11,7 @@ import 'exceptions.dart';
 
 class ApiBaseHelper {
   final String _baseUrl =
-      "http://localhost:51789"; // PATH TO LOCAL WİLL CAME HERE
+      "http://localhost:59138"; // PATH TO LOCAL WİLL CAME HERE
   Future<dynamic> get(String url) async {
     print('Api Get, url $url');
     var responseJson;
@@ -122,9 +123,10 @@ class ApiBaseHelper {
     var responseJson;
     try {
       final response = await http.get(Uri.parse(url));
-      responseJson = _returnResponse(response);
-      allCameras =
-          responseJson.map((tagJson) => Camera.fromMap(responseJson)).toList();
+      List<Camera> allCameras2 = (json.decode(response.body) as List)
+          .map((data) => Camera.fromMap(data))
+          .toList();
+      allCameras = allCameras2;
     } on SocketException {
       print('No net');
       throw FetchDataException('No Internet connection');

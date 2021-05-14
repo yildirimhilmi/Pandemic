@@ -30,14 +30,13 @@ class _MapViewState extends State<MapView> with TickerProviderStateMixin {
   MapController mapController;
   var result;
   @override
-  void initState() {
+  initState() {
     super.initState();
     // TODO: implement initState
     mapController = globalMapController;
     var api = ApiBaseHelper();
     result = api.getAllCameras();
-    print(result);
-    log('asdaasdasdasdsdas');
+    log(result);
   }
 
   @override
