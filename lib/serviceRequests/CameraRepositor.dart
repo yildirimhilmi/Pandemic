@@ -5,7 +5,7 @@ class ChuckCategoryRepository {
   ApiBaseHelper _provider = ApiBaseHelper();
 
   Future<Camera> fetchChuckCategoryData() async {
-    final response = await _provider.get("jokes/categories");
+    final response = await _provider.getAllCameras();
     return Camera.fromMap(response);
   }
 }
