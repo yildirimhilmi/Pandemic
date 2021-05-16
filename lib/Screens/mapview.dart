@@ -12,6 +12,8 @@ import '../screenComponents/locations.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:square_percent_indicater/square_percent_indicater.dart';
 
+import '../serviceRequests/apiCommunicator.dart';
+
 location.LatLng istanbul = new location.LatLng(41.015137, 28.979530);
 location.LatLng istanbul2 = new location.LatLng(41.015137, 28.979530);
 double zoomLevel = 7;
@@ -23,6 +25,7 @@ String url =
 class MapView extends StatefulWidget {
   @override
   _MapViewState createState() => _MapViewState();
+  var apiCommunicator = new ApiBaseHelper();
 }
 
 class _MapViewState extends State<MapView> with TickerProviderStateMixin {
@@ -34,9 +37,6 @@ class _MapViewState extends State<MapView> with TickerProviderStateMixin {
     super.initState();
     // TODO: implement initState
     mapController = globalMapController;
-    var api = ApiBaseHelper();
-    result = api.getAllCameras();
-    log(result);
   }
 
   @override

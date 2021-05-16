@@ -118,7 +118,7 @@ class ApiBaseHelper {
 
   Future<dynamic> getAllCameras() async {
     String url = _baseUrl + "/camera/allcameras";
-    print('Api Get, url $url');
+    log('Api Get, url $url');
     List<Camera> allCameras;
     var responseJson;
     try {
