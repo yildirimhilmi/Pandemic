@@ -17,7 +17,6 @@ import 'package:intl/intl.dart';
 import 'package:date_range_picker/date_range_picker.dart' as DateRangePicker;
 import 'chart.dart';
 
-
 class Mask {
   final String day;
   final int count;
@@ -27,7 +26,6 @@ class Mask {
 
 List<charts.Series<Mask, String>> _createSampleData(List<DateTime> time,
     List<int> incorrect_data, List<int> masked_data, List<int> nomasked_data) {
-
   final incorrect = [
     new Mask(time[0].day.toString(), incorrect_data[0]),
     new Mask(time[1].day.toString(), incorrect_data[1]),
@@ -135,37 +133,32 @@ List<charts.Series<Mask, String>> _createSampleData2(
   ];
 }
 
-
-
-
 Future<List<ChartApi>> apiCall() async {
   final response = await http.get(
       'http://localhost:59138/faces/26/2021-01-06%2000:32:10/2021-04-06%2000:32:10');
   if (response.statusCode == 200) {
-    var jsonList= new List.filled(7,null);
-    var jsonResponse=json.decode(response.body);
-    for(int i=0;i<jsonList.length;i++)
-      {
-        print(jsonResponse[i]);
-        print(ChartApi.fromJson(jsonResponse[i]));
-      }
+    var jsonList = new List.filled(7, null);
+    var jsonResponse = json.decode(response.body);
+    for (int i = 0; i < jsonList.length; i++) {
+      print(jsonResponse[i]);
+      print(ChartApi.fromJson(jsonResponse[i]));
+    }
     return jsonList;
-
   } else {
     throw Exception('Failed to load');
   }
 }
 
-
-Future<List<ChartApi>> getDays(int camID,DateTime startDate, DateTime endDate) async {
-  final response = await http.get("http://localhost:59138/faces/$camID/$startDate/$endDate");
+Future<List<ChartApi>> getDays(
+    int camID, DateTime startDate, DateTime endDate) async {
+  final response =
+      await http.get("http://localhost:59138/faces/$camID/$startDate/$endDate");
   if (response.statusCode == 200) {
-
     List<ChartApi> jsonList;
-    jsonList=(json.decode(response.body) as List).map((i) =>
-        ChartApi.fromJson(i)).toList();
+    jsonList = (json.decode(response.body) as List)
+        .map((i) => ChartApi.fromJson(i))
+        .toList();
     return jsonList;
-
   } else {
     throw Exception('Failed to load');
   }
@@ -177,27 +170,20 @@ class ChartPage extends StatefulWidget {
 }
 
 class _ChartPageState extends State<ChartPage> {
-
-
   @override
   void initState() {
-
     super.initState();
     buttonData();
-
   }
 
-  var time = new List<DateTime>.filled(7,DateTime.now());
+  var time = new List<DateTime>.filled(7, DateTime.now());
 
-  void setTime(DateTime firstDate)
-  {
-    DateTime temp=firstDate;
-    for(int i=0;i<7;i++)
-      {
-        time[i]=temp.add(new Duration(days:i));
-      }
+  void setTime(DateTime firstDate) {
+    DateTime temp = firstDate;
+    for (int i = 0; i < 7; i++) {
+      time[i] = temp.add(new Duration(days: i));
+    }
   }
-
 
   var data1_incorrect = new List<int>.filled(7, 25);
   var data1_masked = new List<int>.filled(7, 25);
@@ -210,43 +196,43 @@ class _ChartPageState extends State<ChartPage> {
 
   void buttonData() async {
     col = Colors.blue;
-    DateTime startt_date,endd_date;
+    DateTime startt_date, endd_date;
     //startt_date= time[0];
-    startt_date=DateTime.parse("2021-01-06 00:32:10");
-    endd_date= startt_date.add(new Duration(days:6,hours: 23,minutes: 59));
+    startt_date = DateTime.parse("2021-01-06 00:32:10");
+
+    endd_date = startt_date.add(new Duration(days: 6, hours: 23, minutes: 59));
     //DateTime.parse('2021-04-06');
     print(startt_date);
     print(endd_date);
     print("in");
-    List<ChartApi> dayList= await getDays(26, startt_date, endd_date);
+    List<ChartApi> dayList = await getDays(26, startt_date, endd_date);
     print("out");
     print(dayList[0].timestamp);
-    int date=0;
+    print(dayList[0]);
+    int date = 0;
     /*********************
      * timestamp formati degismeli
      * ***************************/
-    int counter=DateTime.tryParse(dayList[0].timestamp).day;
-    for(int i=0;i<dayList.length;i++)
-      {
-        print("for");
-        if(DateTime.parse(dayList[i].timestamp).day>counter)
-          {
-            counter=DateTime.parse(dayList[i].timestamp).day;
-            date++;
-          }
-        switch(dayList[i].mask)
-        {
-          case 0: //masked
-          data1_masked[date]+=1;
-            break;
-          case 1: //nomasked
-            data1_nomasked[date]+=1;
-            break;
-          case 2: //incorrect
-            data1_incorrect[date]+=1;
-            break;
-        }
+    int counter = DateTime.tryParse(dayList[0].timestamp).day;
+
+    for (int i = 0; i < dayList.length; i++) {
+      print("for");
+      if (DateTime.parse(dayList[i].timestamp).day > counter) {
+        counter = DateTime.parse(dayList[i].timestamp).day;
+        date++;
       }
+      switch (dayList[i].mask) {
+        case 0: //masked
+          data1_masked[date] += 1;
+          break;
+        case 1: //nomasked
+          data1_nomasked[date] += 1;
+          break;
+        case 2: //incorrect
+          data1_incorrect[date] += 1;
+          break;
+      }
+    }
 /*
     for (int i = 0; i < 7; i++) {
       data1_incorrect[i] = rng.nextInt(100);
@@ -258,8 +244,6 @@ class _ChartPageState extends State<ChartPage> {
       //time[i].add(new Duration(days: 1));
     }*/
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -282,8 +266,8 @@ class _ChartPageState extends State<ChartPage> {
                         width: 900,
                         height: 900,
                         child: GroupedBarChart(
-                          _createSampleData(time,
-                              data1_incorrect, data1_masked, data1_nomasked),
+                          _createSampleData(time, data1_incorrect, data1_masked,
+                              data1_nomasked),
                           animate: true,
                         )),
                   ),
@@ -302,7 +286,8 @@ class _ChartPageState extends State<ChartPage> {
                               Flexible(
                                 flex: 1,
                                 child: Text("    No mask: ",
-                                    style: TextStyle(fontWeight: FontWeight.bold)),
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold)),
                               ),
                               Flexible(
                                 flex: 1,
@@ -335,32 +320,44 @@ class _ChartPageState extends State<ChartPage> {
                               Flexible(
                                 child: Row(
                                   children: [
-                                    Icon(Icons.calendar_today,
-                                    color: Colors.blueAccent,)
-                                    ,
+                                    Icon(
+                                      Icons.calendar_today,
+                                      color: Colors.blueAccent,
+                                    ),
                                     MaterialButton(
-                                        padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                                        padding:
+                                            EdgeInsets.fromLTRB(10, 10, 10, 10),
                                         color: Colors.blueAccent,
                                         onPressed: () async {
-                                          final List<DateTime> picked = await DateRangePicker.showDatePicker(
-                                              context: context,
-                                              initialFirstDate: new DateTime.now(),
-                                              initialLastDate: (new DateTime.now()).add(new Duration(days: 7)),
-                                              firstDate: new DateTime(2015),
-                                              lastDate: new DateTime(DateTime.now().year+1)
-                                          );
-                                          if (picked != null && picked.length == 2) {
+                                          final List<DateTime> picked =
+                                              await DateRangePicker
+                                                  .showDatePicker(
+                                                      context: context,
+                                                      initialFirstDate:
+                                                          new DateTime.now(),
+                                                      initialLastDate:
+                                                          (new DateTime.now())
+                                                              .add(new Duration(
+                                                                  days: 7)),
+                                                      firstDate:
+                                                          new DateTime(2015),
+                                                      lastDate: new DateTime(
+                                                          DateTime.now().year +
+                                                              1));
+                                          if (picked != null &&
+                                              picked.length == 2) {
                                             setState(() {
                                               setTime(picked[0]);
                                               buttonData();
                                             });
                                           }
                                         },
-                                        child: new Text("Pick date range",style: TextStyle(color: Colors.white),)
-                                    ),
+                                        child: new Text(
+                                          "Pick date range",
+                                          style: TextStyle(color: Colors.white),
+                                        )),
                                   ],
                                 ),
-
                               )
                             ],
                           ),
@@ -369,7 +366,8 @@ class _ChartPageState extends State<ChartPage> {
                               Flexible(
                                 flex: 2,
                                 child: Text("    Incorrect Mask: ",
-                                    style: TextStyle(fontWeight: FontWeight.bold)),
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold)),
                               ),
                               Flexible(
                                 flex: 1,
@@ -437,13 +435,12 @@ class _ChartPageState extends State<ChartPage> {
                           image: AssetImage("images/ed.png"),
                           fit: BoxFit.cover,
                         ),
-                        border: Border. all(
+                        border: Border.all(
                           color: Colors.blueAccent,
                           width: 3,
                         ),
                         borderRadius: BorderRadius.circular(12),
                       ),
-
                     ),
                   ),
                   Flexible(
@@ -494,13 +491,10 @@ class _ChartPageState extends State<ChartPage> {
                 ],
               ),
             ),
-      SizedBox(
-        width: 30,
-      ),
+            SizedBox(
+              width: 30,
+            ),
           ],
         ));
   }
 }
-
-
-
