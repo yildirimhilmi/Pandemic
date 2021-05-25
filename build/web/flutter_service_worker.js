@@ -3,19 +3,31 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
-  "assets/AssetManifest.json": "ec9aef07fdb7ed946718c150af61c513",
+  "assets/AssetManifest.json": "65026d811b10bb240bdcfb24006e06ae",
+"assets/assets/images/20210111-14-36-261_face.jpg": "0a054b999d3af415f8f75373f60efe85",
+"assets/assets/images/ed.png": "6d3f1ed539e73e70a0eaa95bd5fccd31",
 "assets/assets/images/edited.png": "58316a06172bdd8e121935e355f1cf36",
 "assets/assets/images/profile_edited.png": "170c4887b5df910fc5ca60174aa4f3df",
 "assets/FontManifest.json": "dc3d03800ccca4601324923c0b1d6d57",
 "assets/fonts/MaterialIcons-Regular.otf": "1288c9e28052e028aba623321f7826ac",
-"assets/NOTICES": "39a6d6183c82c9bee796f4fd0a6b1a62",
+"assets/NOTICES": "fa04465f4339eaa4fe922c68491fc2d6",
+"assets/packages/awesome_dialog/assets/flare/error.flr": "87d83833748ad4425a01986f2821a75b",
+"assets/packages/awesome_dialog/assets/flare/error_without_loop.flr": "35b9b6c9a71063406bdac60d7b3d53e8",
+"assets/packages/awesome_dialog/assets/flare/info.flr": "bc654ba9a96055d7309f0922746fe7a7",
+"assets/packages/awesome_dialog/assets/flare/info2.flr": "21af33cb65751b76639d98e106835cfb",
+"assets/packages/awesome_dialog/assets/flare/info_without_loop.flr": "cf106e19d7dee9846bbc1ac29296a43f",
+"assets/packages/awesome_dialog/assets/flare/question.flr": "1c31ec57688a19de5899338f898290f0",
+"assets/packages/awesome_dialog/assets/flare/succes.flr": "ebae20460b624d738bb48269fb492edf",
+"assets/packages/awesome_dialog/assets/flare/succes_without_loop.flr": "3d8b3b3552370677bf3fb55d0d56a152",
+"assets/packages/awesome_dialog/assets/flare/warning.flr": "68898234dacef62093ae95ff4772509b",
+"assets/packages/awesome_dialog/assets/flare/warning_without_loop.flr": "c84f528c7e7afe91a929898988012291",
 "assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "115e937bb829a890521f72d2e664b632",
 "favicon.png": "5dcef449791fa27946b3d35ad8803796",
 "icons/Icon-192.png": "ac9a721a12bbc803b44f645561ecb1e1",
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
-"index.html": "cc9c5d2e09f2f0c8481145eb4cb2b5cc",
-"/": "cc9c5d2e09f2f0c8481145eb4cb2b5cc",
-"main.dart.js": "a4d3bdfacb8058d7d145a6d45ad5034e",
+"index.html": "14bb370e87b0822664b6e131fd04120d",
+"/": "14bb370e87b0822664b6e131fd04120d",
+"main.dart.js": "8bd4ce71cb5a74626049ee2138b2d734",
 "manifest.json": "39199870c3cfb139b58f725930279276",
 "version.json": "fc66a81fba022b6305ab7d3e3bd950a8"
 };
@@ -161,7 +173,7 @@ async function downloadOffline() {
     }
     currentContent[key] = true;
   }
-  for (var resourceKey in Object.keys(RESOURCES)) {
+  for (var resourceKey of Object.keys(RESOURCES)) {
     if (!currentContent[resourceKey]) {
       resources.push(resourceKey);
     }
